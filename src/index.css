@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.clip-polygon {
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+}
+.category-name-clip {
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+}
+.heading-clip {
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+}
+.typing-text {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid white;
+  animation: typing 2s steps(20, end), blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}

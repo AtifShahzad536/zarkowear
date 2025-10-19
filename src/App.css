@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.clip-polygon {
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+}
+.name-corner {
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+}
+.category-name-clip {
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+}
