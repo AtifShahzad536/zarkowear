@@ -20,8 +20,25 @@ const Custom = () => {
     const fd = new FormData(formEl);
     try {
       const res = await fetch(endpoint, { method: 'POST', body: fd });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Submit failed');
+      const contentType = res.headers.get('content-type') || '';
+      const isJson = contentType.includes('application/json');
+      let payload;
+      try {
+        payload = isJson ? await res.json() : await res.text();
+      } catch (parseErr) {
+        payload = null;
+      }
+
+      if (!res.ok) {
+        const message = isJson ? payload?.error : (payload || 'Submit failed');
+        throw new Error(message || 'Submit failed');
+      }
+
+      if (isJson && payload?.message) {
+        setStatus(payload.message);
+      } else {
+        setStatus('Your request has been submitted. We will contact you soon.');
+      }
       setStatus('Your request has been submitted. We will contact you soon.');
       formEl.reset();
       setFileName('');
