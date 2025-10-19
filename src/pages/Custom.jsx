@@ -15,10 +15,11 @@ const Custom = () => {
     e.preventDefault();
     setStatus(''); setError('');
     const formEl = e.currentTarget; // capture before await
-    const API = import.meta.env.VITE_API_BASE || 'http://localhost:4000';
+    const apiBase = (import.meta.env.VITE_API_BASE || '').trim();
+    const endpoint = apiBase ? `${apiBase}/api/inquiry/custom` : '/api/inquiry/custom';
     const fd = new FormData(formEl);
     try {
-      const res = await fetch(`${API}/api/inquiry/custom`, { method: 'POST', body: fd });
+      const res = await fetch(endpoint, { method: 'POST', body: fd });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Submit failed');
       setStatus('Your request has been submitted. We will contact you soon.');
