@@ -53,7 +53,7 @@ const FeaturedCategories = () => {
             <img
               src={imageUrl(cat.image || '/uploads/placeholder.jpg')}
               alt={cat.name || cat.slug}
-              className="w-full h-72 object-cover bg-white transform group-hover:scale-110 transition duration-500"
+              className="w-full h-72 object-contain bg-white transform group-hover:scale-105 transition duration-500"
             />
             <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/75 via-black/30 to-transparent opacity-80 group-hover:opacity-95 transition duration-300" />
             <div className="absolute inset-0 z-20 flex flex-col justify-between p-4">
