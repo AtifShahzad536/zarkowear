@@ -12,8 +12,8 @@ import ScrollTopButton from './components/ScrollTopButton'
 function App() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => 1 - Math.pow(1 - t, 1.5),
+      duration: 0.6,
+      easing: (t) => t,
       smoothWheel: true,
       smoothTouch: false
     });
