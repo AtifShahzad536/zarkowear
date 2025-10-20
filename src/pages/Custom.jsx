@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SeoHead from '../components/SeoHead';
+import { motion } from 'framer-motion';
+import { FaUpload, FaFileAlt, FaInbox } from 'react-icons/fa';
 
 const Custom = () => {
   const [fileName, setFileName] = useState('');
@@ -48,7 +50,7 @@ const Custom = () => {
   }
 
   return (
-    <main className="max-w-3xl mx-auto px-4 py-12">
+    <main className="min-h-screen bg-gradient-to-b from-white via-indigo-50/40 to-white">
       <SeoHead
         title="Custom Sportswear Orders | Design Export-Grade Team Kits"
         description="Submit custom sportswear requests with Zarko Sportswear and get export-grade jerseys, shorts, and accessories tailored to your team."
@@ -63,34 +65,101 @@ const Custom = () => {
           'twitter:description': 'Submit custom sportswear requests with Zarko Sportswear and get export-grade jerseys, shorts, and accessories tailored to your team.',
         }}
       />
-      <h1 className="text-3xl font-bold text-indigo-700 mb-2">Custom Orders</h1>
-      <p className="text-gray-600 mb-2">Describe your custom design requirements and attach reference files.</p>
-      {status && <div className="mb-4 px-4 py-2 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded">{status}</div>}
-      {error && <div className="mb-4 px-4 py-2 bg-rose-50 text-rose-700 border border-rose-200 rounded">{error}</div>}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-x-0 -top-24 h-64 bg-[radial-gradient(circle_at_top,_rgba(79,70,229,0.12),_transparent_60%)]" />
+        <div className="relative mx-auto max-w-5xl px-4 pb-16 pt-12">
+          <motion.header initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.6 }} transition={{ duration: 0.6 }} className="text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-600">
+              Custom manufacturing
+            </span>
+            <h1 className="mt-5 text-3xl sm:text-4xl font-bold text-indigo-900">Design export-grade sportswear with us</h1>
+            <p className="mt-3 text-base md:text-lg text-gray-600">
+              Submit your concept, upload inspiration, and our team will ship production-ready kits globally.
+            </p>
+          </motion.header>
 
-      <form onSubmit={onSubmit} className="space-y-4 bg-white p-6 rounded-lg shadow">
-        <div className="grid md:grid-cols-2 gap-4">
-          <input name="name" className="border rounded-md px-4 py-3" type="text" placeholder="Name" required />
-          <input name="email" className="border rounded-md px-4 py-3" type="email" placeholder="Email" required />
+          {status && <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="mt-6 px-4 py-3 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-700 text-sm">{status}</motion.div>}
+          {error && <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="mt-6 px-4 py-3 rounded-xl border border-rose-200 bg-rose-50 text-rose-700 text-sm">{error}</motion.div>}
+
+          <motion.form
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.6 }}
+            onSubmit={onSubmit}
+            className="mt-12 rounded-3xl border border-indigo-100 bg-white/90 p-8 shadow-xl backdrop-blur space-y-6"
+          >
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="space-y-2 text-sm font-semibold text-gray-700">
+                Full name
+                <input name="name" className="w-full rounded-xl border border-indigo-100 px-4 py-3 text-sm shadow-inner focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" placeholder="Jane Smith" required />
+              </label>
+              <label className="space-y-2 text-sm font-semibold text-gray-700">
+                Email
+                <input name="email" className="w-full rounded-xl border border-indigo-100 px-4 py-3 text-sm shadow-inner focus:outline-none focus:ring-2 focus:ring-indigo-500" type="email" placeholder="you@club.com" required />
+              </label>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="space-y-2 text-sm font-semibold text-gray-700">
+                Phone (optional)
+                <input name="phone" className="w-full rounded-xl border border-indigo-100 px-4 py-3 text-sm shadow-inner focus:outline-none focus:ring-2 focus:ring-indigo-500" type="tel" placeholder="+92 303 9200750" />
+              </label>
+              <label className="space-y-2 text-sm font-semibold text-gray-700">
+                Company / Team name
+                <input name="company" className="w-full rounded-xl border border-indigo-100 px-4 py-3 text-sm shadow-inner focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" placeholder="Sialkot Strikers" />
+              </label>
+            </div>
+            <label className="space-y-2 text-sm font-semibold text-gray-700 block">
+              Project brief
+              <textarea name="message" className="w-full rounded-xl border border-indigo-100 px-4 py-3 text-sm shadow-inner focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="5" placeholder="Sport, quantities, sizes, fabrics, colors, logos, deadline…" required />
+            </label>
+
+            <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.7fr)]">
+              <label className="flex flex-col gap-3 rounded-2xl border-dashed border-2 border-indigo-200 bg-indigo-50/40 p-6 text-sm text-indigo-700 hover:border-indigo-300 hover:bg-indigo-50 transition cursor-pointer" htmlFor="file-upload">
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-indigo-600/10 text-indigo-600 text-xl">
+                  <FaUpload />
+                </span>
+                <div>
+                  <p className="font-semibold">Upload design files</p>
+                  <p className="text-xs text-indigo-500">PDF, PNG, JPG up to 10MB</p>
+                </div>
+                <input
+                  id="file-upload"
+                  name="file"
+                  type="file"
+                  accept=".pdf,.png,.jpg,.jpeg"
+                  onChange={(e) => setFileName(e.target.files?.[0]?.name || '')}
+                  className="hidden"
+                />
+              </label>
+              <div className="rounded-2xl border border-indigo-100 bg-white p-5 shadow-sm text-sm text-gray-600">
+                <div className="flex items-center gap-3 text-indigo-600 font-semibold text-base">
+                  <FaInbox />
+                  What happens next?
+                </div>
+                <ul className="mt-3 space-y-2 text-xs text-gray-500">
+                  <li>• We review your brief and files within 24h.</li>
+                  <li>• Receive design mockups and production timeline.</li>
+                  <li>• Approve, then we begin manufacturing and export.</li>
+                </ul>
+                {fileName && (
+                  <div className="mt-3 flex items-center gap-2 text-indigo-700">
+                    <FaFileAlt />
+                    <span className="text-xs">{fileName}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <p className="text-xs text-gray-500">We keep your assets confidential and can sign NDAs on request.</p>
+              <button type="submit" className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-7 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-indigo-500">
+                Submit request
+              </button>
+            </div>
+          </motion.form>
         </div>
-        <input name="phone" className="border rounded-md px-4 py-3 w-full" type="tel" placeholder="Phone" />
-        <input name="company" className="border rounded-md px-4 py-3 w-full" type="text" placeholder="Company / Team Name" />
-        <textarea name="message" className="border rounded-md px-4 py-3 w-full" rows="5" placeholder="Project details (sport, quantities, sizes, fabrics, colors, logos)..." required />
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Attach design/file (PDF, PNG, JPG)</label>
-          <input
-            name="file"
-            type="file"
-            accept=".pdf,.png,.jpg,.jpeg"
-            onChange={(e) => setFileName(e.target.files?.[0]?.name || '')}
-            className="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
-          />
-          {fileName && <p className="text-xs text-gray-500 mt-1">Selected: {fileName}</p>}
-        </div>
-
-        <button type="submit" className="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-indigo-700">Submit Request</button>
-      </form>
+      </section>
     </main>
   );
 };
