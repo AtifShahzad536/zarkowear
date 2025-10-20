@@ -47,20 +47,31 @@ const FeaturedCategories = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: index * 0.05 }}
-            className="relative group overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition cursor-pointer ring-1 ring-gray-200"
+            className="relative group overflow-hidden rounded-3xl shadow-md hover:shadow-2xl transition cursor-pointer ring-1 ring-gray-200 hover:-translate-y-1"
             onClick={()=> navigate(`/${cat.slug}`)}
           >
             <img
               src={imageUrl(cat.image || '/uploads/placeholder.jpg')}
               alt={cat.name || cat.slug}
-              className="w-full h-60 object-contain bg-white transform group-hover:scale-105 transition duration-500"
+              className="w-full h-72 object-cover bg-white transform group-hover:scale-110 transition duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition duration-300" />
-            <div className="absolute bottom-4 left-4 right-4 z-10 flex items-center justify-between">
-              <div className="bg-white/90 backdrop-blur px-3 py-2 text-sm md:text-base font-semibold tracking-wide rounded-md shadow-md text-indigo-700">
+            <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/75 via-black/30 to-transparent opacity-80 group-hover:opacity-95 transition duration-300" />
+            <div className="absolute inset-0 z-20 flex flex-col justify-between p-4">
+              <div className="bg-white/90 backdrop-blur px-4 py-2 text-base font-semibold tracking-wide rounded-lg shadow-md text-indigo-700 w-fit">
                 {cat.name || cat.slug}
               </div>
-              <span className="text-white text-xs border border-white/70 rounded-full px-2 py-1 opacity-0 group-hover:opacity-100 transition">Shop →</span>
+              <div className="space-y-3 text-white">
+                <p className="text-sm md:text-base leading-relaxed opacity-0 group-hover:opacity-100 transition duration-300 line-clamp-3">
+                  {cat.description || `Discover premium ${cat.name || cat.slug} with export-grade fabrics and custom options.`}
+                </p>
+                <button
+                  type="button"
+                  className="inline-flex items-center justify-center gap-2 w-full rounded-full bg-white/20 border border-white/40 py-3 text-sm md:text-base font-semibold tracking-wide backdrop-blur hover:bg-white/30 transition"
+                >
+                  Shop Collection
+                  <span aria-hidden>→</span>
+                </button>
+              </div>
             </div>
           </motion.div>
         ))}
