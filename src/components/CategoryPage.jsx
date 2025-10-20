@@ -1,106 +1,238 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { getCategory, imageUrl } from '../services/api';
 import ProductCard from './ProductCard';
 import Custom from '../pages/Custom';
+import CategoryHero from './CategoryHero';
+import { categoryConfigs } from '../data/categories';
+
+const normalizeData = (slug) => {
+  const config = categoryConfigs[slug];
+  if (!config) return null;
+  const { name, heroDescription, gradient, accent, featured = {}, products = [] } = config;
+  return {
+    name,
+    description: heroDescription,
+    gradient,
+    accent,
+    featured,
+    products,
+  };
+};
+
+const defaultGradient = 'from-indigo-600 via-indigo-500 to-blue-500';
+const defaultAccent = {
+  check: 'text-indigo-500',
+  chip: 'bg-indigo-100 text-indigo-700',
+  button: 'bg-indigo-600 hover:bg-indigo-700',
+};
+
+const SectionTitle = ({ eyebrow, title, description }) => (
+  <div className="mx-auto max-w-3xl text-center">
+    {eyebrow && (
+      <span className="inline-flex items-center justify-center rounded-full border border-indigo-200 bg-white/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-indigo-500">
+        {eyebrow}
+      </span>
+    )}
+    <h2 className="mt-5 text-3xl font-bold tracking-tight text-indigo-950 sm:text-4xl">{title}</h2>
+    {description && <p className="mt-3 text-base text-gray-600 sm:text-lg">{description}</p>}
+  </div>
+);
 
 const CategoryPage = ({ slug }) => {
+  const fallbackConfig = useMemo(() => normalizeData(slug), [slug]);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
+  useEffect(() => {
     let mounted = true;
     setLoading(true);
     getCategory(slug)
-      .then((d) => { if (mounted) { setData(d); setError(''); } })
-      .catch((e) => mounted && setError(e.message || 'Failed to load'))
+      .then((d) => {
+        if (!mounted) return;
+        setData({
+          ...d,
+          description: d.description || fallbackConfig?.description || fallbackConfig?.heroDescription,
+          gradient: d.gradient || fallbackConfig?.gradient,
+          accent: d.accent || fallbackConfig?.accent,
+        });
+        setError('');
+      })
+      .catch((e) => {
+        if (!mounted) return;
+        if (fallbackConfig) {
+          setData(fallbackConfig);
+          setError('');
+        } else {
+          setError(e.message || 'Failed to load');
+        }
+      })
       .finally(() => mounted && setLoading(false));
+
     return () => { mounted = false; };
-  }, [slug]);
+  }, [slug, fallbackConfig]);
 
-  useEffect(() => { window.scrollTo(0,0); }, [slug]);
+  if (loading) {
+    return (
+      <main className="min-h-[60vh] bg-gradient-to-b from-white via-indigo-50/40 to-white">
+        <div className="mx-auto flex max-w-6xl items-center justify-center px-4 py-32">
+          <div className="h-12 w-12 animate-spin rounded-full border-4 border-indigo-200 border-t-indigo-600" />
+        </div>
+      </main>
+    );
+  }
 
-  if (loading) return <main className="max-w-6xl mx-auto px-4 py-12"><div>Loading...</div></main>;
-  if (error) return <main className="max-w-6xl mx-auto px-4 py-12"><div className="text-red-600">{error}</div></main>;
+  if (error) {
+    return (
+      <main className="max-w-6xl mx-auto px-4 py-24 text-center">
+        <div className="inline-flex items-center gap-3 rounded-full border border-rose-200 bg-rose-50 px-6 py-3 text-sm font-semibold text-rose-600">
+          <span>⚠️</span>
+          <span>{error}</span>
+        </div>
+      </main>
+    );
+  }
+
   if (!data) return null;
 
-  const { name, featured, products } = data;
-  const heroGradientClasses = 'from-blue-600 via-blue-500 to-blue-400';
+  const {
+    name = 'Category',
+    description,
+    gradient,
+    accent = {},
+    featured,
+    products = [],
+  } = data;
+
+  const resolvedGradient = gradient || fallbackConfig?.gradient || defaultGradient;
+  const resolvedAccent = {
+    ...defaultAccent,
+    ...(fallbackConfig?.accent || {}),
+    ...accent,
+  };
+
+  const checkClass = resolvedAccent.check || defaultAccent.check;
+  const chipClass = resolvedAccent.chip || defaultAccent.chip;
+  const buttonClass = resolvedAccent.button || defaultAccent.button;
 
   return (
-    <main className="max-w-6xl mx-auto px-4 py-12">
-      {/* Hero Section */}
-      <section className="mb-12 mt-8">
-        <div className={`bg-gradient-to-r ${heroGradientClasses} text-white rounded-xl p-8 shadow-lg`}>
-          <h1 className="text-4xl font-bold mb-2">{name}</h1>
-          <p className="opacity-90 text-lg">Premium quality, customization options, and export-grade durability.</p>
-        </div>
-      </section>
+    <main className="relative isolate bg-gradient-to-b from-white via-indigo-50/50 to-white">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top,_rgba(79,70,229,0.18),_transparent_70%)]" />
+      <div className="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">
+        <CategoryHero title={name} description={description} gradient={resolvedGradient} />
 
-      {/* Featured Product */}
-      {featured && (
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Featured Product</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-            <div className="relative group w-full flex justify-center items-start">
-              <div className="relative w-full h-[450px] overflow-hidden rounded-xl shadow-xl">
-                <img
-                  src={imageUrl(featured.image)}
-                  alt={featured.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  onError={(e)=>{ e.currentTarget.onerror=null; e.currentTarget.src = imageUrl('/images/placeholder.jpg'); }}
-                />
-                <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8`}>
-                  <span className="text-white text-2xl font-bold">{featured.name}</span>
+        {featured && (
+          <section className="relative mt-12 overflow-hidden rounded-[18px] border border-indigo-100/70 bg-white/85 shadow-2xl backdrop-blur">
+            <div className="absolute -left-12 -top-12 h-48 w-48 rounded-full bg-indigo-300/20 blur-3xl" />
+            <div className="absolute -right-16 bottom-0 h-52 w-52 rounded-full bg-blue-200/30 blur-3xl" />
+            <div className="relative px-6 py-8 sm:px-10 sm:py-10">
+              <SectionTitle
+                eyebrow="Signature release"
+                title={featured.name}
+                description={featured.tagline || 'Export-ready sets crafted for premium clubs and distributors.'}
+              />
+              <div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
+                <div className="relative group">
+                  <div className="relative h-[440px] overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-200 via-indigo-100 to-white shadow-xl ring-1 ring-indigo-100/80">
+                    <img
+                      src={imageUrl(featured.image || '/images/placeholder.jpg')}
+                      alt={featured.name}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      onError={(e)=>{ e.currentTarget.onerror=null; e.currentTarget.src = imageUrl('/images/placeholder.jpg'); }}
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-indigo-950/80 via-indigo-900/40 to-transparent px-7 py-6 text-white">
+                      <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-indigo-200">
+                        <span>Ultra-light</span>
+                        <span>Customizable</span>
+                        <span>Global export</span>
+                      </div>
+                      <h3 className="mt-3 text-3xl font-bold">{featured.name}</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-7">
+                  {featured.description && (
+                    <p className="text-base leading-7 text-gray-600 sm:text-lg">
+                      {featured.description}
+                    </p>
+                  )}
+
+                  {Array.isArray(featured.details) && featured.details.length > 0 && (
+                    <div className="rounded-3xl border border-indigo-100/80 bg-indigo-50/70 p-6">
+                      <h4 className="text-xs font-semibold uppercase tracking-[0.3em] text-indigo-500">Key capabilities</h4>
+                      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                        {featured.details.map((point, i) => (
+                          <div key={i} className="flex items-start gap-3">
+                            <span className={`${checkClass} mt-1.5`}>
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 0 0-1.22-.872l-3.236 4.53-1.71-1.71a.75.75 0 0 0-1.06 1.061l2.25 2.25a.75.75 0 0 0 1.14-.094l3.836-5.165Z" clipRule="evenodd" /></svg>
+                            </span>
+                            <span className="text-sm text-gray-600">{point}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {Array.isArray(featured.sizes) && featured.sizes.length > 0 && (
+                    <div>
+                      <h4 className="text-xs font-semibold uppercase tracking-[0.3em] text-indigo-500">Available sizes</h4>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {featured.sizes.map((size, i) => (
+                          <span key={i} className={`inline-flex items-center justify-center rounded-full px-3 py-1 text-[11px] font-semibold uppercase ${chipClass}`}>
+                            {size}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="flex flex-wrap items-center gap-4">
+                    <button className={`inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-white shadow-lg transition-transform hover:-translate-y-0.5 ${buttonClass}`}>
+                      Request quote
+                    </button>
+                    <p className="text-xs text-gray-400">MOQ from 25 units · Sampling in 10-12 days · Worldwide fulfillment</p>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-gray-800">{featured.name}</h3>
-              <p className="text-gray-700 text-lg leading-relaxed">{featured.description}</p>
-              {Array.isArray(featured.details) && featured.details.length > 0 && (
-                <div>
-                  <h4 className="text-lg font-semibold text-gray-800 mb-3">Key Features:</h4>
-                  <ul className="space-y-2">
-                    {featured.details.map((point, i) => (
-                      <li key={i} className="flex items-start">
-                        <span className="text-gray-700 mr-2 mt-1">✓</span>
-                        <span className="text-gray-600">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {Array.isArray(featured.sizes) && featured.sizes.length > 0 && (
-                <div>
-                  <h4 className="text-lg font-semibold text-gray-800 mb-3">Available Sizes:</h4>
-                  <div className="flex gap-3 flex-wrap">
-                    {featured.sizes.map((size, i) => (
-                      <span key={i} className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-semibold">{size}</span>
-                    ))}
-                  </div>
-                </div>
-              )}
-              <button className="w-full md:w-auto bg-gray-900 text-white font-semibold px-8 py-3 rounded-lg hover:bg-black transition-colors shadow-md">Request Quote</button>
-            </div>
+          </section>
+        )}
+
+        <section className="mt-20 rounded-[18px] border border-indigo-100/60 bg-white/80 p-8 shadow-xl backdrop-blur">
+          <SectionTitle
+            eyebrow="Collections"
+            title="Ready-to-customize designs"
+            description="Choose a base silhouette and we will tailor fabrics, trims, and prints to your club specs."
+          />
+          <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+            {products.map((product, index) => (
+              <ProductCard
+                key={product.id || `${product.name}-${index}`}
+                image={product.image}
+                name={product.name}
+                description={product.description}
+                onQuote={() => alert('Request quote: ' + product.name)}
+              />
+            ))}
           </div>
         </section>
-      )}
 
-      {/* Products Grid */}
-      <section>
-        <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Our Collection</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {products.map((p) => (
-            <ProductCard key={p.id} image={p.image} name={p.name} onQuote={() => alert('Request quote: ' + p.name)} />
-          ))}
-        </div>
-      </section>
-
-      {/* Custom Section */}
-      <section className="mt-16">
-        <Custom />
-      </section>
+        <section className="mt-24 rounded-[18px] border border-indigo-100/70 bg-white/80 p-10 shadow-xl backdrop-blur">
+          <SectionTitle
+            eyebrow="Custom lab"
+            title="Need something fully bespoke?"
+            description="Share your concept, tech packs, or references and our product team will engineer export-grade samples."
+          />
+          <div className="mt-8">
+            <Custom />
+          </div>
+        </section>
+      </div>
     </main>
   );
 };

@@ -159,13 +159,12 @@ const Contact = () => {
               </div>
             </motion.form>
           </div>
-        </div>
-       <motion.div
+          <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.6 }}
-            className="mt-8 overflow-hidden rounded-[32px] border border-indigo-100 shadow-xl"
+            className="mt-10 overflow-hidden rounded-[32px] border border-indigo-100 shadow-xl"
           >
             <iframe
               title="WearConnect Location"
@@ -178,6 +177,7 @@ const Contact = () => {
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </motion.div>
+        </div>
       </section>
     </main>
   );

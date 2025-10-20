@@ -4,26 +4,32 @@ import { imageUrl } from '../services/api';
 
 const ProductCard = ({ image, name, description, onQuote }) => {
   return (
-    <div className="group rounded-2xl p-[1px] bg-gradient-to-br from-indigo-200/70 via-white to-indigo-50 shadow-sm hover:shadow-xl transition-transform hover:-translate-y-1">
-      <div className="rounded-2xl bg-white overflow-hidden ring-1 ring-gray-200/60">
-        <div className="w-full h-80 flex items-center justify-center bg-white">
-          <img
-            src={imageUrl(image)}
-            alt={name}
-            className="max-h-full max-w-full object-contain"
-            onError={(e)=>{ e.currentTarget.onerror=null; e.currentTarget.src = imageUrl('/images/placeholder.jpg'); }}
-          />
+    <div className="group relative overflow-hidden rounded-[10px] border border-indigo-100/70 bg-white/90 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/8 via-transparent to-indigo-500/15 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <div className="relative flex h-60 items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-white">
+        <img
+          src={imageUrl(image)}
+          alt={name}
+          className="max-h-[80%] max-w-[80%] object-contain transition-transform duration-500 group-hover:scale-105"
+          onError={(e)=>{ e.currentTarget.onerror=null; e.currentTarget.src = imageUrl('/images/placeholder.jpg'); }}
+        />
+      </div>
+      <div className="relative space-y-3 px-6 pb-6 pt-5">
+        <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-indigo-400">
+          <span className="inline-flex items-center gap-1 rounded-full border border-indigo-100/80 bg-indigo-50/70 px-3 py-1 text-[10px] font-semibold text-indigo-500">
+            <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
+            Premium
+          </span>
+          <span>Custom ready</span>
         </div>
-        <div className="p-5">
-          <h4 className="font-semibold text-gray-800 text-lg tracking-tight">{name}</h4>
-          {description && <p className="text-sm text-gray-600 mt-1 line-clamp-2">{description}</p>}
-          <Link
-            to={`/custom?product=${encodeURIComponent(name)}&image=${encodeURIComponent(image)}`}
-            className="inline-block mt-4 px-4 py-2 rounded-md bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700"
-          >
-            Request Quote
-          </Link>
-        </div>
+        <h4 className="text-lg font-semibold tracking-tight text-indigo-900">{name}</h4>
+        {description && <p className="text-sm text-gray-600 line-clamp-2">{description}</p>}
+        <Link
+          to={`/custom?product=${encodeURIComponent(name)}&image=${encodeURIComponent(image)}`}
+          className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-indigo-500"
+        >
+          Request quote
+        </Link>
       </div>
     </div>
   );
