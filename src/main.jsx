@@ -1,18 +1,19 @@
-import { StrictMode } from 'react'
+import { StrictMode, Suspense, lazy } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
-import ProductInquiry from './components/Detail.jsx'
-import Home from './pages/Home.jsx'
-import Custom from "./pages/Custom";
-import Contact from "./pages/Contact";
-import About from "./pages/About";
-import CategoryRoute from './pages/CategoryRoute.jsx'
-import AdminHome from './pages/AdminHome.jsx'
-import AdminLayout from './components/admin/AdminLayout.jsx'
-import AdminLogin from './pages/AdminLogin.jsx'
 import RequireAdmin from './components/admin/RequireAdmin.jsx'
+
+const ProductInquiry = lazy(() => import('./components/Detail.jsx'))
+const Home = lazy(() => import('./pages/Home.jsx'))
+const Custom = lazy(() => import('./pages/Custom.jsx'))
+const Contact = lazy(() => import('./pages/Contact.jsx'))
+const About = lazy(() => import('./pages/About.jsx'))
+const CategoryRoute = lazy(() => import('./pages/CategoryRoute.jsx'))
+const AdminHome = lazy(() => import('./pages/AdminHome.jsx'))
+const AdminLayout = lazy(() => import('./components/admin/AdminLayout.jsx'))
+const AdminLogin = lazy(() => import('./pages/AdminLogin.jsx'))
 // Define routes
 const router = createBrowserRouter([
  {
@@ -63,6 +64,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Suspense fallback={null}>
+      <RouterProvider router={router} />
+    </Suspense>
   </StrictMode>
 )

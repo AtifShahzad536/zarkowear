@@ -1,41 +1,40 @@
-import { useEffect } from 'react'
-import Lenis from 'lenis'
-import 'lenis/dist/lenis.css'
+import { Suspense, lazy, useEffect } from 'react'
 import './App.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import { Outlet } from 'react-router-dom'
-import Hero from './components/Hero'
-import ChatbotWidget from './components/ChatbotWidget'
 import ScrollTopButton from './components/ScrollTopButton'
+
+const ChatbotWidget = lazy(() => import('./components/ChatbotWidget'))
 
 function App() {
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 0.6,
-      easing: (t) => t,
-      smoothWheel: true,
-      smoothTouch: false
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+    let lenis;
+    let raf;
+    import('lenis').then(({ default: Lenis }) => {
+      lenis = new Lenis({ duration: 0.6, easing: t => t, smoothWheel: true, smoothTouch: false });
+      const loop = (time) => {
+        lenis?.raf(time);
+        raf = requestAnimationFrame(loop);
+      };
+      raf = requestAnimationFrame(loop);
     });
-
-    const raf = (time) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    };
-
-    requestAnimationFrame(raf);
-
     return () => {
-      lenis.destroy();
+      if (raf) cancelAnimationFrame(raf);
+      lenis?.destroy?.();
     };
   }, []);
 
   return (
     <>
       <Header />
-      <ChatbotWidget/>
       <Outlet />
       <ScrollTopButton />
+      <Suspense fallback={null}>
+        <ChatbotWidget/>
+      </Suspense>
       <Footer />
     </>
   )
