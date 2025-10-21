@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import RequireAdmin from './components/admin/RequireAdmin.jsx'
+import { ToastProvider } from './components/Toast.jsx'
 
 const ProductInquiry = lazy(() => import('./components/Detail.jsx'))
 const Home = lazy(() => import('./pages/Home.jsx'))
@@ -67,7 +68,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Suspense fallback={null}>
-      <RouterProvider router={router} />
+      <ToastProvider>
+        <RouterProvider router={router} />
+      </ToastProvider>
     </Suspense>
   </StrictMode>
 )

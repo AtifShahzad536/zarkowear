@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
+import { useToast } from '../components/Toast.jsx';
 
 const Contact = () => {
   const path = window.location.pathname;
   const [status, setStatus] = useState('');
   const [error, setError] = useState('');
+  const showToast = useToast();
 
   useEffect(() => { window.scrollTo(0, 0); }, [path]);
 
@@ -32,9 +34,11 @@ const Contact = () => {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Send failed');
       setStatus('Your message has been sent. We will reply shortly.');
+      showToast({ message: 'Your message has been sent. We will reply shortly.', tone: 'success' });
       formEl.reset();
     } catch (err) {
       setError(err.message || 'Send failed');
+      showToast({ message: err.message || 'Send failed', tone: 'error' });
     }
   }
 
@@ -67,15 +71,8 @@ const Contact = () => {
             </p>
           </motion.header>
 
-          {status && (
-            <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="mt-6 px-4 py-3 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-700 text-sm text-left">
-              {status}
-            </motion.div>
-          )}
-          {error && (
-            <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="mt-6 px-4 py-3 rounded-xl border border-rose-200 bg-rose-50 text-rose-700 text-sm text-left">
-              {error}
-            </motion.div>
+          {(status || error) && (
+            <div className="mt-4 text-sm text-gray-500">We have received your submission.</div>
           )}
          
 

@@ -1,12 +1,15 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 import { getHomeSettings, imageUrl } from '../services/api';
 
 const Hero = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [slider, setSlider] = useState(null);
 
   useEffect(() => {
     let alive = true;
@@ -15,11 +18,6 @@ const Hero = () => {
       .then((d) => { if (!alive) return; setImages(d.heroImages || []); setError(''); })
       .catch((e) => alive && setError(e.message || 'Failed to load'))
       .finally(() => alive && setLoading(false));
-    import('swiper/react').then(async ({ Swiper, SwiperSlide }) => {
-      const modules = await import('swiper/modules');
-      if (!alive) return;
-      setSlider({ Swiper, SwiperSlide, modules: [modules.Navigation, modules.Autoplay] });
-    });
     return () => { alive = false; };
   }, []);
 
@@ -27,46 +25,29 @@ const Hero = () => {
 
   return (
     <section className="relative w-full h-[80vh] overflow-hidden">
-      {slider ? (
-        <slider.Swiper
-          modules={slider.modules}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
-          navigation
-          loop
-          className="w-full h-full"
-        >
-          {slides.map((src, index) => (
-            <slider.SwiperSlide key={`${src}-${index}`}>
-              <img
-                loading={index === 0 ? 'eager' : 'lazy'}
-                fetchpriority={index === 0 ? 'high' : 'auto'}
-                decoding="async"
-                src={imageUrl(src)}
-                alt={`Slide ${index + 1}`}
-                className="w-full h-full object-cover"
-                sizes="(min-width: 1024px) 100vw, 100vw"
-                width="1920"
-                height="1080"
-              />
-            </slider.SwiperSlide>
-          ))}
-        </slider.Swiper>
-      ) : (
-        <picture className="block h-full w-full">
-          <source srcSet="/images/slide1.avif" type="image/avif" />
-          <source srcSet="/images/slide1.webp" type="image/webp" />
-          <img
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
-            src="/images/slide1.jpg"
-            alt="Zarko Sportswear showcase"
-            className="w-full h-full object-cover"
-            width="1920"
-            height="1080"
-          />
-        </picture>
-      )}
+      <Swiper
+        modules={[Navigation, Autoplay]}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        navigation
+        loop
+        className="w-full h-full"
+      >
+        {slides.map((src, index) => (
+          <SwiperSlide key={`${src}-${index}`}>
+            <img
+              loading={index === 0 ? 'eager' : 'lazy'}
+              fetchpriority={index === 0 ? 'high' : 'auto'}
+              decoding="async"
+              src={imageUrl(src)}
+              alt={`Slide ${index + 1}`}
+              className="w-full h-full object-cover"
+              sizes="(min-width: 1024px) 100vw, 100vw"
+              width="1920"
+              height="1080"
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
       <div className="absolute bottom-6 left-4 md:bottom-12 md:left-12 z-40 flex max-w-xl flex-col gap-3 bg-black/40 backdrop-blur-md p-4 rounded-2xl text-white">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-wide">Zarko Sportswear</h1>
