@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
 import Hero from '../components/Hero';
@@ -7,20 +7,66 @@ import FeaturedCategories from '../components/Home/Feature';
 import LimitedTimeOffer from '../components/Home/LimitedTimeOffer';
 import Testimonials from '../components/Home/Customer';
 import { Link } from 'react-router-dom';
-import { FaFootballBall, FaBasketballBall, FaRunning, FaAward, FaPalette, FaGlobeAmericas, FaHatCowboy, FaShoppingBag, FaArrowRight, FaPhoneAlt } from 'react-icons/fa';
+import { FaFootballBall, FaBasketballBall, FaRunning, FaAward, FaPalette, FaGlobeAmericas, FaHatCowboy, FaShoppingBag, FaArrowRight, FaPhoneAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { MdSportsHockey, MdSportsRugby } from 'react-icons/md';
 import { GiCricketBat, GiTennisRacket, GiWeightLiftingUp, GiRunningShoe, GiGloves } from 'react-icons/gi';
 
 const Home = () => {
   const path = window.location.pathname;
+  const sportRailRef = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [canScroll, setCanScroll] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
-}, [path]);
+  }, [path]);
+
+  const categoryChips = [
+    { to: '/football', label: 'Football', Icon: FaFootballBall, tagline: 'Club & academy kits' },
+    { to: '/cricket', label: 'Cricket', Icon: GiCricketBat, tagline: 'Match + training wear' },
+    { to: '/basketball', label: 'Basketball', Icon: FaBasketballBall, tagline: 'Court-ready sets' },
+    { to: '/wrestling', label: 'Wrestling', Icon: FaRunning, tagline: 'Singlets & gear' },
+    { to: '/hockey', label: 'Hockey', Icon: MdSportsHockey, tagline: 'Ice & field apparel' },
+    { to: '/rugby', label: 'Rugby', Icon: MdSportsRugby, tagline: 'Contact proof kits' },
+    { to: '/tennis', label: 'Tennis', Icon: GiTennisRacket, tagline: 'Court performance' },
+    { to: '/running', label: 'Running', Icon: FaRunning, tagline: 'Lightweight layers' },
+    { to: '/gym', label: 'Gym', Icon: GiWeightLiftingUp, tagline: 'Training essentials' },
+    { to: '/shoes', label: 'Shoes', Icon: GiRunningShoe, tagline: 'Traction & support' },
+    { to: '/gloves', label: 'Gloves', Icon: GiGloves, tagline: 'Grip & protection' },
+    { to: '/caps', label: 'Caps', Icon: FaHatCowboy, tagline: 'Team headwear' },
+    { to: '/bags', label: 'Bags', Icon: FaShoppingBag, tagline: 'Travel-ready packs' },
+  ];
+
+  useEffect(() => {
+    const rail = sportRailRef.current;
+    if (!rail) return;
+
+    const updateState = () => {
+      const maxScroll = rail.scrollWidth - rail.clientWidth;
+      setScrollProgress(maxScroll <= 0 ? 0 : rail.scrollLeft / maxScroll);
+      setCanScroll(rail.scrollWidth > rail.clientWidth + 4);
+    };
+
+    updateState();
+    rail.addEventListener('scroll', updateState);
+    window.addEventListener('resize', updateState);
+    return () => {
+      rail.removeEventListener('scroll', updateState);
+      window.removeEventListener('resize', updateState);
+    };
+  }, []);
+
+  const scrollRail = (direction) => {
+    const rail = sportRailRef.current;
+    if (!rail) return;
+    const amount = rail.clientWidth * 0.6;
+    rail.scrollBy({ left: direction * amount, behavior: 'smooth' });
+  };
   return (
     <main className="min-h-screen">
       <SeoHead
         title="Zarko Sportswear | Custom Export-Grade Sports Uniforms"
-        description="Shop custom football, cricket, basketball, and rugby uniforms with export-grade fabrics and global shipping from Zarko Sportswear."
+        description="Custom football, cricket, basketball, and rugby uniforms with export-grade fabrics and worldwide shipping."
         canonical="https://www.zarkosportswear.com/"
         openGraph={{
           'og:title': 'Zarko Sportswear | Custom Export-Grade Sports Uniforms',
@@ -35,81 +81,126 @@ const Home = () => {
           'twitter:card': 'summary_large_image',
           'twitter:image': 'https://www.zarkosportswear.com/og-cover.jpg',
         }}
-        jsonLd={{
-          '@context': 'https://schema.org',
-          '@type': 'SportsTeam',
-          name: 'Zarko Sportswear',
-          description: 'Manufacturer and exporter of custom sports uniforms, accessories, and athletic apparel.',
-          url: 'https://www.zarkosportswear.com/',
-          logo: 'https://www.zarkosportswear.com/logo.png',
-          telephone: '+92-3039200750',
-          email: 'zarkosportswear@gmail.com',
-          address: {
-            '@type': 'PostalAddress',
-            streetAddress: '123 Export Avenue',
-            addressLocality: 'Sialkot',
-            addressRegion: 'Punjab',
-            postalCode: '51310',
-            addressCountry: 'PK',
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'LocalBusiness',
+            name: 'Zarko Sportswear',
+            image: 'https://www.zarkosportswear.com/logo.png',
+            url: 'https://www.zarkosportswear.com/',
+            telephone: '+92-303-9200750',
+            email: 'zarkosportswear@gmail.com',
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: '123 Export Avenue',
+              addressLocality: 'Sialkot',
+              addressRegion: 'Punjab',
+              postalCode: '51310',
+              addressCountry: 'PK',
+            },
+            openingHours: ['Mo-Sa 09:00-18:00'],
+            sameAs: [
+              'https://www.facebook.com/zarkosportswear',
+              'https://www.instagram.com/zarko_sports.wear/',
+              'https://www.linkedin.com/in/atif-shahzad903/'
+            ],
+            makesOffer: [
+              { '@type': 'Offer', name: 'Football Kits' },
+              { '@type': 'Offer', name: 'Cricket Uniforms' },
+              { '@type': 'Offer', name: 'Basketball Jerseys' },
+              { '@type': 'Offer', name: 'Rugby Apparel' },
+            ],
           },
-          sameAs: [
-            'https://facebook.com/zarkosportswear',
-            'https://www.instagram.com/zarko_sports.wear/',
-            'https://www.linkedin.com/in/atif-shahzad903/',
-          ],
-          makesOffer: [
-            { '@type': 'Offer', name: 'Football Kits' },
-            { '@type': 'Offer', name: 'Cricket Uniforms' },
-            { '@type': 'Offer', name: 'Basketball Jerseys' },
-            { '@type': 'Offer', name: 'Rugby Apparel' },
-          ],
-        }}
+        ]}
       />
 
       <Hero />
 
       {/* Quick Categories */}
-      <section className="relative bg-white">
-        {/* subtle background bloom */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-50/70 via-white to-white" />
-        <div className="relative max-w-6xl mx-auto px-4 py-8">
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={{ hidden:{}, show:{ transition:{ staggerChildren:0.05 }}}}
-            className="flex items-center justify-between flex-wrap gap-3"
-          >
-            {[
-              { to: '/football', label: 'Football', Icon: FaFootballBall },
-              { to: '/cricket', label: 'Cricket', Icon: GiCricketBat },
-              { to: '/basketball', label: 'Basketball', Icon: FaBasketballBall },
-              { to: '/hockey', label: 'Hockey', Icon: MdSportsHockey },
-              { to: '/rugby', label: 'Rugby', Icon: MdSportsRugby },
-              { to: '/tennis', label: 'Tennis', Icon: GiTennisRacket },
-              { to: '/running', label: 'Running', Icon: FaRunning },
-              { to: '/gym', label: 'Gym', Icon: GiWeightLiftingUp },
-              { to: '/shoes', label: 'Shoes', Icon: GiRunningShoe },
-              { to: '/gloves', label: 'Gloves', Icon: GiGloves },
-              { to: '/caps', label: 'Caps', Icon: FaHatCowboy },
-              { to: '/bags', label: 'Bags', Icon: FaShoppingBag }
-            ].map((chip,i)=> (
-              <motion.div
-                key={i}
-                variants={{ hidden:{opacity:0, y:8}, show:{opacity:1, y:0}}}
-                whileHover={{ y: -3, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Link
-                  to={chip.to}
-                  className="px-4 py-2 rounded-full backdrop-blur bg-white/70 hover:bg-white text-gray-800 text-sm font-medium shadow-sm ring-1 ring-indigo-100/70 hover:ring-indigo-200 transition flex items-center gap-2"
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-4 py-12">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-indigo-500">Shop by sport</p>
+              <h2 className="mt-2 text-3xl font-bold text-indigo-900">Elite kits and accessories for every squad</h2>
+              <p className="mt-2 text-sm text-gray-500">Browse export-grade uniforms, footwear, and gear bundles, or learn more about our <Link to="/about" className="text-indigo-600 hover:underline">sportswear manufacturing</Link>.</p>
+            </div>
+            <Link to="/custom" className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white px-4 py-2 text-sm font-semibold text-indigo-700 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300">
+              Build your own collection
+              <FaArrowRight className="text-base" />
+            </Link>
+          </div>
+
+          <div className="relative mt-8">
+            <div className="overflow-hidden rounded-[32px] border border-indigo-100/70 bg-gradient-to-r from-white via-indigo-50/60 to-white shadow-xl">
+              <div className="relative px-4 pb-8 pt-4">
+                <div className="pointer-events-none absolute inset-y-4 left-0 w-10 bg-gradient-to-r from-white via-white/70 to-transparent" />
+                <div className="pointer-events-none absolute inset-y-4 right-0 w-10 bg-gradient-to-l from-white via-white/70 to-transparent" />
+                <div
+                  ref={sportRailRef}
+                  className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-2 py-2 pr-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                 >
-                  <chip.Icon className="text-indigo-600 text-lg" />
-                  <span>{chip.label}</span>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
+                  {categoryChips.map((chip, i) => (
+                    <motion.div
+                      key={chip.label}
+                      initial={{ opacity: 0, y: 12 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ delay: i * 0.025, duration: 0.35 }}
+                      whileHover={{ y: -6, scale: 1.03 }}
+                      className="snap-start"
+                    >
+                      <Link
+                        to={chip.to}
+                        className="group block min-w-[190px] rounded-2xl border border-indigo-100 bg-white/95 px-4 py-4 text-left shadow-sm transition hover:-translate-y-1.5 hover:border-indigo-200 hover:shadow-lg"
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="flex items-center gap-3">
+                            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 via-white to-indigo-50 text-indigo-600">
+                              <chip.Icon />
+                            </span>
+                            <div>
+                              <p className="text-sm font-semibold text-indigo-900">{chip.label}</p>
+                              <p className="text-xs text-gray-500">{chip.tagline}</p>
+                            </div>
+                          </div>
+                          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-50 text-indigo-500 transition group-hover:bg-indigo-600 group-hover:text-white">
+                            <FaArrowRight className="text-xs" />
+                          </span>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+                <div className="mx-2 mt-5 h-1 rounded-full bg-indigo-100">
+                  <div
+                    className="h-1 rounded-full bg-gradient-to-r from-indigo-500 via-indigo-600 to-blue-500 transition-all duration-300"
+                    style={{ width: `${Math.max(6, scrollProgress * 100)}%` }}
+                  />
+                </div>
+              </div>
+              {canScroll ? (
+                <>
+                  <button
+                    type="button"
+                    aria-label="Scroll sports left"
+                    onClick={() => scrollRail(-1)}
+                    className="absolute left-3 top-1/2 hidden -translate-y-1/2 rounded-full border border-white/40 bg-white/80 p-3 text-indigo-700 shadow-md transition hover:-translate-y-1/2 hover:bg-white md:inline-flex"
+                  >
+                    <FaChevronLeft />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Scroll sports right"
+                    onClick={() => scrollRail(1)}
+                    className="absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-full border border-white/40 bg-white/80 p-3 text-indigo-700 shadow-md transition hover:-translate-y-1/2 hover:bg-white md:inline-flex"
+                  >
+                    <FaChevronRight />
+                  </button>
+                </>
+              ) : null}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -208,55 +299,125 @@ const Home = () => {
       </section>
 
       {/* Value Props */}
-      <section className="bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-6">
-          <div className="p-6 bg-white rounded-lg shadow-sm border flex items-start gap-4">
-            <FaAward className="text-indigo-600 text-3xl" />
-            <div>
-              <h4 className="font-semibold text-gray-800 mb-1">Export-Grade Quality</h4>
-              <p className="text-gray-600 text-sm">Durable fabrics, precise stitching, and long-lasting sublimation prints.</p>
-            </div>
-          </div>
-          <div className="p-6 bg-white rounded-lg shadow-sm border flex items-start gap-4">
-            <FaPalette className="text-indigo-600 text-3xl" />
-            <div>
-              <h4 className="font-semibold text-gray-800 mb-1">Customizations</h4>
-              <p className="text-gray-600 text-sm">Logos, names, numbers, and full team colorways available.</p>
-            </div>
-          </div>
-          <div className="p-6 bg-white rounded-lg shadow-sm border flex items-start gap-4">
-            <FaGlobeAmericas className="text-indigo-600 text-3xl" />
-            <div>
-              <h4 className="font-semibold text-gray-800 mb-1">Global Shipping</h4>
-              <p className="text-gray-600 text-sm">Reliable delivery and support for clubs and distributors worldwide.</p>
-            </div>
+      <section className="bg-gradient-to-b from-white via-indigo-50/20 to-white">
+        <div className="max-w-6xl mx-auto px-4 py-12">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5 }}
+            className="text-center"
+          >
+            <span className="inline-flex items-center justify-center rounded-full border border-indigo-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-500">
+              Why teams choose us
+            </span>
+            <h3 className="mt-3 text-3xl font-bold text-indigo-900">Export-ready craftsmanship from concept to delivery</h3>
+          </motion.div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {[{
+              title: 'Export-Grade Quality',
+              copy: 'Durable fabrics, precision stitching, and colorfast sublimation built for elite play.',
+              Icon: FaAward,
+              badge: 'ISO-aligned'
+            }, {
+              title: 'Customizations',
+              copy: 'Logos, names, numbering, and bespoke trims engineered around your club identity.',
+              Icon: FaPalette,
+              badge: 'Brand-matched'
+            }, {
+              title: 'Global Shipping',
+              copy: 'Dedicated export desk handling documentation, freight, and delivery timelines.',
+              Icon: FaGlobeAmericas,
+              badge: 'Worldwide'
+            }].map(({ title, copy, Icon, badge }, i) => (
+              <motion.div
+                key={title}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ delay: i * 0.1, duration: 0.45 }}
+                className="relative overflow-hidden rounded-3xl border border-indigo-100 bg-white p-6 shadow-md transition hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-white to-gray-50/60" />
+                <div className="relative flex items-start gap-4">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-100 via-white to-indigo-50 text-indigo-600 text-2xl">
+                    <Icon />
+                  </span>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <h4 className="font-semibold text-indigo-900 text-lg">{title}</h4>
+                      <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.25em] text-indigo-500">
+                        {badge}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600 leading-6">{copy}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Partners / Clients */}
-      <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-4 py-12">
-          <motion.p initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}} className="text-center text-gray-500 text-sm tracking-wide uppercase">Trusted by clubs and distributors</motion.p>
+      <section className="bg-gradient-to-b from-white via-indigo-50/20 to-white">
+        <div className="max-w-6xl mx-auto px-4 py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <span className="inline-flex items-center justify-center rounded-full border border-indigo-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-indigo-500">
+              Trusted by clubs & distributors
+            </span>
+            <h3 className="mt-4 text-3xl font-bold text-indigo-900">Global programs we proudly outfit</h3>
+            <p className="mt-2 text-sm text-gray-500">From elite franchises to emerging academies, our export-ready kits power winning rosters.</p>
+          </motion.div>
+
           <motion.div
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={{ hidden:{}, show:{ transition:{ staggerChildren:0.12 }}}}
-            className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 items-center"
+            viewport={{ once: true, amount: 0.25 }}
+            variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
+            className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
           >
-            {['Club One','Elite Sports','ProGear','SwiftWear','Prime Kits',"Los Angeles Lakers",
-  "Golden State Warriors",
-  "Chicago Bulls",
-  "Boston Celtics",
-  "Miami Heat",
-  "WN",
-  "AEW",
-  "NWA",
-  "Impact Wrestling",
-  "Ohio Valley Wrestling"].map((name, i)=> (
-              <motion.div key={i} variants={{ hidden:{opacity:0, y:10}, show:{opacity:1, y:0}}} className="h-14 bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg flex items-center justify-center text-gray-600 text-sm shadow-sm ring-1 ring-gray-200">
-                <span className="font-semibold">{name}</span>
+            {[
+              'Club One',
+              'Elite Sports',
+              'ProGear',
+              'SwiftWear',
+              'Prime Kits',
+              'Los Angeles Lakers',
+              'Golden State Warriors',
+              'Chicago Bulls',
+              'Boston Celtics',
+              'Miami Heat',
+              'WN',
+              'AEW',
+              'NWA',
+              'Impact Wrestling',
+              'Ohio Valley Wrestling',
+              'Pro Rugby Europe'
+            ].map((name, i) => (
+              <motion.div
+                key={name}
+                variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}
+                whileHover={{ y: -4, scale: 1.02 }}
+                className="relative overflow-hidden rounded-2xl border border-indigo-100 bg-white px-5 py-4 shadow-sm"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 via-transparent to-indigo-500/15 opacity-0 transition group-hover:opacity-100" />
+                <div className="relative flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-sm font-semibold">
+                      {name.split(' ').map(word => word[0]).join('').slice(0,2)}
+                    </span>
+                    <span className="font-semibold text-indigo-900 text-sm md:text-base">{name}</span>
+                  </div>
+                  <span className="hidden text-[10px] uppercase tracking-[0.35em] text-indigo-400 md:inline-flex">Partner</span>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -267,24 +428,68 @@ const Home = () => {
       <section className="max-w-6xl mx-auto px-4 py-12">
         <FeaturedCategories />
       </section>
-      {/* Short About */}
-      <section className="bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h3 className="text-2xl font-bold text-indigo-700 mb-3">About ZarkoSportsWear</h3>
-            <p className="text-gray-600 mb-4">
-              We specialize in designing and exporting high-performance sports team wear worldwide. 
-              From football and cricket to running and gym wear, our products are crafted with durable fabrics, 
-              precise stitching, and export-grade quality standards.
-            </p>
-            <div className="flex gap-3">
-              <Link to="/about" className="px-5 py-3 rounded-md bg-indigo-600 text-white font-semibold hover:bg-indigo-700">Learn More</Link>
-              <Link to="/contact" className="px-5 py-3 rounded-md border border-indigo-600 text-indigo-700 font-semibold hover:bg-indigo-50">Contact Us</Link>
+      {/* Brand Story */}
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto grid gap-10 px-4 py-16 lg:grid-cols-[1.05fr_0.95fr]">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="relative overflow-hidden rounded-3xl border border-indigo-100 bg-gradient-to-br from-indigo-50 via-white to-white p-10 shadow-xl"
+          >
+            <div className="absolute inset-y-0 right-0 w-40 bg-[radial-gradient(circle_at_top,_rgba(79,70,229,0.18),_transparent_55%)]" />
+            <div className="relative space-y-6">
+              <span className="inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-500">
+                Our story
+              </span>
+              <h3 className="text-3xl font-bold text-indigo-900 leading-tight">
+                About ZarkoSportsWear
+              </h3>
+              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                We engineer export-grade team wear from Sialkot, serving clubs, academies, and distributors across the globe.
+                Every collection pairs advanced fabrics, precision sublimation, and meticulous QC for performance on and off the field.
+              </p>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-2xl border border-indigo-100 bg-white/90 p-4 shadow-sm">
+                  <p className="text-xs uppercase tracking-[0.25em] text-indigo-500">40+ Countries</p>
+                  <p className="mt-2 text-lg font-semibold text-indigo-900">Global export footprint</p>
+                  <p className="text-xs text-gray-500">Dedicated logistics and distributor support.</p>
+                </div>
+                <div className="rounded-2xl border border-indigo-100 bg-white/90 p-4 shadow-sm">
+                  <p className="text-xs uppercase tracking-[0.25em] text-indigo-500">12k+ Units / Month</p>
+                  <p className="mt-2 text-lg font-semibold text-indigo-900">Flexible production runs</p>
+                  <p className="text-xs text-gray-500">From pro kits to grassroots academies.</p>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <Link to="/about" className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-indigo-700">
+                  Learn more
+                  <FaArrowRight className="text-sm" />
+                </Link>
+                <Link to="/contact" className="inline-flex items-center gap-2 rounded-full border border-indigo-200 px-6 py-3 text-sm font-semibold text-indigo-700 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300">
+                  Contact us
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className="rounded-xl overflow-hidden shadow-md">
-            <img src="/images/slide2.jpg" alt="About WearConnect" className="w-full h-full object-cover" />
-          </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="relative overflow-hidden rounded-3xl shadow-xl"
+          >
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-600/10 via-transparent to-indigo-900/10" />
+            <img src="/images/slide2.jpg" alt="About WearConnect" className="h-full w-full object-cover" />
+            <div className="absolute bottom-6 left-6 right-6 rounded-2xl bg-white/90 p-5 shadow-lg">
+              <p className="text-xs uppercase tracking-[0.35em] text-indigo-500">Signature craftsmanship</p>
+              <p className="mt-2 text-sm text-gray-600">
+                Designed, stitched, and finished under one roof for consistent export quality.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
       

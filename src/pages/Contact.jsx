@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
@@ -38,10 +39,10 @@ const Contact = () => {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white via-indigo-50/30 to-white">
+    <main className="min-h-screen bg-white">
       <SeoHead
         title="Contact Zarko Sportswear | Request Quotes & Support"
-        description="Contact Zarko Sportswear for custom sports uniform quotes, export inquiries, or customer support."
+        description="Contact Zarko Sportswear for custom uniform quotes, export inquiries, and fast support."
         canonical="https://www.zarkosportswear.com/contact"
         openGraph={{
           'og:title': 'Contact Zarko Sportswear | Request Quotes & Support',
@@ -86,8 +87,8 @@ const Contact = () => {
               transition={{ duration: 0.6 }}
               className="rounded-3xl border border-indigo-100 bg-white/95 p-6 shadow-xl backdrop-blur-sm space-y-4"
             >
-              <h2 className="text-lg font-semibold text-indigo-800">Talk to our team</h2>
-              <p className="text-sm text-gray-500">Choose the channel that suits you best and we'll get back ASAP.</p>
+              <h3 className="text-lg font-semibold text-indigo-800">Talk to our team</h3>
+              <p className="text-sm text-gray-500">Choose the channel that suits you best or review our <Link to="/about" className="text-indigo-600 hover:underline">manufacturing process</Link> and <Link to="/custom" className="text-indigo-600 hover:underline">custom order guide</Link>.</p>
               <div className="grid gap-4">
                 {[{
                   title: 'Call us',

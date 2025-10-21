@@ -8,6 +8,7 @@ const ProductCard = ({ image, name, description, onQuote }) => {
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/8 via-transparent to-indigo-500/15 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
       <div className="relative flex h-60 items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-white">
         <img
+          loading="lazy"
           src={imageUrl(image)}
           alt={name}
           className="max-h-[80%] max-w-[80%] object-contain transition-transform duration-500 group-hover:scale-105"

@@ -50,10 +50,10 @@ const Custom = () => {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white via-indigo-50/40 to-white">
+    <main className="min-h-screen bg-white">
       <SeoHead
         title="Custom Sportswear Orders | Design Export-Grade Team Kits"
-        description="Submit custom sportswear requests with Zarko Sportswear and get export-grade jerseys, shorts, and accessories tailored to your team."
+        description="Submit custom sportswear requests to Zarko Sportswear for export-grade jerseys, shorts, and accessories."
         canonical="https://www.zarkosportswear.com/custom"
         openGraph={{
           'og:title': 'Custom Sportswear Orders | Design Export-Grade Team Kits',
@@ -65,16 +65,15 @@ const Custom = () => {
           'twitter:description': 'Submit custom sportswear requests with Zarko Sportswear and get export-grade jerseys, shorts, and accessories tailored to your team.',
         }}
       />
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-x-0 -top-24 h-64 bg-[radial-gradient(circle_at_top,_rgba(79,70,229,0.12),_transparent_60%)]" />
-        <div className="relative mx-auto max-w-5xl px-4 pb-16 pt-12">
+      <section>
+        <div className="mx-auto max-w-5xl px-4 pb-16 pt-12">
           <motion.header initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.6 }} transition={{ duration: 0.6 }} className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-600">
               Custom manufacturing
             </span>
             <h1 className="mt-5 text-3xl sm:text-4xl font-bold text-indigo-900">Design export-grade sportswear with us</h1>
             <p className="mt-3 text-base md:text-lg text-gray-600">
-              Submit your concept, upload inspiration, and our team will ship production-ready kits globally.
+              Submit your concept, upload inspiration, and our team will ship production-ready kits globally. Need inspiration? Explore our <Link to="/" className="text-indigo-600 hover:underline">top-selling collections</Link> first.
             </p>
           </motion.header>
 
@@ -87,7 +86,7 @@ const Custom = () => {
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.6 }}
             onSubmit={onSubmit}
-            className="mt-12 rounded-3xl border border-indigo-100 bg-white/90 p-8 shadow-xl backdrop-blur space-y-6"
+            className="mt-12 rounded-2xl border border-indigo-100 bg-white p-8 shadow-md space-y-6"
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="space-y-2 text-sm font-semibold text-gray-700">
@@ -115,7 +114,7 @@ const Custom = () => {
             </label>
 
             <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.7fr)]">
-              <label className="flex flex-col gap-3 rounded-2xl border-dashed border-2 border-indigo-200 bg-indigo-50/40 p-6 text-sm text-indigo-700 hover:border-indigo-300 hover:bg-indigo-50 transition cursor-pointer" htmlFor="file-upload">
+              <label className="flex flex-col gap-3 rounded-2xl border border-indigo-100 bg-indigo-50/40 p-6 text-sm text-indigo-700 hover:border-indigo-200 hover:bg-indigo-50 transition cursor-pointer" htmlFor="file-upload">
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-indigo-600/10 text-indigo-600 text-xl">
                   <FaUpload />
                 </span>

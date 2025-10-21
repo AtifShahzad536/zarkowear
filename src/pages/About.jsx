@@ -71,10 +71,10 @@ const About = () => {
   }, [path]);
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white via-indigo-50/40 to-white">
+    <main className="min-h-screen bg-white">
       <SeoHead
         title="About Zarko Sportswear | Export-Grade Sportswear Manufacturer"
-        description="Discover how Zarko Sportswear crafts premium custom sportswear for clubs worldwide with export-grade standards."
+        description="Discover how Zarko Sportswear crafts export-grade custom sportswear for clubs worldwide."
         canonical="https://www.zarkosportswear.com/about"
         openGraph={{
           'og:title': 'About Zarko Sportswear | Export-Grade Sportswear Manufacturer',
@@ -86,17 +86,10 @@ const About = () => {
           'twitter:description': 'Discover how Zarko Sportswear crafts premium custom sportswear for clubs worldwide with export-grade standards.',
         }}
       />
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-x-0 -top-16 h-72 bg-[radial-gradient(circle_at_top,_rgba(79,70,229,0.12),_transparent_60%)]" />
-        <div className="relative mx-auto max-w-6xl px-4 pb-12 pt-16 md:pt-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <span className="inline-flex items-center gap-3 rounded-full border border-indigo-200 bg-white/70 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-600">
+      <section>
+        <div className="mx-auto max-w-6xl px-4 pb-16 pt-16 md:pt-20">
+          <div className="text-center">
+            <span className="inline-flex items-center gap-3 rounded-full border border-indigo-200 bg-white/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-600">
               About Zarko Sportswear
             </span>
             <h1 className="mt-5 text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-indigo-900 leading-tight">
@@ -105,20 +98,14 @@ const About = () => {
             <p className="mt-4 text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
               We partner with ambitious teams, academies, and distributors to deliver bespoke sportswear that performs on the field and elevates your brand off it.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ delay: 0.1, duration: 0.6 }}
-            className="mt-12 grid gap-10 md:grid-cols-[1.1fr_0.9fr] items-center"
-          >
+          <div className="mt-12 grid gap-10 md:grid-cols-[1.05fr_0.95fr] items-center">
             <div className="space-y-6 text-left">
               <div>
                 <h2 className="text-2xl font-semibold text-indigo-800">Our Mission</h2>
                 <p className="mt-2 text-gray-600">
-                  To engineer high-performance sportswear that empowers clubs of every level with consistent quality, rapid customization, and reliable export fulfillment.
+                  To engineer high-performance sportswear that empowers clubs of every level with consistent quality, rapid customization, and reliable export fulfillment. Discover real results in our <Link to="/" className="text-indigo-600 hover:underline">top selling section</Link>.
                 </p>
               </div>
               <div>
@@ -140,11 +127,10 @@ const About = () => {
                 </div>
               </div>
             </div>
-            <div className="relative overflow-hidden rounded-3xl">
+            <div className="overflow-hidden rounded-3xl border border-indigo-100 shadow-xl">
               <img src="/images/slide1.jpg" alt="Zarko production floor" className="h-full w-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/40 via-indigo-900/10 to-transparent" />
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

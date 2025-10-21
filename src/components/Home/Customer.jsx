@@ -59,11 +59,11 @@ const Testimonials = () => {
             modules={[Autoplay, Pagination]}
             autoplay={{ delay: 5500, disableOnInteraction: false }}
             pagination={{ clickable: true, dynamicBullets: true }}
-            spaceBetween={24}
+            spaceBetween={18}
             slidesPerView={1.05}
             breakpoints={{
               768: { slidesPerView: 2 },
-              1280: { slidesPerView: 2.6 },
+              1280: { slidesPerView: 3 },
             }}
             className="!pb-14"
           >
@@ -75,7 +75,7 @@ const Testimonials = () => {
                   viewport={{ once: true, amount: 0.4 }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   whileHover={{ y: -8, scale: 1.01 }}
-                  className="relative h-full rounded-[28px] bg-white/95 backdrop-blur px-8 pt-14 pb-10 shadow-[0_20px_60px_-35px_rgba(79,70,229,0.8)] ring-1 ring-indigo-100/70 hover:ring-indigo-200 transition"
+                  className="relative h-full rounded-[24px] bg-white/95 backdrop-blur px-6 pt-12 pb-8 shadow-[0_16px_45px_-30px_rgba(79,70,229,0.8)] ring-1 ring-indigo-100/70 hover:ring-indigo-200 transition"
                 >
                   <span className="absolute top-4 left-6 text-5xl text-indigo-100">“</span>
                   <motion.div

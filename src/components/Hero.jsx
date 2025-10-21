@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -34,7 +35,7 @@ const Hero = () => {
       <Swiper modules={[Navigation, Autoplay]} autoplay={{ delay: 3000, disableOnInteraction: false }} navigation loop={true} className="w-full h-full">
         {(images.length ? images : ['/images/slide1.jpg']).map((src, index) => (
           <SwiperSlide key={index}>
-            <img src={imageUrl(src)} alt={`Slide ${index + 1}`} className="w-full h-full object-cover" />
+            <img loading="lazy" src={imageUrl(src)} alt={`Slide ${index + 1}`} className="w-full h-full object-cover" />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -42,19 +43,33 @@ const Hero = () => {
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1 }}
-        className="absolute bottom-6 left-4 md:bottom-10 md:left-10 z-40 flex flex-wrap items-center gap-2 md:gap-3"
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="absolute bottom-6 left-4 md:bottom-12 md:left-12 z-40 flex max-w-xl flex-col gap-3"
       >
-        <span className="text-5xl md:text-6xl font-extrabold text-indigo-500 animate-pulse drop-shadow-lg">Zarko</span>
-        <span className="text-white text-2xl md:text-4xl font-bold bg-gradient-to-r from-black/60 to-black/30 px-4 md:px-6 py-2 md:py-3 rounded-lg shadow-lg hover:shadow-indigo-500/50 transition drop-shadow-md">SportsWear</span>
-        <motion.span
-          initial={{ x: -10, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.5 }}
-          className="text-indigo-400 text-xl md:text-3xl drop-shadow"
+        <motion.h1
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="inline-flex items-center gap-2 rounded-lg bg-black/55 px-5 py-3 text-3xl font-extrabold tracking-wide text-white drop-shadow-lg backdrop-blur sm:text-4xl md:text-5xl"
         >
-          ➤
-        </motion.span>
+          Zarko Sportswear
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.15 }}
+          className="inline-flex items-center gap-2 rounded-full bg-black/45 px-4 py-2 text-xs font-medium uppercase tracking-[0.35em] text-indigo-200 backdrop-blur"
+        >
+          Export-grade team uniforms
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
+          className="max-w-md rounded-lg bg-black/35 px-3 py-2 text-xs font-medium text-white/85 backdrop-blur sm:text-sm"
+        >
+          Made in Sialkot with rapid sampling and global shipping. Learn more on our <Link to="/about" className="underline decoration-indigo-200 underline-offset-4 hover:text-white">About</Link> page or start a brief on the <Link to="/custom" className="underline decoration-indigo-200 underline-offset-4 hover:text-white">Custom Orders</Link> hub.
+        </motion.p>
       </motion.div>
 
       <div className="absolute bottom-6 right-4 md:top-[65%] md:right-6 z-30 flex flex-col space-y-3 bg-white bg-opacity-80 p-2 rounded shadow">

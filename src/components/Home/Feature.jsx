@@ -21,15 +21,30 @@ const FeaturedCategories = () => {
 
   return (
     <section className="w-full px-4 py-10 bg-gradient-to-b from-white to-gray-50 m-0">
-      {/* Clipped Heading */}
+      {/* Animated Heading */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.6 }}
-        className="relative bg-indigo-600 text-white px-6 py-4 mb-10 rounded-lg shadow-lg heading-clip w-fit mx-auto"
+        className="mx-auto mb-12 flex w-fit flex-col items-center gap-3"
       >
-        <h2 className="text-3xl md:text-4xl font-bold tracking-wide text-center">Explore Sports Categories</h2>
+        <motion.div
+          initial={{ clipPath: 'polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%)' }}
+          whileInView={{ clipPath: 'polygon(0% 0%, 100% 0%, 92% 100%, 8% 100%)' }}
+          transition={{ duration: 0.8, ease: [0.6, 0.05, 0.01, 0.99] }}
+          className="relative overflow-hidden rounded-[16px] bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-500 px-10 py-4 text-white shadow-xl"
+        >
+          <motion.div
+            initial={{ x: '-120%' }}
+            whileInView={{ x: '110%' }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: 'linear' }}
+            aria-hidden
+            className="absolute inset-y-0 left-0 w-16 bg-white/20 blur-xl"
+          />
+          <h2 className="relative text-3xl font-bold tracking-wide sm:text-4xl">Explore Sports Categories</h2>
+        </motion.div>
+        <p className="text-sm text-gray-500">Swipe through our top categories or tap to open the full collection.</p>
       </motion.div>
 
       {/* Category Grid */}

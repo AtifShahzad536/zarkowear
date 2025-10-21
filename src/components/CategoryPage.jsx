@@ -80,7 +80,12 @@ const CategoryPage = ({ slug }) => {
     return (
       <main className="min-h-[60vh] bg-gradient-to-b from-white via-indigo-50/40 to-white">
         <div className="mx-auto flex max-w-6xl items-center justify-center px-4 py-32">
-          <div className="h-12 w-12 animate-spin rounded-full border-4 border-indigo-200 border-t-indigo-600" />
+          <div className="relative flex h-20 w-20 items-center justify-center">
+            <div className="absolute h-full w-full animate-[spin_2.2s_linear_infinite] rounded-full border-4 border-indigo-200/70" />
+            <div className="absolute h-full w-full animate-[spin_1.6s_linear_infinite] rounded-full border-4 border-transparent border-t-indigo-500" />
+            <div className="absolute h-10 w-10 animate-pulse rounded-full bg-indigo-500/20" />
+            <span className="relative text-xs font-semibold uppercase tracking-[0.4em] text-indigo-500">Loading</span>
+          </div>
         </div>
       </main>
     );
@@ -120,31 +125,28 @@ const CategoryPage = ({ slug }) => {
   const buttonClass = resolvedAccent.button || defaultAccent.button;
 
   return (
-    <main className="relative isolate bg-gradient-to-b from-white via-indigo-50/50 to-white">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top,_rgba(79,70,229,0.18),_transparent_70%)]" />
-      <div className="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">
+    <main className="bg-white">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
         <CategoryHero title={name} description={description} gradient={resolvedGradient} />
 
         {featured && (
-          <section className="relative mt-12 overflow-hidden rounded-[18px] border border-indigo-100/70 bg-white/85 shadow-2xl backdrop-blur">
-            <div className="absolute -left-12 -top-12 h-48 w-48 rounded-full bg-indigo-300/20 blur-3xl" />
-            <div className="absolute -right-16 bottom-0 h-52 w-52 rounded-full bg-blue-200/30 blur-3xl" />
-            <div className="relative px-6 py-8 sm:px-10 sm:py-10">
+          <section className="mt-12 rounded-2xl border border-indigo-100 bg-white p-6 shadow-lg sm:p-10">
+            <div className="px-2 sm:px-4">
               <SectionTitle
                 eyebrow="Signature release"
                 title={featured.name}
                 description={featured.tagline || 'Export-ready sets crafted for premium clubs and distributors.'}
               />
-              <div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
-                <div className="relative group">
-                  <div className="relative h-[440px] overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-200 via-indigo-100 to-white shadow-xl ring-1 ring-indigo-100/80">
+              <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
+                <div className="relative group overflow-hidden rounded-2xl border border-indigo-100 bg-gradient-to-br from-indigo-50 via-white to-white">
+                  <div className="relative h-[420px]">
                     <img
                       src={imageUrl(featured.image || '/images/placeholder.jpg')}
                       alt={featured.name}
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       onError={(e)=>{ e.currentTarget.onerror=null; e.currentTarget.src = imageUrl('/images/placeholder.jpg'); }}
                     />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-indigo-950/80 via-indigo-900/40 to-transparent px-7 py-6 text-white">
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-indigo-950/80 via-indigo-900/40 to-transparent px-6 py-6 text-white">
                       <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-indigo-200">
                         <span>Ultra-light</span>
                         <span>Customizable</span>
@@ -155,7 +157,7 @@ const CategoryPage = ({ slug }) => {
                   </div>
                 </div>
 
-                <div className="space-y-7">
+                <div className="space-y-6">
                   {featured.description && (
                     <p className="text-base leading-7 text-gray-600 sm:text-lg">
                       {featured.description}
@@ -163,7 +165,7 @@ const CategoryPage = ({ slug }) => {
                   )}
 
                   {Array.isArray(featured.details) && featured.details.length > 0 && (
-                    <div className="rounded-3xl border border-indigo-100/80 bg-indigo-50/70 p-6">
+                    <div className="rounded-2xl border border-indigo-100 bg-indigo-50/60 p-6">
                       <h4 className="text-xs font-semibold uppercase tracking-[0.3em] text-indigo-500">Key capabilities</h4>
                       <div className="mt-4 grid gap-3 sm:grid-cols-2">
                         {featured.details.map((point, i) => (
@@ -203,7 +205,7 @@ const CategoryPage = ({ slug }) => {
           </section>
         )}
 
-        <section className="mt-20 rounded-[18px] border border-indigo-100/60 bg-white/80 p-8 shadow-xl backdrop-blur">
+        <section className="mt-20">
           <SectionTitle
             eyebrow="Collections"
             title="Ready-to-customize designs"
@@ -222,7 +224,7 @@ const CategoryPage = ({ slug }) => {
           </div>
         </section>
 
-        <section className="mt-24 rounded-[18px] border border-indigo-100/70 bg-white/80 p-10 shadow-xl backdrop-blur">
+        <section className="mt-24">
           <SectionTitle
             eyebrow="Custom lab"
             title="Need something fully bespoke?"
