@@ -15,6 +15,8 @@ const ProductCard = ({ image, name, description }) => {
           alt={name}
           className="max-h-[80%] max-w-[80%] object-contain transition-transform duration-500 group-hover:scale-105"
           sizes="(min-width: 1280px) 20vw, (min-width: 768px) 30vw, 80vw"
+          width="320"
+          height="320"
           onError={(e)=>{ e.currentTarget.onerror=null; e.currentTarget.src = imageUrl('/images/placeholder.jpg'); }}
         />
       </div>

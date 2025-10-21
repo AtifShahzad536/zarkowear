@@ -36,14 +36,17 @@ const Hero = () => {
           className="w-full h-full"
         >
           {slides.map((src, index) => (
-            <slider.SwiperSlide key={index}>
+            <slider.SwiperSlide key={`${src}-${index}`}>
               <img
-                loading="lazy"
+                loading={index === 0 ? 'eager' : 'lazy'}
+                fetchpriority={index === 0 ? 'high' : 'auto'}
                 decoding="async"
                 src={imageUrl(src)}
                 alt={`Slide ${index + 1}`}
                 className="w-full h-full object-cover"
                 sizes="(min-width: 1024px) 100vw, 100vw"
+                width="1920"
+                height="1080"
               />
             </slider.SwiperSlide>
           ))}
@@ -53,11 +56,14 @@ const Hero = () => {
           <source srcSet="/images/slide1.avif" type="image/avif" />
           <source srcSet="/images/slide1.webp" type="image/webp" />
           <img
-            loading="lazy"
+            loading="eager"
+            fetchpriority="high"
             decoding="async"
             src="/images/slide1.jpg"
             alt="Zarko Sportswear showcase"
             className="w-full h-full object-cover"
+            width="1920"
+            height="1080"
           />
         </picture>
       )}

@@ -14,6 +14,7 @@ const CategoryRoute = lazy(() => import('./pages/CategoryRoute.jsx'))
 const AdminHome = lazy(() => import('./pages/AdminHome.jsx'))
 const AdminLayout = lazy(() => import('./components/admin/AdminLayout.jsx'))
 const AdminLogin = lazy(() => import('./pages/AdminLogin.jsx'))
+const NotFound = lazy(() => import('./pages/NotFound.jsx'))
 // Define routes
 const router = createBrowserRouter([
  {
@@ -58,6 +59,7 @@ const router = createBrowserRouter([
           }
         ]
       },
+      { path: '*', element: <NotFound /> },
     ],
   },
 ])
