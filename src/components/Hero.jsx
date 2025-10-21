@@ -72,7 +72,7 @@ const Hero = () => {
         </motion.p>
       </motion.div>
 
-      <div className="absolute bottom-6 right-4 md:top-[65%] md:right-6 z-30 flex flex-col space-y-3 bg-white bg-opacity-80 p-2 rounded shadow">
+      <div className="absolute bottom-6 right-4 md:top-[65%] md:right-6 z-50 flex flex-col space-y-3 bg-white bg-opacity-80 p-2 rounded shadow">
         {socialLinks.map((link, idx) => (
           <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:text-indigo-800 text-lg md:text-xl">
             {link.icon}
