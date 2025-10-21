@@ -2,16 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { imageUrl } from '../services/api';
 
-const ProductCard = ({ image, name, description, onQuote }) => {
+const ProductCard = ({ image, name, description }) => {
+  const displayImage = imageUrl(image || '/images/placeholder.jpg');
   return (
     <div className="group relative overflow-hidden rounded-[10px] border border-indigo-100/70 bg-white/90 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/8 via-transparent to-indigo-500/15 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
       <div className="relative flex h-60 items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-white">
         <img
           loading="lazy"
-          src={imageUrl(image)}
+          decoding="async"
+          src={displayImage}
           alt={name}
           className="max-h-[80%] max-w-[80%] object-contain transition-transform duration-500 group-hover:scale-105"
+          sizes="(min-width: 1280px) 20vw, (min-width: 768px) 30vw, 80vw"
           onError={(e)=>{ e.currentTarget.onerror=null; e.currentTarget.src = imageUrl('/images/placeholder.jpg'); }}
         />
       </div>
