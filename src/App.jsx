@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import { Outlet } from 'react-router-dom'
 import ScrollTopButton from './components/ScrollTopButton'
+import CursorGlow from './components/CursorGlow'
 
 const ChatbotWidget = lazy(() => import('./components/ChatbotWidget'))
 
@@ -30,6 +31,7 @@ function App() {
   return (
     <>
       <Header />
+      <CursorGlow />
       <Outlet />
       <ScrollTopButton />
       <Suspense fallback={null}>
