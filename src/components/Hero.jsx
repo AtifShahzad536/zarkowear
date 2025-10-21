@@ -40,7 +40,8 @@ const Hero = () => {
               decoding="async"
               src={imageUrl(src)}
               alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover md:object-cover"
+              style={{ objectPosition: 'center 30%' }}
               sizes="(min-width: 1024px) 100vw, 100vw"
               width="1920"
               height="1080"
@@ -49,12 +50,12 @@ const Hero = () => {
         ))}
       </Swiper>
 
-      <div className="absolute bottom-6 left-4 md:bottom-12 md:left-12 z-40 flex max-w-xl flex-col gap-3 bg-black/40 backdrop-blur-md p-4 rounded-2xl text-white">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-wide">Zarko Sportswear</h1>
+      <div className="absolute bottom-6 left-3 right-3 sm:left-6 sm:right-auto md:bottom-12 md:left-12 z-40 flex max-w-xl flex-col gap-3 bg-black/45 backdrop-blur-md px-5 py-4 rounded-2xl text-white">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-wide">Zarko Sportswear</h1>
         <span className="inline-flex items-center gap-2 rounded-full bg-black/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-indigo-200">
           Export-grade team uniforms
         </span>
-        <p className="max-w-md text-sm text-white/85">
+        <p className="max-w-md text-xs sm:text-sm text-white/85 leading-relaxed">
           Made in Sialkot with rapid sampling and global shipping. Learn more on our <Link to="/about" className="underline decoration-indigo-200 underline-offset-4 hover:text-white">About</Link> page or start a brief on the <Link to="/custom" className="underline decoration-indigo-200 underline-offset-4 hover:text-white">Custom Orders</Link> hub.
         </p>
       </div>
