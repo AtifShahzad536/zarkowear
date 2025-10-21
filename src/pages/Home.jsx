@@ -66,7 +66,7 @@ const Home = () => {
     <main className="min-h-screen">
       <SeoHead
         title="Zarko Sportswear | Custom Export-Grade Sports Uniforms"
-        description="Custom football, cricket, basketball, and rugby uniforms with export-grade fabrics and worldwide shipping."
+        description="Export-grade custom football, cricket, basketball, and rugby uniforms with global shipping."
         canonical="https://www.zarkosportswear.com/"
         openGraph={{
           'og:title': 'Zarko Sportswear | Custom Export-Grade Sports Uniforms',
