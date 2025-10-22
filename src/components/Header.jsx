@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { FaBars, FaTimes, FaChevronDown } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronDown, FaArrowRight } from 'react-icons/fa';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
+import Logo from './Logo';
 
 const sportsWear = [
   { label: 'Wrestling Kits', to: '/wrestling' },
@@ -22,7 +23,7 @@ const accessories = [
   { label: 'Bags', to: '/bags' },
 ];
 
-const linkBase = 'flex items-center justify-between rounded-xl border border-indigo-100 bg-white px-4 py-3 text-sm font-semibold text-indigo-700 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-indigo-50';
+const linkBase = 'flex items-center justify-between rounded-2xl border border-indigo-100/70 bg-white/85 px-4 py-3 text-sm font-semibold text-indigo-700 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-white';
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -52,53 +53,53 @@ const Header = () => {
       initial={{ y: -18, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.35, ease: 'easeOut' }}
-      className="sticky top-0 z-50 border-b border-indigo-100/70 bg-white/90 backdrop-blur"
+      className="sticky top-0 z-50 border-b border-slate-100/70 bg-white/80 backdrop-blur-xl shadow-[0_20px_45px_-28px_rgba(15,23,42,0.4)]"
     >
       <motion.div
-        className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-indigo-500/0 via-indigo-500/40 to-indigo-500/0"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-indigo-400/50 to-transparent"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.15, duration: 0.6 }}
+        transition={{ delay: 0.1, duration: 0.6 }}
       />
       <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         <div className="relative inline-flex items-center gap-3">
-          <Link to="/" className="text-2xl font-extrabold tracking-tight text-indigo-600">
-            ZarkoSportswear
-          </Link>
-          <motion.span
-            className="h-2 w-2 rounded-full bg-indigo-500/80 shadow-[0_0_12px_rgba(79,70,229,0.6)]"
-            animate={{ scale: [1, 1.35, 1] }}
-            transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
-            aria-hidden
-          />
+          <Logo />
         </div>
 
         {/* Desktop Menu */}
         <LayoutGroup>
-          <nav className="hidden md:flex items-center gap-7 text-sm font-semibold text-slate-600">
-            <DesktopLink to="/">Home</DesktopLink>
-            <DesktopLink to="/about">About Us</DesktopLink>
+          <div className="hidden md:flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/75 px-3 py-1.5 shadow-[0_15px_38px_-28px_rgba(15,23,42,0.3)] backdrop-blur">
+            <nav className="flex items-center gap-3 text-sm font-semibold text-slate-600">
+              <DesktopLink to="/">Home</DesktopLink>
+              <span className="h-4 w-px bg-indigo-100/70" />
+              <DesktopLink to="/about">About Us</DesktopLink>
+              <span className="h-4 w-px bg-indigo-100/70" />
 
-            <Dropdown label="Sports Wear" items={sportsWear} />
-            <Dropdown label="Team Accessories" items={accessories} />
+              <Dropdown label="Sports Wear" items={sportsWear} />
+              <span className="h-4 w-px bg-indigo-100/70" />
+              <Dropdown label="Team Accessories" items={accessories} />
+              <span className="h-4 w-px bg-indigo-100/70" />
 
-            <DesktopLink to="/custom">Custom Orders</DesktopLink>
-            <DesktopLink to="/contact">Contact Us</DesktopLink>
+              <DesktopLink to="/custom">Custom Orders</DesktopLink>
+              <span className="h-4 w-px bg-indigo-100/70" />
+              <DesktopLink to="/contact">Contact Us</DesktopLink>
+            </nav>
             <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
               <Link
                 to="/custom"
-                className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-gradient-to-r from-indigo-500/20 via-white to-indigo-500/20 px-4 py-2 text-sm font-semibold text-indigo-700 shadow-sm transition hover:border-indigo-300 hover:bg-white"
+                className="ml-4 inline-flex items-center gap-2 rounded-full border border-indigo-300/60 bg-gradient-to-r from-indigo-500 via-sky-500 to-purple-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition hover:shadow-indigo-500/30"
               >
                 Start a Brief
+                <FaArrowRight className="text-xs" />
               </Link>
             </motion.div>
-          </nav>
+          </div>
         </LayoutGroup>
 
         {/* Mobile Toggle */}
         <motion.button
           onClick={toggleMobile}
-          className="md:hidden inline-flex items-center justify-center rounded-full border border-indigo-200 bg-indigo-50 px-3 py-2 text-indigo-600 shadow-sm"
+          className="md:hidden inline-flex items-center justify-center rounded-full border border-indigo-200/70 bg-white/85 px-3 py-2 text-indigo-600 shadow-sm backdrop-blur"
           aria-label="Toggle menu"
           whileTap={{ scale: 0.9 }}
         >
@@ -122,7 +123,7 @@ const Header = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.25 }}
-              className="rounded-3xl border border-indigo-100 bg-white p-5 shadow-2xl"
+              className="rounded-3xl border border-white/60 bg-white/80 p-5 shadow-[0_24px_45px_-30px_rgba(15,23,42,0.45)] backdrop-blur"
             >
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-indigo-500">
                 Navigate
@@ -208,20 +209,30 @@ const Dropdown = ({ label, items }) => {
 const DesktopLink = ({ to, children }) => (
   <NavLink to={to} className={({ isActive }) => 'relative'}>
     {({ isActive }) => (
-      <span className={`relative inline-flex items-center px-2 py-2 text-sm font-semibold transition-colors ${isActive ? 'text-indigo-600' : 'text-slate-600 hover:text-indigo-600'}`}>
+      <span
+        className={`group relative inline-flex items-center px-2 py-2 text-sm font-semibold transition-colors ${
+          isActive ? 'text-indigo-600' : 'text-slate-600 hover:text-indigo-600'
+        }`}
+      >
         <span>{children}</span>
-        <AnimatePresence>
-          {isActive && (
-            <motion.span
-              layoutId="desktopNavUnderline"
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 6 }}
-              className="absolute -bottom-0.5 left-2 right-2 h-0.5 rounded-full bg-indigo-500"
-              transition={{ type: 'spring', stiffness: 360, damping: 30 }}
-            />
-          )}
-        </AnimatePresence>
+        <motion.span
+          layoutId="desktopNavGlow"
+          className="pointer-events-none absolute inset-x-2 bottom-0 h-0.5 rounded-full bg-gradient-to-r from-indigo-500 via-sky-400 to-purple-500"
+          initial={false}
+          animate={{
+            opacity: isActive ? 1 : 0,
+            scaleX: isActive ? 1 : 0,
+          }}
+          transition={{ type: 'spring', stiffness: 280, damping: 26 }}
+        />
+        {!isActive && (
+          <motion.span
+            className="pointer-events-none absolute inset-0 rounded-full bg-indigo-500/0 blur-md"
+            initial={{ scale: 0, opacity: 0 }}
+            whileHover={{ scale: 1, opacity: 0.15 }}
+            transition={{ duration: 0.25 }}
+          />
+        )}
       </span>
     )}
   </NavLink>
