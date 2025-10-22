@@ -72,18 +72,18 @@ const Home = () => {
   return (
     <main className="min-h-screen">
       <SeoHead
-        title="Zarko Sportswear | Custom Export-Grade Sports Uniforms"
-        description="Export-grade custom football, cricket, basketball, and rugby uniforms with global shipping."
+        title="Custom Sports Uniforms | Zarko Sportswear - Export Grade Football, Cricket Kits"
+        description="Zarko Sportswear manufactures premium custom sports uniforms including football kits, cricket wear, and basketball jerseys with worldwide shipping. Export-grade quality sports apparel."
         canonical="https://www.zarkosportswear.com/"
         openGraph={{
-          'og:title': 'Zarko Sportswear | Custom Export-Grade Sports Uniforms',
-          'og:description': 'Premium team kits and sports accessories engineered for durability with worldwide delivery.',
+          'og:title': 'Custom Sports Uniforms | Zarko Sportswear - Professional Team Kits',
+          'og:description': 'Premium custom sports uniforms for football, cricket, basketball and more. Export-grade quality with global delivery.',
           'og:url': 'https://www.zarkosportswear.com/',
           'og:image': 'https://www.zarkosportswear.com/og-cover.jpg',
           'og:type': 'website',
         }}
         twitter={{
-          'twitter:title': 'Zarko Sportswear | Custom Export-Grade Sports Uniforms',
+          'twitter:title': 'Custom Sports Uniforms | Zarko Sportswear - Professional Team Kits',
           'twitter:description': "WearConnect's Zarko Sportswear designs and exports professional-grade sports uniforms and accessories.",
           'twitter:card': 'summary_large_image',
           'twitter:image': 'https://www.zarkosportswear.com/og-cover.jpg',
