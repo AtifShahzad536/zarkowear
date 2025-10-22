@@ -41,18 +41,25 @@ const Home = () => {
     const rail = sportRailRef.current;
     if (!rail) return;
 
+    let timeoutId;
     const updateState = () => {
       const maxScroll = rail.scrollWidth - rail.clientWidth;
       setScrollProgress(maxScroll <= 0 ? 0 : rail.scrollLeft / maxScroll);
       setCanScroll(rail.scrollWidth > rail.clientWidth + 4);
     };
 
+    const debouncedUpdate = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(updateState, 16); // ~60fps
+    };
+
     updateState();
-    rail.addEventListener('scroll', updateState);
-    window.addEventListener('resize', updateState);
+    rail.addEventListener('scroll', debouncedUpdate, { passive: true });
+    window.addEventListener('resize', debouncedUpdate, { passive: true });
     return () => {
-      rail.removeEventListener('scroll', updateState);
-      window.removeEventListener('resize', updateState);
+      clearTimeout(timeoutId);
+      rail.removeEventListener('scroll', debouncedUpdate);
+      window.removeEventListener('resize', debouncedUpdate);
     };
   }, []);
 
@@ -339,7 +346,7 @@ const Home = () => {
                 transition={{ delay: i * 0.1, duration: 0.45 }}
                 className="relative overflow-hidden rounded-3xl border border-indigo-100 bg-white p-6 shadow-md transition hover:-translate-y-1 hover:shadow-lg"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-white to-gray-50/60" />
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-indigo-500/15 opacity-0 transition group-hover:opacity-100" />
                 <div className="relative flex items-start gap-4">
                   <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-100 via-white to-indigo-50 text-indigo-600 text-2xl">
                     <Icon />
@@ -510,4 +517,3 @@ const Home = () => {
 };
 
 export default Home;
-

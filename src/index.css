@@ -8,8 +8,13 @@
 
 html,
 body {
+  scroll-behavior: smooth;
   background-color: #fcfcfc;
   color: #0f172a;
+  will-change: scroll-position;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 /* Custom scrollbar */
@@ -56,6 +61,8 @@ html {
   white-space: nowrap;
   border-right: 2px solid white;
   animation: typing 2s steps(20, end), blink 0.7s step-end infinite;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 @keyframes typing {
@@ -65,4 +72,9 @@ html {
 
 @keyframes blink {
   50% { border-color: transparent }
+}
+
+/* Optimize motion elements */
+.motion-div {
+  will-change: transform;
 }
