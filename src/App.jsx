@@ -11,7 +11,11 @@ function App() {
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
-    if (prefersReduced || !hasFinePointer) return undefined;
+    console.log('Lenis check: prefersReduced=', prefersReduced, 'hasFinePointer=', hasFinePointer);
+    if (prefersReduced || !hasFinePointer) {
+      console.log('Lenis disabled');
+      return undefined;
+    }
 
     let lenis;
     let raf;
@@ -20,12 +24,12 @@ function App() {
     import('lenis').then(({ default: Lenis }) => {
       if (cancelled) return;
       lenis = new Lenis({
-        duration: 0.6,
-        easing: (t) => t,
+        duration: 1.2,
         smoothWheel: true,
         smoothTouch: false,
       });
 
+      console.log('Lenis initialized:', lenis);
       const loop = (time) => {
         lenis?.raf(time);
         raf = requestAnimationFrame(loop);

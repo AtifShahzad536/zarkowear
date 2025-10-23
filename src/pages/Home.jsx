@@ -7,7 +7,7 @@ import FeaturedCategories from '../components/Home/Feature';
 import LimitedTimeOffer from '../components/Home/LimitedTimeOffer';
 import Testimonials from '../components/Home/Customer';
 import { Link } from 'react-router-dom';
-import { FaFootballBall, FaBasketballBall, FaRunning, FaAward, FaPalette, FaGlobeAmericas, FaHatCowboy, FaShoppingBag, FaArrowRight, FaPhoneAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaFootballBall, FaBasketballBall, FaRunning, FaAward, FaPalette, FaGlobeAmericas, FaHatCowboy, FaShoppingBag, FaArrowRight, FaPhoneAlt, FaChevronLeft, FaChevronRight, FaStar, FaCheckCircle } from 'react-icons/fa';
 import { MdSportsHockey, MdSportsRugby } from 'react-icons/md';
 import { GiCricketBat, GiTennisRacket, GiWeightLiftingUp, GiRunningShoe, GiGloves } from 'react-icons/gi';
 
@@ -16,6 +16,25 @@ const Home = () => {
   const sportRailRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [canScroll, setCanScroll] = useState(false);
+
+  const clubs = [
+    'Club One',
+    'Elite Sports',
+    'ProGear',
+    'SwiftWear',
+    'Prime Kits',
+    'Los Angeles Lakers',
+    'Golden State Warriors',
+    'Chicago Bulls',
+    'Boston Celtics',
+    'Miami Heat',
+    'WN',
+    'AEW',
+    'NWA',
+    'Impact Wrestling',
+    'Ohio Valley Wrestling',
+    'Pro Rugby Europe'
+  ];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -367,73 +386,162 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Partners / Clients */}
-      <section className="bg-gradient-to-b from-white via-indigo-50/20 to-white">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <span className="inline-flex items-center justify-center rounded-full border border-indigo-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-indigo-500">
-              Trusted by clubs & distributors
-            </span>
-            <h3 className="mt-4 text-3xl font-bold text-indigo-900">Global programs we proudly outfit</h3>
-            <p className="mt-2 text-sm text-gray-500">From elite franchises to emerging academies, our export-ready kits power winning rosters.</p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.25 }}
-            variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
-            className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
-          >
-            {[
-              'Club One',
-              'Elite Sports',
-              'ProGear',
-              'SwiftWear',
-              'Prime Kits',
-              'Los Angeles Lakers',
-              'Golden State Warriors',
-              'Chicago Bulls',
-              'Boston Celtics',
-              'Miami Heat',
-              'WN',
-              'AEW',
-              'NWA',
-              'Impact Wrestling',
-              'Ohio Valley Wrestling',
-              'Pro Rugby Europe'
-            ].map((name, i) => (
-              <motion.div
-                key={name}
-                variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}
-                whileHover={{ y: -4, scale: 1.02 }}
-                className="relative overflow-hidden rounded-2xl border border-indigo-100 bg-white px-5 py-4 shadow-sm"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 via-transparent to-indigo-500/15 opacity-0 transition group-hover:opacity-100" />
-                <div className="relative flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-sm font-semibold">
-                      {name.split(' ').map(word => word[0]).join('').slice(0,2)}
-                    </span>
-                    <span className="font-semibold text-indigo-900 text-sm md:text-base">{name}</span>
-                  </div>
-                  <span className="hidden text-[10px] uppercase tracking-[0.35em] text-indigo-400 md:inline-flex">Partner</span>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+      {/* Partners / Clients - Premium Branded Marquee */}
+      <section className="bg-gradient-to-b from-slate-50 via-indigo-50/30 to-white overflow-hidden relative">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-indigo-500 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-500 rounded-full blur-3xl" />
         </div>
-      </section>
+        
+        <div className="max-w-7xl mx-auto px-4 py-20 relative z-10">
+          {/* Header with brand logo */}
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.7 }}
+              className="inline-flex items-center gap-4 mb-6"
+            >
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 p-0.5">
+                <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
+                  <img src="/logo.png" alt="Zarko Sportswear" className="w-8 h-8 object-contain" />
+                </div>
+              </div>
+              <span className="text-sm font-bold text-indigo-600 uppercase tracking-[0.2em]">Zarko Sportswear</span>
+            </motion.div>
+            
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-900 via-purple-800 to-indigo-900 bg-clip-text text-transparent mb-4"
+            >
+              Trusted Global Partners
+            </motion.h2>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            >
+              From elite franchises to grassroots academies, our export-ready kits power winning rosters worldwide
+            </motion.p>
+          </div>
 
-      {/* Featured Sections */}
-      <section className="max-w-6xl mx-auto px-4 py-12">
-        <FeaturedCategories />
+          {/* Premium Marquee Container */}
+          <div className="relative py-8">
+            {/* Gradient overlays for fade effect */}
+            <div className="absolute left-0 top-0 z-20 h-full w-40 bg-gradient-to-r from-white via-white/90 to-transparent" />
+            <div className="absolute right-0 top-0 z-20 h-full w-40 bg-gradient-to-l from-white via-white/90 to-transparent" />
+
+            {/* Floating stats badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: -20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 200 }}
+              className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-30"
+            >
+              <div className="glass text-indigo-900 px-8 py-3 rounded-full font-bold text-lg shadow-modern border border-indigo-100/50 flex items-center gap-3">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                  className="w-3 h-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
+                />
+                <span>{clubs.length}+ Global Partners</span>
+                <motion.div
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="text-yellow-500"
+                >
+                  <FaStar className="text-sm" />
+                </motion.div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="flex gap-6 py-4"
+              animate={{
+                x: [0, -190 * clubs.length], // 190px per card (168 + 22 gap)
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 45, // Slower, more elegant scroll
+                  ease: "linear",
+                },
+              }}
+            >
+              {/* Duplicate for seamless loop */}
+              {[...clubs, ...clubs].map((name, i) => (
+                <motion.div
+                  key={`${name}-${i}`}
+                  whileHover={{
+                    scale: 1.08,
+                    y: -12,
+                    rotateY: 5,
+                    z: 30,
+                    boxShadow: "0 24px 48px rgba(0,0,0,0.15), 0 0 0 1px rgba(99,102,241,0.15)",
+                  }}
+                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  className="flex-shrink-0 w-44 relative overflow-hidden rounded-2xl glass shadow-modern px-5 py-4 hover:shadow-xl transition-all duration-400 group border border-indigo-100/30"
+                >
+                  {/* Premium background effects */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-indigo-50/15 to-purple-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-indigo-400/15 to-transparent rounded-full blur-sm" />
+                  <div className="absolute bottom-0 left-0 w-12 h-12 bg-gradient-to-tr from-purple-400/15 to-transparent rounded-full blur-sm" />
+
+                  {/* Premium glow effect */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/8 via-purple-500/4 to-indigo-500/8 opacity-0 group-hover:opacity-100 transition-opacity duration-400 blur-lg" />
+
+                  <div className="relative flex items-center gap-3">
+                    <div className="flex items-center gap-3 flex-1 min-w-0">
+                      {/* Compact logo design */}
+                      <div className="relative">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-0.5 shadow-lg group-hover:shadow-xl transition-all duration-300">
+                          <div className="w-full h-full rounded-lg bg-white flex items-center justify-center shadow-inner">
+                            <span className="text-indigo-700 font-black text-xs tracking-wider group-hover:scale-110 transition-transform duration-300">
+                              {name.split(' ').map(word => word[0]).join('').slice(0,2)}
+                            </span>
+                          </div>
+                        </div>
+                        {/* Premium badge */}
+                        <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full border-2 border-white shadow-sm flex items-center justify-center">
+                          <FaStar className="text-[6px] text-white" />
+                        </div>
+                      </div>
+
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-bold text-indigo-900 text-sm truncate group-hover:text-gradient-modern transition-all duration-300 leading-tight mb-0.5">
+                          {name}
+                        </h4>
+                        <div className="flex items-center gap-1">
+                          <FaCheckCircle className="text-[10px] text-green-600" />
+                          <span className="text-[10px] text-green-600 font-medium">Active</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Status indicator with icon */}
+                    <div className="flex-shrink-0">
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                        className="w-3 h-3 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full shadow-sm border border-white"
+                      />
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
       </section>
       {/* Brand Story */}
       <section className="bg-white">

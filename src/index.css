@@ -2,19 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  scroll-behavior: smooth;
-}
-
 html,
 body {
-  scroll-behavior: smooth;
   background-color: #fcfcfc;
   color: #0f172a;
-  will-change: scroll-position;
   backface-visibility: hidden;
-  transform-style: preserve-3d;
-  perspective: 1000px;
 }
 
 /* Custom scrollbar */
@@ -77,4 +69,59 @@ html {
 /* Optimize motion elements */
 .motion-div {
   will-change: transform;
+}
+
+/* Lenis smooth scroll styles */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+/* Modern Design Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gradient-modern {
+  background: linear-gradient(135deg,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(168, 85, 247, 0.1) 25%,
+    rgba(236, 72, 153, 0.05) 50%,
+    rgba(99, 102, 241, 0.1) 100%);
+}
+
+.shadow-modern {
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.btn-modern {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-modern:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+}
+
+.text-gradient-modern {
+  background: linear-gradient(135deg, #1e1b4b 0%, #7c3aed 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

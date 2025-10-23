@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { FaBars, FaTimes, FaChevronDown, FaArrowRight } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronDown, FaArrowRight, FaPhoneAlt, FaWhatsapp } from 'react-icons/fa';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import Logo from './Logo';
 
@@ -61,15 +61,104 @@ const Header = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1, duration: 0.6 }}
       />
-      <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+      <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+        {/* Logo on the left */}
         <div className="relative inline-flex items-center gap-3">
-          <Logo />
+          <Link to="/" className="flex items-center gap-3 group">
+            {/* Logo */}
+            <motion.div
+              className="relative p-0.5 rounded-full bg-gradient-to-br from-indigo-100/50 to-purple-100/50 backdrop-blur-sm border border-indigo-200/40 shadow-lg overflow-hidden"
+              initial={{ y: 0 }}
+              animate={{ y: [0, -3, 0] }}
+              transition={{
+                y: {
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut"
+                },
+                type: "spring",
+                stiffness: 400,
+                damping: 25
+              }}
+              whileHover={{
+                scale: 1.05,
+                rotateY: 5,
+                boxShadow: "0 10px 30px rgba(99, 102, 241, 0.3)",
+                y: -5
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="relative w-9 h-9 rounded-full overflow-hidden border border-white/30 shadow-inner">
+                <img
+                  src="/headerLogo.png"
+                  alt="Zarko Sportswear"
+                  className="w-full h-full object-cover scale-150"
+                />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 rounded-full ring-1 ring-indigo-400/40 animate-pulse" />
+              </div>
+            </motion.div>
+
+            {/* Brand Name */}
+            <motion.div
+              className="flex items-baseline"
+              initial="hidden"
+              animate="show"
+            >
+              {["Zarko", "Sportswear"].map((word, wordIndex) => (
+                <motion.div
+                  key={wordIndex}
+                  className="flex mr-3"
+                >
+                  {word.split("").map((letter, letterIndex) => (
+                    <motion.span
+                      key={letterIndex}
+                      className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent inline-block"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{
+                        opacity: 1,
+                        y: [0, -3, 0],
+                        transition: {
+                          y: {
+                            duration: 2,
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                            ease: "easeInOut",
+                            delay: wordIndex * 0.5 + letterIndex * 0.1
+                          },
+                          opacity: { duration: 0.5, delay: 0.2 + wordIndex * 0.1 + letterIndex * 0.05 }
+                        }
+                      }}
+                      whileHover={{
+                        y: -6,
+                        scale: 1.2,
+                        rotate: letterIndex % 2 === 0 ? 5 : -5,
+                        transition: {
+                          type: "spring",
+                          stiffness: 500,
+                          damping: 20,
+                          delay: letterIndex * 0.03
+                        }
+                      }}
+                      whileTap={{
+                        scale: 0.9,
+                        transition: { duration: 0.1 }
+                      }}
+                    >
+                      {letter}
+                    </motion.span>
+                  ))}
+                </motion.div>
+              ))}
+            </motion.div>
+          </Link>
         </div>
 
-        {/* Desktop Menu */}
+        {/* Centered Desktop Menu */}
         <LayoutGroup>
-          <div className="hidden md:flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/75 px-3 py-1.5 shadow-[0_15px_38px_-28px_rgba(15,23,42,0.3)] backdrop-blur">
-            <nav className="flex items-center gap-3 text-sm font-semibold text-slate-600">
+          <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center gap-3 rounded-full border border-slate-200/60 bg-white/75 px-6 py-1.5 shadow-[0_15px_38px_-28px_rgba(15,23,42,0.3)] backdrop-blur">
+            <nav className="flex items-center gap-3 text-xs font-semibold text-slate-600">
               <DesktopLink to="/">Home</DesktopLink>
               <span className="h-4 w-px bg-indigo-100/70" />
               <DesktopLink to="/about">About Us</DesktopLink>
@@ -84,17 +173,25 @@ const Header = () => {
               <span className="h-4 w-px bg-indigo-100/70" />
               <DesktopLink to="/contact">Contact Us</DesktopLink>
             </nav>
-            <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
-              <Link
-                to="/custom"
-                className="ml-4 inline-flex items-center gap-2 rounded-full border border-indigo-300/60 bg-gradient-to-r from-indigo-500 via-sky-500 to-purple-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition hover:shadow-indigo-500/30"
-              >
-                Start a Brief
-                <FaArrowRight className="text-xs" />
-              </Link>
-            </motion.div>
           </div>
         </LayoutGroup>
+
+        {/* Contact on the right */}
+        <div className="hidden md:flex items-center gap-4">
+          <motion.a
+            href="https://wa.me/923039200750"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm font-semibold text-indigo-700 hover:text-indigo-800 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-600">
+              <FaWhatsapp className="text-sm" />
+            </div>
+            <span>+92-303-9200750</span>
+          </motion.a>
+        </div>
 
         {/* Mobile Toggle */}
         <motion.button
@@ -150,6 +247,23 @@ const Header = () => {
 
                 <MobileLink to="/custom" onClick={() => setMobileOpen(false)}>Custom Orders</MobileLink>
                 <MobileLink to="/contact" onClick={() => setMobileOpen(false)}>Contact Us</MobileLink>
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }}>
+                  <a
+                    href="https://wa.me/923039200750"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-between rounded-2xl border border-indigo-100/70 bg-white/85 px-4 py-3 text-sm font-semibold text-indigo-700 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-white"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-600">
+                        <FaWhatsapp className="text-sm" />
+                      </div>
+                      <span>WhatsApp Us</span>
+                    </div>
+                    <span className="text-xs text-green-400">💬</span>
+                  </a>
+                </motion.div>
               </div>
             </motion.div>
           </motion.div>
@@ -163,12 +277,12 @@ const Dropdown = ({ label, items }) => {
   const [open, setOpen] = useState(false);
   return (
     <div
-      className="relative"
+      className="relative whitespace-nowrap"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
       <button
-        className="flex items-center gap-1 text-sm font-semibold transition-colors hover:text-indigo-600"
+        className="flex items-center gap-1 text-xs font-semibold transition-colors hover:text-indigo-600"
         aria-haspopup="menu"
         aria-expanded={open}
       >
@@ -207,10 +321,10 @@ const Dropdown = ({ label, items }) => {
 };
 
 const DesktopLink = ({ to, children }) => (
-  <NavLink to={to} className={({ isActive }) => 'relative'}>
+  <NavLink to={to} className={({ isActive }) => 'relative whitespace-nowrap'}>
     {({ isActive }) => (
       <span
-        className={`group relative inline-flex items-center px-2 py-2 text-sm font-semibold transition-colors ${
+        className={`group relative inline-flex items-center px-2 py-2 text-xs font-semibold transition-colors ${
           isActive ? 'text-indigo-600' : 'text-slate-600 hover:text-indigo-600'
         }`}
       >
