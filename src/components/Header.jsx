@@ -23,7 +23,7 @@ const accessories = [
   { label: 'Bags', to: '/bags' },
 ];
 
-const linkBase = 'flex items-center justify-between rounded-2xl border border-indigo-100/70 bg-white/85 px-4 py-3 text-sm font-semibold text-indigo-700 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-white';
+const linkBase = 'flex w-full items-center justify-between rounded-2xl border border-indigo-100/70 bg-white/85 px-4 py-3 text-sm font-semibold text-indigo-700 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-white';
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -392,14 +392,14 @@ const MobileDropdown = ({ label, isOpen, toggle, items, onNavigate }) => (
           animate={{ height: 'auto', opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
           transition={{ duration: 0.25, ease: 'easeInOut' }}
-          className="mt-2 space-y-2 overflow-hidden pl-1"
+          className="mt-2 space-y-2 overflow-hidden"
         >
           {items.map((sub, j) => (
             <motion.li key={j} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2, delay: j * 0.02 }}>
               <Link
                 to={sub.to}
                 onClick={onNavigate}
-                className="flex items-center justify-between rounded-lg border border-indigo-100 bg-white px-3 py-2 text-sm text-indigo-700 shadow-sm transition hover:border-indigo-200 hover:bg-indigo-50"
+                className="flex items-center justify-between rounded-2xl border border-indigo-100/70 bg-white/85 px-4 py-3 text-sm font-semibold text-indigo-700 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-white"
               >
                 <span>{sub.label}</span>
                 <span className="text-xs text-indigo-400">↗</span>
