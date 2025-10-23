@@ -394,22 +394,22 @@ const Home = () => {
           <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-500 rounded-full blur-3xl" />
         </div>
         
-        <div className="max-w-7xl mx-auto px-4 py-20 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 py-16 md:py-20 relative z-10">
           {/* Header with brand logo */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7 }}
-              className="inline-flex items-center gap-4 mb-6"
+              className="inline-flex items-center gap-3 md:gap-4 mb-4 md:mb-6"
             >
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 p-0.5">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 p-0.5">
                 <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
-                  <img src="/logo.png" alt="Zarko Sportswear" className="w-8 h-8 object-contain" />
+                  <img src="/logo.png" alt="Zarko Sportswear" className="w-6 h-6 md:w-8 md:h-8 object-contain" />
                 </div>
               </div>
-              <span className="text-sm font-bold text-indigo-600 uppercase tracking-[0.2em]">Zarko Sportswear</span>
+              <span className="text-xs md:text-sm font-bold text-indigo-600 uppercase tracking-[0.2em]">Zarko Sportswear</span>
             </motion.div>
             
             <motion.h2
@@ -417,7 +417,7 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-900 via-purple-800 to-indigo-900 bg-clip-text text-transparent mb-4"
+              className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-indigo-900 via-purple-800 to-indigo-900 bg-clip-text text-transparent mb-3 md:mb-4"
             >
               Trusted Global Partners
             </motion.h2>
@@ -427,17 +427,17 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed"
+              className="text-base md:text-lg text-gray-600 max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-2"
             >
               From elite franchises to grassroots academies, our export-ready kits power winning rosters worldwide
             </motion.p>
           </div>
 
           {/* Premium Marquee Container */}
-          <div className="relative py-8">
+          <div className="relative py-6 md:py-8">
             {/* Gradient overlays for fade effect */}
-            <div className="absolute left-0 top-0 z-20 h-full w-40 bg-gradient-to-r from-white via-white/90 to-transparent" />
-            <div className="absolute right-0 top-0 z-20 h-full w-40 bg-gradient-to-l from-white via-white/90 to-transparent" />
+            {/* <div className="absolute left-0 top-0 z-20 h-full w-16 md:w-40 bg-gradient-to-r from-white via-white/90 to-transparent" />
+            <div className="absolute right-0 top-0 z-20 h-full w-16 md:w-40 bg-gradient-to-l from-white via-white/90 to-transparent" /> */}
 
             {/* Floating stats badge */}
             <motion.div
@@ -445,13 +445,13 @@ const Home = () => {
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 200 }}
-              className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-30"
+              className="absolute -top-4 md:-top-8 left-1/2 transform -translate-x-1/2 z-30"
             >
-              <div className="glass text-indigo-900 px-8 py-3 rounded-full font-bold text-lg shadow-modern border border-indigo-100/50 flex items-center gap-3">
+              <div className="glass text-indigo-900 px-4 md:px-8 py-2 md:py-3 rounded-full font-bold text-xs md:text-lg shadow-modern border border-indigo-100/50 flex items-center gap-2 md:gap-3">
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  className="w-3 h-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
+                  className="w-2.5 h-2.5 md:w-3 md:h-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
                 />
                 <span>{clubs.length}+ Global Partners</span>
                 <motion.div
@@ -459,21 +459,21 @@ const Home = () => {
                   transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                   className="text-yellow-500"
                 >
-                  <FaStar className="text-sm" />
+                  <FaStar className="text-xs md:text-sm" />
                 </motion.div>
               </div>
             </motion.div>
 
             <motion.div
-              className="flex gap-6 py-4"
+              className="flex gap-4 md:gap-6 py-4"
               animate={{
-                x: [0, -190 * clubs.length], // 190px per card (168 + 22 gap)
+                x: [0, -170 * clubs.length],
               }}
               transition={{
                 x: {
                   repeat: Infinity,
                   repeatType: "loop",
-                  duration: 45, // Slower, more elegant scroll
+                  duration: 40,
                   ease: "linear",
                 },
               }}
@@ -483,47 +483,47 @@ const Home = () => {
                 <motion.div
                   key={`${name}-${i}`}
                   whileHover={{
-                    scale: 1.08,
-                    y: -12,
+                    scale: 1.04,
+                    y: -8,
                     rotateY: 5,
                     z: 30,
                     boxShadow: "0 24px 48px rgba(0,0,0,0.15), 0 0 0 1px rgba(99,102,241,0.15)",
                   }}
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                  className="flex-shrink-0 w-44 relative overflow-hidden rounded-2xl glass shadow-modern px-5 py-4 hover:shadow-xl transition-all duration-400 group border border-indigo-100/30"
+                  className="flex-shrink-0 w-36 md:w-44 relative overflow-hidden rounded-2xl glass shadow-modern px-4 md:px-5 py-3 md:py-4 hover:shadow-xl transition-all duration-400 group border border-indigo-100/30"
                 >
                   {/* Premium background effects */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-indigo-50/15 to-purple-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-indigo-400/15 to-transparent rounded-full blur-sm" />
-                  <div className="absolute bottom-0 left-0 w-12 h-12 bg-gradient-to-tr from-purple-400/15 to-transparent rounded-full blur-sm" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-indigo-50/15 to-purple-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                  <div className="absolute top-0 right-0 w-14 md:w-16 h-14 md:h-16 bg-gradient-to-bl from-indigo-400/15 to-transparent rounded-full blur-sm" />
+                  <div className="absolute bottom-0 left-0 w-10 md:w-12 h-10 md:h-12 bg-gradient-to-tr from-purple-400/15 to-transparent rounded-full blur-sm" />
 
                   {/* Premium glow effect */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/8 via-purple-500/4 to-indigo-500/8 opacity-0 group-hover:opacity-100 transition-opacity duration-400 blur-lg" />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/6 via-purple-500/3 to-indigo-500/6 opacity-0 group-hover:opacity-100 transition-opacity duration-400 blur-md md:blur-lg" />
 
                   <div className="relative flex items-center gap-3">
                     <div className="flex items-center gap-3 flex-1 min-w-0">
                       {/* Compact logo design */}
                       <div className="relative">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-0.5 shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-0.5 shadow-lg group-hover:shadow-xl transition-all duration-300">
                           <div className="w-full h-full rounded-lg bg-white flex items-center justify-center shadow-inner">
-                            <span className="text-indigo-700 font-black text-xs tracking-wider group-hover:scale-110 transition-transform duration-300">
+                            <span className="text-indigo-700 font-black text-[10px] md:text-xs tracking-wider group-hover:scale-110 transition-transform duration-300">
                               {name.split(' ').map(word => word[0]).join('').slice(0,2)}
                             </span>
                           </div>
                         </div>
                         {/* Premium badge */}
-                        <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full border-2 border-white shadow-sm flex items-center justify-center">
-                          <FaStar className="text-[6px] text-white" />
+                        <div className="absolute -top-1 -right-1 w-3.5 h-3.5 md:w-4 md:h-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full border-2 border-white shadow-sm flex items-center justify-center">
+                          <FaStar className="text-[5px] md:text-[6px] text-white" />
                         </div>
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <h4 className="font-bold text-indigo-900 text-sm truncate group-hover:text-gradient-modern transition-all duration-300 leading-tight mb-0.5">
+                        <h4 className="font-bold text-indigo-900 text-xs md:text-sm truncate group-hover:text-gradient-modern transition-all duration-300 leading-tight mb-0.5">
                           {name}
                         </h4>
                         <div className="flex items-center gap-1">
-                          <FaCheckCircle className="text-[10px] text-green-600" />
-                          <span className="text-[10px] text-green-600 font-medium">Active</span>
+                          <FaCheckCircle className="text-[8px] md:text-[10px] text-green-600" />
+                          <span className="text-[9px] md:text-[10px] text-green-600 font-medium">Active</span>
                         </div>
                       </div>
                     </div>
@@ -533,7 +533,7 @@ const Home = () => {
                       <motion.div
                         animate={{ rotate: 360 }}
                         transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                        className="w-3 h-3 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full shadow-sm border border-white"
+                        className="w-2.5 h-2.5 md:w-3 md:h-3 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full shadow-sm border border-white"
                       />
                     </div>
                   </div>
