@@ -21,7 +21,10 @@ const Hero = () => {
     return () => { alive = false; };
   }, []);
 
-  const slides = useMemo(() => (images.length ? images : ['/images/slide1.jpg']), [images]);
+  const slides = useMemo(() => {
+    const validImages = (images || []).filter((src) => typeof src === 'string' && src.trim().length > 0);
+    return validImages.length ? validImages : ['/images/slide1.jpg'];
+  }, [images]);
 
   return (
     <section className="relative w-full h-[80vh] overflow-hidden">
@@ -33,12 +36,12 @@ const Hero = () => {
         className="w-full h-full"
       >
         {slides.map((src, index) => (
-          <SwiperSlide key={`${src}-${index}`}>
+          <SwiperSlide key={`${src || 'fallback'}-${index}`}>
             <img
               loading={index === 0 ? 'eager' : 'lazy'}
               fetchpriority={index === 0 ? 'high' : 'auto'}
               decoding="async"
-              src={imageUrl(src)}
+              src={imageUrl(src) || '/images/slide1.jpg'}
               alt={`Slide ${index + 1}`}
               className="w-full h-full object-cover md:object-cover"
               style={{ objectPosition: 'center 30%' }}

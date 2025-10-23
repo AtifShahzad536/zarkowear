@@ -324,10 +324,24 @@ const DesktopLink = ({ to, children }) => (
   <NavLink to={to} className={({ isActive }) => 'relative whitespace-nowrap'}>
     {({ isActive }) => (
       <span
-        className={`group relative inline-flex items-center px-2 py-2 text-xs font-semibold transition-colors ${
+        className={`group relative inline-flex items-center px-3 py-2 text-sm font-semibold transition-colors ${
           isActive ? 'text-indigo-600' : 'text-slate-600 hover:text-indigo-600'
         }`}
       >
+        <motion.span
+          className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500/0 via-indigo-500/20 to-indigo-500/0 opacity-0"
+          initial={false}
+          whileHover={{ opacity: 1, scale: 1 }}
+          whileTap={{ opacity: 1, scale: 0.96 }}
+          transition={{ duration: 0.25, ease: 'easeOut' }}
+        />
+        <motion.span
+          className="pointer-events-none absolute inset-0 rounded-full bg-indigo-500/15 blur-xl opacity-0"
+          initial={false}
+          whileHover={{ opacity: 0.55, scale: 1.05 }}
+          whileTap={{ opacity: 0.75, scale: 0.95 }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+        />
         <span>{children}</span>
         <motion.span
           layoutId="desktopNavGlow"
