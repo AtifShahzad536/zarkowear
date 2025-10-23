@@ -142,95 +142,8 @@ const Home = () => {
 
       <Hero />
 
-      {/* Quick Categories */}
-      <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-4 py-12">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-indigo-500">Shop by sport</p>
-              <h2 className="mt-2 text-3xl font-bold text-indigo-900">Elite kits and accessories for every squad</h2>
-              <p className="mt-2 text-sm text-gray-500">Browse export-grade uniforms, footwear, and gear bundles, or learn more about our <Link to="/about" className="text-indigo-600 hover:underline">sportswear manufacturing</Link>.</p>
-            </div>
-            <Link to="/custom" className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white px-4 py-2 text-sm font-semibold text-indigo-700 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300">
-              Build your own collection
-              <FaArrowRight className="text-base" />
-            </Link>
-          </div>
-
-          <div className="relative mt-8">
-            <div className="overflow-hidden rounded-[32px] border border-indigo-100/70 bg-gradient-to-r from-white via-indigo-50/60 to-white shadow-xl">
-              <div className="relative px-4 pb-8 pt-4">
-                <div className="pointer-events-none absolute inset-y-4 left-0 w-10 bg-gradient-to-r from-white via-white/70 to-transparent" />
-                <div className="pointer-events-none absolute inset-y-4 right-0 w-10 bg-gradient-to-l from-white via-white/70 to-transparent" />
-                <div
-                  ref={sportRailRef}
-                  className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-2 py-2 pr-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-                >
-                  {categoryChips.map((chip, i) => (
-                    <motion.div
-                      key={chip.label}
-                      initial={{ opacity: 0, y: 12 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.2 }}
-                      transition={{ delay: i * 0.025, duration: 0.35 }}
-                      whileHover={{ y: -6, scale: 1.03 }}
-                      className="snap-start"
-                    >
-                      <Link
-                        to={chip.to}
-                        className="group block min-w-[190px] rounded-2xl border border-indigo-100 bg-white/95 px-4 py-4 text-left shadow-sm transition hover:-translate-y-1.5 hover:border-indigo-200 hover:shadow-lg"
-                      >
-                        <div className="flex items-center justify-between gap-2">
-                          <div className="flex items-center gap-3">
-                            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 via-white to-indigo-50 text-indigo-600">
-                              <chip.Icon />
-                            </span>
-                            <div>
-                              <p className="text-sm font-semibold text-indigo-900">{chip.label}</p>
-                              <p className="text-xs text-gray-500">{chip.tagline}</p>
-                            </div>
-                          </div>
-                          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-50 text-indigo-500 transition group-hover:bg-indigo-600 group-hover:text-white">
-                            <FaArrowRight className="text-xs" />
-                          </span>
-                        </div>
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
-                <div className="mx-2 mt-5 h-1 rounded-full bg-indigo-100">
-                  <div
-                    className="h-1 rounded-full bg-gradient-to-r from-indigo-500 via-indigo-600 to-blue-500 transition-all duration-300"
-                    style={{ width: `${Math.max(6, scrollProgress * 100)}%` }}
-                  />
-                </div>
-              </div>
-              {canScroll ? (
-                <>
-                  <button
-                    type="button"
-                    aria-label="Scroll sports left"
-                    onClick={() => scrollRail(-1)}
-                    className="absolute left-3 top-1/2 hidden -translate-y-1/2 rounded-full border border-white/40 bg-white/80 p-3 text-indigo-700 shadow-md transition hover:-translate-y-1/2 hover:bg-white md:inline-flex"
-                  >
-                    <FaChevronLeft />
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Scroll sports right"
-                    onClick={() => scrollRail(1)}
-                    className="absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-full border border-white/40 bg-white/80 p-3 text-indigo-700 shadow-md transition hover:-translate-y-1/2 hover:bg-white md:inline-flex"
-                  >
-                    <FaChevronRight />
-                  </button>
-                </>
-              ) : null}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Strip */}
+      <FeaturedCategories />
+        {/* CTA Strip */}
       <section className="relative overflow-hidden bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 text-white">
         <div className="absolute inset-y-0 right-[-15%] w-2/3 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.28),_transparent_60%)] blur-3xl opacity-60" />
         <div className="absolute -bottom-24 -left-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
@@ -323,6 +236,99 @@ const Home = () => {
           </div>
         </div>
       </section>
+       <section className="max-w-6xl mx-auto px-4 py-12">
+        <TopSellingProducts />
+      </section>
+
+      {/* Quick Categories */}
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-4 py-12">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-indigo-500">Shop by sport</p>
+              <h2 className="mt-2 text-3xl font-bold text-indigo-900">Elite kits and accessories for every squad</h2>
+              <p className="mt-2 text-sm text-gray-500">Browse export-grade uniforms, footwear, and gear bundles, or learn more about our <Link to="/about" className="text-indigo-600 hover:underline">sportswear manufacturing</Link>.</p>
+            </div>
+            <Link to="/custom" className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white px-4 py-2 text-sm font-semibold text-indigo-700 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300">
+              Build your own collection
+              <FaArrowRight className="text-base" />
+            </Link>
+          </div>
+
+          <div className="relative mt-8">
+            <div className="overflow-hidden rounded-[32px] border border-indigo-100/70 bg-gradient-to-r from-white via-indigo-50/60 to-white shadow-xl">
+              <div className="relative px-4 pb-8 pt-4">
+                <div className="pointer-events-none absolute inset-y-4 left-0 w-10 bg-gradient-to-r from-white via-white/70 to-transparent" />
+                <div className="pointer-events-none absolute inset-y-4 right-0 w-10 bg-gradient-to-l from-white via-white/70 to-transparent" />
+                <div
+                  ref={sportRailRef}
+                  className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-2 py-2 pr-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                >
+                  {categoryChips.map((chip, i) => (
+                    <motion.div
+                      key={chip.label}
+                      initial={{ opacity: 0, y: 12 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ delay: i * 0.025, duration: 0.35 }}
+                      whileHover={{ y: -6, scale: 1.03 }}
+                      className="snap-start"
+                    >
+                      <Link
+                        to={chip.to}
+                        className="group block min-w-[190px] rounded-2xl border border-indigo-100 bg-white/95 px-4 py-4 text-left shadow-sm transition hover:-translate-y-1.5 hover:border-indigo-200 hover:shadow-lg"
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="flex items-center gap-3">
+                            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 via-white to-indigo-50 text-indigo-600">
+                              <chip.Icon />
+                            </span>
+                            <div>
+                              <p className="text-sm font-semibold text-indigo-900">{chip.label}</p>
+                              <p className="text-xs text-gray-500">{chip.tagline}</p>
+                            </div>
+                          </div>
+                          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-50 text-indigo-500 transition group-hover:bg-indigo-600 group-hover:text-white">
+                            <FaArrowRight className="text-xs" />
+                          </span>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+                <div className="mx-2 mt-5 h-1 rounded-full bg-indigo-100">
+                  <div
+                    className="h-1 rounded-full bg-gradient-to-r from-indigo-500 via-indigo-600 to-blue-500 transition-all duration-300"
+                    style={{ width: `${Math.max(6, scrollProgress * 100)}%` }}
+                  />
+                </div>
+              </div>
+              {canScroll ? (
+                <>
+                  <button
+                    type="button"
+                    aria-label="Scroll sports left"
+                    onClick={() => scrollRail(-1)}
+                    className="absolute left-3 top-1/2 hidden -translate-y-1/2 rounded-full border border-white/40 bg-white/80 p-3 text-indigo-700 shadow-md transition hover:-translate-y-1/2 hover:bg-white md:inline-flex"
+                  >
+                    <FaChevronLeft />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Scroll sports right"
+                    onClick={() => scrollRail(1)}
+                    className="absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-full border border-white/40 bg-white/80 p-3 text-indigo-700 shadow-md transition hover:-translate-y-1/2 hover:bg-white md:inline-flex"
+                  >
+                    <FaChevronRight />
+                  </button>
+                </>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </section>
+
+    
 
       {/* Value Props */}
       <section className="bg-gradient-to-b from-white via-indigo-50/20 to-white">
@@ -608,9 +614,7 @@ const Home = () => {
         </div>
       </section>
       
-      <section className="max-w-6xl mx-auto px-4 py-12">
-        <TopSellingProducts />
-      </section>
+     
 
   <section className="max-w-6xl mx-auto px-4 py-12">
         <Testimonials />
