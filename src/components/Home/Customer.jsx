@@ -4,7 +4,7 @@ import { BsChatDots } from 'react-icons/bs';
 import { FaStar } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 const Testimonials = () => {

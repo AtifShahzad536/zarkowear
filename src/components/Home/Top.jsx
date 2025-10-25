@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { motion } from 'framer-motion';
