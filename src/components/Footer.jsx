@@ -111,27 +111,6 @@ const Footer = () => {
                 </ul>
               </div>
             ))}
-            {/* Support Section */}
-            <div className="col-span-2">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-300 mb-4">
-                Support
-              </h3>
-              <ul className="space-y-2">
-                {footerNav[3].links.map((link) => (
-                  <li key={link.to}>
-                    <Link
-                      to={link.to}
-                      className="text-sm text-gray-300 hover:text-white transition-colors flex items-center group"
-                    >
-                      <span className="text-indigo-400 mr-2">•</span>
-                      <span className="group-hover:translate-x-1 transition-transform">
-                        {link.label}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
             
             {/* Contact Section - Professional Layout */}
             <div className="col-span-2 mt-6 sm:mt-0">
