@@ -6,17 +6,12 @@
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
   ],
-  "nodeVersion": "18.x",
-  "npmVersion": "9.x",
   "builds": [
     {
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist",
-        "env": {
-          "NODE_ENV": "production"
-        }
+        "distDir": "dist"
       }
     }
   ]
