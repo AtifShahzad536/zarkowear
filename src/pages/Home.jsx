@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper';
 import 'swiper/css';
@@ -24,8 +24,6 @@ import {
   FaShoppingBag,
   FaArrowRight,
   FaPhoneAlt,
-  FaChevronLeft,
-  FaChevronRight,
   FaStar,
   FaCheckCircle
 } from 'react-icons/fa';
@@ -73,39 +71,6 @@ const Home = () => {
     { to: '/caps', label: 'Caps', Icon: FaHatCowboy, tagline: 'Team headwear' },
     { to: '/bags', label: 'Bags', Icon: FaShoppingBag, tagline: 'Travel-ready packs' },
   ];
-
-  useEffect(() => {
-    const rail = sportRailRef.current;
-    if (!rail) return;
-
-    let timeoutId;
-    const updateState = () => {
-      const maxScroll = rail.scrollWidth - rail.clientWidth;
-      setScrollProgress(maxScroll <= 0 ? 0 : rail.scrollLeft / maxScroll);
-      setCanScroll(rail.scrollWidth > rail.clientWidth + 4);
-    };
-
-    const debouncedUpdate = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(updateState, 16); // ~60fps
-    };
-
-    updateState();
-    rail.addEventListener('scroll', debouncedUpdate, { passive: true });
-    window.addEventListener('resize', debouncedUpdate, { passive: true });
-    return () => {
-      clearTimeout(timeoutId);
-      rail.removeEventListener('scroll', debouncedUpdate);
-      window.removeEventListener('resize', debouncedUpdate);
-    };
-  }, []);
-
-  const scrollRail = (direction) => {
-    const rail = sportRailRef.current;
-    if (!rail) return;
-    const amount = rail.clientWidth * 0.6;
-    rail.scrollBy({ left: direction * amount, behavior: 'smooth' });
-  };
   return (
     <main className="min-h-screen">
       <SeoHead
