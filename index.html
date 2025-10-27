@@ -26,8 +26,12 @@
 
 
     <!-- ✅ Preload Critical Assets -->
-    <link rel="preload" href="/src/assets/fonts/your-main-font.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/src/index.css" as="style" />
+    <!-- Only preload fonts that are used in the critical rendering path -->
+    <link rel="preload" href="/src/assets/fonts/your-main-font.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/src/index.css" /></noscript>
     <link rel="preload" href="/src/main.jsx" as="script" />
 
     <!-- ✅ DNS Prefetch -->

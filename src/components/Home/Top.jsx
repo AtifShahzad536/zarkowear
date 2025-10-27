@@ -1,11 +1,14 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
+import { Navigation, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { motion } from 'framer-motion';
+import 'swiper/css/autoplay';
+import { motion, AnimatePresence } from 'framer-motion';
 import { getTopSelling, imageUrl } from '../../services/api';
+import { FaArrowRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const fallbackItems = [
   { image: '/images/slide1.jpg', name: 'Pro Football Jersey', link: '/football' },
@@ -17,126 +20,196 @@ const fallbackItems = [
 ];
 
 const TopSellingProducts = () => {
-  const [items, setItems] = useState(fallbackItems);
-  const [loaded, setLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     let alive = true;
-    (async () => {
+    const loadTopSelling = async () => {
       try {
-        const data = await getTopSelling(); // { topSelling: [...] }
-        const list = (data?.topSelling || []).map((x) => ({
-          name: x.name || '',
-          image: x.image || '',
-          link: x.link || '',
-        }));
-        if (alive && list.length) {
-          setItems(list);
+        const data = await getTopSelling();
+        if (alive) {
+          setItems(Array.isArray(data?.topSelling) ? data.topSelling : fallbackItems);
         }
-      } catch (_) {
-        // ignore, fallback will be used
+      } catch (error) {
+        console.error('Error loading top selling products:', error);
+        if (alive) setItems(fallbackItems);
       } finally {
-        if (alive) setLoaded(true);
+        if (alive) setLoading(false);
       }
-    })();
+    };
+    
+    loadTopSelling();
     return () => { alive = false; };
   }, []);
 
   const displayedItems = useMemo(() => items, [items]);
+  
+  const handleProductClick = (product) => {
+    if (product.link) {
+      navigate(product.link);
+    }
+  };
 
   return (
-    <section className="relative mx-auto max-w-7xl px-4 py-14">
-      <div className="absolute inset-x-0 top-0 h-56 bg-[radial-gradient(circle_at_top,_rgba(79,70,229,0.18),_transparent_70%)]" />
-      <div className="relative">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto mb-12 flex w-fit flex-col items-center gap-3"
-        >
-          <motion.div
-            initial={{ clipPath: 'polygon(12% 0%, 88% 0%, 100% 100%, 0% 100%)' }}
-            whileInView={{ clipPath: 'polygon(0% 0%, 100% 0%, 92% 100%, 8% 100%)' }}
-            transition={{ duration: 0.9, ease: [0.6, 0.05, 0.01, 0.99] }}
-            className="relative overflow-hidden rounded-[18px] bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-500 px-12 py-5 text-white shadow-2xl"
+    <section className="w-full py-12">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="w-full"
+      >
+        <div className="text-center mb-12">
+          <motion.span 
+            className="inline-block text-sm font-semibold text-indigo-600 mb-3"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
           >
-            <motion.div
-              initial={{ x: '-130%' }}
-              whileInView={{ x: '120%' }}
-              transition={{ duration: 2.4, repeat: Infinity, ease: 'linear' }}
-              aria-hidden
-              className="absolute inset-y-0 left-0 w-20 bg-white/25 blur-2xl"
-            />
-            <h2 className="relative text-3xl font-bold tracking-wide sm:text-4xl">Top Selling Products</h2>
-          </motion.div>
-          <p className="text-sm text-gray-500">Handpicked bestsellers that teams reorder season after season.</p>
-        </motion.div>
+            POPULAR ITEMS
+          </motion.span>
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            Our Bestselling Sportswear
+          </motion.h2>
+          <motion.div 
+            className="w-20 h-1 bg-indigo-600 mx-auto rounded-full"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          />
+        </div>
 
         {/* Product Carousel */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
-          className="rounded-[32px] border border-indigo-100/80 bg-white/90 p-6 shadow-xl backdrop-blur"
-        >
-          <Swiper
-            modules={[Navigation]}
-            navigation
-            spaceBetween={24}
-            slidesPerView={2}
-            breakpoints={{
-              640: { slidesPerView: 3 },
-              768: { slidesPerView: 4 },
-              1024: { slidesPerView: 5 },
-            }}
-          >
-            {displayedItems.map((item, i) => (
-              <SwiperSlide key={i}>
-                <motion.div
-                  whileHover={{ y: -6 }}
-                  className="group relative overflow-hidden rounded-[20px] border border-indigo-100 bg-white shadow-md transition hover:shadow-2xl"
-                >
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-indigo-500 via-indigo-600 to-blue-500 opacity-0 transition group-hover:opacity-100" />
-                  <img
-                    loading="lazy"
-                    src={imageUrl(item.image)}
-                    alt={item.name}
-                    className="h-72 w-full bg-white object-contain transition duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-75 group-hover:opacity-90 transition duration-300" />
-                  <div className="absolute inset-0 z-20 flex flex-col justify-between p-4">
-                    <div className="inline-flex items-center gap-2 rounded-full bg-white/85 px-4 py-2 text-sm font-semibold text-indigo-700 shadow group-hover:bg-white">
-                      <span className="inline-block group-hover:translate-x-1 transition">{item.name || 'Top Product'}</span>
-                    </div>
-                    <div className="space-y-3 text-white">
-                      <p className="text-xs md:text-sm leading-relaxed opacity-0 transition duration-300 group-hover:opacity-100">
-                        {item.description || `Explore premium ${item.name || 'sports'} gear engineered for pro-level performance.`}
-                      </p>
-                      <button
-                        type="button"
-                        className="inline-flex items-center justify-center gap-3 w-full rounded-full border border-white/40 bg-white/20 py-3 text-sm font-semibold tracking-wide backdrop-blur hover:bg-white/30 transition"
-                        onClick={() => {
-                          if (item.link) {
-                            navigate(item.link);
-                          }
-                        }}
-                      >
-                        View Details
-                        <motion.span aria-hidden initial={{ x: 0 }} whileHover={{ x: 6 }} className="inline-block">
-                          →
-                        </motion.span>
-                      </button>
-                    </div>
+        <div className="relative group">
+          {loading ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+              {[...Array(5)].map((_, i) => (
+                <div key={i} className="bg-gray-100 rounded-xl overflow-hidden animate-pulse border border-gray-200">
+                  <div className="aspect-square bg-gray-200"></div>
+                  <div className="p-4">
+                    <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+                    <div className="h-3 bg-gray-200 rounded w-1/2"></div>
                   </div>
-                </motion.div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </motion.div>
-      </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <Swiper
+              modules={[Navigation, Autoplay]}
+              navigation={{
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              }}
+              spaceBetween={20}
+              slidesPerView={2.1}
+              autoplay={{
+                delay: 4000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+              }}
+              loop={true}
+              breakpoints={{
+                480: { slidesPerView: 2.3, spaceBetween: 16 },
+                640: { slidesPerView: 2.8, spaceBetween: 16 },
+                768: { slidesPerView: 3.3, spaceBetween: 20 },
+                1024: { slidesPerView: 3.8, spaceBetween: 20 },
+                1280: { slidesPerView: 4.5, spaceBetween: 24 },
+                1536: { slidesPerView: 5.2, spaceBetween: 24 }
+              }}
+              className="py-2 px-1 sm:px-2"
+            >
+              <AnimatePresence initial={false}>
+                {displayedItems.map((item, i) => (
+                  <SwiperSlide key={`${item.id || i}-${i}`}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      whileHover={{ 
+                        y: -5,
+                        boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)'
+                      }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                      className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col border border-gray-200"
+                    >
+                      <div className="relative flex-1 overflow-hidden">
+                        <motion.div 
+                          className="relative h-0 pb-[90%] bg-white"
+                          whileHover="hover"
+                        >
+                          <motion.img
+                            src={imageUrl(item.image) || item.image}
+                            alt={item.name}
+                            className="absolute inset-0 w-full h-full object-contain bg-white"
+                            variants={{
+                              hover: { 
+                                scale: 1.02,
+                                transition: { duration: 0.5 }
+                              }
+                            }}
+                            onError={(e) => {
+                              e.target.src = '/images/placeholder.jpg';
+                            }}
+                          />
+                        </motion.div>
+                        {item.discount && (
+                          <motion.span 
+                            className="absolute top-3 right-3 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md"
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                          >
+                            -{item.discount}% OFF
+                          </motion.span>
+                        )}
+                      </div>
+                      <div className="p-4 border-t border-gray-100">
+                        <h3 className="font-medium text-gray-900 text-base mb-2 line-clamp-2 leading-tight">{item.name}</h3>
+                        <div className="mt-4">
+                          <Link
+                            to={item.link || '#'}
+                            className="flex items-center justify-center rounded-lg bg-gradient-to-r from-indigo-600 to-indigo-700 px-4 py-2 text-sm font-medium text-white shadow-md transition-all hover:shadow-lg hover:shadow-indigo-200 w-full"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (item.link) navigate(item.link);
+                            }}
+                          >
+                            Customize Now
+                            <FaArrowRight className="ml-2 w-3.5 h-3.5 text-white opacity-80 group-hover:translate-x-1 transition-transform" />
+                          </Link>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </SwiperSlide>
+                ))}
+              </AnimatePresence>
+            </Swiper>
+          )}
+          
+          {/* Navigation Buttons */}
+          <button className="swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-indigo-600 hover:bg-indigo-50 transition-all duration-300 -ml-4 md:-ml-6 opacity-0 group-hover:opacity-100">
+            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button className="swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-indigo-600 hover:bg-indigo-50 transition-all duration-300 -mr-4 md:-mr-6 opacity-0 group-hover:opacity-100">
+            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        
+      </motion.div>
     </section>
   );
 };

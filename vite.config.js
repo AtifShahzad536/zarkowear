@@ -16,8 +16,15 @@ export default defineConfig({
     }
   },
   server: {
-    port: 3000,
-    open: true
+    port: 5173,
+    host: true, // Listen on all network interfaces
+    open: true,
+    strictPort: true, // Don't try other ports if 5173 is in use
+    hmr: {
+      clientPort: 5173, // Important for HMR to work properly
+      protocol: 'ws',
+      host: 'localhost'
+    }
   },
   resolve: {
     alias: {
