@@ -157,22 +157,25 @@ function App() {
       isContentLoaded: contentLoaded
     }}>
       {isLoading ? (
-        <LoadingSpinner 
+        <LoadingSpinner
           size="lg"
           fullScreen={true}
           progress={loadingProgress}
           message={loadingMessage}
           subMessage={loadingSubMessage}
+          seoFriendly={true}
         />
       ) : (
         <div className="transition-opacity duration-500 opacity-100">
           <Header />
           <main className="min-h-screen">
-            <Suspense 
+            <Suspense
               fallback={
-                <div className="fixed inset-0 bg-white/80 z-40 flex items-center justify-center">
-                  <LoadingSpinner size="md" />
-                </div>
+                <LoadingSpinner
+                  size="md"
+                  fullScreen={false}
+                  seoFriendly={true}
+                />
               }
             >
               <ChatbotWidget />

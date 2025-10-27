@@ -16,6 +16,7 @@ const AdminHome = lazy(() => import('./pages/AdminHome.jsx'))
 const AdminLayout = lazy(() => import('./components/admin/AdminLayout.jsx'))
 const AdminLogin = lazy(() => import('./pages/AdminLogin.jsx'))
 const NotFound = lazy(() => import('./pages/NotFound.jsx'))
+
 // Define routes
 const router = createBrowserRouter([
  {
@@ -65,12 +66,47 @@ const router = createBrowserRouter([
   },
 ])
 
+// SEO-friendly loading fallback
+const SEOLoadingFallback = () => (
+  <div className="min-h-screen flex items-center justify-center">
+    <div className="text-center">
+      <div className="inline-block w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+      <p className="text-sm text-gray-600">Loading Zarko Sportswear...</p>
+    </div>
+  </div>
+);
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Suspense fallback={null}>
+    <Suspense fallback={<SEOLoadingFallback />}>
       <ToastProvider>
         <RouterProvider router={router} />
       </ToastProvider>
     </Suspense>
   </StrictMode>
 )
+
+// Bot detection for SEO-friendly loading
+if (typeof window !== 'undefined') {
+  // Detect common bot user agents
+  const botPatterns = [
+    /bot/i,
+    /spider/i,
+    /crawler/i,
+    /scraper/i,
+    /googlebot/i,
+    /bingbot/i,
+    /facebookexternalhit/i,
+    /twitterbot/i,
+    /linkedinbot/i,
+    /whatsapp/i
+  ];
+
+  const isBot = botPatterns.some(pattern => pattern.test(navigator.userAgent));
+  window.isBot = isBot;
+
+  // For bots, show minimal loading and render content faster
+  if (isBot) {
+    document.documentElement.style.setProperty('--loading-delay', '0ms');
+  }
+}

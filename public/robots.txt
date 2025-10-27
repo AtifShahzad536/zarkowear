@@ -1,3 +1,49 @@
 User-agent: *
 Allow: /
-Sitemap: https://zarkosportswear.com/sitemap.xml
+
+# Sitemap
+Sitemap: https://www.zarkosportswear.com/sitemap.xml
+
+# Performance optimizations
+Crawl-delay: 1
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /node_modules/
+
+# Allow important pages
+Allow: /
+Allow: /about
+Allow: /contact
+Allow: /custom
+Allow: /football
+Allow: /cricket
+Allow: /basketball
+Allow: /wrestling
+Allow: /hockey
+Allow: /rugby
+Allow: /tennis
+Allow: /running
+Allow: /gym
+Allow: /shoes
+Allow: /gloves
+Allow: /caps
+Allow: /bags
+
+# Block duplicate content
+Disallow: /detail
+
+# Specific bot instructions
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /

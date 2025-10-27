@@ -37,6 +37,15 @@ const SeoHead = ({
   openGraph,
   twitter,
   jsonLd,
+  keywords,
+  author,
+  robots,
+  viewport,
+  themeColor,
+  image,
+  siteName,
+  locale,
+  alternateLangs,
 }) => {
   const ogEntries = useMemo(() => Object.entries(openGraph || {}).filter(([, content]) => content), [openGraph]);
   const twitterEntries = useMemo(() => Object.entries(twitter || {}).filter(([, content]) => content), [twitter]);
@@ -52,23 +61,58 @@ const SeoHead = ({
 
     const metaRecords = [];
 
+    // Basic meta tags
     if (description) {
       metaRecords.push(ensureMeta('name', 'description', description));
     }
 
+    if (keywords) {
+      metaRecords.push(ensureMeta('name', 'keywords', keywords));
+    }
+
+    if (author) {
+      metaRecords.push(ensureMeta('name', 'author', author));
+    }
+
+    if (robots) {
+      metaRecords.push(ensureMeta('name', 'robots', robots));
+    }
+
+    // Viewport and theme
+    if (viewport) {
+      metaRecords.push(ensureMeta('name', 'viewport', viewport));
+    } else {
+      metaRecords.push(ensureMeta('name', 'viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no'));
+    }
+
+    if (themeColor) {
+      metaRecords.push(ensureMeta('name', 'theme-color', themeColor));
+    }
+
+    // Open Graph tags
     ogEntries.forEach(([property, content]) => {
       metaRecords.push(ensureMeta('property', property, content));
     });
 
+    // Twitter Card tags
     twitterEntries.forEach(([name, content]) => {
       metaRecords.push(ensureMeta('name', name, content));
     });
 
+    // Canonical URL
     let linkRecord;
     if (canonical) {
       linkRecord = ensureLink('canonical', canonical);
     }
 
+    // Alternate language versions
+    if (alternateLangs) {
+      alternateLangs.forEach(lang => {
+        ensureLink('alternate', lang.href).element.setAttribute('hreflang', lang.lang);
+      });
+    }
+
+    // JSON-LD Structured Data
     let jsonLdElement;
     if (jsonLdString) {
       jsonLdElement = document.createElement('script');
@@ -76,6 +120,16 @@ const SeoHead = ({
       jsonLdElement.setAttribute('data-seo-head', 'true');
       jsonLdElement.textContent = jsonLdString;
       document.head.appendChild(jsonLdElement);
+    }
+
+    // Performance and security meta tags
+    metaRecords.push(ensureMeta('http-equiv', 'X-UA-Compatible', 'IE=edge'));
+    metaRecords.push(ensureMeta('http-equiv', 'Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:;"));
+    metaRecords.push(ensureMeta('name', 'format-detection', 'telephone=no'));
+
+    // Preload critical resources
+    if (image) {
+      ensureLink('preload', image).element.setAttribute('as', 'image');
     }
 
     return () => {
@@ -108,7 +162,7 @@ const SeoHead = ({
         jsonLdElement.remove();
       }
     };
-  }, [title, description, canonical, stringify(openGraph), stringify(twitter), jsonLdString]);
+  }, [title, description, canonical, keywords, author, robots, viewport, themeColor, image, siteName, locale, stringify(openGraph), stringify(twitter), jsonLdString, alternateLangs]);
 
   return null;
 };
