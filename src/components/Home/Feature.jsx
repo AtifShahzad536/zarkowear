@@ -44,7 +44,7 @@ const FeaturedCategories = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.6 }}
-        className="mx-auto mb-12 flex w-fit flex-col items-center gap-3"
+        className="max-w-7xl mx-auto mb-12 flex w-fit flex-col items-center gap-3"
       >
         <motion.div
           initial={{ clipPath: 'polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%)' }}
@@ -65,7 +65,7 @@ const FeaturedCategories = () => {
       </motion.div>
 
       {/* Category Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {loading ? (
           // Show skeleton loaders when loading
           Array.from({ length: 4 }).map((_, index) => (

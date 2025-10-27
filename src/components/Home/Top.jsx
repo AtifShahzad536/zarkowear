@@ -58,7 +58,7 @@ const TopSellingProducts = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="w-full"
+        className="max-w-7xl mx-auto px-4"
       >
         <div className="text-center mb-12">
           <motion.span 
@@ -93,12 +93,18 @@ const TopSellingProducts = () => {
           {loading ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
               {[...Array(5)].map((_, i) => (
-                <div key={i} className="bg-gray-100 rounded-xl overflow-hidden animate-pulse border border-gray-200">
-                  <div className="aspect-square bg-gray-200"></div>
-                  <div className="p-4">
-                    <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-                    <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+                <div key={i} className="relative group overflow-hidden rounded-3xl shadow-md bg-white/50 backdrop-blur-sm border border-gray-100">
+                  <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse rounded-t-3xl" />
+                  <div className="p-4 space-y-3">
+                    <div className="h-6 bg-gray-200 rounded-full w-3/4 animate-pulse"></div>
+                    <div className="space-y-2">
+                      <div className="h-3 bg-gray-100 rounded-full animate-pulse"></div>
+                      <div className="h-3 bg-gray-100 rounded-full w-5/6 animate-pulse"></div>
+                      <div className="h-3 bg-gray-100 rounded-full w-2/3 animate-pulse"></div>
+                    </div>
+                    <div className="h-10 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full animate-pulse mt-4"></div>
                   </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               ))}
             </div>
@@ -110,7 +116,7 @@ const TopSellingProducts = () => {
                 prevEl: '.swiper-button-prev',
               }}
               spaceBetween={20}
-              slidesPerView={2.1}
+              slidesPerView={1.8}
               autoplay={{
                 delay: 4000,
                 disableOnInteraction: false,
@@ -118,12 +124,12 @@ const TopSellingProducts = () => {
               }}
               loop={true}
               breakpoints={{
-                480: { slidesPerView: 2.3, spaceBetween: 16 },
+                480: { slidesPerView: 2.2, spaceBetween: 16 },
                 640: { slidesPerView: 2.8, spaceBetween: 16 },
-                768: { slidesPerView: 3.3, spaceBetween: 20 },
+                768: { slidesPerView: 3.2, spaceBetween: 20 },
                 1024: { slidesPerView: 3.8, spaceBetween: 20 },
-                1280: { slidesPerView: 4.5, spaceBetween: 24 },
-                1536: { slidesPerView: 5.2, spaceBetween: 24 }
+                1280: { slidesPerView: 4.2, spaceBetween: 24 },
+                1536: { slidesPerView: 4.5, spaceBetween: 24 }
               }}
               className="py-2 px-1 sm:px-2"
             >
@@ -131,63 +137,53 @@ const TopSellingProducts = () => {
                 {displayedItems.map((item, i) => (
                   <SwiperSlide key={`${item.id || i}-${i}`}>
                     <motion.div
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      whileHover={{ 
-                        y: -5,
-                        boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)'
-                      }}
-                      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                      className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col border border-gray-200"
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.5, delay: i * 0.05 }}
+                      className="group relative overflow-hidden rounded-3xl shadow-md hover:shadow-2xl transition cursor-pointer ring-1 ring-gray-200 hover:-translate-y-1"
+                      onClick={() => navigate(item.link || '#')}
                     >
-                      <div className="relative flex-1 overflow-hidden">
-                        <motion.div 
-                          className="relative h-0 pb-[90%] bg-white"
-                          whileHover="hover"
-                        >
-                          <motion.img
-                            src={imageUrl(item.image) || item.image}
-                            alt={item.name}
-                            className="absolute inset-0 w-full h-full object-contain bg-white"
-                            variants={{
-                              hover: { 
-                                scale: 1.02,
-                                transition: { duration: 0.5 }
-                              }
-                            }}
-                            onError={(e) => {
-                              e.target.src = '/images/placeholder.jpg';
-                            }}
-                          />
-                        </motion.div>
-                        {item.discount && (
-                          <motion.span 
-                            className="absolute top-3 right-3 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md"
-                            initial={{ scale: 0.8, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ delay: 0.2 }}
-                          >
-                            -{item.discount}% OFF
-                          </motion.span>
-                        )}
-                      </div>
-                      <div className="p-4 border-t border-gray-100">
-                        <h3 className="font-medium text-gray-900 text-base mb-2 line-clamp-2 leading-tight">{item.name}</h3>
-                        <div className="mt-4">
-                          <Link
-                            to={item.link || '#'}
-                            className="flex items-center justify-center rounded-lg bg-gradient-to-r from-indigo-600 to-indigo-700 px-4 py-2 text-sm font-medium text-white shadow-md transition-all hover:shadow-lg hover:shadow-indigo-200 w-full"
+                      <motion.img
+                        src={imageUrl(item.image) || item.image}
+                        alt={item.name}
+                        className="w-full h-72 object-contain bg-white transform group-hover:scale-105 transition duration-500"
+                        onError={(e) => {
+                          e.target.src = '/images/placeholder.jpg';
+                        }}
+                      />
+                      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/75 via-black/30 to-transparent opacity-80 group-hover:opacity-95 transition duration-300" />
+                      <div className="absolute inset-0 z-20 flex flex-col justify-between p-4">
+                        <div className="bg-white/90 backdrop-blur px-4 py-2 text-base font-semibold tracking-wide rounded-lg shadow-md text-indigo-700 w-fit">
+                          {item.name}
+                        </div>
+                        <div className="space-y-3 text-white">
+                          <p className="text-sm md:text-base leading-relaxed opacity-0 group-hover:opacity-100 transition duration-300 line-clamp-3">
+                            {item.description || `Premium ${item.name} with export-grade fabrics and customizable options.`}
+                          </p>
+                          <button
+                            type="button"
+                            className="inline-flex items-center justify-center gap-2 w-full rounded-full bg-white/20 border border-white/40 py-3 text-sm md:text-base font-semibold tracking-wide backdrop-blur hover:bg-white/30 transition"
                             onClick={(e) => {
                               e.stopPropagation();
-                              if (item.link) navigate(item.link);
+                              navigate(item.link || '#');
                             }}
                           >
                             Customize Now
-                            <FaArrowRight className="ml-2 w-3.5 h-3.5 text-white opacity-80 group-hover:translate-x-1 transition-transform" />
-                          </Link>
+                            <span aria-hidden>→</span>
+                          </button>
                         </div>
                       </div>
+                      {item.discount && (
+                        <motion.span
+                          className="absolute top-3 right-3 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md z-30"
+                          initial={{ scale: 0.8, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ delay: 0.2 }}
+                        >
+                          -{item.discount}% OFF
+                        </motion.span>
+                      )}
                     </motion.div>
                   </SwiperSlide>
                 ))}

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+
 import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
 import Hero from '../components/Hero';
@@ -7,7 +8,22 @@ import FeaturedCategories from '../components/Home/Feature';
 import LimitedTimeOffer from '../components/Home/LimitedTimeOffer';
 import Testimonials from '../components/Home/Customer';
 import { Link } from 'react-router-dom';
-import { FaFootballBall, FaBasketballBall, FaRunning, FaAward, FaPalette, FaGlobeAmericas, FaHatCowboy, FaShoppingBag, FaArrowRight, FaPhoneAlt, FaChevronLeft, FaChevronRight, FaStar, FaCheckCircle } from 'react-icons/fa';
+import {
+  FaFootballBall,
+  FaBasketballBall,
+  FaRunning,
+  FaAward,
+  FaPalette,
+  FaGlobeAmericas,
+  FaHatCowboy,
+  FaShoppingBag,
+  FaArrowRight,
+  FaPhoneAlt,
+  FaChevronLeft,
+  FaChevronRight,
+  FaStar,
+  FaCheckCircle
+} from 'react-icons/fa';
 import { MdSportsHockey, MdSportsRugby } from 'react-icons/md';
 import { GiCricketBat, GiTennisRacket, GiWeightLiftingUp, GiRunningShoe, GiGloves } from 'react-icons/gi';
 
@@ -147,7 +163,7 @@ const Home = () => {
       <section className="relative overflow-hidden bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 text-white">
         <div className="absolute inset-y-0 right-[-15%] w-2/3 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.28),_transparent_60%)] blur-3xl opacity-60" />
         <div className="absolute -bottom-24 -left-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
-        <div className="relative max-w-6xl mx-auto px-6 py-14">
+        <div className="relative max-w-7xl mx-auto px-4 py-14">
           <div className="grid gap-12 md:grid-cols-[1.15fr_0.85fr] items-center">
             <motion.div initial={{opacity:0, x:-30}} whileInView={{opacity:1, x:0}} viewport={{once:true, amount:0.4}} transition={{duration:0.6}}>
               <motion.span initial={{opacity:0, y:-12}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.5}} transition={{delay:0.1, duration:0.4}} className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium tracking-wide uppercase">
@@ -236,13 +252,11 @@ const Home = () => {
           </div>
         </div>
       </section>
-       <section className="max-w-6xl mx-auto px-4 py-12">
         <TopSellingProducts />
-      </section>
 
       {/* Quick Categories */}
       <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-4 py-12">
+        <div className="max-w-7xl mx-auto px-4 py-12">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-indigo-500">Shop by sport</p>
@@ -262,7 +276,7 @@ const Home = () => {
                 <div className="pointer-events-none absolute inset-y-4 right-0 w-10 bg-gradient-to-l from-white via-white/70 to-transparent" />
                 <div
                   ref={sportRailRef}
-                  className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-2 py-2 pr-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                  className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 overflow-x-auto scroll-smooth px-2 py-2 pr-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                 >
                   {categoryChips.map((chip, i) => (
                     <motion.div
@@ -332,7 +346,7 @@ const Home = () => {
 
       {/* Value Props */}
       <section className="bg-gradient-to-b from-white via-indigo-50/20 to-white">
-        <div className="max-w-6xl mx-auto px-4 py-12">
+        <div className="max-w-7xl mx-auto px-4 py-12">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -551,7 +565,7 @@ const Home = () => {
       </section>
       {/* Brand Story */}
       <section className="bg-white">
-        <div className="max-w-6xl mx-auto grid gap-10 px-4 py-16 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="max-w-7xl mx-auto grid gap-10 px-4 py-16 lg:grid-cols-[1.05fr_0.95fr]">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -616,7 +630,7 @@ const Home = () => {
       
      
 
-  <section className="max-w-6xl mx-auto px-4 py-12">
+  <section className="max-w-7xl mx-auto px-4 py-12">
         <Testimonials />
       </section>
 
