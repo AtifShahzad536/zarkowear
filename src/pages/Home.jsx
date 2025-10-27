@@ -1,4 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Autoplay } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/autoplay';
 
 import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
@@ -29,9 +34,6 @@ import { GiCricketBat, GiTennisRacket, GiWeightLiftingUp, GiRunningShoe, GiGlove
 
 const Home = () => {
   const path = window.location.pathname;
-  const sportRailRef = useRef(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [canScroll, setCanScroll] = useState(false);
 
   const clubs = [
     'Club One',
@@ -269,74 +271,82 @@ const Home = () => {
             </Link>
           </div>
 
-          <div className="relative mt-8">
-            <div className="overflow-hidden rounded-[32px] border border-indigo-100/70 bg-gradient-to-r from-white via-indigo-50/60 to-white shadow-xl">
-              <div className="relative px-4 pb-8 pt-4">
-                <div className="pointer-events-none absolute inset-y-4 left-0 w-10 bg-gradient-to-r from-white via-white/70 to-transparent" />
-                <div className="pointer-events-none absolute inset-y-4 right-0 w-10 bg-gradient-to-l from-white via-white/70 to-transparent" />
-                <div
-                  ref={sportRailRef}
-                  className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 overflow-x-auto scroll-smooth px-2 py-2 pr-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-                >
-                  {categoryChips.map((chip, i) => (
-                    <motion.div
-                      key={chip.label}
-                      initial={{ opacity: 0, y: 12 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.2 }}
-                      transition={{ delay: i * 0.025, duration: 0.35 }}
-                      whileHover={{ y: -6, scale: 1.03 }}
-                      className="snap-start"
+          <div className="relative mt-8 group">
+            {/* Navigation Buttons */}
+            <button className="swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg border border-indigo-100 flex items-center justify-center text-indigo-600 hover:bg-indigo-50 transition-all duration-300 opacity-0 group-hover:opacity-100">
+              <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button className="swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg border border-indigo-100 flex items-center justify-center text-indigo-600 hover:bg-indigo-50 transition-all duration-300 opacity-0 group-hover:opacity-100">
+              <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            <Swiper
+              modules={[Navigation, Autoplay]}
+              navigation={{
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              }}
+              autoplay={{
+                delay: 4000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+              }}
+              loop={true}
+              spaceBetween={16}
+              slidesPerView={2}
+              breakpoints={{
+                480: { slidesPerView: 2.5 },
+                640: { slidesPerView: 3 },
+                768: { slidesPerView: 3.5 },
+                1024: { slidesPerView: 4 },
+                1280: { slidesPerView: 5 },
+                1536: { slidesPerView: 6 }
+              }}
+              className="py-4"
+            >
+              {categoryChips.map((chip, i) => (
+                <SwiperSlide key={`${chip.label}-${i}`}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ delay: i * 0.025, duration: 0.35 }}
+                    whileHover={{ y: -6, scale: 1.03 }}
+                    className="h-full"
+                  >
+                    <Link
+                      to={chip.to}
+                      className="group block h-full rounded-2xl border border-indigo-100 bg-white/95 px-4 py-4 text-left shadow-sm transition hover:-translate-y-1.5 hover:border-indigo-200 hover:shadow-lg"
                     >
-                      <Link
-                        to={chip.to}
-                        className="group block min-w-[190px] rounded-2xl border border-indigo-100 bg-white/95 px-4 py-4 text-left shadow-sm transition hover:-translate-y-1.5 hover:border-indigo-200 hover:shadow-lg"
-                      >
-                        <div className="flex items-center justify-between gap-2">
-                          <div className="flex items-center gap-3">
-                            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 via-white to-indigo-50 text-indigo-600">
-                              <chip.Icon />
-                            </span>
-                            <div>
-                              <p className="text-sm font-semibold text-indigo-900">{chip.label}</p>
-                              <p className="text-xs text-gray-500">{chip.tagline}</p>
-                            </div>
-                          </div>
-                          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-50 text-indigo-500 transition group-hover:bg-indigo-600 group-hover:text-white">
-                            <FaArrowRight className="text-xs" />
+                      <div className="flex items-center justify-between gap-2 h-full">
+                        <div className="flex items-center gap-3 flex-1 min-w-0">
+                          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 via-white to-indigo-50 text-indigo-600 flex-shrink-0">
+                            <chip.Icon />
                           </span>
+                          <div className="min-w-0 flex-1">
+                            <p className="text-sm font-semibold text-indigo-900 truncate">{chip.label}</p>
+                            <p className="text-xs text-gray-500 truncate">{chip.tagline}</p>
+                          </div>
                         </div>
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
-                <div className="mx-2 mt-5 h-1 rounded-full bg-indigo-100">
-                  <div
-                    className="h-1 rounded-full bg-gradient-to-r from-indigo-500 via-indigo-600 to-blue-500 transition-all duration-300"
-                    style={{ width: `${Math.max(6, scrollProgress * 100)}%` }}
-                  />
-                </div>
+                        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-50 text-indigo-500 transition group-hover:bg-indigo-600 group-hover:text-white flex-shrink-0">
+                          <FaArrowRight className="text-xs" />
+                        </span>
+                      </div>
+                    </Link>
+                  </motion.div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {/* Progress bar */}
+            <div className="mt-6 flex justify-center">
+              <div className="w-32 h-1 rounded-full bg-indigo-100">
+                <div className="h-1 rounded-full bg-gradient-to-r from-indigo-500 via-indigo-600 to-blue-500 transition-all duration-300 w-1/3"></div>
               </div>
-              {canScroll ? (
-                <>
-                  <button
-                    type="button"
-                    aria-label="Scroll sports left"
-                    onClick={() => scrollRail(-1)}
-                    className="absolute left-3 top-1/2 hidden -translate-y-1/2 rounded-full border border-white/40 bg-white/80 p-3 text-indigo-700 shadow-md transition hover:-translate-y-1/2 hover:bg-white md:inline-flex"
-                  >
-                    <FaChevronLeft />
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Scroll sports right"
-                    onClick={() => scrollRail(1)}
-                    className="absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-full border border-white/40 bg-white/80 p-3 text-indigo-700 shadow-md transition hover:-translate-y-1/2 hover:bg-white md:inline-flex"
-                  >
-                    <FaChevronRight />
-                  </button>
-                </>
-              ) : null}
             </div>
           </div>
         </div>
