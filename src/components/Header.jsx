@@ -113,7 +113,7 @@ const Header = () => {
                   {word.split("").map((letter, letterIndex) => (
                     <motion.span
                       key={letterIndex}
-                      className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent inline-block"
+                      className="text-xl font-bold text-[#1E40AF] inline-block"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{
                         opacity: 1,
