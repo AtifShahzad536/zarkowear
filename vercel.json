@@ -13,8 +13,8 @@
       "use": "@vercel/node"
     },
     {
-      "src": "public/robots.txt",
-      "use": "@vercel/static"
+      "src": "api/robots-route.js",
+      "use": "@vercel/node"
     }
   ],
   "headers": [
@@ -35,19 +35,12 @@
   ],
   "routes": [
     {
-      "src": "/sitemap.xml",
-      "dest": "/api/sitemap-route",
-      "headers": {
-        "Content-Type": "application/xml; charset=utf-8",
-        "Cache-Control": "public, max-age=0, must-revalidate"
-      }
-    },
-    { 
       "src": "/robots.txt",
-      "dest": "/robots.txt",
-      "headers": {
-        "Content-Type": "text/plain; charset=utf-8"
-      }
+      "dest": "/api/robots-route"
+    },
+    {
+      "src": "/sitemap.xml",
+      "dest": "/api/sitemap-route"
     },
     {
       "src": "^/assets/(.*)",
