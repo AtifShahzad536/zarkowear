@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaBars, FaTimes, FaChevronDown, FaArrowRight, FaPhoneAlt, FaWhatsapp } from 'react-icons/fa';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
-import Logo from './Logo';
 
 const sportsWear = [
   { label: 'Wrestling Kits', to: '/wrestling' },

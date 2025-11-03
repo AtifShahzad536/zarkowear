@@ -109,7 +109,7 @@ const FeaturedCategories = () => {
                     type="button"
                     className="inline-flex items-center justify-center gap-2 w-full rounded-full bg-white/20 border border-white/40 py-3 text-sm md:text-base font-semibold tracking-wide backdrop-blur hover:bg-white/30 transition"
                   >
-                    Shop Collection
+                    Customize Now
                     <span aria-hidden>→</span>
                   </button>
                 </div>
