@@ -3,23 +3,6 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install --legacy-peer-deps",
   "framework": "vite",
-  "rewrites": [
-    { 
-      "source": "/sitemap.xml", 
-      "destination": "/sitemap.xml",
-      "headers": {
-        "Content-Type": "application/xml; charset=utf-8"
-      }
-    },
-    { 
-      "source": "/robots.txt", 
-      "destination": "/robots.txt" 
-    },
-    { 
-      "source": "/(.*)", 
-      "destination": "/" 
-    }
-  ],
   "headers": [
     {
       "source": "/sitemap.xml",
@@ -34,6 +17,12 @@
         { "key": "Content-Type", "value": "text/plain; charset=utf-8" }
       ]
     }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
+    { "src": "/robots.txt", "dest": "/robots.txt" },
+    { "src": "/(.*)", "dest": "/" }
   ],
   "builds": [
     {
