@@ -4,125 +4,125 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
   http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  
+
   <!-- Main Pages -->
   <url>
     <loc>https://www.zarkosportswear.com/</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-01-27T00:00:00+05:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/about</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://www.zarkosportswear.com/about/</loc>
+    <lastmod>2025-01-27T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/contact</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://www.zarkosportswear.com/contact/</loc>
+    <lastmod>2025-01-27T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <!-- Product Categories -->
   <url>
-    <loc>https://www.zarkosportswear.com/custom</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://www.zarkosportswear.com/custom/</loc>
+    <lastmod>2025-01-27T00:00:00+05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
 
   <!-- Sport Category Pages -->
   <url>
-    <loc>https://www.zarkosportswear.com/football</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://www.zarkosportswear.com/football/</loc>
+    <lastmod>2025-01-27T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/cricket</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://www.zarkosportswear.com/cricket/</loc>
+    <lastmod>2025-01-27T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/basketball</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://www.zarkosportswear.com/basketball/</loc>
+    <lastmod>2025-01-27T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/wrestling</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://www.zarkosportswear.com/wrestling/</loc>
+    <lastmod>2025-01-27T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/hockey</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://www.zarkosportswear.com/hockey/</loc>
+    <lastmod>2025-01-27T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/rugby</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://www.zarkosportswear.com/rugby/</loc>
+    <lastmod>2025-01-27T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/tennis</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://www.zarkosportswear.com/tennis/</loc>
+    <lastmod>2025-01-27T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/running</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://www.zarkosportswear.com/running/</loc>
+    <lastmod>2025-01-27T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/gym</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://www.zarkosportswear.com/gym/</loc>
+    <lastmod>2025-01-27T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/shoes</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://www.zarkosportswear.com/shoes/</loc>
+    <lastmod>2025-01-27T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/gloves</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://www.zarkosportswear.com/gloves/</loc>
+    <lastmod>2025-01-27T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/caps</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://www.zarkosportswear.com/caps/</loc>
+    <lastmod>2025-01-27T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/bags</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://www.zarkosportswear.com/bags/</loc>
+    <lastmod>2025-01-27T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
