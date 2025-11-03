@@ -1,43 +1,5 @@
 {
-  "buildCommand": "npm install && npm run build",
-  "devCommand": "npm run dev",
-  "installCommand": "npm install --legacy-peer-deps",
-  "framework": "vite",
-  "headers": [
-    {
-      "source": "/sitemap.xml",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" }
-      ]
-    },
-    {
-      "source": "/assets/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/(.*).js",
-      "headers": [
-        { "key": "Content-Type", "value": "application/javascript; charset=utf-8" }
-      ]
-    },
-    {
-      "source": "/(.*).css",
-      "headers": [
-        { "key": "Content-Type", "value": "text/css; charset=utf-8" }
-      ]
-    }
-  ],
-  "routes": [
-    { "src": "/sitemap.xml", "dest": "/api/sitemap-route" },
-    { "src": "/robots.txt", "dest": "/robots.txt" },
-    { "src": "/assets/(.*)", "dest": "/assets/$1" },
-    { "src": "/(.*).js", "dest": "/$1.js" },
-    { "src": "/(.*).css", "dest": "/$1.css" },
-    { "src": "/(.*)", "dest": "/index.html" }
-  ],
+  "version": 2,
   "builds": [
     {
       "src": "package.json",
@@ -45,6 +7,29 @@
       "config": {
         "distDir": "dist"
       }
+    },
+    {
+      "src": "api/sitemap-route.js",
+      "use": "@vercel/node"
     }
+  ],
+  "routes": [
+    { "src": "/sitemap.xml", "dest": "/api/sitemap-route" },
+    { "src": "/robots.txt", "dest": "/robots.txt" },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/(.*)\\.(js|css|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot)$",
+      "dest": "/$1.$2",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      }
+    },
+    { "src": "^/(.*)$", "dest": "/index.html" }
   ]
 }
