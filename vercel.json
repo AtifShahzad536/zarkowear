@@ -4,9 +4,21 @@
   "installCommand": "npm install --legacy-peer-deps",
   "framework": "vite",
   "rewrites": [
-    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
-    { "source": "/robots.txt", "destination": "/robots.txt" },
-    { "source": "/(.*)", "destination": "/" }
+    { 
+      "source": "/sitemap.xml", 
+      "destination": "/sitemap.xml",
+      "headers": {
+        "Content-Type": "application/xml; charset=utf-8"
+      }
+    },
+    { 
+      "source": "/robots.txt", 
+      "destination": "/robots.txt" 
+    },
+    { 
+      "source": "/(.*)", 
+      "destination": "/" 
+    }
   ],
   "headers": [
     {
