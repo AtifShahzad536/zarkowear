@@ -7,14 +7,6 @@
       "config": {
         "distDir": "dist"
       }
-    },
-    {
-      "src": "api/robots-route.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "api/sitemap-route.js",
-      "use": "@vercel/node"
     }
   ],
   "headers": [
@@ -31,43 +23,39 @@
         { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "source": "/(.*\\.(js|css|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot))$",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
     }
   ],
   "routes": [
     {
-      "src": "/robots.txt",
-      "dest": "/api/robots-route.js",
+      "src": "/(robots\\.txt|sitemap\\.xml)",
+      "dest": "/$1",
       "headers": {
-        "Content-Type": "text/plain; charset=utf-8"
-      }
-    },
-    {
-      "src": "/sitemap.xml",
-      "dest": "/api/sitemap-route.js",
-      "headers": {
-        "Content-Type": "application/xml; charset=utf-8"
+        "Access-Control-Allow-Origin": "*"
       }
     },
     {
       "src": "^/assets/(.*)",
-      "dest": "/assets/$1",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      }
+      "dest": "/assets/$1"
     },
     {
       "src": "^/(.*\\.(js|css|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot))$",
-      "dest": "/$1",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      }
+      "dest": "/$1"
     },
     { 
       "src": "^/(.*)$", 
-      "dest": "/index.html",
-      "headers": {
-        "Cache-Control": "no-cache, no-store, must-revalidate"
-      }
+      "dest": "/index.html"
     }
   ]
 }
