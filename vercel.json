@@ -2,48 +2,12 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
+      "src": "index.html",
       "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
-  "headers": [
-    {
-      "source": "/robots.txt",
-      "headers": [
-        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
-      ]
-    },
-    {
-      "source": "/sitemap.xml",
-      "headers": [
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
-      ]
+      "config": { "distDir": "dist" }
     }
   ],
   "routes": [
-    {
-      "src": "/robots.txt",
-      "dest": "/robots.txt",
-      "headers": {
-        "Content-Type": "text/plain; charset=utf-8",
-        "Cache-Control": "public, max-age=0, must-revalidate"
-      }
-    },
-    {
-      "src": "/sitemap.xml",
-      "dest": "/sitemap.xml",
-      "headers": {
-        "Content-Type": "application/xml; charset=utf-8",
-        "Cache-Control": "public, max-age=0, must-revalidate"
-      }
-    },
-    { "src": "/assets/(.*)", "dest": "/assets/$1" },
-    { "src": "^/(.*\\.(js|jsx|css|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot))$", "dest": "/$1" },
-    { "src": "^/(.*)", "dest": "/index.html" }
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
