@@ -9,11 +9,11 @@
       }
     },
     {
-      "src": "api/sitemap-route.js",
+      "src": "api/robots-route.js",
       "use": "@vercel/node"
     },
     {
-      "src": "api/robots-route.js",
+      "src": "api/sitemap-route.js",
       "use": "@vercel/node"
     }
   ],
@@ -36,11 +36,17 @@
   "routes": [
     {
       "src": "/robots.txt",
-      "dest": "/api/robots-route"
+      "dest": "/api/robots-route.js",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8"
+      }
     },
     {
       "src": "/sitemap.xml",
-      "dest": "/api/sitemap-route"
+      "dest": "/api/sitemap-route.js",
+      "headers": {
+        "Content-Type": "application/xml; charset=utf-8"
+      }
     },
     {
       "src": "^/assets/(.*)",
