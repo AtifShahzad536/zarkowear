@@ -2,12 +2,9 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
+      "src": "index.html",
       "use": "@vercel/static-build",
-      "config": { 
-        "distDir": "dist",
-        "zeroConfig": true
-      }
+      "config": { "distDir": "dist" }
     }
   ],
   "routes": [
@@ -15,18 +12,16 @@
     { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
     { "src": "/assets/(.*)", "dest": "/assets/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
   ]
-     ,
-     "headers": [
-       {
-         "source": "/(.*)",
-         "headers": [
-           { "key": "X-Content-Type-Options", "value": "nosniff" },
-           { "key": "X-Frame-Options", "value": "DENY" },
-           { "key": "X-XSS-Protection", "value": "1; mode=block" },
-           { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
-         ]
-       }
-     ]
-   
 }
