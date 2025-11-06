@@ -3,12 +3,12 @@
   "redirects": [
     {
       "source": "/(.*)", 
-      "destination": "https://zarkosportswear.com/$1", 
+      "destination": "https://www.zarkosportswear.com/$1", 
       "permanent": true,
       "has": [
         {
           "type": "host",
-          "value": "www.zarkosportswear.com"
+          "value": "zarkosportswear.com" 
         }
       ]
     }
