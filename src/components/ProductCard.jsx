@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { imageUrl } from '../services/api';
 
 const ProductCard = ({ 
@@ -10,97 +10,96 @@ const ProductCard = ({
   price, 
   isTopSelling = false,
   discount,
-  rating = 4.5,
-  reviewCount = 24
+  rating = 4.8,
+  reviewCount = 18
 }) => {
+  const navigate = useNavigate();
   const displayImage = imageUrl(image || '/images/placeholder.jpg');
+
+  const handleCardClick = () => {
+    navigate('/detail', { 
+      state: { 
+        product: { name, image, description, price, discount } 
+      } 
+    });
+  };
   
   return (
     <motion.div
-      className="group relative overflow-hidden rounded-3xl shadow-md hover:shadow-2xl transition cursor-pointer ring-1 ring-gray-200 hover:-translate-y-1"
-      initial={{ opacity: 0, y: 30 }}
+      onClick={handleCardClick}
+      className="group bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between"
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.5 }}
-      onClick={() => {/* handle click if needed */}}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.4 }}
     >
-      <motion.img
-        loading="lazy"
-        src={displayImage}
-        alt={name}
-        className="w-full h-72 object-contain bg-white transform group-hover:scale-105 transition duration-500"
-        onError={(e) => {
-          e.currentTarget.onerror = null;
-          e.currentTarget.src = imageUrl('/images/placeholder.jpg');
-        }}
-      />
+      {/* Image Area */}
+      <div className="relative aspect-square w-full bg-slate-50/80 overflow-hidden flex items-center justify-center p-6 border-b border-slate-100/50">
+        <img
+          loading="lazy"
+          src={displayImage}
+          alt={name}
+          className="max-h-full max-w-full object-contain transform group-hover:scale-105 transition-transform duration-500"
+          onError={(e) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = imageUrl('/images/placeholder.jpg');
+          }}
+        />
 
-      {/* Top Badge */}
-      {isTopSelling && (
-        <div className="absolute left-4 top-4 z-30">
-          <span className="inline-flex items-center rounded-full bg-gradient-to-r from-amber-400 to-amber-500 px-3 py-1 text-xs font-semibold text-white shadow-md">
-            🔥 Top Selling
-          </span>
-        </div>
-      )}
-
-      {/* Discount Badge */}
-      {discount && (
-        <div className="absolute right-3 top-3 z-30">
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-red-500 to-red-600 text-xs font-bold text-white shadow-lg">
-            -{discount}%
-          </span>
-        </div>
-      )}
-
-      {/* Overlay Gradient */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/75 via-black/30 to-transparent opacity-80 group-hover:opacity-95 transition duration-300" />
-
-      {/* Content Overlay */}
-      <div className="absolute inset-0 z-20 flex flex-col justify-between p-4">
-        {/* Title Badge */}
-        <div className="bg-white/90 backdrop-blur px-4 py-2 text-base font-semibold tracking-wide rounded-lg shadow-md text-indigo-700 w-fit">
-          {name}
-        </div>
-
-        {/* Bottom Content */}
-        <div className="space-y-3 text-white">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-lg font-bold">
-                {price ? `$${price.toFixed(2)}` : 'Get Quote'}
-              </p>
-              <div className="flex items-center">
-                <div className="flex items-center space-x-1">
-                  {[...Array(5)].map((_, i) => (
-                    <svg
-                      key={i}
-                      className={`h-3 w-3 ${i < Math.floor(rating) ? 'text-amber-400' : 'text-gray-400'}`}
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <span className="ml-1 text-xs text-gray-300">({reviewCount})</span>
-              </div>
-            </div>
+        {/* Top Selling Badge */}
+        {isTopSelling && (
+          <div className="absolute left-3 top-3 z-10">
+            <span className="inline-flex items-center rounded-full bg-amber-400 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-white shadow-sm">
+              Top Seller
+            </span>
           </div>
+        )}
 
-          <div className="text-sm md:text-base leading-relaxed opacity-0 group-hover:opacity-100 transition duration-300 line-clamp-3">
-            {description || `Premium ${name} with export-grade fabrics and customizable options.`}
+        {/* Discount Badge */}
+        {discount && (
+          <div className="absolute right-3 top-3 z-10">
+            <span className="inline-flex items-center rounded-full bg-rose-500 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-white shadow-sm">
+              -{discount}%
+            </span>
           </div>
+        )}
+      </div>
 
-          <Link
-            to={`/custom?product=${encodeURIComponent(name)}`}
-            className="inline-flex items-center justify-center gap-2 w-full rounded-full bg-white/20 border border-white/40 py-3 text-sm md:text-base font-semibold tracking-wide backdrop-blur hover:bg-white/30 transition"
-            onClick={(e) => e.stopPropagation()}
-          >
-            Customize Now
-            <span aria-hidden>→</span>
-          </Link>
+      {/* Info Area */}
+      <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+        <div className="space-y-1.5">
+          <h3 className="font-extrabold text-slate-800 text-base leading-tight group-hover:text-indigo-600 transition-colors">
+            {name}
+          </h3>
+          <p className="text-slate-400 text-xs font-medium line-clamp-2 leading-relaxed">
+            {description || `Premium custom ${name.toLowerCase()} crafted from elite materials for maximum breathability and stretch.`}
+          </p>
         </div>
+
+        {/* Rating and Price */}
+        <div className="flex items-center justify-between pt-2 border-t border-slate-100/50">
+          <div className="flex items-center gap-1">
+            <span className="text-[11px] font-bold text-amber-500">★</span>
+            <span className="text-[10px] font-bold text-slate-500">{rating}</span>
+            <span className="text-[9px] text-slate-400 font-medium">({reviewCount})</span>
+          </div>
+          <div>
+            <span className="text-xs font-black text-slate-400 uppercase tracking-wider">
+              {price ? `$${price.toFixed(2)}` : 'Get Quote'}
+            </span>
+          </div>
+        </div>
+
+        {/* Action Button */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate(`/custom?product=${encodeURIComponent(name)}`);
+          }}
+          className="w-full py-2.5 bg-slate-50 group-hover:bg-indigo-600 text-slate-700 group-hover:text-white text-xs font-bold rounded-xl border border-slate-150 group-hover:border-transparent transition-all duration-200 text-center block"
+        >
+          Customize Design
+        </button>
       </div>
     </motion.div>
   );
