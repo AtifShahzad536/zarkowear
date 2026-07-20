@@ -1,228 +1,176 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaTshirt, FaStar, FaRunning, FaMedal, FaShieldAlt } from 'react-icons/fa';
-import { containerVariants, itemVariants, logoVariants } from './splash/variants';
 
-const SplashLoading = ({ size = 'md', logoSrc, progress = 0, message = 'Loading...', subMessage = 'Please wait', logoScale = 1.5 }) => {
-  const [currentFeature, setCurrentFeature] = useState(0);
-  
-  const features = [
-    {
-      icon: <FaTshirt className="text-3xl text-indigo-500" />,
-      title: 'Premium Quality',
-      description: 'Export-grade fabrics for ultimate comfort'
-    },
-    {
-      icon: <FaMedal className="text-3xl text-amber-500" />,
-      title: 'Custom Designs',
-      description: 'Tailored to your team\'s identity'
-    },
-    {
-      icon: <FaShieldAlt className="text-3xl text-emerald-500" />,
-      title: 'Durable',
-      description: 'Built to last through intense gameplay'
-    },
-    {
-      icon: <FaRunning className="text-3xl text-rose-500" />,
-      title: 'Performance',
-      description: 'Engineered for athletes'
-    }
-  ];
+const SplashLoading = ({ progress = 0, onComplete }) => {
+  const [step, setStep] = useState(0); // 0: WELCOME, 1: Out, 2: ZARKO SPORTSWEAR
+  const [localProgress, setLocalProgress] = useState(0);
 
-  // Rotate through features
+  // Smooth sequential steps
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentFeature((prev) => (prev + 1) % features.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [features.length]);
+    const t1 = setTimeout(() => {
+      setStep(1);
+    }, 1800);
 
-  const sizeMap = { sm: 160, md: 200, lg: 240 };
-  const diameter = sizeMap[size] || 200;
-  const strokeWidth = 10;
-  const radius = diameter / 2 - strokeWidth - 4;
-  const circumference = 2 * Math.PI * radius;
-  const clampedProgress = Math.max(0, Math.min(100, progress));
-  const dashOffset = circumference * (1 - clampedProgress / 100);
-  const dashSize = Math.max(4, Math.round(circumference / 80));
-  const accent1 = '#2563eb';
-  const accent2 = '#60a5fa';
+    const t2 = setTimeout(() => {
+      setStep(2);
+    }, 2300);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, []);
+
+  // Snappy progress loader calculation
+  useEffect(() => {
+    if (step === 2) {
+      const interval = setInterval(() => {
+        setLocalProgress((prev) => {
+          if (prev >= 100) {
+            clearInterval(interval);
+            return 100;
+          }
+          const next = prev + 3;
+          return next > 100 ? 100 : next;
+        });
+      }, 25);
+      return () => clearInterval(interval);
+    }
+  }, [step]);
+
+  // Complete splash sequence when fully loaded
+  useEffect(() => {
+    if (localProgress >= 100 && step === 2) {
+      const finishTimeout = setTimeout(() => {
+        if (onComplete) onComplete();
+      }, 1500);
+      return () => clearTimeout(finishTimeout);
+    }
+  }, [localProgress, step, onComplete]);
 
   return (
-    <div className="fixed inset-0 text-slate-800 flex items-center justify-center z-[9999] overflow-hidden bg-gradient-to-br from-stone-100 via-stone-50 to-stone-200">
-      <motion.div
-        className="pointer-events-none absolute inset-0"
-        initial={{ opacity: 0.2 }}
-        animate={{ opacity: [0.2, 0.35, 0.2] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        style={{ background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.06), transparent 60%)' }}
-      />
-      <motion.div
-        className="relative"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-      >
-        {/* Logo/Brand */}
-        <motion.div 
-          className="mb-8"
-          variants={logoVariants}
-          animate={['visible', 'pulse']}
-        >
-          {/* Circular badge with logo and circle loading */}
-          <motion.div
-            className="relative mx-auto rounded-full shadow-xl"
-            style={{ width: diameter, height: diameter }}
-            animate={{ scale: [1, 1.02, 1] }}
-            transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            {/* Glow halo */}
-            <motion.div
-              className="absolute -inset-6 rounded-full blur-2xl"
-              style={{ background: `linear-gradient(135deg, ${accent1}22, ${accent2}22)` }}
-              animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.03, 1] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            />
-            {/* Circular progress track and rings */}
-            <motion.svg
-              width={diameter}
-              height={diameter}
-              className="absolute inset-0 -rotate-90"
-              initial={{ rotate: 0 }}
-              animate={{ rotate: progress >= 100 ? 0 : 360 }}
-              transition={{ duration: 6, ease: 'linear', repeat: progress >= 100 ? 0 : Infinity }}
-            >
-              <defs>
-                <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor={accent1} />
-                  <stop offset="100%" stopColor={accent2} />
-                </linearGradient>
-                <linearGradient id="dashGrad" x1="100%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor={accent2} />
-                  <stop offset="100%" stopColor={accent1} />
-                </linearGradient>
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="3.5" result="coloredBlur" />
-                  <feMerge>
-                    <feMergeNode in="coloredBlur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-              <circle
-                cx={diameter / 2}
-                cy={diameter / 2}
-                r={radius}
-                fill="none"
-                stroke="#e5e7eb"
-                strokeWidth={strokeWidth}
-              />
-              <motion.circle
-                cx={diameter / 2}
-                cy={diameter / 2}
-                r={radius}
-                fill="none"
-                stroke="url(#ringGrad)"
-                strokeLinecap="round"
-                strokeWidth={strokeWidth}
-                style={{ strokeDasharray: circumference, strokeDashoffset: dashOffset }}
-                animate={{ strokeDashoffset: dashOffset }}
-                transition={{ duration: 0.4, ease: 'easeInOut' }}
-                filter="url(#glow)"
-              />
-              <motion.circle
-                cx={diameter / 2}
-                cy={diameter / 2}
-                r={radius - strokeWidth * 0.6}
-                fill="none"
-                stroke="url(#dashGrad)"
-                strokeWidth={Math.max(2, strokeWidth * 0.6)}
-                strokeLinecap="round"
-                style={{ strokeDasharray: `${dashSize} ${dashSize * 1.2}` }}
-                animate={{ strokeDashoffset: [0, dashSize * 2] }}
-                transition={{ duration: 0.9, ease: 'linear', repeat: Infinity }}
-                opacity={0.7}
-              />
-              {/* Sweeping highlight arc */}
-              <motion.circle
-                cx={diameter / 2}
-                cy={diameter / 2}
-                r={radius - strokeWidth * 0.25}
-                fill="none"
-                stroke="#ffffff"
-                strokeOpacity="0.5"
-                strokeWidth={2}
-                style={{ strokeDasharray: `${Math.max(20, circumference * 0.12)} ${circumference}` }}
-                animate={{ strokeDashoffset: [0, circumference] }}
-                transition={{ duration: 2.0, ease: 'linear', repeat: Infinity }}
-              />
-              {/* Orbiting glow dots */}
-              <motion.g
-                initial={{ rotate: 0 }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 2.4, ease: 'linear', repeat: Infinity }}
-                style={{ originX: '50%', originY: '50%' }}
-              >
-                <circle
-                  cx={diameter / 2}
-                  cy={(diameter / 2) - (radius - strokeWidth * 0.2)}
-                  r={3}
-                  fill={accent2}
-                  stroke={accent1}
-                  strokeWidth={1}
-                  filter="url(#glow)"
-                />
-              </motion.g>
-              <motion.g
-                initial={{ rotate: 0 }}
-                animate={{ rotate: -360 }}
-                transition={{ duration: 3.6, ease: 'linear', repeat: Infinity }}
-                style={{ originX: '50%', originY: '50%' }}
-              >
-                <circle
-                  cx={diameter / 2}
-                  cy={(diameter / 2) - (radius - strokeWidth * 0.55)}
-                  r={2.5}
-                  fill={accent1}
-                  stroke={accent2}
-                  strokeWidth={1}
-                  filter="url(#glow)"
-                />
-              </motion.g>
-              {/* Outer faint ring for depth */}
-              <circle
-                cx={diameter / 2}
-                cy={diameter / 2}
-                r={radius + 4}
-                fill="none"
-                stroke={accent1}
-                strokeOpacity="0.15"
-                strokeWidth="2"
-              />
-            </motion.svg>
+    <div className="fixed inset-0 z-[99999] bg-white flex flex-col items-center justify-center overflow-hidden select-none">
+      
+      {/* Light Theme Glitch & Water Fill CSS Styles */}
+      <style>{`
+        /* Welcome Water Wave Fill */
+        .welcome-water-text {
+          color: rgba(30, 64, 175, 0.08);
+          -webkit-text-stroke: 2.2px #1e40af;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 28'%3E%3Cpath fill='%231E40AF' d='M0,15 C30,5 30,20 60,15 C90,5 90,20 120,15 L120,28 L0,28 Z'%3E%3C/path%3E%3C/svg%3E");
+          background-size: 140px 100%;
+          background-repeat: repeat-x;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          animation: wave-horizontal 2.5s linear infinite, wave-rise-once 1.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
 
-            {/* Inner content */}
-            <div className="absolute inset-3 rounded-full bg-white shadow-xl ring-1 ring-black/5 overflow-hidden">
-              {logoSrc ? (
-                <>
-                  <img
-                    src={logoSrc}
-                    alt="Brand logo"
-                    className="absolute inset-0 w-full h-full object-cover"
-                    style={{ transform: `scale(${logoScale})`, transformOrigin: 'center' }}
-                  />
-                </>
-              ) : (
-                <div className="flex h-full w-full items-center justify-center flex-col">
-                  <div className="text-3xl font-extrabold tracking-wide">ZARKO</div>
-                  <div className="text-sm opacity-60 -mt-1">SPORTSWEAR</div>
-                </div>
-              )}
-            </div>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+        /* Zarko Interactive Progress Water Fill */
+        .zarko-water-text {
+          color: rgba(15, 23, 42, 0.05);
+          -webkit-text-stroke: 2px #0f172a;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 28'%3E%3Cpath fill='%231E40AF' d='M0,15 C30,5 30,20 60,15 C90,5 90,20 120,15 L120,28 L0,28 Z'%3E%3C/path%3E%3C/svg%3E");
+          background-size: 180px 100%;
+          background-repeat: repeat-x;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          animation: wave-horizontal 2s linear infinite;
+          transition: background-position-y 0.15s ease-out;
+        }
+
+        @keyframes wave-horizontal {
+          0% { background-position-x: 0px; }
+          100% { background-position-x: 1000px; }
+        }
+
+        @keyframes wave-rise-once {
+          0% { background-position-y: 110%; }
+          100% { background-position-y: -10%; }
+        }
+      `}</style>
+
+      {/* Main Content Area */}
+      <div className="relative flex flex-col items-center justify-center w-full max-w-5xl px-8 text-center">
+        <AnimatePresence mode="wait">
+          
+          {/* ── 1. WELCOME with Water Wave Fill ── */}
+          {step === 0 && (
+            <motion.div
+              key="welcome"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
+              transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+              className="flex flex-col items-center justify-center"
+            >
+              <h1 
+                className="text-[64px] md:text-[115px] font-black tracking-[0.25em] uppercase leading-none welcome-water-text py-2"
+                style={{ fontFamily: "'Outfit', sans-serif" }}
+              >
+                WELCOME
+              </h1>
+              <div className="h-[2px] w-24 bg-gradient-to-r from-indigo-500 to-purple-500 mt-4 rounded-full" />
+            </motion.div>
+          )}
+
+          {/* ── 2. ZARKO SPORTSWEAR with Simple 3D Text Highlight ── */}
+          {step === 2 && (
+            <motion.div
+              key="zarko-brand"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+              className="flex flex-col items-center justify-center gap-2"
+            >
+              <div className="flex flex-col items-center justify-center">
+                <h2 
+                  className="text-[54px] md:text-[100px] font-black tracking-[0.18em] uppercase leading-none zarko-water-text py-2"
+                  style={{ 
+                    fontFamily: "'Outfit', sans-serif",
+                    backgroundPositionY: `${110 - localProgress * 1.2}%`
+                  }}
+                >
+                  ZARKO
+                </h2>
+                
+                <h3 
+                  className="text-[16px] md:text-[26px] font-extrabold tracking-[0.45em] text-slate-800 uppercase"
+                  style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+                >
+                  SPORTSWEAR
+                </h3>
+              </div>
+
+              {/* Simple Highlight Subtitle (Pure typography, no borders, no divs, no boundaries) */}
+              <p 
+                className="text-[10px] md:text-[12px] font-bold text-indigo-600 tracking-[0.4em] uppercase mt-2 select-none animate-pulse"
+                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+              >
+                3D Custom Jersey Builder
+              </p>
+
+              {/* Snappy Progress Loader */}
+              <div className="w-56 h-[3px] bg-slate-100 rounded-full overflow-hidden mt-8 relative">
+                <div 
+                  className="h-full bg-indigo-600 transition-all duration-150 rounded-full"
+                  style={{ width: `${localProgress}%` }}
+                />
+              </div>
+              <span 
+                className="text-[11px] font-extrabold text-slate-400 tracking-widest uppercase mt-2.5"
+                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+              >
+                {localProgress}%
+              </span>
+            </motion.div>
+          )}
+
+        </AnimatePresence>
+      </div>
+
     </div>
   );
 };

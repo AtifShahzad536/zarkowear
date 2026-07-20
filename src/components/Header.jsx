@@ -32,7 +32,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1024) {
         setMobileOpen(false);
         setOpenDropdown(null);
       }
@@ -52,7 +52,7 @@ const Header = () => {
       initial={{ y: -18, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.35, ease: 'easeOut' }}
-      className="sticky top-0 z-50 border-b border-slate-100/70 bg-white/80 backdrop-blur-xl shadow-[0_20px_45px_-28px_rgba(15,23,42,0.4)]"
+      className="sticky top-0 z-50 border-b border-slate-100/70 bg-white/90 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.02)]"
     >
       <motion.div
         className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-indigo-400/50 to-transparent"
@@ -60,147 +60,63 @@ const Header = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1, duration: 0.6 }}
       />
-      <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
-        {/* Logo on the left */}
-        <div className="relative inline-flex items-center gap-3">
-          <Link to="/" className="flex items-center gap-3 group">
-            {/* Logo */}
-            <motion.div
-              className="relative p-0.5 rounded-full bg-gradient-to-br from-indigo-100/50 to-purple-100/50 backdrop-blur-sm border border-indigo-200/40 shadow-lg overflow-hidden"
-              initial={{ y: 0 }}
-              animate={{ y: [0, -3, 0] }}
-              transition={{
-                y: {
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut"
-                },
-                type: "spring",
-                stiffness: 400,
-                damping: 25
-              }}
-              whileHover={{
-                scale: 1.05,
-                rotateY: 5,
-                boxShadow: "0 10px 30px rgba(99, 102, 241, 0.3)",
-                y: -5
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <div className="relative w-9 h-9 rounded-full overflow-hidden border border-white/30 shadow-inner">
-                <img
-                  src="/headerLogo.png"
-                  alt="Zarko Sportswear"
-                  className="w-full h-full object-cover scale-150"
-                />
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute inset-0 rounded-full ring-1 ring-indigo-400/40 animate-pulse" />
-              </div>
-            </motion.div>
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5">
+        {/* Logo and Typography Brand Name on the Left */}
+        <Link to="/" className="flex items-center gap-2 group flex-shrink-0">
+          <div className="relative w-8 h-8 rounded-full overflow-hidden border border-indigo-100 bg-white flex items-center justify-center p-0.5 shadow-sm">
+            <img
+              src="/headerLogo.png"
+              alt="Zarko Sportswear"
+              className="w-full h-full object-contain scale-125"
+            />
+          </div>
+          <span className="text-[16px] font-black text-indigo-950 uppercase tracking-widest" style={{ fontFamily: "'Outfit', sans-serif" }}>
+            ZARKO <span className="text-indigo-600 font-semibold text-[10px] tracking-normal lowercase" style={{ fontFamily: "'Outfit', sans-serif" }}>sportswear</span>
+          </span>
+        </Link>
 
-            {/* Brand Name */}
-            <motion.div
-              className="flex items-baseline"
-              initial="hidden"
-              animate="show"
-            >
-              {["Zarko", "Sportswear"].map((word, wordIndex) => (
-                <motion.div
-                  key={wordIndex}
-                  className="flex mr-3"
-                >
-                  {word.split("").map((letter, letterIndex) => (
-                    <motion.span
-                      key={letterIndex}
-                      className="text-xl font-bold text-[#1E40AF] inline-block"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{
-                        opacity: 1,
-                        y: [0, -3, 0],
-                        transition: {
-                          y: {
-                            duration: 2,
-                            repeat: Infinity,
-                            repeatType: "reverse",
-                            ease: "easeInOut",
-                            delay: wordIndex * 0.5 + letterIndex * 0.1
-                          },
-                          opacity: { duration: 0.5, delay: 0.2 + wordIndex * 0.1 + letterIndex * 0.05 }
-                        }
-                      }}
-                      whileHover={{
-                        y: -6,
-                        scale: 1.2,
-                        rotate: letterIndex % 2 === 0 ? 5 : -5,
-                        transition: {
-                          type: "spring",
-                          stiffness: 500,
-                          damping: 20,
-                          delay: letterIndex * 0.03
-                        }
-                      }}
-                      whileTap={{
-                        scale: 0.9,
-                        transition: { duration: 0.1 }
-                      }}
-                    >
-                      {letter}
-                    </motion.span>
-                  ))}
-                </motion.div>
-              ))}
-            </motion.div>
-          </Link>
+        {/* Inline Flex Desktop Menu (Centered relative to container width) */}
+        <div className="hidden lg:flex items-center gap-5 text-[11px] font-bold uppercase tracking-wider text-slate-600">
+          <DesktopLink to="/">Home</DesktopLink>
+          <span className="h-3 w-px bg-slate-200/80" />
+
+          <Dropdown label="Sports Wear" items={sportsWear} />
+          <span className="h-3 w-px bg-slate-200/80" />
+          <Dropdown label="Accessories" items={accessories} />
+          <span className="h-3 w-px bg-slate-200/80" />
+
+          <DesktopLink to="/builder">3D Customizer</DesktopLink>
+          <span className="h-3 w-px bg-slate-200/80" />
+          <DesktopLink to="/custom">Custom Orders</DesktopLink>
+          <span className="h-3 w-px bg-slate-200/80" />
+          <DesktopLink to="/about">About Us</DesktopLink>
+          <span className="h-3 w-px bg-slate-200/80" />
+          <DesktopLink to="/contact">Contact Us</DesktopLink>
         </div>
 
-        {/* Centered Desktop Menu */}
-        <LayoutGroup>
-          <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center gap-3 rounded-full border border-slate-200/60 bg-white/75 px-6 py-1.5 shadow-[0_15px_38px_-28px_rgba(15,23,42,0.3)] backdrop-blur">
-            <nav className="flex items-center gap-3 text-xs font-semibold text-slate-600">
-              <DesktopLink to="/">Home</DesktopLink>
-              <span className="h-4 w-px bg-indigo-100/70" />
-              <DesktopLink to="/about">About Us</DesktopLink>
-              <span className="h-4 w-px bg-indigo-100/70" />
-
-              <Dropdown label="Sports Wear" items={sportsWear} />
-              <span className="h-4 w-px bg-indigo-100/70" />
-              <Dropdown label="Team Accessories" items={accessories} />
-              <span className="h-4 w-px bg-indigo-100/70" />
-
-              <DesktopLink to="/custom">Custom Orders</DesktopLink>
-              <span className="h-4 w-px bg-indigo-100/70" />
-              <DesktopLink to="/contact">Contact Us</DesktopLink>
-            </nav>
-          </div>
-        </LayoutGroup>
-
-        {/* Contact on the right */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* WhatsApp & Mobile Toggle on the Right */}
+        <div className="flex items-center gap-4">
           <motion.a
             href="https://wa.me/923039200750"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm font-semibold text-indigo-700 hover:text-indigo-800 transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="hidden md:flex items-center gap-2 text-xs font-semibold text-emerald-600 hover:text-emerald-700 bg-emerald-50/50 hover:bg-emerald-50 border border-emerald-100 px-4 py-2 rounded-full transition-colors"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-600">
-              <FaWhatsapp className="text-sm" />
-            </div>
+            <FaWhatsapp className="text-sm" />
             <span>+92-303-9200750</span>
           </motion.a>
-        </div>
 
-        {/* Mobile Toggle */}
-        <motion.button
-          onClick={toggleMobile}
-          className="md:hidden inline-flex items-center justify-center rounded-full border border-indigo-200/70 bg-white/85 px-3 py-2 text-indigo-600 shadow-sm backdrop-blur"
-          aria-label="Toggle menu"
-          whileTap={{ scale: 0.9 }}
-        >
-          {mobileOpen ? <FaTimes className="text-lg" /> : <FaBars className="text-lg" />}
-        </motion.button>
+          {/* Mobile Menu Toggle (Displays on screens below lg) */}
+          <button
+            onClick={toggleMobile}
+            className="lg:hidden inline-flex items-center justify-center rounded-full p-2 text-slate-600 hover:bg-slate-50 transition"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <FaTimes className="text-lg" /> : <FaBars className="text-lg" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -226,7 +142,6 @@ const Header = () => {
               </p>
               <div className="mt-4 space-y-3">
                 <MobileLink to="/" onClick={() => setMobileOpen(false)}>Home</MobileLink>
-                <MobileLink to="/about" onClick={() => setMobileOpen(false)}>About Us</MobileLink>
 
                 <MobileDropdown
                   label="Sports Wear"
@@ -244,7 +159,9 @@ const Header = () => {
                   onNavigate={() => setMobileOpen(false)}
                 />
 
+                <MobileLink to="/builder" onClick={() => setMobileOpen(false)}>3D Customizer</MobileLink>
                 <MobileLink to="/custom" onClick={() => setMobileOpen(false)}>Custom Orders</MobileLink>
+                <MobileLink to="/about" onClick={() => setMobileOpen(false)}>About Us</MobileLink>
                 <MobileLink to="/contact" onClick={() => setMobileOpen(false)}>Contact Us</MobileLink>
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }}>
                   <a
@@ -279,32 +196,34 @@ const Dropdown = ({ label, items }) => {
       className="relative whitespace-nowrap"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
+      style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
     >
       <button
-        className="flex items-center gap-1 text-xs font-semibold transition-colors hover:text-indigo-600"
+        className={`flex items-center gap-1.5 py-2 text-[11px] font-extrabold uppercase tracking-wider transition-all duration-300 select-none outline-none
+          relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-indigo-600 after:transition-transform after:duration-300 hover:after:scale-x-100
+          ${open ? 'text-indigo-600 after:scale-x-100' : 'text-slate-500 hover:text-indigo-600'}`}
         aria-haspopup="menu"
         aria-expanded={open}
       >
         {label}
-        <FaChevronDown className={`text-xs mt-0.5 transition-transform ${open ? 'rotate-180' : ''}`} />
+        <FaChevronDown className={`text-[9px] transition-transform duration-300 ${open ? 'rotate-180 text-indigo-600' : 'text-slate-400'}`} />
       </button>
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
-            transition={{ duration: 0.18, ease: 'easeOut' }}
-            className="absolute left-1/2 top-full z-50 mt-3 w-60 -translate-x-1/2"
+            initial={{ opacity: 0, y: 12, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 8, scale: 0.96 }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
+            className="absolute left-1/2 top-full z-50 mt-2 w-56 -translate-x-1/2"
           >
-            <div className="overflow-hidden rounded-2xl border border-indigo-100 bg-white/95 shadow-2xl backdrop-blur">
-              <div className="h-1 bg-gradient-to-r from-indigo-500/0 via-indigo-400/50 to-indigo-500/0" />
-              <ul className="py-3">
+            <div className="overflow-hidden rounded-2xl border border-slate-100 bg-white/95 shadow-[0_20px_50px_rgba(0,0,0,0.08)] backdrop-blur-xl">
+              <ul className="py-2.5">
                 {items.map((item, index) => (
                   <li key={index}>
                     <Link
                       to={item.to}
-                      className="block px-5 py-2 text-sm text-slate-600 transition hover:bg-indigo-50 hover:text-indigo-600"
+                      className="block px-5 py-2 text-[10px] font-bold uppercase tracking-wider text-slate-500 hover:bg-indigo-50/50 hover:text-indigo-600 transition-colors"
                     >
                       {item.label}
                     </Link>
@@ -320,48 +239,16 @@ const Dropdown = ({ label, items }) => {
 };
 
 const DesktopLink = ({ to, children }) => (
-  <NavLink to={to} className={({ isActive }) => 'relative whitespace-nowrap'}>
-    {({ isActive }) => (
-      <span
-        className={`group relative inline-flex items-center px-3 py-2 text-sm font-semibold transition-colors ${
-          isActive ? 'text-indigo-600' : 'text-slate-600 hover:text-indigo-600'
-        }`}
-      >
-        <motion.span
-          className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500/0 via-indigo-500/20 to-indigo-500/0 opacity-0"
-          initial={false}
-          whileHover={{ opacity: 1, scale: 1 }}
-          whileTap={{ opacity: 1, scale: 0.96 }}
-          transition={{ duration: 0.25, ease: 'easeOut' }}
-        />
-        <motion.span
-          className="pointer-events-none absolute inset-0 rounded-full bg-indigo-500/15 blur-xl opacity-0"
-          initial={false}
-          whileHover={{ opacity: 0.55, scale: 1.05 }}
-          whileTap={{ opacity: 0.75, scale: 0.95 }}
-          transition={{ duration: 0.3, ease: 'easeOut' }}
-        />
-        <span>{children}</span>
-        <motion.span
-          layoutId="desktopNavGlow"
-          className="pointer-events-none absolute inset-x-2 bottom-0 h-0.5 rounded-full bg-gradient-to-r from-indigo-500 via-sky-400 to-purple-500"
-          initial={false}
-          animate={{
-            opacity: isActive ? 1 : 0,
-            scaleX: isActive ? 1 : 0,
-          }}
-          transition={{ type: 'spring', stiffness: 280, damping: 26 }}
-        />
-        {!isActive && (
-          <motion.span
-            className="pointer-events-none absolute inset-0 rounded-full bg-indigo-500/0 blur-md"
-            initial={{ scale: 0, opacity: 0 }}
-            whileHover={{ scale: 1, opacity: 0.15 }}
-            transition={{ duration: 0.25 }}
-          />
-        )}
-      </span>
-    )}
+  <NavLink
+    to={to}
+    className={({ isActive }) =>
+      `relative py-2 text-[11px] font-extrabold uppercase tracking-wider transition-all duration-300 select-none
+       after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-indigo-600 after:transition-transform after:duration-300 hover:after:scale-x-100
+       ${isActive ? 'text-indigo-600 after:scale-x-100' : 'text-slate-500 hover:text-indigo-600'}`
+    }
+    style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+  >
+    {children}
   </NavLink>
 );
 

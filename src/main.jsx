@@ -1,10 +1,12 @@
-import { StrictMode, Suspense, lazy } from 'react'
+import { StrictMode, StrictMode as ReactStrictMode, Suspense, lazy } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import RequireAdmin from './components/admin/RequireAdmin.jsx'
 import { ToastProvider } from './components/Toast.jsx'
+import { Provider } from 'react-redux'
+import { store } from './store/index.js'
 
 const ProductInquiry = lazy(() => import('./components/Detail.jsx'))
 const Home = lazy(() => import('./pages/Home.jsx'))
@@ -16,6 +18,7 @@ const AdminHome = lazy(() => import('./pages/AdminHome.jsx'))
 const AdminLayout = lazy(() => import('./components/admin/AdminLayout.jsx'))
 const AdminLogin = lazy(() => import('./pages/AdminLogin.jsx'))
 const NotFound = lazy(() => import('./pages/NotFound.jsx'))
+const BuilderPage = lazy(() => import('./pages/BuilderPage.jsx'))
 
 // Define routes
 const router = createBrowserRouter([
@@ -46,6 +49,10 @@ const router = createBrowserRouter([
       { path: "gloves", element: <CategoryRoute slug="gloves"/> },
       { path: "caps", element: <CategoryRoute slug="caps"/> },
       { path: "bags", element: <CategoryRoute slug="bags"/> },
+
+      // ✅ 3D Jersey Builder
+      { path: "builder", element: <BuilderPage /> },
+      { path: "builder/:id", element: <BuilderPage /> },
       {
         path: "admin",
         element: <RequireAdmin />,
@@ -78,11 +85,13 @@ const SEOLoadingFallback = () => (
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Suspense fallback={<SEOLoadingFallback />}>
-      <ToastProvider>
-        <RouterProvider router={router} />
-      </ToastProvider>
-    </Suspense>
+    <Provider store={store}>
+      <Suspense fallback={<SEOLoadingFallback />}>
+        <ToastProvider>
+          <RouterProvider router={router} />
+        </ToastProvider>
+      </Suspense>
+    </Provider>
   </StrictMode>
 )
 

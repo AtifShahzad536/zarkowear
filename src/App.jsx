@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import ScrollTopButton from './components/ScrollTopButton';
 import SplashLoading from './components/ui/SplashLoading';
 import useAppBoot from './hooks/useAppBoot';
@@ -18,36 +18,39 @@ const ChatbotWidget = lazy(() => import('./components/ChatbotWidget'));
 function App() {
   const { isLoading, loadingProgress, loadingMessage, loadingSubMessage } = useAppBoot();
   const [contentLoaded, setContentLoaded] = React.useState(false);
+  const [showSplash, setShowSplash] = React.useState(true);
+  const location = useLocation();
 
   const markContentAsLoaded = () => setContentLoaded(true);
+
+  const isBuilderRoute = location.pathname.startsWith('/builder');
+  const is3DEditor = /^\/builder\/.+/.test(location.pathname);
 
   return (
     <ContentLoadedContext.Provider value={{
       markAsLoaded: markContentAsLoaded,
       isContentLoaded: contentLoaded
     }}>
-      {isLoading ? (
+      {showSplash ? (
         <SplashLoading
-          logoSrc="/headerLogo.png"
-          logoScale={1.3}
           progress={loadingProgress}
-          message={loadingMessage}
-          subMessage={loadingSubMessage}
+          onComplete={() => setShowSplash(false)}
         />
+      ) : isBuilderRoute ? (
+        <div className={`transition-opacity duration-500 opacity-100 ${is3DEditor ? 'h-[100vh] overflow-hidden' : 'min-h-screen'}`}>
+          <main className="h-full w-full">
+            <Outlet />
+          </main>
+        </div>
       ) : (
         <div className="transition-opacity duration-500 opacity-100">
           <Header />
           <main className="min-h-screen">
             <Suspense
               fallback={
-                <SplashLoading
-                  size="md"
-                  logoSrc="/headerLogo.png"
-                  logoScale={2.1}
-                  progress={0}
-                  message="Loading components..."
-                  subMessage="Please wait a moment"
-                />
+                <div className="flex items-center justify-center p-4">
+                  <div className="w-6 h-6 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
               }
             >
               <ChatbotWidget />
