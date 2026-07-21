@@ -28,7 +28,7 @@ const Hero = () => {
   }, [images]);
 
   return (
-    <section className="relative w-full h-[80vh] overflow-hidden">
+    <section className="relative w-full h-[32vh] sm:h-[50vh] md:h-[80vh] overflow-hidden">
       <Swiper
         modules={[Navigation, Autoplay]}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
@@ -44,8 +44,8 @@ const Hero = () => {
               decoding="async"
               src={imageUrl(src) || '/images/slide1.jpg'}
               alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover md:object-cover"
-              style={{ objectPosition: 'center 30%' }}
+              className="w-full h-full object-contain sm:object-cover"
+              style={{ objectPosition: 'center center' }}
               sizes="(min-width: 1024px) 100vw, 100vw"
               width="1920"
               height="1080"
@@ -54,7 +54,7 @@ const Hero = () => {
         ))}
       </Swiper>
 
-      <div className="absolute bottom-6 left-3 right-3 sm:left-6 sm:right-auto md:bottom-12 md:left-12 z-40 flex max-w-xl flex-col gap-3 bg-black/45 backdrop-blur-md px-5 py-4 rounded-2xl text-white">
+      <div className="hidden sm:flex absolute bottom-6 left-3 right-3 sm:left-6 sm:right-auto md:bottom-12 md:left-12 z-40 flex-col gap-3 bg-black/45 backdrop-blur-md px-5 py-4 rounded-2xl text-white max-w-xl">
         <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-wide">Zarko Sportswear</h1>
         <span className="inline-flex items-center gap-2 rounded-full bg-black/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-indigo-200">
           Export-grade team uniforms
