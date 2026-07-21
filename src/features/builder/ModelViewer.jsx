@@ -415,11 +415,26 @@ const CameraController = memo(function CameraController({ mouseFollow, isDraggin
       link.href = canvas.toDataURL('image/png');
       link.click();
     };
+    const onSetCameraAngle = (e) => {
+      const angle = e.detail || 'front';
+      if (angle === 'front') camera.position.set(0, 0, 2.5);
+      else if (angle === 'back') camera.position.set(0, 0, -2.5);
+      else if (angle === 'left') camera.position.set(-2.5, 0, 0);
+      else if (angle === 'right') camera.position.set(2.5, 0, 0);
+      else if (angle === 'top') camera.position.set(0, 2.5, 0.5);
+      camera.updateProjectionMatrix();
+      if (controlsRef.current) {
+        controlsRef.current.target.set(0, 0, 0);
+        controlsRef.current.update();
+      }
+    };
     window.addEventListener('eay:resetCamera', onReset);
+    window.addEventListener('eay:setCameraAngle', onSetCameraAngle);
     window.addEventListener('eay:zoom', onZoom);
     window.addEventListener('eay:export', onExport);
     return () => {
       window.removeEventListener('eay:resetCamera', onReset);
+      window.removeEventListener('eay:setCameraAngle', onSetCameraAngle);
       window.removeEventListener('eay:zoom', onZoom);
       window.removeEventListener('eay:export', onExport);
     };
@@ -1505,7 +1520,11 @@ const ModelViewer = memo(({ modelUrl, layersMetadata = {}, meshStates, onMeshesD
 
   return (
     <div className="flex-1 w-full bg-white relative" style={{ height: '100%' }}>
-      <Canvas camera={{ position: [0, 0, 2.5], fov: 42 }} gl={{ preserveDrawingBuffer: true, antialias: true }} onPointerMissed={() => setSelectedDecalId(null)}>
+      <Canvas
+        gl={{ preserveDrawingBuffer: true, antialias: true }}
+        camera={{ position: [0, 0, 2.5], fov: 42 }}
+        onPointerMissed={() => setSelectedDecalId(null)}
+      >
         <ambientLight intensity={lightingPreset === 'night' ? 0.2 : 0.8} />
         <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} intensity={lightingPreset === 'studio' ? 2.5 : 1.5} />
         <directionalLight position={[-5, 5, -5]} intensity={lightingPreset === 'night' ? 0.1 : 0.5} />

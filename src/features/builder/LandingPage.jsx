@@ -135,6 +135,7 @@ const LandingPage = ({
   onSelectDesign,
   globalPattern, setGlobalPattern, lightingPreset, setLightingPreset, materialFinish, setMaterialFinish, mouseFollow, setMouseFollow
 }) => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [comparing, setComparing] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
@@ -152,23 +153,52 @@ const LandingPage = ({
   };
 
   return (
-    <div className="w-full min-h-screen bg-slate-50 flex flex-col lg:flex-row font-['Plus_Jakarta_Sans',sans-serif] text-slate-800">
+    <div className="w-full min-h-screen bg-slate-50 flex flex-col lg:flex-row font-['Plus_Jakarta_Sans',sans-serif] text-slate-800 relative">
       
-      {/* ── LEFT PANEL: CONFIGURATOR CONSOLE ── */}
-      <aside data-lenis-prevent className="w-full lg:w-[350px] bg-white border-b lg:border-b-0 lg:border-r border-slate-100 flex-shrink-0 flex flex-col h-auto lg:h-screen lg:max-h-screen lg:self-start lg:sticky lg:top-0 lg:overflow-y-auto overflow-x-hidden">
+      {/* Mobile Drawer Floating Toggle Button */}
+      <button
+        onClick={() => setIsDrawerOpen(true)}
+        className="lg:hidden fixed bottom-6 right-6 z-40 bg-indigo-600 hover:bg-indigo-700 text-white p-3.5 rounded-full shadow-2xl flex items-center gap-2 text-xs font-black uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95"
+      >
+        <HiOutlineColorSwatch size={18} />
+        <span>Controls</span>
+      </button>
+
+      {/* Mobile Backdrop Overlay */}
+      {isDrawerOpen && (
+        <div
+          className="lg:hidden fixed inset-0 bg-slate-950/40 backdrop-blur-sm z-[60] animate-in fade-in duration-300"
+          onClick={() => setIsDrawerOpen(false)}
+        />
+      )}
+
+      {/* ── LEFT PANEL: CONFIGURATOR CONSOLE (Responsive Mobile Drawer & Desktop Sticky Sidebar) ── */}
+      <aside data-lenis-prevent className={`bg-white border-r border-slate-100 flex-shrink-0 flex flex-col transition-all duration-300 z-[70] h-screen max-h-screen overflow-hidden
+        lg:w-[350px] lg:sticky lg:top-0 lg:translate-x-0
+        fixed inset-y-0 left-0 w-[85%] max-w-[340px] shadow-2xl ${isDrawerOpen ? 'translate-x-0' : '-translate-x-full'}`}
+      >
         
         {/* Console Header */}
-        <div className="p-6 border-b border-slate-100 flex flex-col gap-1">
-          <h1 className="text-[16px] font-black text-indigo-950 uppercase tracking-wider" style={{ fontFamily: "'Outfit', sans-serif" }}>
-            ELITE CONFIGURATOR
-          </h1>
-          <span className="text-[9px] font-extrabold text-indigo-600 uppercase tracking-widest">
-            STUDIO CUSTOMIZATION PANEL
-          </span>
+        <div className="p-5 lg:p-6 border-b border-slate-100 flex items-center justify-between flex-shrink-0 bg-white">
+          <div className="flex flex-col gap-1">
+            <h1 className="text-[15px] lg:text-[16px] font-black text-indigo-950 uppercase tracking-wider" style={{ fontFamily: "'Outfit', sans-serif" }}>
+              ELITE CONFIGURATOR
+            </h1>
+            <span className="text-[9px] font-extrabold text-indigo-600 uppercase tracking-widest">
+              STUDIO CUSTOMIZATION PANEL
+            </span>
+          </div>
+          {/* Close button for mobile drawer */}
+          <button
+            onClick={() => setIsDrawerOpen(false)}
+            className="lg:hidden text-slate-400 hover:text-slate-900 p-2 rounded-lg hover:bg-slate-100 transition-colors"
+          >
+            <HiOutlineX size={20} />
+          </button>
         </div>
 
-        {/* Console Content */}
-        <div className="p-6 flex flex-col gap-8">
+        {/* Console Content (Scrollable Container) */}
+        <div className="p-6 flex flex-col gap-8 flex-1 overflow-y-auto overscroll-contain touch-pan-y no-scrollbar" data-lenis-prevent>
           
           {/* Studio Console Section */}
           <div className="flex flex-col gap-4">

@@ -60,13 +60,11 @@ const Footer = () => {
             {/* Brand Column */}
             <div className="lg:col-span-2 space-y-4">
               <div className="flex items-center space-x-3">
-                <div className="h-12 w-12 overflow-hidden rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 p-1">
-                  <img
-                    src="/headerLogo.png"
-                    alt="Zarko Sportswear"
-                    className="h-full w-full rounded-full object-cover"
-                  />
-                </div>
+                <img
+                  src="/new-logo.png"
+                  alt="Zarko Sportswear"
+                  className="h-14 w-auto object-contain"
+                />
                 <span className="text-2xl font-bold">Zarko Sports</span>
               </div>
               <p className="text-sm text-gray-300 leading-relaxed">

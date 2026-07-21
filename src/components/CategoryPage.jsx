@@ -126,100 +126,117 @@ const CategoryPage = ({ slug }) => {
   const buttonClass = resolvedAccent.button || defaultAccent.button;
 
   return (
-    <main className="bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
-        <CategoryHero title={name} description={description} gradient={resolvedGradient} />
+    <main className="bg-slate-50/50 min-h-screen">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
 
-        {featured && (
-          <section className="mt-12 rounded-2xl border border-indigo-100 bg-white p-6 shadow-lg sm:p-10">
-            <div className="px-2 sm:px-4">
-              <SectionTitle
-                eyebrow="Signature release"
-                title={featured.name}
-                description={featured.tagline || 'Export-ready sets crafted for premium clubs and distributors.'}
-              />
-              <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
-                <div className="relative group overflow-hidden rounded-2xl border border-indigo-100 bg-gradient-to-br from-indigo-50 via-white to-white">
-                  <div className="relative h-[420px]">
-                    <img
-                      src={imageUrl(featured.image || '/images/placeholder.jpg')}
-                      alt={featured.name}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      onError={(e)=>{ e.currentTarget.onerror=null; e.currentTarget.src = imageUrl('/images/placeholder.jpg'); }}
-                    />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-indigo-950/80 via-indigo-900/40 to-transparent px-6 py-6 text-white">
-                      <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-indigo-200">
-                        <span>Ultra-light</span>
-                        <span>Customizable</span>
-                        <span>Global export</span>
-                      </div>
-                      <h3 className="mt-3 text-3xl font-bold">{featured.name}</h3>
-                    </div>
-                  </div>
-                </div>
+        {/* TOP PRODUCT DETAIL HERO CONTAINER (Left: Picture, Right: Details) */}
+        <section className="bg-white rounded-3xl border border-slate-200/80 shadow-xl overflow-hidden p-6 sm:p-8 lg:p-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* LEFT CONTAINER: FULL PICTURE DISPLAY (Pure White Background) */}
+            <div className="lg:col-span-6 flex flex-col items-center">
+              <div className="relative w-full h-[400px] sm:h-[460px] rounded-2xl bg-white border border-slate-200/60 p-6 flex items-center justify-center shadow-sm overflow-hidden group">
+                {/* Subtle background glow */}
+                <div className="absolute inset-0 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:20px_20px] opacity-10" />
+                
+                <img
+                  src={imageUrl(featured?.image || products[0]?.image || '/images/placeholder.jpg')}
+                  alt={name}
+                  className="relative z-10 max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = imageUrl('/images/placeholder.jpg');
+                  }}
+                />
 
-                <div className="space-y-6">
-                  {featured.description && (
-                    <p className="text-base leading-7 text-gray-600 sm:text-lg">
-                      {featured.description}
-                    </p>
-                  )}
-
-                  {Array.isArray(featured.details) && featured.details.length > 0 && (
-                    <div className="rounded-2xl border border-indigo-100 bg-indigo-50/60 p-6">
-                      <h4 className="text-xs font-semibold uppercase tracking-[0.3em] text-indigo-500">Key capabilities</h4>
-                      <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                        {featured.details.map((point, i) => (
-                          <div key={i} className="flex items-start gap-3">
-                            <span className={`${checkClass} mt-1.5`}>
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 0 0-1.22-.872l-3.236 4.53-1.71-1.71a.75.75 0 0 0-1.06 1.061l2.25 2.25a.75.75 0 0 0 1.14-.094l3.836-5.165Z" clipRule="evenodd" /></svg>
-                            </span>
-                            <span className="text-sm text-gray-600">{point}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {Array.isArray(featured.sizes) && featured.sizes.length > 0 && (
-                    <div>
-                      <h4 className="text-xs font-semibold uppercase tracking-[0.3em] text-indigo-500">Available sizes</h4>
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {featured.sizes.map((size, i) => (
-                          <span key={i} className={`inline-flex items-center justify-center rounded-full px-3 py-1 text-[11px] font-semibold uppercase ${chipClass}`}>
-                            {size}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="flex flex-wrap items-center gap-4">
-                    <button className={`inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-white shadow-lg transition-transform hover:-translate-y-0.5 ${buttonClass}`}>
-                      Request quote
-                    </button>
-                    <p className="text-xs text-gray-400">MOQ from 25 units · Sampling in 10-12 days · Worldwide fulfillment</p>
-                  </div>
+                {/* Floating Badges */}
+                <div className="absolute top-4 left-4 z-20 flex flex-wrap gap-2">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-900/90 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow">
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                    Customizable Pro Kit
+                  </span>
                 </div>
               </div>
             </div>
-          </section>
-        )}
 
-        <section className="mt-20">
-          <SectionTitle
-            eyebrow="Collections"
-            title="Ready-to-customize designs"
-            description="Choose a base silhouette and we will tailor fabrics, trims, and prints to your club specs."
-          />
-          <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+            {/* RIGHT CONTAINER: CATEGORY & PRODUCT DETAILS */}
+            <div className="lg:col-span-6 space-y-6">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full bg-indigo-50 border border-indigo-100 px-3.5 py-1 text-xs font-bold text-indigo-600 uppercase tracking-widest">
+                  ⚽ Category Spotlight
+                </div>
+                <h1 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                  {name}
+                </h1>
+                <p className="mt-3 text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
+                  {description || featured?.description || 'Match-ready, breathable, and durable kits engineered for professional clubs, academies, and brands.'}
+                </p>
+              </div>
+
+              {/* Specifications / Highlights Grid */}
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
+                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Fabric Tech</div>
+                  <div className="text-sm font-extrabold text-slate-800 mt-0.5">Moisture-Wicking</div>
+                </div>
+                <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
+                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Printing</div>
+                  <div className="text-sm font-extrabold text-slate-800 mt-0.5">4K Sublimation</div>
+                </div>
+                <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
+                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Min Order (MOQ)</div>
+                  <div className="text-sm font-extrabold text-slate-800 mt-0.5">25 Kits</div>
+                </div>
+                <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
+                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Dispatch</div>
+                  <div className="text-sm font-extrabold text-slate-800 mt-0.5">Worldwide Express</div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="pt-4 flex flex-wrap items-center gap-4 border-t border-slate-100">
+                <Link
+                  to={`/custom?product=${encodeURIComponent(name)}`}
+                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3.5 text-sm font-extrabold shadow-lg shadow-indigo-600/25 transition-all hover:scale-[1.02]"
+                >
+                  <span>Customize Your Kit</span>
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </Link>
+                <a
+                  href="#related-products"
+                  className="inline-flex items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 px-6 py-3.5 text-sm font-bold transition-all"
+                >
+                  View All Kits ↓
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* RELATED PRODUCTS GRID */}
+        <section id="related-products" className="mt-16">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-widest text-indigo-600">Explore Collection</span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                {name} Designs & Sets
+              </h2>
+            </div>
+            <span className="text-xs font-bold text-slate-400 bg-white px-3 py-1.5 rounded-full border border-slate-200 shadow-sm">
+              {products.length} Items Available
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {products.map((product, index) => (
               <ProductCard
                 key={product.id || `${product.name}-${index}`}
                 image={product.image}
                 name={product.name}
                 description={product.description}
-                onQuote={() => alert('Request quote: ' + product.name)}
+                price={product.price}
+                discount={product.discount}
               />
             ))}
           </div>

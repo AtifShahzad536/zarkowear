@@ -103,15 +103,15 @@ const SplashLoading = ({ progress = 0, onComplete }) => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.05 }}
               transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
-              className="flex flex-col items-center justify-center"
+              className="flex flex-col items-center justify-center w-full"
             >
               <h1 
-                className="text-[64px] md:text-[115px] font-black tracking-[0.25em] uppercase leading-none welcome-water-text py-2"
+                className="text-[34px] sm:text-[52px] md:text-[115px] font-black tracking-[0.08em] sm:tracking-[0.15em] md:tracking-[0.25em] uppercase leading-none welcome-water-text py-2 whitespace-nowrap"
                 style={{ fontFamily: "'Outfit', sans-serif" }}
               >
                 WELCOME
               </h1>
-              <div className="h-[2px] w-24 bg-gradient-to-r from-indigo-500 to-purple-500 mt-4 rounded-full" />
+              <div className="h-[2px] w-20 md:w-24 bg-gradient-to-r from-indigo-500 to-purple-500 mt-4 rounded-full" />
             </motion.div>
           )}
 
@@ -123,11 +123,11 @@ const SplashLoading = ({ progress = 0, onComplete }) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
-              className="flex flex-col items-center justify-center gap-2"
+              className="flex flex-col items-center justify-center gap-2 w-full"
             >
-              <div className="flex flex-col items-center justify-center">
+              <div className="flex flex-col items-center justify-center w-full">
                 <h2 
-                  className="text-[54px] md:text-[100px] font-black tracking-[0.18em] uppercase leading-none zarko-water-text py-2"
+                  className="text-[36px] sm:text-[54px] md:text-[100px] font-black tracking-[0.10em] md:tracking-[0.18em] uppercase leading-none zarko-water-text py-2 whitespace-nowrap"
                   style={{ 
                     fontFamily: "'Outfit', sans-serif",
                     backgroundPositionY: `${110 - localProgress * 1.2}%`
@@ -137,7 +137,7 @@ const SplashLoading = ({ progress = 0, onComplete }) => {
                 </h2>
                 
                 <h3 
-                  className="text-[16px] md:text-[26px] font-extrabold tracking-[0.45em] text-slate-800 uppercase"
+                  className="text-[12px] sm:text-[16px] md:text-[26px] font-extrabold tracking-[0.25em] md:tracking-[0.45em] text-slate-800 uppercase whitespace-nowrap"
                   style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >
                   SPORTSWEAR

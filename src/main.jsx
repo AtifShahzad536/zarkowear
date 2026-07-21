@@ -22,7 +22,7 @@ const BuilderPage = lazy(() => import('./pages/BuilderPage.jsx'))
 
 // Define routes
 const router = createBrowserRouter([
- {
+  {
     path: "/",
     element: <App />,
     children: [
@@ -30,25 +30,25 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "about", element: <About /> },
       { path: "contact", element: <Contact /> },       // ✅ Contact Us
-      { path: "custom", element: <Custom/> }, // ✅ Custom Orders
+      { path: "custom", element: <Custom /> }, // ✅ Custom Orders
       { path: "detail", element: <ProductInquiry /> },
 
       // ✅ Sports Kits
-      { path: "football", element: <CategoryRoute slug="football"/> },
-      { path: "wrestling", element: <CategoryRoute slug="wrestling"/> },
-      { path: "cricket", element: <CategoryRoute slug="cricket"/> },
-      { path: "basketball", element: <CategoryRoute slug="basketball"/> },
-      { path: "hockey", element: <CategoryRoute slug="hockey"/> },
-      { path: "rugby", element: <CategoryRoute slug="rugby"/> },
-      { path: "tennis", element: <CategoryRoute slug="tennis"/> },
-      { path: "running", element: <CategoryRoute slug="running"/> },
-      { path: "gym", element: <CategoryRoute slug="gym"/> },
+      { path: "football", element: <CategoryRoute slug="football" /> },
+      { path: "wrestling", element: <CategoryRoute slug="wrestling" /> },
+      { path: "cricket", element: <CategoryRoute slug="cricket" /> },
+      { path: "basketball", element: <CategoryRoute slug="basketball" /> },
+      { path: "hockey", element: <CategoryRoute slug="hockey" /> },
+      { path: "rugby", element: <CategoryRoute slug="rugby" /> },
+      { path: "tennis", element: <CategoryRoute slug="tennis" /> },
+      { path: "running", element: <CategoryRoute slug="running" /> },
+      { path: "gym", element: <CategoryRoute slug="gym" /> },
 
       // ✅ Accessories
-      { path: "shoes", element: <CategoryRoute slug="shoes"/> },
-      { path: "gloves", element: <CategoryRoute slug="gloves"/> },
-      { path: "caps", element: <CategoryRoute slug="caps"/> },
-      { path: "bags", element: <CategoryRoute slug="bags"/> },
+      { path: "shoes", element: <CategoryRoute slug="shoes" /> },
+      { path: "gloves", element: <CategoryRoute slug="gloves" /> },
+      { path: "caps", element: <CategoryRoute slug="caps" /> },
+      { path: "bags", element: <CategoryRoute slug="bags" /> },
 
       // ✅ 3D Jersey Builder
       { path: "builder", element: <BuilderPage /> },

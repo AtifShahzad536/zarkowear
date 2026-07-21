@@ -60,10 +60,10 @@ const ProductInquiry = () => {
   return (
     <section className="w-full min-h-screen bg-slate-50/50 py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        
+
         {/* Back Button */}
-        <button 
-          onClick={() => navigate(-1)} 
+        <button
+          onClick={() => navigate(-1)}
           className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-800 transition"
         >
           ← Back to Collection
@@ -71,10 +71,10 @@ const ProductInquiry = () => {
 
         {/* Two-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start bg-white rounded-3xl border border-slate-100 p-6 sm:p-10 shadow-sm">
-          
+
           {/* Left: Product Image Column */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="relative aspect-square w-full rounded-2xl border border-slate-100 bg-slate-50 overflow-hidden group">
+            <div className="relative aspect-square w-full rounded-2xl border border-slate-100 bg-white overflow-hidden flex items-center justify-center p-6 group shadow-sm">
               <img
                 src={displayImage}
                 alt={product.name}
@@ -85,7 +85,7 @@ const ProductInquiry = () => {
                 }}
               />
             </div>
-            
+
             {/* Quick specifications */}
             <div className="bg-slate-50/80 rounded-2xl p-5 border border-slate-100/50">
               <h4 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-3">Specifications</h4>

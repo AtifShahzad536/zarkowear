@@ -379,27 +379,40 @@ const Builder = memo(({ defaultPatterns, defaultLogos }) => {
     }
 
     setIsSubmitCheckingOut(true);
-    const toastId = toast.loading('Uploading design preview...');
+    const toastId = toast.loading('Capturing 4-angle production snapshots...');
 
-    let uploadedScreenshotUrl = '';
-    const canvas = document.querySelector('canvas');
-    if (canvas) {
+    const snapshots = { front: '', back: '', left: '', right: '', top: '' };
+    const apiBase = (import.meta.env.VITE_API_BASE || '').trim();
+    const uploadEndpoint = apiBase ? `${apiBase}/api/admin/upload` : '/api/admin/upload';
+    const endpoint = apiBase ? `${apiBase}/api/inquiry/custom` : '/api/inquiry/custom';
+
+    const captureAngle = async (cameraAngleEvent) => {
+      window.dispatchEvent(new CustomEvent('eay:setCameraAngle', { detail: cameraAngleEvent }));
+      await new Promise(r => setTimeout(r, 120));
+      const canvas = document.querySelector('canvas');
+      if (!canvas) return '';
       try {
-        const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
-        if (blob) {
-          const formData = new FormData();
-          formData.append('file', blob, 'custom_design.png');
-          const apiBase = (import.meta.env.VITE_API_BASE || '').trim();
-          const uploadEndpoint = apiBase ? `${apiBase}/api/admin/upload` : '/api/admin/upload';
-          const uploadRes = await fetch(uploadEndpoint, { method: 'POST', body: formData });
-          if (uploadRes.ok) {
-            const uploadData = await uploadRes.json();
-            uploadedScreenshotUrl = uploadData.url || '';
-          }
-        }
+        const thumbCanvas = document.createElement('canvas');
+        thumbCanvas.width = 400;
+        thumbCanvas.height = 400;
+        const ctx = thumbCanvas.getContext('2d');
+        ctx.drawImage(canvas, 0, 0, 400, 400);
+        return thumbCanvas.toDataURL('image/jpeg', 0.85);
       } catch (err) {
-        console.error('Failed to upload customized screenshot', err);
+        console.warn(`Snapshot capture failed for ${cameraAngleEvent}:`, err);
       }
+      return '';
+    };
+
+    try {
+      snapshots.front = await captureAngle('front');
+      snapshots.back = await captureAngle('back');
+      snapshots.left = await captureAngle('left');
+      snapshots.right = await captureAngle('right');
+      snapshots.top = await captureAngle('top');
+      window.dispatchEvent(new CustomEvent('eay:setCameraAngle', { detail: 'front' }));
+    } catch (err) {
+      console.warn('Multi-angle snapshot error:', err);
     }
 
     toast.loading('Submitting inquiry...', { id: toastId });
@@ -408,11 +421,7 @@ const Builder = memo(({ defaultPatterns, defaultLogos }) => {
     const message = `Custom 3D jersey inquiry submitted via customizer.\n\n` +
       `Model: ${design.name || 'Custom Jersey'}\n` +
       `Shipping Address: ${shippingAddress}, ${city}, ${zipCode}, ${country}\n\n` +
-      `Roster:\n${rosterText}\n\n` +
-      `Config:\n` + JSON.stringify({ meshStates, decals, globalPattern, materialFinish, lightingPreset }, null, 2);
-
-    const apiBase = (import.meta.env.VITE_API_BASE || '').trim();
-    const endpoint = apiBase ? `${apiBase}/api/inquiry/custom` : '/api/inquiry/custom';
+      `Roster:\n${rosterText}`;
 
     const payload = {
       name: billingName,
@@ -420,34 +429,33 @@ const Builder = memo(({ defaultPatterns, defaultLogos }) => {
       phone: contactPhone,
       company: country,
       message: message,
-      fileUrl: uploadedScreenshotUrl || design.thumbnail || '',
+      fileUrl: snapshots.front || design.thumbnail || '',
       modelUrl: design.modelUrl || '',
       layersMetadata: JSON.stringify(design.layers_metadata || {}),
-      designConfig: JSON.stringify({ meshStates, decals, globalPattern, materialFinish, lightingPreset })
+      designConfig: JSON.stringify({ meshStates, decals, globalPattern, materialFinish, lightingPreset, snapshots })
     };
 
-    fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    })
-      .then(res => res.json())
-      .then(data => {
-        setIsSubmitCheckingOut(false);
-        if (data._id || data.message) {
-          toast.success('Order submitted! We will contact you for pricing.', { id: toastId, icon: '🎉' });
-          setOrderSuccess(true);
-        } else {
-          toast.error(data.error || 'Failed to submit inquiry.', { id: toastId });
-        }
-      })
-      .catch(err => {
-        setIsSubmitCheckingOut(false);
-        toast.error('An error occurred. Please try again.', { id: toastId });
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
       });
+      const data = await res.json();
+      setIsSubmitCheckingOut(false);
+      if (res.ok && (data._id || data.message || data.success)) {
+        toast.success('Order submitted! We will contact you for pricing.', { id: toastId, icon: '🎉' });
+        setOrderSuccess(true);
+      } else {
+        toast.error(data.error || 'Failed to submit inquiry.', { id: toastId });
+      }
+    } catch (err) {
+      setIsSubmitCheckingOut(false);
+      toast.error('Submission error. Please check network connection.', { id: toastId });
+    }
   };
 
   if (!design) return <div className="p-20 text-center font-bold text-gray-400">Loading Design...</div>;

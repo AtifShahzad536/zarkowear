@@ -11,11 +11,11 @@ export default function AdminLayout() {
     const reset = () => {
       if (timerRef.current) clearTimeout(timerRef.current);
       timerRef.current = setTimeout(() => {
-        try { setAuthToken(''); } catch {}
+        try { setAuthToken(''); } catch { }
         navigate('/admin/login?idle=1', { replace: true });
       }, IDLE_MS);
     };
-    const events = ['mousemove','keydown','click','touchstart','scroll','visibilitychange'];
+    const events = ['mousemove', 'keydown', 'click', 'touchstart', 'scroll', 'visibilitychange'];
     events.forEach(ev => window.addEventListener(ev, reset, { passive: true }));
     reset();
     return () => {
@@ -26,7 +26,7 @@ export default function AdminLayout() {
 
   // Clear token only when the page is really being left (tab close/refresh/navigation away from SPA)
   useEffect(() => {
-    const clearOnLeave = () => { try { setAuthToken(''); } catch {} };
+    const clearOnLeave = () => { try { setAuthToken(''); } catch { } };
     window.addEventListener('pagehide', clearOnLeave);
     window.addEventListener('beforeunload', clearOnLeave);
     return () => {

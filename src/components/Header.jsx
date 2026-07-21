@@ -62,16 +62,14 @@ const Header = () => {
       />
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5">
         {/* Logo and Typography Brand Name on the Left */}
-        <Link to="/" className="flex items-center gap-2 group flex-shrink-0">
-          <div className="relative w-8 h-8 rounded-full overflow-hidden border border-indigo-100 bg-white flex items-center justify-center p-0.5 shadow-sm">
-            <img
-              src="/headerLogo.png"
-              alt="Zarko Sportswear"
-              className="w-full h-full object-contain scale-125"
-            />
-          </div>
-          <span className="text-[16px] font-black text-indigo-950 uppercase tracking-widest" style={{ fontFamily: "'Outfit', sans-serif" }}>
-            ZARKO <span className="text-indigo-600 font-semibold text-[10px] tracking-normal lowercase" style={{ fontFamily: "'Outfit', sans-serif" }}>sportswear</span>
+        <Link to="/" className="flex items-center gap-1 group flex-shrink-0">
+          <img
+            src="/new-logo.png"
+            alt="Zarko Sportswear"
+            className="h-10 md:h-12 w-auto object-contain transition-transform group-hover:scale-105"
+          />
+          <span className="text-[16px] md:text-[18px] font-black text-indigo-950 uppercase tracking-widest -ml-0.5" style={{ fontFamily: "'Outfit', sans-serif" }}>
+            ZARKO <span className="text-indigo-600 font-semibold text-[10px] md:text-[11px] tracking-normal lowercase" style={{ fontFamily: "'Outfit', sans-serif" }}>sportswear</span>
           </span>
         </Link>
 

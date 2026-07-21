@@ -2,7 +2,7 @@ const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4000';
 
 // Auth token helpers
 const TOKEN_KEY = 'wc_admin_token';
-export function setAuthToken(token) { try { localStorage.setItem(TOKEN_KEY, token || ''); } catch {} }
+export function setAuthToken(token) { try { localStorage.setItem(TOKEN_KEY, token || ''); } catch { } }
 export function getAuthToken() { try { return localStorage.getItem(TOKEN_KEY) || ''; } catch { return ''; } }
 
 export async function getCategory(slug) {
@@ -13,14 +13,14 @@ export async function getCategory(slug) {
 
 // Admin: list uploaded files
 export async function adminListUploads() {
-  const res = await fetch(`${API_BASE}/api/admin/uploads`, { headers: { Authorization: `Bearer ${getAuthToken()}` }});
+  const res = await fetch(`${API_BASE}/api/admin/uploads`, { headers: { Authorization: `Bearer ${getAuthToken()}` } });
   if (!res.ok) throw new Error('Failed to list uploads');
   return res.json();
 }
 
 // Admin: home settings
 export async function adminGetHome() {
-  const res = await fetch(`${API_BASE}/api/admin/home`, { headers: { Authorization: `Bearer ${getAuthToken()}` }});
+  const res = await fetch(`${API_BASE}/api/admin/home`, { headers: { Authorization: `Bearer ${getAuthToken()}` } });
   if (!res.ok) throw new Error('Failed to load home settings');
   return res.json();
 }
@@ -76,7 +76,7 @@ export async function getCategoryProducts(slug) {
 
 // Admin APIs (optional usage in admin UI)
 export async function adminListCategories() {
-  const res = await fetch(`${API_BASE}/api/admin/categories`, { headers: { Authorization: `Bearer ${getAuthToken()}` }});
+  const res = await fetch(`${API_BASE}/api/admin/categories`, { headers: { Authorization: `Bearer ${getAuthToken()}` } });
   if (!res.ok) throw new Error('Failed to list admin categories');
   return res.json();
 }

@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { imageUrl } from '../services/api';
 
-const ProductCard = ({ 
-  image, 
-  name, 
-  description, 
-  price, 
+const ProductCard = ({
+  image,
+  name,
+  description,
+  price,
   isTopSelling = false,
   discount,
   rating = 4.8,
@@ -17,29 +17,32 @@ const ProductCard = ({
   const displayImage = imageUrl(image || '/images/placeholder.jpg');
 
   const handleCardClick = () => {
-    navigate('/detail', { 
-      state: { 
-        product: { name, image, description, price, discount } 
-      } 
+    navigate('/detail', {
+      state: {
+        product: { name, image, description, price, discount }
+      }
     });
   };
-  
+
   return (
     <motion.div
       onClick={handleCardClick}
-      className="group bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between"
-      initial={{ opacity: 0, y: 20 }}
+      className="group relative bg-white rounded-2xl border border-slate-200/80 hover:border-indigo-500/30 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between"
+      initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.3 }}
     >
-      {/* Image Area */}
-      <div className="relative aspect-square w-full bg-slate-50/80 overflow-hidden flex items-center justify-center p-6 border-b border-slate-100/50">
+      {/* Top Accent Line on Hover */}
+      <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
+
+      {/* Compact Image Area - Pure White Background */}
+      <div className="relative h-52 w-full bg-white p-4 flex items-center justify-center overflow-hidden border-b border-slate-100">
         <img
           loading="lazy"
           src={displayImage}
           alt={name}
-          className="max-h-full max-w-full object-contain transform group-hover:scale-105 transition-transform duration-500"
+          className="h-full w-full object-contain transform group-hover:scale-105 transition-transform duration-500"
           onError={(e) => {
             e.currentTarget.onerror = null;
             e.currentTarget.src = imageUrl('/images/placeholder.jpg');
@@ -48,44 +51,49 @@ const ProductCard = ({
 
         {/* Top Selling Badge */}
         {isTopSelling && (
-          <div className="absolute left-3 top-3 z-10">
-            <span className="inline-flex items-center rounded-full bg-amber-400 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-white shadow-sm">
-              Top Seller
+          <div className="absolute left-2.5 top-2.5 z-10">
+            <span className="inline-flex items-center rounded-lg bg-amber-500/90 backdrop-blur-md px-2 py-0.5 text-[9px] font-black uppercase tracking-wider text-white shadow-sm">
+              ★ Top Seller
             </span>
           </div>
         )}
 
         {/* Discount Badge */}
         {discount && (
-          <div className="absolute right-3 top-3 z-10">
-            <span className="inline-flex items-center rounded-full bg-rose-500 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-white shadow-sm">
+          <div className="absolute right-2.5 top-2.5 z-10">
+            <span className="inline-flex items-center rounded-lg bg-rose-500/90 backdrop-blur-md px-2 py-0.5 text-[9px] font-black uppercase tracking-wider text-white shadow-sm">
               -{discount}%
             </span>
           </div>
         )}
       </div>
 
-      {/* Info Area */}
-      <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-        <div className="space-y-1.5">
-          <h3 className="font-extrabold text-slate-800 text-base leading-tight group-hover:text-indigo-600 transition-colors">
-            {name}
-          </h3>
-          <p className="text-slate-400 text-xs font-medium line-clamp-2 leading-relaxed">
-            {description || `Premium custom ${name.toLowerCase()} crafted from elite materials for maximum breathability and stretch.`}
+      {/* Info Area - Compact Spacing */}
+      <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
+        <div className="space-y-1">
+          <div className="flex items-center justify-between gap-2">
+            <h3 className="font-extrabold text-slate-900 text-sm leading-snug group-hover:text-indigo-600 transition-colors line-clamp-1">
+              {name}
+            </h3>
+            <span className="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full shrink-0">
+              Pro
+            </span>
+          </div>
+          <p className="text-slate-500 text-xs font-normal line-clamp-1 leading-relaxed">
+            {description || `Export quality custom uniform kit.`}
           </p>
         </div>
 
         {/* Rating and Price */}
-        <div className="flex items-center justify-between pt-2 border-t border-slate-100/50">
+        <div className="flex items-center justify-between pt-2 border-t border-slate-100">
           <div className="flex items-center gap-1">
-            <span className="text-[11px] font-bold text-amber-500">★</span>
-            <span className="text-[10px] font-bold text-slate-500">{rating}</span>
-            <span className="text-[9px] text-slate-400 font-medium">({reviewCount})</span>
+            <span className="text-xs text-amber-400">★</span>
+            <span className="text-xs font-bold text-slate-700">{rating}</span>
+            <span className="text-[10px] text-slate-400">({reviewCount})</span>
           </div>
           <div>
-            <span className="text-xs font-black text-slate-400 uppercase tracking-wider">
-              {price ? `$${price.toFixed(2)}` : 'Get Quote'}
+            <span className="text-xs font-black text-indigo-900 uppercase tracking-wider">
+              {price ? `$${price.toFixed(2)}` : 'Custom Quote'}
             </span>
           </div>
         </div>
@@ -96,9 +104,9 @@ const ProductCard = ({
             e.stopPropagation();
             navigate(`/custom?product=${encodeURIComponent(name)}`);
           }}
-          className="w-full py-2.5 bg-slate-50 group-hover:bg-indigo-600 text-slate-700 group-hover:text-white text-xs font-bold rounded-xl border border-slate-150 group-hover:border-transparent transition-all duration-200 text-center block"
+          className="w-full py-2 bg-indigo-50 group-hover:bg-indigo-600 text-indigo-700 group-hover:text-white text-xs font-bold rounded-xl border border-indigo-100 group-hover:border-transparent transition-all duration-200 text-center shadow-sm"
         >
-          Customize Design
+          Customize Now
         </button>
       </div>
     </motion.div>
