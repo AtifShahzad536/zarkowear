@@ -35,92 +35,91 @@ const Home = () => {
       <Hero />
 
       <FeaturedCategories />
-        {/* CTA Strip */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 text-white">
-        <div className="absolute inset-y-0 right-[-15%] w-2/3 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.28),_transparent_60%)] blur-3xl opacity-60" />
-        <div className="absolute -bottom-24 -left-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
-        <div className="relative max-w-7xl mx-auto px-4 py-14">
-          <div className="grid gap-12 md:grid-cols-[1.15fr_0.85fr] items-center">
+      {/* CTA Strip */}
+      <section className="relative overflow-hidden bg-[#121420] text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_120%,_rgba(99,102,241,0.15),_transparent_50%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-20">
+          <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] items-center">
             <motion.div initial={{opacity:0, x:-30}} whileInView={{opacity:1, x:0}} viewport={{once:true, amount:0.4}} transition={{duration:0.6}}>
-              <motion.span initial={{opacity:0, y:-12}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.5}} transition={{delay:0.1, duration:0.4}} className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium tracking-wide uppercase">
+              <motion.span initial={{opacity:0, y:-12}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.5}} transition={{delay:0.1, duration:0.4}} className="inline-flex items-center gap-2 rounded-full bg-indigo-500/10 border border-indigo-500/30 px-4 py-1.5 text-xs font-semibold tracking-widest uppercase text-indigo-400">
                 Elite Performance Kits
               </motion.span>
-              <motion.h2 initial={{opacity:0, y:20}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.5}} transition={{delay:0.2, duration:0.6}} className="mt-4 text-3xl md:text-4xl lg:text-[2.75rem] font-bold leading-tight">
+              <motion.h2 initial={{opacity:0, y:20}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.5}} transition={{delay:0.2, duration:0.6}} className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white">
                 Premium Team Wear engineered for USA, UK, Australia, KSA & European leagues.
               </motion.h2>
-              <motion.p initial={{opacity:0, y:20}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.5}} transition={{delay:0.3, duration:0.6}} className="mt-4 text-white/85 text-base md:text-lg max-w-2xl">
-                Design winning looks, outfit entire clubs with premium fabrics. Trusted by professional academies, football clubs, wrestling leagues, and hockey associations across the United States, United Kingdom, Australia, Italy, Saudi Arabia, and greater Europe.
+              <motion.p initial={{opacity:0, y:20}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.5}} transition={{delay:0.3, duration:0.6}} className="mt-5 text-gray-300 text-base md:text-lg max-w-2xl leading-relaxed">
+                Design winning looks and outfit entire clubs with export-grade fabrics. Trusted by professional academies, football clubs, wrestling leagues, and hockey associations across the United States, United Kingdom, Australia, Italy, Saudi Arabia, and greater Europe.
               </motion.p>
-              <motion.ul initial={{opacity:0, y:24}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.4}} transition={{delay:0.4, duration:0.6}} className="mt-8 grid gap-4 sm:grid-cols-2">
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
-                    <FaAward />
+              <motion.ul initial={{opacity:0, y:24}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.4}} transition={{delay:0.4, duration:0.6}} className="mt-10 grid gap-6 sm:grid-cols-2">
+                <li className="flex items-start gap-4">
+                  <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+                    <FaAward className="text-lg" />
                   </span>
                   <div>
-                    <p className="font-semibold">Export-grade craftsmanship</p>
-                    <p className="text-sm text-white/80">Sublimated, stitched, and finished to meet US, UK, Gulf, and European league specifications.</p>
+                    <h3 className="font-bold text-white text-base">Export-grade craftsmanship</h3>
+                    <p className="text-xs sm:text-sm text-gray-400 mt-1">Sublimated, stitched, and finished to meet US, UK, Gulf, and European league specifications.</p>
                   </div>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
-                    <FaPalette />
+                <li className="flex items-start gap-4">
+                  <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+                    <FaPalette className="text-lg" />
                   </span>
                   <div>
-                    <p className="font-semibold">Custom wrestling & hockey gear</p>
-                    <p className="text-sm text-white/80">Bespoke singlets, jerseys, naming, and graphics tailored for your squad.</p>
+                    <h3 className="font-bold text-white text-base">Custom wrestling & hockey gear</h3>
+                    <p className="text-xs sm:text-sm text-gray-400 mt-1">Bespoke singlets, jerseys, naming, and graphics tailored for your squad.</p>
                   </div>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
-                    <FaGlobeAmericas />
+                <li className="flex items-start gap-4">
+                  <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+                    <FaGlobeAmericas className="text-lg" />
                   </span>
                   <div>
-                    <p className="font-semibold">Global delivery (USA, UK, KSA, EU, AU)</p>
-                    <p className="text-sm text-white/80">Express shipping directly to USA, UK, Australia, Saudi Arabia, Italy, and Europe with all customs clearances handled.</p>
+                    <h3 className="font-bold text-white text-base">Global delivery (USA, UK, KSA, EU, AU)</h3>
+                    <p className="text-xs sm:text-sm text-gray-400 mt-1">Express shipping directly to USA, UK, Australia, Saudi Arabia, Italy, and Europe with customs clearances handled.</p>
                   </div>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
-                    <FaRunning />
+                <li className="flex items-start gap-4">
+                  <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+                    <FaRunning className="text-lg" />
                   </span>
                   <div>
-                    <p className="font-semibold">Performance-tested fabrics</p>
-                    <p className="text-sm text-white/80">Moisture management and mobility built for elite competition.</p>
+                    <h3 className="font-bold text-white text-base">Performance-tested fabrics</h3>
+                    <p className="text-xs sm:text-sm text-gray-400 mt-1">Moisture management and mobility built for elite competition.</p>
                   </div>
                 </li>
               </motion.ul>
             </motion.div>
+            
             <motion.div initial={{opacity:0, x:30}} whileInView={{opacity:1, x:0}} viewport={{once:true, amount:0.4}} transition={{duration:0.6}} className="relative">
-              <div className="absolute inset-0 rounded-3xl bg-white/15 blur-lg" />
-              <div className="relative rounded-3xl border border-white/15 bg-white/10 p-8 shadow-2xl backdrop-blur">
-                <p className="text-sm uppercase tracking-[0.25em] text-white/70">Your next drop</p>
-                <h3 className="mt-3 text-2xl font-semibold">Launch custom kits in 3 easy steps</h3>
-                <ul className="mt-6 space-y-3 text-white/80 text-sm">
-                  <li className="flex items-center gap-2">
-                    <span className="h-6 w-6 rounded-full bg-white/25 text-center text-xs font-semibold leading-6">1</span>
-                    Share your concept, logo, or inspiration.
+              <div className="relative rounded-[2rem] border border-white/5 bg-white/[0.03] p-8 md:p-10 shadow-2xl backdrop-blur-sm">
+                <span className="text-xs uppercase tracking-widest text-indigo-400 font-semibold">Your next drop</span>
+                <h3 className="mt-3 text-2xl font-extrabold text-white">Launch custom kits in 3 easy steps</h3>
+                <ul className="mt-8 space-y-5 text-gray-300 text-sm md:text-base">
+                  <li className="flex items-center gap-4">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-center text-xs font-bold text-white">1</span>
+                    <span>Share your concept, logo, or inspiration.</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-6 w-6 rounded-full bg-white/25 text-center text-xs font-semibold leading-6">2</span>
-                    Approve mockups tailored to your team identity.
+                  <li className="flex items-center gap-4">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-center text-xs font-bold text-white">2</span>
+                    <span>Approve mockups tailored to your team identity.</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-6 w-6 rounded-full bg-white/25 text-center text-xs font-semibold leading-6">3</span>
-                    Receive export-ready uniforms with global shipping.
+                  <li className="flex items-center gap-4">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-center text-xs font-bold text-white">3</span>
+                    <span>Receive export-ready uniforms with global shipping.</span>
                   </li>
                 </ul>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Link to="/football" className="inline-flex items-center gap-2 rounded-full bg-white text-indigo-700 px-6 py-3 text-sm font-semibold shadow-md transition hover:-translate-y-0.5 hover:shadow-lg">
+                <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                  <Link to="/football" className="inline-flex items-center justify-center gap-2 rounded-full bg-white hover:bg-gray-100 text-[#121420] px-6 py-3.5 text-sm font-bold shadow-md transition duration-300">
                     Shop Sports Wear
-                    <FaArrowRight className="text-base" />
+                    <FaArrowRight className="text-xs" />
                   </Link>
-                  <Link to="/custom" className="inline-flex items-center gap-2 rounded-full bg-indigo-900/70 px-6 py-3 text-sm font-semibold text-white ring-1 ring-white/30 transition hover:bg-indigo-900">
+                  <Link to="/custom" className="inline-flex items-center justify-center gap-2 rounded-full bg-white/10 hover:bg-white/15 px-6 py-3.5 text-sm font-bold text-white border border-white/10 transition duration-300">
                     Custom Orders
-                    <FaArrowRight className="text-base" />
+                    <FaArrowRight className="text-xs" />
                   </Link>
                 </div>
-                <div className="mt-6 flex items-center gap-3 text-sm text-white/75">
-                  <FaPhoneAlt className="text-white" />
+                <div className="mt-6 flex items-center gap-3 text-xs text-gray-400">
+                  <FaPhoneAlt className="text-indigo-400" />
                   <span>Need help? Call +92-303-9200750 for a production specialist.</span>
                 </div>
               </div>
