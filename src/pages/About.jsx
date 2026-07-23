@@ -51,7 +51,7 @@ const pillars = [
   {
     title: 'Global Logistics',
     Icon: FaGlobeAmericas,
-    copy: 'Door-to-door shipping solutions with customs documentation handled for you.',
+    copy: 'Door-to-door shipping solutions directly to the USA, UK, Australia, Italy, Saudi Arabia, and Europe with all customs clearances handled.',
   },
   {
     title: 'Scalable Production',
@@ -74,17 +74,18 @@ const About = () => {
   return (
     <main className="min-h-screen bg-white">
       <SeoHead
-        title="About Zarko Sportswear | Export-Grade Sportswear Manufacturer"
-        description="Discover how Zarko Sportswear crafts export-grade custom sportswear for clubs worldwide."
+        title="About Zarko Sportswear | Custom Uniforms to USA, UK, KSA & Europe"
+        description="Learn about Zarko Sportswear, a premier exporter of custom football kits, wrestling gears, and hockey uniforms to USA, UK, Australia, Italy, Saudi Arabia, and Europe."
         canonical="https://www.zarkosportswear.com/about"
+        keywords="custom sports uniforms USA, wrestling gears exporter, hockey uniforms UK, football kits Saudi Arabia, soccer uniforms Italy, team kits Australia, custom jerseys Europe, sports apparel manufacturer"
         openGraph={{
-          'og:title': 'About Zarko Sportswear | Export-Grade Sportswear Manufacturer',
-          'og:description': 'Discover how Zarko Sportswear crafts premium custom sportswear for clubs worldwide with export-grade standards.',
+          'og:title': 'About Zarko Sportswear | Custom Uniforms to USA, UK, KSA & Europe',
+          'og:description': 'Learn about Zarko Sportswear, a premier exporter of custom football kits, wrestling gears, and hockey uniforms to USA, UK, Australia, Italy, Saudi Arabia, and Europe.',
           'og:url': 'https://www.zarkosportswear.com/about',
         }}
         twitter={{
-          'twitter:title': 'About Zarko Sportswear | Export-Grade Sportswear Manufacturer',
-          'twitter:description': 'Discover how Zarko Sportswear crafts premium custom sportswear for clubs worldwide with export-grade standards.',
+          'twitter:title': 'About Zarko Sportswear | Custom Uniforms to USA, UK, KSA & Europe',
+          'twitter:description': 'Learn about Zarko Sportswear, a premier exporter of custom football kits, wrestling gears, and hockey uniforms to USA, UK, Australia, Italy, Saudi Arabia, and Europe.',
         }}
       />
       <section>
@@ -94,10 +95,10 @@ const About = () => {
               About Zarko Sportswear
             </span>
             <h1 className="mt-5 text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-indigo-900 leading-tight">
-              Export-grade custom uniforms built in Sialkot, trusted by clubs worldwide.
+              Export-grade custom uniforms built in Sialkot, trusted across USA, UK, Australia, KSA & Europe.
             </h1>
             <p className="mt-4 text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
-              We partner with ambitious teams, academies, and distributors to deliver bespoke sportswear that performs on the field and elevates your brand off it.
+              We partner with ambitious teams, academies, and league distributors in the United States, United Kingdom, Australia, Italy, Saudi Arabia, and broader European countries to deliver bespoke high-performance sportswear (including football kits, wrestling singlets, and hockey wear).
             </p>
           </div>
 

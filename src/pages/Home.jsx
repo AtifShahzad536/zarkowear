@@ -46,10 +46,10 @@ const Home = () => {
                 Elite Performance Kits
               </motion.span>
               <motion.h2 initial={{opacity:0, y:20}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.5}} transition={{delay:0.2, duration:0.6}} className="mt-4 text-3xl md:text-4xl lg:text-[2.75rem] font-bold leading-tight">
-                Premium Team Wear engineered for every sport and every season.
+                Premium Team Wear engineered for USA, UK, Australia, KSA & European leagues.
               </motion.h2>
               <motion.p initial={{opacity:0, y:20}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.5}} transition={{delay:0.3, duration:0.6}} className="mt-4 text-white/85 text-base md:text-lg max-w-2xl">
-                Design winning looks, outfit entire clubs, and ship globally with fabrics that stand up to pro-level play.
+                Design winning looks, outfit entire clubs with premium fabrics. Trusted by professional academies, football clubs, wrestling leagues, and hockey associations across the United States, United Kingdom, Australia, Italy, Saudi Arabia, and greater Europe.
               </motion.p>
               <motion.ul initial={{opacity:0, y:24}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.4}} transition={{delay:0.4, duration:0.6}} className="mt-8 grid gap-4 sm:grid-cols-2">
                 <li className="flex items-start gap-3">
@@ -58,7 +58,7 @@ const Home = () => {
                   </span>
                   <div>
                     <p className="font-semibold">Export-grade craftsmanship</p>
-                    <p className="text-sm text-white/80">Sublimated, stitched, and finished to international tournament specs.</p>
+                    <p className="text-sm text-white/80">Sublimated, stitched, and finished to meet US, UK, Gulf, and European league specifications.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -66,8 +66,8 @@ const Home = () => {
                     <FaPalette />
                   </span>
                   <div>
-                    <p className="font-semibold">Unlimited customization</p>
-                    <p className="text-sm text-white/80">Colors, graphics, and naming tailored for your roster or retail line.</p>
+                    <p className="font-semibold">Custom wrestling & hockey gear</p>
+                    <p className="text-sm text-white/80">Bespoke singlets, jerseys, naming, and graphics tailored for your squad.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -75,8 +75,8 @@ const Home = () => {
                     <FaGlobeAmericas />
                   </span>
                   <div>
-                    <p className="font-semibold">Worldwide fulfillment</p>
-                    <p className="text-sm text-white/80">Dedicated export support for distributors and club managers.</p>
+                    <p className="font-semibold">Global delivery (USA, UK, KSA, EU, AU)</p>
+                    <p className="text-sm text-white/80">Express shipping directly to USA, UK, Australia, Saudi Arabia, Italy, and Europe with all customs clearances handled.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -256,10 +256,10 @@ const Home = () => {
               Icon: FaPalette,
               badge: 'Brand-matched'
             }, {
-              title: 'Global Shipping',
-              copy: 'Dedicated export desk handling documentation, freight, and delivery timelines.',
+              title: 'Global Delivery',
+              copy: 'Fast, secure shipping door-to-door to USA, UK, Australia, Italy, Saudi Arabia, and Europe with all customs clearances handled.',
               Icon: FaGlobeAmericas,
-              badge: 'Worldwide'
+              badge: 'KSA & Global'
             }].map(({ title, copy, Icon, badge }, i) => (
               <motion.div
                 key={title}

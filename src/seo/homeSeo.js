@@ -1,10 +1,10 @@
 const homeSeo = {
-  title: "Custom Sports Uniforms | Zarko Sportswear - Export Grade Football, Cricket Kits",
+  title: "Custom Sports Wear, Football Kits & Wrestling Gears | Zarko Sportswear",
   description:
-    "Zarko Sportswear manufactures premium custom sports uniforms including football kits, cricket wear, and basketball jerseys with worldwide shipping. Export-grade quality sports apparel for teams and athletes.",
+    "Zarko Sportswear manufactures export-grade custom sports uniforms, football kits, wrestling gears, and hockey uniforms. Serving teams in the USA, UK, Australia, Italy, Saudi Arabia, and Europe with global delivery.",
   canonical: "https://www.zarkosportswear.com/",
   keywords:
-    "custom sports uniforms, football kits, cricket uniforms, basketball jerseys, team wear, sportswear manufacturer, export quality, custom team kits, athletic apparel, sports clothing",
+    "custom sports uniforms USA, wrestling gears supplier, hockey uniforms UK, football kits Saudi Arabia, custom soccer jerseys Italy, sports apparel Europe, sportswear manufacturer, custom team wear, athletic jerseys, basketball uniforms USA, rugby gear Australia",
   author: "Atif Shahzad & Hurairah Shahzad",
   robots: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   themeColor: "#6366f1",
@@ -12,9 +12,9 @@ const homeSeo = {
   siteName: "Zarko Sportswear",
   locale: "en_US",
   openGraph: {
-    'og:title': 'Custom Sports Uniforms | Zarko Sportswear - Professional Team Kits',
+    'og:title': 'Custom Sports Wear, Football Kits & Wrestling Gears | Zarko Sportswear',
     'og:description':
-      'Premium custom sports uniforms for football, cricket, basketball and more. Export-grade quality with global delivery. Custom team kits and athletic apparel.',
+      'Premium custom sports uniforms, wrestling gears, hockey uniforms, and football kits. Serving teams across USA, UK, Australia, Italy, Saudi Arabia, and Europe with export-grade quality.',
     'og:url': 'https://www.zarkosportswear.com/',
     'og:image': 'https://www.zarkosportswear.com/og-cover.jpg',
     'og:image:width': '1200',
@@ -24,8 +24,8 @@ const homeSeo = {
     'og:locale': 'en_US',
   },
   twitter: {
-    'twitter:title': 'Custom Sports Uniforms | Zarko Sportswear - Professional Team Kits',
-    'twitter:description': "WearConnect's Zarko Sportswear designs and exports professional-grade sports uniforms and accessories.",
+    'twitter:title': 'Custom Sports Wear, Football Kits & Wrestling Gears | Zarko Sportswear',
+    'twitter:description': 'Zarko Sportswear exports professional-grade custom sports uniforms, wrestling gears, and hockey uniforms to USA, UK, Australia, Italy, Saudi Arabia, and Europe.',
     'twitter:card': 'summary_large_image',
     'twitter:image': 'https://www.zarkosportswear.com/og-cover.jpg',
     'twitter:site': '@zarkosportswear',
@@ -55,10 +55,22 @@ const homeSeo = {
         'https://www.linkedin.com/in/atif-shahzad903/'
       ],
       makesOffer: [
-        { '@type': 'Offer', name: 'Football Kits' },
+        { '@type': 'Offer', name: 'Football & Soccer Kits' },
         { '@type': 'Offer', name: 'Cricket Uniforms' },
         { '@type': 'Offer', name: 'Basketball Jerseys' },
         { '@type': 'Offer', name: 'Rugby Apparel' },
+        { '@type': 'Offer', name: 'Wrestling Gears & Singlets' },
+        { '@type': 'Offer', name: 'Hockey Uniforms & Wear' },
+      ],
+      areaServed: [
+        { '@type': 'Country', name: 'United States' },
+        { '@type': 'Country', name: 'United Kingdom' },
+        { '@type': 'Country', name: 'Australia' },
+        { '@type': 'Country', name: 'Italy' },
+        { '@type': 'Country', name: 'Saudi Arabia' },
+        { '@type': 'Country', name: 'Germany' },
+        { '@type': 'Country', name: 'France' },
+        { '@type': 'Country', name: 'Spain' }
       ],
       founder: [
         {
@@ -74,7 +86,7 @@ const homeSeo = {
         }
       ],
       description:
-        'Zarko Sportswear manufactures premium custom sports uniforms including football kits, cricket wear, and basketball jerseys with worldwide shipping.',
+        'Zarko Sportswear manufactures premium custom sports uniforms, wrestling gears, and hockey wear, exporting them to teams, academies, and clubs in the USA, UK, Australia, Italy, Saudi Arabia, and Europe.',
       priceRange: '$$',
       aggregateRating: {
         '@type': 'AggregateRating',
@@ -88,13 +100,14 @@ const homeSeo = {
       name: 'Zarko Sportswear',
       url: 'https://www.zarkosportswear.com/',
       logo: 'https://www.zarkosportswear.com/logo.png',
-      description: 'Leading manufacturer of custom sports uniforms and athletic apparel.',
+      description: 'Leading manufacturer and global exporter of custom sports uniforms, wrestling gears, hockey wear, and athletic apparel.',
       foundingDate: '2020',
       contactPoint: {
         '@type': 'ContactPoint',
         telephone: '+92-303-9200750',
         email: 'zarkosportswear@gmail.com',
-        contactType: 'customer service'
+        contactType: 'customer service',
+        availableLanguage: ['English', 'Italian', 'Arabic']
       }
     }
   ]

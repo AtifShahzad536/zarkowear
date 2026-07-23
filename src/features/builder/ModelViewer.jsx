@@ -858,6 +858,27 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
     return list;
   }, [clonedScene]);
 
+  // Center scene meshes automatically to fix GLB files exported far from origin
+  useEffect(() => {
+    if (clonedScene && meshRef.current && meshes.length > 0) {
+      meshRef.current.updateMatrixWorld(true);
+
+      // Filter out tiny detached meshes (like collar buttons exported far away)
+      const clothMeshes = meshes.filter(m => {
+        const b = new THREE.Box3().setFromObject(m);
+        const s = b.getSize(new THREE.Vector3());
+        return (s.x > 0.1 || s.y > 0.1 || s.z > 0.1);
+      });
+
+      const targetMeshes = clothMeshes.length > 0 ? clothMeshes : meshes;
+      const box = new THREE.Box3();
+      targetMeshes.forEach(m => box.expandByObject(m));
+
+      const center = box.getCenter(new THREE.Vector3());
+      meshRef.current.position.set(-center.x, -center.y, -center.z);
+    }
+  }, [clonedScene, meshes]);
+
   // Detect meshes
   useEffect(() => {
     // 1. Get the overall bounding box of all meshes combined
@@ -1492,7 +1513,7 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
   }, [rootScene]);
 
   return (
-    <group ref={meshRef} scale={1.8} onPointerDown={handleMeshClick}>
+    <group ref={meshRef} position={[0, -0.2, 0]} scale={1.8} onPointerDown={handleMeshClick}>
       {meshes.map(m => {
         const meta = layersMetadata[m.name] || {};
         const stateKey = meta.merge_parent || m.name;
@@ -1529,22 +1550,20 @@ const ModelViewer = memo(({ modelUrl, layersMetadata = {}, meshStates, onMeshesD
         <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} intensity={lightingPreset === 'studio' ? 2.5 : 1.5} />
         <directionalLight position={[-5, 5, -5]} intensity={lightingPreset === 'night' ? 0.1 : 0.5} />
         <Suspense fallback={<CoolLoader />}>
-          <Center>
-            <Model
-              url={modelUrl}
-              layersMetadata={layersMetadata}
-              meshStates={meshStates}
-              onMeshesDetected={onMeshesDetected}
-              decals={decals}
-              selectedDecalId={selectedDecalId}
-              setSelectedDecalId={setSelectedDecalId}
-              updateDecal={updateDecal}
-              removeDecal={removeDecal}
-              finish={materialFinish}
-              globalPattern={globalPattern}
-              mouseFollow={mouseFollow}
-            />
-          </Center>
+          <Model
+            url={modelUrl}
+            layersMetadata={layersMetadata}
+            meshStates={meshStates}
+            onMeshesDetected={onMeshesDetected}
+            decals={decals}
+            selectedDecalId={selectedDecalId}
+            setSelectedDecalId={setSelectedDecalId}
+            updateDecal={updateDecal}
+            removeDecal={removeDecal}
+            finish={materialFinish}
+            globalPattern={globalPattern}
+            mouseFollow={mouseFollow}
+          />
 
           {/* Floating Controls — theme-matched, just above text */}
           {/* Hide floating controls for pattern decals — patterns are locked in place */}

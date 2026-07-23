@@ -20,6 +20,8 @@ const AdminLogin = lazy(() => import('./pages/AdminLogin.jsx'))
 const NotFound = lazy(() => import('./pages/NotFound.jsx'))
 const BuilderPage = lazy(() => import('./pages/BuilderPage.jsx'))
 
+const ModelSelectionPage = lazy(() => import('./pages/ModelSelectionPage.jsx'))
+
 // Define routes
 const router = createBrowserRouter([
   {
@@ -52,6 +54,7 @@ const router = createBrowserRouter([
 
       // ✅ 3D Jersey Builder
       { path: "builder", element: <BuilderPage /> },
+      { path: "builder/models", element: <ModelSelectionPage /> },
       { path: "builder/:id", element: <BuilderPage /> },
       {
         path: "admin",

@@ -45,17 +45,18 @@ const Contact = () => {
   return (
     <main className="min-h-screen bg-white">
       <SeoHead
-        title="Contact Zarko Sportswear | Request Quotes & Support"
-        description="Contact Zarko Sportswear for custom uniform quotes, export inquiries, and fast support."
+        title="Contact Zarko Sportswear | Custom Uniform Quotes USA, UK, KSA & Europe"
+        description="Get in touch with Zarko Sportswear. We support sports clubs and distributors in the USA, UK, Australia, Italy, Saudi Arabia, and Europe with custom manufacturing and worldwide shipping."
         canonical="https://www.zarkosportswear.com/contact"
+        keywords="contact sportswear manufacturer, order sports uniforms USA, wrestling gears exporter, hockey wear UK, team uniforms quote Saudi Arabia, sportswear supplier Europe"
         openGraph={{
-          'og:title': 'Contact Zarko Sportswear | Request Quotes & Support',
-          'og:description': 'Contact Zarko Sportswear for custom sports uniform quotes, export inquiries, or customer support.',
+          'og:title': 'Contact Zarko Sportswear | Custom Uniform Quotes USA, UK, KSA & Europe',
+          'og:description': 'Get in touch with Zarko Sportswear. We support sports clubs and distributors in the USA, UK, Australia, Italy, Saudi Arabia, and Europe with custom manufacturing and worldwide shipping.',
           'og:url': 'https://www.zarkosportswear.com/contact',
         }}
         twitter={{
-          'twitter:title': 'Contact Zarko Sportswear | Request Quotes & Support',
-          'twitter:description': 'Contact Zarko Sportswear for custom sports uniform quotes, export inquiries, or customer support.',
+          'twitter:title': 'Contact Zarko Sportswear | Custom Uniform Quotes USA, UK, KSA & Europe',
+          'twitter:description': 'Get in touch with Zarko Sportswear. We support sports clubs and distributors in the USA, UK, Australia, Italy, Saudi Arabia, and Europe with custom manufacturing and worldwide shipping.',
         }}
       />
       <section className="relative overflow-hidden">
@@ -63,11 +64,11 @@ const Contact = () => {
         <div className="relative mx-auto max-w-6xl px-4 pb-14 pt-10">
           <motion.header initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.6 }} transition={{ duration: 0.6 }} className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-600">
-              Let's collaborate
+              Global Support Desk
             </span>
             <h1 className="mt-5 text-3xl sm:text-4xl font-bold text-indigo-900">Contact Zarko Sportswear</h1>
             <p className="mt-3 text-base md:text-lg text-gray-600">
-              Reach our production specialists for quotes, sampling timelines, and export support.
+              Connect with our production specialists for quotes, custom sampling, and export logistics to USA, UK, Australia, Italy, Saudi Arabia, and Europe.
             </p>
           </motion.header>
 
@@ -91,7 +92,7 @@ const Contact = () => {
                   title: 'Call us',
                   content: '+92 303 9200750',
                   Icon: FaPhoneAlt,
-                  sub: 'Mon–Sat · 9am–6pm PKT',
+                  sub: 'Coordinating around USA, UK, Europe & Australia time zones',
                 }, {
                   title: 'Email',
                   content: 'zarkosportswear@gmail.com',
@@ -101,12 +102,12 @@ const Contact = () => {
                   title: 'Visit',
                   content: '123 Export Avenue, Sialkot, Pakistan',
                   Icon: FaMapMarkerAlt,
-                  sub: 'Production HQ & sampling studio',
+                  sub: 'Production HQ & global shipping hub',
                 }, {
                   title: 'Working hours',
                   content: 'Mon – Sat, 9:00 – 18:00 PKT',
                   Icon: FaClock,
-                  sub: 'Custom appointments available',
+                  sub: 'Custom timezone appointments available',
                 }].map(({ title, content, Icon, sub }) => (
                   <div key={title} className="flex items-start gap-4 rounded-2xl border border-indigo-100 bg-white/95 p-4 shadow-sm">
                     <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-indigo-600/10 text-indigo-600">
@@ -147,7 +148,7 @@ const Contact = () => {
               </label>
               <label className="space-y-2 text-sm font-medium text-gray-700 block">
                 How can we help?
-                <textarea name="message" rows="5" placeholder="Tell us about your team, quantities, fabrics, or timelines…" className="w-full rounded-xl border border-indigo-100 px-4 py-3 text-sm shadow-inner focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
+                <textarea name="message" rows="5" placeholder="Tell us about your team (USA, UK, AU, KSA, Italy, Europe), custom uniform requirements (football kits, wrestling gears, hockey uniforms, etc), order quantities, or specific delivery deadlines…" className="w-full rounded-xl border border-indigo-100 px-4 py-3 text-sm shadow-inner focus:outline-none focus:ring-2 focus:ring-indigo-500" required />
               </label>
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <p className="text-xs text-gray-500">Response time: within 24 hours on business days.</p>

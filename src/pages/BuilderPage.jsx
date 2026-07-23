@@ -92,7 +92,8 @@ export const BuilderPage = () => {
   }, [id, config.dynamicDesigns, dispatch]);
 
   const handleSelectDesign = (design) => {
-    navigate(`/builder/${design.id}`);
+    const categoryName = design.name.split(' / ')[0] || 'All';
+    navigate(`/builder/models?category=${encodeURIComponent(categoryName)}`);
   };
 
   const handleBackToLanding = () => {
@@ -100,7 +101,11 @@ export const BuilderPage = () => {
     dispatch(incrementRefreshKey());
     setTimeout(() => {
       setIsTransitioning(false);
-      navigate('/builder');
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        navigate('/builder/models');
+      }
     }, 200);
   };
 
