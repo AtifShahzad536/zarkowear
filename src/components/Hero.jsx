@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
@@ -32,7 +33,10 @@ const Hero = () => {
       <Swiper
         modules={[Navigation, Autoplay]}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
-        navigation
+        navigation={{
+          prevEl: '.hero-prev',
+          nextEl: '.hero-next',
+        }}
         loop
         className="w-full h-full"
       >
@@ -54,14 +58,20 @@ const Hero = () => {
         ))}
       </Swiper>
 
-      <div className="hidden sm:flex absolute bottom-6 left-3 right-3 sm:left-6 sm:right-auto md:bottom-12 md:left-12 z-40 flex-col gap-3 bg-black/45 backdrop-blur-md px-5 py-4 rounded-2xl text-white max-w-xl">
-        <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-wide">Zarko Sportswear</h1>
-        <span className="inline-flex items-center gap-2 rounded-full bg-black/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-indigo-200">
-          Export-grade team uniforms
-        </span>
-        <p className="max-w-md text-xs sm:text-sm text-white/85 leading-relaxed">
-          Made in Sialkot with rapid sampling and global shipping. Learn more on our <Link to="/about" className="underline decoration-indigo-200 underline-offset-4 hover:text-white">About</Link> page or start a brief on the <Link to="/custom" className="underline decoration-indigo-200 underline-offset-4 hover:text-white">Custom Orders</Link> hub.
-        </p>
+      {/* Custom Navigation Controls (Bottom Right) - Highly Visible Indigo Buttons */}
+      <div className="absolute bottom-6 right-6 md:bottom-12 md:right-12 z-40 flex items-center gap-2">
+        <button
+          className="hero-prev w-10 h-10 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white flex items-center justify-center transition duration-300 shadow-md active:scale-95 border border-indigo-500/30"
+          aria-label="Previous slide"
+        >
+          <FaChevronLeft className="text-sm" />
+        </button>
+        <button
+          className="hero-next w-10 h-10 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white flex items-center justify-center transition duration-300 shadow-md active:scale-95 border border-indigo-500/30"
+          aria-label="Next slide"
+        >
+          <FaChevronRight className="text-sm" />
+        </button>
       </div>
     </section>
   );

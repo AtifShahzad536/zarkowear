@@ -21,8 +21,8 @@ const FeaturedCategories = () => {
 
   // Premium Skeleton Loader Component
   const SkeletonCard = () => (
-    <div className="relative group overflow-hidden rounded-3xl shadow-md bg-white/50 backdrop-blur-sm border border-gray-100">
-      <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse rounded-t-3xl" />
+    <div className="relative group overflow-hidden rounded-2xl shadow-md bg-white/50 backdrop-blur-sm border border-gray-100">
+      <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse rounded-t-2xl" />
       <div className="p-4 space-y-3">
         <div className="h-6 bg-gray-200 rounded-full w-3/4 animate-pulse"></div>
         <div className="space-y-2">
@@ -88,7 +88,7 @@ const FeaturedCategories = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="relative group overflow-hidden rounded-3xl shadow-md hover:shadow-2xl transition cursor-pointer ring-1 ring-gray-200 hover:-translate-y-1"
+              className="relative group overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition cursor-pointer ring-1 ring-gray-200 hover:-translate-y-1"
               onClick={() => navigate(`/${cat.slug}`)}
             >
               <img
@@ -108,7 +108,7 @@ const FeaturedCategories = () => {
                     </p>
                     <button
                       type="button"
-                      className="inline-flex items-center justify-center gap-2 w-full rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2.5 text-xs md:text-sm tracking-wide shadow-md transition duration-300 mt-3"
+                      className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2.5 text-xs md:text-sm tracking-wide shadow-md transition duration-300 mt-3"
                     >
                       Customize Now
                       <span aria-hidden>→</span>

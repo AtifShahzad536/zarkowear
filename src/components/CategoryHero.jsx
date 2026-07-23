@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const CategoryHero = ({ title, description, gradient = 'from-blue-600 via-indigo-600 to-purple-600', className = '' }) => (
-  <section className={`relative overflow-hidden rounded-3xl bg-slate-950 p-6 sm:p-10 text-white shadow-2xl border border-slate-800 ${className}`}>
+  <section className={`relative overflow-hidden rounded-2xl bg-slate-950 p-6 sm:p-10 text-white shadow-2xl border border-slate-800 ${className}`}>
     {/* Animated background glows */}
     <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-gradient-to-br from-indigo-500/30 to-blue-600/20 blur-3xl animate-pulse" />
     <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-gradient-to-tr from-violet-600/20 to-pink-500/20 blur-3xl" />

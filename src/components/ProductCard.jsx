@@ -27,7 +27,7 @@ const ProductCard = ({
   return (
     <motion.div
       onClick={handleCardClick}
-      className="group relative bg-white rounded-2xl border border-slate-200/80 hover:border-indigo-500/30 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between"
+      className="group relative bg-white rounded-2xl border border-slate-200/80 hover:border-indigo-500/30 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between max-w-[290px] w-full mx-auto"
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
@@ -72,10 +72,10 @@ const ProductCard = ({
       <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
         <div className="space-y-1">
           <div className="flex items-center justify-between gap-2">
-            <h3 className="font-extrabold text-slate-900 text-sm leading-snug group-hover:text-indigo-600 transition-colors line-clamp-1">
+            <h3 className="font-bold text-slate-900 text-sm leading-snug group-hover:text-indigo-600 transition-colors line-clamp-1">
               {name}
             </h3>
-            <span className="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full shrink-0">
+            <span className="text-[10px] font-semibold text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full shrink-0">
               Pro
             </span>
           </div>
@@ -88,26 +88,28 @@ const ProductCard = ({
         <div className="flex items-center justify-between pt-2 border-t border-slate-100">
           <div className="flex items-center gap-1">
             <span className="text-xs text-amber-400">★</span>
-            <span className="text-xs font-bold text-slate-700">{rating}</span>
+            <span className="text-xs font-semibold text-slate-700">{rating}</span>
             <span className="text-[10px] text-slate-400">({reviewCount})</span>
           </div>
           <div>
-            <span className="text-xs font-black text-indigo-900 uppercase tracking-wider">
+            <span className="text-xs font-semibold text-indigo-900 uppercase tracking-wider">
               {price ? `$${price.toFixed(2)}` : 'Custom Quote'}
             </span>
           </div>
         </div>
 
         {/* Action Button */}
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            navigate(`/custom?product=${encodeURIComponent(name)}`);
-          }}
-          className="w-full py-2 bg-indigo-50 group-hover:bg-indigo-600 text-indigo-700 group-hover:text-white text-xs font-bold rounded-xl border border-indigo-100 group-hover:border-transparent transition-all duration-200 text-center shadow-sm"
-        >
-          Customize Now
-        </button>
+        <div className="flex justify-center pt-1">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate(`/custom?product=${encodeURIComponent(name)}`);
+            }}
+            className="px-6 py-2 bg-indigo-50 group-hover:bg-indigo-600 text-indigo-700 group-hover:text-white text-xs font-semibold rounded-xl border border-indigo-100 group-hover:border-transparent transition-all duration-200 text-center shadow-sm"
+          >
+            Customize Now
+          </button>
+        </div>
       </div>
     </motion.div>
   );

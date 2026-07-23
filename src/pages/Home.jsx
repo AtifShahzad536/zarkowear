@@ -36,90 +36,90 @@ const Home = () => {
 
       <FeaturedCategories />
       {/* CTA Strip */}
-      <section className="relative overflow-hidden bg-[#121420] text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_120%,_rgba(99,102,241,0.15),_transparent_50%)]" />
+      <section className="relative overflow-hidden bg-indigo-600 text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_120%,_rgba(255,255,255,0.1),_transparent_50%)]" />
         <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-20">
           <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] items-center">
             <motion.div initial={{opacity:0, x:-30}} whileInView={{opacity:1, x:0}} viewport={{once:true, amount:0.4}} transition={{duration:0.6}}>
-              <motion.span initial={{opacity:0, y:-12}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.5}} transition={{delay:0.1, duration:0.4}} className="inline-flex items-center gap-2 rounded-full bg-indigo-500/10 border border-indigo-500/30 px-4 py-1.5 text-xs font-semibold tracking-widest uppercase text-indigo-400">
+              <motion.span initial={{opacity:0, y:-12}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.5}} transition={{delay:0.1, duration:0.4}} className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-1.5 text-xs font-semibold tracking-widest uppercase text-white">
                 Elite Performance Kits
               </motion.span>
-              <motion.h2 initial={{opacity:0, y:20}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.5}} transition={{delay:0.2, duration:0.6}} className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white">
+              <motion.h2 initial={{opacity:0, y:20}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.5}} transition={{delay:0.2, duration:0.6}} className="mt-5 text-3xl sm:text-4xl lg:text-[2.75rem] font-bold leading-tight text-white">
                 Premium Team Wear engineered for USA, UK, Australia, KSA & European leagues.
               </motion.h2>
-              <motion.p initial={{opacity:0, y:20}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.5}} transition={{delay:0.3, duration:0.6}} className="mt-5 text-gray-300 text-base md:text-lg max-w-2xl leading-relaxed">
+              <motion.p initial={{opacity:0, y:20}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.5}} transition={{delay:0.3, duration:0.6}} className="mt-5 text-white/85 text-base md:text-lg max-w-2xl leading-relaxed">
                 Design winning looks and outfit entire clubs with export-grade fabrics. Trusted by professional academies, football clubs, wrestling leagues, and hockey associations across the United States, United Kingdom, Australia, Italy, Saudi Arabia, and greater Europe.
               </motion.p>
               <motion.ul initial={{opacity:0, y:24}} whileInView={{opacity:1, y:0}} viewport={{once:true, amount:0.4}} transition={{delay:0.4, duration:0.6}} className="mt-10 grid gap-6 sm:grid-cols-2">
                 <li className="flex items-start gap-4">
-                  <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+                  <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 border border-white/20 text-white">
                     <FaAward className="text-lg" />
                   </span>
                   <div>
-                    <h3 className="font-bold text-white text-base">Export-grade craftsmanship</h3>
-                    <p className="text-xs sm:text-sm text-gray-400 mt-1">Sublimated, stitched, and finished to meet US, UK, Gulf, and European league specifications.</p>
+                    <h3 className="font-semibold text-white text-base">Export-grade craftsmanship</h3>
+                    <p className="text-xs sm:text-sm text-white/80 mt-1">Sublimated, stitched, and finished to meet US, UK, Gulf, and European league specifications.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+                  <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 border border-white/20 text-white">
                     <FaPalette className="text-lg" />
                   </span>
                   <div>
-                    <h3 className="font-bold text-white text-base">Custom wrestling & hockey gear</h3>
-                    <p className="text-xs sm:text-sm text-gray-400 mt-1">Bespoke singlets, jerseys, naming, and graphics tailored for your squad.</p>
+                    <h3 className="font-semibold text-white text-base">Custom wrestling & hockey gear</h3>
+                    <p className="text-xs sm:text-sm text-white/80 mt-1">Bespoke singlets, jerseys, naming, and graphics tailored for your squad.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+                  <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 border border-white/20 text-white">
                     <FaGlobeAmericas className="text-lg" />
                   </span>
                   <div>
-                    <h3 className="font-bold text-white text-base">Global delivery (USA, UK, KSA, EU, AU)</h3>
-                    <p className="text-xs sm:text-sm text-gray-400 mt-1">Express shipping directly to USA, UK, Australia, Saudi Arabia, Italy, and Europe with customs clearances handled.</p>
+                    <h3 className="font-semibold text-white text-base">Global delivery (USA, UK, KSA, EU, AU)</h3>
+                    <p className="text-xs sm:text-sm text-white/80 mt-1">Express shipping directly to USA, UK, Australia, Saudi Arabia, Italy, and Europe with customs clearances handled.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+                  <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 border border-white/20 text-white">
                     <FaRunning className="text-lg" />
                   </span>
                   <div>
-                    <h3 className="font-bold text-white text-base">Performance-tested fabrics</h3>
-                    <p className="text-xs sm:text-sm text-gray-400 mt-1">Moisture management and mobility built for elite competition.</p>
+                    <h3 className="font-semibold text-white text-base">Performance-tested fabrics</h3>
+                    <p className="text-xs sm:text-sm text-white/80 mt-1">Refined moisture management and mobility built for elite competition.</p>
                   </div>
                 </li>
               </motion.ul>
             </motion.div>
             
             <motion.div initial={{opacity:0, x:30}} whileInView={{opacity:1, x:0}} viewport={{once:true, amount:0.4}} transition={{duration:0.6}} className="relative">
-              <div className="relative rounded-[2rem] border border-white/5 bg-white/[0.03] p-8 md:p-10 shadow-2xl backdrop-blur-sm">
-                <span className="text-xs uppercase tracking-widest text-indigo-400 font-semibold">Your next drop</span>
-                <h3 className="mt-3 text-2xl font-extrabold text-white">Launch custom kits in 3 easy steps</h3>
-                <ul className="mt-8 space-y-5 text-gray-300 text-sm md:text-base">
+              <div className="relative rounded-2xl border border-white/15 bg-white/10 p-8 md:p-10 shadow-2xl backdrop-blur-sm">
+                <span className="text-xs uppercase tracking-widest text-white/80 font-semibold">Your next drop</span>
+                <h3 className="mt-3 text-2xl font-bold text-white">Launch custom kits in 3 easy steps</h3>
+                <ul className="mt-8 space-y-5 text-white/90 text-sm md:text-base">
                   <li className="flex items-center gap-4">
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-center text-xs font-bold text-white">1</span>
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-center text-xs font-bold text-indigo-600">1</span>
                     <span>Share your concept, logo, or inspiration.</span>
                   </li>
                   <li className="flex items-center gap-4">
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-center text-xs font-bold text-white">2</span>
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-center text-xs font-bold text-indigo-600">2</span>
                     <span>Approve mockups tailored to your team identity.</span>
                   </li>
                   <li className="flex items-center gap-4">
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-center text-xs font-bold text-white">3</span>
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-center text-xs font-bold text-indigo-600">3</span>
                     <span>Receive export-ready uniforms with global shipping.</span>
                   </li>
                 </ul>
                 <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                  <Link to="/football" className="inline-flex items-center justify-center gap-2 rounded-full bg-white hover:bg-gray-100 text-[#121420] px-6 py-3.5 text-sm font-bold shadow-md transition duration-300">
+                  <Link to="/football" className="inline-flex items-center justify-center gap-2 rounded-xl bg-white hover:bg-gray-150 text-indigo-700 px-6 py-3.5 text-sm font-bold shadow-md transition duration-300">
                     Shop Sports Wear
                     <FaArrowRight className="text-xs" />
                   </Link>
-                  <Link to="/custom" className="inline-flex items-center justify-center gap-2 rounded-full bg-white/10 hover:bg-white/15 px-6 py-3.5 text-sm font-bold text-white border border-white/10 transition duration-300">
+                  <Link to="/custom" className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-950/20 hover:bg-indigo-950/30 px-6 py-3.5 text-sm font-bold text-white border border-white/20 transition duration-300">
                     Custom Orders
                     <FaArrowRight className="text-xs" />
                   </Link>
                 </div>
-                <div className="mt-6 flex items-center gap-3 text-xs text-gray-400">
-                  <FaPhoneAlt className="text-indigo-400" />
+                <div className="mt-6 flex items-center gap-3 text-xs text-white/80">
+                  <FaPhoneAlt className="text-white" />
                   <span>Need help? Call +92-303-9200750 for a production specialist.</span>
                 </div>
               </div>
@@ -138,7 +138,7 @@ const Home = () => {
               <h2 className="mt-2 text-3xl font-bold text-indigo-900">Elite kits and accessories for every squad</h2>
               <p className="mt-2 text-sm text-gray-500">Browse export-grade uniforms, footwear, and gear bundles, or learn more about our <Link to="/about" className="text-indigo-600 hover:underline">sportswear manufacturing</Link>.</p>
             </div>
-            <Link to="/custom" className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white px-4 py-2 text-sm font-semibold text-indigo-700 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300">
+            <Link to="/custom" className="inline-flex items-center gap-2 rounded-xl border border-indigo-200 bg-white px-4 py-2 text-sm font-semibold text-indigo-700 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300">
               Build your own collection
               <FaArrowRight className="text-base" />
             </Link>
@@ -266,7 +266,7 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ delay: i * 0.1, duration: 0.45 }}
-                className="relative overflow-hidden rounded-3xl border border-indigo-100 bg-white p-6 shadow-md transition hover:-translate-y-1 hover:shadow-lg"
+                className="relative overflow-hidden rounded-2xl border border-indigo-100 bg-white p-6 shadow-md transition hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-indigo-500/15 opacity-0 transition group-hover:opacity-100" />
                 <div className="relative flex items-start gap-4">
@@ -289,227 +289,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Partners / Clients - Premium Branded Marquee */}
-      <section className="bg-gradient-to-b from-slate-50 via-indigo-50/30 to-white overflow-hidden relative">
-        {/* Background decorative elements */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-indigo-500 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-500 rounded-full blur-3xl" />
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 py-16 md:py-20 relative z-10">
-          {/* Header with brand logo */}
-          <div className="text-center mb-10 md:mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7 }}
-              className="inline-flex items-center gap-3 md:gap-4 mb-4 md:mb-6"
-            >
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 p-0.5">
-                <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
-                  <img src="/logo.png" alt="Zarko Sportswear" className="w-6 h-6 md:w-8 md:h-8 object-contain" />
-                </div>
-              </div>
-              <span className="text-xs md:text-sm font-bold text-indigo-600 uppercase tracking-[0.2em]">Zarko Sportswear</span>
-            </motion.div>
-            
-            <motion.h2
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-indigo-900 via-purple-800 to-indigo-900 bg-clip-text text-transparent mb-3 md:mb-4"
-            >
-              Trusted Global Partners
-            </motion.h2>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base md:text-lg text-gray-600 max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-2"
-            >
-              From elite franchises to grassroots academies, our export-ready kits power winning rosters worldwide
-            </motion.p>
-          </div>
 
-          {/* Premium Marquee Container */}
-          <div className="relative py-6 md:py-8">
-            {/* Gradient overlays for fade effect */}
-            {/* <div className="absolute left-0 top-0 z-20 h-full w-16 md:w-40 bg-gradient-to-r from-white via-white/90 to-transparent" />
-            <div className="absolute right-0 top-0 z-20 h-full w-16 md:w-40 bg-gradient-to-l from-white via-white/90 to-transparent" /> */}
-
-            {/* Floating stats badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: -20 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 200 }}
-              className="absolute -top-4 md:-top-8 left-1/2 transform -translate-x-1/2 z-30"
-            >
-              <div className="glass text-indigo-900 px-4 md:px-8 py-2 md:py-3 rounded-full font-bold text-xs md:text-lg shadow-modern border border-indigo-100/50 flex items-center gap-2 md:gap-3">
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  className="w-2.5 h-2.5 md:w-3 md:h-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
-                />
-                <span>{clubs.length}+ Global Partners</span>
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="text-yellow-500"
-                >
-                  <FaStar className="text-xs md:text-sm" />
-                </motion.div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="flex gap-4 md:gap-6 py-4"
-              animate={{
-                x: [0, -170 * clubs.length],
-              }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 40,
-                  ease: "linear",
-                },
-              }}
-            >
-              {/* Duplicate for seamless loop */}
-              {[...clubs, ...clubs].map((name, i) => (
-                <motion.div
-                  key={`${name}-${i}`}
-                  whileHover={{
-                    scale: 1.04,
-                    y: -8,
-                    rotateY: 5,
-                    z: 30,
-                    boxShadow: "0 24px 48px rgba(0,0,0,0.15), 0 0 0 1px rgba(99,102,241,0.15)",
-                  }}
-                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                  className="flex-shrink-0 w-36 md:w-44 relative overflow-hidden rounded-2xl glass shadow-modern px-4 md:px-5 py-3 md:py-4 hover:shadow-xl transition-all duration-400 group border border-indigo-100/30"
-                >
-                  {/* Premium background effects */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-indigo-50/15 to-purple-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-                  <div className="absolute top-0 right-0 w-14 md:w-16 h-14 md:h-16 bg-gradient-to-bl from-indigo-400/15 to-transparent rounded-full blur-sm" />
-                  <div className="absolute bottom-0 left-0 w-10 md:w-12 h-10 md:h-12 bg-gradient-to-tr from-purple-400/15 to-transparent rounded-full blur-sm" />
-
-                  {/* Premium glow effect */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/6 via-purple-500/3 to-indigo-500/6 opacity-0 group-hover:opacity-100 transition-opacity duration-400 blur-md md:blur-lg" />
-
-                  <div className="relative flex items-center gap-3">
-                    <div className="flex items-center gap-3 flex-1 min-w-0">
-                      {/* Compact logo design */}
-                      <div className="relative">
-                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-0.5 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                          <div className="w-full h-full rounded-lg bg-white flex items-center justify-center shadow-inner">
-                            <span className="text-indigo-700 font-black text-[10px] md:text-xs tracking-wider group-hover:scale-110 transition-transform duration-300">
-                              {name.split(' ').map(word => word[0]).join('').slice(0,2)}
-                            </span>
-                          </div>
-                        </div>
-                        {/* Premium badge */}
-                        <div className="absolute -top-1 -right-1 w-3.5 h-3.5 md:w-4 md:h-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full border-2 border-white shadow-sm flex items-center justify-center">
-                          <FaStar className="text-[5px] md:text-[6px] text-white" />
-                        </div>
-                      </div>
-
-                      <div className="flex-1 min-w-0">
-                        <h4 className="font-bold text-indigo-900 text-xs md:text-sm truncate group-hover:text-gradient-modern transition-all duration-300 leading-tight mb-0.5">
-                          {name}
-                        </h4>
-                        <div className="flex items-center gap-1">
-                          <FaCheckCircle className="text-[8px] md:text-[10px] text-green-600" />
-                          <span className="text-[9px] md:text-[10px] text-green-600 font-medium">Active</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Status indicator with icon */}
-                    <div className="flex-shrink-0">
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                        className="w-2.5 h-2.5 md:w-3 md:h-3 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full shadow-sm border border-white"
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </section>
-      {/* Brand Story */}
-      <section className="bg-white">
-        <div className="max-w-7xl mx-auto grid gap-10 px-4 py-16 lg:grid-cols-[1.05fr_0.95fr]">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="relative overflow-hidden rounded-3xl border border-indigo-100 bg-gradient-to-br from-indigo-50 via-white to-white p-10 shadow-xl"
-          >
-            <div className="absolute inset-y-0 right-0 w-40 bg-[radial-gradient(circle_at_top,_rgba(79,70,229,0.18),_transparent_55%)]" />
-            <div className="relative space-y-6">
-              <span className="inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-500">
-                Our story
-              </span>
-              <h3 className="text-3xl font-bold text-indigo-900 leading-tight">
-                About ZarkoSportsWear
-              </h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                We engineer export-grade team wear from Sialkot, serving clubs, academies, and distributors across the globe.
-                Every collection pairs advanced fabrics, precision sublimation, and meticulous QC for performance on and off the field.
-              </p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-2xl border border-indigo-100 bg-white/90 p-4 shadow-sm">
-                  <p className="text-xs uppercase tracking-[0.25em] text-indigo-500">40+ Countries</p>
-                  <p className="mt-2 text-lg font-semibold text-indigo-900">Global export footprint</p>
-                  <p className="text-xs text-gray-500">Dedicated logistics and distributor support.</p>
-                </div>
-                <div className="rounded-2xl border border-indigo-100 bg-white/90 p-4 shadow-sm">
-                  <p className="text-xs uppercase tracking-[0.25em] text-indigo-500">12k+ Units / Month</p>
-                  <p className="mt-2 text-lg font-semibold text-indigo-900">Flexible production runs</p>
-                  <p className="text-xs text-gray-500">From pro kits to grassroots academies.</p>
-                </div>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <Link to="/about" className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-indigo-700">
-                  Learn more
-                  <FaArrowRight className="text-sm" />
-                </Link>
-                <Link to="/contact" className="inline-flex items-center gap-2 rounded-full border border-indigo-200 px-6 py-3 text-sm font-semibold text-indigo-700 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300">
-                  Contact us
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="relative overflow-hidden rounded-3xl shadow-xl"
-          >
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-600/10 via-transparent to-indigo-900/10" />
-            <img src="/images/slide2.jpg" alt="About WearConnect" className="h-full w-full object-cover" />
-            <div className="absolute bottom-6 left-6 right-6 rounded-2xl bg-white/90 p-5 shadow-lg">
-              <p className="text-xs uppercase tracking-[0.35em] text-indigo-500">Signature craftsmanship</p>
-              <p className="mt-2 text-sm text-gray-600">
-                Designed, stitched, and finished under one roof for consistent export quality.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
       
      
 

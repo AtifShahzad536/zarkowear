@@ -213,21 +213,21 @@ const Dropdown = ({ label, items }) => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
-            className="absolute left-1/2 top-full z-50 mt-2 w-56 -translate-x-1/2"
+            className={`absolute top-full z-50 mt-2 -translate-x-1/2 left-1/2 ${items.length > 4 ? 'w-[480px]' : 'w-[260px]'}`}
           >
-            <div className="overflow-hidden rounded-2xl border border-slate-100 bg-white/95 shadow-[0_20px_50px_rgba(0,0,0,0.08)] backdrop-blur-xl">
-              <ul className="py-2.5">
+            <div className="overflow-hidden rounded-2xl border border-slate-100 bg-white/95 p-3 shadow-[0_20px_50px_rgba(99,102,241,0.15)] backdrop-blur-xl">
+              <div className={`grid gap-2 ${items.length > 4 ? 'grid-cols-2' : 'grid-cols-1'}`}>
                 {items.map((item, index) => (
-                  <li key={index}>
-                    <Link
-                      to={item.to}
-                      className="block px-5 py-2 text-[10px] font-bold uppercase tracking-wider text-slate-500 hover:bg-indigo-50/50 hover:text-indigo-600 transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
+                  <Link
+                    key={index}
+                    to={item.to}
+                    className="group flex items-center justify-between rounded-xl px-4 py-2.5 border border-slate-100/50 bg-slate-50/30 hover:bg-indigo-50/50 hover:border-indigo-100/80 text-[13px] font-semibold text-slate-700 hover:text-indigo-600 transition-all duration-200 normal-case"
+                  >
+                    <span>{item.label}</span>
+                    <FaArrowRight className="text-[10px] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 text-indigo-600" />
+                  </Link>
                 ))}
-              </ul>
+              </div>
             </div>
           </motion.div>
         )}

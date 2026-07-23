@@ -132,7 +132,7 @@ const About = () => {
                 </div>
               </div>
 
-              <div className="relative overflow-hidden rounded-3xl border border-indigo-100 bg-gradient-to-br from-indigo-50 via-white to-purple-50 p-6 md:p-8 shadow-lg">
+              <div className="relative overflow-hidden rounded-2xl border border-indigo-100 bg-gradient-to-br from-indigo-50 via-white to-purple-50 p-6 md:p-8 shadow-lg">
                 <div className="absolute -top-24 -right-10 h-56 w-56 rounded-full bg-indigo-100/60 blur-3xl" />
                 <div className="absolute bottom-0 left-0 h-48 w-48 rounded-full bg-purple-100/60 blur-3xl" />
                 <div className="relative flex flex-col gap-6">
@@ -179,10 +179,10 @@ const About = () => {
             </div>
 
             <div className="space-y-6">
-              <div className="overflow-hidden rounded-3xl border border-indigo-100 shadow-xl">
+              <div className="overflow-hidden rounded-2xl border border-indigo-100 shadow-xl">
                 <img src="/images/slide1.jpg" alt="Zarko production floor" className="h-full w-full object-cover" />
               </div>
-              <div className="rounded-3xl border border-indigo-100 bg-white p-6 shadow-sm">
+              <div className="rounded-2xl border border-indigo-100 bg-white p-6 shadow-sm">
                 <h3 className="text-xl font-semibold text-indigo-900">Leadership Philosophy</h3>
                 <p className="mt-2 text-sm text-gray-600 leading-relaxed">
                   Atif and Hurairah stay closely involved with sampling, production, and customer care, ensuring every project reflects the craftsmanship and timeliness they demand from their own teams.

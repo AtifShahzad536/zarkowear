@@ -70,11 +70,11 @@ const ProductInquiry = () => {
         </button>
 
         {/* Two-Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start bg-white rounded-3xl border border-slate-100 p-6 sm:p-10 shadow-sm">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start bg-transparent py-4 sm:py-6">
 
           {/* Left: Product Image Column */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="relative aspect-square w-full rounded-2xl border border-slate-100 bg-white overflow-hidden flex items-center justify-center p-6 group shadow-sm">
+            <div className="relative aspect-square w-full rounded-2xl bg-white overflow-hidden flex items-center justify-center p-6 group shadow-sm">
               <img
                 src={displayImage}
                 alt={product.name}
@@ -88,7 +88,7 @@ const ProductInquiry = () => {
 
             {/* Quick specifications */}
             <div className="bg-slate-50/80 rounded-2xl p-5 border border-slate-100/50">
-              <h4 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-3">Specifications</h4>
+              <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">Specifications</h4>
               <ul className="space-y-2.5">
                 {(product.details || defaultProduct.details).map((detail, idx) => (
                   <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-600 font-medium">
@@ -103,7 +103,7 @@ const ProductInquiry = () => {
           {/* Right: Info & Inquiry Form Column */}
           <div className="lg:col-span-7 space-y-8">
             <div>
-              <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+              <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-normal mb-4">
                 {product.name}
               </h1>
               <p className="text-slate-600 leading-relaxed font-medium">
@@ -179,7 +179,7 @@ const ProductInquiry = () => {
 
               <button
                 type="submit"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-xl shadow-sm hover:shadow transition-all duration-200"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm rounded-xl shadow-sm hover:shadow transition-all duration-200"
               >
                 Submit & Chat on WhatsApp
               </button>

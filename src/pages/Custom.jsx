@@ -153,7 +153,7 @@ const Custom = () => {
 
             <div className="flex flex-wrap items-center justify-between gap-4">
               <p className="text-xs text-gray-500">We keep your assets confidential and can sign NDAs on request.</p>
-              <button type="submit" className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-7 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-indigo-500">
+              <button type="submit" className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-7 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-indigo-500">
                 Submit request
               </button>
             </div>

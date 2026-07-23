@@ -130,12 +130,12 @@ const CategoryPage = ({ slug }) => {
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
 
         {/* TOP PRODUCT DETAIL HERO CONTAINER (Left: Picture, Right: Details) */}
-        <section className="bg-white rounded-3xl border border-slate-200/80 shadow-xl overflow-hidden p-6 sm:p-8 lg:p-10">
+        <section className="bg-transparent overflow-hidden py-4 sm:py-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* LEFT CONTAINER: FULL PICTURE DISPLAY (Pure White Background) */}
             <div className="lg:col-span-6 flex flex-col items-center">
-              <div className="relative w-full h-[400px] sm:h-[460px] rounded-2xl bg-white border border-slate-200/60 p-6 flex items-center justify-center shadow-sm overflow-hidden group">
+              <div className="relative w-full h-[400px] sm:h-[460px] rounded-2xl bg-white p-6 flex items-center justify-center shadow-sm overflow-hidden group">
                 {/* Subtle background glow */}
                 <div className="absolute inset-0 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:20px_20px] opacity-10" />
                 
@@ -162,10 +162,10 @@ const CategoryPage = ({ slug }) => {
             {/* RIGHT CONTAINER: CATEGORY & PRODUCT DETAILS */}
             <div className="lg:col-span-6 space-y-6">
               <div>
-                <div className="inline-flex items-center gap-2 rounded-full bg-indigo-50 border border-indigo-100 px-3.5 py-1 text-xs font-bold text-indigo-600 uppercase tracking-widest">
+                <div className="inline-flex items-center gap-2 rounded-full bg-indigo-50 border border-indigo-100 px-3.5 py-1 text-xs font-semibold text-indigo-600 uppercase tracking-widest">
                   ⚽ Category Spotlight
                 </div>
-                <h1 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                <h1 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-normal leading-tight">
                   {name}
                 </h1>
                 <p className="mt-3 text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
@@ -174,22 +174,22 @@ const CategoryPage = ({ slug }) => {
               </div>
 
               {/* Specifications / Highlights Grid */}
-              <div className="grid grid-cols-2 gap-3 pt-2">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
                 <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
-                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Fabric Tech</div>
-                  <div className="text-sm font-extrabold text-slate-800 mt-0.5">Moisture-Wicking</div>
+                  <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Fabric Tech</div>
+                  <div className="text-sm font-semibold text-slate-800 mt-0.5">Moisture-Wicking</div>
                 </div>
                 <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
-                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Printing</div>
-                  <div className="text-sm font-extrabold text-slate-800 mt-0.5">4K Sublimation</div>
+                  <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Printing</div>
+                  <div className="text-sm font-semibold text-slate-800 mt-0.5">4K Sublimation</div>
                 </div>
                 <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
-                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Min Order (MOQ)</div>
-                  <div className="text-sm font-extrabold text-slate-800 mt-0.5">25 Kits</div>
+                  <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Min Order (MOQ)</div>
+                  <div className="text-sm font-semibold text-slate-800 mt-0.5">25 Kits</div>
                 </div>
                 <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
-                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Dispatch</div>
-                  <div className="text-sm font-extrabold text-slate-800 mt-0.5">Worldwide Express</div>
+                  <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Dispatch</div>
+                  <div className="text-sm font-semibold text-slate-800 mt-0.5">Worldwide Express</div>
                 </div>
               </div>
 
@@ -197,14 +197,14 @@ const CategoryPage = ({ slug }) => {
               <div className="pt-4 flex flex-wrap items-center gap-4 border-t border-slate-100">
                 <Link
                   to={`/custom?product=${encodeURIComponent(name)}`}
-                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3.5 text-sm font-extrabold shadow-lg shadow-indigo-600/25 transition-all hover:scale-[1.02]"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 text-sm font-semibold shadow-md shadow-indigo-600/20 transition-all hover:scale-[1.02]"
                 >
                   <span>Customize Your Kit</span>
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </Link>
                 <a
                   href="#related-products"
-                  className="inline-flex items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 px-6 py-3.5 text-sm font-bold transition-all"
+                  className="inline-flex items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 px-5 py-2.5 text-sm font-semibold transition-all"
                 >
                   View All Kits ↓
                 </a>
@@ -228,7 +228,7 @@ const CategoryPage = ({ slug }) => {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {products.map((product, index) => (
               <ProductCard
                 key={product.id || `${product.name}-${index}`}

@@ -83,7 +83,7 @@ const Contact = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.6 }}
-              className="rounded-3xl border border-indigo-100 bg-white/95 p-6 shadow-xl backdrop-blur-sm space-y-4"
+              className="rounded-2xl border border-indigo-100 bg-white/95 p-6 shadow-xl backdrop-blur-sm space-y-4"
             >
               <h3 className="text-lg font-semibold text-indigo-800">Talk to our team</h3>
               <p className="text-sm text-gray-500">Choose the channel that suits you best or review our <Link to="/about" className="text-indigo-600 hover:underline">manufacturing process</Link> and <Link to="/custom" className="text-indigo-600 hover:underline">custom order guide</Link>.</p>
@@ -129,7 +129,7 @@ const Contact = () => {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.6 }}
               onSubmit={onSubmit}
-              className="rounded-3xl border border-indigo-100 bg-white/95 p-6 shadow-xl backdrop-blur-sm space-y-4"
+              className="rounded-2xl border border-indigo-100 bg-white/95 p-6 shadow-xl backdrop-blur-sm space-y-4"
             >
               <h2 className="text-lg font-semibold text-indigo-800">Send us a detailed brief</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -152,7 +152,7 @@ const Contact = () => {
               </label>
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <p className="text-xs text-gray-500">Response time: within 24 hours on business days.</p>
-                <button type="submit" className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-6 py-2 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-indigo-500">
+                <button type="submit" className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-6 py-2 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-indigo-500">
                   Send message
                 </button>
               </div>
@@ -163,7 +163,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.6 }}
-            className="mt-10 overflow-hidden rounded-[32px] border border-indigo-100 shadow-xl"
+            className="mt-10 overflow-hidden rounded-2xl border border-indigo-100 shadow-xl"
           >
             <iframe
               title="WearConnect Location"
