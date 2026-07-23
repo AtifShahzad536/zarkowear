@@ -147,31 +147,33 @@ const TopSellingProducts = () => {
                       <motion.img
                         src={imageUrl(item.image) || item.image}
                         alt={item.name}
-                        className="w-full h-72 object-contain bg-white transform group-hover:scale-105 transition duration-500"
+                        className="w-full h-80 object-contain bg-white transform group-hover:scale-110 transition duration-700 ease-out"
                         onError={(e) => {
                           e.target.src = '/images/placeholder.jpg';
                         }}
                       />
-                      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/75 via-black/30 to-transparent opacity-80 group-hover:opacity-95 transition duration-300" />
-                      <div className="absolute inset-0 z-20 flex flex-col justify-between p-4">
-                        <div className="bg-white/90 backdrop-blur px-4 py-2 text-base font-semibold tracking-wide rounded-lg shadow-md text-indigo-700 w-fit">
-                          {item.name}
-                        </div>
-                        <div className="space-y-3 text-white">
-                          <p className="text-sm md:text-base leading-relaxed opacity-0 group-hover:opacity-100 transition duration-300 line-clamp-3">
-                            {item.description || `Premium ${item.name} with export-grade fabrics and customizable options.`}
-                          </p>
-                          <button
-                            type="button"
-                            className="inline-flex items-center justify-center gap-2 w-full rounded-full bg-white/20 border border-white/40 py-3 text-sm md:text-base font-semibold tracking-wide backdrop-blur hover:bg-white/30 transition"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              navigate(item.link || '#');
-                            }}
-                          >
-                            Customize Now
-                            <span aria-hidden>→</span>
-                          </button>
+                      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition duration-500" />
+                      <div className="absolute inset-0 z-20 flex flex-col justify-end p-5">
+                        <div className="space-y-1">
+                          <h3 className="text-lg md:text-xl font-bold tracking-wide text-white drop-shadow-lg transition duration-300 group-hover:-translate-y-1">
+                            {item.name}
+                          </h3>
+                          <div className="max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
+                            <p className="text-xs md:text-sm text-gray-200/90 leading-relaxed line-clamp-2 mt-2">
+                              {item.description || `Premium ${item.name} with export-grade fabrics and customizable options.`}
+                            </p>
+                            <button
+                              type="button"
+                              className="inline-flex items-center justify-center gap-2 w-full rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2.5 text-xs md:text-sm tracking-wide shadow-md transition duration-300 mt-3"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                navigate(item.link || '#');
+                              }}
+                            >
+                              Customize Now
+                              <span aria-hidden>→</span>
+                            </button>
+                          </div>
                         </div>
                       </div>
                       {item.discount && (
