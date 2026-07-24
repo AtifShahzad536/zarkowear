@@ -822,7 +822,31 @@ const MeshPart = memo(function MeshPart({ node, state, finish, globalPattern }) 
 const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMeshesDetected, decals, selectedDecalId, setSelectedDecalId, updateDecal, removeDecal, finish, globalPattern, mouseFollow }) {
   const { scene: rootScene, viewport, invalidate } = useThree();
   const { scene } = useGLTF(url);
-  const clonedScene = useMemo(() => scene.clone(), [scene]);
+  const clonedScene = useMemo(() => {
+    const clone = scene.clone();
+    
+    // Update world matrices of the cloned hierarchy
+    clone.updateMatrixWorld(true);
+    
+    // Decompose world transform relative to the scene root into local coordinates
+    clone.traverse(c => {
+      if (c.isMesh) {
+        const position = new THREE.Vector3();
+        const quaternion = new THREE.Quaternion();
+        const scale = new THREE.Vector3();
+        
+        c.matrixWorld.decompose(position, quaternion, scale);
+        
+        c.position.copy(position);
+        c.quaternion.copy(quaternion);
+        c.scale.copy(scale);
+        
+        c.updateMatrix();
+      }
+    });
+    
+    return clone;
+  }, [scene]);
   const decalMeshesRef = useRef({});
   const meshRef = useRef();
   const mouse = useRef({ x: 0, y: 0 });

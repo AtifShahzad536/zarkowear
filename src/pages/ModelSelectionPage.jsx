@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { HiArrowRight, HiOutlineCube, HiArrowLeft } from 'react-icons/hi';
 import DesignPreview from '../features/builder/DesignPreview';
 import { useSelector } from 'react-redux';
+import SeoHead from '../components/SeoHead';
 
 export const ModelSelectionPage = () => {
   const navigate = useNavigate();
@@ -44,8 +45,25 @@ export const ModelSelectionPage = () => {
     navigate(`/builder/${modelId}`);
   };
 
+  const seoData = useMemo(() => {
+    const categoryTitle = categoryParam ? categoryParam.toUpperCase() : 'Sports';
+    return {
+      title: `Design Custom ${categoryTitle} Jerseys & Gear | Zarko Sportswear`,
+      description: `Select from our premium ${categoryTitle} model templates and customize them with your own colors, logos, and designs using our real-time 3D builder.`,
+      keywords: `custom ${categoryTitle.toLowerCase()} jersey, custom sports jerseys, teamwear 3d zarko, design custom uniforms`,
+      canonical: `https://www.zarkosportswear.com/builder/models?category=${encodeURIComponent(categoryParam)}`,
+      openGraph: {
+        'og:title': `Design Custom ${categoryTitle} Jerseys & Gear | Zarko Sportswear`,
+        'og:description': `Select a base model and customize your ${categoryTitle} uniform in real-time.`,
+        'og:type': 'website',
+        'og:url': `https://www.zarkosportswear.com/builder/models?category=${encodeURIComponent(categoryParam)}`
+      }
+    };
+  }, [categoryParam]);
+
   return (
     <div className="w-full min-h-screen bg-slate-50 font-['Plus_Jakarta_Sans',sans-serif] text-slate-800 py-12 px-6 lg:px-12">
+      <SeoHead {...seoData} />
       <div className="max-w-7xl mx-auto flex flex-col gap-10">
         
         {/* Navigation Breadcrumb & Back */}
