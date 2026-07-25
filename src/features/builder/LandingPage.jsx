@@ -100,8 +100,8 @@ const DesignCard = ({
           layersMetadata={design.layers_metadata || {}}
         />
 
-        <div className="absolute top-4 left-4 px-2.5 py-1 bg-white/95 rounded-lg border border-slate-100 shadow-sm">
-          <span className="text-[9px] font-black text-indigo-950 uppercase tracking-widest">{design.id}</span>
+        <div className="absolute top-4 left-4 px-2.5 py-1 bg-white/95 rounded-lg border border-slate-100 shadow-sm max-w-[100px] truncate" title={design.id}>
+          <span className="text-[9px] font-black text-indigo-950 uppercase tracking-widest block truncate">{design.id}</span>
         </div>
 
         <button
