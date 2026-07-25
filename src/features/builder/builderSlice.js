@@ -174,7 +174,7 @@ export const builderSlice = createSlice({
       }
 
       const newDecal = {
-        id: Date.now().toString(),
+        id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
         type: decal.type || 'text',
         text: decal.text || 'TEXT',
         imageUrl: decal.imageUrl || null,

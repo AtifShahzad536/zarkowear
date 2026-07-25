@@ -489,15 +489,17 @@ const Builder = memo(({ defaultPatterns, defaultLogos }) => {
       <div className={`transition-all duration-500 ease-in-out border-l border-gray-100 bg-white flex-shrink-0
         ${isHUDVisible ? 'w-full md:w-[420px] flex-1 md:flex-none md:h-full opacity-100' : 'w-0 h-0 opacity-0 translate-x-full overflow-hidden border-none'}`}>
         <RightPanel
+          meshes={meshes}
           activeMesh={activeMesh}
           setActiveMesh={(id) => dispatch(setActiveMesh(id))}
           layersMetadata={design.layers_metadata || {}}
           meshStates={meshStates}
+          updateMeshStates={(states) => dispatch(updateMeshStates(states))}
           updateMeshProp={(meshId, prop, val) => dispatch(updateMeshProp({ meshId, prop, val }))}
           decals={decals}
           selectedDecalId={selectedDecalId}
           setSelectedDecalId={(id) => dispatch(setSelectedDecalId(id))}
-          addDecal={(type, text, imageUrl) => dispatch(addDecal({ type, text, imageUrl, meshId: activeMesh }))}
+          addDecal={(type, text, imageUrl, meshId, color) => dispatch(addDecal({ type, text, imageUrl, meshId: meshId || activeMesh, color }))}
           updateDecal={(id, updates) => dispatch(updateDecal({ id, updates }))}
           removeDecal={(id) => dispatch(removeDecal(id))}
           globalPattern={globalPattern}

@@ -1289,12 +1289,15 @@ const CheckoutRosterTab = ({ roster, setRoster, onCheckout }) => {
   );
 };
 
+import AIAssistantTab from './AIAssistantTab';
+
 const RightPanel = (props) => {
   const [activeTab, setActiveTab] = useState('colors');
   const mainTabs = [
     { id: 'colors', label: 'Colors Patterns', icon: <BiPalette /> },
     { id: 'names', label: 'Names Numbers', icon: <BiText /> },
     { id: 'logos', label: 'Logos Flags', icon: <BiImage /> },
+    { id: 'ai', label: 'AI Customizer', icon: <HiOutlineSparkles /> },
     { id: 'config', label: 'Studio Config', icon: <HiOutlineAdjustments /> },
     { id: 'roster', label: 'Checkout Roster', icon: <BiCart /> },
   ];
@@ -1303,7 +1306,7 @@ const RightPanel = (props) => {
     <div className="flex flex-1 md:flex-none w-full md:w-[420px] h-full flex-shrink-0 border-t md:border-t-0 md:border-l border-gray-100 bg-white flex-col z-50 relative overflow-hidden min-h-0">
       <div className="flex border-b border-gray-100 bg-white flex-shrink-0 overflow-x-auto no-scrollbar scroll-smooth">
         {mainTabs.map(tab => (
-          <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`flex-1 min-w-[80px] md:min-w-0 py-4 px-1 flex flex-col items-center gap-2 transition-all relative cursor-pointer flex-shrink-0 rounded-none ${activeTab === tab.id ? 'text-blue-600 bg-white' : 'text-gray-400 hover:text-gray-900 hover:bg-gray-50'}`}>
+          <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`flex-1 min-w-[70px] md:min-w-0 py-4 px-1 flex flex-col items-center gap-2 transition-all relative cursor-pointer flex-shrink-0 rounded-none ${activeTab === tab.id ? 'text-blue-600 bg-white' : 'text-gray-400 hover:text-gray-900 hover:bg-gray-50'}`}>
             <span className="text-xl">{tab.icon}</span>
             <span className="text-[8px] font-semibold uppercase tracking-widest text-center leading-tight">
               {tab.label.split(' ').map((s, i) => <span key={i} className="block">{s}</span>)}
@@ -1350,6 +1353,18 @@ const RightPanel = (props) => {
             <NamesNumbersTab {...props} />
           ) : activeTab === 'logos' ? (
             <LogosFlagsTab {...props} />
+          ) : activeTab === 'ai' ? (
+            <AIAssistantTab 
+              meshes={props.meshes}
+              meshStates={props.meshStates}
+              updateMeshStates={props.updateMeshStates}
+              addDecal={props.addDecal}
+              decals={props.decals}
+              updateDecal={props.updateDecal}
+              removeDecal={props.removeDecal}
+              defaultPatterns={props.defaultPatterns}
+              defaultLogos={props.defaultLogos}
+            />
           ) : activeTab === 'config' ? (
             <StudioConfigTab {...props} />
           ) : (
