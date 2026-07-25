@@ -163,16 +163,20 @@ const LeftPanel = ({
                           }
                           if (isMobile) setIsSidebarOpen(false);
                         }}
-                        className={`group flex items-center gap-3 px-6 py-4 md:py-1.5 transition-all text-left relative outline-none border-b border-gray-50/50 md:border-none
-                          ${isActive ? 'bg-blue-600/5 text-blue-600' : 'text-gray-500 hover:bg-gray-200/50 hover:text-gray-900'}`}
+                        className={`group flex items-center gap-3 px-6 py-4 md:py-2.5 transition-all text-left relative outline-none border-b border-gray-50/50 md:border-none
+                          ${isActive ? 'bg-gradient-to-r from-blue-500/10 to-transparent text-blue-600 font-semibold' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900'}`}
                       >
-                        <HiOutlineCube size={16} className={isActive ? 'text-blue-600' : 'text-gray-300 group-hover:text-gray-400'} />
+                        {/* Dynamic Mini Color Dot */}
+                        <div 
+                          className="w-3 h-3 rounded-full border border-gray-200 shadow-sm flex-shrink-0 transition-transform group-hover:scale-110 duration-200"
+                          style={{ backgroundColor: meshStates[info.id]?.color || '#ffffff' }}
+                        />
                         <div className="flex flex-col leading-tight overflow-hidden flex-grow">
-                          <span className="text-[12px] md:text-[11px] font-medium truncate tracking-tight">{displayName}.obj</span>
+                          <span className="text-[12px] md:text-[11px] truncate tracking-tight">{displayName}.obj</span>
                           <span className="text-[8px] md:text-[7px] font-bold text-gray-300 uppercase tracking-widest">Asset Group {String(idx + 1).padStart(2, '0')}</span>
                         </div>
-                        {isLocked && meta.show_lock !== false && <HiOutlineLockClosed size={14} className="text-amber-500 flex-shrink-0" title="Locked by Admin" />}
-                        {isActive && <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-blue-600" />}
+                        {isLocked && meta.show_lock !== false && <HiOutlineLockClosed size={14} className="text-amber-500 flex-shrink-0 animate-pulse" title="Locked by Admin" />}
+                        {isActive && <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-600 rounded-r-md" />}
                       </button>
                     );
                   })}

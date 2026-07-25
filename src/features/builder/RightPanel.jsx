@@ -25,59 +25,110 @@ const isMeshInSameGroup = (idA, idB, layersMetadata) => {
   return parentA === parentB;
 };
 
-const colors = [
-  { name: 'BLACK', hex: '#000000' },
-  { name: 'GRAPHITE', hex: '#4B4B4B' },
-  { name: 'GRAY', hex: '#808080' },
-  { name: 'SILVER', hex: '#C0C0C0' },
-  { name: 'WHITE', hex: '#FFFFFF' },
+const colorCategories = {
+  classic: [
+    { name: 'BLACK', hex: '#000000' },
+    { name: 'GRAPHITE', hex: '#2C3539' },
+    { name: 'CHARCOAL', hex: '#36454F' },
+    { name: 'GRAY', hex: '#808080' },
+    { name: 'SILVER', hex: '#C0C0C0' },
+    { name: 'PLATINUM', hex: '#E5E4E2' },
+    { name: 'WHITE', hex: '#FFFFFF' },
+    { name: 'CREAM', hex: '#FFFDD0' },
+  ],
+  vibrant: [
+    { name: 'NAVY', hex: '#000080' },
+    { name: 'ROYAL BLUE', hex: '#4169E1' },
+    { name: 'SKY BLUE', hex: '#87CEEB' },
+    { name: 'CYAN', hex: '#00FFFF' },
+    { name: 'TEAL', hex: '#008080' },
+    { name: 'FOREST GREEN', hex: '#228B22' },
+    { name: 'EMERALD', hex: '#50C878' },
+    { name: 'MINT', hex: '#98FF98' },
+    { name: 'GOLD', hex: '#FFD700' },
+    { name: 'ORANGE', hex: '#FFA500' },
+    { name: 'RED', hex: '#FF0000' },
+    { name: 'CRIMSON', hex: '#DC143C' },
+    { name: 'MAGENTA', hex: '#FF00FF' },
+    { name: 'PURPLE', hex: '#800080' },
+    { name: 'DEEP VIOLET', hex: '#4B0082' },
+    { name: 'HOT PINK', hex: '#FF69B4' },
+  ],
+  neon: [
+    { name: 'NEON YELLOW', hex: '#FFFF00' },
+    { name: 'NEON GREEN', hex: '#39FF14' },
+    { name: 'NEON BLUE', hex: '#04D9FF' },
+    { name: 'NEON PINK', hex: '#FF1493' },
+    { name: 'NEON PURPLE', hex: '#8A2BE2' },
+    { name: 'NEON ORANGE', hex: '#FF5F1F' },
+    { name: 'NEON CORAL', hex: '#FF3131' },
+    { name: 'OPTIC YELLOW', hex: '#CCFF00' },
+  ],
+  earth: [
+    { name: 'BROWN', hex: '#8B4513' },
+    { name: 'TAUPE', hex: '#483C32' },
+    { name: 'SAND', hex: '#C2B280' },
+    { name: 'KHAKI', hex: '#F0E68C' },
+    { name: 'OLIVE', hex: '#808000' },
+    { name: 'SAGE', hex: '#BCB88A' },
+    { name: 'TERRA COTTA', hex: '#E2725B' },
+    { name: 'MAROON', hex: '#800000' },
+  ]
+};
 
-  { name: 'NAVY', hex: '#000080' },
-  { name: 'ROYAL BLUE', hex: '#4169E1' },
-  { name: 'SKY BLUE', hex: '#87CEEB' },
-  { name: 'CYAN', hex: '#00FFFF' },
-  { name: 'TEAL', hex: '#008080' },
-
-  { name: 'FOREST', hex: '#228B22' },
-  { name: 'EMERALD', hex: '#50C878' },
-  { name: 'OPTIC YELLOW', hex: '#CCFF00' },
-  { name: 'GOLD', hex: '#FFD700' },
-  { name: 'ORANGE', hex: '#FFA500' },
-
-  { name: 'RED', hex: '#FF0000' },
-  { name: 'CRIMSON', hex: '#DC143C' },
-  { name: 'MAGENTA', hex: '#FF00FF' },
-  { name: 'PURPLE', hex: '#800080' },
-  { name: 'HOT PINK', hex: '#FF69B4' },
-  { name: 'LIGHT PINK', hex: '#FFB6C1' },
-
-  { name: 'BROWN', hex: '#8B4513' },
-  { name: 'TAUPE', hex: '#483C32' },
-  { name: 'CREAM', hex: '#FFFDD0' },
-];
+const colors = Object.values(colorCategories).flat();
 
 const getColorName = (hex) =>
   colors.find(c => c.hex.toLowerCase() === hex?.toLowerCase())?.name || hex || '—';
 
-const ColorGrid = ({ selected, onSelect }) => (
-  <div className="grid grid-cols-8 gap-1.5 mt-2">
-    {colors.map((c, i) => {
-      const isActive = selected?.toLowerCase() === c.hex.toLowerCase();
-      return (
-        <div
-          key={i}
-          title={c.name}
-          onClick={() => onSelect(c.hex)}
-          className={`swatch aspect-square rounded-none cursor-pointer border transition-all
-            ${isActive ? 'border-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.2)] scale-105 z-10' : 'border-gray-100 hover:border-gray-300'}`}
-          style={{ backgroundColor: c.hex }}
-        >
-          {isActive && <div className="w-full h-full border-[3px] border-white/30" />}
-        </div>
-      );
-    })}
-  </div>
-);
+const ColorGrid = ({ selected, onSelect }) => {
+  const [activeCategory, setActiveCategory] = useState('classic');
+
+  return (
+    <div className="mt-2 space-y-3">
+      {/* Category Tabs */}
+      <div className="flex gap-1 border-b border-gray-100 pb-1">
+        {Object.keys(colorCategories).map((cat) => (
+          <button
+            key={cat}
+            type="button"
+            onClick={() => setActiveCategory(cat)}
+            className={`px-2.5 py-1 text-[8.5px] font-bold uppercase tracking-wider transition-all border-b-2 rounded-t-sm ${
+              activeCategory === cat
+                ? 'border-blue-600 text-blue-600 bg-blue-50/10'
+                : 'border-transparent text-gray-400 hover:text-gray-600'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Color Swatches */}
+      <div className="grid grid-cols-8 gap-1.5 animate-in fade-in duration-200">
+        {colorCategories[activeCategory].map((c, i) => {
+          const isActive = selected?.toLowerCase() === c.hex.toLowerCase();
+          return (
+            <div
+              key={i}
+              title={c.name}
+              onClick={() => onSelect(c.hex)}
+              className={`swatch aspect-square rounded-lg cursor-pointer border transition-all duration-300 transform hover:scale-110
+                ${isActive ? 'border-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.2)] scale-105 z-10' : 'border-gray-100 hover:border-gray-300'}`}
+              style={{ backgroundColor: c.hex }}
+            >
+              {isActive && (
+                <div className="w-full h-full flex items-center justify-center">
+                  <div className="w-1.5 h-1.5 rounded-full bg-white shadow-sm" />
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
 const SecHeader = ({ label, icon, isOpen, onToggle }) => (
   <button
