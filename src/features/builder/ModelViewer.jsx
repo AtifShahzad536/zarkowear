@@ -1422,8 +1422,8 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
                   varying vec3 vDecalLocalNormal;
                   void main() {
                     if (!gl_FrontFacing) discard;
-                    vec3 unscaledPos = vDecalLocalPos * uDecalSize;
-                    vec3 unscaledNormal = normalize(vDecalLocalNormal * uDecalSize);
+                    vec3 unscaledPos = vDecalLocalPos;
+                    vec3 unscaledNormal = normalize(vDecalLocalNormal);
                     vec3 blending = abs(unscaledNormal);
                     blending = pow(blending, vec3(16.0));
                     blending = blending / (blending.x + blending.y + blending.z);
