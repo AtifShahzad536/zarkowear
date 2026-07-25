@@ -1382,7 +1382,7 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
                 uniforms: {
                   map: { value: texture },
                   uRepeat: { value: globalRepeatFactor },
-                  uDecalMatrixInv: { value: globalDecalMatrixInv.clone().multiply(tMesh.matrixWorld) },
+                  uDecalMatrixInv: { value: globalDecalMatrixInv },
                   uDecalSize: { value: globalDecalSize },
                   uFadeTop: { value: d.pFadeTop || 0.0 },
                   uFadeBottom: { value: d.pFadeBottom || 0.0 },
@@ -1400,8 +1400,8 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
                   varying vec3 vDecalLocalNormal;
                   void main() {
                     vUv = uv;
-                    vDecalLocalPos = (uDecalMatrixInv * vec4(position, 1.0)).xyz;
-                    vDecalLocalNormal = normalize((uDecalMatrixInv * vec4(normal, 0.0)).xyz);
+                    vDecalLocalPos = (uDecalMatrixInv * modelMatrix * vec4(position, 1.0)).xyz;
+                    vDecalLocalNormal = normalize((uDecalMatrixInv * modelMatrix * vec4(normal, 0.0)).xyz);
                     gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
                   }
                 `,
