@@ -178,7 +178,6 @@ export const builderSlice = createSlice({
         type: decal.type || 'text',
         text: decal.text || 'TEXT',
         imageUrl: decal.imageUrl || null,
-        color: decal.type === 'pattern' ? 'original' : '#ffffff',
         font: 'Outfit',
         decalScale: decal.type === 'image' ? 0.12 : decal.type === 'pattern' ? 0.8 : 0.15,
         decalScaleX: decal.type === 'image' ? 0.12 : decal.type === 'pattern' ? 0.8 : 0.15,
@@ -191,8 +190,10 @@ export const builderSlice = createSlice({
         pFadeTopRight: 0.0,
         pFadeBottomLeft: 0.0,
         pFadeBottomRight: 0.0,
-        ...decal
+        ...decal,
+        color: decal.color || (decal.type === 'pattern' ? 'original' : '#ffffff')
       };
+
       state.decals.push(newDecal);
       state.selectedDecalId = newDecal.id;
     },
