@@ -1,10 +1,10 @@
 const homeSeo = {
-  title: "Custom Sports Wear, Football Kits & Wrestling Gears | Zarko Sportswear",
+  title: "Zarko Sportswear | Best Sports Wear Manufacturer in Sialkot, Pakistan",
   description:
-    "Zarko Sportswear manufactures export-grade custom sports uniforms, football kits, wrestling gears, and hockey uniforms. Serving teams in the USA, UK, Australia, Italy, Saudi Arabia, and Europe with global delivery.",
+    "Zarko Sportswear is a leading sports wear manufacturer, factory, and supplier in Sialkot, Pakistan. We manufacture and export custom sports uniforms, gym wear, wrestling gears, and team wear worldwide.",
   canonical: "https://www.zarkosportswear.com/",
   keywords:
-    "custom sports uniforms USA, wrestling gears supplier, hockey uniforms UK, football kits Saudi Arabia, custom soccer jerseys Italy, sports apparel Europe, sportswear manufacturer, custom team wear, athletic jerseys, basketball uniforms USA, rugby gear Australia",
+    "sports wear in sialkot, sports wear manufacturer in sialkot, sports wear companies in sialkot, sports wear factories in sialkot, sports wear supplier in sialkot, sportswear websites in sialkot, sportswear in sialkot, sportswear company in sialkot, sports wear factory sialkot, best sportswear manufacturer in sialkot, sialkot sportswear manufacturers, gym wear manufacturer in sialkot, sportswear manufacturer pakistan sialkot, custom sports uniforms USA, wrestling gears supplier, hockey uniforms UK",
   author: "Atif Shahzad & Hurairah Shahzad",
   robots: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   themeColor: "#6366f1",
@@ -12,9 +12,9 @@ const homeSeo = {
   siteName: "Zarko Sportswear",
   locale: "en_US",
   openGraph: {
-    'og:title': 'Custom Sports Wear, Football Kits & Wrestling Gears | Zarko Sportswear',
+    'og:title': 'Zarko Sportswear | Best Sports Wear Manufacturer in Sialkot, Pakistan',
     'og:description':
-      'Premium custom sports uniforms, wrestling gears, hockey uniforms, and football kits. Serving teams across USA, UK, Australia, Italy, Saudi Arabia, and Europe with export-grade quality.',
+      'Leading sports wear manufacturer, factory, and supplier in Sialkot, Pakistan. We manufacture and export custom sports uniforms, gym wear, wrestling gears, and team wear worldwide.',
     'og:url': 'https://www.zarkosportswear.com/',
     'og:image': 'https://www.zarkosportswear.com/og-cover.jpg',
     'og:image:width': '1200',
@@ -24,8 +24,8 @@ const homeSeo = {
     'og:locale': 'en_US',
   },
   twitter: {
-    'twitter:title': 'Custom Sports Wear, Football Kits & Wrestling Gears | Zarko Sportswear',
-    'twitter:description': 'Zarko Sportswear exports professional-grade custom sports uniforms, wrestling gears, and hockey uniforms to USA, UK, Australia, Italy, Saudi Arabia, and Europe.',
+    'twitter:title': 'Zarko Sportswear | Best Sports Wear Manufacturer in Sialkot, Pakistan',
+    'twitter:description': 'Leading sports wear manufacturer, factory, and supplier in Sialkot, Pakistan. Custom sports uniforms, gym wear, wrestling gears, and team wear worldwide.',
     'twitter:card': 'summary_large_image',
     'twitter:image': 'https://www.zarkosportswear.com/og-cover.jpg',
     'twitter:site': '@zarkosportswear',
@@ -86,7 +86,7 @@ const homeSeo = {
         }
       ],
       description:
-        'Zarko Sportswear manufactures premium custom sports uniforms, wrestling gears, and hockey wear, exporting them to teams, academies, and clubs in the USA, UK, Australia, Italy, Saudi Arabia, and Europe.',
+        'Zarko Sportswear is one of the top sportswear companies and factories in Sialkot, Pakistan. We manufacture and export premium custom sports uniforms, wrestling gears, and hockey wear worldwide.',
       priceRange: '$$',
       aggregateRating: {
         '@type': 'AggregateRating',
@@ -100,7 +100,7 @@ const homeSeo = {
       name: 'Zarko Sportswear',
       url: 'https://www.zarkosportswear.com/',
       logo: 'https://www.zarkosportswear.com/logo.png',
-      description: 'Leading manufacturer and global exporter of custom sports uniforms, wrestling gears, hockey wear, and athletic apparel.',
+      description: 'Zarko Sportswear is a trusted sports wear manufacturer, factory, and exporter of custom sports uniforms in Sialkot, Pakistan.',
       foundingDate: '2020',
       contactPoint: {
         '@type': 'ContactPoint',
