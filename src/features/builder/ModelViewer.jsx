@@ -1068,25 +1068,52 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
       const size = box.getSize(new THREE.Vector3());
 
       // Detect mesh position type dynamically to shoot ray from the correct direction
-      let queryPoint = new THREE.Vector3(center.x, center.y + size.y * 0.1, box.max.z); // default front
-      let shootDir = new THREE.Vector3(0, 0, -1);
-      let shootOrigin = new THREE.Vector3(center.x, center.y + size.y * 0.1, box.max.z + 1);
+      let posX = center.x;
+      let posY = center.y + size.y * 0.1;
+      let posZ = box.max.z;
 
-      if (center.z < -0.1) {
+      // Handle position presets
+      if (d.position === 'chest_left') {
+        // Left chest (user's right chest - offset in negative X)
+        posX = center.x - size.x * 0.22;
+        posY = center.y + size.y * 0.2;
+      } else if (d.position === 'chest_right') {
+        // Right chest (user's left chest - offset in positive X)
+        posX = center.x + size.x * 0.22;
+        posY = center.y + size.y * 0.2;
+      } else if (d.position === 'back_top') {
+        posX = center.x;
+        posY = center.y + size.y * 0.28;
+        posZ = box.min.z;
+      } else if (d.position === 'back_mid') {
+        posX = center.x;
+        posY = center.y + size.y * 0.05;
+        posZ = box.min.z;
+      } else if (d.position === 'back_bottom') {
+        posX = center.x;
+        posY = center.y - size.y * 0.25;
+        posZ = box.min.z;
+      }
+
+      let queryPoint = new THREE.Vector3(posX, posY, posZ);
+      let shootDir = new THREE.Vector3(0, 0, -1);
+      let shootOrigin = new THREE.Vector3(posX, posY, posZ + 1);
+
+      if (center.z < -0.1 || d.position?.startsWith('back_')) {
         // Back
-        queryPoint.set(center.x, center.y + size.y * 0.1, box.min.z);
+        queryPoint.set(posX, posY, box.min.z);
         shootDir.set(0, 0, 1);
-        shootOrigin.set(center.x, center.y + size.y * 0.1, box.min.z - 1);
-      } else if (center.x < -0.25) {
+        shootOrigin.set(posX, posY, box.min.z - 1);
+      } else if (center.x < -0.25 || d.position === 'left_sleeve') {
         // Left
-        queryPoint.set(box.min.x, center.y, center.z);
+        queryPoint.set(box.min.x, posY, center.z);
         shootDir.set(1, 0, 0);
-        shootOrigin.set(box.min.x - 1, center.y, center.z);
-      } else if (center.x > 0.25) {
+        shootOrigin.set(box.min.x - 1, posY, center.z);
+      } else if (center.x > 0.25 || d.position === 'right_sleeve') {
         // Right
-        queryPoint.set(box.max.x, center.y, center.z);
+        queryPoint.set(box.max.x, posY, center.z);
         shootDir.set(-1, 0, 0);
-        shootOrigin.set(box.max.x + 1, center.y, center.z);
+        shootOrigin.set(box.max.x + 1, posY, center.z);
       }
 
       // Calculate dynamic scale for patterns so they cover the entire mesh

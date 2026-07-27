@@ -160,7 +160,16 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
               const targetNorm = norm(decal.meshId);
               updates.meshId = currentStateKeys.find(k => norm(k) === targetNorm) || decal.meshId;
             }
-            if (decal.decalScale !== undefined) updates.decalScale = decal.decalScale;
+            if (decal.decalScale !== undefined) {
+              updates.decalScale = decal.decalScale;
+              updates.decalScaleX = decal.decalScale;
+              updates.decalScaleY = decal.decalScale;
+            }
+            if (decal.position !== undefined) {
+              updates.position = decal.position;
+              updates.worldPoint = null;
+              updates.worldNormal = null;
+            }
             updateDecal(decal.id, updates);
             return;
           }
@@ -174,7 +183,17 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
           const targetNorm = norm(decal.meshId);
           const matchedKey = currentStateKeys.find(k => norm(k) === targetNorm) || decal.meshId;
 
-          addDecal(decal.type, decal.text || 'DESIGN', decal.imageUrl || null, matchedKey, decal.color || '#ffffff');
+          const extraProps = {};
+          if (decal.decalScale !== undefined) {
+            extraProps.decalScale = decal.decalScale;
+            extraProps.decalScaleX = decal.decalScale;
+            extraProps.decalScaleY = decal.decalScale;
+          }
+          if (decal.position !== undefined) {
+            extraProps.position = decal.position;
+          }
+
+          addDecal(decal.type, decal.text || 'DESIGN', decal.imageUrl || null, matchedKey, decal.color || '#ffffff', extraProps);
         });
       }
 

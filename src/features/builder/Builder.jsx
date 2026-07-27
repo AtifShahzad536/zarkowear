@@ -499,7 +499,7 @@ const Builder = memo(({ defaultPatterns, defaultLogos }) => {
           decals={decals}
           selectedDecalId={selectedDecalId}
           setSelectedDecalId={(id) => dispatch(setSelectedDecalId(id))}
-          addDecal={(type, text, imageUrl, meshId, color) => dispatch(addDecal({ type, text, imageUrl, meshId: meshId || activeMesh, color }))}
+          addDecal={(type, text, imageUrl, meshId, color, extraProps) => dispatch(addDecal({ type, text, imageUrl, meshId: meshId || activeMesh, color, ...extraProps }))}
           updateDecal={(id, updates) => dispatch(updateDecal({ id, updates }))}
           removeDecal={(id) => dispatch(removeDecal(id))}
           globalPattern={globalPattern}
