@@ -4,6 +4,8 @@ import { HiOutlineFolderOpen, HiOutlineSaveAs, HiOutlineDownload, HiOutlineCubeT
 import { toast } from 'react-hot-toast';
 import { VscHistory, VscEdit } from 'react-icons/vsc';
 
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4001';
+
 const Navbar = ({ onBack, backTo }) => {
   const [activeMenu, setActiveMenu] = useState(null);
   const barRef = useRef(null);
@@ -34,7 +36,7 @@ const Navbar = ({ onBack, backTo }) => {
                 const formData = new FormData();
                 formData.append('file', file);
 
-                fetch('/api/model/upload', {
+                fetch(`${API_BASE}/api/model/upload`, {
                   method: 'POST',
                   headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
