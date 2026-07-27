@@ -93,11 +93,10 @@ const ColorGrid = ({ selected, onSelect }) => {
             key={cat}
             type="button"
             onClick={() => setActiveCategory(cat)}
-            className={`px-2.5 py-1 text-[8.5px] font-bold uppercase tracking-wider transition-all border-b-2 rounded-t-sm ${
-              activeCategory === cat
+            className={`px-2.5 py-1 text-[8.5px] font-bold uppercase tracking-wider transition-all border-b-2 rounded-t-sm ${activeCategory === cat
                 ? 'border-blue-600 text-blue-600 bg-blue-50/10'
                 : 'border-transparent text-gray-400 hover:text-gray-600'
-            }`}
+              }`}
           >
             {cat}
           </button>
@@ -1354,7 +1353,7 @@ const RightPanel = (props) => {
           ) : activeTab === 'logos' ? (
             <LogosFlagsTab {...props} />
           ) : activeTab === 'ai' ? (
-            <AIAssistantTab 
+            <AIAssistantTab
               meshes={props.meshes}
               meshStates={props.meshStates}
               updateMeshStates={props.updateMeshStates}

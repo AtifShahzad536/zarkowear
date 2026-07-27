@@ -1,14 +1,17 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useSyncExternalStore } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { HiOutlineFolderOpen, HiOutlineSaveAs, HiOutlineDownload, HiOutlineCubeTransparent, HiOutlineArrowLeft } from 'react-icons/hi';
 import { toast } from 'react-hot-toast';
-import { VscHistory, VscEdit } from 'react-icons/vsc';
+import { VscHistory } from 'react-icons/vsc';
+import { canUndo, canRedo, subscribeUndoRedo } from './undoMiddleware';
 
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4001';
 
 const Navbar = ({ onBack, backTo }) => {
   const [activeMenu, setActiveMenu] = useState(null);
   const barRef = useRef(null);
+  const hasUndo = useSyncExternalStore(subscribeUndoRedo, canUndo);
+  const hasRedo = useSyncExternalStore(subscribeUndoRedo, canRedo);
 
   useEffect(() => {
     const handler = (e) => {
@@ -68,6 +71,9 @@ const Navbar = ({ onBack, backTo }) => {
     {
       label: 'Edit',
       items: [
+        { label: 'Undo', action: () => window.dispatchEvent(new CustomEvent('eay:undo')), disabled: !hasUndo },
+        { label: 'Redo', action: () => window.dispatchEvent(new CustomEvent('eay:redo')), disabled: !hasRedo },
+        { type: 'separator' },
         { label: 'Clear Colors', icon: <VscHistory />, action: () => window.dispatchEvent(new CustomEvent('eay:resetAll')) },
       ]
     },
@@ -150,20 +156,28 @@ const Navbar = ({ onBack, backTo }) => {
             {activeMenu === menu.label && (
               <div className="absolute top-full left-0 mt-0 w-max min-w-[220px] bg-white border border-gray-200 shadow-xl z-50 py-1 animate-in fade-in slide-in-from-top-1 duration-100">
                 {menu.items.map((item, i) => (
+                  item.type === 'separator' ? (
+                    <div key={i} className="my-1 border-t border-gray-100" />
+                  ) : (
                   <button
                     key={i}
-                    onClick={() => { item.action?.(); setActiveMenu(null); }}
-                    className="w-full text-left px-4 py-2 text-[10px] font-medium text-gray-700 hover:bg-blue-600 hover:text-white flex items-center justify-between group transition-colors duration-75"
+                    onClick={() => { if (!item.disabled) { item.action?.(); setActiveMenu(null); } }}
+                    disabled={item.disabled}
+                    className={`w-full text-left px-4 py-2 text-[10px] font-medium flex items-center justify-between group transition-colors duration-75
+                      ${item.disabled ? 'text-gray-300 cursor-default' : 'text-gray-700 hover:bg-blue-600 hover:text-white'}`}
                   >
                     <div className="flex items-center gap-3">
                       {item.icon && <span className="text-xs opacity-60 group-hover:opacity-100">{item.icon}</span>}
                       <span className="tracking-wide whitespace-nowrap">{item.label}</span>
                     </div>
                     <span className="text-[8px] opacity-40 group-hover:opacity-60 ml-8 tracking-tighter">
-                      {menu.label === 'File' && i === 1 ? 'CTRL+S' : ''}
-                      {menu.label === 'Edit' && i === 0 ? 'CTRL+R' : ''}
+                      {item.label === 'Undo' ? 'CTRL+Z' : ''}
+                      {item.label === 'Redo' ? 'CTRL+Y' : ''}
+                      {item.label === 'Save Design' ? 'CTRL+S' : ''}
+                      {item.label === 'Clear Colors' ? 'CTRL+R' : ''}
                     </span>
                   </button>
+                  )
                 ))}
               </div>
             )}

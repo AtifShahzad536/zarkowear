@@ -4,26 +4,26 @@ const initialState = {
   view: 'landing', // 'landing', 'builder', 'transition'
   selectedDesign: null,
   fromPage: null, // URL to navigate back to (e.g. /product-details/123)
-  
+
   // Base Colors (mapped to meshes)
   primaryColor: '#ffffff',
   primaryIsGrad: false,
   primaryColor2: '#ffffff',
-  
+
   secondaryColor: '#ffffff',
   secondaryIsGrad: false,
   secondaryColor2: '#ffffff',
-  
+
   thirdColor: '#ffffff',
   thirdIsGrad: false,
   thirdColor2: '#ffffff',
-  
+
   // Global Configs
   globalPattern: null, // 'carbon', 'camo', 'dots'
   lightingPreset: 'city',
   materialFinish: 'matte',
   mouseFollow: false,
-  
+
   // Model Specifics
   meshes: [],
   activeMesh: null,
@@ -31,7 +31,7 @@ const initialState = {
   decals: [],
   selectedDecalId: null,
   roster: [{ id: Date.now(), name: '', number: '', size: 'L' }],
-  
+
   refreshKey: 0,
 };
 
@@ -62,7 +62,7 @@ export const builderSlice = createSlice({
         materialFinish,
         mouseFollow
       } = state;
-      
+
       // Return a brand new state object to avoid shared references mutating initialState
       return {
         ...initialState,
@@ -144,19 +144,19 @@ export const builderSlice = createSlice({
     },
     addDecal: (state, action) => {
       const decal = action.payload;
-      
+
       // If adding a pattern, ensure we only have one pattern per merged mesh group
       if (decal.type === 'pattern') {
         const layersMetadata = state.selectedDesign?.layers_metadata || {};
         const groupMeshIds = new Set();
-        
+
         if (decal.meshId) {
           groupMeshIds.add(decal.meshId);
-          
+
           const meta = layersMetadata[decal.meshId] || {};
           const parentId = meta.merge_parent || decal.meshId;
           groupMeshIds.add(parentId);
-          
+
           Object.keys(layersMetadata).forEach(mName => {
             const mMeta = layersMetadata[mName] || {};
             if (mMeta.merge_parent === parentId || mName === parentId) {
@@ -164,7 +164,7 @@ export const builderSlice = createSlice({
             }
           });
         }
-        
+
         state.decals = state.decals.filter(d => {
           if (d.type === 'pattern' && groupMeshIds.has(d.meshId)) {
             return false;
@@ -178,6 +178,7 @@ export const builderSlice = createSlice({
         type: decal.type || 'text',
         text: decal.text || 'TEXT',
         imageUrl: decal.imageUrl || null,
+        color: decal.type === 'pattern' ? 'original' : '#ffffff',
         font: 'Outfit',
         decalScale: decal.type === 'image' ? 0.12 : decal.type === 'pattern' ? 0.8 : 0.15,
         decalScaleX: decal.type === 'image' ? 0.12 : decal.type === 'pattern' ? 0.8 : 0.15,
@@ -190,10 +191,8 @@ export const builderSlice = createSlice({
         pFadeTopRight: 0.0,
         pFadeBottomLeft: 0.0,
         pFadeBottomRight: 0.0,
-        ...decal,
-        color: decal.color || (decal.type === 'pattern' ? 'original' : '#ffffff')
+        ...decal
       };
-
       state.decals.push(newDecal);
       state.selectedDecalId = newDecal.id;
     },

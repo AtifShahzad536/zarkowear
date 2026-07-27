@@ -137,96 +137,98 @@ function getPatternCanvasSync(imageUrl, tintColor) {
       const imgData = ctx.getImageData(0, 0, 1024, 1024);
       const data = imgData.data;
 
+      // 1. Detect if the image already has transparency (PNG)
+      let hasAlphaChannel = false;
+      for (let i = 3; i < data.length; i += 4) {
+        if (data[i] < 220) {
+          hasAlphaChannel = true;
+          break;
+        }
+      }
+
       const isOriginal = tintColor === 'original';
       const tint = new THREE.Color(isOriginal ? '#ffffff' : tintColor);
       const tr = Math.round(tint.r * 255);
       const tg = Math.round(tint.g * 255);
       const tb = Math.round(tint.b * 255);
 
-      const isInvertedPattern = imageUrl.includes('checker.png') || imageUrl.includes('checker');
-
-      if (isInvertedPattern) {
-        for (let i = 0; i < data.length; i += 4) {
-          const alpha = data[i + 3];
-          if (alpha > 50) {
-            data[i + 3] = 0; // Opaque pixels become transparent background
-          } else {
-            data[i] = tr;
-            data[i + 1] = tg;
-            data[i + 2] = tb;
-            data[i + 3] = 255; // Transparent squares become opaque pattern
+      if (hasAlphaChannel) {
+        // Transparent image (PNG) - just tint the visible pixels and preserve alpha.
+        // For checkerboard pattern: Eay Sports checkerboard PNG has transparent squares
+        // and opaque background, which causes colors to appear swapped in the custom viewer.
+        // We invert it so transparent squares get the pattern color and background gets the base color.
+        const isInvertedPattern = imageUrl.includes('checker.png') || imageUrl.includes('checker');
+        if (isInvertedPattern) {
+          for (let i = 0; i < data.length; i += 4) {
+            const alpha = data[i + 3];
+            if (alpha > 50) {
+              data[i + 3] = 0; // Opaque pixels become transparent background
+            } else {
+              data[i] = tr;
+              data[i + 1] = tg;
+              data[i + 2] = tb;
+              data[i + 3] = 255; // Transparent squares become opaque pattern
+            }
+          }
+        } else {
+          if (!isOriginal) {
+            for (let i = 0; i < data.length; i += 4) {
+              const alpha = data[i + 3];
+              if (alpha > 0) {
+                data[i] = tr;
+                data[i + 1] = tg;
+                data[i + 2] = tb;
+              }
+            }
           }
         }
       } else {
-        // Sample 8 edge pixels to determine background tone robustly
-        const samples = [
-          0, // top-left
-          512 * 4, // top-mid
-          1023 * 4, // top-right
-          512 * 1024 * 4, // mid-left
-          (512 * 1024 + 1023) * 4, // mid-right
-          1023 * 1024 * 4, // bottom-left
-          (1023 * 1024 + 512) * 4, // bottom-mid
-          (1023 * 1024 + 1023) * 4 // bottom-right
-        ];
-        
-        let totalBrightness = 0;
-        let validSamples = 0;
-        samples.forEach(idx => {
-          if (idx < data.length) {
-            totalBrightness += (data[idx] + data[idx + 1] + data[idx + 2]) / 3;
-            validSamples++;
-          }
-        });
-        
-        const avgBrightness = validSamples > 0 ? totalBrightness / validSamples : 255;
-        const isBgWhite = avgBrightness > 150;
-        const isBgBlack = avgBrightness < 105;
+        // Solid image (JPG) - key out background using corner pixel brightness
+        const r0 = data[0];
+        const g0 = data[1];
+        const b0 = data[2];
+        const isBgWhite = (r0 + g0 + b0) / 3 > 127;
 
         for (let i = 0; i < data.length; i += 4) {
           const r = data[i];
           const g = data[i + 1];
           const b = data[i + 2];
-          const a = data[i + 3];
+          const alpha = data[i + 3];
 
-          if (a === 0) continue;
+          if (alpha === 0) continue;
 
           const val = (r + g + b) / 3;
 
           if (isBgWhite) {
-            let alphaFactor = 255;
+            // White is background (transparent), dark is pattern (tinted)
+            // Use thresholds to ensure compression noise and vignette borders are 100% transparent.
+            let alphaFactor;
             if (val > 235) {
               alphaFactor = 0;
             } else if (val < 180) {
-              alphaFactor = a;
+              alphaFactor = 255;
             } else {
-              const factor = (val - 180) / (235 - 180);
-              alphaFactor = Math.min(a, Math.round(255 * (1.0 - factor)));
+              alphaFactor = Math.round(255 * (1.0 - (val - 180) / (235 - 180)));
             }
             data[i + 3] = alphaFactor;
-            if (!isOriginal && alphaFactor > 0) {
-              data[i] = tr;
-              data[i + 1] = tg;
-              data[i + 2] = tb;
-            }
-          } else if (isBgBlack) {
-            let alphaFactor = 255;
-            if (val < 20) {
-              alphaFactor = 0;
-            } else if (val > 75) {
-              alphaFactor = a;
-            } else {
-              const factor = (val - 20) / (75 - 20);
-              alphaFactor = Math.min(a, Math.round(255 * factor));
-            }
-            data[i + 3] = alphaFactor;
-            if (!isOriginal && alphaFactor > 0) {
+            if (!isOriginal) {
               data[i] = tr;
               data[i + 1] = tg;
               data[i + 2] = tb;
             }
           } else {
-            if (!isOriginal && a > 0) {
+            // Black is background (transparent), light is pattern (tinted)
+            // Use thresholds to ensure dark noise and borders are 100% transparent.
+            let alphaFactor;
+            if (val < 20) {
+              alphaFactor = 0;
+            } else if (val > 75) {
+              alphaFactor = 255;
+            } else {
+              alphaFactor = Math.round(255 * ((val - 20) / (75 - 20)));
+            }
+            data[i + 3] = alphaFactor;
+            if (!isOriginal) {
               data[i] = tr;
               data[i + 1] = tg;
               data[i + 2] = tb;
@@ -822,27 +824,27 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
   const { scene } = useGLTF(url);
   const clonedScene = useMemo(() => {
     const clone = scene.clone();
-    
+
     // Update world matrices of the cloned hierarchy
     clone.updateMatrixWorld(true);
-    
+
     // Decompose world transform relative to the scene root into local coordinates
     clone.traverse(c => {
       if (c.isMesh) {
         const position = new THREE.Vector3();
         const quaternion = new THREE.Quaternion();
         const scale = new THREE.Vector3();
-        
+
         c.matrixWorld.decompose(position, quaternion, scale);
-        
+
         c.position.copy(position);
         c.quaternion.copy(quaternion);
         c.scale.copy(scale);
-        
+
         c.updateMatrix();
       }
     });
-    
+
     return clone;
   }, [scene]);
   const decalMeshesRef = useRef({});
@@ -1035,8 +1037,9 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
     pending.forEach(d => {
       let initialMesh = meshes.find(m => m.name === d.meshId) || meshes[0];
 
-      // Find all meshes in the same merged group
+      // Find all meshes in the same merged group (or all meshes for pattern overlays)
       const targetMeshes = meshes.filter(m => {
+        if (d.type === 'pattern') return true; // Patterns apply globally to the entire model!
         if (m.name === initialMesh.name) return true;
         const meta = layersMetadata[m.name] || {};
         if (meta.merge_parent === initialMesh.name) return true;
@@ -1068,52 +1071,25 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
       const size = box.getSize(new THREE.Vector3());
 
       // Detect mesh position type dynamically to shoot ray from the correct direction
-      let posX = center.x;
-      let posY = center.y + size.y * 0.1;
-      let posZ = box.max.z;
-
-      // Handle position presets
-      if (d.position === 'chest_left') {
-        // Left chest (user's right chest - offset in negative X)
-        posX = center.x - size.x * 0.22;
-        posY = center.y + size.y * 0.2;
-      } else if (d.position === 'chest_right') {
-        // Right chest (user's left chest - offset in positive X)
-        posX = center.x + size.x * 0.22;
-        posY = center.y + size.y * 0.2;
-      } else if (d.position === 'back_top') {
-        posX = center.x;
-        posY = center.y + size.y * 0.28;
-        posZ = box.min.z;
-      } else if (d.position === 'back_mid') {
-        posX = center.x;
-        posY = center.y + size.y * 0.05;
-        posZ = box.min.z;
-      } else if (d.position === 'back_bottom') {
-        posX = center.x;
-        posY = center.y - size.y * 0.25;
-        posZ = box.min.z;
-      }
-
-      let queryPoint = new THREE.Vector3(posX, posY, posZ);
+      let queryPoint = new THREE.Vector3(center.x, center.y + size.y * 0.1, box.max.z); // default front
       let shootDir = new THREE.Vector3(0, 0, -1);
-      let shootOrigin = new THREE.Vector3(posX, posY, posZ + 1);
+      let shootOrigin = new THREE.Vector3(center.x, center.y + size.y * 0.1, box.max.z + 1);
 
-      if (center.z < -0.1 || d.position?.startsWith('back_')) {
+      if (center.z < -0.1) {
         // Back
-        queryPoint.set(posX, posY, box.min.z);
+        queryPoint.set(center.x, center.y + size.y * 0.1, box.min.z);
         shootDir.set(0, 0, 1);
-        shootOrigin.set(posX, posY, box.min.z - 1);
-      } else if (center.x < -0.25 || d.position === 'left_sleeve') {
+        shootOrigin.set(center.x, center.y + size.y * 0.1, box.min.z - 1);
+      } else if (center.x < -0.25) {
         // Left
-        queryPoint.set(box.min.x, posY, center.z);
+        queryPoint.set(box.min.x, center.y, center.z);
         shootDir.set(1, 0, 0);
-        shootOrigin.set(box.min.x - 1, posY, center.z);
-      } else if (center.x > 0.25 || d.position === 'right_sleeve') {
+        shootOrigin.set(box.min.x - 1, center.y, center.z);
+      } else if (center.x > 0.25) {
         // Right
-        queryPoint.set(box.max.x, posY, center.z);
+        queryPoint.set(box.max.x, center.y, center.z);
         shootDir.set(-1, 0, 0);
-        shootOrigin.set(box.max.x + 1, posY, center.z);
+        shootOrigin.set(box.max.x + 1, center.y, center.z);
       }
 
       // Calculate dynamic scale for patterns so they cover the entire mesh
@@ -1343,8 +1319,9 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
           ? new THREE.Vector3(sx, sy, d.type === 'pattern' ? 3.0 : 0.3)
           : new THREE.Vector3(sx, sy * 0.25, 0.3);
 
-        // Find target meshes — always use the merged group
+        // Find target meshes — always use the merged group (or all meshes for pattern overlays)
         const targetMeshes = meshes.filter(m => {
+          if (d.type === 'pattern') return true; // Patterns apply globally to the entire model!
           if (m.name === d.meshId) return true;
 
           // Child mesh target: check if child's parent is d.meshId
@@ -1369,7 +1346,7 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
         let globalRepeatFactor = null;
         if (d.type === 'pattern') {
           const globalBox = new THREE.Box3();
-          meshes.forEach(m => {
+          targetMeshes.forEach(m => {
             m.updateMatrixWorld(true);
             globalBox.union(new THREE.Box3().setFromObject(m));
           });
