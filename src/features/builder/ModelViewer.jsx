@@ -1323,7 +1323,7 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
         let globalRepeatFactor = null;
         if (d.type === 'pattern') {
           const globalBox = new THREE.Box3();
-          targetMeshes.forEach(m => {
+          meshes.forEach(m => {
             m.updateMatrixWorld(true);
             globalBox.union(new THREE.Box3().setFromObject(m));
           });
