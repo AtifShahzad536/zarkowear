@@ -158,11 +158,30 @@ function getPatternCanvasSync(imageUrl, tintColor) {
           }
         }
       } else {
-        const r0 = data[0];
-        const g0 = data[1];
-        const b0 = data[2];
-        const isBgWhite = (r0 + g0 + b0) / 3 > 200;
-        const isBgBlack = (r0 + g0 + b0) / 3 < 55;
+        // Sample 8 edge pixels to determine background tone robustly
+        const samples = [
+          0, // top-left
+          512 * 4, // top-mid
+          1023 * 4, // top-right
+          512 * 1024 * 4, // mid-left
+          (512 * 1024 + 1023) * 4, // mid-right
+          1023 * 1024 * 4, // bottom-left
+          (1023 * 1024 + 512) * 4, // bottom-mid
+          (1023 * 1024 + 1023) * 4 // bottom-right
+        ];
+        
+        let totalBrightness = 0;
+        let validSamples = 0;
+        samples.forEach(idx => {
+          if (idx < data.length) {
+            totalBrightness += (data[idx] + data[idx + 1] + data[idx + 2]) / 3;
+            validSamples++;
+          }
+        });
+        
+        const avgBrightness = validSamples > 0 ? totalBrightness / validSamples : 255;
+        const isBgWhite = avgBrightness > 150;
+        const isBgBlack = avgBrightness < 105;
 
         for (let i = 0; i < data.length; i += 4) {
           const r = data[i];
