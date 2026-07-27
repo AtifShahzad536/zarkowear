@@ -137,98 +137,77 @@ function getPatternCanvasSync(imageUrl, tintColor) {
       const imgData = ctx.getImageData(0, 0, 1024, 1024);
       const data = imgData.data;
 
-      // 1. Detect if the image already has transparency (PNG)
-      let hasAlphaChannel = false;
-      for (let i = 3; i < data.length; i += 4) {
-        if (data[i] < 220) {
-          hasAlphaChannel = true;
-          break;
-        }
-      }
-
       const isOriginal = tintColor === 'original';
       const tint = new THREE.Color(isOriginal ? '#ffffff' : tintColor);
       const tr = Math.round(tint.r * 255);
       const tg = Math.round(tint.g * 255);
       const tb = Math.round(tint.b * 255);
 
-      if (hasAlphaChannel) {
-        // Transparent image (PNG) - just tint the visible pixels and preserve alpha.
-        // For checkerboard pattern: Eay Sports checkerboard PNG has transparent squares
-        // and opaque background, which causes colors to appear swapped in the custom viewer.
-        // We invert it so transparent squares get the pattern color and background gets the base color.
-        const isInvertedPattern = imageUrl.includes('checker.png') || imageUrl.includes('checker');
-        if (isInvertedPattern) {
-          for (let i = 0; i < data.length; i += 4) {
-            const alpha = data[i + 3];
-            if (alpha > 50) {
-              data[i + 3] = 0; // Opaque pixels become transparent background
-            } else {
-              data[i] = tr;
-              data[i + 1] = tg;
-              data[i + 2] = tb;
-              data[i + 3] = 255; // Transparent squares become opaque pattern
-            }
-          }
-        } else {
-          if (!isOriginal) {
-            for (let i = 0; i < data.length; i += 4) {
-              const alpha = data[i + 3];
-              if (alpha > 0) {
-                data[i] = tr;
-                data[i + 1] = tg;
-                data[i + 2] = tb;
-              }
-            }
+      const isInvertedPattern = imageUrl.includes('checker.png') || imageUrl.includes('checker');
+
+      if (isInvertedPattern) {
+        for (let i = 0; i < data.length; i += 4) {
+          const alpha = data[i + 3];
+          if (alpha > 50) {
+            data[i + 3] = 0; // Opaque pixels become transparent background
+          } else {
+            data[i] = tr;
+            data[i + 1] = tg;
+            data[i + 2] = tb;
+            data[i + 3] = 255; // Transparent squares become opaque pattern
           }
         }
       } else {
-        // Solid image (JPG) - key out background using corner pixel brightness
         const r0 = data[0];
         const g0 = data[1];
         const b0 = data[2];
-        const isBgWhite = (r0 + g0 + b0) / 3 > 127;
+        const isBgWhite = (r0 + g0 + b0) / 3 > 200;
+        const isBgBlack = (r0 + g0 + b0) / 3 < 55;
 
         for (let i = 0; i < data.length; i += 4) {
           const r = data[i];
           const g = data[i + 1];
           const b = data[i + 2];
-          const alpha = data[i + 3];
+          const a = data[i + 3];
 
-          if (alpha === 0) continue;
+          if (a === 0) continue;
 
           const val = (r + g + b) / 3;
 
           if (isBgWhite) {
-            // White is background (transparent), dark is pattern (tinted)
-            // Use thresholds to ensure compression noise and vignette borders are 100% transparent.
-            let alphaFactor;
+            let alphaFactor = 255;
             if (val > 235) {
               alphaFactor = 0;
             } else if (val < 180) {
-              alphaFactor = 255;
+              alphaFactor = a;
             } else {
-              alphaFactor = Math.round(255 * (1.0 - (val - 180) / (235 - 180)));
+              const factor = (val - 180) / (235 - 180);
+              alphaFactor = Math.min(a, Math.round(255 * (1.0 - factor)));
             }
             data[i + 3] = alphaFactor;
-            if (!isOriginal) {
+            if (!isOriginal && alphaFactor > 0) {
+              data[i] = tr;
+              data[i + 1] = tg;
+              data[i + 2] = tb;
+            }
+          } else if (isBgBlack) {
+            let alphaFactor = 255;
+            if (val < 20) {
+              alphaFactor = 0;
+            } else if (val > 75) {
+              alphaFactor = a;
+            } else {
+              const factor = (val - 20) / (75 - 20);
+              alphaFactor = Math.min(a, Math.round(255 * factor));
+            }
+            data[i + 3] = alphaFactor;
+            if (!isOriginal && alphaFactor > 0) {
               data[i] = tr;
               data[i + 1] = tg;
               data[i + 2] = tb;
             }
           } else {
-            // Black is background (transparent), light is pattern (tinted)
-            // Use thresholds to ensure dark noise and borders are 100% transparent.
-            let alphaFactor;
-            if (val < 20) {
-              alphaFactor = 0;
-            } else if (val > 75) {
-              alphaFactor = 255;
-            } else {
-              alphaFactor = Math.round(255 * ((val - 20) / (75 - 20)));
-            }
-            data[i + 3] = alphaFactor;
-            if (!isOriginal) {
+            if (!isOriginal && a > 0) {
               data[i] = tr;
               data[i + 1] = tg;
               data[i + 2] = tb;
