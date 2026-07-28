@@ -245,6 +245,49 @@ const MeshProperties = ({
         </div>
       </div>
 
+      {/* ─── FABRIC MATERIAL ─── */}
+      <SecHeader label="Fabric Material" icon={<BiWater />} isOpen={openSections.includes('fabric')} onToggle={() => toggleSection('fabric')} />
+      <div className={`acc-body ${openSections.includes('fabric') ? 'open' : ''}`}>
+        <div className="p-5 bg-white border-b border-gray-50">
+          <p className="text-[8px] font-semibold text-gray-400 uppercase tracking-widest mb-4">Select Fabric Weave Texture</p>
+          <div className="grid grid-cols-2 gap-2">
+            {[
+              { key: 'none',        label: 'Plain',        emoji: '⬜', desc: 'Smooth flat finish' },
+              { key: 'polyester',   label: 'Polyester',    emoji: '🔲', desc: 'Fine woven grid' },
+              { key: 'mesh_knit',   label: 'Mesh Knit',    emoji: '🕸️', desc: 'Open breathable holes' },
+              { key: 'ribbed',      label: 'Ribbed',       emoji: '〰️', desc: 'Horizontal rib lines' },
+              { key: 'dryfit',      label: 'Dry-Fit',      emoji: '✖️', desc: 'Cross-hatch performance' },
+              { key: 'honeycomb',   label: 'Honeycomb',    emoji: '🔶', desc: 'Hex cell pattern' },
+              { key: 'waffle_knit', label: 'Waffle Knit',  emoji: '🧇', desc: 'Raised square grid' },
+              { key: 'twill',       label: 'Twill',        emoji: '🌊', desc: 'Diagonal denim weave' },
+              { key: 'jersey_knit', label: 'Jersey Knit',  emoji: '🔄', desc: 'V-shaped loop stitch' },
+              { key: 'oxford',      label: 'Oxford Weave', emoji: '🏛️', desc: '2x2 basket weave' },
+              { key: 'fleece',      label: 'Fleece',       emoji: '☁️', desc: 'Soft fuzzy bumps' },
+              { key: 'pinstripe',   label: 'Pinstripe',    emoji: '🕴️', desc: 'Vertical thin lines' },
+            ].map(fab => {
+              const isActive = (state.fabricTexture || 'none') === fab.key;
+              return (
+                <button
+                  key={fab.key}
+                  type="button"
+                  onClick={() => updateProp('fabricTexture', fab.key)}
+                  className={`flex flex-col items-center gap-1.5 p-3 border rounded-none transition-all duration-200 cursor-pointer text-center
+                    ${isActive
+                      ? 'border-blue-600 bg-blue-50/40 shadow-[0_0_8px_rgba(37,99,235,0.15)]'
+                      : 'border-gray-100 hover:border-gray-200 bg-white hover:bg-gray-50/50'
+                    }`}
+                >
+                  <span className="text-xl leading-none">{fab.emoji}</span>
+                  <span className={`text-[9px] font-bold uppercase tracking-wider ${isActive ? 'text-blue-600' : 'text-gray-700'}`}>{fab.label}</span>
+                  <span className="text-[7.5px] text-gray-400 font-medium leading-tight">{fab.desc}</span>
+                  {isActive && <span className="mt-0.5 w-1.5 h-1.5 rounded-full bg-blue-500 inline-block" />}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
       <SecHeader label="Gradient Engine" icon={<HiOutlineSparkles />} isOpen={openSections.includes('grad')} onToggle={() => toggleSection('grad')} />
       <div className={`acc-body ${openSections.includes('grad') ? 'open' : ''}`}>
         <div className="p-5 bg-white border-b border-gray-50">

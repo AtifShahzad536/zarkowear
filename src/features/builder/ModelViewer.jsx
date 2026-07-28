@@ -576,7 +576,7 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle }) => {
 };
 
 // ─── MESH PART (handles color/pattern shaders) ──────────────────────────────
-const MeshPart = memo(function MeshPart({ node, state, finish, globalPattern }) {
+const MeshPart = memo(function MeshPart({ node, state, finish, globalPattern, fabricTexture }) {
   const materialRef = useRef();
 
   const material = useMemo(() => {
@@ -599,7 +599,8 @@ const MeshPart = memo(function MeshPart({ node, state, finish, globalPattern }) 
       uPatternMinY: { value: 0.0 },
       uPatternMaxY: { value: 1.0 },
       uPatternMappingMode: { value: 0.0 }, // 0: Seamless UV, 1: Triplanar
-      uLocalMatrix: { value: node.matrix }
+      uLocalMatrix: { value: node.matrix },
+      uFabricType: { value: 0.0 }  // 0: plain, 1: polyester, 2: mesh_knit, 3: ribbed, 4: dryfit, 5: honeycomb
     };
 
     mat.onBeforeCompile = (shader) => {
@@ -638,6 +639,7 @@ const MeshPart = memo(function MeshPart({ node, state, finish, globalPattern }) 
         uniform float uPatternMinY;
         uniform float uPatternMaxY;
         uniform float uPatternMappingMode;
+        uniform float uFabricType;
         varying vec3 vLocalPos;
         varying vec3 vModelPos;
         varying vec3 vModelNormal;
@@ -761,6 +763,93 @@ const MeshPart = memo(function MeshPart({ node, state, finish, globalPattern }) 
           }
         }
 
+        // ── Fabric Micro-Texture Overlay ─────────────────────────────────────
+        // Uses vLocalPos (mesh-local space) — NEVER slides when model rotates
+        if (uFabricType > 0.5 && gl_FrontFacing) {
+          vec3 dark = finalColor * 0.55;
+          vec3 bright = clamp(finalColor * 1.08, 0.0, 1.0);
+          float meshH = max(uMaxY - uMinY, 0.01);
+          float baseScale = 50.0 / meshH;
+          vec2 fXY = vLocalPos.xy * baseScale;
+          vec2 fXZ = vec2(vLocalPos.x, vLocalPos.z) * baseScale;
+
+          if (uFabricType < 1.5) {
+            // 1: Polyester
+            vec2 g = fract(fXY * 1.6);
+            float lineX = 1.0 - smoothstep(0.0, 0.10, min(g.x, 1.0 - g.x));
+            float lineY = 1.0 - smoothstep(0.0, 0.10, min(g.y, 1.0 - g.y));
+            finalColor = mix(finalColor, dark, clamp(lineX + lineY, 0.0, 1.0) * 0.75);
+          } else if (uFabricType < 2.5) {
+            // 2: Mesh Knit
+            vec2 cell = fXZ * 0.65;
+            cell.x += mod(floor(cell.y), 2.0) * 0.5;
+            vec2 g = fract(cell) - 0.5;
+            float hole = 1.0 - smoothstep(0.15, 0.28, length(g));
+            finalColor = mix(finalColor, dark * 0.4, hole * 0.92);
+          } else if (uFabricType < 3.5) {
+            // 3: Ribbed
+            float rib = sin(vLocalPos.y * (100.0 / meshH)) * 0.5 + 0.5;
+            finalColor = mix(dark, bright, rib);
+          } else if (uFabricType < 4.5) {
+            // 4: Dry-Fit
+            vec2 d1 = fract(vec2(fXY.x + fXY.y) * 1.0);
+            vec2 d2 = fract(vec2(fXY.x - fXY.y) * 1.0);
+            float l1 = 1.0 - smoothstep(0.0, 0.12, min(d1.x, 1.0 - d1.x));
+            float l2 = 1.0 - smoothstep(0.0, 0.12, min(d2.x, 1.0 - d2.x));
+            finalColor = mix(finalColor, dark, clamp(l1 + l2, 0.0, 1.0) * 0.70);
+          } else if (uFabricType < 5.5) {
+            // 5: Honeycomb
+            vec2 hex = fXY * 0.58;
+            hex.x += mod(floor(hex.y), 2.0) * 0.5;
+            vec2 g2 = fract(hex) - 0.5;
+            float d = max(abs(g2.x) * 1.732 + abs(g2.y), abs(g2.y) * 2.0) - 0.5;
+            finalColor = mix(dark * 0.5, bright, smoothstep(-0.06, 0.06, d + 0.35));
+          } else if (uFabricType < 6.5) {
+            // 6: Waffle Knit — raised square indentations
+            vec2 g = fract(fXY * 1.2);
+            float cx = abs(g.x - 0.5) * 2.0;
+            float cy = abs(g.y - 0.5) * 2.0;
+            float ridge = smoothstep(0.55, 0.82, max(cx, cy));
+            float center = smoothstep(0.0, 0.28, 1.0 - max(cx, cy));
+            finalColor = mix(finalColor, dark * 0.65, ridge * 0.80);
+            finalColor = mix(finalColor, dark * 0.45, center * 0.55);
+          } else if (uFabricType < 7.5) {
+            // 7: Twill — diagonal denim weave
+            vec2 tw = fXY * 1.4;
+            float diag1 = fract(tw.x - tw.y * 0.5);
+            float diag2 = fract(tw.x - tw.y * 0.5 + 0.5);
+            float l1 = smoothstep(0.0, 0.10, diag1) * (1.0 - smoothstep(0.45, 0.58, diag1));
+            float l2 = smoothstep(0.0, 0.10, diag2) * (1.0 - smoothstep(0.45, 0.58, diag2));
+            finalColor = mix(finalColor, dark, max(l1, l2) * 0.72);
+          } else if (uFabricType < 8.5) {
+            // 8: Jersey Knit — V-shaped looped stitches
+            vec2 jg = fract(fXY * 1.1);
+            float vAngle = abs(jg.x - 0.5) * 2.0;
+            float jRow = fract(jg.y + vAngle * 0.25);
+            float stitch = smoothstep(0.0, 0.12, jRow) * (1.0 - smoothstep(0.45, 0.58, jRow));
+            float stitchH = 1.0 - smoothstep(0.0, 0.12, min(jg.x, 1.0 - jg.x));
+            finalColor = mix(finalColor, dark, max(stitch, stitchH * 0.6) * 0.70);
+          } else if (uFabricType < 9.5) {
+            // 9: Oxford Weave — 2x2 basket weave
+            vec2 cell = floor(fXY * 1.3);
+            vec2 g = fract(fXY * 1.3);
+            float phase = mod(cell.x + cell.y, 2.0);
+            float lineA = 1.0 - smoothstep(0.0, 0.10, min(g.x, 1.0 - g.x));
+            float lineB = 1.0 - smoothstep(0.0, 0.10, min(g.y, 1.0 - g.y));
+            finalColor = mix(finalColor, dark, mix(lineA, lineB, phase) * 0.72);
+          } else if (uFabricType < 10.5) {
+            // 10: Fleece — soft overlapping bumps
+            float b1 = sin(fXY.x * 2.8) * sin(fXY.y * 2.8) * 0.5 + 0.5;
+            float b2 = sin(fXY.x * 4.3 + 0.9) * sin(fXY.y * 3.7 + 1.3) * 0.5 + 0.5;
+            finalColor = mix(dark * 0.80, bright, b1 * b2);
+          } else if (uFabricType < 11.5) {
+            // 11: Pinstripe — vertical thin lines
+            float stripe = fract(fXY.x * 0.85);
+            float line = 1.0 - (smoothstep(0.0, 0.07, stripe) * (1.0 - smoothstep(0.87, 0.95, stripe)));
+            finalColor = mix(finalColor, dark, (1.0 - line) * 0.68);
+          }
+        }
+
         if (!gl_FrontFacing) {
           finalColor = vec3(0.92, 0.92, 0.92); // Clean light-gray inner fabric color
         }
@@ -813,7 +902,13 @@ const MeshPart = memo(function MeshPart({ node, state, finish, globalPattern }) 
     } else {
       u.uHasPattern.value = 0.0;
     }
-  }, [state, material, node, finish, globalPattern]);
+
+    // Fabric texture type
+    const fabricMap = { none: 0, polyester: 1, mesh_knit: 2, ribbed: 3, dryfit: 4, honeycomb: 5, waffle_knit: 6, twill: 7, jersey_knit: 8, oxford: 9, fleece: 10, pinstripe: 11 };
+    if (u.uFabricType) {
+      u.uFabricType.value = fabricMap[state.fabricTexture || 'none'] ?? 0;
+    }
+  }, [state, material, node, finish, globalPattern, fabricTexture]);
 
   return <primitive object={node} material={material} />;
 })
@@ -1553,7 +1648,7 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
         }
 
         return (
-          <MeshPart key={m.uuid} node={m} state={meshStates[stateKey]} finish={finish} globalPattern={globalPattern} />
+          <MeshPart key={m.uuid} node={m} state={meshStates[stateKey]} finish={finish} globalPattern={globalPattern} fabricTexture={meshStates[stateKey]?.fabricTexture} />
         );
       })}
     </group>

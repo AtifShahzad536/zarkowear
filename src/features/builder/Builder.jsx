@@ -167,7 +167,8 @@ const Builder = memo(({ defaultPatterns, defaultLogos }) => {
             grad1: '#ffffff',
             grad2: '#ffffff',
             pColor: '#ffffff',
-            pUrl: null
+            pUrl: null,
+            fabricTexture: 'none'
           };
         }
       });
@@ -336,7 +337,8 @@ const Builder = memo(({ defaultPatterns, defaultLogos }) => {
           grad1: !isWhite ? (m.originalColor || '#ffffff') : config.color2,
           grad2: (!isWhite) ? (m.originalColor || '#ffffff') : (config.color === '#ffffff' ? (m.originalColor || '#ffffff') : config.color),
           pColor: '#ffffff',
-          pUrl: null
+          pUrl: null,
+          fabricTexture: 'none'
         };
       }
     });
