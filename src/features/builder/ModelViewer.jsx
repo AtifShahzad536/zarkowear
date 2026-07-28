@@ -1132,9 +1132,8 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
     pending.forEach(d => {
       let initialMesh = meshes.find(m => m.name === d.meshId) || meshes[0];
 
-      // Find all meshes in the same merged group (or all meshes for pattern overlays)
+      // Find all meshes in the same merged group
       const targetMeshes = meshes.filter(m => {
-        if (d.type === 'pattern') return true; // Patterns apply globally to the entire model!
         if (m.name === initialMesh.name) return true;
         const meta = layersMetadata[m.name] || {};
         if (meta.merge_parent === initialMesh.name) return true;
@@ -1466,7 +1465,7 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
           const quaternion = new THREE.Quaternion().setFromEuler(orientation);
           const globalDecalMatrix = new THREE.Matrix4().compose(globalCenter, quaternion, globalDecalSize);
           globalDecalMatrixInv = globalDecalMatrix.clone().invert();
-          globalRepeatFactor = 8.0 / Math.max(0.05, d.decalScale || 0.8);
+          globalRepeatFactor = 32.0 / Math.max(0.05, d.decalScale || 1.8);
         }
 
         targetMeshes.forEach(tMesh => {

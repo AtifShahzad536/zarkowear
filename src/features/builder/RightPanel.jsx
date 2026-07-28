@@ -339,7 +339,7 @@ const MeshProperties = ({
                       .then(data => {
                         if (data.success && data.url) {
                           toast.success('Pattern uploaded!', { id: toastId });
-                          addDecal('pattern', 'Pattern Layer', data.url);
+                          addDecal('pattern', 'Pattern Layer', data.url, activeMesh);
                         } else {
                           toast.error('Failed to upload pattern.', { id: toastId });
                         }
@@ -363,7 +363,7 @@ const MeshProperties = ({
                   <button
                     key={pat.id}
                     type="button"
-                    onClick={() => addDecal('pattern', pat.name, pat.imageUrl)}
+                    onClick={() => addDecal('pattern', pat.name, pat.imageUrl, activeMesh)}
                     className="aspect-square bg-gray-50 border border-gray-100 rounded-none p-1.5 hover:border-blue-600 hover:bg-blue-50 transition-all flex flex-col items-center justify-center gap-1 group cursor-pointer"
                     title={pat.name}
                   >

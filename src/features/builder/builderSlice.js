@@ -157,6 +157,7 @@ export const builderSlice = createSlice({
           const parentId = meta.merge_parent || decal.meshId;
           groupMeshIds.add(parentId);
 
+          // Find all sibling meshes in layers_metadata
           Object.keys(layersMetadata).forEach(mName => {
             const mMeta = layersMetadata[mName] || {};
             if (mMeta.merge_parent === parentId || mName === parentId) {
@@ -165,9 +166,36 @@ export const builderSlice = createSlice({
           });
         }
 
+        // Filter out existing pattern decals that overlap with this group's mesh IDs
         state.decals = state.decals.filter(d => {
-          if (d.type === 'pattern' && groupMeshIds.has(d.meshId)) {
-            return false;
+          if (d.type === 'pattern') {
+            const cleanExisting = (d.meshId || '').replace(/\.obj$/i, '').trim().toLowerCase();
+            const cleanNew = (decal.meshId || '').replace(/\.obj$/i, '').trim().toLowerCase();
+            
+            // 1. Direct name match
+            if (cleanExisting === cleanNew) {
+              return false;
+            }
+
+            // 2. Normalize and check group mesh IDs (must only overlap with the existing decal's base name)
+            const hasGroupOverlap = Array.from(groupMeshIds).some(gId => {
+              const cleanG = gId.replace(/\.obj$/i, '').trim().toLowerCase();
+              return cleanG === cleanExisting;
+            });
+            if (hasGroupOverlap || d.meshId === decal.meshId) {
+              return false;
+            }
+
+            // 3. Parent ID match (only if parent IDs are not empty)
+            const dMeta = layersMetadata[d.meshId] || {};
+            const dParentId = (dMeta.merge_parent || d.meshId || '').replace(/\.obj$/i, '').trim().toLowerCase();
+            
+            const targetMeta = layersMetadata[decal.meshId] || {};
+            const targetParentId = (targetMeta.merge_parent || decal.meshId || '').replace(/\.obj$/i, '').trim().toLowerCase();
+            
+            if (dParentId !== '' && targetParentId !== '' && dParentId === targetParentId) {
+              return false;
+            }
           }
           return true;
         });
@@ -180,9 +208,9 @@ export const builderSlice = createSlice({
         imageUrl: decal.imageUrl || null,
         color: decal.type === 'pattern' ? 'original' : '#ffffff',
         font: 'Outfit',
-        decalScale: decal.type === 'image' ? 0.12 : decal.type === 'pattern' ? 0.8 : 0.15,
-        decalScaleX: decal.type === 'image' ? 0.12 : decal.type === 'pattern' ? 0.8 : 0.15,
-        decalScaleY: decal.type === 'image' ? 0.12 : decal.type === 'pattern' ? 0.8 : 0.15,
+        decalScale: decal.type === 'image' ? 0.12 : decal.type === 'pattern' ? 1.8 : 0.15,
+        decalScaleX: decal.type === 'image' ? 0.12 : decal.type === 'pattern' ? 1.8 : 0.15,
+        decalScaleY: decal.type === 'image' ? 0.12 : decal.type === 'pattern' ? 1.8 : 0.15,
         pFadeTop: 0.0,
         pFadeBottom: 0.0,
         pFadeLeft: 0.0,
