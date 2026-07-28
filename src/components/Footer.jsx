@@ -64,6 +64,7 @@ const Footer = () => {
                   src="/new-logo.png"
                   alt="Zarko Sportswear"
                   className="h-14 w-auto object-contain"
+                  style={{ filter: 'brightness(0) invert(1)' }}
                 />
                 <span className="text-2xl font-bold">Zarko Sports</span>
               </div>
