@@ -1414,9 +1414,19 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
           ? new THREE.Vector3(sx, sy, d.type === 'pattern' ? 3.0 : 0.3)
           : new THREE.Vector3(sx, sy * 0.25, 0.3);
 
-        // Find target meshes — always use the merged group (or all meshes for pattern overlays)
+        // Find target meshes — patterns apply to the selected mesh group only, not entire model
         const targetMeshes = meshes.filter(m => {
-          if (d.type === 'pattern') return true; // Patterns apply globally to the entire model!
+          if (d.type === 'pattern') {
+            // Only target the specific mesh and its merged group siblings
+            if (m.name === d.meshId) return true;
+            const meta = layersMetadata[m.name] || {};
+            const dMeta = layersMetadata[d.meshId] || {};
+            if (meta.merge_parent === d.meshId) return true;
+            if (dMeta.merge_parent === m.name) return true;
+            if (meta.merge_parent && meta.merge_parent === dMeta.merge_parent) return true;
+            return false;
+          }
+          if (m.name === d.meshId) return true;
           if (m.name === d.meshId) return true;
 
           // Child mesh target: check if child's parent is d.meshId
@@ -1545,7 +1555,21 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
                     } else {
                       texColor = colY;
                     }
-                    gl_FragColor = vec4(texColor.rgb, texColor.a);
+
+                    // Background removal: if texture has alpha channel use it directly.
+                    // For textures with white/solid backgrounds (no alpha), detect white and discard.
+                    float finalAlpha;
+                    if (texColor.a < 0.99) {
+                      // PNG with transparency: use alpha directly
+                      finalAlpha = texColor.a;
+                    } else {
+                      // No alpha (JPG or solid background): detect near-white and make transparent
+                      float brightness = dot(texColor.rgb, vec3(0.299, 0.587, 0.114));
+                      // White/very-light background → transparent; dark pattern → opaque
+                      finalAlpha = 1.0 - smoothstep(0.80, 0.96, brightness);
+                    }
+
+                    gl_FragColor = vec4(texColor.rgb, finalAlpha);
                   }
                 `,
                 transparent: true,
