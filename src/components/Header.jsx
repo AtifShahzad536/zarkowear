@@ -69,7 +69,7 @@ const Header = () => {
             className="h-10 md:h-12 w-auto object-contain transition-transform group-hover:scale-105"
           />
           <span className="text-[16px] md:text-[18px] font-black text-indigo-950 uppercase tracking-widest -ml-0.5" style={{ fontFamily: "'Outfit', sans-serif" }}>
-            ARKO <span className="text-indigo-600 font-semibold text-[10px] md:text-[11px] tracking-normal lowercase" style={{ fontFamily: "'Outfit', sans-serif" }}>sportswear</span>
+            ARKO <span className="text-indigo-600 font-semibold text-[10px] md:text-[11px] tracking-normal lowercase" style={{ fontFamily: "'Outfit', sans-serif" }}>wear</span>
           </span>
         </Link>
 
