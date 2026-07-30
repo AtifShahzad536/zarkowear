@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getHome, imageUrl } from '../../services/api';
+import { getHomeSettings, imageUrl } from '../../services/api';
 import { BsChatDots } from 'react-icons/bs';
 import { FaStar } from 'react-icons/fa';
 import { motion } from 'framer-motion';
@@ -15,7 +15,7 @@ const Testimonials = () => {
   useEffect(() => {
     let alive = true;
     setLoading(true);
-    getHome()
+    getHomeSettings()
       .then((d) => { if (!alive) return; setList(d.testimonials || []); setError(''); })
       .catch((e) => alive && setError(e.message || 'Failed to load'))
       .finally(() => alive && setLoading(false));

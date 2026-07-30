@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getHome, imageUrl } from '../../services/api';
+import { getHomeSettings, imageUrl } from '../../services/api';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaPlay, FaTimes } from 'react-icons/fa';
 
@@ -12,7 +12,7 @@ const Videos = () => {
   useEffect(() => {
     let alive = true;
     setLoading(true);
-    getHome()
+    getHomeSettings()
       .then((d) => {
         if (!alive) return;
         setList(d.videos || []);
