@@ -460,7 +460,8 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
         </div>
       </form>
     </div>
-  );
+  </div>
+);
 };
 
 export default AIAssistantTab;
