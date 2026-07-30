@@ -11,18 +11,21 @@ export default function AdminHome() {
   const [heroImages, setHeroImages] = useState([]);
   const [testimonials, setTestimonials] = useState([]);
   const [topSelling, setTopSelling] = useState([]);
+  const [videos, setVideos] = useState([]);
   const [uploads, setUploads] = useState([]);
   const [newHero, setNewHero] = useState('');
-  const [tab, setTab] = useState('hero'); // 'hero' | 'testimonials' | 'top'
+  const [tab, setTab] = useState('hero'); // 'hero' | 'testimonials' | 'top' | 'videos'
   // shared hidden file inputs state
   const [tUploadIndex, setTUploadIndex] = useState(-1);
   const [tsUploadIndex, setTsUploadIndex] = useState(-1);
+  const [vUploadIndex, setVUploadIndex] = useState(-1);
 
   // Sync tab with route on mount and when location changes
   useEffect(() => {
     const p = location.pathname;
     if (p.endsWith('/admin/testimonials')) setTab('testimonials');
     else if (p.endsWith('/admin/top-selling')) setTab('top');
+    else if (p.endsWith('/admin/videos')) setTab('videos');
     else setTab('hero');
   }, [location.pathname]);
 
@@ -36,6 +39,7 @@ export default function AdminHome() {
         setHeroImages(home.heroImages || []);
         setTestimonials(home.testimonials || []);
         setTopSelling(home.topSelling || []);
+        setVideos(home.videos || []);
         setUploads(files || []);
       } catch (e) {
         setError(e.message || 'Failed to load');
@@ -82,10 +86,21 @@ export default function AdminHome() {
     setTopSelling((arr) => arr.map((t, idx) => idx === iTop ? { ...t, image: url } : t));
   }
 
+  // Video handlers
+  function addVideo() {
+    setVideos((arr) => [ ...arr, { title: '', description: '', url: '', thumbnailUrl: '' } ]);
+  }
+  function updateVideo(i, field, value) {
+    setVideos((arr) => arr.map((t, idx) => idx === i ? { ...t, [field]: value } : t));
+  }
+  function removeVideo(i) {
+    setVideos((arr) => arr.filter((_, idx) => idx !== i));
+  }
+
   async function save() {
     try {
       setLoading(true);
-      await adminUpdateHome({ heroImages, testimonials, topSelling });
+      await adminUpdateHome({ heroImages, testimonials, topSelling, videos });
     } catch (e) {
       setError(e.message || 'Save failed');
     } finally {
@@ -104,9 +119,8 @@ export default function AdminHome() {
         <button onClick={()=>navigate('/admin/home')} className={`px-3 py-2 rounded border ${tab==='hero'?'bg-black text-white border-black':'bg-white hover:bg-gray-50'}`}>Hero Images</button>
         <button onClick={()=>navigate('/admin/testimonials')} className={`px-3 py-2 rounded border ${tab==='testimonials'?'bg-black text-white border-black':'bg-white hover:bg-gray-50'}`}>Testimonials</button>
         <button onClick={()=>navigate('/admin/top-selling')} className={`px-3 py-2 rounded border ${tab==='top'?'bg-black text-white border-black':'bg-white hover:bg-gray-50'}`}>Top Selling</button>
+        <button onClick={()=>navigate('/admin/videos')} className={`px-3 py-2 rounded border ${tab==='videos'?'bg-black text-white border-black':'bg-white hover:bg-gray-50'}`}>Videos</button>
       </div>
-
-      {/* Hero Images */}
       {tab==='hero' && (
       <section className="mb-10">
         <h2 className="text-xl font-semibold mb-3">Hero Images</h2>
@@ -207,6 +221,71 @@ export default function AdminHome() {
                   </button>
                 ))}
               </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      )}
+
+      {/* Videos */}
+      {tab==='videos' && (
+      <section className="mb-10">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-xl font-semibold">Company / Team Videos</h2>
+          <button onClick={addVideo} className="px-3 py-2 border rounded">+ Add Video</button>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {videos.map((v, i) => (
+            <div key={i} className="rounded-xl ring-1 ring-gray-200 bg-white p-4 shadow-sm space-y-3">
+              <input className="border rounded px-2 py-1 w-full" placeholder="Video Title" value={v.title} onChange={(e)=>updateVideo(i,'title',e.target.value)} />
+              <textarea className="border rounded px-2 py-1 w-full" placeholder="Video Description (e.g. How our sublimation process works)" value={v.description} onChange={(e)=>updateVideo(i,'description',e.target.value)} />
+              
+              <div className="flex gap-2">
+                <input className="border rounded px-2 py-1 flex-1 text-xs" placeholder="Video URL (Cloudinary url)" value={v.url} onChange={(e)=>updateVideo(i,'url',e.target.value)} />
+                <input id="vHidden" type="file" accept="video/*" className="hidden" onChange={async (e)=>{
+                  const f = e.target.files?.[0]; if (!f) return;
+                  try { 
+                    setLoading(true);
+                    const res = await adminUploadFile(f); 
+                    updateVideo(vUploadIndex,'url',res.url); 
+                  } catch (err) {
+                    setError('Video upload failed: ' + err.message);
+                  } finally {
+                    setLoading(false);
+                  }
+                  setVUploadIndex(-1); e.target.value='';
+                }} />
+                <button onClick={()=>{ setVUploadIndex(i); document.getElementById('vHidden').click(); }} className="px-2 py-1 text-sm border rounded bg-indigo-50 hover:bg-indigo-100 text-indigo-700">Upload Video</button>
+              </div>
+
+              <div className="flex gap-2">
+                <input className="border rounded px-2 py-1 flex-1 text-xs" placeholder="Thumbnail Image URL (Optional)" value={v.thumbnailUrl} onChange={(e)=>updateVideo(i,'thumbnailUrl',e.target.value)} />
+                <input id="vThumbHidden" type="file" accept="image/*" className="hidden" onChange={async (e)=>{
+                  const f = e.target.files?.[0]; if (!f) return;
+                  try { 
+                    setLoading(true);
+                    const res = await adminUploadFile(f); 
+                    updateVideo(vUploadIndex,'thumbnailUrl',res.url); 
+                  } catch (err) {
+                    setError('Thumbnail upload failed: ' + err.message);
+                  } finally {
+                    setLoading(false);
+                  }
+                  setVUploadIndex(-1); e.target.value='';
+                }} />
+                <button onClick={()=>{ setVUploadIndex(i); document.getElementById('vThumbHidden').click(); }} className="px-2 py-1 text-sm border rounded">Upload Thumbnail</button>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="text-xs text-gray-500">Preview:</div>
+                <button onClick={()=>removeVideo(i)} className="px-2 py-1 text-xs border rounded text-rose-600 border-rose-200 bg-rose-50 hover:bg-rose-100">Remove</button>
+              </div>
+
+              {v.url && (
+                <div className="relative rounded-lg overflow-hidden bg-black aspect-video max-h-48">
+                  <video src={imageUrl(v.url)} controls className="w-full h-full" poster={v.thumbnailUrl ? imageUrl(v.thumbnailUrl) : undefined} />
+                </div>
+              )}
             </div>
           ))}
         </div>

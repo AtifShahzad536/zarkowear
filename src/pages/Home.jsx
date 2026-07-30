@@ -12,6 +12,7 @@ import TopSellingProducts from '../components/Home/Top';
 import FeaturedCategories from '../components/Home/Feature';
 import LimitedTimeOffer from '../components/Home/LimitedTimeOffer';
 import Testimonials from '../components/Home/Customer';
+import Videos from '../components/Home/Videos';
 import { Link } from 'react-router-dom';
 import { FaAward, FaPalette, FaGlobeAmericas, FaRunning, FaArrowRight, FaPhoneAlt, FaStar, FaCheckCircle } from 'react-icons/fa';
 import homeSeo from '../seo/homeSeo';
@@ -290,10 +291,10 @@ const Home = () => {
       </section>
 
 
-      
-     
+      {/* Videos section */}
+      <Videos />
 
-  <section className="max-w-7xl mx-auto px-4 py-12">
+      <section className="max-w-7xl mx-auto px-4 py-12">
         <Testimonials />
       </section>
 
