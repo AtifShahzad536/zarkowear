@@ -1372,7 +1372,7 @@ const RightPanel = (props) => {
       </div>
 
       <div className="flex-1 relative min-h-0">
-        <div className="absolute inset-0 overflow-y-auto overflow-x-hidden touch-auto custom-scrollbar pb-24" data-lenis-prevent onWheel={(e) => e.stopPropagation()} style={{ WebkitOverflowScrolling: 'touch' }}>
+        <div className={`absolute inset-0 overflow-y-auto overflow-x-hidden touch-auto custom-scrollbar ${activeTab === 'ai' ? 'pb-52' : 'pb-24'}`} data-lenis-prevent onWheel={(e) => e.stopPropagation()} style={{ WebkitOverflowScrolling: 'touch' }}>
           {activeTab === 'colors' ? (
             <MeshProperties
               state={props.meshStates[props.activeMesh]}
@@ -1413,6 +1413,7 @@ const RightPanel = (props) => {
             <CheckoutRosterTab roster={props.roster} setRoster={props.setRoster} onCheckout={props.onCheckout} />
           )}
         </div>
+        <div id="ai-input-portal-target" className="absolute bottom-4 left-4 right-4 z-30 pointer-events-auto" />
       </div>
 
       <div className="px-4 py-2 bg-gray-50 border-t border-gray-100 flex items-center justify-between flex-shrink-0">
