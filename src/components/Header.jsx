@@ -1,7 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { FaBars, FaTimes, FaChevronDown, FaArrowRight, FaPhoneAlt, FaWhatsapp } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronDown, FaArrowRight, FaPhoneAlt, FaWhatsapp, FaGlobe, FaInstagram, FaFacebookF } from 'react-icons/fa';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
+
+const TopBar = () => {
+  return (
+    <div className="bg-indigo-950 text-white text-[11px] py-2 overflow-hidden relative border-b border-indigo-900/40">
+      <style>{`
+        @keyframes marquee-l2r {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        .animate-marquee-l2r {
+          display: inline-flex;
+          white-space: nowrap;
+          animation: marquee-l2r 25s linear infinite;
+        }
+        .animate-marquee-l2r:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+      <div className="w-full flex justify-center">
+        <div className="animate-marquee-l2r flex items-center gap-12 font-semibold uppercase tracking-wider">
+          <a href="https://wa.me/923039200750" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-green-400 transition-colors">
+            <FaWhatsapp className="text-sm text-green-400" />
+            <span>WhatsApp: +92-303-9200750</span>
+          </a>
+          <a href="https://www.zarkosportswear.com" className="flex items-center gap-2 hover:text-indigo-300 transition-colors">
+            <FaGlobe className="text-sm text-indigo-400" />
+            <span>www.zarkosportswear.com</span>
+          </a>
+          <a href="https://www.instagram.com/zarko_sports.wear/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-pink-400 transition-colors">
+            <FaInstagram className="text-sm text-pink-400" />
+            <span>Instagram</span>
+          </a>
+          <a href="https://www.facebook.com/zarkosportswear" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-blue-400 transition-colors">
+            <FaFacebookF className="text-sm text-blue-400" />
+            <span>Facebook</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const sportsWear = [
   { label: 'Wrestling Kits', to: '/wrestling' },
@@ -54,6 +95,7 @@ const Header = () => {
       transition={{ duration: 0.35, ease: 'easeOut' }}
       className="sticky top-0 z-50 border-b border-slate-100/70 bg-white/90 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.02)]"
     >
+      <TopBar />
       <motion.div
         className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-indigo-400/50 to-transparent"
         initial={{ opacity: 0 }}
