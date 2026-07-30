@@ -59,13 +59,9 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
     e.preventDefault();
     if (!prompt.trim()) return;
 
-    if (isQuotaExceeded) {
-      toast.error('Cannot send message: Antigravity model quota out of reach.');
-      return;
-    }
-
     setIsLoading(true);
     setError(null);
+    setIsQuotaExceeded(false);
     setProcessingSeconds(0);
     const toastId = toast.loading('Gemini AI is designing your kit...');
 
