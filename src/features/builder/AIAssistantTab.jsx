@@ -336,8 +336,8 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
             <div className="flex items-center gap-2.5 p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 animate-in fade-in duration-200">
               <span className="text-sm">⚠️</span>
               <div className="flex-1 min-w-0">
-                <p className="text-[10px] font-bold uppercase tracking-wider text-red-800">Antigravity model quota out of reach</p>
-                <p className="text-[9px] font-medium opacity-90 mt-0.5">Your AI design credits are depleted. Please check your config or recharge credits.</p>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-red-800">Zarko AI model quota out of reach</p>
+                <p className="text-[9px] font-medium opacity-90 mt-0.5">Your Zarko AI design credits are depleted. Please check your config or recharge credits.</p>
               </div>
             </div>
           )}
