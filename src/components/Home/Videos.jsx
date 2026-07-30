@@ -81,10 +81,14 @@ const Videos = () => {
               className="bg-white rounded-2xl overflow-hidden border border-indigo-100/80 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col"
             >
               {/* Direct Video Player (No Thumbnail required) */}
-              <div className="aspect-video relative overflow-hidden bg-slate-900 border-b border-indigo-50">
+              <div class="h-64 sm:h-72 lg:h-80 relative overflow-hidden bg-slate-900 border-b border-indigo-50">
                 <video
                   src={imageUrl(video.url)}
                   controls
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   preload="metadata"
                   className="w-full h-full object-cover"
                 />
