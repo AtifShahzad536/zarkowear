@@ -16,6 +16,13 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
   const [processingSeconds, setProcessingSeconds] = useState(0);
   const [isQuotaExceeded, setIsQuotaExceeded] = useState(false);
   const [error, setError] = useState(null);
+  const chatEndRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (chatEndRef.current) {
+      chatEndRef.current.scrollTop = chatEndRef.current.scrollHeight;
+    }
+  }, [history, isLoading]);
 
   const handleFileUpload = async (e, type) => {
     const file = e.target.files?.[0];
@@ -241,33 +248,115 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
   };
 
   return (
-    <div className="flex flex-col bg-white h-full p-6 space-y-6 text-left">
-      {/* Processing Timer Mode (Antigravity/Gemini style thinking indicator) */}
-      {isLoading && (
-        <div className="flex items-center gap-3.5 p-4 bg-blue-50/40 border border-blue-100/50 rounded-xl animate-pulse">
-          <div className="w-5 h-5 border-2 border-slate-300 border-t-blue-600 rounded-full animate-spin flex-shrink-0" />
-          <div className="flex-1 min-w-0">
-            <h5 className="text-[10px] font-bold text-slate-700 uppercase tracking-wider">AI Thinking & Customizing</h5>
-            <p className="text-[8px] font-semibold text-slate-400 uppercase mt-0.5">Elapsed time: {processingSeconds}s</p>
+    <div className="flex flex-col bg-white h-full p-4 overflow-hidden text-left justify-between">
+      
+      {/* 1. Scrolling Chat History Messages Area */}
+      <div 
+        ref={chatEndRef}
+        className="flex-1 overflow-y-auto space-y-4 pr-1 pb-2 scrollbar-thin"
+      >
+        {history.length === 0 ? (
+          <div className="flex flex-col items-center justify-center h-full text-center p-6 opacity-60">
+            <RiRobotLine className="text-4xl text-blue-500 mb-2 animate-bounce" />
+            <h4 className="text-[11.5px] font-bold text-slate-700 uppercase tracking-widest">WearConnect AI Designer</h4>
+            <p className="text-[9px] text-slate-400 max-w-[200px] mt-1.5 font-medium leading-relaxed">
+              Describe any color edits, text additions, or pattern styles in the chat box below to customize your 3D sportswear live.
+            </p>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {history.map((msg, idx) => (
+              <div
+                key={idx}
+                className={`flex flex-col space-y-1 ${
+                  msg.role === 'user' ? 'items-end' : 'items-start'
+                }`}
+              >
+                <span className="text-[8px] font-bold text-gray-400 uppercase tracking-wider">
+                  {msg.role === 'user' ? 'You' : msg.role === 'error' ? 'System Error' : 'AI Designer'}
+                </span>
+                <div
+                  className={`p-3 rounded-xl text-[10.5px] font-medium leading-relaxed max-w-[85%] ${
+                    msg.role === 'user'
+                      ? 'bg-blue-600 text-white rounded-tr-none shadow-sm'
+                      : msg.role === 'error'
+                      ? 'bg-red-50 border border-red-100 text-red-700 rounded-tl-none font-semibold'
+                      : 'bg-slate-50 border border-slate-100 text-slate-700 rounded-tl-none shadow-sm'
+                  }`}
+                >
+                  {msg.text}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* 2. Middle Section: Thinking Indicator + Quick Design Presets */}
+      <div className="space-y-3 pt-2 border-t border-gray-50 bg-white">
+        
+        {/* Processing Timer Mode (Thinking indicator) */}
+        {isLoading && (
+          <div className="flex items-center gap-3.5 p-3 bg-blue-50/40 border border-blue-100/50 rounded-xl animate-pulse">
+            <div className="w-4 h-4 border-2 border-slate-300 border-t-blue-600 rounded-full animate-spin flex-shrink-0" />
+            <div className="flex-1 min-w-0">
+              <h5 className="text-[9.5px] font-bold text-slate-700 uppercase tracking-wider">AI Thinking & Customizing</h5>
+              <p className="text-[8px] font-semibold text-slate-400 uppercase mt-0.5">Elapsed time: {processingSeconds}s</p>
+            </div>
+          </div>
+        )}
+
+        {/* Quick Design Presets */}
+        <div className="space-y-2">
+          <p className="text-[8.5px] font-bold text-gray-400 uppercase tracking-widest">Quick Design Presets</p>
+          <div className="grid grid-cols-2 gap-2">
+            {[
+              { label: '🔥 Neon Cyberpunk', prompt: 'Stealth carbon black base panels with glowing neon cyan borders and neon pink sleeve trims.' },
+              { label: '👑 Classic Premium', prompt: 'Deep navy body panels, solid clean gold collars and sleeve cuffs, and silver details.' },
+              { label: '⚡ Stealth Storm', prompt: 'Sleek dark graphite and charcoal grey gradient body panels with high contrast optic yellow highlights.' },
+              { label: '🌿 Organic Sage', prompt: 'Earth forest green and sage green gradient with white sleeves and details.' }
+            ].map((preset, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => applyPreset(preset.prompt)}
+                className="px-3 py-2 text-[9px] font-semibold text-slate-600 border border-gray-100 hover:border-blue-600 hover:bg-blue-50/20 text-left transition-all rounded-lg cursor-pointer"
+              >
+                {preset.label}
+              </button>
+            ))}
           </div>
         </div>
-      )}
+      </div>
 
-      <form onSubmit={handleAISubmit} className="space-y-4">
-        <div className="space-y-2">
-          <label className="block text-[9px] font-bold text-gray-400 uppercase tracking-widest">What kind of design do you want?</label>
-          
-          {/* Quota Banner */}
-          {isQuotaExceeded && (
-            <div className="flex items-center gap-2.5 p-3.5 bg-red-50 border border-red-200 rounded-xl text-red-700 animate-in fade-in slide-in-from-top-2 duration-200 mb-3">
-              <span className="text-sm">⚠️</span>
-              <div className="flex-1 min-w-0">
-                <p className="text-[10.5px] font-bold uppercase tracking-wider text-red-800">Antigravity model quota out of reach</p>
-                <p className="text-[9.5px] font-medium opacity-90 mt-0.5">Your AI design credits are depleted. Please check your system configuration or contact admin to recharge credits.</p>
-              </div>
+      {/* 3. Bottom Form & Inputs (Pinned) */}
+      <form onSubmit={handleAISubmit} className="space-y-3 pt-2 bg-white">
+        
+        {/* Quota / Credit Banner */}
+        {isQuotaExceeded && (
+          <div className="flex items-center gap-2.5 p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 animate-in fade-in duration-200">
+            <span className="text-sm">⚠️</span>
+            <div className="flex-1 min-w-0">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-red-800">Antigravity model quota out of reach</p>
+              <p className="text-[9px] font-medium opacity-90 mt-0.5">Your AI design credits are depleted. Please check your config or recharge credits.</p>
             </div>
-          )}
+          </div>
+        )}
 
+        {/* General Request Error Banner */}
+        {error && !isQuotaExceeded && (
+          <div className="flex items-center gap-2.5 p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 animate-in fade-in duration-200">
+            <span className="text-sm">❌</span>
+            <div className="flex-1 min-w-0">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-red-800">AI Customization Failure</p>
+              <p className="text-[9px] font-semibold opacity-90 mt-0.5">{error}</p>
+            </div>
+          </div>
+        )}
+
+        <div className="space-y-1.5">
+          <label className="block text-[8px] font-bold text-gray-400 uppercase tracking-widest">What kind of design do you want?</label>
+          
           {/* Chat Bar Container */}
           <div className="relative border border-gray-100 rounded-xl bg-gray-50 p-2 focus-within:ring-1 focus-within:ring-blue-600 focus-within:bg-white transition-all">
             
@@ -295,7 +384,7 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               placeholder="e.g. Add glowing neon pink sleeve trims with stealth black body panels..."
-              rows={3}
+              rows={2}
               className="w-full text-[11px] font-medium px-2 py-1 bg-transparent border-none focus:outline-none resize-none placeholder:text-gray-300"
               disabled={isLoading}
             />
@@ -375,79 +464,6 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
           </div>
         </div>
       </form>
-
-      {/* Chat History Messages */}
-      {history.length > 0 && (
-        <div className="flex-1 min-h-[140px] max-h-[260px] overflow-y-auto space-y-3.5 pr-1 border-b border-gray-100 pb-4 scrollbar-thin">
-          <p className="text-[8.5px] font-bold text-gray-400 uppercase tracking-widest sticky top-0 bg-white pb-1.5 z-10">Conversation History</p>
-          {history.map((msg, idx) => (
-            <div
-              key={idx}
-              className={`flex flex-col space-y-1 ${
-                msg.role === 'user' ? 'items-end' : 'items-start'
-              }`}
-            >
-              <span className="text-[8px] font-bold text-gray-400 uppercase tracking-wider">
-                {msg.role === 'user' ? 'You' : msg.role === 'error' ? 'System Error' : 'AI Designer'}
-              </span>
-              <div
-                className={`p-3 rounded-xl text-[10.5px] font-medium leading-relaxed max-w-[85%] ${
-                  msg.role === 'user'
-                    ? 'bg-blue-600 text-white rounded-tr-none shadow-sm'
-                    : msg.role === 'error'
-                    ? 'bg-red-50 border border-red-100 text-red-700 rounded-tl-none'
-                    : 'bg-slate-50 border border-slate-100 text-slate-700 rounded-tl-none shadow-sm'
-                }`}
-              >
-                {msg.text}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Design Presets */}
-      <div className="space-y-2.5 pt-2">
-        <p className="text-[8.5px] font-bold text-gray-400 uppercase tracking-widest">Quick Design Presets</p>
-        <div className="grid grid-cols-2 gap-2">
-          {[
-            { label: '🔥 Neon Cyberpunk', prompt: 'Stealth carbon black base panels with glowing neon cyan borders and neon pink sleeve trims.' },
-            { label: '👑 Classic Premium', prompt: 'Deep navy body panels, solid clean gold collars and sleeve cuffs, and silver details.' },
-            { label: '⚡ Stealth Storm', prompt: 'Sleek dark graphite and charcoal grey gradient body panels with high contrast optic yellow highlights.' },
-            { label: '🌿 Organic Sage', prompt: 'Earth forest green and sage green gradient with white sleeves and details.' }
-          ].map((preset, idx) => (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => applyPreset(preset.prompt)}
-              className="px-3 py-2 text-[9px] font-semibold text-slate-600 border border-gray-100 hover:border-blue-600 hover:bg-blue-50/20 text-left transition-all rounded-lg"
-            >
-              {preset.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {explanation && (
-        <div className="p-4 bg-slate-50 border border-slate-100 rounded-xl space-y-1.5 animate-in fade-in duration-300">
-          <p className="text-[8px] font-bold text-gray-400 uppercase tracking-widest flex items-center gap-1">
-            <HiOutlineSparkles className="text-blue-500" />
-            <span>AI Designer Notes</span>
-          </p>
-          <p className="text-[10px] font-medium text-slate-600 leading-relaxed">{explanation}</p>
-        </div>
-      )}
-
-      {error && (
-        <div className="p-4 bg-red-50 border border-red-100 rounded-xl space-y-1.5 animate-in fade-in duration-300 text-left">
-          <p className="text-[8.5px] font-bold text-red-500 uppercase tracking-widest flex items-center gap-1">
-            <HiOutlineTrash className="text-red-500" />
-            <span>AI Customization Failure</span>
-          </p>
-          <p className="text-[10px] font-semibold text-red-700 leading-relaxed">{error}</p>
-          <p className="text-[9px] font-medium text-red-500 mt-1">If the issue persists, please check your network connection or try again later.</p>
-        </div>
-      )}
     </div>
   );
 };
