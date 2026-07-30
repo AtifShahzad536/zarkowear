@@ -245,18 +245,17 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
 
   const applyPreset = (presetText) => {
     setPrompt(presetText);
-  };
-
-  return (
-    <div className="flex flex-col bg-white h-full p-4 overflow-hidden text-left justify-between">
+  };  return (
+    <div className="relative w-full h-full min-h-[500px] p-4 pb-0">
       
-      {/* 1. Scrolling Chat History Messages Area */}
+      {/* 1. Scrollable Chat area (history and presets) */}
       <div 
         ref={chatEndRef}
-        className="flex-1 overflow-y-auto space-y-4 pr-1 pb-2 scrollbar-thin"
+        className="w-full space-y-5 pb-44"
       >
+        {/* Welcome Message or Chat Log */}
         {history.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-full text-center p-6 opacity-60">
+          <div className="flex flex-col items-center justify-center text-center p-6 opacity-60 min-h-[160px]">
             <RiRobotLine className="text-4xl text-blue-500 mb-2 animate-bounce" />
             <h4 className="text-[11.5px] font-bold text-slate-700 uppercase tracking-widest">WearConnect AI Designer</h4>
             <p className="text-[9px] text-slate-400 max-w-[200px] mt-1.5 font-medium leading-relaxed">
@@ -290,24 +289,9 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
             ))}
           </div>
         )}
-      </div>
-
-      {/* 2. Middle Section: Thinking Indicator + Quick Design Presets */}
-      <div className="space-y-3 pt-2 border-t border-gray-50 bg-white">
-        
-        {/* Processing Timer Mode (Thinking indicator) */}
-        {isLoading && (
-          <div className="flex items-center gap-3.5 p-3 bg-blue-50/40 border border-blue-100/50 rounded-xl animate-pulse">
-            <div className="w-4 h-4 border-2 border-slate-300 border-t-blue-600 rounded-full animate-spin flex-shrink-0" />
-            <div className="flex-1 min-w-0">
-              <h5 className="text-[9.5px] font-bold text-slate-700 uppercase tracking-wider">AI Thinking & Customizing</h5>
-              <p className="text-[8px] font-semibold text-slate-400 uppercase mt-0.5">Elapsed time: {processingSeconds}s</p>
-            </div>
-          </div>
-        )}
 
         {/* Quick Design Presets */}
-        <div className="space-y-2">
+        <div className="space-y-2.5 pt-4 border-t border-gray-100">
           <p className="text-[8.5px] font-bold text-gray-400 uppercase tracking-widest">Quick Design Presets</p>
           <div className="grid grid-cols-2 gap-2">
             {[
@@ -329,9 +313,20 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
         </div>
       </div>
 
-      {/* 3. Bottom Form & Inputs (Pinned) */}
-      <form onSubmit={handleAISubmit} className="space-y-3 pt-2 bg-white">
+      {/* 2. Pinned Bottom Controls (Fixed at the bottom of RightPanel tab viewport) */}
+      <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-100 pt-3 pb-6 z-20 space-y-3">
         
+        {/* Processing Timer Mode (Thinking indicator) */}
+        {isLoading && (
+          <div className="flex items-center gap-3 p-3 bg-blue-50/40 border border-blue-100/50 rounded-xl animate-pulse">
+            <div className="w-4 h-4 border-2 border-slate-300 border-t-blue-600 rounded-full animate-spin flex-shrink-0" />
+            <div className="flex-1 min-w-0">
+              <h5 className="text-[9.5px] font-bold text-slate-700 uppercase tracking-wider">AI Thinking & Customizing</h5>
+              <p className="text-[8px] font-semibold text-slate-400 uppercase mt-0.5">Elapsed time: {processingSeconds}s</p>
+            </div>
+          </div>
+        )}
+
         {/* Quota / Credit Banner */}
         {isQuotaExceeded && (
           <div className="flex items-center gap-2.5 p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 animate-in fade-in duration-200">
@@ -354,7 +349,7 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
           </div>
         )}
 
-        <div className="space-y-1.5">
+        <form onSubmit={handleAISubmit} className="space-y-1.5">
           <label className="block text-[8px] font-bold text-gray-400 uppercase tracking-widest">What kind of design do you want?</label>
           
           {/* Chat Bar Container */}
