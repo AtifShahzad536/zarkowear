@@ -214,18 +214,22 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
         });
       }
 
+      const exp = data.explanation || 'Customization applied successfully!';
+      setHistory(prev => [...prev, { role: 'model', text: exp }]);
+      setExplanation(exp);
+      setPrompt(''); // Clear prompt on success
+
       if (hasUpdates || hasDecals) {
-        const exp = data.explanation || 'Customization applied successfully!';
-        setHistory(prev => [...prev, { role: 'model', text: exp }]);
-        setExplanation(exp);
         toast.success('Design updated live!', { id: toastId });
       } else {
-        toast.error('AI didn\'t suggest any changes.', { id: toastId });
+        toast.success('AI responded!', { id: toastId });
       }
     } catch (err) {
       console.error(err);
       toast.error(err.message || 'An error occurred during AI processing.', { id: toastId });
-      setError(prev => prev || err.message || 'An error occurred during AI processing.');
+      const errMsg = err.message || 'An error occurred during AI processing.';
+      setError(errMsg);
+      setHistory(prev => [...prev, { role: 'error', text: errMsg }]);
     } finally {
       clearInterval(timerInterval);
       setIsLoading(false);
@@ -371,6 +375,36 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
           </div>
         </div>
       </form>
+
+      {/* Chat History Messages */}
+      {history.length > 0 && (
+        <div className="flex-1 min-h-[140px] max-h-[260px] overflow-y-auto space-y-3.5 pr-1 border-b border-gray-100 pb-4 scrollbar-thin">
+          <p className="text-[8.5px] font-bold text-gray-400 uppercase tracking-widest sticky top-0 bg-white pb-1.5 z-10">Conversation History</p>
+          {history.map((msg, idx) => (
+            <div
+              key={idx}
+              className={`flex flex-col space-y-1 ${
+                msg.role === 'user' ? 'items-end' : 'items-start'
+              }`}
+            >
+              <span className="text-[8px] font-bold text-gray-400 uppercase tracking-wider">
+                {msg.role === 'user' ? 'You' : msg.role === 'error' ? 'System Error' : 'AI Designer'}
+              </span>
+              <div
+                className={`p-3 rounded-xl text-[10.5px] font-medium leading-relaxed max-w-[85%] ${
+                  msg.role === 'user'
+                    ? 'bg-blue-600 text-white rounded-tr-none shadow-sm'
+                    : msg.role === 'error'
+                    ? 'bg-red-50 border border-red-100 text-red-700 rounded-tl-none'
+                    : 'bg-slate-50 border border-slate-100 text-slate-700 rounded-tl-none shadow-sm'
+                }`}
+              >
+                {msg.text}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Design Presets */}
       <div className="space-y-2.5 pt-2">

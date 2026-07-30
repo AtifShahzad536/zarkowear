@@ -865,11 +865,22 @@ const MeshPart = memo(function MeshPart({ node, state, finish, globalPattern, fa
   useEffect(() => {
     if (!state) return;
     const u = material.userData.uniforms;
-    u.uColor.value.set(state.color).convertSRGBToLinear();
+
+    const safeColor = (c, fallback = '#ffffff') => {
+      try {
+        if (!c) return fallback;
+        new THREE.Color(c);
+        return c;
+      } catch (e) {
+        return fallback;
+      }
+    };
+
+    u.uColor.value.set(safeColor(state.color, '#ffffff')).convertSRGBToLinear();
     u.uIsGradient.value = state.isGrad ? 1.0 : 0.0;
-    u.uColor1.value.set(state.grad1).convertSRGBToLinear();
-    u.uColor2.value.set(state.grad2).convertSRGBToLinear();
-    u.uPatternColor.value.set(state.pColor).convertSRGBToLinear();
+    u.uColor1.value.set(safeColor(state.grad1, '#ffffff')).convertSRGBToLinear();
+    u.uColor2.value.set(safeColor(state.grad2, '#ffffff')).convertSRGBToLinear();
+    u.uPatternColor.value.set(safeColor(state.pColor, '#ffffff')).convertSRGBToLinear();
 
     u.uPatternSize.value = state.pSize || 0.2;
     u.uPatternOffset.value.set(state.pOffsetX || 0.0, state.pOffsetY || 0.0, state.pOffsetZ || 0.0);

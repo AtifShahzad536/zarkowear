@@ -138,15 +138,28 @@ function Model({ url, mapping, colors, pattern, finish, mouseFollow, layersMetad
             const originalColor = node.material.userData.originalColor || new THREE.Color('#ffffff');
             const isOriginalWhite = originalColor.r > 0.9 && originalColor.g > 0.9 && originalColor.b > 0.9;
 
-            if (config.color === '#ffffff' || !isOriginalWhite) {
+            const safeColor = (c, fallback = '#ffffff') => {
+              try {
+                if (!c) return fallback;
+                new THREE.Color(c);
+                return c;
+              } catch (e) {
+                return fallback;
+              }
+            };
+
+            const configColor = safeColor(config.color, '#ffffff');
+            const configColor2 = safeColor(config.color2, '#ffffff');
+
+            if (configColor === '#ffffff' || !isOriginalWhite) {
               u.uColor.value.copy(originalColor).convertSRGBToLinear();
               u.uColor2.value.copy(originalColor).convertSRGBToLinear();
             } else {
-              u.uColor.value.set(config.color).convertSRGBToLinear();
-              u.uColor2.value.set(config.color).convertSRGBToLinear();
+              u.uColor.value.set(configColor).convertSRGBToLinear();
+              u.uColor2.value.set(configColor).convertSRGBToLinear();
             }
             u.uIsGradient.value = (!isOriginalWhite) ? 0.0 : (config.isGrad ? 1.0 : 0.0);
-            u.uColor1.value.set((!isOriginalWhite) ? originalColor : config.color2).convertSRGBToLinear();
+            u.uColor1.value.set((!isOriginalWhite) ? originalColor : configColor2).convertSRGBToLinear();
             u.uMinY.value = node.geometry.boundingBox.min.y;
             u.uMaxY.value = node.geometry.boundingBox.max.y;
             u.uPatternType.value = pType;
