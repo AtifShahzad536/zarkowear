@@ -14,6 +14,8 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [history, setHistory] = useState([]); // Keeps track of chat messages context: { role: 'user'|'model', text: string }
   const [processingSeconds, setProcessingSeconds] = useState(0);
+  const [isQuotaExceeded, setIsQuotaExceeded] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleFileUpload = async (e, type) => {
     const file = e.target.files?.[0];
@@ -49,7 +51,13 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
     e.preventDefault();
     if (!prompt.trim()) return;
 
+    if (isQuotaExceeded) {
+      toast.error('Cannot send message: Antigravity model quota out of reach.');
+      return;
+    }
+
     setIsLoading(true);
+    setError(null);
     setProcessingSeconds(0);
     const toastId = toast.loading('Gemini AI is designing your kit...');
 
@@ -109,7 +117,16 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
       console.log('[AI Customizer Response]:', data);
 
       if (!res.ok) {
-        throw new Error(data.error || 'Failed to generate design configuration.');
+        if (res.status === 429 || data.error === 'quota_exceeded') {
+          setIsQuotaExceeded(true);
+          const qMsg = data.details || 'Model quota out of reach. Please check your API credits/limits.';
+          setError(qMsg);
+          throw new Error('Model quota out of reach.');
+        } else {
+          const errMsg = data.details || data.error || 'Failed to generate design configuration.';
+          setError(errMsg);
+          throw new Error(errMsg);
+        }
       }
 
       const hasUpdates = data.updates && Object.keys(data.updates).length > 0;
@@ -208,6 +225,7 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
     } catch (err) {
       console.error(err);
       toast.error(err.message || 'An error occurred during AI processing.', { id: toastId });
+      setError(prev => prev || err.message || 'An error occurred during AI processing.');
     } finally {
       clearInterval(timerInterval);
       setIsLoading(false);
@@ -235,6 +253,17 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
         <div className="space-y-2">
           <label className="block text-[9px] font-bold text-gray-400 uppercase tracking-widest">What kind of design do you want?</label>
           
+          {/* Quota Banner */}
+          {isQuotaExceeded && (
+            <div className="flex items-center gap-2.5 p-3.5 bg-red-50 border border-red-200 rounded-xl text-red-700 animate-in fade-in slide-in-from-top-2 duration-200 mb-3">
+              <span className="text-sm">⚠️</span>
+              <div className="flex-1 min-w-0">
+                <p className="text-[10.5px] font-bold uppercase tracking-wider text-red-800">Antigravity model quota out of reach</p>
+                <p className="text-[9.5px] font-medium opacity-90 mt-0.5">Your AI design credits are depleted. Please check your system configuration or contact admin to recharge credits.</p>
+              </div>
+            </div>
+          )}
+
           {/* Chat Bar Container */}
           <div className="relative border border-gray-100 rounded-xl bg-gray-50 p-2 focus-within:ring-1 focus-within:ring-blue-600 focus-within:bg-white transition-all">
             
@@ -372,6 +401,17 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
             <span>AI Designer Notes</span>
           </p>
           <p className="text-[10px] font-medium text-slate-600 leading-relaxed">{explanation}</p>
+        </div>
+      )}
+
+      {error && (
+        <div className="p-4 bg-red-50 border border-red-100 rounded-xl space-y-1.5 animate-in fade-in duration-300 text-left">
+          <p className="text-[8.5px] font-bold text-red-500 uppercase tracking-widest flex items-center gap-1">
+            <HiOutlineTrash className="text-red-500" />
+            <span>AI Customization Failure</span>
+          </p>
+          <p className="text-[10px] font-semibold text-red-700 leading-relaxed">{error}</p>
+          <p className="text-[9px] font-medium text-red-500 mt-1">If the issue persists, please check your network connection or try again later.</p>
         </div>
       )}
     </div>
