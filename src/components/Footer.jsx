@@ -55,7 +55,7 @@ const Footer = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.06),_transparent_55%)]" />
         
         {/* Main Content */}
-        <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-[94%] px-4 py-8 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
             {/* Brand Column */}
             <div className="lg:col-span-2 space-y-4">

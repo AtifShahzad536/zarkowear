@@ -28,7 +28,7 @@ const defaultAccent = {
 };
 
 const SectionTitle = ({ eyebrow, title, description }) => (
-  <div className="mx-auto max-w-3xl text-center">
+  <div className="mx-auto max-w-[94%] text-center">
     {eyebrow && (
       <span className="inline-flex items-center justify-center rounded-full border border-indigo-200 bg-white/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-indigo-500">
         {eyebrow}
@@ -80,7 +80,7 @@ const CategoryPage = ({ slug }) => {
   if (loading) {
     return (
       <main className="min-h-[60vh] bg-gradient-to-b from-white via-indigo-50/40 to-white">
-        <div className="mx-auto flex max-w-6xl items-center justify-center px-4 py-32">
+        <div className="mx-auto flex max-w-[94%] items-center justify-center px-4 py-32">
           <div className="relative flex h-20 w-20 items-center justify-center">
             <div className="absolute h-full w-full animate-[spin_2.2s_linear_infinite] rounded-full border-4 border-indigo-200/70" />
             <div className="absolute h-full w-full animate-[spin_1.6s_linear_infinite] rounded-full border-4 border-transparent border-t-indigo-500" />
@@ -94,7 +94,7 @@ const CategoryPage = ({ slug }) => {
 
   if (error) {
     return (
-      <main className="max-w-6xl mx-auto px-4 py-24 text-center">
+      <main className="max-w-[94%] mx-auto px-4 py-24 text-center">
         <div className="inline-flex items-center gap-3 rounded-full border border-rose-200 bg-rose-50 px-6 py-3 text-sm font-semibold text-rose-600">
           <span>⚠️</span>
           <span>{error}</span>
@@ -127,7 +127,7 @@ const CategoryPage = ({ slug }) => {
 
   return (
     <main className="bg-slate-50/50 min-h-screen">
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[94%] px-4 py-8 sm:px-6 lg:px-8">
 
         {/* TOP PRODUCT DETAIL HERO CONTAINER (Left: Picture, Right: Details) */}
         <section className="bg-transparent overflow-hidden py-4 sm:py-6">

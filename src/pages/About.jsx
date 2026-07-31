@@ -89,7 +89,7 @@ const About = () => {
         }}
       />
       <section>
-        <div className="mx-auto max-w-6xl px-4 pb-16 pt-16 md:pt-20">
+        <div className="mx-auto max-w-[94%] px-4 pb-16 pt-16 md:pt-20">
           <div className="text-center">
             <span className="inline-flex items-center gap-3 rounded-full border border-indigo-200 bg-white/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-600">
               About Zarko Sportswear
@@ -207,7 +207,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-16">
+      <section className="mx-auto max-w-[94%] px-4 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -227,7 +227,7 @@ const About = () => {
         </motion.div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-20">
+      <section className="mx-auto max-w-[94%] px-4 pb-20">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

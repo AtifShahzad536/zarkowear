@@ -61,7 +61,7 @@ const Contact = () => {
       />
       <section className="relative overflow-hidden">
         <div className="absolute inset-x-0 -top-20 h-52 bg-[radial-gradient(circle_at_top,_rgba(79,70,229,0.12),_transparent_60%)]" />
-        <div className="relative mx-auto max-w-6xl px-4 pb-14 pt-10">
+        <div className="relative mx-auto max-w-[94%] px-4 pb-14 pt-10">
           <motion.header initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.6 }} transition={{ duration: 0.6 }} className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-600">
               Global Support Desk
@@ -167,7 +167,7 @@ const Contact = () => {
           >
             <iframe
               title="WearConnect Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13286.295826737072!2d74.535!3d32.492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391f0b3e1f7f76d7%3A0xa3e91f!2sSialkot!5e0!3m2!1sen!2s!4v1700000000000"
+              src="https://maps.google.com/maps?q=Sialkot,%20Pakistan&t=&z=13&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="320"
               style={{ border: 0 }}

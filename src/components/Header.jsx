@@ -102,7 +102,7 @@ const Header = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1, duration: 0.6 }}
       />
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5">
+      <div className="mx-auto flex max-w-[94%] items-center justify-between px-6 py-3.5">
         {/* Logo and Typography Brand Name on the Left */}
         <Link to="/" className="flex items-center gap-1 group flex-shrink-0">
           <img
@@ -168,7 +168,7 @@ const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="relative mx-auto w-full max-w-7xl px-4 pb-6"
+            className="relative mx-auto w-full max-w-[94%] px-4 pb-6"
           >
             <motion.div
               initial={{ opacity: 0, y: -6 }}

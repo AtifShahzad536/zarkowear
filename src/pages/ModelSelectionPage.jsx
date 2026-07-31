@@ -64,7 +64,7 @@ export const ModelSelectionPage = () => {
   return (
     <div className="w-full min-h-screen bg-slate-50 font-['Plus_Jakarta_Sans',sans-serif] text-slate-800 py-12 px-6 lg:px-12">
       <SeoHead {...seoData} />
-      <div className="max-w-7xl mx-auto flex flex-col gap-10">
+      <div className="max-w-[94%] mx-auto flex flex-col gap-10">
         
         {/* Navigation Breadcrumb & Back */}
         <div className="flex items-center justify-between border-b border-slate-200/80 pb-6">
