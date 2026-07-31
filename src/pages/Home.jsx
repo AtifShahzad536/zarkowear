@@ -262,7 +262,7 @@ const Home = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center justify-items-center max-w-5xl mx-auto">
               {/* USA */}
               <div className="flex items-center gap-2.5">
-                <span className="text-xl">🇺🇸</span>
+                <img src="https://flagcdn.com/us.svg" alt="USA" className="w-6 h-4 object-cover border border-white/10" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">USA</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -271,7 +271,7 @@ const Home = () => {
 
               {/* UK */}
               <div className="flex items-center gap-2.5">
-                <span className="text-xl">🇬🇧</span>
+                <img src="https://flagcdn.com/gb.svg" alt="UK" className="w-6 h-4 object-cover border border-white/10" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">UK</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -280,7 +280,7 @@ const Home = () => {
 
               {/* KSA */}
               <div className="flex items-center gap-2.5">
-                <span className="text-xl">🇸🇦</span>
+                <img src="https://flagcdn.com/sa.svg" alt="KSA" className="w-6 h-4 object-cover border border-white/10" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">KSA</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -289,7 +289,7 @@ const Home = () => {
 
               {/* Australia */}
               <div className="flex items-center gap-2.5">
-                <span className="text-xl">🇦🇺</span>
+                <img src="https://flagcdn.com/au.svg" alt="Australia" className="w-6 h-4 object-cover border border-white/10" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">Australia</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -298,7 +298,7 @@ const Home = () => {
 
               {/* Europe */}
               <div className="flex items-center gap-2.5">
-                <span className="text-xl">🇪🇺</span>
+                <img src="https://flagcdn.com/eu.svg" alt="Europe" className="w-6 h-4 object-cover border border-white/10" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">Europe</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -307,7 +307,7 @@ const Home = () => {
 
               {/* Italy */}
               <div className="flex items-center gap-2.5">
-                <span className="text-xl">🇮🇹</span>
+                <img src="https://flagcdn.com/it.svg" alt="Italy" className="w-6 h-4 object-cover border border-white/10" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">Italy</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
