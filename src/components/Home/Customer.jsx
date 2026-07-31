@@ -25,7 +25,7 @@ const Testimonials = () => {
   return (
     <section className="relative p-6 w-full bg-gradient-to-br from-gray-50 via-white to-gray-100 py-16 px-6 overflow-hidden">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(10,12,22,0.06),_transparent_55%)]" />
-      <div className="relative max-w-6xl mx-auto">
+      <div className="relative max-w-[94%] mx-auto">
         <div className="text-center mb-14">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

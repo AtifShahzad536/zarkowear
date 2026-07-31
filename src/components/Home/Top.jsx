@@ -58,7 +58,7 @@ const TopSellingProducts = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="max-w-7xl mx-auto px-4"
+        className="max-w-[94%] mx-auto px-4"
       >
         <div className="text-center mb-12">
           <motion.span 

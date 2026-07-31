@@ -40,7 +40,7 @@ const Videos = () => {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-50 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-50/60 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4">
+      <div className="relative max-w-[94%] mx-auto px-4">
         <div className="text-center mb-16">
           <motion.span
             initial={{ opacity: 0, y: 10 }}

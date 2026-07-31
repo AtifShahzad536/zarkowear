@@ -44,7 +44,7 @@ const FeaturedCategories = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.5 }}
-        className="max-w-7xl mx-auto mb-14 text-center space-y-2 select-none"
+        className="max-w-[94%] mx-auto mb-14 text-center space-y-2 select-none"
       >
         <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-[#0A0C16] block">
           Tailored Sportswear
@@ -59,7 +59,7 @@ const FeaturedCategories = () => {
       </motion.div>
 
       {/* Category Grid */}
-      <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 px-2 sm:px-0">
+      <div className="max-w-[94%] mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 px-2 sm:px-0">
         {loading ? (
           // Show skeleton loaders when loading
           Array.from({ length: 4 }).map((_, index) => (

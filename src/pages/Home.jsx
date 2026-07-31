@@ -50,7 +50,7 @@ const Home = () => {
         <div className="absolute top-[20%] left-[10%] w-[350px] h-[350px] bg-indigo-600/10 rounded-full blur-[90px] pointer-events-none" />
         <div className="absolute bottom-[10%] right-[10%] w-[350px] h-[350px] bg-purple-600/10 rounded-full blur-[90px] pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-4">
+        <div className="relative max-w-[94%] mx-auto px-4">
           <div className="grid gap-12 lg:grid-cols-[0.35fr_0.35fr_0.3fr] items-start">
             
             {/* LEFT COLUMN (35%) */}
@@ -321,7 +321,7 @@ const Home = () => {
 
       {/* Quick Categories */}
       <section className="bg-white">
-        <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="max-w-[94%] mx-auto px-4 py-12">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-indigo-500">Shop by sport</p>
@@ -419,7 +419,7 @@ const Home = () => {
 
       {/* Value Props */}
       <section className="bg-gradient-to-b from-white via-indigo-50/20 to-white">
-        <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="max-w-[94%] mx-auto px-4 py-12">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -483,7 +483,7 @@ const Home = () => {
       {/* Videos section */}
       <Videos />
 
-      <section className="max-w-7xl mx-auto px-4 py-12">
+      <section className="max-w-[94%] mx-auto px-4 py-12">
         <Testimonials />
       </section>
 

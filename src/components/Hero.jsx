@@ -565,7 +565,7 @@ const Hero = () => {
       </div>
 
       {/* 3. Bottom Section: Copywriting (Bottom-Left) and Features (Bottom-Right) in a clean split layout */}
-      <div className="max-w-7xl mx-auto px-8 w-full flex flex-col md:flex-row justify-between items-end gap-8 z-20 mt-10 pt-4 border-t border-gray-100">
+      <div className="max-w-[94%] mx-auto px-8 w-full flex flex-col md:flex-row justify-between items-end gap-8 z-20 mt-10 pt-4 border-t border-gray-100">
         {/* Bottom-Left: Copywriting */}
         <div className="text-left space-y-2 max-w-sm">
           <motion.div
