@@ -46,13 +46,13 @@ const FeaturedCategories = () => {
         transition={{ duration: 0.5 }}
         className="max-w-7xl mx-auto mb-14 text-center space-y-2 select-none"
       >
-        <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-[#4f46e5] block">
+        <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-[#0A0C16] block">
           Tailored Sportswear
         </span>
         <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-gray-900 uppercase">
           Explore Sports Categories
         </h2>
-        <div className="w-12 h-1 bg-[#4f46e5] mx-auto mt-2" />
+        <div className="w-12 h-1 bg-[#0A0C16] mx-auto mt-2" />
         <p className="text-xs sm:text-sm text-gray-500 font-medium pt-2">
           Discover our export-grade categories or customize your kit below.
         </p>

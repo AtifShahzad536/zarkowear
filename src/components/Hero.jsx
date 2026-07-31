@@ -298,8 +298,8 @@ const Hero = () => {
           onClick={() => setShowPopup(!showPopup)}
           className={`w-11 h-11 rounded-full border flex items-center justify-center transition active:scale-95 shadow-md hover:shadow-lg cursor-pointer ${
             showPopup 
-              ? 'bg-[#4f46e5] text-white border-[#4f46e5]' 
-              : 'bg-white text-gray-500 hover:text-[#4f46e5] border-gray-150'
+              ? 'bg-[#0A0C16] text-white border-[#0A0C16]' 
+              : 'bg-white text-gray-500 hover:text-[#0A0C16] border-gray-150'
           }`}
           title="Product Specifications"
         >
@@ -309,7 +309,7 @@ const Hero = () => {
         {/* 3D Customizer / Builder Button */}
         <button
           onClick={() => navigate('/builder')}
-          className="w-11 h-11 rounded-full border bg-white text-gray-500 hover:text-[#4f46e5] border-gray-150 flex items-center justify-center transition active:scale-95 shadow-md hover:shadow-lg cursor-pointer"
+          className="w-11 h-11 rounded-full border bg-white text-gray-500 hover:text-[#0A0C16] border-gray-150 flex items-center justify-center transition active:scale-95 shadow-md hover:shadow-lg cursor-pointer"
           title="3D Jersey Builder"
         >
           <FiSliders className="text-sm" />
@@ -318,7 +318,7 @@ const Hero = () => {
         {/* Contact Us Form Button */}
         <button
           onClick={() => navigate('/contact')}
-          className="w-11 h-11 rounded-full border bg-white text-gray-500 hover:text-[#4f46e5] border-gray-150 flex items-center justify-center transition active:scale-95 shadow-md hover:shadow-lg cursor-pointer"
+          className="w-11 h-11 rounded-full border bg-white text-gray-500 hover:text-[#0A0C16] border-gray-150 flex items-center justify-center transition active:scale-95 shadow-md hover:shadow-lg cursor-pointer"
           title="Contact Us"
         >
           <FiMail className="text-sm" />
@@ -336,7 +336,7 @@ const Hero = () => {
               <div className="space-y-4">
                 <div className="flex justify-between items-start">
                   <div className="space-y-0.5">
-                    <span className="text-[9px] uppercase tracking-[0.18em] font-extrabold text-[#4f46e5] block">
+                    <span className="text-[9px] uppercase tracking-[0.18em] font-extrabold text-[#0A0C16] block">
                       {activeProduct.tagline}
                     </span>
                     <h4 className="text-sm font-black text-gray-900 leading-tight tracking-tight uppercase">
@@ -386,7 +386,7 @@ const Hero = () => {
                     setShowPopup(false);
                     navigate(activeProduct.link);
                   }}
-                  className="w-full text-center py-2.5 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-bold text-[9px] tracking-wider rounded-lg transition shadow-sm uppercase"
+                  className="w-full text-center py-2.5 bg-[#0A0C16] hover:bg-[#4338ca] text-white font-bold text-[9px] tracking-wider rounded-lg transition shadow-sm uppercase"
                 >
                   GO TO SHOP
                 </button>
@@ -490,9 +490,9 @@ const Hero = () => {
                     <div className="absolute w-40 h-40 rounded-full border border-yellow-400/15 animate-[ping_3.5s_cubic-bezier(0,0,0.2,1)_infinite_0.7s]" />
 
                     {/* Rotating Energy Ray lines */}
-                    <div className="absolute w-[360px] h-[25px] bg-gradient-to-r from-transparent via-[#4f46e5]/10 to-transparent rotate-0 animate-energy-spin-cw" />
+                    <div className="absolute w-[360px] h-[25px] bg-gradient-to-r from-transparent via-[#0A0C16]/10 to-transparent rotate-0 animate-energy-spin-cw" />
                     <div className="absolute w-[360px] h-[25px] bg-gradient-to-r from-transparent via-[#eab308]/10 to-transparent rotate-[45deg] animate-energy-spin-ccw" />
-                    <div className="absolute w-[360px] h-[25px] bg-gradient-to-r from-transparent via-[#4f46e5]/10 to-transparent rotate-[90deg] animate-energy-spin-cw" />
+                    <div className="absolute w-[360px] h-[25px] bg-gradient-to-r from-transparent via-[#0A0C16]/10 to-transparent rotate-[90deg] animate-energy-spin-cw" />
                   </div>
                 )}
 
@@ -529,7 +529,7 @@ const Hero = () => {
               transition={{ duration: 0.25 }}
               className="space-y-0.5"
             >
-              <span className="text-[9px] font-bold uppercase tracking-wider text-[#4f46e5] bg-indigo-50 px-2 py-0.5 rounded-full inline-block">
+              <span className="text-[9px] font-bold uppercase tracking-wider text-[#0A0C16] bg-indigo-50 px-2 py-0.5 rounded-full inline-block">
                 {activeProduct.tagline}
               </span>
               <h3 className="text-base sm:text-lg font-extrabold text-[#111827]">
@@ -551,7 +551,7 @@ const Hero = () => {
               onClick={() => handleCategorySelect(idx)}
               className={`h-1 rounded-full transition-all duration-300 relative flex items-center justify-center ${
                 isSelected 
-                  ? 'w-8 bg-[#4f46e5]' 
+                  ? 'w-8 bg-[#0A0C16]' 
                   : 'w-3.5 bg-gray-200 hover:bg-gray-300'
               }`}
               aria-label={`Select ${prod.category}`}
@@ -574,11 +574,11 @@ const Hero = () => {
             transition={{ duration: 0.5 }}
             className="space-y-0.5"
           >
-            <span className="text-[9px] uppercase tracking-[0.15em] text-[#4f46e5] font-semibold block">
+            <span className="text-[9px] uppercase tracking-[0.15em] text-[#0A0C16] font-semibold block">
               NEW SEASON GEAR
             </span>
             <h1 className="text-lg md:text-2xl lg:text-3xl font-bold text-[#111827] leading-tight tracking-tight uppercase">
-              GEAR UP. <span className="text-[#4f46e5]">STAND OUT.</span>
+              GEAR UP. <span className="text-[#0A0C16]">STAND OUT.</span>
             </h1>
           </motion.div>
 
@@ -599,7 +599,7 @@ const Hero = () => {
           >
             <button
               onClick={() => navigate(activeProduct.link)}
-              className="inline-flex items-center gap-1.5 rounded-md bg-[#4f46e5] hover:bg-[#4338ca] text-white font-semibold text-[10px] tracking-wider px-4 py-2 shadow-sm transition"
+              className="inline-flex items-center gap-1.5 rounded-md bg-[#0A0C16] hover:bg-[#4338ca] text-white font-semibold text-[10px] tracking-wider px-4 py-2 shadow-sm transition"
             >
               EXPLORE COLLECTION <span>→</span>
             </button>
@@ -669,7 +669,7 @@ const Hero = () => {
               {/* Header */}
               <div className="flex justify-between items-start border-b border-gray-100 pb-4">
                 <div className="space-y-1">
-                  <span className="text-[9px] uppercase tracking-[0.25em] font-black text-[#4f46e5]">
+                  <span className="text-[9px] uppercase tracking-[0.25em] font-black text-[#0A0C16]">
                     OFFICIAL FACTORY NOTICE
                   </span>
                   <h3 className="text-lg font-black tracking-tight uppercase mt-1 text-gray-900">
@@ -688,8 +688,8 @@ const Hero = () => {
               {/* Body Content */}
               <div className="space-y-4 text-[11px] text-gray-600 leading-relaxed font-medium">
                 {/* Rule Item 1 */}
-                <div className="bg-indigo-50/40 p-4 rounded-none border-l-4 border-[#4f46e5] space-y-1">
-                  <strong className="text-[#4f46e5] block text-[10px] uppercase tracking-widest font-extrabold">
+                <div className="bg-indigo-50/40 p-4 rounded-none border-l-4 border-[#0A0C16] space-y-1">
+                  <strong className="text-[#0A0C16] block text-[10px] uppercase tracking-widest font-extrabold">
                     ★ FREE SAMPLES
                   </strong>
                   <p className="text-gray-900 text-xs font-semibold">
@@ -721,7 +721,7 @@ const Hero = () => {
               {/* Action dismissal CTA button */}
               <button
                 onClick={handleClosePromoModal}
-                className="w-full text-center py-4 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-black text-xs tracking-widest transition duration-150 rounded-none shadow-md cursor-pointer uppercase"
+                className="w-full text-center py-4 bg-[#0A0C16] hover:bg-[#4338ca] text-white font-black text-xs tracking-widest transition duration-150 rounded-none shadow-md cursor-pointer uppercase"
               >
                 I UNDERSTAND & PROCEED
               </button>

@@ -128,10 +128,10 @@ const Home = () => {
               className="relative flex flex-col items-center justify-center min-h-[360px] select-none"
             >
               {/* Purple Glow Spotlight */}
-              <div className="absolute w-64 h-64 bg-[#4f46e5]/10 rounded-full blur-[80px] pointer-events-none" />
+              <div className="absolute w-64 h-64 bg-[#0A0C16]/10 rounded-full blur-[80px] pointer-events-none" />
 
               {/* Glowing Platform */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-48 h-6 bg-[#4f46e5]/30 rounded-full blur-md animate-pulse transform -rotate-[3deg]" />
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-48 h-6 bg-[#0A0C16]/30 rounded-full blur-md animate-pulse transform -rotate-[3deg]" />
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-36 h-4 bg-[#818cf8]/40 rounded-full blur-sm transform -rotate-[3deg]" />
 
               {/* Previous / Next Arrows on both sides */}
@@ -200,7 +200,7 @@ const Home = () => {
                 <div className="relative border-l border-white/10 pl-6 ml-3 space-y-6 text-left">
                   {/* Step 1 */}
                   <div className="relative">
-                    <span className="absolute -left-[33px] top-0.5 flex items-center justify-center w-4 h-4 rounded-none bg-[#4f46e5] text-white text-[8px] font-black">
+                    <span className="absolute -left-[33px] top-0.5 flex items-center justify-center w-4 h-4 rounded-none bg-[#0A0C16] text-white text-[8px] font-black">
                       1
                     </span>
                     <h4 className="font-extrabold text-white text-[11px] uppercase tracking-wider">Step 1</h4>
@@ -211,7 +211,7 @@ const Home = () => {
 
                   {/* Step 2 */}
                   <div className="relative">
-                    <span className="absolute -left-[33px] top-0.5 flex items-center justify-center w-4 h-4 rounded-none bg-[#4f46e5] text-white text-[8px] font-black">
+                    <span className="absolute -left-[33px] top-0.5 flex items-center justify-center w-4 h-4 rounded-none bg-[#0A0C16] text-white text-[8px] font-black">
                       2
                     </span>
                     <h4 className="font-extrabold text-white text-[11px] uppercase tracking-wider">Step 2</h4>
@@ -222,7 +222,7 @@ const Home = () => {
 
                   {/* Step 3 */}
                   <div className="relative">
-                    <span className="absolute -left-[33px] top-0.5 flex items-center justify-center w-4 h-4 rounded-none bg-[#4f46e5] text-white text-[8px] font-black">
+                    <span className="absolute -left-[33px] top-0.5 flex items-center justify-center w-4 h-4 rounded-none bg-[#0A0C16] text-white text-[8px] font-black">
                       3
                     </span>
                     <h4 className="font-extrabold text-white text-[11px] uppercase tracking-wider">Step 3</h4>
@@ -236,7 +236,7 @@ const Home = () => {
                 <div className="flex flex-col gap-3 pt-2">
                   <Link
                     to="/football"
-                    className="inline-flex items-center justify-center gap-2 rounded-none bg-[#4f46e5] hover:bg-[#4338ca] text-white font-bold py-3 text-[10px] tracking-widest shadow-md transition duration-150 uppercase"
+                    className="inline-flex items-center justify-center gap-2 rounded-none bg-[#0A0C16] hover:bg-[#4338ca] text-white font-bold py-3 text-[10px] tracking-widest shadow-md transition duration-150 uppercase"
                   >
                     Shop Sports Wear
                     <FaArrowRight className="text-[8px]" />
