@@ -244,12 +244,12 @@ const Hero = () => {
             className="flex items-center select-none"
           >
             {/* Step Circle */}
-            <span className="w-5 h-5 rounded-full border border-black text-black flex items-center justify-center text-[9px] font-semibold mr-2.5">
+            <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full border border-black text-black flex items-center justify-center text-[7px] sm:text-[9px] font-semibold mr-1.5 sm:mr-2.5 flex-shrink-0">
               {currentStepIndex + 1}
             </span>
             
             {/* Step Title Label */}
-            <span className="text-[9px] uppercase tracking-wider font-medium text-black whitespace-nowrap">
+            <span className="text-[7.2px] sm:text-[9px] uppercase tracking-wide sm:tracking-wider font-medium text-black whitespace-nowrap">
               {STEPS[currentStepIndex]}
             </span>
           </motion.div>
