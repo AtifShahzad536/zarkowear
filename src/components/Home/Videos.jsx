@@ -78,10 +78,10 @@ const Videos = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-white rounded-2xl overflow-hidden border border-indigo-100/80 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col"
+              className="bg-white rounded-none overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 flex flex-col"
             >
               {/* Direct Video Player (No Thumbnail required) */}
-              <div class="h-64 sm:h-72 lg:h-80 relative overflow-hidden bg-slate-900 border-b border-indigo-50">
+              <div className="h-64 sm:h-72 lg:h-80 relative overflow-hidden bg-slate-900">
                 <video
                   src={imageUrl(video.url)}
                   controls
