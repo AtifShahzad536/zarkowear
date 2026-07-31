@@ -1,13 +1,13 @@
 const homeSeo = {
   title: "Zarko Sportswear | Best Sports Wear Manufacturer in Sialkot, Pakistan",
   description:
-    "Zarko Sportswear is a leading sports wear manufacturer, factory, and supplier in Sialkot, Pakistan. We manufacture and export custom sports uniforms, gym wear, wrestling gears, and team wear worldwide.",
+    "Zarko Sportswear is a leading sports wear manufacturer, factory, and supplier in Sialkot, Pakistan. Ranked among the top 10 sports wear manufacturers in Sialkot, we manufacture and export custom sports uniforms, gym wear, wrestling gears, and team wear worldwide.",
   canonical: "https://www.zarkosportswear.com/",
   keywords:
-    "sports wear in sialkot, sports wear manufacturer in sialkot, sports wear companies in sialkot, sports wear factories in sialkot, sports wear supplier in sialkot, sportswear websites in sialkot, sportswear in sialkot, sportswear company in sialkot, sports wear factory sialkot, best sportswear manufacturer in sialkot, sialkot sportswear manufacturers, gym wear manufacturer in sialkot, sportswear manufacturer pakistan sialkot, custom sports uniforms USA, wrestling gears supplier, hockey uniforms UK",
+    "top 10 sports wear manufacturer in sialkot, top 10 sports wear manufacturer in pakistan, best manufacturer in sialkot, best sportswear manufacturer in pakistan, sports wear in sialkot, sports wear manufacturer in sialkot, sports wear companies in sialkot, sports wear factories in sialkot, sports wear supplier in sialkot, sportswear websites in sialkot, sportswear in sialkot, sportswear company in sialkot, sports wear factory sialkot, best sportswear manufacturer in sialkot, sialkot sportswear manufacturers, gym wear manufacturer in sialkot, sportswear manufacturer pakistan sialkot, custom sports uniforms USA, wrestling gears supplier, hockey uniforms UK",
   author: "Atif Shahzad & Hurairah Shahzad",
   robots: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
-  themeColor: "#6366f1",
+  themeColor: "#0A0C16",
   image: "https://www.zarkosportswear.com/og-cover.jpg",
   siteName: "Zarko Sportswear",
   locale: "en_US",
