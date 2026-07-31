@@ -65,7 +65,7 @@ const FeaturedCategories = () => {
       </motion.div>
 
       {/* Category Grid */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 px-2 sm:px-0">
         {loading ? (
           // Show skeleton loaders when loading
           Array.from({ length: 4 }).map((_, index) => (
@@ -94,7 +94,7 @@ const FeaturedCategories = () => {
               <img
                 src={imageUrl(cat.image || '/uploads/placeholder.jpg')}
                 alt={cat.name || cat.slug}
-                className="w-full h-80 object-contain bg-white transform group-hover:scale-110 transition duration-700 ease-out"
+                className="w-full h-44 sm:h-80 object-contain bg-white transform group-hover:scale-110 transition duration-700 ease-out"
               />
               <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition duration-500" />
               <div className="absolute inset-0 z-20 flex flex-col justify-end p-5">
