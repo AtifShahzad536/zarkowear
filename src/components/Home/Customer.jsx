@@ -23,8 +23,8 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <section className="relative p-6 w-full bg-gradient-to-br from-gray-50 via-white to-indigo-50 py-16 px-6 overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(79,70,229,0.12),_transparent_55%)]" />
+    <section className="relative p-6 w-full bg-gradient-to-br from-gray-50 via-white to-gray-100 py-16 px-6 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(10,12,22,0.06),_transparent_55%)]" />
       <div className="relative max-w-6xl mx-auto">
         <div className="text-center mb-14">
           <motion.h2
@@ -32,9 +32,9 @@ const Testimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
-            className="flex items-center justify-center gap-3 text-4xl md:text-5xl font-bold text-indigo-600"
+            className="flex items-center justify-center gap-3 text-4xl md:text-5xl font-bold text-[#0A0C16]"
           >
-            <BsChatDots className="text-5xl md:text-6xl text-indigo-500 drop-shadow" />
+            <BsChatDots className="text-5xl md:text-6xl text-[#0A0C16] drop-shadow" />
             What Our Customers Say
           </motion.h2>
           <motion.p
@@ -75,9 +75,9 @@ const Testimonials = () => {
                   viewport={{ once: true, amount: 0.4 }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   whileHover={{ y: -8, scale: 1.01 }}
-                  className="relative h-full rounded-[24px] bg-white/95 backdrop-blur px-6 pt-12 pb-8 shadow-[0_16px_45px_-30px_rgba(79,70,229,0.8)] ring-1 ring-indigo-100/70 hover:ring-indigo-200 transition"
+                  className="relative h-full rounded-none bg-white/95 backdrop-blur px-6 pt-12 pb-8 shadow-[0_16px_45px_-30px_rgba(10,12,22,0.8)] ring-1 ring-gray-150 hover:ring-gray-200 transition"
                 >
-                  <span className="absolute top-4 left-6 text-5xl text-indigo-100">“</span>
+                  <span className="absolute top-4 left-6 text-5xl text-gray-200">“</span>
                   <motion.div
                     initial={{ opacity: 0, x: 16, y: -16, scale: 0.7 }}
                     whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
@@ -101,11 +101,11 @@ const Testimonials = () => {
                   </blockquote>
                   <div className="flex items-center justify-between gap-4">
                     <div>
-                      <h4 className="text-xl font-semibold text-indigo-700">{t.name}</h4>
+                      <h4 className="text-xl font-semibold text-[#0A0C16]">{t.name}</h4>
                       <p className="text-sm text-gray-500 mt-1">{t.role || 'Sports Partner'}</p>
                     </div>
                     {(t.company || t.location) && (
-                      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-500 bg-indigo-50 px-3 py-1.5 rounded-full">
+                      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#0A0C16] bg-gray-100 px-3 py-1.5 rounded-none">
                         {t.company || t.location}
                       </span>
                     )}
