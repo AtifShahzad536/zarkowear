@@ -158,6 +158,7 @@ const Home = () => {
                   <motion.img
                     key={activeJerseyIndex}
                     src={JERSEYS[activeJerseyIndex]}
+                    alt="Zarko Custom Premium Sportswear Jersey"
                     initial={{ opacity: 0, scale: 0.9, rotate: -4 }}
                     animate={{ opacity: 1, scale: 1, rotate: 0 }}
                     exit={{ opacity: 0, scale: 0.9, rotate: 4 }}
