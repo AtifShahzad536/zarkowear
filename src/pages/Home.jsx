@@ -353,13 +353,13 @@ const Home = () => {
                 title: 'Football',
                 tagline: 'Professional match kits & gear',
                 to: '/football',
-                image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80'
+                image: 'https://tse1.mm.bing.net/th/id/OIP.qldsTaOXu4d4ydvIm_pSvgHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3'
               },
               {
                 title: 'Cricket',
                 tagline: 'Premium club uniforms & wear',
                 to: '/cricket',
-                image: 'https://images.unsplash.com/photo-1624526261953-ad3ddf608411?auto=format&fit=crop&w=600&q=80'
+                image: 'https://tse1.mm.bing.net/th/id/OIP.Ku4QyU3vRuNvRY89kPwLmwHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3'
               },
               {
                 title: 'Basketball',
@@ -371,7 +371,7 @@ const Home = () => {
                 title: 'Wrestling',
                 tagline: 'Heavy-duty performance singlets',
                 to: '/wrestling',
-                image: 'https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=600&q=80'
+                image: 'https://wallpapercave.com/wp/wp7753115.jpg'
               }
             ].map((sport, i) => (
               <motion.div
