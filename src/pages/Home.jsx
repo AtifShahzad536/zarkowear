@@ -320,98 +320,99 @@ const Home = () => {
       </section>
         <TopSellingProducts />
 
-      {/* Quick Categories */}
-      <section className="bg-[#F8FAFC] border-b border-slate-200">
-        <div className="max-w-[94%] mx-auto px-4 py-16">
-          <div className="flex flex-wrap items-end justify-between gap-4">
+      {/* Quick Categories Redesign (Option 1) */}
+      <section className="bg-[#0A0C16] text-white border-b border-white/5 py-20 sm:py-28 relative overflow-hidden">
+        {/* Background Glow */}
+        <div className="absolute top-[20%] left-[50%] -translate-x-1/2 w-[600px] h-[300px] bg-indigo-900/10 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="max-w-[94%] mx-auto px-4 relative z-10">
+          
+          {/* Header area */}
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-indigo-600">Shop by sport</p>
-              <h2 className="mt-2 text-3xl sm:text-4xl font-black text-slate-900 uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>Elite kits and accessories for every squad</h2>
-              <p className="mt-2 text-xs sm:text-sm text-slate-500 font-medium">Browse export-grade uniforms, footwear, and gear bundles, or learn more about our <Link to="/about" className="text-indigo-600 hover:underline">sportswear manufacturing</Link>.</p>
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-indigo-400">Shop by sport</p>
+              <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                Elite kits and accessories for every squad
+              </h2>
+              <p className="mt-2 text-xs sm:text-sm text-slate-400 max-w-xl leading-relaxed">
+                Browse export-grade uniforms and gear packages optimized for professional club play, or customize your designs.
+              </p>
             </div>
-            <Link to="/custom" className="inline-flex items-center gap-2 rounded-none border border-slate-200 bg-white px-5 py-2.5 text-xs font-bold text-slate-900 shadow-sm transition hover:border-slate-400">
-              Build your own collection
-              <FaArrowRight className="text-xs" />
+            <Link 
+              to="/custom" 
+              className="inline-flex items-center gap-2 rounded-none border border-white/10 bg-white/5 hover:bg-white/10 px-6 py-3 text-xs font-bold text-white transition-all uppercase tracking-wider shrink-0"
+            >
+              Build your own collection →
             </Link>
           </div>
 
-          <div className="relative mt-8 group">
-            {/* Navigation Buttons */}
-            <button className="swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-none bg-white shadow-md border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 transition-all duration-300 opacity-0 group-hover:opacity-100">
-              <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button className="swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-none bg-white shadow-md border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 transition-all duration-300 opacity-0 group-hover:opacity-100">
-              <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+          {/* Option 1 Sports Grid - 4 Columns */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: 'Football',
+                tagline: 'Professional match kits & gear',
+                to: '/football',
+                image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=600&q=80'
+              },
+              {
+                title: 'Cricket',
+                tagline: 'Premium club uniforms & wear',
+                to: '/cricket',
+                image: 'https://images.unsplash.com/photo-1531415080290-bc9b0222e728?auto=format&fit=crop&w=600&q=80'
+              },
+              {
+                title: 'Basketball',
+                tagline: 'Elite sublimated jerseys',
+                to: '/basketball',
+                image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=600&q=80'
+              },
+              {
+                title: 'Wrestling',
+                tagline: 'Heavy-duty performance singlets',
+                to: '/wrestling',
+                image: 'https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=600&q=80'
+              }
+            ].map((sport, i) => (
+              <motion.div
+                key={sport.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.45, delay: i * 0.05 }}
+                className="relative h-96 w-full overflow-hidden rounded-none border border-white/10 border-l-4 border-l-transparent hover:border-l-indigo-500 cursor-pointer group transition-all duration-300"
+              >
+                <Link to={sport.to} className="block w-full h-full">
+                  {/* Full size action image */}
+                  <img
+                    src={sport.image}
+                    alt={sport.title}
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  
+                  {/* Dark overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-90 transition-all duration-500 z-10" />
 
-            <Swiper
-              modules={[Navigation, Autoplay]}
-              navigation={{
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-              }}
-              autoplay={{
-                delay: 4000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true
-              }}
-              loop={true}
-              spaceBetween={16}
-              slidesPerView={2}
-              breakpoints={{
-                480: { slidesPerView: 2.5 },
-                640: { slidesPerView: 3 },
-                768: { slidesPerView: 3.5 },
-                1024: { slidesPerView: 4 },
-                1280: { slidesPerView: 5 },
-                1536: { slidesPerView: 6 }
-              }}
-              className="py-4"
-            >
-              {categoryChips.map((chip, i) => (
-                <SwiperSlide key={`${chip.label}-${i}`}>
-                  <motion.div
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ delay: i * 0.025, duration: 0.35 }}
-                    className="h-full"
-                  >
-                    <Link
-                      to={chip.to}
-                      className="group block h-full rounded-none border border-slate-200 bg-white px-4 py-4 text-left transition hover:border-indigo-500 hover:shadow-lg"
-                    >
-                      <div className="flex items-center justify-between gap-2 h-full">
-                        <div className="flex items-center gap-3 flex-1 min-w-0">
-                          <span className="inline-flex h-10 w-10 items-center justify-center rounded-none bg-slate-50 border border-slate-100 text-indigo-600 flex-shrink-0">
-                            <chip.Icon />
-                          </span>
-                          <div className="min-w-0 flex-1">
-                            <p className="text-xs font-extrabold text-slate-900 uppercase tracking-wide truncate">{chip.label}</p>
-                            <p className="text-[10px] font-semibold text-slate-400 truncate mt-0.5">{chip.tagline}</p>
-                          </div>
-                        </div>
-                        <span className="flex items-center justify-center flex-shrink-0 text-slate-300 group-hover:text-indigo-600 transition-colors">
-                          <FaArrowRight className="text-xs transform group-hover:translate-x-1 transition-transform" />
-                        </span>
-                      </div>
-                    </Link>
-                  </motion.div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-
-            {/* Progress bar */}
-            <div className="mt-6 flex justify-center">
-              <div className="w-32 h-0.5 bg-slate-200">
-                <div className="h-0.5 bg-indigo-600 transition-all duration-300 w-1/3"></div>
-              </div>
-            </div>
+                  {/* White Typography inside bottom card */}
+                  <div className="absolute inset-0 z-20 flex flex-col justify-end p-6">
+                    <div>
+                      <h3 className="text-xl font-black text-white uppercase tracking-wider drop-shadow-md" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                        {sport.title}
+                      </h3>
+                      <p className="text-[11px] text-slate-300 font-semibold leading-relaxed mt-2 opacity-80 max-h-0 group-hover:max-h-16 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
+                        {sport.tagline}
+                      </p>
+                    </div>
+                    <div className="pt-4 text-xs font-bold text-indigo-400 group-hover:text-indigo-300 flex items-center gap-1">
+                      Explore <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
           </div>
+
         </div>
       </section>
 
