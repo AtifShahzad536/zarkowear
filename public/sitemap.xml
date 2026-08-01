@@ -14,14 +14,14 @@
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/about/</loc>
+    <loc>https://www.zarkosportswear.com/about</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/contact/</loc>
+    <loc>https://www.zarkosportswear.com/contact</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
@@ -29,14 +29,14 @@
 
   <!-- 3D Jersey Builder Tool -->
   <url>
-    <loc>https://www.zarkosportswear.com/builder/</loc>
+    <loc>https://www.zarkosportswear.com/builder</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/builder/models/</loc>
+    <loc>https://www.zarkosportswear.com/builder/models</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -44,7 +44,7 @@
 
   <!-- Product Categories -->
   <url>
-    <loc>https://www.zarkosportswear.com/custom/</loc>
+    <loc>https://www.zarkosportswear.com/custom</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
@@ -52,91 +52,91 @@
 
   <!-- Sport Category Pages -->
   <url>
-    <loc>https://www.zarkosportswear.com/football/</loc>
+    <loc>https://www.zarkosportswear.com/football</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/cricket/</loc>
+    <loc>https://www.zarkosportswear.com/cricket</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/basketball/</loc>
+    <loc>https://www.zarkosportswear.com/basketball</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/wrestling/</loc>
+    <loc>https://www.zarkosportswear.com/wrestling</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/hockey/</loc>
+    <loc>https://www.zarkosportswear.com/hockey</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/rugby/</loc>
+    <loc>https://www.zarkosportswear.com/rugby</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/tennis/</loc>
+    <loc>https://www.zarkosportswear.com/tennis</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/running/</loc>
+    <loc>https://www.zarkosportswear.com/running</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/gym/</loc>
+    <loc>https://www.zarkosportswear.com/gym</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/shoes/</loc>
+    <loc>https://www.zarkosportswear.com/shoes</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/gloves/</loc>
+    <loc>https://www.zarkosportswear.com/gloves</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/caps/</loc>
+    <loc>https://www.zarkosportswear.com/caps</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/bags/</loc>
+    <loc>https://www.zarkosportswear.com/bags</loc>
     <lastmod>2026-08-01T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
