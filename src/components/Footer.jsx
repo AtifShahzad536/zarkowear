@@ -20,7 +20,7 @@ const Footer = () => {
       <div className="absolute bottom-0 right-0 w-[450px] h-[250px] bg-indigo-900/10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="relative mx-auto max-w-[94%] px-6 py-16 sm:py-20">
-        
+
         {/* Top Branding Row */}
         <div className="flex flex-col md:flex-row justify-between items-center border-b border-white/5 pb-10 mb-12 gap-6">
           <div className="flex items-center gap-4">
@@ -46,7 +46,7 @@ const Footer = () => {
 
         {/* Four Column Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
-          
+
           {/* Col 1: Quick Links */}
           <div className="space-y-4">
             <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-indigo-400">
@@ -86,7 +86,7 @@ const Footer = () => {
               <li>Shipping directly to USA & Worldwide</li>
               <li className="text-white mt-2">WhatsApp Support:</li>
               <li>
-                <a href="tel:+923039220750" className="hover:text-white transition">+92 303 9220750</a>
+                <a href="tel:+923039220750" className="hover:text-white transition">+92 303 9200750</a>
               </li>
               <li className="text-white mt-2">Email Desk:</li>
               <li>
@@ -119,7 +119,7 @@ const Footer = () => {
                 SUBSCRIBE
               </button>
             </form>
-            
+
             {/* Social Links */}
             <div className="flex gap-3.5 pt-3">
               <a href="https://www.facebook.com/zarkosportswear" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-white/5 hover:bg-indigo-600 flex items-center justify-center border border-white/10 hover:border-transparent text-slate-400 hover:text-white transition" aria-label="Facebook">
