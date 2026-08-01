@@ -36,7 +36,7 @@ const FAQ = () => {
       {/* Glow Effects */}
       <div className="absolute top-[30%] left-[50%] -translate-x-1/2 w-[500px] h-[250px] bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
+      <div className="max-w-[94%] mx-auto px-4 relative z-10">
         {/* Title */}
         <div className="text-center mb-16 space-y-3">
           <span className="text-[9px] uppercase tracking-[0.25em] font-extrabold text-indigo-400">

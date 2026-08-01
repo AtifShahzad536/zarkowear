@@ -44,7 +44,7 @@ const SizeChartModal = ({ isOpen, onClose }) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: 'spring', duration: 0.5 }}
-            className="bg-white rounded-2xl w-full max-w-4xl shadow-2xl overflow-hidden border border-slate-100 flex flex-col md:grid md:grid-cols-12 max-h-[90vh] md:max-h-[85vh]"
+            className="bg-white rounded-none w-full max-w-4xl shadow-2xl overflow-hidden border border-slate-100 flex flex-col md:grid md:grid-cols-12 max-h-[90vh] md:max-h-[85vh]"
           >
             {/* Left Column: How to Measure (5 Cols) */}
             <div className="md:col-span-5 bg-slate-50 p-6 sm:p-8 border-b md:border-b-0 md:border-r border-slate-100 flex flex-col justify-between overflow-y-auto">
@@ -57,7 +57,7 @@ const SizeChartModal = ({ isOpen, onClose }) => {
                 <div className="space-y-5">
                   {/* Chest */}
                   <div className="flex gap-4">
-                    <span className="w-8 h-8 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center shrink-0 font-bold text-xs">
+                    <span className="w-8 h-8 rounded-none bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center shrink-0 font-bold text-xs">
                       A
                     </span>
                     <div>
@@ -70,7 +70,7 @@ const SizeChartModal = ({ isOpen, onClose }) => {
 
                   {/* Waist */}
                   <div className="flex gap-4">
-                    <span className="w-8 h-8 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center shrink-0 font-bold text-xs">
+                    <span className="w-8 h-8 rounded-none bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center shrink-0 font-bold text-xs">
                       B
                     </span>
                     <div>
@@ -83,7 +83,7 @@ const SizeChartModal = ({ isOpen, onClose }) => {
 
                   {/* Hip */}
                   <div className="flex gap-4">
-                    <span className="w-8 h-8 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center shrink-0 font-bold text-xs">
+                    <span className="w-8 h-8 rounded-none bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center shrink-0 font-bold text-xs">
                       C
                     </span>
                     <div>
@@ -97,7 +97,7 @@ const SizeChartModal = ({ isOpen, onClose }) => {
               </div>
 
               {/* Alert Badge */}
-              <div className="mt-8 flex gap-2.5 items-start p-3 bg-amber-50 border border-amber-100/60 rounded-xl text-amber-800">
+              <div className="mt-8 flex gap-2.5 items-start p-3 bg-amber-50 border border-amber-100/60 rounded-none text-amber-800">
                 <FiInfo className="text-sm shrink-0 mt-0.5" />
                 <p className="text-[10px] font-medium leading-normal">
                   Pro-Tip: Have someone help you measure to keep the tape perfectly straight.
@@ -113,7 +113,7 @@ const SizeChartModal = ({ isOpen, onClose }) => {
                   <h3 className="text-xl font-bold text-slate-900">Size Chart</h3>
                   <button
                     onClick={onClose}
-                    className="p-2 hover:bg-slate-100 rounded-lg text-slate-400 hover:text-slate-700 transition"
+                    className="p-2 hover:bg-slate-100 rounded-none text-slate-400 hover:text-slate-700 transition"
                     title="Close Size Chart"
                   >
                     <FiMinimize2 size={16} />
@@ -121,12 +121,12 @@ const SizeChartModal = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Tabs */}
-                <div className="flex gap-2 p-1 bg-slate-100 rounded-xl">
+                <div className="flex gap-2 p-1 bg-slate-100 rounded-none">
                   {['mens', 'womens', 'youth'].map((tab) => (
                     <button
                       key={tab}
                       onClick={() => setActiveTab(tab)}
-                      className={`flex-1 py-2 text-xs font-bold rounded-lg uppercase transition-all ${
+                      className={`flex-1 py-2 text-xs font-bold rounded-none uppercase transition-all ${
                         activeTab === tab
                           ? 'bg-indigo-600 text-white shadow-sm'
                           : 'text-slate-500 hover:text-slate-800'
@@ -138,7 +138,7 @@ const SizeChartModal = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Sizing Table */}
-                <div className="border border-slate-100 rounded-xl overflow-hidden shadow-inner bg-slate-50/50">
+                <div className="border border-slate-100 rounded-none overflow-hidden shadow-inner bg-slate-50/50">
                   <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                       <thead>
