@@ -160,7 +160,7 @@ const SplashLoading = ({ progress = 0, onComplete }) => {
                 />
               </div>
               <span 
-                className="text-[11px] font-extrabold text-slate-400 tracking-widest uppercase mt-2.5"
+                className="text-[11px] font-extrabold text-slate-600 tracking-widest uppercase mt-2.5"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 {localProgress}%
