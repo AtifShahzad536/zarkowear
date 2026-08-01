@@ -102,7 +102,7 @@ const Header = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1, duration: 0.6 }}
       />
-      <div className="mx-auto flex max-w-[94%] items-center justify-between px-6 py-4.5">
+      <div className="mx-auto flex max-w-[94%] items-center justify-between px-6 py-3.5">
         {/* Logo and Typography Brand Name on the Left */}
         <Link to="/" className="flex items-center gap-1 group flex-shrink-0">
           <img
