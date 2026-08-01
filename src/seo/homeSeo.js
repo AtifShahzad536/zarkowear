@@ -1,10 +1,10 @@
 const homeSeo = {
-  title: "Custom Sports Uniforms USA | Premium Teamwear Factory",
+  title: "Custom Sports Uniforms & Teamwear USA | Zarko Sportswear",
   description:
-    "Premium custom sports uniforms and athletic teamwear shipped across USA. Design custom jerseys, wrestling singlets, and gym wear online.",
+    "Zarko Sportswear manufactures premium custom sports uniforms and teamwear shipped across the USA. Design jerseys with our 3D custom builder.",
   canonical: "https://www.zarkosportswear.com/",
   keywords:
-    "custom sports uniforms USA, custom teamwear USA, custom jerseys builder USA, wrestling singlets USA, custom sports uniforms online, custom soccer jerseys USA, custom basketball uniforms, sportswear supplier USA, gym wear manufacturer USA, custom athletic wear, zarko sportswear USA",
+    "zarko sportswear, custom sports uniforms USA, custom teamwear USA, 3d custom jersey builder, custom wrestling singlets USA, custom sports uniforms online, custom soccer jerseys USA, custom basketball uniforms, sportswear supplier USA, gym wear manufacturer USA, custom athletic wear, zarko sportswear USA",
   author: "Atif Shahzad & Hurairah Shahzad",
   robots: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   themeColor: "#0A0C16",
@@ -12,9 +12,9 @@ const homeSeo = {
   siteName: "Zarko Sportswear",
   locale: "en_US",
   openGraph: {
-    'og:title': 'Custom Sports Uniforms USA | Premium Teamwear Factory',
+    'og:title': 'Custom Sports Uniforms & Teamwear USA | Zarko Sportswear',
     'og:description':
-      'Premium custom sports uniforms and athletic teamwear shipped across USA. Design custom jerseys, wrestling singlets, and gym wear online.',
+      'Zarko Sportswear manufactures premium custom sports uniforms and teamwear shipped across the USA. Design jerseys with our 3D custom builder.',
     'og:url': 'https://www.zarkosportswear.com/',
     'og:image': 'https://www.zarkosportswear.com/og-cover.jpg',
     'og:image:width': '1200',
@@ -24,8 +24,8 @@ const homeSeo = {
     'og:locale': 'en_US',
   },
   twitter: {
-    'twitter:title': 'Custom Sports Uniforms USA | Premium Teamwear Factory',
-    'twitter:description': 'Premium custom sports uniforms and athletic teamwear shipped across USA. Design custom jerseys, wrestling singlets, and gym wear online.',
+    'twitter:title': 'Custom Sports Uniforms & Teamwear USA | Zarko Sportswear',
+    'twitter:description': 'Zarko Sportswear manufactures premium custom sports uniforms and teamwear shipped across the USA. Design jerseys with our 3D custom builder.',
     'twitter:card': 'summary_large_image',
     'twitter:image': 'https://www.zarkosportswear.com/og-cover.jpg',
     'twitter:site': '@zarkosportswear',
