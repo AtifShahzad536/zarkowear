@@ -5,6 +5,7 @@ import ProductCard from './ProductCard';
 import Custom from '../pages/Custom';
 import CategoryHero from './CategoryHero';
 import { categoryConfigs } from '../data/categories';
+import SeoHead from './SeoHead';
 
 const normalizeData = (slug) => {
   const config = categoryConfigs[slug];
@@ -127,6 +128,21 @@ const CategoryPage = ({ slug }) => {
 
   return (
     <main className="bg-slate-50/50 min-h-screen">
+      <SeoHead
+        title={`Custom ${name} Jerseys USA | Design Team Kits`}
+        description={`Design custom ${name.toLowerCase()} jerseys and teamwear online. Custom tailored uniforms with premium fabrics and fast shipping in the USA.`}
+        canonical={`https://www.zarkosportswear.com/${slug}`}
+        keywords={`custom ${name.toLowerCase()} uniforms, design ${name.toLowerCase()} jerseys usa, teamwear customizer, custom sports jerseys usa`}
+        openGraph={{
+          'og:title': `Custom ${name} Jerseys USA | Design Team Kits`,
+          'og:description': `Design custom ${name.toLowerCase()} jerseys and teamwear online. Custom tailored uniforms with premium fabrics and fast shipping in the USA.`,
+          'og:url': `https://www.zarkosportswear.com/${slug}`,
+        }}
+        twitter={{
+          'twitter:title': `Custom ${name} Jerseys USA | Design Team Kits`,
+          'twitter:description': `Design custom ${name.toLowerCase()} jerseys and teamwear online. Custom tailored uniforms with premium fabrics and fast shipping in the USA.`,
+        }}
+      />
       <div className="mx-auto max-w-[94%] px-4 py-8 sm:px-6 lg:px-8">
 
         {/* TOP PRODUCT DETAIL HERO CONTAINER (Left: Picture, Right: Details) */}

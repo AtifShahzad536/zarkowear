@@ -1,10 +1,10 @@
 const homeSeo = {
-  title: "Zarko Sportswear | Best Sports Wear Manufacturer in Sialkot, Pakistan",
+  title: "Custom Sports Uniforms USA | Premium Teamwear Factory",
   description:
-    "Zarko Sportswear is a leading sports wear manufacturer, factory, and supplier in Sialkot, Pakistan. Ranked among the top 10 sports wear manufacturers in Sialkot, we manufacture and export custom sports uniforms, gym wear, wrestling gears, and team wear worldwide.",
+    "Premium custom sports uniforms and athletic teamwear shipped across USA. Design custom jerseys, wrestling singlets, and gym wear online.",
   canonical: "https://www.zarkosportswear.com/",
   keywords:
-    "top 10 sports wear manufacturer in sialkot, top 10 sports wear manufacturer in pakistan, best manufacturer in sialkot, best sportswear manufacturer in pakistan, sports wear in sialkot, sports wear manufacturer in sialkot, sports wear companies in sialkot, sports wear factories in sialkot, sports wear supplier in sialkot, sportswear websites in sialkot, sportswear in sialkot, sportswear company in sialkot, sports wear factory sialkot, best sportswear manufacturer in sialkot, sialkot sportswear manufacturers, gym wear manufacturer in sialkot, sportswear manufacturer pakistan sialkot, custom sports uniforms USA, wrestling gears supplier, hockey uniforms UK",
+    "custom sports uniforms USA, custom teamwear USA, custom jerseys builder USA, wrestling singlets USA, custom sports uniforms online, custom soccer jerseys USA, custom basketball uniforms, sportswear supplier USA, gym wear manufacturer USA, custom athletic wear, zarko sportswear USA",
   author: "Atif Shahzad & Hurairah Shahzad",
   robots: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   themeColor: "#0A0C16",
@@ -12,9 +12,9 @@ const homeSeo = {
   siteName: "Zarko Sportswear",
   locale: "en_US",
   openGraph: {
-    'og:title': 'Zarko Sportswear | Best Sports Wear Manufacturer in Sialkot, Pakistan',
+    'og:title': 'Custom Sports Uniforms USA | Premium Teamwear Factory',
     'og:description':
-      'Leading sports wear manufacturer, factory, and supplier in Sialkot, Pakistan. We manufacture and export custom sports uniforms, gym wear, wrestling gears, and team wear worldwide.',
+      'Premium custom sports uniforms and athletic teamwear shipped across USA. Design custom jerseys, wrestling singlets, and gym wear online.',
     'og:url': 'https://www.zarkosportswear.com/',
     'og:image': 'https://www.zarkosportswear.com/og-cover.jpg',
     'og:image:width': '1200',
@@ -24,8 +24,8 @@ const homeSeo = {
     'og:locale': 'en_US',
   },
   twitter: {
-    'twitter:title': 'Zarko Sportswear | Best Sports Wear Manufacturer in Sialkot, Pakistan',
-    'twitter:description': 'Leading sports wear manufacturer, factory, and supplier in Sialkot, Pakistan. Custom sports uniforms, gym wear, wrestling gears, and team wear worldwide.',
+    'twitter:title': 'Custom Sports Uniforms USA | Premium Teamwear Factory',
+    'twitter:description': 'Premium custom sports uniforms and athletic teamwear shipped across USA. Design custom jerseys, wrestling singlets, and gym wear online.',
     'twitter:card': 'summary_large_image',
     'twitter:image': 'https://www.zarkosportswear.com/og-cover.jpg',
     'twitter:site': '@zarkosportswear',
@@ -38,11 +38,11 @@ const homeSeo = {
       name: 'Zarko Sportswear',
       image: 'https://www.zarkosportswear.com/logo.png',
       url: 'https://www.zarkosportswear.com/',
-      telephone: '+92-303-9200750',
+      telephone: '+92-303-9220750',
       email: 'zarkosportswear@gmail.com',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: '123 Export Avenue',
+        streetAddress: 'Sialkot Cantt',
         addressLocality: 'Sialkot',
         addressRegion: 'Punjab',
         postalCode: '51310',
@@ -63,14 +63,7 @@ const homeSeo = {
         { '@type': 'Offer', name: 'Hockey Uniforms & Wear' },
       ],
       areaServed: [
-        { '@type': 'Country', name: 'United States' },
-        { '@type': 'Country', name: 'United Kingdom' },
-        { '@type': 'Country', name: 'Australia' },
-        { '@type': 'Country', name: 'Italy' },
-        { '@type': 'Country', name: 'Saudi Arabia' },
-        { '@type': 'Country', name: 'Germany' },
-        { '@type': 'Country', name: 'France' },
-        { '@type': 'Country', name: 'Spain' }
+        { '@type': 'Country', name: 'United States' }
       ],
       founder: [
         {
@@ -86,7 +79,7 @@ const homeSeo = {
         }
       ],
       description:
-        'Zarko Sportswear is one of the top sportswear companies and factories in Sialkot, Pakistan. We manufacture and export premium custom sports uniforms, wrestling gears, and hockey wear worldwide.',
+        'Zarko Sportswear is a premier custom sportswear manufacturer and supplier for athletic teams, clubs, and leagues across the United States.',
       priceRange: '$$',
       aggregateRating: {
         '@type': 'AggregateRating',
@@ -100,14 +93,14 @@ const homeSeo = {
       name: 'Zarko Sportswear',
       url: 'https://www.zarkosportswear.com/',
       logo: 'https://www.zarkosportswear.com/logo.png',
-      description: 'Zarko Sportswear is a trusted sports wear manufacturer, factory, and exporter of custom sports uniforms in Sialkot, Pakistan.',
+      description: 'Zarko Sportswear is a trusted sports wear manufacturer and exporter of premium custom sports uniforms supplying USA sports organizations.',
       foundingDate: '2020',
       contactPoint: {
         '@type': 'ContactPoint',
-        telephone: '+92-303-9200750',
+        telephone: '+92-303-9220750',
         email: 'zarkosportswear@gmail.com',
         contactType: 'customer service',
-        availableLanguage: ['English', 'Italian', 'Arabic']
+        availableLanguage: ['English']
       }
     }
   ]

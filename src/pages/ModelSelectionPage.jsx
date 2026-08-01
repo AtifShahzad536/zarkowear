@@ -48,13 +48,13 @@ export const ModelSelectionPage = () => {
   const seoData = useMemo(() => {
     const categoryTitle = categoryParam ? categoryParam.toUpperCase() : 'Sports';
     return {
-      title: `Design Custom ${categoryTitle} Jerseys & Gear | Zarko Sportswear`,
-      description: `Select from our premium ${categoryTitle} model templates and customize them with your own colors, logos, and designs using our real-time 3D builder.`,
-      keywords: `custom ${categoryTitle.toLowerCase()} jersey, custom sports jerseys, teamwear 3d zarko, design custom uniforms`,
+      title: `Custom ${categoryTitle} Jerseys USA | 3D Templates`,
+      description: `Select and customize premium ${categoryTitle} uniform templates online. Personalize your teamwear in real-time with fast USA shipping.`,
+      keywords: `custom ${categoryTitle.toLowerCase()} jersey usa, 3d sports uniforms templates, team jerseys builder usa, zarko customization`,
       canonical: `https://www.zarkosportswear.com/builder/models?category=${encodeURIComponent(categoryParam)}`,
       openGraph: {
-        'og:title': `Design Custom ${categoryTitle} Jerseys & Gear | Zarko Sportswear`,
-        'og:description': `Select a base model and customize your ${categoryTitle} uniform in real-time.`,
+        'og:title': `Custom ${categoryTitle} Jerseys USA | 3D Templates`,
+        'og:description': `Select a base model template and customize your ${categoryTitle} uniform in real-time.`,
         'og:type': 'website',
         'og:url': `https://www.zarkosportswear.com/builder/models?category=${encodeURIComponent(categoryParam)}`
       }

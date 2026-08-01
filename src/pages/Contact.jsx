@@ -45,18 +45,18 @@ const Contact = () => {
   return (
     <main className="min-h-screen bg-white">
       <SeoHead
-        title="Contact Zarko Sportswear | Custom Uniform Quotes USA, UK, KSA & Europe"
-        description="Get in touch with Zarko Sportswear. We support sports clubs and distributors in the USA, UK, Australia, Italy, Saudi Arabia, and Europe with custom manufacturing and worldwide shipping."
+        title="Contact Zarko Sportswear | Get Custom Uniform Quotes USA"
+        description="Contact Zarko Sportswear for premium custom team jerseys, wrestling singlets, and athletic uniforms with fast shipping to the USA."
         canonical="https://www.zarkosportswear.com/contact"
-        keywords="contact sportswear manufacturer, order sports uniforms USA, wrestling gears exporter, hockey wear UK, team uniforms quote Saudi Arabia, sportswear supplier Europe"
+        keywords="order sports uniforms USA, contact sportswear manufacturer, custom jerseys quote USA, team uniform pricing USA, custom sportswear distributor USA"
         openGraph={{
-          'og:title': 'Contact Zarko Sportswear | Custom Uniform Quotes USA, UK, KSA & Europe',
-          'og:description': 'Get in touch with Zarko Sportswear. We support sports clubs and distributors in the USA, UK, Australia, Italy, Saudi Arabia, and Europe with custom manufacturing and worldwide shipping.',
+          'og:title': 'Contact Zarko Sportswear | Get Custom Uniform Quotes USA',
+          'og:description': 'Contact Zarko Sportswear for premium custom team jerseys, wrestling singlets, and athletic uniforms with fast shipping to the USA.',
           'og:url': 'https://www.zarkosportswear.com/contact',
         }}
         twitter={{
-          'twitter:title': 'Contact Zarko Sportswear | Custom Uniform Quotes USA, UK, KSA & Europe',
-          'twitter:description': 'Get in touch with Zarko Sportswear. We support sports clubs and distributors in the USA, UK, Australia, Italy, Saudi Arabia, and Europe with custom manufacturing and worldwide shipping.',
+          'twitter:title': 'Contact Zarko Sportswear | Get Custom Uniform Quotes USA',
+          'twitter:description': 'Contact Zarko Sportswear for premium custom team jerseys, wrestling singlets, and athletic uniforms with fast shipping to the USA.',
         }}
       />
       <section className="relative overflow-hidden">
@@ -64,11 +64,11 @@ const Contact = () => {
         <div className="relative mx-auto max-w-[94%] px-4 pb-14 pt-10">
           <motion.header initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.6 }} transition={{ duration: 0.6 }} className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-600">
-              Global Support Desk
+              USA Support Desk
             </span>
             <h1 className="mt-5 text-3xl sm:text-4xl font-bold text-indigo-900">Contact Zarko Sportswear</h1>
             <p className="mt-3 text-base md:text-lg text-gray-600">
-              Connect with our production specialists for quotes, custom sampling, and export logistics to USA, UK, Australia, Italy, Saudi Arabia, and Europe.
+              Connect with our production specialists for custom sports uniform quotes, custom sampling, and fast shipping logistics directly to the USA.
             </p>
           </motion.header>
 
@@ -99,13 +99,13 @@ const Contact = () => {
                   Icon: FaEnvelope,
                   sub: 'Replies within one business day',
                 }, {
-                  title: 'Visit',
-                  content: '123 Export Avenue, Sialkot, Pakistan',
+                  title: 'Distribution',
+                  content: 'Exporting directly to USA & Worldwide',
                   Icon: FaMapMarkerAlt,
                   sub: 'Production HQ & global shipping hub',
                 }, {
                   title: 'Working hours',
-                  content: 'Mon – Sat, 9:00 – 18:00 PKT',
+                  content: 'Mon – Sat, 9:00 – 18:00 EST Support',
                   Icon: FaClock,
                   sub: 'Custom timezone appointments available',
                 }].map(({ title, content, Icon, sub }) => (

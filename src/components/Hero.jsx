@@ -578,7 +578,7 @@ const Hero = () => {
               NEW SEASON GEAR
             </span>
             <h1 className="text-lg md:text-2xl lg:text-3xl font-bold text-[#111827] leading-tight tracking-tight uppercase">
-              GEAR UP. <span className="text-[#0A0C16]">STAND OUT.</span>
+              CUSTOM SPORTS UNIFORMS <span className="text-[#0A0C16]">USA</span>
             </h1>
           </motion.div>
 

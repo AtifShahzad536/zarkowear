@@ -40,13 +40,13 @@ export const BuilderPage = () => {
     if (isBuilderView) {
       const designName = selectedDesign?.name ? selectedDesign.name.toUpperCase() : 'Sports Jersey';
       return {
-        title: `Design Custom ${designName} | 3D Customizer | Zarko Sportswear`,
-        description: `Customize your own ${designName} in real-time with our 3D customizer. Change colors, patterns, logos, player names, and numbers on the fly.`,
-        keywords: `design custom ${designName.toLowerCase()}, custom ${designName.toLowerCase()} 3d, team jersey maker, customizer 3d zarko`,
+        title: `Design Custom ${designName} USA | 3D Customizer`,
+        description: `Personalize your ${designName} in real-time with our 3D customizer tool. High quality sublimation printing and fast shipping to the USA.`,
+        keywords: `design custom ${designName.toLowerCase()} usa, custom ${designName.toLowerCase()} 3d, team jersey maker usa, customizer 3d zarko`,
         canonical: `https://www.zarkosportswear.com/builder/${id}`,
         openGraph: {
-          'og:title': `Design Custom ${designName} | 3D Builder | Zarko Sportswear`,
-          'og:description': `Fully personalize your ${designName} online. High fidelity 3D rendering.`,
+          'og:title': `Design Custom ${designName} USA | 3D Builder`,
+          'og:description': `Fully personalize your ${designName} online. High fidelity 3D rendering and fast shipping to the USA.`,
           'og:type': 'website',
           'og:url': `https://www.zarkosportswear.com/builder/${id}`
         },
@@ -55,20 +55,20 @@ export const BuilderPage = () => {
           "@type": "WebApplication",
           "name": `Zarko 3D Customizer - ${designName}`,
           "url": `https://www.zarkosportswear.com/builder/${id}`,
-          "description": `Interactive 3D customization tool for ${designName}.`,
+          "description": `Interactive 3D customization tool for ${designName} with USA shipping.`,
           "applicationCategory": "DesignApplication",
           "operatingSystem": "All"
         }
       };
     } else {
       return {
-        title: '3D Custom Sports Jersey & Uniform Builder | Zarko Sportswear',
-        description: 'Design custom sports uniforms, team jerseys, activewear, and hoodies online. Use our real-time 3D customizer tool to design elite gear for your team.',
-        keywords: 'custom sports jerseys, 3d uniform builder, design sports jersey online, team uniforms builder, custom activewear, zarko sportswear',
+        title: '3D Custom Sports Jersey & Uniform Builder USA | Zarko',
+        description: 'Design custom sports uniforms & team jerseys in real-time with our high-fidelity 3D customizer. Fast shipping across the USA.',
+        keywords: 'custom sports jerseys usa, 3d uniform builder usa, design sports jersey online usa, team uniforms builder usa, zarko sportswear',
         canonical: 'https://www.zarkosportswear.com/builder',
         openGraph: {
-          'og:title': '3D Custom Sports Jersey & Uniform Builder | Zarko Sportswear',
-          'og:description': 'Design custom sports uniforms, team jerseys, and activewear in real-time with our high fidelity 3D builder.',
+          'og:title': '3D Custom Sports Jersey & Uniform Builder USA | Zarko',
+          'og:description': 'Design custom sports uniforms & team jerseys in real-time with our high-fidelity 3D customizer. Fast shipping across the USA.',
           'og:type': 'website',
           'og:url': 'https://www.zarkosportswear.com/builder'
         },
@@ -77,7 +77,7 @@ export const BuilderPage = () => {
           "@type": "WebApplication",
           "name": "Zarko 3D Customizer",
           "url": "https://www.zarkosportswear.com/builder",
-          "description": "Interactive 3D sports apparel customization tool by Zarko Sportswear.",
+          "description": "Interactive 3D sports apparel customization tool for USA teams.",
           "applicationCategory": "DesignApplication",
           "operatingSystem": "All"
         }

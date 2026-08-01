@@ -124,8 +124,8 @@ const Footer = () => {
                       <FaMapMarkerAlt className="h-4 w-4 text-indigo-300" />
                     </div>
                     <div className="w-full">
-                      <h4 className="text-xs font-medium text-indigo-200 mb-1.5">Our Location</h4>
-                      <p className="text-xs text-gray-300 leading-tight break-words">Sialkot, Pakistan</p>
+                      <h4 className="text-xs font-medium text-indigo-200 mb-1.5">Shipping</h4>
+                      <p className="text-xs text-gray-300 leading-tight break-words">USA & Worldwide</p>
                     </div>
                   </div>
                   
@@ -135,7 +135,7 @@ const Footer = () => {
                       <FaPhoneAlt className="h-4 w-4 text-indigo-300" />
                     </div>
                     <div className="w-full">
-                      <h4 className="text-xs font-medium text-indigo-200 mb-1.5">Call Us</h4>
+                      <h4 className="text-xs font-medium text-indigo-200 mb-1.5">USA & Global Desk</h4>
                       <a href="tel:+923039220750" className="text-xs text-gray-300 hover:text-white transition-colors break-words">+92 303 9220750</a>
                     </div>
                   </div>

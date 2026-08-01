@@ -53,17 +53,18 @@ const Custom = () => {
   return (
     <main className="min-h-screen bg-white">
       <SeoHead
-        title="Custom Sportswear Orders | Design Export-Grade Team Kits"
-        description="Submit custom sportswear requests to Zarko Sportswear for export-grade jerseys, shorts, and accessories."
+        title="Custom Sportswear USA | Order Personalized Team Uniforms"
+        description="Design & order custom sportswear in the USA. Submit your team uniforms requirements to Zarko Sportswear for premium sublimation gear."
         canonical="https://www.zarkosportswear.com/custom"
+        keywords="custom sportswear USA, custom team uniforms USA, order custom jerseys USA, personalized athletic gear, custom sublimation team wear"
         openGraph={{
-          'og:title': 'Custom Sportswear Orders | Design Export-Grade Team Kits',
-          'og:description': 'Submit custom sportswear requests with Zarko Sportswear and get export-grade jerseys, shorts, and accessories tailored to your team.',
+          'og:title': 'Custom Sportswear USA | Order Personalized Team Uniforms',
+          'og:description': 'Design & order custom sportswear in the USA. Submit your team uniforms requirements to Zarko Sportswear for premium sublimation gear.',
           'og:url': 'https://www.zarkosportswear.com/custom',
         }}
         twitter={{
-          'twitter:title': 'Custom Sportswear Orders | Design Export-Grade Team Kits',
-          'twitter:description': 'Submit custom sportswear requests with Zarko Sportswear and get export-grade jerseys, shorts, and accessories tailored to your team.',
+          'twitter:title': 'Custom Sportswear USA | Order Personalized Team Uniforms',
+          'twitter:description': 'Design & order custom sportswear in the USA. Submit your team uniforms requirements to Zarko Sportswear for premium sublimation gear.',
         }}
       />
       <section>
@@ -72,9 +73,9 @@ const Custom = () => {
             <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-600">
               Custom manufacturing
             </span>
-            <h1 className="mt-5 text-3xl sm:text-4xl font-bold text-indigo-900">Design export-grade sportswear with us</h1>
+            <h1 className="mt-5 text-3xl sm:text-4xl font-bold text-indigo-900">Design Premium Custom Sportswear USA</h1>
             <p className="mt-3 text-base md:text-lg text-gray-600">
-              Submit your concept, upload inspiration, and our team will ship production-ready kits globally. Need inspiration? Explore our <Link to="/" className="text-indigo-600 hover:underline">top-selling collections</Link> first.
+              Submit your concept, upload inspiration, and our team will ship production-ready kits to the USA. Need inspiration? Explore our <Link to="/" className="text-indigo-600 hover:underline">top-selling collections</Link> first.
             </p>
           </motion.header>
 
@@ -102,11 +103,11 @@ const Custom = () => {
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="space-y-2 text-sm font-semibold text-gray-700">
                 Phone (optional)
-                <input name="phone" className="w-full rounded-xl border border-indigo-100 px-4 py-3 text-sm shadow-inner focus:outline-none focus:ring-2 focus:ring-indigo-500" type="tel" placeholder="+92 303 9200750" />
+                <input name="phone" className="w-full rounded-xl border border-indigo-100 px-4 py-3 text-sm shadow-inner focus:outline-none focus:ring-2 focus:ring-indigo-500" type="tel" placeholder="+1 (555) 000-0000" />
               </label>
               <label className="space-y-2 text-sm font-semibold text-gray-700">
                 Company / Team name
-                <input name="company" className="w-full rounded-xl border border-indigo-100 px-4 py-3 text-sm shadow-inner focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" placeholder="Sialkot Strikers" />
+                <input name="company" className="w-full rounded-xl border border-indigo-100 px-4 py-3 text-sm shadow-inner focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" placeholder="LA Mavericks" />
               </label>
             </div>
             <label className="space-y-2 text-sm font-semibold text-gray-700 block">

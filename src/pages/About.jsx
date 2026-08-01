@@ -74,18 +74,18 @@ const About = () => {
   return (
     <main className="min-h-screen bg-white">
       <SeoHead
-        title="About Zarko Sportswear | Custom Uniforms to USA, UK, KSA & Europe"
-        description="Learn about Zarko Sportswear, a premier exporter of custom football kits, wrestling gears, and hockey uniforms to USA, UK, Australia, Italy, Saudi Arabia, and Europe."
+        title="About Zarko Sportswear | Premium USA Custom Uniforms"
+        description="Learn how Zarko Sportswear manufactures and ships premium custom team jerseys, wrestling singlets, and athletic apparel across the USA."
         canonical="https://www.zarkosportswear.com/about"
-        keywords="custom sports uniforms USA, wrestling gears exporter, hockey uniforms UK, football kits Saudi Arabia, soccer uniforms Italy, team kits Australia, custom jerseys Europe, sports apparel manufacturer"
+        keywords="custom sports uniforms USA, custom team jerseys USA, USA sportswear manufacturer, custom athletic uniforms USA, team sportswear exporter"
         openGraph={{
-          'og:title': 'About Zarko Sportswear | Custom Uniforms to USA, UK, KSA & Europe',
-          'og:description': 'Learn about Zarko Sportswear, a premier exporter of custom football kits, wrestling gears, and hockey uniforms to USA, UK, Australia, Italy, Saudi Arabia, and Europe.',
+          'og:title': 'About Zarko Sportswear | Premium USA Custom Uniforms',
+          'og:description': 'Learn how Zarko Sportswear manufactures and ships premium custom team jerseys, wrestling singlets, and athletic apparel across the USA.',
           'og:url': 'https://www.zarkosportswear.com/about',
         }}
         twitter={{
-          'twitter:title': 'About Zarko Sportswear | Custom Uniforms to USA, UK, KSA & Europe',
-          'twitter:description': 'Learn about Zarko Sportswear, a premier exporter of custom football kits, wrestling gears, and hockey uniforms to USA, UK, Australia, Italy, Saudi Arabia, and Europe.',
+          'twitter:title': 'About Zarko Sportswear | Premium USA Custom Uniforms',
+          'twitter:description': 'Learn how Zarko Sportswear manufactures and ships premium custom team jerseys, wrestling singlets, and athletic apparel across the USA.',
         }}
       />
       <section>
@@ -95,7 +95,7 @@ const About = () => {
               About Zarko Sportswear
             </span>
             <h1 className="mt-5 text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-indigo-900 leading-tight">
-              Export-grade custom uniforms built in Sialkot, trusted across USA, UK, Australia, KSA & Europe.
+              Premium Custom Uniforms & Sportswear Shipped Across the USA.
             </h1>
             <p className="mt-4 text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
               We partner with ambitious teams, academies, and league distributors in the United States, United Kingdom, Australia, Italy, Saudi Arabia, and broader European countries to deliver bespoke high-performance sportswear (including football kits, wrestling singlets, and hockey wear).
