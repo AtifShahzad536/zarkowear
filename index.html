@@ -102,15 +102,22 @@
       }
     </script>
 
-    <!-- ✅ Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VDLCM1KWVN"></script>
+    <!-- ✅ Deferred Google Analytics for PageSpeed Performance -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'G-VDLCM1KWVN');
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-VDLCM1KWVN';
+          document.head.appendChild(script);
+
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-VDLCM1KWVN', { 'page_path': window.location.pathname });
+        }, 1500); // 1.5s delay to keep CPU idle for initial render
+      });
     </script>
   </head>
 
