@@ -4,7 +4,7 @@ const homeSeo = {
     "Zarko Sportswear manufactures premium custom sports uniforms and teamwear shipped across the USA. Design jerseys with our 3D custom builder.",
   canonical: "https://www.zarkosportswear.com/",
   keywords:
-    "zarko sportswear, custom sports uniforms USA, custom teamwear USA, 3d custom jersey builder, custom wrestling singlets USA, custom sports uniforms online, custom soccer jerseys USA, custom basketball uniforms, sportswear supplier USA, gym wear manufacturer USA, custom athletic wear, zarko sportswear USA",
+    "zarko sportswear, custom sports uniforms USA, custom teamwear USA, 3d custom jersey builder, custom wrestling singlets USA, custom sports uniforms online, custom soccer jerseys USA, custom basketball uniforms, sportswear supplier USA, gym wear manufacturer USA, custom athletic wear, zarko sportswear USA, best sportswear manufacturer in pakistan, best sportswear manufacturer in sialkot, sportswear manufacturer in sialkot, hamco sportswear, Custom Sportswear Manufacturer, Sportswear Factory in Pakistan, OEM Sportswear Manufacturer, Private Label Sportswear, Team Uniform Manufacturer",
   author: "Atif Shahzad & Hurairah Shahzad",
   robots: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   themeColor: "#0A0C16",
