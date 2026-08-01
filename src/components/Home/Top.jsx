@@ -10,6 +10,8 @@ import { getTopSelling, imageUrl } from '../../services/api';
 import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
+const MotionLink = motion(Link);
+
 const fallbackItems = [
   { image: '/images/slide1.jpg', name: 'Pro Football Jersey', link: '/football' },
   { image: '/images/slide2.jpg', name: 'Cricket ODI Kit', link: '/cricket' },
@@ -134,13 +136,13 @@ const TopSellingProducts = () => {
               <AnimatePresence initial={false}>
                 {displayedItems.map((item, i) => (
                   <SwiperSlide key={`${item.id || i}-${i}`}>
-                    <motion.div
+                    <MotionLink
+                      to={item.link || '#'}
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.3 }}
                       transition={{ duration: 0.5, delay: i * 0.05 }}
-                      className="group relative overflow-hidden rounded-none shadow-md hover:shadow-2xl transition cursor-pointer hover:-translate-y-1"
-                      onClick={() => navigate(item.link || '#')}
+                      className="group relative overflow-hidden rounded-none shadow-md hover:shadow-2xl transition cursor-pointer hover:-translate-y-1 block"
                     >
                       <motion.img
                         src={imageUrl(item.image) || item.image}
@@ -160,17 +162,10 @@ const TopSellingProducts = () => {
                             <p className="text-xs md:text-sm text-gray-200/90 leading-relaxed line-clamp-2 mt-2">
                               {item.description || `Premium ${item.name} with export-grade fabrics and customizable options.`}
                             </p>
-                            <button
-                              type="button"
-                              className="inline-flex items-center justify-center gap-2 w-full rounded-none bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2.5 text-xs md:text-sm tracking-wide shadow-md transition duration-300 mt-3"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                navigate(item.link || '#');
-                              }}
-                            >
+                            <span className="inline-flex items-center justify-center gap-2 w-full rounded-none bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2.5 text-xs md:text-sm tracking-wide shadow-md transition duration-300 mt-3">
                               Customize Now
                               <span aria-hidden>→</span>
-                            </button>
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -184,7 +179,7 @@ const TopSellingProducts = () => {
                           -{item.discount}% OFF
                         </motion.span>
                       )}
-                    </motion.div>
+                    </MotionLink>
                   </SwiperSlide>
                 ))}
               </AnimatePresence>

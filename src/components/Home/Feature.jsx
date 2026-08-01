@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getHome, imageUrl } from '../../services/api';
+
+const MotionLink = motion(Link);
 
 const FeaturedCategories = () => {
   const navigate = useNavigate();
@@ -74,14 +76,14 @@ const FeaturedCategories = () => {
           <div className="col-span-full text-center text-rose-600">{error}</div>
         ) : (
           items.map((cat, index) => (
-            <motion.div
+            <MotionLink
               key={index}
+              to={`/${cat.slug}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="bg-white border border-slate-200 border-l-4 border-l-transparent hover:border-l-indigo-600 rounded-none overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300 cursor-pointer group"
-              onClick={() => navigate(`/${cat.slug}`)}
+              className="bg-white border border-slate-200 border-l-4 border-l-transparent hover:border-l-indigo-600 rounded-none overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300 group"
             >
               {/* Image Area - 70% height equivalent */}
               <div className="w-full h-56 sm:h-72 bg-slate-50/50 flex items-center justify-center p-6 overflow-hidden border-b border-slate-100">
@@ -106,7 +108,7 @@ const FeaturedCategories = () => {
                   Explore <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </div>
               </div>
-            </motion.div>
+            </MotionLink>
           ))
         )}
       </div>

@@ -4,7 +4,6 @@ Disallow: /admin/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /node_modules/
-Disallow: /detail
 
 Sitemap: https://www.zarkosportswear.com/sitemap.xml
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { imageUrl } from '../services/api';
 import toast from 'react-hot-toast';
 import SizeChartModal from './SizeChartModal';
@@ -210,10 +210,11 @@ const ProductInquiry = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {relatedProducts.map((item, idx) => (
-              <div
+              <Link
                 key={idx}
-                onClick={() => navigate('/detail', { state: { product: item } })}
-                className="group bg-white rounded-2xl border border-slate-100 p-4 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between"
+                to="/detail"
+                state={{ product: item }}
+                className="group bg-white rounded-2xl border border-slate-100 p-4 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between block"
               >
                 <div className="aspect-square w-full rounded-xl bg-slate-50 overflow-hidden mb-4 flex items-center justify-center">
                   <img
@@ -230,7 +231,7 @@ const ProductInquiry = () => {
                   <h3 className="font-bold text-slate-800 group-hover:text-indigo-600 transition text-sm">{item.name}</h3>
                   <p className="text-xs text-slate-400 line-clamp-2">{item.description}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
