@@ -1,187 +1,151 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
-
-const footerNav = [
-  {
-    title: 'Company',
-    links: [
-      { label: 'About Us', to: '/about' },
-      { label: 'Our Process', to: '/custom' },
-      { label: 'Testimonials', to: '/#testimonials' },
-      { label: 'Contact Us', to: '/contact' },
-      { label: 'Privacy Policy', to: '/privacy-policy' },
-      { label: 'Terms of Service', to: '/terms' },
-    ],
-  },
-  {
-    title: 'Sports Wear',
-    links: [
-      { label: 'Football Kits', to: '/football' },
-      { label: 'Cricket Uniforms', to: '/cricket' },
-      { label: 'Basketball Jerseys', to: '/basketball' },
-      { label: 'Hockey Equipment', to: '/hockey' },
-      { label: 'Rugby Kits', to: '/rugby' },
-      { label: 'Tennis Apparel', to: '/tennis' },
-    ],
-  },
-  {
-    title: 'Accessories',
-    links: [
-      { label: 'Sports Shoes', to: '/shoes' },
-      { label: 'Sports Gloves', to: '/gloves' },
-      { label: 'Caps & Hats', to: '/caps' },
-      { label: 'Sports Bags', to: '/bags' },
-      { label: 'Socks & Accessories', to: '/accessories' },
-    ],
-  },
-  {
-    title: 'Support',
-    links: [
-      { label: 'FAQs', to: '/faq' },
-      { label: 'Size Guide', to: '/size-guide' },
-      { label: 'Shipping Info', to: '/shipping' },
-      { label: 'Returns & Exchanges', to: '/returns' },
-      { label: 'Track Order', to: '/track-order' },
-    ],
-  },
-];
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (email) {
+      toast.success('Successfully subscribed to our newsletter!', { icon: '✉️' });
+      setEmail('');
+    }
+  };
+
   return (
-    <footer className="bg-gradient-to-br from-indigo-950 via-indigo-900 to-slate-950 text-white text-sm">
-      <div className="relative overflow-hidden">
-        {/* Background Gradient */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.06),_transparent_55%)]" />
+    <footer className="bg-[#0A0C16] text-white text-sm border-t border-white/5 relative overflow-hidden">
+      {/* Background Gradient Spotlight */}
+      <div className="absolute bottom-0 right-0 w-[450px] h-[250px] bg-indigo-900/10 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="relative mx-auto max-w-[94%] px-6 py-16 sm:py-20">
         
-        {/* Main Content */}
-        <div className="relative mx-auto max-w-[94%] px-4 py-8 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-            {/* Brand Column */}
-            <div className="lg:col-span-2 space-y-4">
-              <div className="flex items-center space-x-3">
-                <img
-                  src="/new-logo.png"
-                  alt="Zarko Sportswear"
-                  className="h-14 w-auto object-contain"
-                  style={{ filter: 'brightness(0) invert(1)' }}
-                />
-                <span className="text-2xl font-bold">Zarko Sports</span>
-              </div>
-              <p className="text-sm text-gray-300 leading-relaxed">
-                Premium sportswear and equipment for athletes and teams worldwide. Quality, performance, and style in every stitch.
-              </p>
-              <div className="flex space-x-4">
-                <a href="https://www.facebook.com/zarkosportswear" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
-                  <FaFacebookF className="h-5 w-5" />
-                </a>
-                <a href="https://www.instagram.com/zarko_sports.wear/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors" aria-label="Instagram">
-                  <FaInstagram className="h-5 w-5" />
-                </a>
-                <a href="https://www.linkedin.com/in/atif-shahzad903/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors" aria-label="LinkedIn">
-                  <FaLinkedinIn className="h-5 w-5" />
-                </a>
-                <a href="#" className="text-gray-600 cursor-not-allowed" aria-label="YouTube (Coming Soon)" disabled>
-                  <FaYoutube className="h-5 w-5" />
-                </a>
-              </div>
+        {/* Top Branding Row */}
+        <div className="flex flex-col md:flex-row justify-between items-center border-b border-white/5 pb-10 mb-12 gap-6">
+          <div className="flex items-center gap-4">
+            <img
+              src="/new-logo.png"
+              alt="Zarko Sportswear"
+              className="h-12 w-auto object-contain"
+              style={{ filter: 'brightness(0) invert(1)' }}
+            />
+            <div>
+              <span className="text-xl font-black uppercase tracking-wider block" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                Zarko Sportswear
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.2em] font-extrabold text-indigo-400">
+                Premium Teamwear Factory
+              </span>
             </div>
-
-            {/* Navigation Columns */}
-            {footerNav.map((section) => (
-              <div key={section.title} className="space-y-4">
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-300">
-                  {section.title}
-                </h3>
-                <ul className="mt-4 space-y-3">
-                  {section.links.map((link) => (
-                    <li key={link.to}>
-                      <Link
-                        to={link.to}
-                        className="text-sm text-gray-300 hover:text-white transition-colors flex items-start group"
-                      >
-                        <span className="text-indigo-400 mr-2">•</span>
-                        <span className="group-hover:translate-x-1 transition-transform">
-                          {link.label}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-            
-            {/* Contact Section - Professional Layout */}
-            <div className="col-span-2 mt-6 sm:mt-0">
-              <div className="bg-gradient-to-br from-indigo-900/30 to-indigo-900/10 p-5 rounded-xl border border-indigo-800/30 shadow-lg">
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-300 mb-5 text-center sm:text-left">
-                  Get In Touch
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {/* Location */}
-                  <div className="flex flex-col items-center text-center p-3 rounded-xl bg-indigo-900/20 hover:bg-indigo-900/40 transition-all border border-indigo-800/20">
-                    <div className="bg-indigo-900/40 p-2.5 rounded-full mb-3 shadow-inner">
-                      <FaMapMarkerAlt className="h-4 w-4 text-indigo-300" />
-                    </div>
-                    <div className="w-full">
-                      <h4 className="text-xs font-medium text-indigo-200 mb-1.5">Shipping</h4>
-                      <p className="text-xs text-gray-300 leading-tight break-words">USA & Worldwide</p>
-                    </div>
-                  </div>
-                  
-                  {/* Phone */}
-                  <div className="flex flex-col items-center text-center p-3 rounded-xl bg-indigo-900/20 hover:bg-indigo-900/40 transition-all border border-indigo-800/20">
-                    <div className="bg-indigo-900/40 p-2.5 rounded-full mb-3 shadow-inner">
-                      <FaPhoneAlt className="h-4 w-4 text-indigo-300" />
-                    </div>
-                    <div className="w-full">
-                      <h4 className="text-xs font-medium text-indigo-200 mb-1.5">USA & Global Desk</h4>
-                      <a href="tel:+923039220750" className="text-xs text-gray-300 hover:text-white transition-colors break-words">+92 303 9220750</a>
-                    </div>
-                  </div>
-                  
-                  {/* Email */}
-                  <div className="flex flex-col items-center text-center p-3 rounded-xl bg-indigo-900/20 hover:bg-indigo-900/40 transition-all border border-indigo-800/20 sm:col-span-2 lg:col-span-1">
-                    <div className="bg-indigo-900/40 p-2.5 rounded-full mb-3 shadow-inner">
-                      <FaEnvelope className="h-4 w-4 text-indigo-300" />
-                    </div>
-                    <div className="w-full">
-                      <h4 className="text-xs font-medium text-indigo-200 mb-1.5">Email Us</h4>
-                      <a href="mailto:zarkosportswear@gmail.com" 
-                         className="text-xs text-gray-300 hover:text-white transition-colors break-all hover:underline"
-                         style={{ wordBreak: 'break-all' }}>
-                        zarkosportswear@gmail.com
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
+          <p className="text-xs text-slate-400 font-medium max-w-md text-center md:text-right leading-relaxed">
+            We deliver premium custom sports uniforms and gear for all levels of athletes. Contact us today to build your custom team store!
+          </p>
+        </div>
+
+        {/* Four Column Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
           
-          {/* Bottom Bar - Copyright */}
-          <div className="border-t border-white/10 mt-8 pt-6">
-            <div className="flex flex-col items-center justify-between space-y-4 sm:flex-row sm:space-y-0">
-              <div className="flex flex-wrap justify-center gap-4 text-xs">
-                <Link to="/privacy-policy" className="text-gray-400 hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-                <span className="text-gray-600">•</span>
-                <Link to="/terms" className="text-gray-400 hover:text-white transition-colors">
-                  Terms of Service
-                </Link>
-                <span className="text-gray-600">•</span>
-                <Link to="/contact" className="text-gray-400 hover:text-white transition-colors">
-                  Contact Us
-                </Link>
-              </div>
-              <p className="text-xs text-gray-500 text-center sm:text-right mt-4 sm:mt-0">
-                &copy; {new Date().getFullYear()} Zarko SportsWear. All rights reserved.
-              </p>
+          {/* Col 1: Quick Links */}
+          <div className="space-y-4">
+            <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-indigo-400">
+              Quick Links
+            </h3>
+            <ul className="space-y-3 text-xs font-semibold text-slate-400">
+              <li><Link to="/" className="hover:text-white transition">Home</Link></li>
+              <li><Link to="/about" className="hover:text-white transition">About Us</Link></li>
+              <li><Link to="/football" className="hover:text-white transition">Soccer / Football</Link></li>
+              <li><Link to="/basketball" className="hover:text-white transition">Basketball</Link></li>
+              <li><Link to="/wrestling" className="hover:text-white transition">Wrestling</Link></li>
+              <li><Link to="/gym" className="hover:text-white transition">Gym & Activewear</Link></li>
+            </ul>
+          </div>
+
+          {/* Col 2: Support */}
+          <div className="space-y-4">
+            <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-indigo-400">
+              Support
+            </h3>
+            <ul className="space-y-3 text-xs font-semibold text-slate-400">
+              <li><Link to="/custom" className="hover:text-white transition">Start Custom Order</Link></li>
+              <li><Link to="/builder" className="hover:text-white transition">3D Uniform Builder</Link></li>
+              <li><Link to="/contact" className="hover:text-white transition">Request Quotes</Link></li>
+              <li><Link to="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="hover:text-white transition">Terms of Service</Link></li>
+            </ul>
+          </div>
+
+          {/* Col 3: Contact Us */}
+          <div className="space-y-4">
+            <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-indigo-400">
+              Contact Us
+            </h3>
+            <ul className="space-y-3 text-xs font-semibold text-slate-400 leading-relaxed">
+              <li className="text-white">Export Distribution Hub:</li>
+              <li>Shipping directly to USA & Worldwide</li>
+              <li className="text-white mt-2">WhatsApp Support:</li>
+              <li>
+                <a href="tel:+923039220750" className="hover:text-white transition">+92 303 9220750</a>
+              </li>
+              <li className="text-white mt-2">Email Desk:</li>
+              <li>
+                <a href="mailto:zarkosportswear@gmail.com" className="hover:text-white transition break-all">zarkosportswear@gmail.com</a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 4: Newsletter */}
+          <div className="space-y-4">
+            <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-indigo-400">
+              Join Our Newsletter
+            </h3>
+            <p className="text-xs text-slate-400 font-medium leading-relaxed">
+              Get the latest updates, exclusive custom apparel offers, and sports uniforms design tips delivered to your inbox!
+            </p>
+            <form onSubmit={handleSubscribe} className="flex gap-2">
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your email address"
+                className="flex-1 px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs font-medium text-white placeholder-slate-500 focus:bg-white/10 focus:border-indigo-500 focus:outline-none transition"
+              />
+              <button
+                type="submit"
+                className="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition shadow-md shadow-indigo-600/20"
+              >
+                SUBSCRIBE
+              </button>
+            </form>
+            
+            {/* Social Links */}
+            <div className="flex gap-3.5 pt-3">
+              <a href="https://www.facebook.com/zarkosportswear" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-white/5 hover:bg-indigo-600 flex items-center justify-center border border-white/10 hover:border-transparent text-slate-400 hover:text-white transition" aria-label="Facebook">
+                <FaFacebookF size={14} />
+              </a>
+              <a href="https://www.instagram.com/zarko_sports.wear/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-white/5 hover:bg-indigo-600 flex items-center justify-center border border-white/10 hover:border-transparent text-slate-400 hover:text-white transition" aria-label="Instagram">
+                <FaInstagram size={14} />
+              </a>
+              <a href="https://www.linkedin.com/in/atif-shahzad903/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-white/5 hover:bg-indigo-600 flex items-center justify-center border border-white/10 hover:border-transparent text-slate-400 hover:text-white transition" aria-label="LinkedIn">
+                <FaLinkedinIn size={14} />
+              </a>
             </div>
+          </div>
+
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-white/5 mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-semibold text-slate-500">
+          <p>&copy; {new Date().getFullYear()} Zarko Sportswear. All rights reserved.</p>
+          <div className="flex gap-4">
+            <Link to="/privacy-policy" className="hover:text-slate-300 transition">Privacy Policy</Link>
+            <span>•</span>
+            <Link to="/terms" className="hover:text-slate-300 transition">Terms of Service</Link>
           </div>
         </div>
+
       </div>
     </footer>
   );

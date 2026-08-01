@@ -13,6 +13,7 @@ import FeaturedCategories from '../components/Home/Feature';
 import LimitedTimeOffer from '../components/Home/LimitedTimeOffer';
 import Testimonials from '../components/Home/Customer';
 import Videos from '../components/Home/Videos';
+import FAQ from '../components/Home/Faq';
 import { Link } from 'react-router-dom';
 import { FaAward, FaPalette, FaGlobeAmericas, FaRunning, FaArrowRight, FaPhoneAlt, FaStar, FaCheckCircle, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { FiLayers, FiGlobe, FiSliders, FiShoppingBag } from 'react-icons/fi';
@@ -446,9 +447,9 @@ const Home = () => {
               badge: 'Brand-matched'
             }, {
               title: 'Global Delivery',
-              copy: 'Fast, secure shipping door-to-door to USA, UK, Australia, Italy, Saudi Arabia, and Europe with all customs clearances handled.',
+              copy: 'Fast, secure door-to-door shipping across the United States with all customs clearances handled.',
               Icon: FaGlobeAmericas,
-              badge: 'KSA & Global'
+              badge: 'USA Shipping'
             }].map(({ title, copy, Icon, badge }, i) => (
               <motion.div
                 key={title}
@@ -482,6 +483,9 @@ const Home = () => {
 
       {/* Videos section */}
       <Videos />
+
+      {/* FAQ section */}
+      <FAQ />
 
       <section className="max-w-[94%] mx-auto px-4 py-12">
         <Testimonials />
