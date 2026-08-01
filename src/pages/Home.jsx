@@ -353,13 +353,13 @@ const Home = () => {
                 title: 'Football',
                 tagline: 'Professional match kits & gear',
                 to: '/football',
-                image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=600&q=80'
+                image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80'
               },
               {
                 title: 'Cricket',
                 tagline: 'Premium club uniforms & wear',
                 to: '/cricket',
-                image: 'https://images.unsplash.com/photo-1531415080290-bc9b0222e728?auto=format&fit=crop&w=600&q=80'
+                image: 'https://images.unsplash.com/photo-1624526261953-ad3ddf608411?auto=format&fit=crop&w=600&q=80'
               },
               {
                 title: 'Basketball',
