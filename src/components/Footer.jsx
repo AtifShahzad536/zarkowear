@@ -137,7 +137,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/5 mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-semibold text-slate-500">
+        <div className="border-t border-white/5 mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-semibold text-slate-400">
           <p>&copy; {new Date().getFullYear()} Zarko Sportswear. All rights reserved.</p>
           <div className="flex gap-4">
             <Link to="/privacy-policy" className="hover:text-slate-300 transition">Privacy Policy</Link>

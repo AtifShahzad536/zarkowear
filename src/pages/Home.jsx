@@ -80,7 +80,7 @@ const Home = () => {
                     <FiLayers className="text-sm" />
                   </span>
                   <div>
-                    <h4 className="font-extrabold text-white text-xs uppercase tracking-wider">Premium Fabrics</h4>
+                    <h3 className="font-extrabold text-white text-xs uppercase tracking-wider">Premium Fabrics</h3>
                     <p className="text-[10px] text-gray-400 font-semibold mt-0.5 leading-tight">High-performance materials.</p>
                   </div>
                 </div>
@@ -91,7 +91,7 @@ const Home = () => {
                     <FiGlobe className="text-sm" />
                   </span>
                   <div>
-                    <h4 className="font-extrabold text-white text-xs uppercase tracking-wider">Global Shipping</h4>
+                    <h3 className="font-extrabold text-white text-xs uppercase tracking-wider">Global Shipping</h3>
                     <p className="text-[10px] text-gray-400 font-semibold mt-0.5 leading-tight">Worldwide delivery.</p>
                   </div>
                 </div>
@@ -102,7 +102,7 @@ const Home = () => {
                     <FiSliders className="text-sm" />
                   </span>
                   <div>
-                    <h4 className="font-extrabold text-white text-xs uppercase tracking-wider">Custom Designs</h4>
+                    <h3 className="font-extrabold text-white text-xs uppercase tracking-wider">Custom Designs</h3>
                     <p className="text-[10px] text-gray-400 font-semibold mt-0.5 leading-tight">Unlimited customization.</p>
                   </div>
                 </div>
@@ -113,7 +113,7 @@ const Home = () => {
                     <FiShoppingBag className="text-sm" />
                   </span>
                   <div>
-                    <h4 className="font-extrabold text-white text-xs uppercase tracking-wider">Bulk Orders</h4>
+                    <h3 className="font-extrabold text-white text-xs uppercase tracking-wider">Bulk Orders</h3>
                     <p className="text-[10px] text-gray-400 font-semibold mt-0.5 leading-tight">Low MOQ available.</p>
                   </div>
                 </div>
@@ -503,7 +503,7 @@ const Home = () => {
                 <span className="text-4xl sm:text-5xl font-black text-slate-900 uppercase tracking-tight block" style={{ fontFamily: "'Outfit', sans-serif" }}>
                   {stat}
                 </span>
-                <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-slate-400">
+                <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-slate-600">
                   {label}
                 </span>
               </div>

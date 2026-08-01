@@ -586,7 +586,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-gray-400 text-xs leading-relaxed font-medium"
+            className="text-gray-600 text-xs leading-relaxed font-medium"
           >
             Premium sportswear for champions. Engineered with export-grade fabrics for elite performance, designed for you.
           </motion.p>
@@ -618,11 +618,11 @@ const Hero = () => {
               <FiAward strokeWidth={1.5} />
             </span>
             <div>
-              <h4 className="font-bold text-[#111827] text-[10px] tracking-wider uppercase">PREMIUM QUALITY</h4>
+              <h3 className="font-bold text-[#111827] text-[10px] tracking-wider uppercase">PREMIUM QUALITY</h3>
               <p className="text-[10px] text-gray-500 mt-0.5 leading-tight font-medium">Top quality fabrics for maximum performance.</p>
             </div>
           </motion.div>
-
+ 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -633,11 +633,11 @@ const Hero = () => {
               <FiFeather strokeWidth={1.5} />
             </span>
             <div>
-              <h4 className="font-bold text-[#111827] text-[10px] tracking-wider uppercase">LIGHTWEIGHT</h4>
+              <h3 className="font-bold text-[#111827] text-[10px] tracking-wider uppercase">LIGHTWEIGHT</h3>
               <p className="text-[10px] text-gray-500 mt-0.5 leading-tight font-medium">Stay light. Move fast. Win more.</p>
             </div>
           </motion.div>
-
+ 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -648,7 +648,7 @@ const Hero = () => {
               <FiWind strokeWidth={1.5} />
             </span>
             <div>
-              <h4 className="font-bold text-[#111827] text-[10px] tracking-wider uppercase">BREATHABLE</h4>
+              <h3 className="font-bold text-[#111827] text-[10px] tracking-wider uppercase">BREATHABLE</h3>
               <p className="text-[10px] text-gray-500 mt-0.5 leading-tight font-medium">Advanced technology keeps you cool.</p>
             </div>
           </motion.div>
