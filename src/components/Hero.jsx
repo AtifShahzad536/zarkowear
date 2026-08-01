@@ -588,7 +588,7 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-gray-600 text-xs leading-relaxed font-medium"
           >
-            Premium sportswear for champions. Engineered with export-grade fabrics for elite performance, designed for you.
+            OEM sportswear manufacturer delivering premium custom sports uniforms and teamwear. Engineered with export-grade fabrics for elite performance, designed for champions.
           </motion.p>
 
           <motion.div

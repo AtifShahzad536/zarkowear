@@ -32,7 +32,7 @@ const LimitedTimeOffer = () => {
         >
           <h2 className="text-4xl font-extrabold drop-shadow-lg">⏳ Limited Time Offer</h2>
           <p className="text-lg">
-            Get <span className="text-yellow-300 font-bold">Amazing Discounts</span> on premium team sportswear — only for the next:
+            Get <span className="text-yellow-300 font-bold">Amazing Discounts</span> on premium team uniform manufacturing services — only for the next:
           </p>
           <div className="text-2xl font-semibold bg-white text-indigo-700 px-6 py-3 rounded-full inline-block shadow-lg">
             {formatTime(timeLeft)}

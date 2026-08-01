@@ -44,7 +44,7 @@ const Testimonials = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-gray-600 mt-4 text-lg max-w-2xl mx-auto"
           >
-            Real voices, real results. Explore how teams around the world trust us with their kits.
+            Real voices, real results. Explore how B2B buyers trust Zarko Sportswear as their premier private label sportswear partner.
           </motion.p>
         </div>
 

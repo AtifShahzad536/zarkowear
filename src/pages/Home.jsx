@@ -69,7 +69,7 @@ const Home = () => {
                 Premium Teamwear,<br />Built to Win.
               </h2>
               <p className="text-xs sm:text-sm text-gray-400 font-medium leading-relaxed max-w-xs">
-                Premium custom sportswear trusted by teams across USA, UK, Australia, KSA and Europe.
+                Best custom sportswear manufacturer in Sialkot, trusted by B2B athletic teams across the USA, UK, Australia, KSA and Europe.
               </p>
 
               {/* 4 Premium Feature Items */}

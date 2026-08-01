@@ -48,7 +48,7 @@ const Videos = () => {
           </h2>
           <div className="w-12 h-0.5 bg-indigo-600 mt-2" />
           <p className="text-xs sm:text-sm text-slate-500 font-medium max-w-xl mx-auto leading-relaxed pt-1">
-            Watch direct behind-the-scenes videos of our manufacturing, design engineering, and the dedicated team crafting your custom kits.
+            Watch direct behind-the-scenes videos of our sportswear factory in Pakistan, showing how our dedicated team crafts your custom kits with elite Sialkot manufacturing standards.
           </p>
         </div>
 

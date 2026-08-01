@@ -15,8 +15,8 @@ const FAQ_ITEMS = [
     answer: "Yes, all our custom sports uniforms and wrestling singlets are engineered to meet the strict uniform compliance standards (including number sizing, color limits, and logo placement guidelines) set by NFHS, USA Wrestling, US Soccer, and other major governing bodies."
   },
   {
-    question: "Which sports does Zarko actually build for, and what fabrics do you use?",
-    answer: "We manufacture custom uniforms for Soccer/Football, Basketball, Wrestling, Rugby, Cricket, Hockey, Tennis, and Running. We use export-grade fabrics including dry-fit micro-polyester, heavy-duty 4-way stretch spandex, and premium flex fleece blends."
+    question: "Which sports does Zarko sportswear manufacture, and what fabrics are used?",
+    answer: "As a leading custom sportswear manufacturer, we produce high-performance team uniforms for Soccer/Football, Basketball, Wrestling, Rugby, Cricket, Hockey, Tennis, and Running. We use export-grade fabrics including dry-fit micro-polyester, heavy-duty 4-way stretch spandex, and premium flex fleece blends."
   },
   {
     question: "Can I order matching shorts, sideline jackets, warm-ups, and bags in the same design?",
