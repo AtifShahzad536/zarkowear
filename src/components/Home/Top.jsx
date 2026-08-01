@@ -60,32 +60,30 @@ const TopSellingProducts = () => {
         viewport={{ once: true }}
         className="max-w-[94%] mx-auto px-4"
       >
-        <div className="text-center mb-12">
-          <motion.span 
-            className="inline-block text-sm font-semibold text-indigo-600 mb-3"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
-            POPULAR ITEMS
-          </motion.span>
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            Our Bestselling Sportswear
-          </motion.h2>
-          <motion.div 
-            className="w-20 h-1 bg-indigo-600 mx-auto rounded-full"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          />
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4">
+          <div>
+            <span className="text-xs font-black uppercase tracking-[0.25em] text-indigo-600 block mb-2">
+              POPULAR ITEMS
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
+              Our Bestselling Sportswear
+            </h2>
+            <div className="w-12 h-0.5 bg-indigo-600 mt-2" />
+          </div>
+          
+          {/* Custom Nav buttons top right */}
+          <div className="flex gap-2 relative z-20">
+            <button className="custom-prev-top p-3 border border-slate-200 rounded-none bg-white text-slate-800 hover:bg-slate-50 transition-colors">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button className="custom-next-top p-3 border border-slate-200 rounded-none bg-white text-slate-800 hover:bg-slate-50 transition-colors">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Product Carousel */}
@@ -112,8 +110,8 @@ const TopSellingProducts = () => {
             <Swiper
               modules={[Navigation, Autoplay]}
               navigation={{
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: '.custom-next-top',
+                prevEl: '.custom-prev-top',
               }}
               spaceBetween={20}
               slidesPerView={1.8}
@@ -192,18 +190,6 @@ const TopSellingProducts = () => {
               </AnimatePresence>
             </Swiper>
           )}
-          
-          {/* Navigation Buttons */}
-          <button className="swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-indigo-600 hover:bg-indigo-50 transition-all duration-300 -ml-4 md:-ml-6 opacity-0 group-hover:opacity-100">
-            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button className="swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-indigo-600 hover:bg-indigo-50 transition-all duration-300 -mr-4 md:-mr-6 opacity-0 group-hover:opacity-100">
-            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
         </div>
 
         

@@ -35,39 +35,21 @@ const Videos = () => {
   if (error || !list.length) return null;
 
   return (
-    <section className="relative py-20 bg-gradient-to-b from-indigo-50/20 via-white to-indigo-50/20 overflow-hidden">
-      {/* Decorative clean background blur */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-50 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-50/60 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="relative max-w-[94%] mx-auto px-4">
-        <div className="text-center mb-16">
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-xs font-semibold uppercase tracking-widest text-indigo-600 animate-pulse"
-          >
+    <section className="w-full py-20 bg-[#F8FAFC] border-b border-slate-200">
+      <div className="max-w-[94%] mx-auto px-4">
+        
+        {/* Header Area */}
+        <div className="flex flex-col items-center text-center mb-16 space-y-4">
+          <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-indigo-600 block">
             Inside Zarko Sportswear
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="mt-4 text-3xl md:text-5xl font-extrabold tracking-tight text-indigo-900"
-          >
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
             How We Work & Our Team
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="mt-4 text-slate-500 max-w-2xl mx-auto text-base md:text-lg"
-          >
+          </h2>
+          <div className="w-12 h-0.5 bg-indigo-600 mt-2" />
+          <p className="text-xs sm:text-sm text-slate-500 font-medium max-w-xl mx-auto leading-relaxed pt-1">
             Watch direct behind-the-scenes videos of our manufacturing, design engineering, and the dedicated team crafting your custom kits.
-          </motion.p>
+          </p>
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -78,7 +60,7 @@ const Videos = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-white rounded-none overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 flex flex-col"
+              className="bg-white border border-slate-200 rounded-none overflow-hidden transition-all duration-300 flex flex-col group"
             >
               {/* Direct Video Player (No Thumbnail required) */}
               <div className="h-64 sm:h-72 lg:h-80 relative overflow-hidden bg-slate-900">
@@ -95,13 +77,13 @@ const Videos = () => {
               </div>
 
               {/* Text Info */}
-              <div className="p-6 flex-1 flex flex-col justify-between">
+              <div className="p-6 flex-1 flex flex-col justify-between border-t border-slate-100">
                 <div>
-                  <h3 className="text-xl font-bold tracking-tight text-indigo-950">
+                  <h3 className="text-sm font-black text-slate-900 uppercase tracking-wide" style={{ fontFamily: "'Outfit', sans-serif" }}>
                     {video.title}
                   </h3>
                   {video.description && (
-                    <p className="mt-2 text-sm text-slate-500 line-clamp-3 leading-relaxed">
+                    <p className="mt-2 text-[11px] text-slate-500 font-semibold line-clamp-3 leading-relaxed">
                       {video.description}
                     </p>
                   )}
