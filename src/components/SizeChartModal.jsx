@@ -139,7 +139,7 @@ const SizeChartModal = ({ isOpen, onClose }) => {
 
                 {/* Sizing Table */}
                 <div className="border border-slate-100 rounded-none overflow-hidden shadow-inner bg-slate-50/50">
-                  <div className="overflow-x-auto">
+                  <div className="overflow-auto max-h-[280px]">
                     <table className="w-full text-left border-collapse">
                       <thead>
                         <tr className="bg-slate-900 text-white text-[10px] font-extrabold uppercase tracking-wider">
