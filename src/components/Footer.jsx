@@ -86,7 +86,7 @@ const Footer = () => {
               <li>Shipping directly to USA & Worldwide</li>
               <li className="text-white mt-2">WhatsApp Support:</li>
               <li>
-                <a href="tel:+923039220750" className="hover:text-white transition">+92 303 9200750</a>
+                <a href="tel:+923039200750" className="hover:text-white transition">+92 303 9200750</a>
               </li>
               <li className="text-white mt-2">Email Desk:</li>
               <li>
