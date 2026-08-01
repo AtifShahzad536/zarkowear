@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { imageUrl } from '../services/api';
 import toast from 'react-hot-toast';
+import SizeChartModal from './SizeChartModal';
 
 const defaultProduct = {
   name: 'Premium Team Jersey',
@@ -28,6 +29,7 @@ const relatedProducts = [
 const ProductInquiry = () => {
   const { pathname, state } = useLocation();
   const navigate = useNavigate();
+  const [isSizeChartOpen, setIsSizeChartOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -113,7 +115,16 @@ const ProductInquiry = () => {
 
             {/* Sizes */}
             <div>
-              <h4 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-3">Available Sizes</h4>
+              <div className="flex justify-between items-center mb-3">
+                <h4 className="text-xs font-black text-slate-400 uppercase tracking-widest">Available Sizes</h4>
+                <button
+                  type="button"
+                  onClick={() => setIsSizeChartOpen(true)}
+                  className="text-xs font-bold text-indigo-600 hover:text-indigo-700 hover:underline flex items-center gap-1"
+                >
+                  📏 View Size Chart
+                </button>
+              </div>
               <div className="flex gap-2.5 flex-wrap">
                 {(product.sizes || defaultProduct.sizes).map((size, idx) => (
                   <span
@@ -225,6 +236,7 @@ const ProductInquiry = () => {
         </div>
 
       </div>
+      <SizeChartModal isOpen={isSizeChartOpen} onClose={() => setIsSizeChartOpen(false)} />
     </section>
   );
 };
