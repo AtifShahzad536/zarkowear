@@ -321,28 +321,28 @@ const Home = () => {
         <TopSellingProducts />
 
       {/* Quick Categories */}
-      <section className="bg-white">
-        <div className="max-w-[94%] mx-auto px-4 py-12">
+      <section className="bg-[#F8FAFC] border-b border-slate-200">
+        <div className="max-w-[94%] mx-auto px-4 py-16">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-indigo-500">Shop by sport</p>
-              <h2 className="mt-2 text-3xl font-bold text-indigo-900">Elite kits and accessories for every squad</h2>
-              <p className="mt-2 text-sm text-gray-500">Browse export-grade uniforms, footwear, and gear bundles, or learn more about our <Link to="/about" className="text-indigo-600 hover:underline">sportswear manufacturing</Link>.</p>
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-indigo-600">Shop by sport</p>
+              <h2 className="mt-2 text-3xl sm:text-4xl font-black text-slate-900 uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>Elite kits and accessories for every squad</h2>
+              <p className="mt-2 text-xs sm:text-sm text-slate-500 font-medium">Browse export-grade uniforms, footwear, and gear bundles, or learn more about our <Link to="/about" className="text-indigo-600 hover:underline">sportswear manufacturing</Link>.</p>
             </div>
-            <Link to="/custom" className="inline-flex items-center gap-2 rounded-xl border border-indigo-200 bg-white px-4 py-2 text-sm font-semibold text-indigo-700 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300">
+            <Link to="/custom" className="inline-flex items-center gap-2 rounded-none border border-slate-200 bg-white px-5 py-2.5 text-xs font-bold text-slate-900 shadow-sm transition hover:border-slate-400">
               Build your own collection
-              <FaArrowRight className="text-base" />
+              <FaArrowRight className="text-xs" />
             </Link>
           </div>
 
           <div className="relative mt-8 group">
             {/* Navigation Buttons */}
-            <button className="swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg border border-indigo-100 flex items-center justify-center text-indigo-600 hover:bg-indigo-50 transition-all duration-300 opacity-0 group-hover:opacity-100">
+            <button className="swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-none bg-white shadow-md border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 transition-all duration-300 opacity-0 group-hover:opacity-100">
               <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            <button className="swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg border border-indigo-100 flex items-center justify-center text-indigo-600 hover:bg-indigo-50 transition-all duration-300 opacity-0 group-hover:opacity-100">
+            <button className="swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-none bg-white shadow-md border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 transition-all duration-300 opacity-0 group-hover:opacity-100">
               <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
@@ -379,25 +379,24 @@ const Home = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ delay: i * 0.025, duration: 0.35 }}
-                    whileHover={{ y: -6, scale: 1.03 }}
                     className="h-full"
                   >
                     <Link
                       to={chip.to}
-                      className="group block h-full rounded-2xl border border-indigo-100 bg-white/95 px-4 py-4 text-left shadow-sm transition hover:-translate-y-1.5 hover:border-indigo-200 hover:shadow-lg"
+                      className="group block h-full rounded-none border border-slate-200 bg-white px-4 py-4 text-left transition hover:border-indigo-500 hover:shadow-lg"
                     >
                       <div className="flex items-center justify-between gap-2 h-full">
                         <div className="flex items-center gap-3 flex-1 min-w-0">
-                          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 via-white to-indigo-50 text-indigo-600 flex-shrink-0">
+                          <span className="inline-flex h-10 w-10 items-center justify-center rounded-none bg-slate-50 border border-slate-100 text-indigo-600 flex-shrink-0">
                             <chip.Icon />
                           </span>
                           <div className="min-w-0 flex-1">
-                            <p className="text-sm font-semibold text-indigo-900 truncate">{chip.label}</p>
-                            <p className="text-xs text-gray-500 truncate">{chip.tagline}</p>
+                            <p className="text-xs font-extrabold text-slate-900 uppercase tracking-wide truncate">{chip.label}</p>
+                            <p className="text-[10px] font-semibold text-slate-400 truncate mt-0.5">{chip.tagline}</p>
                           </div>
                         </div>
-                        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-50 text-indigo-500 transition group-hover:bg-indigo-600 group-hover:text-white flex-shrink-0">
-                          <FaArrowRight className="text-xs" />
+                        <span className="flex items-center justify-center flex-shrink-0 text-slate-300 group-hover:text-indigo-600 transition-colors">
+                          <FaArrowRight className="text-xs transform group-hover:translate-x-1 transition-transform" />
                         </span>
                       </div>
                     </Link>
@@ -408,8 +407,8 @@ const Home = () => {
 
             {/* Progress bar */}
             <div className="mt-6 flex justify-center">
-              <div className="w-32 h-1 rounded-full bg-indigo-100">
-                <div className="h-1 rounded-full bg-gradient-to-r from-indigo-500 via-indigo-600 to-blue-500 transition-all duration-300 w-1/3"></div>
+              <div className="w-32 h-0.5 bg-slate-200">
+                <div className="h-0.5 bg-indigo-600 transition-all duration-300 w-1/3"></div>
               </div>
             </div>
           </div>
@@ -418,65 +417,97 @@ const Home = () => {
 
     
 
-      {/* Value Props */}
-      <section className="bg-gradient-to-b from-white via-indigo-50/20 to-white">
-        <div className="max-w-[94%] mx-auto px-4 py-12">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5 }}
-            className="text-center"
-          >
-            <span className="inline-flex items-center justify-center rounded-full border border-indigo-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-500">
-              Why teams choose us
+      {/* Value Props & Stats Redesign */}
+      <section className="bg-white border-b border-slate-200 py-20 sm:py-28">
+        <div className="max-w-[94%] mx-auto px-4">
+          
+          {/* Header Area */}
+          <div className="flex flex-col items-center text-center mb-16 space-y-4">
+            <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-indigo-600 block">
+              Why Teams Choose Us
             </span>
-            <h3 className="mt-3 text-3xl font-bold text-indigo-900">Export-ready craftsmanship from concept to delivery</h3>
-          </motion.div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
+              Export Ready Craftsmanship
+            </h2>
+            <div className="w-16 h-0.5 bg-indigo-600 mt-2" />
+          </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {[{
-              title: 'Export-Grade Quality',
-              copy: 'Durable fabrics, precision stitching, and colorfast sublimation built for elite play.',
-              Icon: FaAward,
-              badge: 'ISO-aligned'
-            }, {
-              title: 'Customizations',
-              copy: 'Logos, names, numbering, and bespoke trims engineered around your club identity.',
-              Icon: FaPalette,
-              badge: 'Brand-matched'
-            }, {
-              title: 'Global Delivery',
-              copy: 'Fast, secure door-to-door shipping across the United States with all customs clearances handled.',
-              Icon: FaGlobeAmericas,
-              badge: 'USA Shipping'
-            }].map(({ title, copy, Icon, badge }, i) => (
-              <motion.div
-                key={title}
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ delay: i * 0.1, duration: 0.45 }}
-                className="relative overflow-hidden rounded-2xl border border-indigo-100 bg-white p-6 shadow-md transition hover:-translate-y-1 hover:shadow-lg"
+          {/* Cards Grid - 4 Columns */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                num: '01',
+                title: 'Export Grade Quality',
+                bullets: ['Heavy GSM fabrics', 'Precision flatlock stitching', 'Colorfast sublimation print']
+              },
+              {
+                num: '02',
+                title: 'Unlimited Customization',
+                bullets: ['Design proofs in 12 hours', 'Names, numbers, & logos', 'Dye-sublimation styling']
+              },
+              {
+                num: '03',
+                title: 'USA & Global Shipping',
+                bullets: ['3-5 Days delivery to USA', 'Customs clearance handled', 'Fully tracked door-to-door']
+              },
+              {
+                num: '04',
+                title: 'Rapid Production',
+                bullets: ['8-12 Days standard turnaround', 'Rush orders accepted', 'Bulk logistics managed']
+              }
+            ].map(({ num, title, bullets }) => (
+              <div
+                key={num}
+                className="relative bg-white border border-slate-200 p-8 flex flex-col justify-between h-72 rounded-none transition-all duration-300 hover:border-indigo-500 group overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-indigo-500/15 opacity-0 transition group-hover:opacity-100" />
-                <div className="relative flex items-start gap-4">
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-100 via-white to-indigo-50 text-indigo-600 text-2xl">
-                    <Icon />
-                  </span>
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <h4 className="font-semibold text-indigo-900 text-lg">{title}</h4>
-                      <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.25em] text-indigo-500">
-                        {badge}
-                      </span>
-                    </div>
-                    <p className="text-sm text-gray-600 leading-6">{copy}</p>
-                  </div>
+                {/* Background Giant Number */}
+                <div className="absolute top-4 right-6 text-7xl font-black text-slate-100 select-none group-hover:text-indigo-50 transition-colors pointer-events-none z-0">
+                  {num}
                 </div>
-              </motion.div>
+
+                <div className="relative z-10 space-y-6">
+                  <h4 className="font-extrabold text-slate-900 text-lg uppercase tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                    {title}
+                  </h4>
+                  <ul className="space-y-2">
+                    {bullets.map((bullet, idx) => (
+                      <li key={idx} className="text-xs text-slate-500 font-bold flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 bg-indigo-600 block shrink-0" />
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="relative z-10 text-xs font-bold text-indigo-600 flex items-center gap-1 group-hover:text-indigo-700 mt-4">
+                  Explore Options <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </div>
             ))}
           </div>
+
+          {/* Thin Horizontal Divider */}
+          <div className="border-t border-slate-200 my-16" />
+
+          {/* Mini Stats Grid - Vertical Dividers, No Cards */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x md:divide-slate-200 text-center">
+            {[
+              { stat: '95%', label: 'Customer Satisfaction' },
+              { stat: '30+', label: 'Countries Served' },
+              { stat: '7-9 Days', label: 'Rapid Turnaround' },
+              { stat: '500+', label: 'Athletic Teams Served' }
+            ].map(({ stat, label }) => (
+              <div key={label} className="px-6 flex flex-col items-center justify-center space-y-1">
+                <span className="text-4xl sm:text-5xl font-black text-slate-900 uppercase tracking-tight block" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                  {stat}
+                </span>
+                <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-slate-400">
+                  {label}
+                </span>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 
