@@ -102,6 +102,52 @@ const homeSeo = {
         contactType: 'customer service',
         availableLanguage: ['English']
       }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'How long does a custom uniform order actually take from first call to delivery?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'A standard customized tailoring order runs about 8 to 12 working days from the moment you approve the final digital design mockup. Global shipping to the USA takes an additional 3 to 5 business days via DHL or FedEx Express.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Is there really no minimum order, even for a single jersey?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Our standard customized runs require a minimum order quantity (MOQ) of 15 pieces per customized design layout. However, we do offer physical custom sampling/mockups for team evaluations before full production starts.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Are Zarko uniforms NFHS-, USA-Wrestling-, and US-Soccer-compliant?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes, all our custom sports uniforms and wrestling singlets are engineered to meet the strict uniform compliance standards (including number sizing, color limits, and logo placement guidelines) set by NFHS, USA Wrestling, US Soccer, and other major governing bodies.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Which sports does Zarko sportswear manufacture, and what fabrics are used?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'As a leading custom sportswear manufacturer, we produce high-performance team uniforms for Soccer/Football, Basketball, Wrestling, Rugby, Cricket, Hockey, Tennis, and Running. We use export-grade fabrics including dry-fit micro-polyester, heavy-duty 4-way stretch spandex, and premium flex fleece blends.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Can I order matching shorts, sideline jackets, warm-ups, and bags in the same design?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Absolutely! We synchronize dye batches and design blueprints across all product types (jerseys, shorts, hoodies, tracksuits, bags) to ensure your entire squad has a cohesive, 100% matching team look.'
+          }
+        }
+      ]
     }
   ]
 };
