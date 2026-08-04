@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -17,8 +17,9 @@ const ChatbotWidget = lazy(() => import('./components/ChatbotWidget'));
 
 function App() {
   const { isLoading, loadingProgress, loadingMessage, loadingSubMessage } = useAppBoot();
-  const [contentLoaded, setContentLoaded] = React.useState(false);
-  const [showSplash, setShowSplash] = React.useState(true);
+  const [contentLoaded, setContentLoaded] = useState(false);
+  const [showSplash, setShowSplash] = useState(false); // start false until we check setting
+  const [splashReady, setSplashReady] = useState(false); // settings loaded?
   const location = useLocation();
 
   const markContentAsLoaded = () => setContentLoaded(true);
@@ -26,12 +27,29 @@ function App() {
   const isBuilderRoute = location.pathname.startsWith('/builder');
   const is3DEditor = /^\/builder\/.+/.test(location.pathname);
 
+  // Fetch global settings to determine if splash is enabled
+  useEffect(() => {
+    const apiBase = (import.meta.env.VITE_API_BASE || '').trim();
+    const endpoint = apiBase ? `${apiBase}/api/home/settings` : '/api/home/settings';
+    fetch(endpoint)
+      .then(res => res.json())
+      .then(data => {
+        setShowSplash(data.splashEnabled !== false);
+        setSplashReady(true);
+      })
+      .catch(() => {
+        // On error, default to showing splash
+        setShowSplash(true);
+        setSplashReady(true);
+      });
+  }, []);
+
   return (
     <ContentLoadedContext.Provider value={{
       markAsLoaded: markContentAsLoaded,
       isContentLoaded: contentLoaded
     }}>
-      {showSplash ? (
+      {!splashReady ? null : showSplash ? (
         <SplashLoading
           progress={loadingProgress}
           onComplete={() => setShowSplash(false)}
