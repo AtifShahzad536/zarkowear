@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from '../features/builder/Navbar';
 import toast from 'react-hot-toast';
 import SeoHead from '../components/SeoHead';
+import MaintenancePage from './MaintenancePage';
 
 // Lazy load builder engine
 const Builder = lazy(() => import('../features/builder/Builder'));
@@ -31,6 +32,7 @@ export const BuilderPage = () => {
     defaultLogos: []
   });
   const [isLoadingConfig, setIsLoadingConfig] = useState(true);
+  const [builderEnabled, setBuilderEnabled] = useState(true);
 
   // Local transition state
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -98,9 +100,11 @@ export const BuilderPage = () => {
     ])
       .then(([data, settings]) => {
         if (settings.customBuilderEnabled === false) {
-          navigate('/');
+          setBuilderEnabled(false);
+          setIsLoadingConfig(false);
           return;
         }
+        setBuilderEnabled(true);
         setConfig({
           dynamicDesigns: data.dynamicDesigns || [],
           defaultPatterns: data.defaultPatterns || [],
@@ -175,6 +179,10 @@ export const BuilderPage = () => {
         </div>
       </div>
     );
+  }
+
+  if (!builderEnabled) {
+    return <MaintenancePage />;
   }
 
   return (

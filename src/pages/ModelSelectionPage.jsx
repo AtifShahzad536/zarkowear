@@ -4,6 +4,7 @@ import { HiArrowRight, HiOutlineCube, HiArrowLeft } from 'react-icons/hi';
 import DesignPreview from '../features/builder/DesignPreview';
 import { useSelector } from 'react-redux';
 import SeoHead from '../components/SeoHead';
+import MaintenancePage from './MaintenancePage';
 
 export const ModelSelectionPage = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ export const ModelSelectionPage = () => {
   
   const [models, setModels] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [builderEnabled, setBuilderEnabled] = useState(true);
   const builderState = useSelector((state) => state.builder);
 
   useEffect(() => {
@@ -26,9 +28,11 @@ export const ModelSelectionPage = () => {
     ])
       .then(([data, settings]) => {
         if (settings.customBuilderEnabled === false) {
-          navigate('/');
+          setBuilderEnabled(false);
+          setLoading(false);
           return;
         }
+        setBuilderEnabled(true);
         let allDesigns = data.dynamicDesigns || [];
         if (categoryParam && categoryParam.toLowerCase() !== 'all') {
           allDesigns = allDesigns.filter(d => 
@@ -67,6 +71,10 @@ export const ModelSelectionPage = () => {
       }
     };
   }, [categoryParam]);
+
+  if (!builderEnabled) {
+    return <MaintenancePage />;
+  }
 
   return (
     <div className="w-full min-h-screen bg-slate-50 font-['Plus_Jakarta_Sans',sans-serif] text-slate-800 py-12 px-6 lg:px-12">
