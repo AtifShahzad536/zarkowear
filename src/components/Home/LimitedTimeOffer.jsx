@@ -25,8 +25,8 @@ const LimitedTimeOffer = () => {
         {/* Text Content */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
+          
           transition={{ duration: 0.6 }}
           className="text-center md:text-left space-y-4"
         >
@@ -50,8 +50,8 @@ const LimitedTimeOffer = () => {
         {/* Product Image */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, x: 0 }}
+          
           transition={{ duration: 0.6, delay: 0.15 }}
           className="flex justify-center md:justify-end"
         >

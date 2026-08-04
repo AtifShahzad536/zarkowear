@@ -60,8 +60,8 @@ const TopSellingProducts = () => {
     <section className="w-full py-12">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        animate={{ opacity: 1, y: 0 }}
+        
         className="max-w-[94%] mx-auto px-4"
       >
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4">
@@ -141,8 +141,8 @@ const TopSellingProducts = () => {
                     <MotionLink
                       to={item.link || '#'}
                       initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
+                      animate={{ opacity: 1, y: 0 }}
+                      
                       transition={{ duration: 0.5, delay: i * 0.05 }}
                       className="group relative overflow-hidden rounded-none shadow-md hover:shadow-2xl transition cursor-pointer hover:-translate-y-1 block"
                     >

@@ -69,7 +69,7 @@ const Custom = () => {
       />
       <section>
         <div className="mx-auto max-w-[94%] px-4 pb-16 pt-12">
-          <motion.header initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.6 }} transition={{ duration: 0.6 }} className="text-center">
+          <motion.header initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}  transition={{ duration: 0.6 }} className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-600">
               Custom manufacturing
             </span>
@@ -84,8 +84,8 @@ const Custom = () => {
 
           <motion.form
             initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
+            animate={{ opacity: 1, y: 0 }}
+            
             transition={{ duration: 0.6 }}
             onSubmit={onSubmit}
             className="mt-12 rounded-2xl border border-indigo-100 bg-white p-8 shadow-md space-y-6"

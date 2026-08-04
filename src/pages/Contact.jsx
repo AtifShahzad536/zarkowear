@@ -62,7 +62,7 @@ const Contact = () => {
       <section className="relative overflow-hidden">
         <div className="absolute inset-x-0 -top-20 h-52 bg-[radial-gradient(circle_at_top,_rgba(79,70,229,0.12),_transparent_60%)]" />
         <div className="relative mx-auto max-w-[94%] px-4 pb-14 pt-10">
-          <motion.header initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.6 }} transition={{ duration: 0.6 }} className="text-center">
+          <motion.header initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}  transition={{ duration: 0.6 }} className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-600">
               USA Support Desk
             </span>
@@ -80,8 +80,8 @@ const Contact = () => {
           <div className="mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
+              animate={{ opacity: 1, x: 0 }}
+              
               transition={{ duration: 0.6 }}
               className="rounded-2xl border border-indigo-100 bg-white/95 p-6 shadow-xl backdrop-blur-sm space-y-4"
             >
@@ -125,8 +125,8 @@ const Contact = () => {
 
             <motion.form
               initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
+              animate={{ opacity: 1, x: 0 }}
+              
               transition={{ duration: 0.6 }}
               onSubmit={onSubmit}
               className="rounded-2xl border border-indigo-100 bg-white/95 p-6 shadow-xl backdrop-blur-sm space-y-4"
@@ -160,8 +160,8 @@ const Contact = () => {
           </div>
           <motion.div
             initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
+            animate={{ opacity: 1, y: 0 }}
+            
             transition={{ duration: 0.6 }}
             className="mt-10 overflow-hidden rounded-2xl border border-indigo-100 shadow-xl"
           >

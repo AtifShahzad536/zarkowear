@@ -210,8 +210,8 @@ const About = () => {
       <section className="mx-auto max-w-[94%] px-4 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          animate={{ opacity: 1, y: 0 }}
+          
           transition={{ duration: 0.6 }}
           className="grid gap-6 md:grid-cols-3"
         >
@@ -230,8 +230,8 @@ const About = () => {
       <section className="mx-auto max-w-[94%] px-4 pb-20">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
+          animate={{ opacity: 1, y: 0 }}
+          
           transition={{ duration: 0.6 }}
           className="text-2xl sm:text-3xl font-bold text-indigo-800 text-center"
         >
@@ -239,8 +239,8 @@ const About = () => {
         </motion.h2>
         <motion.div
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          animate="visible"
+          
           transition={{ staggerChildren: 0.1 }}
           className="mt-10 space-y-6"
         >
@@ -248,8 +248,8 @@ const About = () => {
             <motion.div
               key={milestone.year}
               initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
+              animate={{ opacity: 1, x: 0 }}
+              
               transition={{ duration: 0.5 }}
               className="relative flex flex-col sm:flex-row gap-4 rounded-2xl border border-indigo-100 bg-white/90 p-6 shadow-sm"
             >

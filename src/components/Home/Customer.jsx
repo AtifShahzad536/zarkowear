@@ -33,8 +33,8 @@ const Testimonials = () => {
         <div className="text-center mb-14">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
+            
             transition={{ duration: 0.6 }}
             className="flex items-center justify-center gap-3 text-4xl md:text-5xl font-bold text-[#0A0C16]"
           >
@@ -43,8 +43,8 @@ const Testimonials = () => {
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
+            
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-gray-600 mt-4 text-lg max-w-2xl mx-auto"
           >
@@ -79,8 +79,8 @@ const Testimonials = () => {
               <SwiperSlide key={index} className="h-auto">
                 <motion.article
                   initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  animate={{ opacity: 1, y: 0 }}
+                  
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   whileHover={{ y: -8, scale: 1.01 }}
                   className="relative h-full rounded-none bg-white/95 backdrop-blur px-6 pt-12 pb-8 shadow-[0_16px_45px_-30px_rgba(10,12,22,0.8)] ring-1 ring-gray-150 hover:ring-gray-200 transition"
@@ -88,8 +88,8 @@ const Testimonials = () => {
                   <span className="absolute top-4 left-6 text-5xl text-gray-200">“</span>
                   <motion.div
                     initial={{ opacity: 0, x: 16, y: -16, scale: 0.7 }}
-                    whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-                    viewport={{ once: true }}
+                    animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+                    
                     transition={{ duration: 0.45, delay: 0.1 + index * 0.03 }}
                     className="absolute top-4 right-6 w-12 h-12 rounded-full overflow-hidden shadow-lg ring-4 ring-white bg-white"
                   >
