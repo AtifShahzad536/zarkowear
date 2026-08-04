@@ -68,9 +68,9 @@ const FAQ = () => {
                   onClick={() => toggleIndex(idx)}
                   className="w-full text-left p-6 flex justify-between items-start gap-4"
                 >
-                  <h4 className="text-xs sm:text-sm font-bold text-white tracking-wide leading-snug">
+                  <p className="text-xs sm:text-sm font-bold text-white tracking-wide leading-snug">
                     {item.question}
-                  </h4>
+                  </p>
                   <span className={`text-sm shrink-0 font-bold ${isOpen ? 'text-indigo-400' : 'text-slate-400'}`}>
                     {isOpen ? '✕' : '＋'}
                   </span>

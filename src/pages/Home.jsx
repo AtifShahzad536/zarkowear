@@ -460,9 +460,9 @@ const Home = () => {
                 </div>
 
                 <div className="relative z-10 space-y-6">
-                  <h4 className="font-extrabold text-slate-900 text-lg uppercase tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                  <p className="font-extrabold text-slate-900 text-lg uppercase tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
                     {title}
-                  </h4>
+                  </p>
                   <ul className="space-y-2">
                     {bullets.map((bullet, idx) => (
                       <li key={idx} className="text-xs text-slate-500 font-bold flex items-center gap-2">

@@ -101,7 +101,7 @@ const Testimonials = () => {
                   </blockquote>
                   <div className="flex items-center justify-between gap-4">
                     <div>
-                      <h4 className="text-xl font-semibold text-[#0A0C16]">{t.name}</h4>
+                      <p className="text-xl font-semibold text-[#0A0C16]">{t.name}</p>
                       <p className="text-sm text-gray-500 mt-1">{t.role || 'Sports Partner'}</p>
                     </div>
                     {(t.company || t.location) && (

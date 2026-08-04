@@ -629,7 +629,7 @@ const Hero = () => {
               <FiAward strokeWidth={1.5} />
             </span>
             <div>
-              <h3 className="font-bold text-[#111827] text-[10px] tracking-wider uppercase">PREMIUM QUALITY</h3>
+              <p className="font-bold text-[#111827] text-[10px] tracking-wider uppercase">PREMIUM QUALITY</p>
               <p className="text-[10px] text-gray-500 mt-0.5 leading-tight font-medium">Top quality fabrics for maximum performance.</p>
             </div>
           </motion.div>
