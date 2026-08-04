@@ -1,5 +1,5 @@
 const homeSeo = {
-  title: "Custom Sports Uniforms & Teamwear USA | Zarko Sportswear",
+  title: "Custom Sports Uniforms Manufacturer USA | Zarko Sportswear",
   description:
     "Zarko Sportswear manufactures premium custom sports uniforms and teamwear shipped across the USA. Design jerseys with our 3D custom builder.",
   canonical: "https://www.zarkosportswear.com/",
@@ -12,7 +12,7 @@ const homeSeo = {
   siteName: "Zarko Sportswear",
   locale: "en_US",
   openGraph: {
-    'og:title': 'Custom Sports Uniforms & Teamwear USA | Zarko Sportswear',
+    'og:title': 'Custom Sports Uniforms Manufacturer USA | Zarko Sportswear',
     'og:description':
       'Zarko Sportswear manufactures premium custom sports uniforms and teamwear shipped across the USA. Design jerseys with our 3D custom builder.',
     'og:url': 'https://www.zarkosportswear.com/',
@@ -24,7 +24,7 @@ const homeSeo = {
     'og:locale': 'en_US',
   },
   twitter: {
-    'twitter:title': 'Custom Sports Uniforms & Teamwear USA | Zarko Sportswear',
+    'twitter:title': 'Custom Sports Uniforms Manufacturer USA | Zarko Sportswear',
     'twitter:description': 'Zarko Sportswear manufactures premium custom sports uniforms and teamwear shipped across the USA. Design jerseys with our 3D custom builder.',
     'twitter:card': 'summary_large_image',
     'twitter:image': 'https://www.zarkosportswear.com/og-cover.jpg',
