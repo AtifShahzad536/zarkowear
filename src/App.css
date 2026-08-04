@@ -22,6 +22,12 @@
   will-change: transform;
 }
 
+/* Alias for Tailwind arbitrary: animate-[jersey-float_3.2s_ease-in-out_infinite] */
+@keyframes jersey-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
 /* ── Promote animated elements to their own compositor layer ── */
 .will-change-transform {
   will-change: transform;

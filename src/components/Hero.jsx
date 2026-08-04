@@ -192,6 +192,14 @@ const Hero = () => {
   const spacingX = screenSize === 'mobile' ? 55 : screenSize === 'tablet' ? 110 : 170;
   const spacingY = screenSize === 'mobile' ? 18 : screenSize === 'tablet' ? 30 : 50;
 
+  // Memoized sparkle configs — prevents new objects every render (reflow fix)
+  const sparkleConfigs = useMemo(() => [
+    { xEnd: (0 % 2 === 0 ? 40 : -40) * 0.62, duration: 3.52, left: 'calc(50% - 75px)' },
+    { xEnd: (1 % 2 === 0 ? 40 : -40) * 0.41, duration: 4.18, left: 'calc(50% - 25px)' },
+    { xEnd: (2 % 2 === 0 ? 40 : -40) * 0.77, duration: 3.83, left: 'calc(50% + 25px)' },
+    { xEnd: (3 % 2 === 0 ? 40 : -40) * 0.55, duration: 4.45, left: 'calc(50% + 75px)' },
+  ], []);
+
   return (
     <section className="w-full min-h-[90vh] lg:min-h-screen relative overflow-hidden bg-white flex flex-col justify-between pt-20 pb-8 select-none">
       <style>{`
@@ -256,28 +264,25 @@ const Hero = () => {
         </AnimatePresence>
       </div>
 
-      {/* Floating Sparkle Particles around active product area */}
+      {/* Floating Sparkle Particles around active product area — memoized to prevent reflow */}
       <div className="absolute inset-x-0 bottom-[28%] top-0 overflow-hidden pointer-events-none z-10">
-        {[...Array(4)].map((_, i) => (
+        {sparkleConfigs.map((cfg, i) => (
           <motion.div
             key={i}
             className="absolute w-1.5 h-1.5 rounded-full bg-yellow-400/40 shadow-[0_0_8px_rgba(234,179,8,0.8)]"
             animate={{
               y: [0, -140],
-              x: [0, (i % 2 === 0 ? 40 : -40) * Math.random()],
+              x: [0, cfg.xEnd],
               opacity: [0, 0.8, 0],
               scale: [0.6, 1.3, 0.6]
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: cfg.duration,
               repeat: Infinity,
               delay: i * 0.9,
               ease: "easeOut"
             }}
-            style={{
-              bottom: "22%",
-              left: `calc(50% + ${(i - 1.5) * 50}px)`
-            }}
+            style={{ bottom: '22%', left: cfg.left, willChange: 'transform, opacity' }}
           />
         ))}
       </div>
@@ -460,7 +465,7 @@ const Hero = () => {
             return (
               <motion.div
                 key={prod.id}
-                style={{ zIndex: 10 - Math.abs(diff) }}
+                style={{ zIndex: 10 - Math.abs(diff), willChange: 'transform, opacity' }}
                 animate={{
                   x: xPos,
                   y: yPos,
@@ -496,16 +501,10 @@ const Hero = () => {
                   </div>
                 )}
 
-                <motion.div
-                  animate={isActive ? {
-                    y: [0, -8, 0],
-                  } : {}}
-                  transition={isActive ? {
-                    duration: 3.2,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  } : {}}
-                  className="relative w-36 h-36 sm:w-52 sm:h-52 md:w-[280px] md:h-[280px] flex items-center justify-center"
+                {/* Float animation via CSS — avoids nested motion.div layout thrashing */}
+                <div
+                  className={`relative w-36 h-36 sm:w-52 sm:h-52 md:w-[280px] md:h-[280px] flex items-center justify-center${isActive ? ' animate-[jersey-float_3.2s_ease-in-out_infinite]' : ''}`}
+                  style={{ willChange: isActive ? 'transform' : 'auto' }}
                 >
                   <picture>
                     <source
@@ -523,7 +522,7 @@ const Hero = () => {
                       className="w-full h-full object-contain pointer-events-none"
                     />
                   </picture>
-                </motion.div>
+                </div>
               </motion.div>
             );
           })}
