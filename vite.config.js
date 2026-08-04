@@ -11,15 +11,7 @@ export default defineConfig({
     outDir: 'dist',
     minify: 'terser',
     sourcemap: false,
-    cssCodeSplit: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          react: ['react', 'react-dom', 'react-router-dom'],
-          vendor: ['framer-motion', 'react-icons']
-        }
-      }
-    }
+    cssCodeSplit: true
   },
 
   server: {
