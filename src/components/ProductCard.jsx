@@ -30,7 +30,7 @@ const ProductCard = ({
       className="group relative bg-white rounded-2xl border border-slate-200/80 hover:border-indigo-500/30 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between max-w-[290px] w-full mx-auto"
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: true }}
       transition={{ duration: 0.3 }}
     >
       {/* Top Accent Line on Hover */}

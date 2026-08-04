@@ -58,7 +58,7 @@ const Home = () => {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5 }}
               className="space-y-6 text-left"
             >
@@ -177,7 +177,7 @@ const Home = () => {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <div className="bg-white/5 border border-white/10 p-7 md:p-8 rounded-none shadow-2xl backdrop-blur-md text-left space-y-6">
@@ -371,7 +371,7 @@ const Home = () => {
                 key={sport.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.05 }}
                 className="relative h-96 w-full overflow-hidden rounded-none border border-white/10 border-l-4 border-l-transparent hover:border-l-indigo-500 cursor-pointer group transition-all duration-300"
               >

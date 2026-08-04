@@ -140,7 +140,7 @@ const TopSellingProducts = () => {
                       to={item.link || '#'}
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.3 }}
+                      viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: i * 0.05 }}
                       className="group relative overflow-hidden rounded-none shadow-md hover:shadow-2xl transition cursor-pointer hover:-translate-y-1 block"
                     >

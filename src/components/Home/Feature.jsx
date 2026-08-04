@@ -42,7 +42,7 @@ const FeaturedCategories = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="max-w-[94%] mx-auto mb-8 text-center space-y-2 select-none"
       >
@@ -81,7 +81,7 @@ const FeaturedCategories = () => {
               to={`/${cat.slug}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
               className="bg-white border border-slate-200 border-l-4 border-l-transparent hover:border-l-indigo-600 rounded-none overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300 group"
             >

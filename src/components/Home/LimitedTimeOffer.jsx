@@ -26,7 +26,7 @@ const LimitedTimeOffer = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center md:text-left space-y-4"
         >
@@ -51,7 +51,7 @@ const LimitedTimeOffer = () => {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.15 }}
           className="flex justify-center md:justify-end"
         >
