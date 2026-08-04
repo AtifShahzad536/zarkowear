@@ -644,7 +644,7 @@ const Hero = () => {
               <FiFeather strokeWidth={1.5} />
             </span>
             <div>
-              <h3 className="font-bold text-[#111827] text-[10px] tracking-wider uppercase">LIGHTWEIGHT</h3>
+              <p className="font-bold text-[#111827] text-[10px] tracking-wider uppercase">LIGHTWEIGHT</p>
               <p className="text-[10px] text-gray-500 mt-0.5 leading-tight font-medium">Stay light. Move fast. Win more.</p>
             </div>
           </motion.div>
@@ -659,7 +659,7 @@ const Hero = () => {
               <FiWind strokeWidth={1.5} />
             </span>
             <div>
-              <h3 className="font-bold text-[#111827] text-[10px] tracking-wider uppercase">BREATHABLE</h3>
+              <p className="font-bold text-[#111827] text-[10px] tracking-wider uppercase">BREATHABLE</p>
               <p className="text-[10px] text-gray-500 mt-0.5 leading-tight font-medium">Advanced technology keeps you cool.</p>
             </div>
           </motion.div>
