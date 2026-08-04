@@ -89,11 +89,18 @@ export const BuilderPage = () => {
   useEffect(() => {
     const apiBase = (import.meta.env.VITE_API_BASE || '').trim();
     const endpoint = apiBase ? `${apiBase}/api/builder/config` : '/api/builder/config';
+    const settingsEndpoint = apiBase ? `${apiBase}/api/home/settings` : '/api/home/settings';
 
     setIsLoadingConfig(true);
-    fetch(endpoint)
-      .then(res => res.json())
-      .then(data => {
+    Promise.all([
+      fetch(endpoint).then(res => res.json()),
+      fetch(settingsEndpoint).then(res => res.json())
+    ])
+      .then(([data, settings]) => {
+        if (settings.customBuilderEnabled === false) {
+          navigate('/');
+          return;
+        }
         setConfig({
           dynamicDesigns: data.dynamicDesigns || [],
           defaultPatterns: data.defaultPatterns || [],
@@ -106,7 +113,7 @@ export const BuilderPage = () => {
         toast.error('Failed to load 3D Customizer configuration.');
         setIsLoadingConfig(false);
       });
-  }, []);
+  }, [navigate]);
 
   // Set default back URL
   useEffect(() => {

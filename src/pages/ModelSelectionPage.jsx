@@ -17,11 +17,18 @@ export const ModelSelectionPage = () => {
   useEffect(() => {
     const apiBase = (import.meta.env.VITE_API_BASE || '').trim();
     const endpoint = apiBase ? `${apiBase}/api/builder/config` : '/api/builder/config';
+    const settingsEndpoint = apiBase ? `${apiBase}/api/home/settings` : '/api/home/settings';
 
     setLoading(true);
-    fetch(endpoint)
-      .then(res => res.json())
-      .then(data => {
+    Promise.all([
+      fetch(endpoint).then(res => res.json()),
+      fetch(settingsEndpoint).then(res => res.json())
+    ])
+      .then(([data, settings]) => {
+        if (settings.customBuilderEnabled === false) {
+          navigate('/');
+          return;
+        }
         let allDesigns = data.dynamicDesigns || [];
         if (categoryParam && categoryParam.toLowerCase() !== 'all') {
           allDesigns = allDesigns.filter(d => 
@@ -39,7 +46,7 @@ export const ModelSelectionPage = () => {
         console.error('Error fetching models:', err);
         setLoading(false);
       });
-  }, [categoryParam]);
+  }, [categoryParam, navigate]);
 
   const handleSelectModel = (modelId) => {
     navigate(`/builder/${modelId}`);
