@@ -25,13 +25,9 @@ const ProductCard = ({
   };
 
   return (
-    <motion.div
+    <div
       onClick={handleCardClick}
       className="group relative bg-white rounded-2xl border border-slate-200/80 hover:border-indigo-500/30 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between max-w-[290px] w-full mx-auto"
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3 }}
     >
       {/* Top Accent Line on Hover */}
       <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
@@ -111,7 +107,7 @@ const ProductCard = ({
           </button>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
