@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { getHomeSettings, imageUrl } from '../../services/api';
 import { BsChatDots } from 'react-icons/bs';
 import { FaStar } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
+
 const Testimonials = () => {
+  const containerRef = useRef(null);
+  const isSwiperInView = useInView(containerRef, { once: true, margin: "200px" });
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+
 
   useEffect(() => {
     let alive = true;
@@ -54,7 +58,11 @@ const Testimonials = () => {
           <div className="text-center text-gray-400">No testimonials available yet.</div>
         )}
 
+        <div ref={containerRef}>
         {!loading && !error && list.length > 0 && (
+          !isSwiperInView ? (
+            <div className="h-[400px] w-full bg-gray-50/50 animate-pulse rounded-2xl"></div>
+          ) : (
           <Swiper
             modules={[Autoplay, Pagination]}
             autoplay={{ delay: 5500, disableOnInteraction: false }}
@@ -113,8 +121,10 @@ const Testimonials = () => {
                 </motion.article>
               </SwiperSlide>
             ))}
-          </Swiper>
+            </Swiper>
+          )
         )}
+        </div>
       </div>
     </section>
   );

@@ -1,11 +1,11 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { getTopSelling, imageUrl } from '../../services/api';
 import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -22,6 +22,8 @@ const fallbackItems = [
 ];
 
 const TopSellingProducts = () => {
+  const containerRef = useRef(null);
+  const isSwiperInView = useInView(containerRef, { once: true, margin: "200px" });
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -90,13 +92,12 @@ const TopSellingProducts = () => {
 
         {/* Product Carousel */}
         <div className="relative group">
-          {loading ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-              {[...Array(5)].map((_, i) => (
-                <div key={i} className="relative group overflow-hidden rounded-none shadow-md bg-white/50 backdrop-blur-sm">
-                  <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse" />
-                  <div className="p-4 space-y-3">
-                    <div className="h-6 bg-gray-200 rounded-full w-3/4 animate-pulse"></div>
+          {loading || !isSwiperInView ? (
+            <div ref={containerRef} className="grid grid-cols-2 md:grid-cols-4 gap-4 px-2 min-h-[400px]">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="group relative bg-white border border-slate-100 rounded-2xl overflow-hidden shadow-sm h-full">
+                  <div className="aspect-[4/5] bg-gray-100 animate-pulse relative"></div>
+                  <div className="p-5 relative z-10 bg-white">
                     <div className="space-y-2">
                       <div className="h-3 bg-gray-100 rounded-full animate-pulse"></div>
                       <div className="h-3 bg-gray-100 rounded-full w-5/6 animate-pulse"></div>
@@ -109,6 +110,7 @@ const TopSellingProducts = () => {
               ))}
             </div>
           ) : (
+            <div ref={containerRef}>
             <Swiper
               modules={[Navigation, Autoplay]}
               navigation={{
@@ -188,6 +190,7 @@ const TopSellingProducts = () => {
                 ))}
               </AnimatePresence>
             </Swiper>
+            </div>
           )}
         </div>
 
