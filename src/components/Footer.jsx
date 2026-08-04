@@ -26,7 +26,7 @@ const Footer = () => {
           <div className="flex items-center gap-4">
             <img
               src="/new-logo.png"
-              alt="Zarko Sportswear"
+              alt="Zarko Sportswear" title="Zarko Sportswear"
               className="h-12 w-auto object-contain"
               style={{ filter: 'brightness(0) invert(1)' }}
             />
@@ -152,3 +152,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

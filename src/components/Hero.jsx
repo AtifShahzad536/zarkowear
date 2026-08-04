@@ -513,7 +513,7 @@ const Hero = () => {
                     />
                     <img
                       src={prod.image}
-                      alt={prod.name}
+                      alt={prod.name} title={prod.name}
                       width={280}
                       height={280}
                       loading={isActive ? 'eager' : 'lazy'}

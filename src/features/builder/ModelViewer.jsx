@@ -1807,3 +1807,4 @@ const ModelViewer = memo(({ modelUrl, layersMetadata = {}, meshStates, onMeshesD
 });
 
 export default ModelViewer;
+

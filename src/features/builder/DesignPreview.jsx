@@ -254,3 +254,4 @@ const DesignPreview = ({ modelUrl, mapping, primaryColor, primaryIsGrad, primary
 };
 
 export default DesignPreview;
+

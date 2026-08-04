@@ -148,7 +148,7 @@ const TopSellingProducts = () => {
                     >
                       <motion.img
                         src={imageUrl(item.image, { width: 500 }) || item.image}
-                        alt={item.name}
+                        alt={item.name} title={item.name}
                         width={500}
                         height={500}
                         loading="lazy"

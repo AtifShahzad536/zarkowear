@@ -111,7 +111,7 @@ export default function AdminHome() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-3">
           {heroImages.map((u, i) => (
             <div key={i} className="relative group rounded-xl overflow-hidden ring-1 ring-gray-200 bg-white shadow-sm">
-              <img src={imageUrl(u)} alt="hero" className="w-full h-40 object-cover" />
+              <img src={imageUrl(u)} alt="hero" title="hero" className="w-full h-40 object-cover" />
               <button onClick={() => removeHero(i)} className="absolute top-2 right-2 px-2 py-1 text-xs bg-white/95 border rounded shadow">Remove</button>
             </div>
           ))}
@@ -129,7 +129,7 @@ export default function AdminHome() {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-3">
           {uploads.map((f, i) => (
             <button key={i} onClick={()=>addHero(f.url)} className="rounded-lg overflow-hidden ring-1 ring-gray-200 bg-white hover:shadow">
-              <img src={imageUrl(f.url)} alt={f.name} className="w-full h-24 object-cover" />
+              <img src={imageUrl(f.url)} alt={f.name} title={f.name} className="w-full h-24 object-cover" />
             </button>
           ))}
         </div>
@@ -164,7 +164,7 @@ export default function AdminHome() {
                 <div className="text-xs text-gray-500">Preview:</div>
                 <button onClick={()=>removeTestimonial(i)} className="px-2 py-1 text-xs border rounded">Remove</button>
               </div>
-              {t.image && <img src={imageUrl(t.image)} alt="preview" className="w-full h-28 object-cover rounded-md" />}
+              {t.image && <img src={imageUrl(t.image)} alt="preview" title="preview" className="w-full h-28 object-cover rounded-md" />}
             </div>
           ))}
         </div>
@@ -196,12 +196,12 @@ export default function AdminHome() {
                 <div className="text-xs text-gray-500">Preview:</div>
                 <button onClick={()=>removeTopSelling(i)} className="px-2 py-1 text-xs border rounded">Remove</button>
               </div>
-              {t.image && <img src={imageUrl(t.image)} alt="preview" className="w-full h-32 object-cover rounded-md" />}
+              {t.image && <img src={imageUrl(t.image)} alt="preview" title="preview" className="w-full h-32 object-cover rounded-md" />}
               {/* Quick pick from uploads */}
               <div className="grid grid-cols-6 gap-2 mt-2">
                 {uploads.slice(0,12).map((f, j) => (
                   <button key={j} type="button" onClick={()=>addUploadToTopSelling(j, i)} className="rounded-md overflow-hidden ring-1 ring-gray-200 bg-white">
-                    <img src={imageUrl(f.url)} alt={f.name} className="w-full h-16 object-cover" />
+                    <img src={imageUrl(f.url)} alt={f.name} title={f.name} className="w-full h-16 object-cover" />
                   </button>
                 ))}
               </div>
@@ -216,3 +216,4 @@ export default function AdminHome() {
     </main>
   );
 }
+

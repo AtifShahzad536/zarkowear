@@ -180,7 +180,7 @@ const About = () => {
 
             <div className="space-y-6">
               <div className="overflow-hidden rounded-2xl border border-indigo-100 shadow-xl">
-                <img src="/images/slide1.jpg" alt="Zarko production floor" className="h-full w-full object-cover" />
+                <img src="/images/slide1.jpg" alt="Zarko production floor" title="Zarko production floor" className="h-full w-full object-cover" />
               </div>
               <div className="rounded-2xl border border-indigo-100 bg-white p-6 shadow-sm">
                 <h3 className="text-xl font-semibold text-indigo-900">Leadership Philosophy</h3>
@@ -267,3 +267,4 @@ const About = () => {
 };
 
 export default About;
+

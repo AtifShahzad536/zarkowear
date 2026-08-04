@@ -176,3 +176,4 @@ const SplashLoading = ({ progress = 0, onComplete }) => {
 };
 
 export default SplashLoading;
+

@@ -61,7 +61,7 @@ const LimitedTimeOffer = () => {
           >
             <img
               src="/images/slide1.jpg"
-              alt="Deal Product"
+              alt="Deal Product" title="Deal Product"
               className="w-full h-full object-cover"
             />
             <div className="absolute top-2 left-2 bg-yellow-300 text-indigo-900 text-xs font-bold px-3 py-1 rounded-full shadow-md">

@@ -37,7 +37,7 @@ const ProductCard = ({
         <img
           loading="lazy"
           src={displayImage}
-          alt={name}
+          alt={name} title={name}
           className="h-full w-full object-contain transform group-hover:scale-105 transition-transform duration-500"
           onError={(e) => {
             e.currentTarget.onerror = null;

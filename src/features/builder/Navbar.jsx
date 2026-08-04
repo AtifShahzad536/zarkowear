@@ -132,7 +132,7 @@ const Navbar = ({ onBack, backTo }) => {
       <div className="flex items-center px-4 gap-4 border-r border-gray-100 bg-gray-50/10">
         <div className="flex items-center gap-2.5">
           <Link to="/" className="flex items-center gap-2 hover:scale-105 transition-transform flex-shrink-0">
-            <img src="/new-logo.png" alt="ZSW Logo" className="h-7 w-auto object-contain" />
+            <img src="/new-logo.png" alt="ZSW Logo" title="ZSW Logo" className="h-7 w-auto object-contain" />
             <span className="hidden sm:inline text-[10px] font-bold text-gray-900 uppercase tracking-[0.1em] whitespace-nowrap">
               Zarko <span className="text-indigo-600">Studio</span>
             </span>
@@ -213,3 +213,4 @@ const Navbar = ({ onBack, backTo }) => {
 };
 
 export default Navbar;
+

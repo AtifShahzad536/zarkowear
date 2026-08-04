@@ -122,3 +122,4 @@ if (typeof window !== 'undefined') {
     document.documentElement.style.setProperty('--loading-delay', '0ms');
   }
 }
+

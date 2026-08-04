@@ -95,7 +95,7 @@ const Testimonials = () => {
                   >
                     <img
                       src={imageUrl(t.image || '/uploads/placeholder.jpg')}
-                      alt={t.name}
+                      alt={t.name} title={t.name}
                       className="w-full h-full object-cover"
                     />
                   </motion.div>

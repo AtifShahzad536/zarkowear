@@ -158,7 +158,7 @@ const Home = () => {
                   <motion.img
                     key={activeJerseyIndex}
                     src={JERSEYS[activeJerseyIndex]}
-                    alt="Zarko Custom Premium Sportswear Jersey"
+                    alt="Zarko Custom Premium Sportswear Jersey" title="Zarko Custom Premium Sportswear Jersey"
                     width={280}
                     height={280}
                     initial={{ opacity: 0, scale: 0.92 }}
@@ -256,7 +256,7 @@ const Home = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center justify-items-center max-w-5xl mx-auto">
               {/* USA */}
               <div className="flex items-center gap-2.5">
-                <img src="/images/flags/us.svg" alt="USA" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
+                <img src="/images/flags/us.svg" alt="USA" title="USA" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">USA</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -265,7 +265,7 @@ const Home = () => {
 
               {/* UK */}
               <div className="flex items-center gap-2.5">
-                <img src="/images/flags/gb.svg" alt="UK" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
+                <img src="/images/flags/gb.svg" alt="UK" title="UK" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">UK</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -274,7 +274,7 @@ const Home = () => {
 
               {/* KSA */}
               <div className="flex items-center gap-2.5">
-                <img src="/images/flags/sa.svg" alt="KSA" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
+                <img src="/images/flags/sa.svg" alt="KSA" title="KSA" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">KSA</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -283,7 +283,7 @@ const Home = () => {
 
               {/* Australia */}
               <div className="flex items-center gap-2.5">
-                <img src="/images/flags/au.svg" alt="Australia" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
+                <img src="/images/flags/au.svg" alt="Australia" title="Australia" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">Australia</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -292,7 +292,7 @@ const Home = () => {
 
               {/* Europe */}
               <div className="flex items-center gap-2.5">
-                <img src="/images/flags/eu.svg" alt="Europe" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
+                <img src="/images/flags/eu.svg" alt="Europe" title="Europe" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">Europe</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -301,7 +301,7 @@ const Home = () => {
 
               {/* Italy */}
               <div className="flex items-center gap-2.5">
-                <img src="/images/flags/it.svg" alt="Italy" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
+                <img src="/images/flags/it.svg" alt="Italy" title="Italy" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">Italy</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -379,7 +379,7 @@ const Home = () => {
                   {/* Full size action image */}
                   <img
                     src={sport.image}
-                    alt={sport.title}
+                    alt={sport.title} title={sport.title}
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                     loading="lazy"
                   />
@@ -525,3 +525,4 @@ const Home = () => {
 };
 
 export default Home;
+

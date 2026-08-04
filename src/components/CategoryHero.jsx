@@ -80,3 +80,4 @@ const CategoryHero = ({ title, description, gradient = 'from-blue-600 via-indigo
 );
 
 export default CategoryHero;
+

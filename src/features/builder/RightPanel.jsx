@@ -367,7 +367,7 @@ const MeshProperties = ({
                     className="aspect-square bg-gray-50 border border-gray-100 rounded-none p-1.5 hover:border-blue-600 hover:bg-blue-50 transition-all flex flex-col items-center justify-center gap-1 group cursor-pointer"
                     title={pat.name}
                   >
-                    <img src={pat.imageUrl} alt={pat.name} className="w-full h-full object-contain opacity-60 group-hover:opacity-100 transition-opacity" />
+                    <img src={pat.imageUrl} alt={pat.name} title={pat.name} className="w-full h-full object-contain opacity-60 group-hover:opacity-100 transition-opacity" />
                     <span className="text-[6.5px] font-semibold text-gray-400 uppercase truncate w-full text-center group-hover:text-blue-600">{pat.name}</span>
                   </button>
                 ))}
@@ -1205,7 +1205,7 @@ const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, 
                       onClick={() => addDecal('image', item.name, item.url)}
                       className="aspect-square bg-gray-50 border border-gray-100 rounded-none p-2 hover:border-blue-600 hover:bg-blue-50 transition-all flex flex-col items-center justify-center gap-1 group cursor-pointer"
                     >
-                      <img src={item.url} alt={item.name} className="w-full h-full object-contain opacity-60 group-hover:opacity-100 transition-opacity" />
+                      <img src={item.url} alt={item.name} title={item.name} className="w-full h-full object-contain opacity-60 group-hover:opacity-100 transition-opacity" />
                       <span className="text-[6px] font-semibold text-gray-400 uppercase truncate w-full text-center group-hover:text-blue-600">{item.name}</span>
                     </button>
                   ))}
@@ -1427,3 +1427,4 @@ const RightPanel = (props) => {
 };
 
 export default RightPanel;
+

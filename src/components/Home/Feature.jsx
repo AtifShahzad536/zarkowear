@@ -89,7 +89,7 @@ const FeaturedCategories = () => {
               <div className="w-full h-56 sm:h-72 bg-slate-50/50 flex items-center justify-center p-6 overflow-hidden border-b border-slate-100">
                 <img
                   src={imageUrl(cat.image || '/uploads/placeholder.jpg', { width: 400 })}
-                  alt={cat.name || cat.slug}
+                  alt={cat.name || cat.slug} title={cat.name || cat.slug}
                   width={400}
                   height={400}
                   loading="lazy"

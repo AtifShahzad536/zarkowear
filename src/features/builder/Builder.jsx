@@ -692,7 +692,7 @@ const Builder = memo(({ defaultPatterns, defaultLogos }) => {
                         <div className="w-12 h-12 bg-white border border-gray-200 rounded-lg overflow-hidden shrink-0 flex items-center justify-center">
                           <img
                             src={design.thumbnail || 'https://images.unsplash.com/photo-1551280857-2b9bbe52acf4?w=600&h=400&fit=crop&q=80'}
-                            alt="Custom design"
+                            alt="Custom design" title="Custom design"
                             className="w-full h-full object-cover"
                           />
                         </div>
@@ -861,3 +861,4 @@ const Builder = memo(({ defaultPatterns, defaultLogos }) => {
 });
 
 export default Builder;
+
