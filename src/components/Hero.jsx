@@ -683,9 +683,9 @@ const Hero = () => {
                   <span className="text-[9px] uppercase tracking-[0.25em] font-black text-[#0A0C16]">
                     OFFICIAL FACTORY NOTICE
                   </span>
-                  <h3 className="text-lg font-black tracking-tight uppercase mt-1 text-gray-900">
+                  <p className="text-lg font-black tracking-tight uppercase mt-1 text-gray-900">
                     Manufacturing Terms & Guidelines
-                  </h3>
+                  </p>
                 </div>
                 <button
                   onClick={handleClosePromoModal}
