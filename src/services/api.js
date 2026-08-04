@@ -41,24 +41,51 @@ export async function getCategories() {
   return res.json();
 }
 
-export async function getHome() {
-  const res = await fetch(`${API_BASE}/api/home`);
-  if (!res.ok) throw new Error('Failed to load home');
-  return res.json();
+// ── Request Deduplication Cache ─────────────────────────────────────────────
+// Prevents the same endpoint being fetched multiple times on a single page load.
+// Each entry stores the in-flight Promise so concurrent callers share one request.
+const _cache = new Map();
+
+function cachedFetch(key, fetcher) {
+  if (_cache.has(key)) return _cache.get(key);
+  const promise = fetcher().catch((err) => {
+    _cache.delete(key); // on error, allow retry
+    throw err;
+  });
+  _cache.set(key, promise);
+  return promise;
+}
+
+export function clearApiCache() { _cache.clear(); } // call on route change if needed
+// ────────────────────────────────────────────────────────────────────────────
+
+export function getHome() {
+  return cachedFetch('home', () =>
+    fetch(`${API_BASE}/api/home`).then(res => {
+      if (!res.ok) throw new Error('Failed to load home');
+      return res.json();
+    })
+  );
 }
 
 // Public home settings (heroImages, testimonials, partners, valueProps, topSelling)
-export async function getHomeSettings() {
-  const res = await fetch(`${API_BASE}/api/home/settings`);
-  if (!res.ok) throw new Error('Failed to load home settings');
-  return res.json();
+export function getHomeSettings() {
+  return cachedFetch('homeSettings', () =>
+    fetch(`${API_BASE}/api/home/settings`).then(res => {
+      if (!res.ok) throw new Error('Failed to load home settings');
+      return res.json();
+    })
+  );
 }
 
 // Public: Top Selling from Home settings
-export async function getTopSelling() {
-  const res = await fetch(`${API_BASE}/api/home/topSelling`);
-  if (!res.ok) throw new Error('Failed to load top selling');
-  return res.json(); // { topSelling: [...] }
+export function getTopSelling() {
+  return cachedFetch('topSelling', () =>
+    fetch(`${API_BASE}/api/home/topSelling`).then(res => {
+      if (!res.ok) throw new Error('Failed to load top selling');
+      return res.json();
+    })
+  );
 }
 
 export async function getProduct(id) {
