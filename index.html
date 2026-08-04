@@ -137,7 +137,36 @@
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <!-- App Shell / Skeleton Loader for instant First Contentful Paint (Speed Index boost) -->
+    <style>
+      .app-shell { display: flex; flex-direction: column; min-height: 100vh; background: #fff; font-family: sans-serif; }
+      .shell-header { height: 80px; background: #0A0C16; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; width: 100%; box-sizing: border-box; }
+      .shell-logo { width: 120px; height: 32px; background: rgba(255,255,255,0.1); border-radius: 4px; }
+      .shell-nav { display: flex; gap: 20px; }
+      .shell-nav-item { width: 60px; height: 16px; background: rgba(255,255,255,0.1); border-radius: 4px; }
+      .shell-hero { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; }
+      .shell-hero-title { width: 60%; max-width: 600px; height: 48px; background: #f1f5f9; border-radius: 8px; margin-bottom: 24px; }
+      .shell-hero-subtitle { width: 40%; max-width: 400px; height: 24px; background: #f1f5f9; border-radius: 8px; margin-bottom: 40px; }
+      .shell-hero-image { width: 280px; height: 280px; background: #f8fafc; border-radius: 50%; border: 4px solid #f1f5f9; }
+      .pulse { animation: shell-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+      @keyframes shell-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+      @media (max-width: 768px) { .shell-nav { display: none; } .shell-hero-title { width: 90%; } .shell-hero-subtitle { width: 70%; } }
+    </style>
+    <div class="app-shell pulse">
+      <div class="shell-header">
+        <div class="shell-logo"></div>
+        <div class="shell-nav">
+          <div class="shell-nav-item"></div><div class="shell-nav-item"></div><div class="shell-nav-item"></div>
+        </div>
+      </div>
+      <div class="shell-hero">
+        <div class="shell-hero-title"></div>
+        <div class="shell-hero-subtitle"></div>
+        <div class="shell-hero-image"></div>
+      </div>
+    </div>
+  </div>
   <noscript>
     <div class="noscript-seo">
       <h1>Zarko Sportswear | USA Premium Sportswear Manufacturer</h1>
