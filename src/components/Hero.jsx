@@ -115,20 +115,20 @@ const Hero = () => {
     setShowPopup(false);
   }, [activeIndex]);
 
-  // Responsive screen size helper
+  // Responsive screen size helper — debounced via ResizeObserver (no forced reflow)
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 640) {
-        setScreenSize('mobile');
-      } else if (window.innerWidth < 1024) {
-        setScreenSize('tablet');
-      } else {
-        setScreenSize('desktop');
-      }
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    let rafId;
+    const getSize = (w) => w < 640 ? 'mobile' : w < 1024 ? 'tablet' : 'desktop';
+    // Initial read batched in rAF to avoid paint-blocking layout query
+    rafId = requestAnimationFrame(() => setScreenSize(getSize(window.innerWidth)));
+
+    const observer = new ResizeObserver((entries) => {
+      // ResizeObserver gives us contentRect — no forced reflow
+      const w = entries[0]?.contentRect?.width ?? window.innerWidth;
+      setScreenSize(getSize(w));
+    });
+    observer.observe(document.documentElement);
+    return () => { cancelAnimationFrame(rafId); observer.disconnect(); };
   }, []);
 
   // Autoplay Logic

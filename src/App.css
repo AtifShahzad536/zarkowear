@@ -11,3 +11,18 @@
 .category-name-clip {
   clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
 }
+
+/* ── Performance: Jersey float animation (moved from inline <style> to avoid forced reflow) ── */
+@keyframes floatJersey {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+.float-jersey-anim {
+  animation: floatJersey 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ── Promote animated elements to their own compositor layer ── */
+.will-change-transform {
+  will-change: transform;
+}

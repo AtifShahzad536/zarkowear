@@ -72,16 +72,15 @@ const Header = () => {
   const toggleMobile = () => setMobileOpen((v) => !v);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1024) {
+    const observer = new ResizeObserver((entries) => {
+      const w = entries[0]?.contentRect?.width ?? window.innerWidth;
+      if (w >= 1024) {
         setMobileOpen(false);
         setOpenDropdown(null);
       }
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    });
+    observer.observe(document.documentElement);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {

@@ -159,26 +159,18 @@ const Home = () => {
                     key={activeJerseyIndex}
                     src={JERSEYS[activeJerseyIndex]}
                     alt="Zarko Custom Premium Sportswear Jersey"
-                    initial={{ opacity: 0, scale: 0.9, rotate: -4 }}
-                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                    exit={{ opacity: 0, scale: 0.9, rotate: 4 }}
-                    transition={{ duration: 0.45 }}
-                    // Floating animation + hover lift / slight rotation
-                    className="w-56 h-56 md:w-64 md:h-64 object-contain filter drop-shadow-[0_20px_40px_rgba(79,70,229,0.3)] hover:scale-105 hover:rotate-3 transition duration-300 cursor-pointer select-none"
-                    style={{
-                      animation: 'floatJersey 4s ease-in-out infinite'
-                    }}
+                    width={280}
+                    height={280}
+                    initial={{ opacity: 0, scale: 0.92 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.92 }}
+                    transition={{ duration: 0.35 }}
+                    className="w-56 h-56 md:w-64 md:h-64 object-contain filter drop-shadow-[0_20px_40px_rgba(79,70,229,0.3)] hover:scale-105 transition duration-300 cursor-pointer select-none float-jersey-anim"
                   />
                 </AnimatePresence>
               </div>
 
-              {/* Inject Float Animation styles */}
-              <style>{`
-                @keyframes floatJersey {
-                  0%, 100% { transform: translateY(0px); }
-                  50% { transform: translateY(-10px); }
-                }
-              `}</style>
+
             </motion.div>
 
             {/* RIGHT COLUMN (30%) */}
