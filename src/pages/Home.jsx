@@ -256,7 +256,7 @@ const Home = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center justify-items-center max-w-5xl mx-auto">
               {/* USA */}
               <div className="flex items-center gap-2.5">
-                <img src="https://flagcdn.com/us.svg" alt="USA" className="w-6 h-4 object-cover border border-white/10" />
+                <img src="/images/flags/us.svg" alt="USA" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">USA</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -265,7 +265,7 @@ const Home = () => {
 
               {/* UK */}
               <div className="flex items-center gap-2.5">
-                <img src="https://flagcdn.com/gb.svg" alt="UK" className="w-6 h-4 object-cover border border-white/10" />
+                <img src="/images/flags/gb.svg" alt="UK" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">UK</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -274,7 +274,7 @@ const Home = () => {
 
               {/* KSA */}
               <div className="flex items-center gap-2.5">
-                <img src="https://flagcdn.com/sa.svg" alt="KSA" className="w-6 h-4 object-cover border border-white/10" />
+                <img src="/images/flags/sa.svg" alt="KSA" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">KSA</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -283,7 +283,7 @@ const Home = () => {
 
               {/* Australia */}
               <div className="flex items-center gap-2.5">
-                <img src="https://flagcdn.com/au.svg" alt="Australia" className="w-6 h-4 object-cover border border-white/10" />
+                <img src="/images/flags/au.svg" alt="Australia" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">Australia</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -292,7 +292,7 @@ const Home = () => {
 
               {/* Europe */}
               <div className="flex items-center gap-2.5">
-                <img src="https://flagcdn.com/eu.svg" alt="Europe" className="w-6 h-4 object-cover border border-white/10" />
+                <img src="/images/flags/eu.svg" alt="Europe" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">Europe</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -301,7 +301,7 @@ const Home = () => {
 
               {/* Italy */}
               <div className="flex items-center gap-2.5">
-                <img src="https://flagcdn.com/it.svg" alt="Italy" className="w-6 h-4 object-cover border border-white/10" />
+                <img src="/images/flags/it.svg" alt="Italy" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">Italy</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -346,25 +346,25 @@ const Home = () => {
                 title: 'Football',
                 tagline: 'Professional match kits & gear',
                 to: '/football',
-                image: 'https://tse1.mm.bing.net/th/id/OIP.qldsTaOXu4d4ydvIm_pSvgHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3'
+                image: '/images/sports/football.webp'
               },
               {
                 title: 'Cricket',
                 tagline: 'Premium club uniforms & wear',
                 to: '/cricket',
-                image: 'https://tse1.mm.bing.net/th/id/OIP.Ku4QyU3vRuNvRY89kPwLmwHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3'
+                image: '/images/sports/cricket.webp'
               },
               {
                 title: 'Basketball',
                 tagline: 'Elite sublimated jerseys',
                 to: '/basketball',
-                image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=600&q=80'
+                image: '/images/sports/basketball.webp'
               },
               {
                 title: 'Wrestling',
                 tagline: 'Heavy-duty performance singlets',
                 to: '/wrestling',
-                image: 'https://wallpapercave.com/wp/wp7753115.jpg'
+                image: '/images/sports/wrestling.webp'
               }
             ].map((sport, i) => (
               <motion.div
