@@ -10,7 +10,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     minify: 'terser',
-    sourcemap: false,
+    sourcemap: true,
     cssCodeSplit: true
   },
 

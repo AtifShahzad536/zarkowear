@@ -124,7 +124,7 @@ const SeoHead = ({
 
     // Performance and security meta tags
     metaRecords.push(ensureMeta('http-equiv', 'X-UA-Compatible', 'IE=edge'));
-    metaRecords.push(ensureMeta('http-equiv', 'Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; media-src 'self' https: data: blob:; connect-src 'self' https: http://localhost:* ws://localhost:* http://127.0.0.1:* ws://127.0.0.1:* blob:;"));
+    metaRecords.push(ensureMeta('http-equiv', 'Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; media-src 'self' https: data: blob:; connect-src 'self' https: http://localhost:* ws://localhost:* http://127.0.0.1:* ws://127.0.0.1:* blob:;"));
     metaRecords.push(ensureMeta('name', 'format-detection', 'telephone=no'));
 
     // Preload critical resources
