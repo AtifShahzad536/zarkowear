@@ -131,16 +131,41 @@ export async function adminLogin({ email, password }) {
   return data;
 }
 
-// Convert backend-relative image paths to absolute URLs for the frontend origin
-export function imageUrl(path) {
+// ─── Image Optimization ──────────────────────────────────────────────────────
+// Converts backend-relative paths to absolute URLs.
+// For Cloudinary URLs, automatically injects WebP + resize transformations.
+// Usage: imageUrl('/uploads/foo.jpg', { width: 400 })
+// ─────────────────────────────────────────────────────────────────────────────
+export function imageUrl(path, { width = 800, quality = 'auto' } = {}) {
   if (!path) return '';
-  if (/^https?:\/\//i.test(path)) return path; // already absolute
-  let p = String(path).replace(/\\/g, '/');
-  if (p[0] !== '/') p = '/' + p;
-  // Only prefix backend origin for known upload paths
-  if (p.startsWith('/uploads/') || p.startsWith('/service/uploads/')) {
-    return `${API_BASE}${p}`;
+
+  let url = String(path).replace(/\\/g, '/');
+
+  // Resolve relative backend paths to absolute
+  if (!/^https?:\/\//i.test(url)) {
+    if (url[0] !== '/') url = '/' + url;
+    if (url.startsWith('/uploads/') || url.startsWith('/service/uploads/')) {
+      url = `${API_BASE}${url}`;
+    } else {
+      return url; // frontend public asset – return as-is
+    }
   }
-  // Otherwise, treat as frontend public asset path
-  return p;
+
+  // ── Cloudinary transformation injection ──────────────────────────────────
+  // Cloudinary URLs look like: https://res.cloudinary.com/<cloud>/image/upload/<transforms>/...
+  // We insert f_webp,w_{width},q_{quality},c_limit before the version/path segment.
+  const cloudinaryUploadRe = /^(https:\/\/res\.cloudinary\.com\/[^/]+\/image\/upload\/)(?:([^/]+)\/)?(.*)/;
+  const match = url.match(cloudinaryUploadRe);
+  if (match) {
+    const [, base, existingTransforms, rest] = match;
+    // Don't double-apply transforms
+    if (existingTransforms && existingTransforms.startsWith('f_')) {
+      return url; // already transformed
+    }
+    const transforms = `f_webp,w_${width},q_${quality},c_limit`;
+    const kept = existingTransforms ? `${existingTransforms}/` : '';
+    return `${base}${transforms}/${kept}${rest}`;
+  }
+
+  return url;
 }

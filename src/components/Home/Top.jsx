@@ -145,8 +145,12 @@ const TopSellingProducts = () => {
                       className="group relative overflow-hidden rounded-none shadow-md hover:shadow-2xl transition cursor-pointer hover:-translate-y-1 block"
                     >
                       <motion.img
-                        src={imageUrl(item.image) || item.image}
+                        src={imageUrl(item.image, { width: 500 }) || item.image}
                         alt={item.name}
+                        width={500}
+                        height={500}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-80 object-contain bg-white transform group-hover:scale-110 transition duration-700 ease-out"
                         onError={(e) => {
                           e.target.src = '/images/placeholder.jpg';

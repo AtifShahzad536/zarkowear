@@ -507,11 +507,22 @@ const Hero = () => {
                   } : {}}
                   className="relative w-36 h-36 sm:w-52 sm:h-52 md:w-[280px] md:h-[280px] flex items-center justify-center"
                 >
-                  <img
-                    src={prod.image}
-                    alt={prod.name}
-                    className="w-full h-full object-contain pointer-events-none"
-                  />
+                  <picture>
+                    <source
+                      srcSet={prod.image.replace(/\.(png|jpg|jpeg)$/i, '.webp')}
+                      type="image/webp"
+                    />
+                    <img
+                      src={prod.image}
+                      alt={prod.name}
+                      width={280}
+                      height={280}
+                      loading={isActive ? 'eager' : 'lazy'}
+                      fetchpriority={isActive ? 'high' : 'low'}
+                      decoding={isActive ? 'sync' : 'async'}
+                      className="w-full h-full object-contain pointer-events-none"
+                    />
+                  </picture>
                 </motion.div>
               </motion.div>
             );
