@@ -44,6 +44,127 @@ const Home = () => {
 
       <Hero />
 
+      {/* Quick Categories Redesign (Option 1) */}
+      <section className="bg-[#0A0C16] text-white border-b border-white/5 py-20 sm:py-28 relative overflow-hidden">
+        {/* Background Glow */}
+        <div className="absolute top-[20%] left-[50%] -translate-x-1/2 w-[600px] h-[300px] bg-indigo-900/10 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="max-w-[94%] mx-auto px-4 relative z-10">
+          
+          {/* Header area */}
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-indigo-400">Shop by sport</p>
+              <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                Elite kits and accessories for every squad
+              </h2>
+              <p className="mt-2 text-xs sm:text-sm text-slate-400 max-w-xl leading-relaxed">
+                Browse export-grade uniforms and gear packages optimized for professional club play, or customize your designs.
+              </p>
+            </div>
+            <Link 
+              to="/custom" 
+              className="inline-flex items-center gap-2 rounded-none border border-white/10 bg-white/5 hover:bg-white/10 px-6 py-3 text-xs font-bold text-white transition-all uppercase tracking-wider shrink-0"
+            >
+              Build your own collection →
+            </Link>
+          </div>
+
+          {/* Option 1 Sports Grid - 4 Columns */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: 'Football',
+                tagline: 'Professional match kits & gear',
+                to: '/football',
+                image: '/images/sports/football.webp'
+              },
+              {
+                title: 'Cricket',
+                tagline: 'Premium club uniforms & wear',
+                to: '/cricket',
+                image: '/images/sports/cricket.webp'
+              },
+              {
+                title: 'Basketball',
+                tagline: 'Elite sublimated jerseys',
+                to: '/basketball',
+                image: '/images/sports/basketball.webp'
+              },
+              {
+                title: 'Wrestling',
+                tagline: 'Heavy-duty performance singlets',
+                to: '/wrestling',
+                image: '/images/sports/wrestling.webp'
+              },
+              {
+                title: 'Softball',
+                tagline: 'Custom jerseys & team apparel',
+                to: '/softball',
+                image: '/images/sports/softball.webp'
+              },
+              {
+                title: 'Soccer',
+                tagline: 'Performance soccer kits',
+                to: '/soccer',
+                image: '/images/sports/soccer.webp'
+              },
+              {
+                title: 'Volleyball',
+                tagline: 'Elite volleyball uniforms',
+                to: '/volleyball',
+                image: '/images/sports/volleyball.webp'
+              },
+              {
+                title: 'Ice Hockey',
+                tagline: 'Durable pro hockey jerseys',
+                to: '/ice-hockey',
+                image: '/images/sports/ice-hockey.webp'
+              }
+            ].map((sport, i) => (
+              <motion.div
+                key={sport.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                
+                transition={{ duration: 0.45, delay: i * 0.05 }}
+                className="relative h-96 w-full overflow-hidden rounded-none border border-white/10 border-l-4 border-l-transparent hover:border-l-indigo-500 cursor-pointer group transition-all duration-300"
+              >
+                <Link to={sport.to} className="block w-full h-full">
+                  {/* Full size action image */}
+                  <img
+                    src={sport.image}
+                    alt={sport.title} title={sport.title}
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholder.jpg"; }}
+                  />
+                  
+                  {/* Dark overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-90 transition-all duration-500 z-10" />
+
+                  {/* White Typography inside bottom card */}
+                  <div className="absolute inset-0 z-20 flex flex-col justify-end p-6">
+                    <div>
+                      <h3 className="text-xl font-black text-white uppercase tracking-wider drop-shadow-md" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                        {sport.title}
+                      </h3>
+                      <p className="text-[11px] text-slate-300 font-semibold leading-relaxed mt-2 opacity-80 max-h-0 group-hover:max-h-16 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
+                        {sport.tagline}
+                      </p>
+                    </div>
+                    <div className="pt-4 text-xs font-bold text-indigo-400 group-hover:text-indigo-300 flex items-center gap-1">
+                      Explore <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+
       <FeaturedCategories />
       {/* Redesigned Premium Teamwear Section */}
       <section className="relative overflow-hidden bg-[#0A0C16] text-white py-16 sm:py-24">
@@ -256,7 +377,7 @@ const Home = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center justify-items-center max-w-5xl mx-auto">
               {/* USA */}
               <div className="flex items-center gap-2.5">
-                <img src="/images/flags/us.svg" alt="USA" title="USA" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
+                <img src="/images/flags/us.svg" alt="USA" title="USA" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholder.jpg"; }} />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">USA</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -265,7 +386,7 @@ const Home = () => {
 
               {/* UK */}
               <div className="flex items-center gap-2.5">
-                <img src="/images/flags/gb.svg" alt="UK" title="UK" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
+                <img src="/images/flags/gb.svg" alt="UK" title="UK" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholder.jpg"; }} />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">UK</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -274,7 +395,7 @@ const Home = () => {
 
               {/* KSA */}
               <div className="flex items-center gap-2.5">
-                <img src="/images/flags/sa.svg" alt="KSA" title="KSA" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
+                <img src="/images/flags/sa.svg" alt="KSA" title="KSA" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholder.jpg"; }} />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">KSA</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -283,7 +404,7 @@ const Home = () => {
 
               {/* Australia */}
               <div className="flex items-center gap-2.5">
-                <img src="/images/flags/au.svg" alt="Australia" title="Australia" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
+                <img src="/images/flags/au.svg" alt="Australia" title="Australia" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholder.jpg"; }} />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">Australia</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -292,7 +413,7 @@ const Home = () => {
 
               {/* Europe */}
               <div className="flex items-center gap-2.5">
-                <img src="/images/flags/eu.svg" alt="Europe" title="Europe" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
+                <img src="/images/flags/eu.svg" alt="Europe" title="Europe" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholder.jpg"; }} />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">Europe</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -301,7 +422,7 @@ const Home = () => {
 
               {/* Italy */}
               <div className="flex items-center gap-2.5">
-                <img src="/images/flags/it.svg" alt="Italy" title="Italy" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" />
+                <img src="/images/flags/it.svg" alt="Italy" title="Italy" className="w-6 h-4 object-cover border border-white/10" width={24} height={16} loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholder.jpg"; }} />
                 <div className="text-left">
                   <span className="text-[10px] font-extrabold text-white uppercase tracking-wider">Italy</span>
                   <span className="text-[8px] text-gray-400 block font-semibold leading-none mt-0.5">Leagues</span>
@@ -313,102 +434,7 @@ const Home = () => {
       </section>
         <TopSellingProducts />
 
-      {/* Quick Categories Redesign (Option 1) */}
-      <section className="bg-[#0A0C16] text-white border-b border-white/5 py-20 sm:py-28 relative overflow-hidden">
-        {/* Background Glow */}
-        <div className="absolute top-[20%] left-[50%] -translate-x-1/2 w-[600px] h-[300px] bg-indigo-900/10 rounded-full blur-[120px] pointer-events-none" />
-
-        <div className="max-w-[94%] mx-auto px-4 relative z-10">
-          
-          {/* Header area */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
-            <div>
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-indigo-400">Shop by sport</p>
-              <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                Elite kits and accessories for every squad
-              </h2>
-              <p className="mt-2 text-xs sm:text-sm text-slate-400 max-w-xl leading-relaxed">
-                Browse export-grade uniforms and gear packages optimized for professional club play, or customize your designs.
-              </p>
-            </div>
-            <Link 
-              to="/custom" 
-              className="inline-flex items-center gap-2 rounded-none border border-white/10 bg-white/5 hover:bg-white/10 px-6 py-3 text-xs font-bold text-white transition-all uppercase tracking-wider shrink-0"
-            >
-              Build your own collection →
-            </Link>
-          </div>
-
-          {/* Option 1 Sports Grid - 4 Columns */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                title: 'Football',
-                tagline: 'Professional match kits & gear',
-                to: '/football',
-                image: '/images/sports/football.webp'
-              },
-              {
-                title: 'Cricket',
-                tagline: 'Premium club uniforms & wear',
-                to: '/cricket',
-                image: '/images/sports/cricket.webp'
-              },
-              {
-                title: 'Basketball',
-                tagline: 'Elite sublimated jerseys',
-                to: '/basketball',
-                image: '/images/sports/basketball.webp'
-              },
-              {
-                title: 'Wrestling',
-                tagline: 'Heavy-duty performance singlets',
-                to: '/wrestling',
-                image: '/images/sports/wrestling.webp'
-              }
-            ].map((sport, i) => (
-              <motion.div
-                key={sport.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                
-                transition={{ duration: 0.45, delay: i * 0.05 }}
-                className="relative h-96 w-full overflow-hidden rounded-none border border-white/10 border-l-4 border-l-transparent hover:border-l-indigo-500 cursor-pointer group transition-all duration-300"
-              >
-                <Link to={sport.to} className="block w-full h-full">
-                  {/* Full size action image */}
-                  <img
-                    src={sport.image}
-                    alt={sport.title} title={sport.title}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                    loading="lazy"
-                  />
-                  
-                  {/* Dark overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-90 transition-all duration-500 z-10" />
-
-                  {/* White Typography inside bottom card */}
-                  <div className="absolute inset-0 z-20 flex flex-col justify-end p-6">
-                    <div>
-                      <h3 className="text-xl font-black text-white uppercase tracking-wider drop-shadow-md" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                        {sport.title}
-                      </h3>
-                      <p className="text-[11px] text-slate-300 font-semibold leading-relaxed mt-2 opacity-80 max-h-0 group-hover:max-h-16 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
-                        {sport.tagline}
-                      </p>
-                    </div>
-                    <div className="pt-4 text-xs font-bold text-indigo-400 group-hover:text-indigo-300 flex items-center gap-1">
-                      Explore <span className="group-hover:translate-x-1 transition-transform">→</span>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
+      
     
 
       {/* Value Props & Stats Redesign */}
@@ -525,4 +551,5 @@ const Home = () => {
 };
 
 export default Home;
+
 
