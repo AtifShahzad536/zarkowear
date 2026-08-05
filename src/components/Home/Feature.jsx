@@ -44,22 +44,22 @@ const FeaturedCategories = () => {
         animate={{ opacity: 1, y: 0 }}
         
         transition={{ duration: 0.5 }}
-        className="max-w-[94%] mx-auto mb-8 text-center space-y-2 select-none"
+        className="max-w-[94%] xl:max-w-7xl 2xl:max-w-[1440px] mx-auto mb-8 text-center space-y-2 select-none"
       >
-        <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-[#0A0C16] block">
+        <span className="text-[clamp(10px,0.8vw,12px)] uppercase tracking-[0.25em] font-extrabold text-[#0A0C16] block">
           Tailored Sportswear
         </span>
-        <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-gray-900 uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
+        <h2 className="text-[clamp(24px,2.5vw,36px)] font-black tracking-tight text-gray-900 uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
           Explore Sports Categories
         </h2>
         <div className="w-12 h-1 bg-[#0A0C16] mx-auto mt-2" />
-        <p className="text-xs sm:text-sm text-gray-500 font-medium pt-2">
+        <p className="text-[clamp(12px,1vw,16px)] text-gray-500 font-medium pt-2">
           Discover our export-grade categories or customize your kit below.
         </p>
       </motion.div>
 
       {/* Category Grid */}
-      <div className="max-w-[94%] mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 px-2 sm:px-0">
+      <div className="max-w-[94%] xl:max-w-7xl 2xl:max-w-[1440px] mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 px-2 sm:px-0">
         {loading ? (
           // Show skeleton loaders when loading
           Array.from({ length: 4 }).map((_, index) => (
@@ -86,7 +86,7 @@ const FeaturedCategories = () => {
               className="bg-white border border-slate-200 border-l-4 border-l-transparent hover:border-l-indigo-600 rounded-none overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300 group"
             >
               {/* Image Area - 70% height equivalent */}
-              <div className="w-full h-56 sm:h-72 bg-slate-50/50 flex items-center justify-center p-6 overflow-hidden border-b border-slate-100">
+              <div className="w-full h-[clamp(224px,20vw,320px)] bg-slate-50/50 flex items-center justify-center p-6 overflow-hidden border-b border-slate-100">
                 <img
                   src={imageUrl(cat.image || '/uploads/placeholder.jpg', { width: 400 })}
                   alt={cat.name || cat.slug} title={cat.name || cat.slug}
@@ -101,14 +101,14 @@ const FeaturedCategories = () => {
               {/* Title & Info Area - 30% height */}
               <div className="p-5 flex-1 flex flex-col justify-between space-y-2">
                 <div>
-                  <h3 className="text-sm font-black tracking-tight text-slate-900 uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                  <h3 className="text-[clamp(14px,1.2vw,18px)] font-black tracking-tight text-slate-900 uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
                     {cat.name || cat.slug}
                   </h3>
-                  <p className="text-[11px] text-slate-500 font-medium leading-relaxed mt-1">
+                  <p className="text-[clamp(11px,0.9vw,14px)] text-slate-500 font-medium leading-relaxed mt-1">
                     {cat.description || `Discover premium ${cat.name || cat.slug} with export-grade fabrics and custom options.`}
                   </p>
                 </div>
-                <div className="pt-2 text-[11px] font-bold text-indigo-600 group-hover:text-indigo-700 flex items-center gap-1">
+                <div className="pt-2 text-[clamp(11px,0.9vw,13px)] font-bold text-indigo-600 group-hover:text-indigo-700 flex items-center gap-1">
                   Explore <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </div>
               </div>

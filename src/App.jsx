@@ -29,6 +29,13 @@ function App() {
 
   // Fetch global settings to determine if splash is enabled
   useEffect(() => {
+    // Disable splash for non-builder routes to drastically improve LCP (Largest Contentful Paint)
+    if (!isBuilderRoute) {
+      setSplashReady(true);
+      setShowSplash(false);
+      return;
+    }
+
     const apiBase = (import.meta.env.VITE_API_BASE || '').trim();
     const endpoint = apiBase ? `${apiBase}/api/home/settings` : '/api/home/settings';
     fetch(endpoint)
@@ -42,7 +49,7 @@ function App() {
         setShowSplash(true);
         setSplashReady(true);
       });
-  }, []);
+  }, [isBuilderRoute]);
 
   return (
     <ContentLoadedContext.Provider value={{

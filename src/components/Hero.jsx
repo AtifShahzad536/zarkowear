@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FaChevronLeft, 
+import {
+  FaChevronLeft,
   FaChevronRight,
-  FaFootballBall, 
+  FaFootballBall,
   FaBasketballBall,
   FaRunning,
   FaInstagram,
@@ -230,7 +230,7 @@ const Hero = () => {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Glow behind center */}
         <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[300px] md:w-[550px] h-[90px] bg-slate-50/60 blur-[75px] rounded-full" />
-        
+
         {/* Linear gradient light ray beams forming V shape */}
         <div className="absolute top-0 bottom-[20%] left-1/2 -translate-x-1/2 w-[600px] h-full">
           {/* Left angled ray */}
@@ -257,12 +257,12 @@ const Hero = () => {
             className="flex items-center select-none"
           >
             {/* Step Circle */}
-            <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full border border-black text-black flex items-center justify-center text-[7px] sm:text-[9px] font-semibold mr-1.5 sm:mr-2.5 flex-shrink-0">
+            <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full border border-black text-black flex items-center justify-center text-[clamp(7px,0.8vw,10px)] font-semibold mr-1.5 sm:mr-2.5 flex-shrink-0">
               {currentStepIndex + 1}
             </span>
-            
+
             {/* Step Title Label */}
-            <span className="text-[7.2px] sm:text-[9px] uppercase tracking-wide sm:tracking-wider font-medium text-black whitespace-nowrap">
+            <span className="text-[clamp(7px,0.8vw,11px)] uppercase tracking-wide sm:tracking-wider font-medium text-black whitespace-nowrap">
               {STEPS[currentStepIndex]}
             </span>
           </motion.div>
@@ -293,24 +293,23 @@ const Hero = () => {
       </div>
 
       {/* Absolute edge arrows next to screen border for clean placement */}
-      <button 
+      <button
         onClick={handlePrev}
         className="absolute left-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full border border-gray-150 bg-white/80 hover:bg-white text-gray-500 hover:text-gray-800 transition active:scale-95 shadow-md flex items-center justify-center"
         aria-label="Previous product"
       >
         <FaChevronLeft className="text-xs" />
       </button>
-      
+
       {/* Top-Left controls: Vertical action toolbar (Info + Builder + Contact) */}
       <div className="absolute left-8 top-24 z-30 flex flex-col gap-3">
         {/* Specs Details Button */}
         <button
           onClick={() => setShowPopup(!showPopup)}
-          className={`w-11 h-11 rounded-full border flex items-center justify-center transition active:scale-95 shadow-md hover:shadow-lg cursor-pointer ${
-            showPopup 
-              ? 'bg-[#0A0C16] text-white border-[#0A0C16]' 
+          className={`w-11 h-11 rounded-full border flex items-center justify-center transition active:scale-95 shadow-md hover:shadow-lg cursor-pointer ${showPopup
+              ? 'bg-[#0A0C16] text-white border-[#0A0C16]'
               : 'bg-white text-gray-500 hover:text-[#0A0C16] border-gray-150'
-          }`}
+            }`}
           title="Product Specifications"
         >
           <FiInfo className="text-sm" />
@@ -353,14 +352,14 @@ const Hero = () => {
                       {activeProduct.name}
                     </h4>
                   </div>
-                  <button 
+                  <button
                     onClick={() => setShowPopup(false)}
                     className="w-6 h-6 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-400 hover:text-gray-700 transition"
                   >
                     ✕
                   </button>
                 </div>
-                
+
                 <p className="text-[10px] text-gray-500 leading-relaxed font-medium">
                   {activeProduct.description}
                 </p>
@@ -369,7 +368,7 @@ const Hero = () => {
                   <span className="text-[8px] uppercase tracking-wider font-extrabold text-gray-400 block mb-2">
                     SPECIFICATIONS
                   </span>
-                  
+
                   {/* Premium Specs Grid */}
                   <div className="grid grid-cols-2 gap-2 text-[9px] font-medium text-gray-700">
                     <div className="bg-slate-50 p-2 rounded">
@@ -407,7 +406,7 @@ const Hero = () => {
       </div>
 
       {/* Right margin controls: Next Arrow */}
-      <button 
+      <button
         onClick={handleNext}
         className="absolute right-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full border border-gray-150 bg-white/80 hover:bg-white text-gray-500 hover:text-gray-800 transition active:scale-95 shadow-md flex items-center justify-center"
         aria-label="Next product"
@@ -485,16 +484,15 @@ const Hero = () => {
                   mass: 0.8
                 }}
                 onClick={() => handleCategorySelect(idx)}
-                className={`absolute cursor-pointer select-none origin-bottom filter ${
-                  isActive ? 'pointer-events-auto' : 'pointer-events-auto hover:opacity-85'
-                }`}
+                className={`absolute cursor-pointer select-none origin-bottom filter ${isActive ? 'pointer-events-auto' : 'pointer-events-auto hover:opacity-85'
+                  }`}
               >
                 {/* Energy Rays & Lightning Effects directly emanating from the active dress */}
                 {isActive && (
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none scale-110">
                     {/* Pulsing Backlight */}
                     <div className="absolute w-44 h-44 rounded-full bg-indigo-500/10 blur-xl animate-pulse" />
-                    
+
                     {/* Pulsing Energy/Lightning Rings */}
                     <div className="absolute w-40 h-40 rounded-full border border-indigo-500/20 animate-[ping_2.5s_cubic-bezier(0,0,0.2,1)_infinite]" />
                     <div className="absolute w-40 h-40 rounded-full border border-yellow-400/15 animate-[ping_3.5s_cubic-bezier(0,0,0.2,1)_infinite_0.7s]" />
@@ -508,7 +506,7 @@ const Hero = () => {
 
                 {/* Float animation via CSS — avoids nested motion.div layout thrashing */}
                 <div
-                  className={`relative w-36 h-36 sm:w-52 sm:h-52 md:w-[280px] md:h-[280px] flex items-center justify-center${isActive ? ' animate-[jersey-float_3.2s_ease-in-out_infinite]' : ''}`}
+                  className={`relative w-[clamp(144px,25vw,360px)] h-[clamp(144px,25vw,360px)] flex items-center justify-center${isActive ? ' animate-[jersey-float_3.2s_ease-in-out_infinite]' : ''}`}
                   style={{ willChange: isActive ? 'transform' : 'auto' }}
                 >
                   <picture>
@@ -521,9 +519,9 @@ const Hero = () => {
                       alt={prod.name} title={prod.name}
                       width={280}
                       height={280}
-                      loading={isActive ? 'eager' : 'lazy'}
-                      fetchpriority={isActive ? 'high' : 'low'}
-                      decoding={isActive ? 'sync' : 'async'}
+                      loading="eager"
+                      fetchpriority={isActive ? 'high' : 'auto'}
+                      decoding="sync"
                       className="w-full h-full object-contain pointer-events-none"
                     />
                   </picture>
@@ -544,10 +542,10 @@ const Hero = () => {
               transition={{ duration: 0.25 }}
               className="space-y-0.5"
             >
-              <span className="text-[9px] font-bold uppercase tracking-wider text-[#0A0C16] bg-indigo-50 px-2 py-0.5 rounded-full inline-block">
+              <span className="text-[clamp(9px,0.8vw,12px)] font-bold uppercase tracking-wider text-[#0A0C16] bg-indigo-50 px-2 py-0.5 rounded-full inline-block">
                 {activeProduct.tagline}
               </span>
-              <h3 className="text-base sm:text-lg font-extrabold text-[#111827]">
+              <h3 className="text-[clamp(16px,1.5vw,24px)] font-extrabold text-[#111827]">
                 {activeProduct.name}
               </h3>
             </motion.div>
@@ -564,11 +562,10 @@ const Hero = () => {
             <button
               key={prod.id}
               onClick={() => handleCategorySelect(idx)}
-              className={`h-1 rounded-full transition-all duration-300 relative flex items-center justify-center ${
-                isSelected 
-                  ? 'w-8 bg-[#0A0C16]' 
+              className={`h-1 rounded-full transition-all duration-300 relative flex items-center justify-center ${isSelected
+                  ? 'w-8 bg-[#0A0C16]'
                   : 'w-3.5 bg-gray-200 hover:bg-gray-300'
-              }`}
+                }`}
               aria-label={`Select ${prod.category}`}
             >
               <span className="absolute bottom-5 text-[9px] font-bold text-gray-800 bg-white border border-gray-150 px-2 py-0.5 rounded shadow-sm opacity-0 hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
@@ -582,17 +579,17 @@ const Hero = () => {
       {/* 3. Bottom Section: Copywriting (Bottom-Left) and Features (Bottom-Right) in a clean split layout */}
       <div className="max-w-[94%] mx-auto px-8 w-full flex flex-col md:flex-row justify-between items-end gap-8 z-20 mt-10 pt-4 border-t border-gray-100">
         {/* Bottom-Left: Copywriting */}
-        <div className="text-left space-y-2 max-w-sm">
+        <div className="text-left space-y-2 max-w-sm xl:max-w-xl">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="space-y-0.5"
           >
-            <span className="text-[9px] uppercase tracking-[0.15em] text-[#0A0C16] font-semibold block">
+            <span className="text-[clamp(9px,0.8vw,12px)] uppercase tracking-[0.15em] text-[#0A0C16] font-semibold block">
               NEW SEASON GEAR
             </span>
-            <h1 className="text-lg md:text-2xl lg:text-3xl font-bold text-[#111827] leading-tight tracking-tight uppercase">
+            <h1 className="text-[clamp(1.125rem,2.5vw,3rem)] font-bold text-[#111827] leading-tight tracking-tight uppercase">
               CUSTOM SPORTS UNIFORMS <span className="text-[#0A0C16]">USA</span>
             </h1>
           </motion.div>
@@ -601,7 +598,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-gray-600 text-xs leading-relaxed font-medium"
+            className="text-gray-600 text-[clamp(12px,1vw,16px)] leading-relaxed font-medium"
           >
             OEM sportswear manufacturer delivering premium custom sports uniforms and teamwear. Engineered with export-grade fabrics for elite performance, designed for champions.
           </motion.p>
@@ -614,7 +611,7 @@ const Hero = () => {
           >
             <button
               onClick={() => handleProtectedNavigation(activeProduct.link)}
-              className="inline-flex items-center gap-1.5 rounded-md bg-[#0A0C16] hover:bg-[#4338ca] text-white font-semibold text-[10px] tracking-wider px-4 py-2 shadow-sm transition"
+              className="inline-flex items-center gap-1.5 rounded-md bg-[#0A0C16] hover:bg-[#4338ca] text-white font-semibold text-[clamp(10px,0.9vw,14px)] tracking-wider px-4 py-2 shadow-sm transition"
             >
               EXPLORE COLLECTION <span>→</span>
             </button>
@@ -629,42 +626,42 @@ const Hero = () => {
             transition={{ duration: 0.5 }}
             className="flex items-start gap-2.5 max-w-[200px]"
           >
-            <span className="text-[#eab308] text-base mt-0.5">
+            <span className="text-[#eab308] text-[clamp(16px,1.5vw,24px)] mt-0.5">
               <FiAward strokeWidth={1.5} />
             </span>
             <div>
-              <p className="font-bold text-[#111827] text-[10px] tracking-wider uppercase">PREMIUM QUALITY</p>
-              <p className="text-[10px] text-gray-500 mt-0.5 leading-tight font-medium">Top quality fabrics for maximum performance.</p>
+              <p className="font-bold text-[#111827] text-[clamp(10px,0.9vw,13px)] tracking-wider uppercase">PREMIUM QUALITY</p>
+              <p className="text-[clamp(10px,0.8vw,12px)] text-gray-500 mt-0.5 leading-tight font-medium">Top quality fabrics for maximum performance.</p>
             </div>
           </motion.div>
- 
+
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="flex items-start gap-2.5 max-w-[200px]"
           >
-            <span className="text-[#eab308] text-base mt-0.5">
+            <span className="text-[#eab308] text-[clamp(16px,1.5vw,24px)] mt-0.5">
               <FiFeather strokeWidth={1.5} />
             </span>
             <div>
-              <p className="font-bold text-[#111827] text-[10px] tracking-wider uppercase">LIGHTWEIGHT</p>
-              <p className="text-[10px] text-gray-500 mt-0.5 leading-tight font-medium">Stay light. Move fast. Win more.</p>
+              <p className="font-bold text-[#111827] text-[clamp(10px,0.9vw,13px)] tracking-wider uppercase">LIGHTWEIGHT</p>
+              <p className="text-[clamp(10px,0.8vw,12px)] text-gray-500 mt-0.5 leading-tight font-medium">Stay light. Move fast. Win more.</p>
             </div>
           </motion.div>
- 
+
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex items-start gap-2.5 max-w-[200px]"
           >
-            <span className="text-[#eab308] text-base mt-0.5">
+            <span className="text-[#eab308] text-[clamp(16px,1.5vw,24px)] mt-0.5">
               <FiWind strokeWidth={1.5} />
             </span>
             <div>
-              <p className="font-bold text-[#111827] text-[10px] tracking-wider uppercase">BREATHABLE</p>
-              <p className="text-[10px] text-gray-500 mt-0.5 leading-tight font-medium">Advanced technology keeps you cool.</p>
+              <p className="font-bold text-[#111827] text-[clamp(10px,0.9vw,13px)] tracking-wider uppercase">BREATHABLE</p>
+              <p className="text-[clamp(10px,0.8vw,12px)] text-gray-500 mt-0.5 leading-tight font-medium">Advanced technology keeps you cool.</p>
             </div>
           </motion.div>
         </div>
