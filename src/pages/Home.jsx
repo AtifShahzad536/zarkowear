@@ -542,10 +542,42 @@ const Home = () => {
         <Testimonials />
       </section>
 
-     
-    
+      {/* SEO Content Section to boost word count and keyword relevance */}
+      <section className="bg-white text-slate-600 py-16 border-t border-slate-200">
+        <div className="max-w-[94%] mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-xs sm:text-sm leading-relaxed">
+            <div>
+              <h2 className="text-2xl font-black text-slate-900 mb-4 uppercase tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                Leading Custom Sports Uniforms Manufacturer in the USA
+              </h2>
+              <p className="mb-4">
+                Zarko Sportswear is your premier partner for high-performance <strong>custom sports uniforms</strong> and athletic apparel. As a direct <strong>sportswear manufacturer</strong>, we eliminate the middleman, providing professional-grade gear directly to teams, schools, and leagues across the United States. Whether you need custom football jerseys, wrestling singlets, basketball uniforms, or full soccer kits, our state-of-the-art facility ensures premium export quality at competitive prices.
+              </p>
+              <p className="mb-4">
+                Our expertise lies in advanced dye-sublimation printing, ensuring your team's colors, logos, and player names never fade, crack, or peel. From the initial 3D design phase to the final stitch, our manufacturing process is strictly monitored to meet international athletic standards. We specialize in heavy GSM fabrics that offer moisture-wicking, breathability, and extreme durability for rigorous sports like rugby and ice hockey.
+              </p>
+              <p>
+                We understand that every team has a unique identity. That is why our in-house design team works closely with you to create tailored concepts. With a turnaround time of just 8-12 days and fast, tracked shipping globally, outfitting your squad has never been easier. Choose Zarko Sportswear for uncompromised quality and reliability in custom teamwear.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-black text-slate-900 mb-4 uppercase tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                Comprehensive Athletic Apparel & Accessories
+              </h3>
+              <p className="mb-4">
+                Beyond traditional team kits, we manufacture a massive range of athletic apparel and accessories. Our product line includes high-compression gym wear, lightweight running gear, tennis apparel, and custom warm-up tracksuits. We use precision flatlock stitching and four-way stretch materials to guarantee maximum comfort and mobility for athletes in any discipline.
+              </p>
+              <p className="mb-4">
+                For complete team branding, we also produce custom sports bags, performance caps, professional-grade gloves, and athletic shoes. Whether you are outfitting a high school baseball team in Texas or a professional cricket league in the UK, we scale our production to meet your exact specifications and volume requirements. We proudly support low Minimum Order Quantities (MOQs) for smaller clubs while possessing the infrastructure to deliver thousands of units for major tournaments.
+              </p>
+              <p>
+                At Zarko Sportswear, we believe in sustainable and ethical manufacturing. Our fabrics are sourced responsibly, and our sublimation inks are eco-friendly, ensuring a minimal environmental footprint while delivering vibrant, high-definition prints. Experience the difference of working directly with a manufacturer that prioritizes your team's performance, brand image, and budget. Contact us today for a free quote and let us bring your custom sports uniform vision to life.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      
     </main>
   );
 };

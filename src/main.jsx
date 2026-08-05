@@ -8,8 +8,8 @@ import { ToastProvider } from './components/Toast.jsx'
 import { Provider } from 'react-redux'
 import { store } from './store/index.js'
 
+import Home from './pages/Home.jsx'
 const ProductInquiry = lazy(() => import('./components/Detail.jsx'))
-const Home = lazy(() => import('./pages/Home.jsx'))
 const Custom = lazy(() => import('./pages/Custom.jsx'))
 const Contact = lazy(() => import('./pages/Contact.jsx'))
 const About = lazy(() => import('./pages/About.jsx'))
