@@ -88,6 +88,7 @@ const Hero = () => {
   const autoplayTimerRef = useRef(null);
   const pauseTimerRef = useRef(null);
   const [isAutoplayPaused, setIsAutoplayPaused] = useState(false);
+  const [pendingNavigation, setPendingNavigation] = useState(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -96,19 +97,23 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
-  useEffect(() => {
-    const seenModal = sessionStorage.getItem('seenManufacturingRules');
-    if (!seenModal) {
-      const timer = setTimeout(() => {
-        setShowPromoModal(true);
-      }, 2500);
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
   const handleClosePromoModal = () => {
     setShowPromoModal(false);
     sessionStorage.setItem('seenManufacturingRules', 'true');
+    if (pendingNavigation) {
+      navigate(pendingNavigation);
+      setPendingNavigation(null);
+    }
+  };
+
+  const handleProtectedNavigation = (link) => {
+    const seenModal = sessionStorage.getItem('seenManufacturingRules');
+    if (!seenModal) {
+      setPendingNavigation(link);
+      setShowPromoModal(true);
+    } else {
+      navigate(link);
+    }
   };
 
   useEffect(() => {
@@ -389,7 +394,7 @@ const Hero = () => {
                 <button
                   onClick={() => {
                     setShowPopup(false);
-                    navigate(activeProduct.link);
+                    handleProtectedNavigation(activeProduct.link);
                   }}
                   className="w-full text-center py-2.5 bg-[#0A0C16] hover:bg-[#4338ca] text-white font-bold text-[9px] tracking-wider rounded-lg transition shadow-sm uppercase"
                 >
@@ -608,7 +613,7 @@ const Hero = () => {
             className="pt-1"
           >
             <button
-              onClick={() => navigate(activeProduct.link)}
+              onClick={() => handleProtectedNavigation(activeProduct.link)}
               className="inline-flex items-center gap-1.5 rounded-md bg-[#0A0C16] hover:bg-[#4338ca] text-white font-semibold text-[10px] tracking-wider px-4 py-2 shadow-sm transition"
             >
               EXPLORE COLLECTION <span>→</span>
