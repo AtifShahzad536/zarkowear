@@ -45,6 +45,10 @@ const router = createBrowserRouter([
       { path: "tennis", element: <CategoryRoute slug="tennis" /> },
       { path: "running", element: <CategoryRoute slug="running" /> },
       { path: "gym", element: <CategoryRoute slug="gym" /> },
+      { path: "softball", element: <CategoryRoute slug="softball" /> },
+      { path: "soccer", element: <CategoryRoute slug="soccer" /> },
+      { path: "volleyball", element: <CategoryRoute slug="volleyball" /> },
+      { path: "ice-hockey", element: <CategoryRoute slug="ice-hockey" /> },
 
       // ✅ Accessories
       { path: "shoes", element: <CategoryRoute slug="shoes" /> },
