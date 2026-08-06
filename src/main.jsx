@@ -21,6 +21,9 @@ const NotFound = lazy(() => import('./pages/NotFound.jsx'))
 const BuilderPage = lazy(() => import('./pages/BuilderPage.jsx'))
 
 const ModelSelectionPage = lazy(() => import('./pages/ModelSelectionPage.jsx'))
+const Blogs = lazy(() => import('./pages/Blogs.jsx'))
+const BlogDetail = lazy(() => import('./pages/BlogDetail.jsx'))
+const AdminBlogs = lazy(() => import('./pages/AdminBlogs.jsx'))
 
 // Define routes
 const router = createBrowserRouter([
@@ -34,6 +37,8 @@ const router = createBrowserRouter([
       { path: "contact", element: <Contact /> },       // ✅ Contact Us
       { path: "custom", element: <Custom /> }, // ✅ Custom Orders
       { path: "detail", element: <ProductInquiry /> },
+      { path: "blogs", element: <Blogs /> },
+      { path: "blogs/:slug", element: <BlogDetail /> },
 
       // ✅ Sports Kits
       { path: "football", element: <CategoryRoute slug="football" /> },
@@ -71,6 +76,7 @@ const router = createBrowserRouter([
               { path: "home", element: <AdminHome /> },
               { path: "testimonials", element: <AdminHome /> },
               { path: "top-selling", element: <AdminHome /> },
+              { path: "blogs", element: <AdminBlogs /> },
             ]
           }
         ]

@@ -53,6 +53,9 @@ export default function AdminLayout() {
               <NavLink to="/admin/top-selling" className={link}>
                 Top Selling
               </NavLink>
+              <NavLink to="/admin/blogs" className={link}>
+                Manage Blogs
+              </NavLink>
             </nav>
           </div>
         </aside>

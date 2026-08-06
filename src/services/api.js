@@ -196,3 +196,56 @@ export function imageUrl(path, { width = 800, quality = 'auto' } = {}) {
 
   return url;
 }
+
+// ── Blog APIs ────────────────────────────────────────────────────────────────
+export async function getBlogs(q = '') {
+  const url = q ? `${API_BASE}/api/blogs?q=${encodeURIComponent(q)}` : `${API_BASE}/api/blogs`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Failed to load blogs');
+  return res.json();
+}
+
+export async function getBlogBySlug(slug) {
+  const res = await fetch(`${API_BASE}/api/blogs/${encodeURIComponent(slug)}`);
+  if (!res.ok) throw new Error(`Failed to load blog post: ${slug}`);
+  return res.json();
+}
+
+export async function adminCreateBlog(payload) {
+  const res = await fetch(`${API_BASE}/api/admin/blogs`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${getAuthToken()}` },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.error || 'Failed to create blog post');
+  }
+  return res.json();
+}
+
+export async function adminUpdateBlog(id, payload) {
+  const res = await fetch(`${API_BASE}/api/admin/blogs/${encodeURIComponent(id)}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${getAuthToken()}` },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.error || 'Failed to update blog post');
+  }
+  return res.json();
+}
+
+export async function adminDeleteBlog(id) {
+  const res = await fetch(`${API_BASE}/api/admin/blogs/${encodeURIComponent(id)}`, {
+    method: 'DELETE',
+    headers: { Authorization: `Bearer ${getAuthToken()}` },
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.error || 'Failed to delete blog post');
+  }
+  return res.json();
+}
+

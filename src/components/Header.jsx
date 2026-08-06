@@ -131,6 +131,8 @@ const Header = () => {
           <DesktopLink to="/about">About Us</DesktopLink>
           <span className="h-3 w-px bg-slate-200/80" />
           <DesktopLink to="/contact">Contact Us</DesktopLink>
+          <span className="h-3 w-px bg-slate-200/80" />
+          <DesktopLink to="/blogs">Blogs</DesktopLink>
         </div>
 
         {/* WhatsApp & Mobile Toggle on the Right */}
@@ -202,6 +204,7 @@ const Header = () => {
                 <MobileLink to="/custom" onClick={() => setMobileOpen(false)}>Custom Orders</MobileLink>
                 <MobileLink to="/about" onClick={() => setMobileOpen(false)}>About Us</MobileLink>
                 <MobileLink to="/contact" onClick={() => setMobileOpen(false)}>Contact Us</MobileLink>
+                <MobileLink to="/blogs" onClick={() => setMobileOpen(false)}>Blogs</MobileLink>
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }}>
                   <a
                     href="https://wa.me/923039200750"
