@@ -267,14 +267,8 @@ export default function BlogDetail() {
                 </div>
               )}
 
-              {/* Tags & Date line */}
+              {/* Date & Author line */}
               <div className="flex items-center gap-3 text-[10px] font-bold text-slate-400 border-b border-slate-100 pb-4 rounded-none">
-                {blog.tags && blog.tags.map((tag, idx) => (
-                  <span key={idx} className="bg-slate-100 text-slate-500 px-2 py-0.5 rounded-none uppercase">
-                    {tag}
-                  </span>
-                ))}
-                <span className="h-3 w-px bg-slate-200" />
                 <span>
                   {new Date(blog.createdAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
                 </span>
@@ -287,6 +281,20 @@ export default function BlogDetail() {
                 className="blog-content-body max-w-none rounded-none"
                 dangerouslySetInnerHTML={{ __html: blog.content }}
               />
+
+              {/* Tags at the bottom */}
+              {blog.tags && blog.tags.length > 0 && (
+                <div className="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center gap-2 rounded-none">
+                  <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider">Tags:</span>
+                  <div className="flex flex-wrap gap-2">
+                    {blog.tags.map((tag, idx) => (
+                      <span key={idx} className="text-[10px] font-bold text-slate-600 bg-slate-100 border border-slate-200 px-2.5 py-1 rounded-none uppercase">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Right Side: Sidebar Cards (4 columns) - Flat corners & Sticky */}
