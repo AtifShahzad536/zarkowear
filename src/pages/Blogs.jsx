@@ -337,11 +337,11 @@ export default function Blogs() {
                   <Link to="/" className="hover:text-indigo-650 transition rounded-none">Sitemap</Link>
                   <Link to="/" className="hover:text-indigo-650 transition rounded-none">Sitemap</Link>
                   <Link to="/about" className="hover:text-indigo-650 transition rounded-none">About</Link>
-                  <Link to="/cricket" className="hover:text-indigo-650 transition rounded-none">Cricket</Link>
+                  <Link to="/blogs?q=cricket" className="hover:text-indigo-650 transition rounded-none">Cricket</Link>
                   <Link to="/blogs" className="hover:text-indigo-650 transition rounded-none">Recent</Link>
-                  <Link to="/categories" className="hover:text-indigo-650 transition rounded-none">Categories</Link>
+                  <Link to="/blogs" className="hover:text-indigo-650 transition rounded-none">Categories</Link>
                   <Link to="/custom" className="hover:text-indigo-650 transition rounded-none">Custom</Link>
-                  <Link to="/blogs" className="hover:text-indigo-650 transition rounded-none">Sitemap</Link>
+                  <Link to="/" className="hover:text-indigo-650 transition rounded-none">Sitemap</Link>
                   <Link to="/about" className="hover:text-indigo-650 transition rounded-none">About</Link>
                   <Link to="/privacy-policy" className="hover:text-indigo-650 transition rounded-none">Privacy Policy</Link>
                   <Link to="/contact" className="hover:text-indigo-650 transition rounded-none">Contact</Link>

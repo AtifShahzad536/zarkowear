@@ -129,15 +129,18 @@ export default function BlogDetail() {
           font-weight: 500;
         }
         .blog-content-body ul {
-          list-style-type: disc;
-          padding-left: 1.25rem;
-          margin-bottom: 1rem;
-          font-size: 0.8rem;
-          color: #334155;
-          font-weight: 500;
+          list-style: disc !important;
+          list-style-position: outside !important;
+          padding-left: 1.5rem !important;
+          margin-bottom: 1rem !important;
+          font-size: 0.8rem !important;
+          color: #334155 !important;
+          font-weight: 500 !important;
         }
         .blog-content-body li {
-          margin-bottom: 0.25rem;
+          display: list-item !important;
+          list-style-type: disc !important;
+          margin-bottom: 0.25rem !important;
         }
         .blog-content-body img {
           max-width: 100%;
@@ -367,11 +370,11 @@ export default function BlogDetail() {
                   <Link to="/" className="hover:text-indigo-655 transition rounded-none">Sitemap</Link>
                   <Link to="/" className="hover:text-indigo-655 transition rounded-none">Sitemap</Link>
                   <Link to="/about" className="hover:text-indigo-655 transition rounded-none">About</Link>
-                  <Link to="/cricket" className="hover:text-indigo-655 transition rounded-none">Cricket</Link>
+                  <Link to="/blogs?q=cricket" className="hover:text-indigo-655 transition rounded-none">Cricket</Link>
                   <Link to="/blogs" className="hover:text-indigo-655 transition rounded-none">Recent</Link>
-                  <Link to="/categories" className="hover:text-indigo-655 transition rounded-none">Categories</Link>
+                  <Link to="/blogs" className="hover:text-indigo-655 transition rounded-none">Categories</Link>
                   <Link to="/custom" className="hover:text-indigo-655 transition rounded-none">Custom</Link>
-                  <Link to="/blogs" className="hover:text-indigo-655 transition rounded-none">Sitemap</Link>
+                  <Link to="/" className="hover:text-indigo-655 transition rounded-none">Sitemap</Link>
                   <Link to="/about" className="hover:text-indigo-655 transition rounded-none">About</Link>
                   <Link to="/privacy-policy" className="hover:text-indigo-655 transition rounded-none">Privacy Policy</Link>
                   <Link to="/contact" className="hover:text-indigo-655 transition rounded-none">Contact</Link>
