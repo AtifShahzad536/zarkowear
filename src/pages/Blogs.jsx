@@ -268,8 +268,8 @@ export default function Blogs() {
               )}
             </div>
 
-            {/* Right Side: Sidebar Cards (4 columns) - Flat corners */}
-            <div className="lg:col-span-4 space-y-5 rounded-none">
+            {/* Right Side: Sidebar Cards (4 columns) - Flat corners & Sticky */}
+            <div className="lg:col-span-4 space-y-5 rounded-none lg:sticky lg:top-24">
               
               {/* Categories Card - Flat */}
               <div className="bg-white rounded-none p-5 border border-slate-200/80 shadow-sm space-y-3">
