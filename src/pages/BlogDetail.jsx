@@ -131,16 +131,34 @@ export default function BlogDetail() {
         .blog-content-body ul {
           list-style: disc !important;
           list-style-position: outside !important;
-          padding-left: 1.5rem !important;
+          padding-left: 2rem !important;
+          margin-top: 0.5rem !important;
           margin-bottom: 1rem !important;
+        }
+        .blog-content-body ul li {
+          display: list-item !important;
+          list-style-type: disc !important;
+          margin-bottom: 0.4rem !important;
+          padding-left: 0.25rem !important;
           font-size: 0.8rem !important;
           color: #334155 !important;
           font-weight: 500 !important;
         }
-        .blog-content-body li {
+        .blog-content-body ol {
+          list-style: decimal !important;
+          list-style-position: outside !important;
+          padding-left: 2rem !important;
+          margin-top: 0.5rem !important;
+          margin-bottom: 1rem !important;
+        }
+        .blog-content-body ol li {
           display: list-item !important;
-          list-style-type: disc !important;
-          margin-bottom: 0.25rem !important;
+          list-style-type: decimal !important;
+          margin-bottom: 0.4rem !important;
+          padding-left: 0.25rem !important;
+          font-size: 0.8rem !important;
+          color: #334155 !important;
+          font-weight: 500 !important;
         }
         .blog-content-body img {
           max-width: 100%;
