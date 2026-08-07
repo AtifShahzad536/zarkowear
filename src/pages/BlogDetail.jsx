@@ -129,7 +129,7 @@ export default function BlogDetail() {
           font-weight: 500;
         }
         .blog-content-body ul {
-          list-style: disc !important;
+          list-style-type: disc;
           list-style-position: outside !important;
           padding-left: 2rem !important;
           margin-top: 0.5rem !important;
@@ -137,7 +137,7 @@ export default function BlogDetail() {
         }
         .blog-content-body ul li {
           display: list-item !important;
-          list-style-type: disc !important;
+          list-style-type: inherit !important;
           margin-bottom: 0.4rem !important;
           padding-left: 0.25rem !important;
           font-size: 0.8rem !important;
@@ -145,7 +145,7 @@ export default function BlogDetail() {
           font-weight: 500 !important;
         }
         .blog-content-body ol {
-          list-style: decimal !important;
+          list-style-type: decimal;
           list-style-position: outside !important;
           padding-left: 2rem !important;
           margin-top: 0.5rem !important;
@@ -153,7 +153,7 @@ export default function BlogDetail() {
         }
         .blog-content-body ol li {
           display: list-item !important;
-          list-style-type: decimal !important;
+          list-style-type: inherit !important;
           margin-bottom: 0.4rem !important;
           padding-left: 0.25rem !important;
           font-size: 0.8rem !important;
