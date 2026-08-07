@@ -142,4 +142,12 @@
     <priority>0.75</priority>
   </url>
 
+  <!-- Blogs Section -->
+  <url>
+    <loc>https://www.zarkosportswear.com/blogs</loc>
+    <lastmod>2026-08-07T00:00:00+05:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+
 </urlset>
