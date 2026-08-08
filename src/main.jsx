@@ -54,6 +54,7 @@ const router = createBrowserRouter([
       { path: "soccer", element: <CategoryRoute slug="soccer" /> },
       { path: "volleyball", element: <CategoryRoute slug="volleyball" /> },
       { path: "ice-hockey", element: <CategoryRoute slug="ice-hockey" /> },
+      { path: "baseball", element: <CategoryRoute slug="baseball" /> },
 
       // ✅ Accessories
       { path: "shoes", element: <CategoryRoute slug="shoes" /> },
