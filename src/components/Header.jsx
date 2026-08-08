@@ -26,7 +26,7 @@ const TopBar = () => {
             <FaWhatsapp className="text-sm text-green-400" />
             <span>WhatsApp: +92-303-9200750</span>
           </a>
-          <a href="https://www.zarkosportswear.com" className="flex items-center gap-2 hover:text-indigo-300 transition-colors">
+          <a href="https://www.zarkosportswear.com/" className="flex items-center gap-2 hover:text-indigo-300 transition-colors">
             <FaGlobe className="text-sm text-indigo-400" />
             <span>www.zarkosportswear.com</span>
           </a>
@@ -44,7 +44,7 @@ const TopBar = () => {
   );
 };
 
-const sportsWear = [
+const sportsWearDefault = [
   { label: 'Wrestling Kits', to: '/wrestling' },
   { label: 'Football Kits', to: '/football' },
   { label: 'Cricket Kits', to: '/cricket' },
@@ -56,7 +56,7 @@ const sportsWear = [
   { label: 'Gym/Fitness Wear', to: '/gym' },
 ];
 
-const accessories = [
+const accessoriesDefault = [
   { label: 'Shoes', to: '/shoes' },
   { label: 'Gloves', to: '/gloves' },
   { label: 'Caps', to: '/caps' },
@@ -68,8 +68,37 @@ const linkBase = 'flex w-full items-center justify-between rounded-2xl border bo
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [sportsWearList, setSportsWearList] = useState(sportsWearDefault);
+  const [accessoriesList, setAccessoriesList] = useState(accessoriesDefault);
 
   const toggleMobile = () => setMobileOpen((v) => !v);
+
+  useEffect(() => {
+    const apiBase = (import.meta.env.VITE_API_BASE || '').trim();
+    const endpoint = apiBase ? `${apiBase}/api/categories` : '/api/categories';
+    fetch(endpoint)
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          const accSlugs = ['shoes', 'gloves', 'caps', 'bags'];
+          const sports = [];
+          const accs = [];
+          
+          data.forEach(cat => {
+            const item = { label: cat.name, to: `/${cat.slug}` };
+            if (accSlugs.includes(cat.slug)) {
+              accs.push(item);
+            } else {
+              sports.push(item);
+            }
+          });
+          
+          if (sports.length > 0) setSportsWearList(sports);
+          if (accs.length > 0) setAccessoriesList(accs);
+        }
+      })
+      .catch(err => console.error('Error loading categories:', err));
+  }, []);
 
   useEffect(() => {
     const observer = new ResizeObserver((entries) => {
@@ -119,9 +148,9 @@ const Header = () => {
           <DesktopLink to="/">Home</DesktopLink>
           <span className="h-3 w-px bg-slate-200/80" />
 
-          <Dropdown label="Sports Wear" items={sportsWear} />
+          <Dropdown label="Sports Wear" items={sportsWearList} />
           <span className="h-3 w-px bg-slate-200/80" />
-          <Dropdown label="Accessories" items={accessories} />
+          <Dropdown label="Accessories" items={accessoriesList} />
           <span className="h-3 w-px bg-slate-200/80" />
 
           <DesktopLink to="/builder">3D Customizer</DesktopLink>
@@ -188,7 +217,7 @@ const Header = () => {
                   label="Sports Wear"
                   isOpen={openDropdown === 'sports'}
                   toggle={() => setOpenDropdown(openDropdown === 'sports' ? null : 'sports')}
-                  items={sportsWear}
+                  items={sportsWearList}
                   onNavigate={() => setMobileOpen(false)}
                 />
 
@@ -196,7 +225,7 @@ const Header = () => {
                   label="Team Accessories"
                   isOpen={openDropdown === 'accessories'}
                   toggle={() => setOpenDropdown(openDropdown === 'accessories' ? null : 'accessories')}
-                  items={accessories}
+                  items={accessoriesList}
                   onNavigate={() => setMobileOpen(false)}
                 />
 

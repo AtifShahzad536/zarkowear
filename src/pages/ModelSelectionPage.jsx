@@ -58,16 +58,20 @@ export const ModelSelectionPage = () => {
 
   const seoData = useMemo(() => {
     const categoryTitle = categoryParam ? categoryParam.toUpperCase() : 'Sports';
+    const hasCategory = categoryParam && categoryParam.toLowerCase() !== 'all';
+    const canonicalUrl = hasCategory 
+      ? `https://www.zarkosportswear.com/builder/models?category=${encodeURIComponent(categoryParam)}`
+      : 'https://www.zarkosportswear.com/builder/models';
     return {
       title: `Custom ${categoryTitle} Jerseys USA | 3D Templates`,
       description: `Select and customize premium ${categoryTitle} uniform templates online. Personalize your teamwear in real-time with fast USA shipping.`,
       keywords: `custom ${categoryTitle.toLowerCase()} jersey usa, 3d sports uniforms templates, team jerseys builder usa, zarko customization`,
-      canonical: `https://www.zarkosportswear.com/builder/models?category=${encodeURIComponent(categoryParam)}`,
+      canonical: canonicalUrl,
       openGraph: {
         'og:title': `Custom ${categoryTitle} Jerseys USA | 3D Templates`,
         'og:description': `Select a base model template and customize your ${categoryTitle} uniform in real-time.`,
         'og:type': 'website',
-        'og:url': `https://www.zarkosportswear.com/builder/models?category=${encodeURIComponent(categoryParam)}`
+        'og:url': canonicalUrl
       }
     };
   }, [categoryParam]);
