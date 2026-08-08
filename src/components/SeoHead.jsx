@@ -101,8 +101,23 @@ const SeoHead = ({
 
     // Canonical URL
     let linkRecord;
+    const injectedAlternates = [];
     if (canonical) {
       linkRecord = ensureLink('canonical', canonical);
+      
+      // Auto-insert self-referencing hreflangs using the canonical URL
+      const existing = document.head.querySelectorAll('link[data-dynamic-hreflang="true"]');
+      existing.forEach(el => el.remove());
+
+      ['en-US', 'x-default'].forEach(lang => {
+        const link = document.createElement('link');
+        link.setAttribute('rel', 'alternate');
+        link.setAttribute('hreflang', lang);
+        link.setAttribute('href', canonical);
+        link.setAttribute('data-dynamic-hreflang', 'true');
+        document.head.appendChild(link);
+        injectedAlternates.push(link);
+      });
     }
 
     // Alternate language versions
@@ -157,6 +172,8 @@ const SeoHead = ({
           element.removeAttribute('href');
         }
       }
+
+      injectedAlternates.forEach(el => el.remove());
 
       if (jsonLdElement) {
         jsonLdElement.remove();
