@@ -40,6 +40,90 @@ const SectionTitle = ({ eyebrow, title, description }) => (
   </div>
 );
 
+const getSportHighlights = (sportName) => {
+  const defaults = {
+    fabric: 'Moisture-Wicking',
+    printing: '4K Sublimation',
+    moq: '25 Kits',
+    dispatch: 'Worldwide Express'
+  };
+
+  const key = sportName.toLowerCase();
+  if (key.includes('football') || key.includes('soccer')) {
+    return {
+      fabric: 'Dri-FIT Polyester',
+      printing: '4K Sublimation',
+      moq: '25 Kits',
+      dispatch: 'Worldwide Express'
+    };
+  }
+  if (key.includes('wrestling')) {
+    return {
+      fabric: '4-Way Stretch Lycra',
+      printing: 'Double-Stitch Sublimation',
+      moq: '15 Singlets',
+      dispatch: 'Worldwide Express'
+    };
+  }
+  if (key.includes('cricket')) {
+    return {
+      fabric: 'Breathable Dry-Fit Mesh',
+      printing: 'Vibrant Sublimation',
+      moq: '25 Kits',
+      dispatch: 'Worldwide Express'
+    };
+  }
+  if (key.includes('basketball')) {
+    return {
+      fabric: 'Pro-Mesh Athletic Fabric',
+      printing: 'Sublimated Print',
+      moq: '25 Kits',
+      dispatch: 'Worldwide Express'
+    };
+  }
+  if (key.includes('gym') || key.includes('running') || key.includes('fitness')) {
+    return {
+      fabric: 'Ultra-Light Anti-Chafe',
+      printing: 'Reflective/Sublimated',
+      moq: '30 Items',
+      dispatch: 'Worldwide Express'
+    };
+  }
+  if (key.includes('shoes')) {
+    return {
+      fabric: 'Breathable Mesh / Rubber',
+      printing: 'Molded Branding',
+      moq: '50 Pairs',
+      dispatch: 'Worldwide Express'
+    };
+  }
+  if (key.includes('gloves')) {
+    return {
+      fabric: 'Silicone Grip & Lycra',
+      printing: 'High-Density Print',
+      moq: '50 Pairs',
+      dispatch: 'Worldwide Express'
+    };
+  }
+  if (key.includes('caps')) {
+    return {
+      fabric: 'Premium Cotton/Twill',
+      printing: '3D Embroidery',
+      moq: '50 Caps',
+      dispatch: 'Worldwide Express'
+    };
+  }
+  if (key.includes('bags')) {
+    return {
+      fabric: 'Water-Resistant Cordura',
+      printing: 'Embroidered/Screened',
+      moq: '20 Bags',
+      dispatch: 'Worldwide Express'
+    };
+  }
+  return defaults;
+};
+
 const CategoryPage = ({ slug }) => {
   const fallbackConfig = useMemo(() => normalizeData(slug), [slug]);
   const [data, setData] = useState(null);
@@ -231,24 +315,29 @@ const CategoryPage = ({ slug }) => {
               </div>
 
               {/* Specifications / Highlights Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
-                  <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Fabric Tech</div>
-                  <div className="text-sm font-semibold text-slate-800 mt-0.5">Moisture-Wicking</div>
-                </div>
-                <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
-                  <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Printing</div>
-                  <div className="text-sm font-semibold text-slate-800 mt-0.5">4K Sublimation</div>
-                </div>
-                <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
-                  <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Min Order (MOQ)</div>
-                  <div className="text-sm font-semibold text-slate-800 mt-0.5">25 Kits</div>
-                </div>
-                <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
-                  <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Dispatch</div>
-                  <div className="text-sm font-semibold text-slate-800 mt-0.5">Worldwide Express</div>
-                </div>
-              </div>
+              {(() => {
+                const highlights = getSportHighlights(cleanSport);
+                return (
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                    <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
+                      <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Fabric Tech</div>
+                      <div className="text-sm font-semibold text-slate-800 mt-0.5">{highlights.fabric}</div>
+                    </div>
+                    <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
+                      <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Printing</div>
+                      <div className="text-sm font-semibold text-slate-800 mt-0.5">{highlights.printing}</div>
+                    </div>
+                    <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
+                      <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Min Order (MOQ)</div>
+                      <div className="text-sm font-semibold text-slate-800 mt-0.5">{highlights.moq}</div>
+                    </div>
+                    <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
+                      <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Dispatch</div>
+                      <div className="text-sm font-semibold text-slate-800 mt-0.5">{highlights.dispatch}</div>
+                    </div>
+                  </div>
+                );
+              })()}
 
               {/* Action Buttons */}
               <div className="pt-4 flex flex-wrap items-center gap-4 border-t border-slate-100">
@@ -307,6 +396,21 @@ const CategoryPage = ({ slug }) => {
           />
           <div className="mt-8">
             <Custom />
+          </div>
+        </section>
+
+        {/* SEO RICH CONTENT SECTION */}
+        <section className="mt-20 border-t border-slate-100 pt-16">
+          <div className="max-w-4xl mx-auto text-slate-700 space-y-6">
+            <h3 className="text-2xl font-bold text-slate-900">
+              Premium Custom {cleanSport} Uniforms & Gear in the USA
+            </h3>
+            <p className="text-sm sm:text-base leading-relaxed">
+              At Zarko Sportswear, we specialize in designing and manufacturing top-tier custom {cleanSport.toLowerCase()} uniforms and sportswear tailored to the needs of professional teams, local clubs, schools, and corporate groups across the United States. Utilizing advanced sublimation printing techniques, we ensure your designs, team logos, and player numbers are permanently fused into the fabric, preventing any peeling, cracking, or fading over time.
+            </p>
+            <p className="text-sm sm:text-base leading-relaxed">
+              Our custom {cleanSport.toLowerCase()} sportswear is engineered with high-performance, moisture-wicking materials designed to keep athletes dry, cool, and comfortable during intense training sessions and high-stakes matches. With quick-ship options available throughout the USA, we deliver premium quality athletic gear directly to your doorstep. Fill out our custom lab inquiry form above to receive a design mockup and personalized quote for your team bundle today.
+            </p>
           </div>
         </section>
       </div>
