@@ -127,9 +127,23 @@ const CategoryPage = ({ slug }) => {
   const buttonClass = resolvedAccent.button || defaultAccent.button;
 
   const cleanSport = name.replace(/( Kits & Apparel| Singlets & Gear| Apparel & Accessories| & Training Gear| & Footwear| & Hand Protection| & Headwear| & Gear Packs)/gi, '');
-  const pageTitle = `Custom ${cleanSport} Sportswear USA | Premium Team Uniforms`;
-  const pageDescription = `Design & order custom ${cleanSport.toLowerCase()} sportswear in the USA. Premium sublimation team uniforms and personalized athletic apparel from Zarko Sportswear.`;
-  const pageKeywords = `custom sportswear USA, custom ${cleanSport.toLowerCase()} sportswear, custom ${cleanSport.toLowerCase()} uniforms, design ${cleanSport.toLowerCase()} jerseys USA, personalized team sportswear`;
+  const pageTitle = `Custom ${cleanSport} Uniforms & Sportswear USA | Zarko Sportswear`;
+  const pageDescription = `Looking for custom uniform USA? Design & buy premium custom ${cleanSport.toLowerCase()} sportswear, jerseys, and team wear. Top quality, quick ship options, and custom gear for teams and businesses.`;
+  
+  const pageKeywords = [
+    `custom sportswear USA`,
+    `custom uniform USA`,
+    `custom uniform usa ${cleanSport.toLowerCase()}`,
+    `custom uniform usa ${cleanSport.toLowerCase()} jersey`,
+    `custom uniform usa ${cleanSport.toLowerCase()} team`,
+    `custom uniform usa gear`,
+    `custom uniform usa for sale`,
+    `custom uniform usa quick ship`,
+    `custom uniform usa quality`,
+    `custom ${cleanSport.toLowerCase()} sportswear`,
+    `custom ${cleanSport.toLowerCase()} uniforms`,
+    `design ${cleanSport.toLowerCase()} jerseys USA`
+  ].join(', ');
 
   const jsonLd = {
     '@context': 'https://schema.org',
