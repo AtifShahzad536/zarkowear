@@ -126,21 +126,48 @@ const CategoryPage = ({ slug }) => {
   const chipClass = resolvedAccent.chip || defaultAccent.chip;
   const buttonClass = resolvedAccent.button || defaultAccent.button;
 
+  const cleanSport = name.replace(/( Kits & Apparel| Singlets & Gear| Apparel & Accessories| & Training Gear| & Footwear| & Hand Protection| & Headwear| & Gear Packs)/gi, '');
+  const pageTitle = `Custom ${cleanSport} Sportswear USA | Premium Team Uniforms`;
+  const pageDescription = `Design & order custom ${cleanSport.toLowerCase()} sportswear in the USA. Premium sublimation team uniforms and personalized athletic apparel from Zarko Sportswear.`;
+  const pageKeywords = `custom sportswear USA, custom ${cleanSport.toLowerCase()} sportswear, custom ${cleanSport.toLowerCase()} uniforms, design ${cleanSport.toLowerCase()} jerseys USA, personalized team sportswear`;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    'name': pageTitle,
+    'description': pageDescription,
+    'url': `https://www.zarkosportswear.com/${slug}`,
+    'about': {
+      '@type': 'Thing',
+      'name': `Custom ${cleanSport} Sportswear`
+    },
+    'provider': {
+      '@type': 'LocalBusiness',
+      'name': 'Zarko Sportswear',
+      'image': 'https://www.zarkosportswear.com/logo.png',
+      'address': {
+        '@type': 'PostalAddress',
+        'addressCountry': 'US'
+      }
+    }
+  };
+
   return (
     <main className="bg-slate-50/50 min-h-screen">
       <SeoHead
-        title={`Custom ${name} Jerseys USA | Design Team Kits`}
-        description={`Design custom ${name.toLowerCase()} jerseys and teamwear online. Custom tailored uniforms with premium fabrics and fast shipping in the USA.`}
+        title={pageTitle}
+        description={pageDescription}
         canonical={`https://www.zarkosportswear.com/${slug}`}
-        keywords={`custom ${name.toLowerCase()} uniforms, design ${name.toLowerCase()} jerseys usa, teamwear customizer, custom sports jerseys usa`}
+        keywords={pageKeywords}
+        jsonLd={jsonLd}
         openGraph={{
-          'og:title': `Custom ${name} Jerseys USA | Design Team Kits`,
-          'og:description': `Design custom ${name.toLowerCase()} jerseys and teamwear online. Custom tailored uniforms with premium fabrics and fast shipping in the USA.`,
+          'og:title': pageTitle,
+          'og:description': pageDescription,
           'og:url': `https://www.zarkosportswear.com/${slug}`,
         }}
         twitter={{
-          'twitter:title': `Custom ${name} Jerseys USA | Design Team Kits`,
-          'twitter:description': `Design custom ${name.toLowerCase()} jerseys and teamwear online. Custom tailored uniforms with premium fabrics and fast shipping in the USA.`,
+          'twitter:title': pageTitle,
+          'twitter:description': pageDescription,
         }}
       />
       <div className="mx-auto max-w-[94%] px-4 py-8 sm:px-6 lg:px-8">
