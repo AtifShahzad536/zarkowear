@@ -216,6 +216,12 @@ const CategoryPage = ({ slug }) => {
   
   const pageKeywords = [
     `custom sportswear USA`,
+    `custom sports apparel usa`,
+    `custom ${cleanSport.toLowerCase()} apparel usa`,
+    `custom sportswear manufacturer usa`,
+    `custom ${cleanSport.toLowerCase()} sportswear manufacturer`,
+    `custom sportswear company`,
+    `custom sportswear apparel`,
     `custom uniform USA`,
     `custom uniform usa ${cleanSport.toLowerCase()}`,
     `custom uniform usa ${cleanSport.toLowerCase()} jersey`,
