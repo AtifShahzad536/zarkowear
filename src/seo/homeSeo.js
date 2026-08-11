@@ -1,5 +1,5 @@
 const homeSeo = {
-  title: "Custom Sportswear USA | Custom Sports Uniforms Manufacturer",
+  title: "Custom Sportswear USA | Zarko Sportswear",
   description:
     "Get premium Custom Sportswear in the USA direct from the manufacturer. High-quality custom sports uniforms, sublimation jerseys & fast shipping. Free quote!",
   canonical: "https://www.zarkosportswear.com/",
@@ -12,9 +12,9 @@ const homeSeo = {
   siteName: "Zarko Sportswear",
   locale: "en_US",
   openGraph: {
-    'og:title': 'Custom Sportswear USA | Custom Sports Uniforms Manufacturer',
+    'og:title': 'Custom Sportswear USA | Zarko Sportswear',
     'og:description':
-      'Get premium Custom Sportswear in the USA direct from the manufacturer. High-quality custom sports uniforms, sublimation jerseys, fast shipping & 3D customizer. Free quote!',
+      'Get premium Custom Sportswear in the USA direct from the manufacturer. High-quality custom sports uniforms, sublimation jerseys & fast shipping. Free quote!',
     'og:url': 'https://www.zarkosportswear.com/',
     'og:image': 'https://www.zarkosportswear.com/og-cover.jpg',
     'og:image:width': '1200',
@@ -24,8 +24,8 @@ const homeSeo = {
     'og:locale': 'en_US',
   },
   twitter: {
-    'twitter:title': 'Custom Sportswear USA | Custom Sports Uniforms Manufacturer',
-    'twitter:description': 'Get premium Custom Sportswear in the USA direct from the manufacturer. High-quality custom sports uniforms, sublimation jerseys, fast shipping & 3D customizer. Free quote!',
+    'twitter:title': 'Custom Sportswear USA | Zarko Sportswear',
+    'twitter:description': 'Get premium Custom Sportswear in the USA direct from the manufacturer. High-quality custom sports uniforms, sublimation jerseys & fast shipping. Free quote!',
     'twitter:card': 'summary_large_image',
     'twitter:image': 'https://www.zarkosportswear.com/og-cover.jpg',
     'twitter:site': '@zarkosportswear',

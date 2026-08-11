@@ -53,18 +53,18 @@ const Custom = () => {
   return (
     <main className="min-h-screen bg-white">
       <SeoHead
-        title="Custom Sportswear USA | Order Personalized Team Uniforms"
-        description="Design & order custom sportswear in the USA. Submit your team uniforms requirements to Zarko Sportswear for premium sublimation gear."
+        title="Custom Sportswear USA | Zarko Sportswear"
+        description="Get premium custom sportswear for USA sports teams and clubs. High-quality custom sports uniforms, soccer/football, basketball, baseball, and wrestling kits from Sialkot, Pakistan."
         canonical="https://www.zarkosportswear.com/custom"
-        keywords="custom sportswear USA, custom team uniforms USA, order custom jerseys USA, personalized athletic gear, custom sublimation team wear"
+        keywords="custom sportswear USA, custom sports uniforms USA, custom teamwear USA, private label teamwear, custom wrestling singlets, custom soccer jerseys USA, custom basketball uniforms"
         openGraph={{
-          'og:title': 'Custom Sportswear USA | Order Personalized Team Uniforms',
-          'og:description': 'Design & order custom sportswear in the USA. Submit your team uniforms requirements to Zarko Sportswear for premium sublimation gear.',
+          'og:title': 'Custom Sportswear USA | Zarko Sportswear',
+          'og:description': 'Get premium custom sportswear for USA sports teams and clubs. High-quality custom sports uniforms, soccer/football, basketball, baseball, and wrestling kits from Sialkot, Pakistan.',
           'og:url': 'https://www.zarkosportswear.com/custom',
         }}
         twitter={{
-          'twitter:title': 'Custom Sportswear USA | Order Personalized Team Uniforms',
-          'twitter:description': 'Design & order custom sportswear in the USA. Submit your team uniforms requirements to Zarko Sportswear for premium sublimation gear.',
+          'twitter:title': 'Custom Sportswear USA | Zarko Sportswear',
+          'twitter:description': 'Get premium custom sportswear for USA sports teams and clubs. High-quality custom sports uniforms, soccer/football, basketball, baseball, and wrestling kits from Sialkot, Pakistan.',
         }}
       />
       <section>
@@ -73,9 +73,9 @@ const Custom = () => {
             <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-600">
               Custom manufacturing
             </span>
-            <h1 className="mt-5 text-3xl sm:text-4xl font-bold text-indigo-900">Design Premium Custom Sportswear USA</h1>
-            <p className="mt-3 text-base md:text-lg text-gray-600">
-              Submit your concept, upload inspiration, and our team will ship production-ready kits to the USA. Need inspiration? Explore our <Link to="/" className="text-indigo-600 hover:underline">top-selling collections</Link> first.
+            <h1 className="mt-5 text-3xl sm:text-4xl font-bold text-indigo-900">Custom Sportswear for USA Sports Teams & Clubs</h1>
+            <p className="mt-4 text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Zarko Sportswear is a trusted OEM & private label sportswear manufacturer in Sialkot, Pakistan, exporting premium-grade custom sports uniforms directly to USA customers. Whether you need custom soccer/football kits, basketball uniforms, baseball wear, or durable wrestling kits, we offer fully personalized apparel featuring custom team names, logos, and player numbers with reliable international delivery.
             </p>
           </motion.header>
 
