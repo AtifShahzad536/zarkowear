@@ -53,7 +53,7 @@ const Custom = () => {
   return (
     <main className="min-h-screen bg-white">
       <SeoHead
-        title="Custom Sportswear USA | Zarko Sportswear"
+        title="Order Custom Sports Uniforms & Sportswear | Zarko"
         description="Get premium custom sportswear for USA sports teams and clubs. High-quality custom sports uniforms, soccer/football, basketball, baseball, and wrestling kits from Sialkot, Pakistan."
         canonical="https://www.zarkosportswear.com/custom"
         keywords="custom sportswear USA, custom sports uniforms USA, custom teamwear USA, private label teamwear, custom wrestling singlets, custom soccer jerseys USA, custom basketball uniforms"
