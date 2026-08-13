@@ -8,7 +8,7 @@ const PrivacyPolicy = () => {
   }, []);
 
   return (
-    <main className="min-h-screen bg-slate-50/50 py-16 md:py-24">
+    <main className="min-h-screen bg-white py-16 md:py-24">
       <SeoHead
         title="Privacy Policy | Zarko Sportswear"
         description="Read the Privacy Policy of Zarko Sportswear to understand how we protect, collect, and use your personal team order details."
@@ -16,15 +16,15 @@ const PrivacyPolicy = () => {
         robots="index, follow"
       />
 
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="mx-auto max-w-[94%] px-4">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-white border border-slate-100 p-8 md:p-12 shadow-sm rounded-2xl space-y-8"
+          className="max-w-4xl space-y-8"
         >
           <div className="border-b border-slate-100 pb-6">
-            <h1 className="text-3xl font-black text-indigo-950 uppercase tracking-tight">Privacy Policy</h1>
+            <h1 className="text-4xl font-black text-indigo-950 uppercase tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>Privacy Policy</h1>
             <p className="text-xs text-slate-400 font-semibold mt-2">Last updated: August 13, 2026</p>
           </div>
 
