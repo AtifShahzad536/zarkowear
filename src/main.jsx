@@ -25,6 +25,8 @@ const Blogs = lazy(() => import('./pages/Blogs.jsx'))
 const BlogDetail = lazy(() => import('./pages/BlogDetail.jsx'))
 const AdminBlogs = lazy(() => import('./pages/AdminBlogs.jsx'))
 const LocalLandingPage = lazy(() => import('./pages/LocalLandingPage.jsx'))
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy.jsx'))
+const Terms = lazy(() => import('./pages/Terms.jsx'))
 
 // Define routes
 const router = createBrowserRouter([
@@ -41,6 +43,8 @@ const router = createBrowserRouter([
       { path: "blogs", element: <Blogs /> },
       { path: "blogs/:slug", element: <BlogDetail /> },
       { path: "custom-sportswear-:state", element: <LocalLandingPage /> },
+      { path: "privacy-policy", element: <PrivacyPolicy /> },
+      { path: "terms", element: <Terms /> },
 
       // ✅ Sports Kits
       { path: "football", element: <CategoryRoute slug="football" /> },
