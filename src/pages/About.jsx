@@ -141,16 +141,16 @@ const About = () => {
                       <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white/80 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-indigo-500">
                         Leadership
                       </span>
-                      <h2 className="text-2xl md:text-3xl font-semibold text-indigo-900">Meet the Co-Founders</h2>
+                      <h2 className="text-2xl md:text-3xl font-semibold text-indigo-900">Our Founder & Leadership</h2>
                       <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                        Brothers <span className="font-semibold text-indigo-700">Atif Shahzad</span> and <span className="font-semibold text-indigo-700">Hurairah Shahzad</span> graduated together from the <span className="font-semibold">University of Sialkot</span> and turned a shared passion for sport into a modern export powerhouse. Their complementary strengths keep Zarko agile—from concept sketches to global shipments.
+                        Zarko Sportswear is founded and owned by <span className="font-semibold text-indigo-700">Atif Shahzad</span>, who established the company with the vision of providing professional, export-quality teamwear directly to sports leagues worldwide. Together with Co-Founder <span className="font-semibold text-indigo-700">Hurairah Shahzad</span>, both alumni of the <span className="font-semibold">University of Sialkot</span>, they have scaled the facility into a premier custom sportswear manufacturing hub, merging advanced fabric technology with reliable global logistics.
                       </p>
                     </div>
                     <div className="flex flex-col items-center gap-3 w-full max-w-xs mx-auto">
                       <div className="group relative flex items-center gap-3 rounded-xl border border-indigo-100 bg-white p-3 pr-5 shadow-sm transition hover:shadow-md w-full">
                         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-sm font-semibold group-hover:bg-indigo-200 transition">AS</div>
                         <div className="text-left">
-                          <p className="text-xs font-medium text-gray-500">Co-Founder</p>
+                          <p className="text-xs font-medium text-gray-500">Owner & Founder</p>
                           <p className="text-sm font-semibold text-indigo-900">Atif Shahzad</p>
                         </div>
                         <div className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-indigo-500 text-white text-[10px] shadow-sm">
@@ -185,20 +185,20 @@ const About = () => {
               <div className="rounded-2xl border border-indigo-100 bg-white p-6 shadow-sm">
                 <h3 className="text-xl font-semibold text-indigo-900">Leadership Philosophy</h3>
                 <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-                  Atif and Hurairah stay closely involved with sampling, production, and customer care, ensuring every project reflects the craftsmanship and timeliness they demand from their own teams.
+                  Owner Atif Shahzad personally directs the quality control checklists for all international exports, working closely with Hurairah and our operations desk to ensure seamless service.
                 </p>
                 <div className="mt-4 grid gap-3">
                   <div className="flex items-center gap-3">
                     <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-sm font-semibold">1</span>
-                    <p className="text-sm text-gray-600">Founder-led QC walkthroughs on every export batch.</p>
+                    <p className="text-sm text-gray-600">Owner-led quality control inspections on every export batch.</p>
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-sm font-semibold">2</span>
-                    <p className="text-sm text-gray-600">Weekly huddles with design and logistics teams for rapid decisions.</p>
+                    <p className="text-sm text-gray-600">Daily huddles with designers and embroidery experts.</p>
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-sm font-semibold">3</span>
-                    <p className="text-sm text-gray-600">Direct line of communication for international distributors.</p>
+                    <p className="text-sm text-gray-600">Direct, transparent communication channels for US team managers.</p>
                   </div>
                 </div>
               </div>
