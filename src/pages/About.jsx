@@ -92,13 +92,13 @@ const About = () => {
         <div className="mx-auto max-w-[94%] px-4 pb-16 pt-16 md:pt-20">
           <div className="text-center">
             <span className="inline-flex items-center gap-3 rounded-full border border-indigo-200 bg-white/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-600">
-              About Zarko Sportswear
+              Direct Sportswear Manufacturer
             </span>
             <h1 className="mt-5 text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-indigo-900 leading-tight">
-              Premium Custom Uniforms & Sportswear Shipped Across the USA.
+              Bespoke Athletic Apparel & Custom Teamwear Solutions
             </h1>
-            <p className="mt-4 text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
-              We partner with ambitious teams, academies, and league distributors in the United States, United Kingdom, Australia, Italy, Saudi Arabia, and broader European countries to deliver bespoke high-performance sportswear (including football kits, wrestling singlets, and hockey wear).
+            <p className="mt-4 text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Zarko Sportswear is a premier private label sportswear factory. We partner directly with athletic clubs, collegiate programs, high schools, and wholesale apparel brands across the United States, UK, and Australia to manufacture high-performance team uniforms, custom soccer kits, sublimated wrestling singlets, and premium activewear.
             </p>
           </div>
 
@@ -108,27 +108,27 @@ const About = () => {
                 <div className="space-y-4">
                   <h2 className="text-2xl font-semibold text-indigo-800">Our Mission</h2>
                   <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-                    To engineer high-performance sportswear that empowers clubs of every level with consistent quality, rapid customization, and reliable export fulfillment. Discover real results in our <Link to="/" className="text-indigo-600 hover:underline">top selling section</Link>.
+                    To manufacture custom athletic uniforms that blend cutting-edge mesh ventilation with high-durability interlock polyester. We empower sports programs at all levels with factory-direct pricing, custom designs, and rapid order turnaround. Explore our <Link to="/" className="text-indigo-600 hover:underline">popular collections</Link> to get started.
                   </p>
                 </div>
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-semibold text-indigo-800">Our Promise</h2>
+                  <h2 className="text-2xl font-semibold text-indigo-800">Quality Promise</h2>
                   <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-                    Every kit we ship carries meticulous craftsmanship, modern fabrication technology, and hands-on customer service backed by a responsive export support desk.
+                    Every jersey, singlet, or accessory is constructed under strict quality checks. We utilize premium fade-resistant Italian sublimation inks and anti-chafe flatlock stitching to ensure your teamwear stands up to intense match play.
                   </p>
                 </div>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="rounded-2xl border border-indigo-100 bg-white p-5 shadow-sm">
-                  <p className="text-sm uppercase tracking-wide text-indigo-500">Exports</p>
+                  <p className="text-sm uppercase tracking-wide text-indigo-500">Global Exports</p>
                   <p className="mt-2 text-2xl font-bold text-indigo-900">40+</p>
-                  <p className="text-xs text-gray-500">Countries served across 4 continents</p>
+                  <p className="text-xs text-gray-500">Nations served with secure door-to-door shipping</p>
                 </div>
                 <div className="rounded-2xl border border-indigo-100 bg-white p-5 shadow-sm">
-                  <p className="text-sm uppercase tracking-wide text-indigo-500">Capacity</p>
-                  <p className="mt-2 text-2xl font-bold text-indigo-900">12K+</p>
-                  <p className="text-xs text-gray-500">Monthly uniforms with flexible MOQs</p>
+                  <p className="text-sm uppercase tracking-wide text-indigo-500">Factory Output</p>
+                  <p className="mt-2 text-2xl font-bold text-indigo-900">12,000+</p>
+                  <p className="text-xs text-gray-500">Custom sublimated jerseys produced per month</p>
                 </div>
               </div>
 
