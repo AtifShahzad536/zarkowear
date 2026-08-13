@@ -207,6 +207,52 @@ const About = () => {
         </div>
       </section>
 
+      <section className="bg-slate-50 py-16 border-y border-indigo-50">
+        <div className="mx-auto max-w-[94%] px-4">
+          <div className="text-center mb-12">
+            <span className="inline-flex items-center gap-3 rounded-full border border-indigo-200 bg-white/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-600">
+              Certifications & Audits
+            </span>
+            <h2 className="mt-4 text-3xl font-bold text-indigo-900">
+              Ethical Production & International Standards
+            </h2>
+            <p className="mt-2 text-sm text-gray-600 max-w-2xl mx-auto">
+              Our factory operates under compliance regulations to verify safe working conditions and high production quality.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-4 max-w-6xl mx-auto">
+            <div className="bg-white border border-indigo-50 p-6 rounded-2xl shadow-sm text-center">
+              <span className="text-xs font-bold text-indigo-600 block mb-1">BSCI CERTIFIED</span>
+              <h3 className="font-semibold text-indigo-950 text-base">Ethical Standards</h3>
+              <p className="text-xs text-gray-500 mt-2 leading-relaxed">
+                Audited facilities prioritizing worker safety, fair compensation, and zero child labor.
+              </p>
+            </div>
+            <div className="bg-white border border-indigo-50 p-6 rounded-2xl shadow-sm text-center">
+              <span className="text-xs font-bold text-indigo-600 block mb-1">ISO 9001:2015</span>
+              <h3 className="font-semibold text-indigo-950 text-base">Quality Management</h3>
+              <p className="text-xs text-gray-500 mt-2 leading-relaxed">
+                Standardized verification cycles from raw yarn procurement to finished sublimation prints.
+              </p>
+            </div>
+            <div className="bg-white border border-indigo-50 p-6 rounded-2xl shadow-sm text-center">
+              <span className="text-xs font-bold text-indigo-600 block mb-1">OEKO-TEX 100</span>
+              <h3 className="font-semibold text-indigo-950 text-base">Eco-Friendly Inks</h3>
+              <p className="text-xs text-gray-500 mt-2 leading-relaxed">
+                Tested free from harmful substances, ensuring safety for athletes and eco-friendly footprint.
+              </p>
+            </div>
+            <div className="bg-white border border-indigo-50 p-6 rounded-2xl shadow-sm text-center">
+              <span className="text-xs font-bold text-indigo-600 block mb-1">USA COMPLIANT</span>
+              <h3 className="font-semibold text-indigo-950 text-base">Tournament Ready</h3>
+              <p className="text-xs text-gray-500 mt-2 leading-relaxed">
+                Strict alignment with NFHS, NCAA, and US Soccer rules for uniform sizes, numbering, and markings.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-[94%] px-4 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

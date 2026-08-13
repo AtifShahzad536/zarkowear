@@ -213,13 +213,15 @@ const CategoryPage = ({ slug }) => {
   const cleanSport = name.replace(/( Kits & Apparel| Singlets & Gear| Apparel & Accessories| & Training Gear| & Footwear| & Hand Protection| & Headwear| & Gear Packs)/gi, '');
   const pageTitle = `Custom ${cleanSport} Uniforms & Sportswear USA | Zarko Sportswear`;
   const pageDescription = `Looking for custom uniform USA? Design & buy premium custom ${cleanSport.toLowerCase()} sportswear, jerseys, and team wear. Top quality, quick ship options, and custom gear for teams and businesses.`;
-  
+
   const pageKeywords = [
     `custom sportswear USA`,
     `custom sports apparel usa`,
-    `custom ${cleanSport.toLowerCase()} apparel usa`,
     `custom sportswear manufacturer usa`,
-    `custom ${cleanSport.toLowerCase()} sportswear manufacturer`,
+    `${cleanSport.toLowerCase()} sportswear factory`,
+    `${cleanSport.toLowerCase()} sportswear supplier`,
+    `private label ${cleanSport.toLowerCase()} sportswear`,
+    `custom ${cleanSport.toLowerCase()} teamwear manufacturer`,
     `custom sportswear company`,
     `custom sportswear apparel`,
     `custom uniform USA`,
@@ -279,13 +281,13 @@ const CategoryPage = ({ slug }) => {
         {/* TOP PRODUCT DETAIL HERO CONTAINER (Left: Picture, Right: Details) */}
         <section className="bg-transparent overflow-hidden py-4 sm:py-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            
+
             {/* LEFT CONTAINER: FULL PICTURE DISPLAY (Pure White Background) */}
             <div className="lg:col-span-6 flex flex-col items-center">
               <div className="relative w-full h-[400px] sm:h-[460px] rounded-2xl bg-white p-6 flex items-center justify-center shadow-sm overflow-hidden group">
                 {/* Subtle background glow */}
                 <div className="absolute inset-0 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:20px_20px] opacity-10" />
-                
+
                 <img
                   src={imageUrl(featured?.image || products[0]?.image || '/images/placeholder.jpg')}
                   alt={name} title={name}

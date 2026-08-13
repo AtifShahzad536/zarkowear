@@ -44,8 +44,8 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Four Column Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+        {/* Five Column Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
 
           {/* Col 1: Quick Links */}
           <div className="space-y-4">
@@ -63,7 +63,20 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Col 2: Support */}
+          {/* Col 2: Regional Services */}
+          <div className="space-y-4">
+            <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-indigo-400">
+              Regional USA
+            </h3>
+            <ul className="space-y-3 text-xs font-semibold text-slate-400">
+              <li><Link to="/custom-sportswear-california" className="hover:text-white transition">California Teamwear</Link></li>
+              <li><Link to="/custom-sportswear-texas" className="hover:text-white transition">Texas Teamwear</Link></li>
+              <li><Link to="/custom-sportswear-new-york" className="hover:text-white transition">New York Teamwear</Link></li>
+              <li><Link to="/custom-sportswear-florida" className="hover:text-white transition">Florida Teamwear</Link></li>
+            </ul>
+          </div>
+
+          {/* Col 3: Support */}
           <div className="space-y-4">
             <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-indigo-400">
               Support

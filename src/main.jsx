@@ -24,6 +24,7 @@ const ModelSelectionPage = lazy(() => import('./pages/ModelSelectionPage.jsx'))
 const Blogs = lazy(() => import('./pages/Blogs.jsx'))
 const BlogDetail = lazy(() => import('./pages/BlogDetail.jsx'))
 const AdminBlogs = lazy(() => import('./pages/AdminBlogs.jsx'))
+const LocalLandingPage = lazy(() => import('./pages/LocalLandingPage.jsx'))
 
 // Define routes
 const router = createBrowserRouter([
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
       { path: "detail", element: <ProductInquiry /> },
       { path: "blogs", element: <Blogs /> },
       { path: "blogs/:slug", element: <BlogDetail /> },
+      { path: "custom-sportswear-:state", element: <LocalLandingPage /> },
 
       // ✅ Sports Kits
       { path: "football", element: <CategoryRoute slug="football" /> },

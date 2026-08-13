@@ -9,7 +9,7 @@ const defaultAccent = {
 export const categoryConfigs = {
   football: {
     name: 'Football Kits & Apparel',
-    heroDescription: 'Match-ready, breathable, and durable kits for clubs, academies, and professional teams.',
+    heroDescription: 'Engineered for high-intensity play. Custom football uniforms featuring double-knit interlock fabric, ventilation panels, and ergonomic styling.',
     gradient: defaultGradient,
     accent: { ...defaultAccent },
     featured: {
@@ -41,7 +41,7 @@ export const categoryConfigs = {
   },
   cricket: {
     name: 'Cricket Kits & Apparel',
-    heroDescription: 'Lightweight and moisture-wicking uniforms for all formats – T20, ODI, and Test matches.',
+    heroDescription: 'Lightweight, UV-shielded cricket kits designed for long field innings, featuring advanced dry-fit mesh panels for optimum heat release.',
     gradient: defaultGradient,
     accent: { ...defaultAccent },
     featured: {
@@ -74,7 +74,7 @@ export const categoryConfigs = {
   },
   basketball: {
     name: 'Basketball Kits & Apparel',
-    heroDescription: 'Breathable mesh jerseys and shorts designed for indoor and outdoor basketball excellence.',
+    heroDescription: 'Wide-armhole mesh basketball jerseys designed to facilitate broad range of arm motion and dynamic court cuts with rapid moisture evaporation.',
     gradient: defaultGradient,
     accent: { ...defaultAccent },
     featured: {
@@ -107,7 +107,7 @@ export const categoryConfigs = {
   },
   wrestling: {
     name: 'Wrestling Singlets & Gear',
-    heroDescription: 'High-performance singlets with four-way stretch for ultimate flexibility and movement.',
+    heroDescription: 'High-compression spandex wrestling singlets with 4-way stretch zones and flatlock stitching for maximum comfort and durability on the mat.',
     gradient: defaultGradient,
     accent: { ...defaultAccent },
     featured: {
@@ -387,6 +387,130 @@ export const categoryConfigs = {
       { name: 'Rolling Gear Bag', image: '/images/slide2.jpg' },
       { name: 'Equipment Tote', image: '/images/slide1.jpg' },
       { name: 'Travel Duffel', image: '/images/slide2.jpg' },
+    ],
+  },
+  soccer: {
+    name: 'Soccer Kits & Jerseys',
+    heroDescription: 'Lightweight, aerated mesh soccer uniforms engineered for high-intensity movement and durability on the pitch.',
+    gradient: defaultGradient,
+    accent: { ...defaultAccent },
+    featured: {
+      name: 'Championship Soccer Kit',
+      image: '/images/sports/soccer.webp',
+      description: 'Engineered with double-knit, moisture-wicking interlock fabric, this kit is tailored for fluid mobility, slide-tackling resilience, and high breathability.',
+      details: [
+        'High-density moisture-wicking interlock fabric',
+        'Mesh underarm ventilation panels for temperature regulation',
+        'Athletic tailored fit for fluid player movement',
+        'Fade-resistant 4K sublimation print processing',
+        'Reinforced double-stitched flatlock seams for durability',
+        'Custom name, squad number, and team crest options',
+      ],
+      sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL'],
+    },
+    products: [
+      { name: 'Classic Striped Soccer Jersey', image: '/images/sports/soccer.webp' },
+      { name: 'Pro Match Day Uniform Set', image: '/images/sports/soccer.webp' },
+      { name: 'Elite Goalkeeper Kit', image: '/images/sports/soccer.webp' },
+      { name: 'Performance Training Jersey', image: '/images/sports/soccer.webp' },
+    ],
+  },
+  volleyball: {
+    name: 'Volleyball Uniforms & Gear',
+    heroDescription: 'High-stretch, lightweight apparel designed for vertical agility, quick lateral dives, and exceptional breathability.',
+    gradient: defaultGradient,
+    accent: { ...defaultAccent },
+    featured: {
+      name: 'Apex Volleyball Uniform Set',
+      image: '/images/sports/volleyball.webp',
+      description: 'Constructed with premium elastane-polyester blend, offering uninhibited overhead range of motion and sweat-wicking comfort for long rallies.',
+      details: [
+        'Premium elastane-polyester fabric blend for maximum elasticity',
+        'Sweat-wicking and quick-drying technology to keep players cool',
+        'Friction-resistant flat seams to prevent chafing during floor dives',
+        'Ergonomic athletic compression fit supporting muscle stamina',
+        'Custom dye-sublimated graphics that resist fading and cracking',
+      ],
+      sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    },
+    products: [
+      { name: 'Elite Sleeveless Jersey', image: '/images/sports/volleyball.webp' },
+      { name: 'Active Long Sleeve Game Jersey', image: '/images/sports/volleyball.webp' },
+      { name: 'Pro Volleyball Team Shorts', image: '/images/sports/volleyball.webp' },
+      { name: 'Training Compression Tops', image: '/images/sports/volleyball.webp' },
+    ],
+  },
+  baseball: {
+    name: 'Baseball Kits & Jerseys',
+    heroDescription: 'Classic double-knit jerseys and custom pants engineered for base-running velocity and durable play.',
+    gradient: defaultGradient,
+    accent: { ...defaultAccent },
+    featured: {
+      name: 'Legend Baseball Jersey Pro',
+      image: '/images/sports/baseball.webp',
+      description: 'Features heavy-duty breathable fabric with a button-down front design, built to withstand sliding friction and heat during long summer innings.',
+      details: [
+        'Durable double-knit polyester built for sliding resilience',
+        'Classic full button-down jersey design with custom piping',
+        'Moisture-control fibers to maintain player comfort',
+        'Reinforced panels at high-stress wear zones',
+        'Custom 3D embroidery and tackle twill branding options',
+      ],
+      sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL', '4XL'],
+    },
+    products: [
+      { name: 'Classic Full-Button Jersey', image: '/images/sports/baseball.webp' },
+      { name: 'Youth League Baseball Uniform', image: '/images/sports/baseball.webp' },
+      { name: 'Piped Baseball Game Pants', image: '/images/sports/baseball.webp' },
+      { name: 'Breathable Batter Warm-Up Tee', image: '/images/sports/baseball.webp' },
+    ],
+  },
+  softball: {
+    name: 'Softball Uniforms & Jerseys',
+    heroDescription: 'Ergonomic, lightweight team uniforms tailored for fastpitch mobility and sliding protection.',
+    gradient: defaultGradient,
+    accent: { ...defaultAccent },
+    featured: {
+      name: 'Fastpitch Elite Jersey',
+      image: '/images/sports/softball.webp',
+      description: 'Moisture-wicking, flexible softball uniforms with professional piping and premium breathability.',
+      details: [
+        'Lightweight, high-flex performance fabric',
+        'Moisture-wicking mesh back paneling',
+        'Full button-down and two-button configurations available',
+        'Reinforced construction built for sliding action',
+        'Custom team logos and player name/number options',
+      ],
+      sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    },
+    products: [
+      { name: 'Pro Fastpitch Jersey', image: '/images/sports/softball.webp' },
+      { name: 'Sleeveless Game Jersey', image: '/images/sports/softball.webp' },
+      { name: 'Sliding Shorts with Padding', image: '/images/sports/softball.webp' },
+    ],
+  },
+  'ice-hockey': {
+    name: 'Ice Hockey Jerseys & Gear',
+    heroDescription: 'Heavyweight, oversized jerseys built to wear over protective padding while ensuring full range of motion.',
+    gradient: defaultGradient,
+    accent: { ...defaultAccent },
+    featured: {
+      name: 'Championship Ice Hockey Jersey',
+      image: '/images/sports/ice-hockey.webp',
+      description: 'Heavy-duty knit polyester with double elbows and shoulders, designed to withstand rigorous physical play on the ice.',
+      details: [
+        'Oversized cut designed to fit comfortably over pads',
+        'Heavyweight knit polyester for ultimate durability',
+        'Double-layered shoulders and elbow sections',
+        'Fight strap integration available for professional orders',
+        'Fully sublimated team colors, names, and numbers',
+      ],
+      sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL', 'Golee-Style'],
+    },
+    products: [
+      { name: 'Elite Ice Hockey Jersey', image: '/images/sports/ice-hockey.webp' },
+      { name: 'Practice Mesh Hockey Jersey', image: '/images/sports/ice-hockey.webp' },
+      { name: 'Pro Player Socks', image: '/images/sports/ice-hockey.webp' },
     ],
   },
 };

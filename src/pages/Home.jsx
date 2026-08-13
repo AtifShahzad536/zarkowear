@@ -190,7 +190,7 @@ const Home = () => {
                 Premium Teamwear,<br />Built to Win.
               </h2>
               <p className="text-xs sm:text-sm text-gray-400 font-medium leading-relaxed max-w-xs">
-                Best custom sportswear manufacturer in Sialkot, trusted by B2B athletic teams across the USA, UK, Australia, KSA and Europe.
+                Export-grade team uniform manufacturing, supplying sports leagues and wholesale brands in the USA, Europe, and globally.
               </p>
 
               {/* 4 Premium Feature Items */}
@@ -432,7 +432,59 @@ const Home = () => {
           </div>
         </div>
       </section>
-        <TopSellingProducts />
+        {/* Premium Trust & Manufacturing Certifications (E-E-A-T) */}
+      <section className="bg-slate-50 py-16 border-b border-slate-200">
+        <div className="max-w-[94%] mx-auto px-4">
+          <div className="flex flex-col items-center text-center mb-12 space-y-4">
+            <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-indigo-600 block">
+              Certified Production & Standards
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
+              World-Class Manufacturing Expertise
+            </h2>
+            <p className="text-sm text-slate-500 max-w-xl">
+              We operate under strict global quality protocols to deliver high-performance athletic wear that meets international tournament standards.
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
+            {/* Standard 1 */}
+            <div className="bg-white border border-slate-200 p-6 text-center space-y-3 shadow-sm">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-indigo-50 text-indigo-600 mb-2">
+                <FaAward className="text-xl" />
+              </div>
+              <h3 className="font-extrabold text-slate-900 text-sm uppercase tracking-wider">BSCI & ISO Audited</h3>
+              <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                Our manufacturing facilities comply fully with the Business Social Compliance Initiative (BSCI) and ISO safety standards, ensuring ethical and fair labor practices.
+              </p>
+            </div>
+
+            {/* Standard 2 */}
+            <div className="bg-white border border-slate-200 p-6 text-center space-y-3 shadow-sm">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-indigo-50 text-indigo-600 mb-2">
+                <FaCheckCircle className="text-xl" />
+              </div>
+              <h3 className="font-extrabold text-slate-900 text-sm uppercase tracking-wider">OEKO-TEX Certified Inks</h3>
+              <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                We use strictly certified eco-friendly Italian sublimation inks that are non-toxic, safe for skin contact, and deliver exceptionally crisp 4K color prints.
+              </p>
+            </div>
+
+            {/* Standard 3 */}
+            <div className="bg-white border border-slate-200 p-6 text-center space-y-3 shadow-sm">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-indigo-50 text-indigo-600 mb-2">
+                <FaGlobeAmericas className="text-xl" />
+              </div>
+              <h3 className="font-extrabold text-slate-900 text-sm uppercase tracking-wider">Tournament Compliance</h3>
+              <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                Every team uniform is engineered to conform precisely with NFHS, NCAA, and US-Soccer specifications, including size limits for numbers, names, and logos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <TopSellingProducts />
 
       
     
@@ -548,30 +600,30 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-xs sm:text-sm leading-relaxed">
             <div>
               <h2 className="text-2xl font-black text-slate-900 mb-4 uppercase tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                Leading Custom Sports Uniforms Manufacturer in the USA
+                Professional Teamwear & Custom Athletic Jerseys
               </h2>
               <p className="mb-4">
-                Zarko Sportswear is your premier partner for high-performance <strong>custom sports uniforms</strong> and athletic apparel. As a direct <strong>sportswear manufacturer</strong>, we eliminate the middleman, providing professional-grade gear directly to teams, schools, and leagues across the United States. Whether you need custom football jerseys, wrestling singlets, basketball uniforms, or full soccer kits, our state-of-the-art facility ensures premium export quality at competitive prices.
+                Zarko Sportswear is your premier partner for high-performance athletic apparel. As a direct clothing manufacturer, we control the entire supply chain, delivering professional-grade uniforms to teams, schools, and club leagues globally. Whether you need soccer kits, wrestling singlets, basketball uniforms, or training tracksuits, our state-of-the-art facility ensures export-quality apparel tailored to your squad's exact specifications.
               </p>
               <p className="mb-4">
-                Our expertise lies in advanced dye-sublimation printing, ensuring your team's colors, logos, and player names never fade, crack, or peel. From the initial 3D design phase to the final stitch, our manufacturing process is strictly monitored to meet international athletic standards. We specialize in heavy GSM fabrics that offer moisture-wicking, breathability, and extreme durability for rigorous sports like rugby and ice hockey.
+                We specialize in advanced dye-sublimation printing, ensuring your team colors, sponsors, and player names never fade, crack, or peel. From initial 3D mockup to final seam stitching, our production is monitored for durability and comfort. Our heavy-GSM polyester blends provide moisture-wicking and quick-drying capabilities, keeping athletes cool under pressure.
               </p>
               <p>
-                We understand that every team has a unique identity. That is why our in-house design team works closely with you to create tailored concepts. With a turnaround time of just 8-12 days and fast, tracked shipping globally, outfitting your squad has never been easier. Choose Zarko Sportswear for uncompromised quality and reliability in custom teamwear.
+                We understand that team identity matters. That is why our custom design team works closely with you to realize your vision. With standard production times of 8-12 days and fully tracked worldwide door-to-door express delivery, outfitting your squad with premium sportswear has never been simpler.
               </p>
             </div>
             <div>
               <h3 className="text-xl font-black text-slate-900 mb-4 uppercase tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                Comprehensive Athletic Apparel & Accessories
+                Comprehensive Custom Sportswear & Accessories
               </h3>
               <p className="mb-4">
-                Beyond traditional team kits, we manufacture a massive range of athletic apparel and accessories. Our product line includes high-compression gym wear, lightweight running gear, tennis apparel, and custom warm-up tracksuits. We use precision flatlock stitching and four-way stretch materials to guarantee maximum comfort and mobility for athletes in any discipline.
+                Beyond traditional match-day uniforms, we produce a wide variety of secondary apparel and gear. Our custom collections feature premium gym wear, lightweight running kits, tennis skirts, and sideline warm-up hoodies. We utilize soft, anti-chafe flatlock seams and 4-way stretch fabrics to guarantee maximum mobility and athletic longevity.
               </p>
               <p className="mb-4">
-                For complete team branding, we also produce custom sports bags, performance caps, professional-grade gloves, and athletic shoes. Whether you are outfitting a high school baseball team in Texas or a professional cricket league in the UK, we scale our production to meet your exact specifications and volume requirements. We proudly support low Minimum Order Quantities (MOQs) for smaller clubs while possessing the infrastructure to deliver thousands of units for major tournaments.
+                To complete your unified look, we also customize sports gear bags, hats, and glove kits. Whether you are ordering for a local school team or a professional regional league, we adjust our production capacities to match your volume. We offer low minimum order quantities (MOQs) for smaller academies, alongside bulk shipping logistics for large tournaments.
               </p>
               <p>
-                At Zarko Sportswear, we believe in sustainable and ethical manufacturing. Our fabrics are sourced responsibly, and our sublimation inks are eco-friendly, ensuring a minimal environmental footprint while delivering vibrant, high-definition prints. Experience the difference of working directly with a manufacturer that prioritizes your team's performance, brand image, and budget. Contact us today for a free quote and let us bring your custom sports uniform vision to life.
+                At Zarko Sportswear, we are dedicated to ethical and sustainable apparel creation. We utilize clean production procedures and eco-certified inks to limit our environmental footprint while maintaining vibrant, high-definition designs. Contact us today to request a mockup and discover why squads globally trust Zarko to elevate their game.
               </p>
             </div>
           </div>
