@@ -493,7 +493,7 @@ const Hero = () => {
               >
                 {/* Energy Rays & Lightning Effects directly emanating from the active dress */}
                 {isActive && (
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none scale-110">
+                  <div className="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none scale-110">
                     {/* Pulsing Backlight */}
                     <div className="absolute w-44 h-44 rounded-full bg-indigo-500/10 blur-xl animate-pulse" />
 
@@ -523,9 +523,9 @@ const Hero = () => {
                       alt={prod.name} title={prod.name}
                       width={280}
                       height={280}
-                      loading="eager"
-                      fetchpriority={isActive ? 'high' : 'auto'}
-                      decoding="sync"
+                      loading={isActive ? 'eager' : 'lazy'}
+                      fetchpriority={isActive ? 'high' : 'low'}
+                      decoding={isActive ? 'sync' : 'async'}
                       className="w-full h-full object-contain pointer-events-none"
                     />
                   </picture>

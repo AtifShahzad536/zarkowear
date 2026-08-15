@@ -1,25 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/autoplay';
-
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import SeoHead from '../components/SeoHead';
 import { motion, AnimatePresence } from 'framer-motion';
 import Hero from '../components/Hero';
-import TopSellingProducts from '../components/Home/Top';
-import FeaturedCategories from '../components/Home/Feature';
-import LimitedTimeOffer from '../components/Home/LimitedTimeOffer';
-import Testimonials from '../components/Home/Customer';
-import Videos from '../components/Home/Videos';
-import FAQ from '../components/Home/Faq';
 import { Link } from 'react-router-dom';
 import { FaAward, FaPalette, FaGlobeAmericas, FaRunning, FaArrowRight, FaPhoneAlt, FaStar, FaCheckCircle, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { FiLayers, FiGlobe, FiSliders, FiShoppingBag } from 'react-icons/fi';
 import homeSeo from '../seo/homeSeo';
 import { clubs } from '../data/home/partners';
 import { categoryChips } from '../data/home/categoryChips';
+
+// Lazy load below-the-fold sections for instant Mobile LCP
+const Testimonials = lazy(() => import('../components/Home/Customer'));
+const Videos = lazy(() => import('../components/Home/Videos'));
+const FAQ = lazy(() => import('../components/Home/Faq'));
 
 const JERSEYS = [
   '/images/hero_football.webp',
@@ -584,15 +577,14 @@ const Home = () => {
       </section>
 
 
-      {/* Videos section */}
-      <Videos />
-
-      {/* FAQ section */}
-      <FAQ />
-
-      <section className="max-w-[94%] mx-auto px-4 py-12">
-        <Testimonials />
-      </section>
+      {/* Below-the-fold sections loaded on demand */}
+      <Suspense fallback={<div className="min-h-[100px]" />}>
+        <Videos />
+        <FAQ />
+        <section className="max-w-[94%] mx-auto px-4 py-12">
+          <Testimonials />
+        </section>
+      </Suspense>
 
       {/* SEO Content Section to boost word count and keyword relevance */}
       <section className="bg-white text-slate-600 py-16 border-t border-slate-200">
