@@ -27,6 +27,19 @@ function App() {
   const isBuilderRoute = location.pathname.startsWith('/builder');
   const is3DEditor = /^\/builder\/.+/.test(location.pathname);
 
+  const [loadChatbot, setLoadChatbot] = useState(false);
+
+  useEffect(() => {
+    const handleInteraction = () => setLoadChatbot(true);
+    const events = ['scroll', 'mousemove', 'touchstart', 'click'];
+    events.forEach(e => window.addEventListener(e, handleInteraction, { once: true, passive: true }));
+    const timer = setTimeout(() => setLoadChatbot(true), 3500);
+    return () => {
+      events.forEach(e => window.removeEventListener(e, handleInteraction));
+      clearTimeout(timer);
+    };
+  }, []);
+
   // Fetch global settings to determine if splash is enabled
   useEffect(() => {
     // Disable splash for non-builder routes to drastically improve LCP (Largest Contentful Paint)
@@ -71,15 +84,11 @@ function App() {
         <div className="transition-opacity duration-500 opacity-100">
           <Header />
           <main className="min-h-screen">
-            <Suspense
-              fallback={
-                <div className="flex items-center justify-center p-4">
-                  <div className="w-6 h-6 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-                </div>
-              }
-            >
-              <ChatbotWidget />
-            </Suspense>
+            {loadChatbot && (
+              <Suspense fallback={null}>
+                <ChatbotWidget />
+              </Suspense>
+            )}
             <Outlet />
           </main>
           <Footer />

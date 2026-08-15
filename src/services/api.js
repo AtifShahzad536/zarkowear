@@ -179,19 +179,22 @@ export function imageUrl(path, { width = 800, quality = 'auto' } = {}) {
   }
 
   // ── Cloudinary transformation injection ──────────────────────────────────
-  // Cloudinary URLs look like: https://res.cloudinary.com/<cloud>/image/upload/<transforms>/...
-  // We insert f_webp,w_{width},q_{quality},c_limit before the version/path segment.
   const cloudinaryUploadRe = /^(https:\/\/res\.cloudinary\.com\/[^/]+\/image\/upload\/)(?:([^/]+)\/)?(.*)/;
   const match = url.match(cloudinaryUploadRe);
   if (match) {
     const [, base, existingTransforms, rest] = match;
-    // Don't double-apply transforms
     if (existingTransforms && existingTransforms.startsWith('f_')) {
-      return url; // already transformed
+      return url;
     }
-    const transforms = `f_webp,w_${width},q_${quality},c_limit`;
+    const transforms = `f_webp,w_${width},q_${quality === 'auto' ? 'auto' : quality},c_limit`;
     const kept = existingTransforms ? `${existingTransforms}/` : '';
     return `${base}${transforms}/${kept}${rest}`;
+  }
+
+  // ── Backend Uploads CDN Optimization (Compresses heavy raw jpg/png uploads to WebP) ──
+  if (url.includes('/uploads/') || url.includes('/service/uploads/')) {
+    const q = quality === 'auto' ? 75 : quality;
+    return `https://wsrv.nl/?url=${encodeURIComponent(url)}&w=${width}&output=webp&q=${q}&default=${encodeURIComponent(url)}`;
   }
 
   return url;
