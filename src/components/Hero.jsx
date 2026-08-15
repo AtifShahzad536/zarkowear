@@ -516,23 +516,17 @@ const Hero = () => {
                   className={`relative w-[clamp(144px,25vw,360px)] h-[clamp(144px,25vw,360px)] flex items-center justify-center${isActive ? ' animate-[jersey-float_3.2s_ease-in-out_infinite]' : ''}`}
                   style={{ willChange: isActive ? 'transform' : 'auto' }}
                 >
-                  <picture>
-                    <source
-                      srcSet={prod.image.replace(/\.(png|jpg|jpeg)$/i, '.webp')}
-                      type="image/webp"
-                    />
-                    <img
-                      src={prod.image}
-                      alt={prod.name} title={prod.name}
-                      width={280}
-                      height={280}
-                      loading={isActive ? 'eager' : 'lazy'}
-                      fetchPriority={isActive ? 'high' : 'low'}
-                      fetchpriority={isActive ? 'high' : 'low'}
-                      decoding={isActive ? 'sync' : 'async'}
-                      className="w-full h-full object-contain pointer-events-none"
-                    />
-                  </picture>
+                  <img
+                    src={prod.image}
+                    alt={prod.name}
+                    title={prod.name}
+                    width={280}
+                    height={280}
+                    loading={isActive ? 'eager' : 'lazy'}
+                    fetchPriority={isActive ? 'high' : 'low'}
+                    decoding={isActive ? 'sync' : 'async'}
+                    className="w-full h-full object-contain pointer-events-none"
+                  />
                 </div>
               </motion.div>
             );
