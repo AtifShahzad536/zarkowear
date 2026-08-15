@@ -10,6 +10,7 @@ import { clubs } from '../data/home/partners';
 import { categoryChips } from '../data/home/categoryChips';
 
 // Lazy load below-the-fold sections for instant Mobile LCP
+const FeaturedCategories = lazy(() => import('../components/Home/Feature'));
 const Testimonials = lazy(() => import('../components/Home/Customer'));
 const Videos = lazy(() => import('../components/Home/Videos'));
 const FAQ = lazy(() => import('../components/Home/Faq'));
@@ -158,7 +159,9 @@ const Home = () => {
       </section>
 
 
-      <FeaturedCategories />
+      <Suspense fallback={<div className="min-h-[100px]" />}>
+        <FeaturedCategories />
+      </Suspense>
       {/* Redesigned Premium Teamwear Section */}
       <section className="relative overflow-hidden bg-[#0A0C16] text-white py-16 sm:py-24">
         {/* Deep background purple/indigo spotlight glows */}
