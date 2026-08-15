@@ -245,15 +245,9 @@ const Hero = () => {
         <div className="absolute top-[35%] md:top-[32%] left-1/2 -translate-x-1/2 w-44 md:w-[260px] h-6 md:h-9 rounded-full border border-yellow-400/20 bg-yellow-400/5 shadow-[0_0_20px_rgba(234,179,8,0.2)] transform -rotate-[3deg]" />
       </div>
 
-      {/* Top Center: Minimal Looping Manufacturing Steps with 100% Solid WCAG AAA Container */}
-      <div 
-        className="absolute top-4 left-1/2 -translate-x-1/2 z-30 flex items-center select-none bg-[#0A0C16] px-4 py-1.5 rounded-full border border-slate-700 shadow-md max-w-[90vw] overflow-hidden"
-        style={{ backgroundColor: '#0A0C16' }}
-      >
-        <span 
-          className="w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[10px] font-black mr-2.5 flex-shrink-0"
-          style={{ backgroundColor: '#4F46E5', color: '#FFFFFF' }}
-        >
+      {/* Top Center: Minimal Looping Manufacturing Steps (Original Clean Aesthetic) */}
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-30 flex items-center select-none max-w-[90vw] overflow-hidden">
+        <span className="w-5 h-5 rounded-full border border-gray-300 text-gray-500 flex items-center justify-center text-[10px] font-semibold mr-2 flex-shrink-0">
           {currentStepIndex + 1}
         </span>
         <div className="overflow-hidden relative h-5 flex items-center">
@@ -264,8 +258,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.25 }}
-              className="text-[11px] sm:text-xs uppercase tracking-wider font-bold text-white whitespace-nowrap block"
-              style={{ color: '#FFFFFF' }}
+              className="text-[10px] sm:text-[11px] uppercase tracking-wider font-medium text-gray-500 whitespace-nowrap block"
             >
               {STEPS[currentStepIndex]}
             </motion.span>
