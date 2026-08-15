@@ -136,6 +136,8 @@ const Header = () => {
           <img
             src="/new-logo.png"
             alt="Zarko Sportswear" title="Zarko Sportswear"
+            width={48}
+            height={48}
             className="h-10 md:h-12 w-auto object-contain transition-transform group-hover:scale-105"
           />
           <span className="text-[16px] md:text-[18px] font-black  text-indigo-950 uppercase tracking-widest -ml-0.5" style={{ fontFamily: "'Outfit', sans-serif" }}>

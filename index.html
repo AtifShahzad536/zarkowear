@@ -117,10 +117,13 @@
       }
     </script>
 
-  <!-- ✅ Deferred Google Analytics for PageSpeed Performance -->
+  <!-- ✅ Lazy Loaded Google Tag Manager to keep CPU idle and eliminate unused JS -->
   <script>
-    window.addEventListener('load', function () {
-      setTimeout(function () {
+    (function () {
+      var loaded = false;
+      function loadGtag() {
+        if (loaded) return;
+        loaded = true;
         var script = document.createElement('script');
         script.async = true;
         script.src = 'https://www.googletagmanager.com/gtag/js?id=G-VDLCM1KWVN';
@@ -131,8 +134,18 @@
         window.gtag = gtag;
         gtag('js', new Date());
         gtag('config', 'G-VDLCM1KWVN', { 'page_path': window.location.pathname });
-      }, 1500); // 1.5s delay to keep CPU idle for initial render
-    });
+      }
+
+      ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'].forEach(function (e) {
+        window.addEventListener(e, loadGtag, { once: true, passive: true });
+      });
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(function () { setTimeout(loadGtag, 3500); });
+      } else {
+        setTimeout(loadGtag, 4000);
+      }
+    })();
   </script>
 </head>
 

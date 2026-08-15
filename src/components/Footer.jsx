@@ -27,6 +27,10 @@ const Footer = () => {
             <img
               src="/new-logo.png"
               alt="Zarko Sportswear" title="Zarko Sportswear"
+              width={48}
+              height={48}
+              loading="lazy"
+              decoding="async"
               className="h-12 w-auto object-contain"
               style={{ filter: 'brightness(0) invert(1)' }}
             />

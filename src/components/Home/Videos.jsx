@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { getHomeSettings, imageUrl } from '../../services/api';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 
 const Videos = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: '200px' });
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -35,7 +37,7 @@ const Videos = () => {
   if (error || !list.length) return null;
 
   return (
-    <section className="w-full py-20 bg-[#F8FAFC] border-b border-slate-200">
+    <section ref={sectionRef} className="w-full py-20 bg-[#F8FAFC] border-b border-slate-200">
       <div className="max-w-[94%] mx-auto px-4">
         
         {/* Header Area */}
@@ -58,22 +60,28 @@ const Videos = () => {
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className="bg-white border border-slate-200 rounded-none overflow-hidden transition-all duration-300 flex flex-col group"
             >
-              {/* Direct Video Player (No Thumbnail required) */}
+              {/* Lazy Video Player (preload none saves 9MB on initial load) */}
               <div className="h-64 sm:h-72 lg:h-80 relative overflow-hidden bg-slate-900">
-                <video
-                  src={imageUrl(video.url)}
-                  controls
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="w-full h-full object-cover"
-                />
+                {isInView ? (
+                  <video
+                    src={imageUrl(video.url)}
+                    controls
+                    loop
+                    muted
+                    playsInline
+                    preload="none"
+                    className="w-full h-full object-cover"
+                  >
+                    <track kind="captions" label="English" src="" default={false} />
+                  </video>
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-slate-800 text-slate-400">
+                    <span className="text-xs font-semibold">Video ready to play</span>
+                  </div>
+                )}
               </div>
 
               {/* Text Info */}

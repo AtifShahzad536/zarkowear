@@ -94,8 +94,12 @@ const Testimonials = () => {
                     className="absolute top-4 right-6 w-12 h-12 rounded-full overflow-hidden shadow-lg ring-4 ring-white bg-white"
                   >
                     <img
-                      src={imageUrl(t.image || '/uploads/placeholder.jpg')}
+                      src={imageUrl(t.image || '/uploads/placeholder.jpg', { width: 100 })}
                       alt={t.name} title={t.name}
+                      width={48}
+                      height={48}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover"
                     />
                   </motion.div>
