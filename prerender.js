@@ -700,38 +700,18 @@ function runPrerender() {
       html = html.replace(twitterDescRegex, `<meta name="twitter:description"\n    content="${escapeAttr(meta.description)}" />`);
     }
 
-    // 6. Inject Rich Pre-rendered Static HTML content inside <div id="root"> (350-500+ words for SEO Crawlers)
-    const staticBodyMarkup = `
-      <div class="prerendered-seo-wrapper" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1e293b; max-width: 1200px; margin: 0 auto; padding: 20px;">
-        <header style="border-bottom: 1px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center;">
-          <a href="/" style="font-size: 22px; font-weight: 900; color: #312e81; text-decoration: none; text-transform: uppercase;">Zarko Sportswear USA</a>
-          <nav style="display: flex; gap: 15px; font-size: 14px; font-weight: 600;">
-            <a href="/" style="color: #4338ca; text-decoration: none;">Home</a>
-            <a href="/about" style="color: #4338ca; text-decoration: none;">About</a>
-            <a href="/custom" style="color: #4338ca; text-decoration: none;">Custom Orders</a>
-            <a href="/builder" style="color: #4338ca; text-decoration: none;">3D Builder</a>
-            <a href="/blogs" style="color: #4338ca; text-decoration: none;">Blogs</a>
-            <a href="/contact" style="color: #4338ca; text-decoration: none;">Contact</a>
-          </nav>
-        </header>
-        <main>
-          <h1 style="font-size: 32px; font-weight: 800; color: #1e1b4b; margin-bottom: 16px;">${meta.h1}</h1>
-          ${meta.bodyContent}
-        </main>
-        <footer style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 13px; color: #64748b; text-align: center;">
-          <p>&copy; ${new Date().getFullYear()} Zarko Sportswear. Premium Factory-Direct Custom Sports Uniforms for Teams, Clubs & Schools in the USA.</p>
-          <p style="margin-top: 8px;">
-            <a href="/privacy-policy" style="color: #4338ca; text-decoration: underline;">Privacy Policy</a> | 
-            <a href="/terms" style="color: #4338ca; text-decoration: underline;">Terms of Service</a> | 
-            <a href="/contact" style="color: #4338ca; text-decoration: underline;">Contact Support</a>
-          </p>
-        </footer>
-      </div>
-    `;
+    // 6. Inject Rich SEO Content for Search Crawlers (350-500+ Words) without causing visual layout shift
+    const staticCrawlerMarkup = `
+  <section class="seo-crawler-content" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;" aria-label="${escapeAttr(meta.title)}">
+    <h1>${meta.h1}</h1>
+    ${meta.bodyContent}
+  </section>`;
 
-    const rootRegex = /<div id="root">[^]*?<\/div>\s*<noscript>/i;
-    if (rootRegex.test(html)) {
-      html = html.replace(rootRegex, `<div id="root">${staticBodyMarkup}</div>\n  <noscript>`);
+    const crawlerRegex = /<section class="seo-crawler-content"[^]*?<\/section>/i;
+    if (crawlerRegex.test(html)) {
+      html = html.replace(crawlerRegex, staticCrawlerMarkup.trim());
+    } else {
+      html = html.replace('</noscript>', `</noscript>\n${staticCrawlerMarkup}`);
     }
 
     // Write file to route directory

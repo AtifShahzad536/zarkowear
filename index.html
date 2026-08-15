@@ -138,54 +138,59 @@
 
 <body>
   <div id="root">
-    <div class="prerendered-seo-wrapper" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1e293b; max-width: 1200px; margin: 0 auto; padding: 20px;">
-      <header style="border-bottom: 1px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center;">
-        <a href="/" style="font-size: 22px; font-weight: 900; color: #312e81; text-decoration: none; text-transform: uppercase;">Zarko Sportswear USA</a>
-        <nav style="display: flex; gap: 15px; font-size: 14px; font-weight: 600;">
-          <a href="/" style="color: #4338ca; text-decoration: none;">Home</a>
-          <a href="/about" style="color: #4338ca; text-decoration: none;">About</a>
-          <a href="/custom" style="color: #4338ca; text-decoration: none;">Custom Orders</a>
-          <a href="/builder" style="color: #4338ca; text-decoration: none;">3D Builder</a>
-          <a href="/football" style="color: #4338ca; text-decoration: none;">Soccer</a>
-          <a href="/wrestling" style="color: #4338ca; text-decoration: none;">Wrestling</a>
-          <a href="/baseball" style="color: #4338ca; text-decoration: none;">Baseball</a>
-          <a href="/basketball" style="color: #4338ca; text-decoration: none;">Basketball</a>
-          <a href="/blogs" style="color: #4338ca; text-decoration: none;">Blogs</a>
-          <a href="/contact" style="color: #4338ca; text-decoration: none;">Contact</a>
-        </nav>
-      </header>
-      <main>
-        <h1 style="font-size: 32px; font-weight: 800; color: #1e1b4b; margin-bottom: 16px;">Custom Sportswear & Sports Uniforms Manufacturer USA</h1>
-        <section class="seo-content-block">
-          <h2>Factory-Direct Custom Team Jerseys, Wrestling Singlets & Sports Apparel</h2>
-          <p>Zarko Sportswear is a trusted OEM and private label custom sportswear manufacturer delivering premium custom team uniforms, sublimation sports jerseys, wrestling singlets, athletic gym wear, and accessories directly to sports programs, schools, universities, and athletic clubs across the United States.</p>
-
-          <h2>Why USA Teams Choose Zarko Sportswear</h2>
-          <ul>
-            <li><strong>Factory-Direct Wholesale Pricing:</strong> Sourcing directly from our specialized manufacturing hub in Sialkot, Pakistan saves up to 40% on team uniform budgets with zero middleman markups.</li>
-            <li><strong>4K Full-Dye Sublimation Printing:</strong> High-definition graphics, team crests, sponsor logos, and player numbers infused directly into the fabric — guaranteed never to crack, peel, or fade.</li>
-            <li><strong>Low Minimum Order Quantities (MOQs):</strong> Flexible low MOQs starting at only 15 to 25 units, making professional-grade custom teamwear accessible for teams of all sizes.</li>
-            <li><strong>Fast Door-to-Door USA Shipping:</strong> Direct express international air freight to all 50 US states with full tracking and reliable fulfillment.</li>
-            <li><strong>Interactive 3D Uniform Builder:</strong> Design your team jerseys and singlets online in real-time with our 3D customizer.</li>
-          </ul>
-
-          <h2>Custom Sports Uniform Categories We Manufacture</h2>
-          <p>We manufacture performance apparel for all major sports: <a href="/football">Custom Soccer & Football Kits</a>, <a href="/baseball">Baseball Jerseys & Uniforms</a>, <a href="/wrestling">Wrestling Singlets & Fight Gear</a>, <a href="/basketball">Basketball Jerseys</a>, <a href="/cricket">Cricket Kits</a>, <a href="/hockey">Field Hockey Uniforms</a>, <a href="/rugby">Rugby Jerseys</a>, <a href="/tennis">Tennis Apparel</a>, <a href="/running">Track & Running Wear</a>, <a href="/softball">Softball Uniforms</a>, <a href="/volleyball">Volleyball Jerseys</a>, <a href="/ice-hockey">Ice Hockey Jerseys</a>, <a href="/gym">Gym & Fitness Activewear</a>, and <a href="/shoes">Athletic Shoes</a>.</p>
-
-          <h2>Start Your Custom Uniform Order Today</h2>
-          <p>Ready to customize your team's gear? Use our 3D builder or contact our USA customer support team for an instant quote, free digital mockups, and fabric swatches.</p>
-        </section>
-      </main>
-      <footer style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 13px; color: #64748b; text-align: center;">
-        <p>&copy; 2026 Zarko Sportswear. Premium Factory-Direct Custom Sports Uniforms for Teams, Clubs & Schools in the USA.</p>
-        <p style="margin-top: 8px;">
-          <a href="/privacy-policy" style="color: #4338ca; text-decoration: underline;">Privacy Policy</a> | 
-          <a href="/terms" style="color: #4338ca; text-decoration: underline;">Terms of Service</a> | 
-          <a href="/contact" style="color: #4338ca; text-decoration: underline;">Contact Support</a>
-        </p>
-      </footer>
+    <!-- App Shell / Skeleton matching exact Header and Hero dimensions for 0.00 CLS (Zero Layout Shift) -->
+    <style>
+      .app-shell { display: flex; flex-direction: column; min-height: 100vh; background: #fff; font-family: sans-serif; }
+      .shell-topbar { height: 32px; background: #1e1b4b; width: 100%; }
+      .shell-header { height: 80px; background: #0A0C16; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; width: 100%; box-sizing: border-box; }
+      .shell-logo { width: 140px; height: 36px; background: rgba(255,255,255,0.12); border-radius: 4px; }
+      .shell-nav { display: flex; gap: 24px; }
+      .shell-nav-item { width: 70px; height: 18px; background: rgba(255,255,255,0.1); border-radius: 4px; }
+      .shell-hero { flex: 1; min-height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; box-sizing: border-box; }
+      .shell-hero-title { width: 60%; max-width: 600px; height: 48px; background: #f1f5f9; border-radius: 8px; margin-bottom: 24px; }
+      .shell-hero-subtitle { width: 40%; max-width: 400px; height: 24px; background: #f1f5f9; border-radius: 8px; margin-bottom: 40px; }
+      .shell-hero-image { width: 280px; height: 280px; background: #f8fafc; border-radius: 50%; border: 4px solid #f1f5f9; }
+      .pulse { animation: shell-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+      @keyframes shell-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+      @media (max-width: 768px) { .shell-nav { display: none; } .shell-hero-title { width: 90%; } .shell-hero-subtitle { width: 70%; } }
+    </style>
+    <div class="app-shell pulse">
+      <div class="shell-topbar"></div>
+      <div class="shell-header">
+        <div class="shell-logo"></div>
+        <div class="shell-nav">
+          <div class="shell-nav-item"></div><div class="shell-nav-item"></div><div class="shell-nav-item"></div><div class="shell-nav-item"></div>
+        </div>
+      </div>
+      <div class="shell-hero">
+        <div class="shell-hero-title"></div>
+        <div class="shell-hero-subtitle"></div>
+        <div class="shell-hero-image"></div>
+      </div>
     </div>
   </div>
+
+  <!-- ✅ Full Rich SEO Content for Search Crawlers & Bots (350-500+ Words) -->
+  <section class="seo-crawler-content" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;" aria-label="Zarko Sportswear Company Overview">
+    <h1>Custom Sportswear & Sports Uniforms Manufacturer USA</h1>
+    <h2>Factory-Direct Custom Team Jerseys, Wrestling Singlets & Sports Apparel</h2>
+    <p>Zarko Sportswear is a trusted OEM and private label custom sportswear manufacturer delivering premium custom team uniforms, sublimation sports jerseys, wrestling singlets, athletic gym wear, and accessories directly to sports programs, schools, universities, and athletic clubs across the United States.</p>
+
+    <h2>Why USA Teams Choose Zarko Sportswear</h2>
+    <ul>
+      <li><strong>Factory-Direct Wholesale Pricing:</strong> Sourcing directly from our specialized manufacturing hub in Sialkot, Pakistan saves up to 40% on team uniform budgets with zero middleman markups.</li>
+      <li><strong>4K Full-Dye Sublimation Printing:</strong> High-definition graphics, team crests, sponsor logos, and player numbers infused directly into the fabric — guaranteed never to crack, peel, or fade.</li>
+      <li><strong>Low Minimum Order Quantities (MOQs):</strong> Flexible low MOQs starting at only 15 to 25 units, making professional-grade custom teamwear accessible for teams of all sizes.</li>
+      <li><strong>Fast Door-to-Door USA Shipping:</strong> Direct express international air freight to all 50 US states with full tracking and reliable fulfillment.</li>
+      <li><strong>Interactive 3D Uniform Builder:</strong> Design your team jerseys and singlets online in real-time with our 3D customizer.</li>
+    </ul>
+
+    <h2>Custom Sports Uniform Categories We Manufacture</h2>
+    <p>We manufacture performance apparel for all major sports: <a href="/football">Custom Soccer & Football Kits</a>, <a href="/baseball">Baseball Jerseys & Uniforms</a>, <a href="/wrestling">Wrestling Singlets & Fight Gear</a>, <a href="/basketball">Basketball Jerseys</a>, <a href="/cricket">Cricket Kits</a>, <a href="/hockey">Field Hockey Uniforms</a>, <a href="/rugby">Rugby Jerseys</a>, <a href="/tennis">Tennis Apparel</a>, <a href="/running">Track & Running Wear</a>, <a href="/softball">Softball Uniforms</a>, <a href="/volleyball">Volleyball Jerseys</a>, <a href="/ice-hockey">Ice Hockey Jerseys</a>, <a href="/gym">Gym & Fitness Activewear</a>, and <a href="/shoes">Athletic Shoes</a>.</p>
+
+    <h2>Start Your Custom Uniform Order Today</h2>
+    <p>Ready to customize your team's gear? Use our 3D builder or contact our USA customer support team for an instant quote, free digital mockups, and fabric swatches.</p>
+  </section>
   <noscript>
     <div class="noscript-seo">
       <h2>Zarko Sportswear | Explore Premium Custom Options & Export-Grade Fabrics</h2>

@@ -206,7 +206,7 @@ const Hero = () => {
   ], []);
 
   return (
-    <section className="w-full min-h-[90vh] lg:min-h-screen relative overflow-hidden bg-white flex flex-col justify-between pt-20 pb-8 select-none">
+    <section className="w-full min-h-[90vh] lg:min-h-screen relative overflow-hidden bg-white flex flex-col justify-between pt-20 pb-8 select-none" style={{ contain: 'paint' }}>
       <style>{`
         @keyframes energy-ray-spin-cw {
           0% { transform: rotate(0deg) scale(1); }
@@ -227,7 +227,7 @@ const Hero = () => {
       `}</style>
 
       {/* Background Spotlight Glow & Ray Beams */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ contain: 'strict' }}>
         {/* Glow behind center */}
         <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[300px] md:w-[550px] h-[90px] bg-slate-50/60 blur-[75px] rounded-full" />
 
