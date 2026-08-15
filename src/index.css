@@ -43,12 +43,34 @@ html {
 .clip-polygon {
   clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
 }
+.name-corner {
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+}
 .category-name-clip {
   clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
 }
 .heading-clip {
   clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
 }
+
+@keyframes floatJersey {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+.float-jersey-anim {
+  animation: floatJersey 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes jersey-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+.will-change-transform {
+  will-change: transform;
+}
+
 .typing-text {
   overflow: hidden;
   white-space: nowrap;
