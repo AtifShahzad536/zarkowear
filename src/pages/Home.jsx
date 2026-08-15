@@ -22,11 +22,11 @@ import { clubs } from '../data/home/partners';
 import { categoryChips } from '../data/home/categoryChips';
 
 const JERSEYS = [
-  '/images/hero_football.png',
-  '/images/hero_basketball.png',
-  '/images/hero_wrestling.png',
-  '/images/hero_cricket.png',
-  '/images/hero_gym.png'
+  '/images/hero_football.webp',
+  '/images/hero_basketball.webp',
+  '/images/hero_wrestling.webp',
+  '/images/hero_cricket.webp',
+  '/images/hero_gym.webp'
 ];
 
 const Home = () => {

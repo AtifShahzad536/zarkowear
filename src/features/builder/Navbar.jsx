@@ -132,7 +132,10 @@ const Navbar = ({ onBack, backTo }) => {
       <div className="flex items-center px-4 gap-4 border-r border-gray-100 bg-gray-50/10">
         <div className="flex items-center gap-2.5">
           <Link to="/" className="flex items-center gap-2 hover:scale-105 transition-transform flex-shrink-0">
-            <img src="/new-logo.png" alt="ZSW Logo" title="ZSW Logo" width={28} height={28} className="h-7 w-auto object-contain" />
+            <picture>
+              <source srcSet="/new-logo.webp" type="image/webp" />
+              <img src="/new-logo.webp" alt="ZSW Logo" title="ZSW Logo" width={28} height={28} className="h-7 w-auto object-contain" onError={(e) => { e.currentTarget.src = '/new-logo.png'; }} />
+            </picture>
             <span className="hidden sm:inline text-[10px] font-bold text-gray-900 uppercase tracking-[0.1em] whitespace-nowrap">
               Zarko <span className="text-indigo-600">Studio</span>
             </span>

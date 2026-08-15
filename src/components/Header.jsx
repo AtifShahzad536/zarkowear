@@ -133,13 +133,17 @@ const Header = () => {
       <div className="mx-auto flex max-w-[94%] items-center justify-between px-6 py-3.5">
         {/* Logo and Typography Brand Name on the Left */}
         <Link to="/" className="flex items-center gap-1 group flex-shrink-0">
-          <img
-            src="/new-logo.png"
-            alt="Zarko Sportswear" title="Zarko Sportswear"
-            width={48}
-            height={48}
-            className="h-10 md:h-12 w-auto object-contain transition-transform group-hover:scale-105"
-          />
+          <picture>
+            <source srcSet="/new-logo.webp" type="image/webp" />
+            <img
+              src="/new-logo.webp"
+              alt="Zarko Sportswear" title="Zarko Sportswear"
+              width={48}
+              height={48}
+              className="h-10 md:h-12 w-auto object-contain transition-transform group-hover:scale-105"
+              onError={(e) => { e.currentTarget.src = '/new-logo.png'; }}
+            />
+          </picture>
           <span className="text-[16px] md:text-[18px] font-black  text-indigo-950 uppercase tracking-widest -ml-0.5" style={{ fontFamily: "'Outfit', sans-serif" }}>
             ARKO
           </span>

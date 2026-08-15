@@ -24,16 +24,20 @@ const Footer = () => {
         {/* Top Branding Row */}
         <div className="flex flex-col md:flex-row justify-between items-center border-b border-white/5 pb-10 mb-12 gap-6">
           <div className="flex items-center gap-4">
-            <img
-              src="/new-logo.png"
-              alt="Zarko Sportswear" title="Zarko Sportswear"
-              width={48}
-              height={48}
-              loading="lazy"
-              decoding="async"
-              className="h-12 w-auto object-contain"
-              style={{ filter: 'brightness(0) invert(1)' }}
-            />
+            <picture>
+              <source srcSet="/new-logo.webp" type="image/webp" />
+              <img
+                src="/new-logo.webp"
+                alt="Zarko Sportswear" title="Zarko Sportswear"
+                width={48}
+                height={48}
+                loading="lazy"
+                decoding="async"
+                className="h-12 w-auto object-contain"
+                style={{ filter: 'brightness(0) invert(1)' }}
+                onError={(e) => { e.currentTarget.src = '/new-logo.png'; }}
+              />
+            </picture>
             <div>
               <span className="text-xl font-black uppercase tracking-wider block" style={{ fontFamily: "'Outfit', sans-serif" }}>
                 Zarko Sportswear
