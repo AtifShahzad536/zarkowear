@@ -422,33 +422,36 @@ const Hero = () => {
       <div className="absolute right-8 top-24 z-30 flex flex-col gap-3">
         {/* Instagram Link */}
         <a
-          href="https://instagram.com"
+          href="https://www.instagram.com/zarko_sports.wear/"
           target="_blank"
           rel="noopener noreferrer"
           className="w-11 h-11 rounded-full border bg-white text-gray-500 hover:text-[#e1306c] border-gray-150 flex items-center justify-center transition active:scale-95 shadow-md hover:shadow-lg cursor-pointer"
           title="Instagram"
+          aria-label="Visit Zarko Sportswear Instagram Profile"
         >
           <FaInstagram className="text-sm" />
         </a>
 
         {/* Facebook Link */}
         <a
-          href="https://facebook.com"
+          href="https://www.facebook.com/zarkosportswear"
           target="_blank"
           rel="noopener noreferrer"
           className="w-11 h-11 rounded-full border bg-white text-gray-500 hover:text-[#1877f2] border-gray-150 flex items-center justify-center transition active:scale-95 shadow-md hover:shadow-lg cursor-pointer"
           title="Facebook"
+          aria-label="Visit Zarko Sportswear Facebook Page"
         >
           <FaFacebookF className="text-xs" />
         </a>
 
         {/* WhatsApp Link */}
         <a
-          href="https://wa.me/923039200750"
+          href="https://wa.me/923039220750"
           target="_blank"
           rel="noopener noreferrer"
           className="w-11 h-11 rounded-full border bg-white text-gray-500 hover:text-[#25d366] border-gray-150 flex items-center justify-center transition active:scale-95 shadow-md hover:shadow-lg cursor-pointer"
           title="WhatsApp"
+          aria-label="Chat with Zarko Sportswear on WhatsApp"
         >
           <FaWhatsapp className="text-sm" />
         </a>
@@ -566,7 +569,7 @@ const Hero = () => {
             <button
               key={prod.id}
               onClick={() => handleCategorySelect(idx)}
-              className={`h-1 rounded-full transition-all duration-300 relative flex items-center justify-center ${isSelected
+              className={`h-1 rounded-full transition-colors duration-150 relative flex items-center justify-center ${isSelected
                   ? 'w-8 bg-[#0A0C16]'
                   : 'w-3.5 bg-gray-200 hover:bg-gray-300'
                 }`}
