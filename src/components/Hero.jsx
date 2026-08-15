@@ -79,8 +79,8 @@ const STEPS = [
 
 const Hero = () => {
   const navigate = useNavigate();
-  // Wrestling at index 2 is the default center product
-  const [activeIndex, setActiveIndex] = useState(2);
+  // Football at index 0 is the primary LCP center product
+  const [activeIndex, setActiveIndex] = useState(0);
   const [screenSize, setScreenSize] = useState('desktop');
   const [showPopup, setShowPopup] = useState(false);
   const [showPromoModal, setShowPromoModal] = useState(false);
