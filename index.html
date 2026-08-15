@@ -148,32 +148,30 @@
   <div id="root">
     <!-- App Shell / Skeleton matching exact Header and Hero dimensions for 0.00 CLS (Zero Layout Shift) -->
     <style>
-      .app-shell { display: flex; flex-direction: column; min-height: 100vh; background: #fff; font-family: sans-serif; }
-      .shell-topbar { height: 32px; background: #1e1b4b; width: 100%; }
+      .app-shell { display: flex; flex-direction: column; min-height: 100vh; background: #fff; font-family: Outfit, system-ui, sans-serif; }
+      .shell-topbar { height: 32px; background: #1e1b4b; width: 100%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; }
       .shell-header { height: 80px; background: #0A0C16; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; width: 100%; box-sizing: border-box; }
-      .shell-logo { width: 140px; height: 36px; background: rgba(255,255,255,0.12); border-radius: 4px; }
-      .shell-nav { display: flex; gap: 24px; }
-      .shell-nav-item { width: 70px; height: 18px; background: rgba(255,255,255,0.1); border-radius: 4px; }
-      .shell-hero { flex: 1; min-height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; box-sizing: border-box; }
-      .shell-hero-title { width: 60%; max-width: 600px; height: 48px; background: #f1f5f9; border-radius: 8px; margin-bottom: 24px; }
-      .shell-hero-subtitle { width: 40%; max-width: 400px; height: 24px; background: #f1f5f9; border-radius: 8px; margin-bottom: 40px; }
-      .shell-hero-image { width: 280px; height: 280px; background: #f8fafc; border-radius: 50%; border: 4px solid #f1f5f9; }
-      .pulse { animation: shell-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-      @keyframes shell-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
-      @media (max-width: 768px) { .shell-nav { display: none; } .shell-hero-title { width: 90%; } .shell-hero-subtitle { width: 70%; } }
+      .shell-hero { flex: 1; min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; text-align: center; }
+      .shell-badge { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #4F46E5; background: #EEF2FF; padding: 4px 12px; border-radius: 9999px; margin-bottom: 8px; display: inline-block; }
+      .shell-title { font-size: clamp(20px, 3.5vw, 36px); font-weight: 900; color: #111827; margin: 0 0 16px 0; text-transform: uppercase; }
+      .shell-img-box { width: 280px; height: 280px; display: flex; align-items: center; justify-content: center; }
     </style>
-    <div class="app-shell pulse">
-      <div class="shell-topbar"></div>
+    <div class="app-shell">
+      <div class="shell-topbar">
+        ★ USA DIRECT FACTORY SPORTSWEAR MANUFACTURER ★
+      </div>
       <div class="shell-header">
-        <div class="shell-logo"></div>
-        <div class="shell-nav">
-          <div class="shell-nav-item"></div><div class="shell-nav-item"></div><div class="shell-nav-item"></div><div class="shell-nav-item"></div>
+        <img src="/new-logo.webp" alt="Zarko Sportswear" width="140" height="36" style="height: 36px; width: auto; object-fit: contain;" />
+        <div style="color: #ffffff; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">
+          Custom Sportswear USA
         </div>
       </div>
       <div class="shell-hero">
-        <div class="shell-hero-title"></div>
-        <div class="shell-hero-subtitle"></div>
-        <div class="shell-hero-image"></div>
+        <span class="shell-badge">Football Gear</span>
+        <h1 class="shell-title">Elite Football Jersey</h1>
+        <div class="shell-img-box">
+          <img src="/images/hero_football.webp" alt="Elite Football Jersey" width="280" height="280" fetchpriority="high" loading="eager" decoding="sync" style="width: 100%; height: 100%; object-fit: contain;" />
+        </div>
       </div>
     </div>
   </div>

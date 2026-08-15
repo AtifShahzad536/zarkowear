@@ -527,6 +527,7 @@ const Hero = () => {
                       width={280}
                       height={280}
                       loading={isActive ? 'eager' : 'lazy'}
+                      fetchPriority={isActive ? 'high' : 'low'}
                       fetchpriority={isActive ? 'high' : 'low'}
                       decoding={isActive ? 'sync' : 'async'}
                       className="w-full h-full object-contain pointer-events-none"
