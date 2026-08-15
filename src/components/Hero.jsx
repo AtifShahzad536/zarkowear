@@ -491,7 +491,7 @@ const Hero = () => {
                   mass: 0.8
                 }}
                 onClick={() => handleCategorySelect(idx)}
-                className={`absolute cursor-pointer select-none origin-bottom filter ${isActive ? 'pointer-events-auto' : 'pointer-events-auto hover:opacity-85'
+                className={`absolute cursor-pointer select-none origin-bottom filter ${isActive ? 'pointer-events-auto z-20' : 'hidden md:block pointer-events-auto hover:opacity-85'
                   }`}
               >
                 {/* Energy Rays & Lightning Effects directly emanating from the active dress */}
