@@ -105,6 +105,8 @@ export default function BlogDetail() {
       <SeoHead
         title={`${blog.title} | Zarko Wear Blog`}
         description={blog.excerpt}
+        canonical={`https://www.zarkosportswear.com/blogs/${blog.slug || slug}`}
+        image={blog.coverImage || 'https://www.zarkosportswear.com/new-logo.png'}
         keywords={blog.tags ? blog.tags.join(', ') : 'zarko wear blog, custom apparel, sports uniforms'}
       />
 
@@ -381,20 +383,20 @@ export default function BlogDetail() {
                 </form>
               </div>
 
-              {/* ZARKO Sitemap Links */}
+              {/* ZARKO Quick Links */}
               <div className="bg-white rounded-none p-5 border border-slate-200/80 shadow-sm space-y-3">
                 <h3 className="text-[12px] font-black text-slate-900 uppercase tracking-wider rounded-none" style={{ fontFamily: "'Outfit', sans-serif" }}>ZARKO</h3>
                 <div className="grid grid-cols-2 gap-x-3 gap-y-2 text-[10px] font-bold text-slate-500 rounded-none">
-                  <Link to="/" className="hover:text-indigo-655 transition rounded-none">Sitemap</Link>
-                  <Link to="/" className="hover:text-indigo-655 transition rounded-none">Sitemap</Link>
+                  <Link to="/" className="hover:text-indigo-655 transition rounded-none">Home</Link>
                   <Link to="/about" className="hover:text-indigo-655 transition rounded-none">About</Link>
-                  <Link to="/blogs?q=cricket" className="hover:text-indigo-655 transition rounded-none">Cricket</Link>
-                  <Link to="/blogs" className="hover:text-indigo-655 transition rounded-none">Recent</Link>
-                  <Link to="/blogs" className="hover:text-indigo-655 transition rounded-none">Categories</Link>
-                  <Link to="/custom" className="hover:text-indigo-655 transition rounded-none">Custom</Link>
-                  <Link to="/" className="hover:text-indigo-655 transition rounded-none">Sitemap</Link>
-                  <Link to="/about" className="hover:text-indigo-655 transition rounded-none">About</Link>
+                  <Link to="/builder" className="hover:text-indigo-655 transition rounded-none">3D Builder</Link>
+                  <Link to="/custom" className="hover:text-indigo-655 transition rounded-none">Custom Orders</Link>
+                  <Link to="/football" className="hover:text-indigo-655 transition rounded-none">Football</Link>
+                  <Link to="/cricket" className="hover:text-indigo-655 transition rounded-none">Cricket</Link>
+                  <Link to="/wrestling" className="hover:text-indigo-655 transition rounded-none">Wrestling</Link>
+                  <Link to="/baseball" className="hover:text-indigo-655 transition rounded-none">Baseball</Link>
                   <Link to="/privacy-policy" className="hover:text-indigo-655 transition rounded-none">Privacy Policy</Link>
+                  <Link to="/terms" className="hover:text-indigo-655 transition rounded-none">Terms</Link>
                   <Link to="/contact" className="hover:text-indigo-655 transition rounded-none">Contact</Link>
                 </div>
               </div>

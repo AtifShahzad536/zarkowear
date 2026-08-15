@@ -10,8 +10,8 @@ const PrivacyPolicy = () => {
   return (
     <main className="min-h-screen bg-white py-16 md:py-24">
       <SeoHead
-        title="Privacy Policy | Zarko Sportswear"
-        description="Read the Privacy Policy of Zarko Sportswear to understand how we protect, collect, and use your personal team order details."
+        title="Privacy Policy | Zarko Sportswear USA"
+        description="Read the Privacy Policy of Zarko Sportswear to understand how we collect, protect, and handle your team order specifications and personal contact information."
         canonical="https://www.zarkosportswear.com/privacy-policy"
         robots="index, follow"
       />

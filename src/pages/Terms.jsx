@@ -10,8 +10,8 @@ const Terms = () => {
   return (
     <main className="min-h-screen bg-white py-16 md:py-24">
       <SeoHead
-        title="Terms of Service | Zarko Sportswear"
-        description="Review the Terms of Service for Zarko Sportswear custom manufacturing orders, delivery times, and low MOQs."
+        title="Terms of Service | Zarko Sportswear USA"
+        description="Review the Terms of Service for Zarko Sportswear custom sports uniforms manufacturing orders, turnaround times, payments, mockups, and USA delivery policies."
         canonical="https://www.zarkosportswear.com/terms"
         robots="index, follow"
       />

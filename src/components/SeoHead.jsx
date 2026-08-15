@@ -89,14 +89,32 @@ const SeoHead = ({
       metaRecords.push(ensureMeta('name', 'theme-color', themeColor));
     }
 
-    // Open Graph tags
-    ogEntries.forEach(([property, content]) => {
-      metaRecords.push(ensureMeta('property', property, content));
+    // Open Graph tags (auto-populate from canonical, title, description if not explicitly passed)
+    const resolvedOg = {
+      'og:type': 'website',
+      'og:site_name': siteName || 'Zarko Sportswear',
+      'og:locale': locale || 'en_US',
+      ...(title ? { 'og:title': title } : {}),
+      ...(description ? { 'og:description': description } : {}),
+      ...(canonical ? { 'og:url': canonical } : {}),
+      ...(image ? { 'og:image': image } : {}),
+      ...(openGraph || {})
+    };
+    Object.entries(resolvedOg).forEach(([property, content]) => {
+      if (content) metaRecords.push(ensureMeta('property', property, content));
     });
 
-    // Twitter Card tags
-    twitterEntries.forEach(([name, content]) => {
-      metaRecords.push(ensureMeta('name', name, content));
+    // Twitter Card tags (auto-populate from canonical, title, description if not explicitly passed)
+    const resolvedTwitter = {
+      'twitter:card': 'summary_large_image',
+      ...(title ? { 'twitter:title': title } : {}),
+      ...(description ? { 'twitter:description': description } : {}),
+      ...(canonical ? { 'twitter:url': canonical } : {}),
+      ...(image ? { 'twitter:image': image } : {}),
+      ...(twitter || {})
+    };
+    Object.entries(resolvedTwitter).forEach(([name, content]) => {
+      if (content) metaRecords.push(ensureMeta('name', name, content));
     });
 
     // Canonical URL

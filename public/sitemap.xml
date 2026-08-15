@@ -180,9 +180,24 @@
   <!-- Blogs Section -->
   <url>
     <loc>https://www.zarkosportswear.com/blogs</loc>
-    <lastmod>2026-08-09T00:00:00+05:00</lastmod>
+    <lastmod>2026-08-15T00:00:00+05:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
+  </url>
+
+  <!-- Legal & Info Pages -->
+  <url>
+    <loc>https://www.zarkosportswear.com/privacy-policy</loc>
+    <lastmod>2026-08-15T00:00:00+05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+
+  <url>
+    <loc>https://www.zarkosportswear.com/terms</loc>
+    <lastmod>2026-08-15T00:00:00+05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
   </url>
 
 </urlset>

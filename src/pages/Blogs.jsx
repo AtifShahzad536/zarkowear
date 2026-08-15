@@ -73,40 +73,41 @@ export default function Blogs() {
   return (
     <>
       <SeoHead
-        title="Zarko Wear Blog | Sportswear Styling & Customization Guides"
-        description="Explore the latest sports styling guides, sportswear technology, fabric customization tips, and team uniform trends from Zarko Sportswear."
+        title="Custom Sportswear Blog & Uniform Guides | Zarko Sportswear"
+        description="Read expert sportswear manufacturing guides, sublimation jersey design tips, fabric comparisons, and team uniform care tutorials from Zarko Sportswear USA."
+        canonical="https://www.zarkosportswear.com/blogs"
         keywords="sportswear blog, custom uniforms guide, jersey customization tips, sialkot sports factory, zarko wear blogs"
       />
 
       {/* Main Wrapper with sports stadium background overlay */}
-      <div 
+      <div
         className="min-h-screen bg-cover bg-center bg-no-repeat bg-fixed relative py-8 md:py-12"
-        style={{ 
+        style={{
           backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0.90), rgba(248, 250, 252, 0.92)), url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1600&auto=format&fit=crop')`
         }}
       >
         <div className="mx-auto max-w-[94%] px-2 sm:px-4 space-y-8">
-          
+
           {/* Header Banner Section - Completely flat corners */}
           <div className="bg-white rounded-none border border-slate-200/80 shadow-sm relative overflow-hidden h-[120px] sm:h-[150px] flex items-center justify-between px-6 sm:px-12">
-            
+
             {/* Left side: Red and Blue stripes and Gear design - Flat corners */}
             <div className="absolute inset-y-0 left-0 w-2/3 pointer-events-none overflow-hidden rounded-none">
               {/* Red Diagonal Stripe */}
-              <div 
+              <div
                 className="absolute top-[-50px] left-[-30px] w-[50px] sm:w-[70px] h-[300px] -rotate-[45deg] rounded-none"
                 style={{ backgroundColor: '#dc2626' }}
               />
               {/* White spacer */}
-              <div 
+              <div
                 className="absolute top-[-50px] left-[15px] sm:left-[35px] w-[15px] h-[300px] -rotate-[45deg] bg-white rounded-none"
               />
               {/* Blue Diagonal Stripe */}
-              <div 
+              <div
                 className="absolute top-[-50px] left-[30px] sm:left-[50px] w-[50px] sm:w-[70px] h-[300px] -rotate-[45deg] rounded-none"
                 style={{ backgroundColor: '#2563eb' }}
               />
-              
+
               {/* Gear Icons Overlay - Flat */}
               {/* Gear 1 (Blue/grey top left) */}
               <svg className="absolute left-[5px] sm:left-[10px] top-[10px] sm:top-[20px] text-slate-400 opacity-60 w-12 h-12 sm:w-16 sm:h-16 animate-spin rounded-none" style={{ animationDuration: '20s' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
@@ -122,10 +123,10 @@ export default function Blogs() {
 
             {/* Title: BLOG */}
             <div className="z-10 pl-[80px] sm:pl-[160px] rounded-none">
-              <h1 
+              <h1
                 className="text-4xl sm:text-6xl font-black italic tracking-wider text-slate-800 rounded-none"
-                style={{ 
-                  fontFamily: "'Poppins', sans-serif", 
+                style={{
+                  fontFamily: "'Poppins', sans-serif",
                   color: '#1e293b',
                   textShadow: '2px 2px 0px #fff, -2px -2px 0px #fff, 2px -2px 0px #fff, -2px 2px 0px #fff'
                 }}
@@ -174,7 +175,7 @@ export default function Blogs() {
 
           {/* Main Grid Content */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start rounded-none">
-            
+
             {/* Left Side: Blog Post Cards Grid (8 columns) - Flat corners */}
             <div className="lg:col-span-8 space-y-6 rounded-none">
               {loading ? (
@@ -270,7 +271,7 @@ export default function Blogs() {
 
             {/* Right Side: Sidebar Cards (4 columns) - Flat corners & Sticky */}
             <div className="lg:col-span-4 space-y-5 rounded-none lg:sticky lg:top-24">
-              
+
               {/* Categories Card - Flat */}
               <div className="bg-white rounded-none p-5 border border-slate-200/80 shadow-sm space-y-3">
                 <h3 className="text-[11px] font-extrabold text-slate-900 uppercase tracking-wider rounded-none">Categories</h3>
@@ -305,45 +306,22 @@ export default function Blogs() {
                 </ul>
               </div>
 
-              {/* Email Newsletter Card - Flat */}
-              <div className="bg-white rounded-none p-5 border border-slate-200/80 shadow-sm space-y-3">
-                <h3 className="text-[11px] font-extrabold text-slate-900 uppercase tracking-wider rounded-none">Email Newsletter</h3>
-                <p className="text-[10px] text-slate-500 font-normal leading-relaxed rounded-none">
-                  Signup up for emails to styling your email addresss.
-                </p>
-                <form onSubmit={handleSubscribe} className="space-y-2.5 rounded-none">
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email Address"
-                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-none text-[11px] font-semibold text-slate-800 focus:outline-none focus:border-indigo-400"
-                  />
-                  <button
-                    type="submit"
-                    className="w-full py-2.5 text-white text-[11px] font-black uppercase tracking-wider rounded-none transition shadow-sm"
-                    style={{ backgroundColor: '#102A43' }}
-                  >
-                    Sign Up
-                  </button>
-                </form>
-              </div>
 
-              {/* ZARKO Sitemap Links - Flat */}
+
+              {/* ZARKO Quick Links - Flat */}
               <div className="bg-white rounded-none p-5 border border-slate-200/80 shadow-sm space-y-3">
                 <h3 className="text-[12px] font-black text-slate-900 uppercase tracking-wider rounded-none" style={{ fontFamily: "'Outfit', sans-serif" }}>ZARKO</h3>
                 <div className="grid grid-cols-2 gap-x-3 gap-y-2 text-[10px] font-bold text-slate-500 rounded-none">
-                  <Link to="/" className="hover:text-indigo-650 transition rounded-none">Sitemap</Link>
-                  <Link to="/" className="hover:text-indigo-650 transition rounded-none">Sitemap</Link>
+                  <Link to="/" className="hover:text-indigo-650 transition rounded-none">Home</Link>
                   <Link to="/about" className="hover:text-indigo-650 transition rounded-none">About</Link>
-                  <Link to="/blogs?q=cricket" className="hover:text-indigo-650 transition rounded-none">Cricket</Link>
-                  <Link to="/blogs" className="hover:text-indigo-650 transition rounded-none">Recent</Link>
-                  <Link to="/blogs" className="hover:text-indigo-650 transition rounded-none">Categories</Link>
-                  <Link to="/custom" className="hover:text-indigo-650 transition rounded-none">Custom</Link>
-                  <Link to="/" className="hover:text-indigo-650 transition rounded-none">Sitemap</Link>
-                  <Link to="/about" className="hover:text-indigo-650 transition rounded-none">About</Link>
+                  <Link to="/builder" className="hover:text-indigo-650 transition rounded-none">3D Builder</Link>
+                  <Link to="/custom" className="hover:text-indigo-650 transition rounded-none">Custom Orders</Link>
+                  <Link to="/football" className="hover:text-indigo-650 transition rounded-none">Football</Link>
+                  <Link to="/cricket" className="hover:text-indigo-650 transition rounded-none">Cricket</Link>
+                  <Link to="/wrestling" className="hover:text-indigo-650 transition rounded-none">Wrestling</Link>
+                  <Link to="/baseball" className="hover:text-indigo-650 transition rounded-none">Baseball</Link>
                   <Link to="/privacy-policy" className="hover:text-indigo-650 transition rounded-none">Privacy Policy</Link>
+                  <Link to="/terms" className="hover:text-indigo-650 transition rounded-none">Terms</Link>
                   <Link to="/contact" className="hover:text-indigo-650 transition rounded-none">Contact</Link>
                 </div>
               </div>
