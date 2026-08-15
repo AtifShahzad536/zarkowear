@@ -615,13 +615,30 @@ const routesData = {
   }
 };
 
+function makeCssNonBlocking(htmlContent) {
+  const cssLinkRegex = /<link\s+rel="stylesheet"\s+crossorigin\s+href="(\/assets\/[^"]+\.css)"\s*\/?>/gi;
+  let res = htmlContent;
+  if (cssLinkRegex.test(res)) {
+    res = res.replace(cssLinkRegex, (match, href) => {
+      return `<link rel="preload" as="style" href="${href}" />\n  <link rel="stylesheet" href="${href}" media="print" onload="this.media='all'" />\n  <noscript><link rel="stylesheet" href="${href}" /></noscript>`;
+    });
+  }
+  // Remove 3D modulepreload from initial landing page to prevent downloading 936kB Three.js on homepage
+  res = res.replace(/<link\s+rel="modulepreload"\s+crossorigin\s+href="\/assets\/vendor-three-[^"]+\.js"\s*\/?>\s*/gi, '');
+  return res;
+}
+
 function runPrerender() {
   if (!fs.existsSync(INDEX_HTML_PATH)) {
     console.error(`Error: index.html not found at ${INDEX_HTML_PATH}`);
     process.exit(1);
   }
 
-  const baseHtml = fs.readFileSync(INDEX_HTML_PATH, 'utf-8');
+  let baseHtml = fs.readFileSync(INDEX_HTML_PATH, 'utf-8');
+  baseHtml = makeCssNonBlocking(baseHtml);
+  fs.writeFileSync(INDEX_HTML_PATH, baseHtml, 'utf-8');
+  console.log(`Optimized root index.html with non-blocking CSS.`);
+
   console.log(`Starting pre-rendering for ${Object.keys(routesData).length} routes...`);
 
   Object.entries(routesData).forEach(([route, meta]) => {
