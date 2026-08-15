@@ -4,22 +4,17 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import { Outlet, useLocation } from 'react-router-dom';
 import ScrollTopButton from './components/ScrollTopButton';
-import SplashLoading from './components/ui/SplashLoading';
-import useAppBoot from './hooks/useAppBoot';
 
 // Create a context to track content loading state
 export const ContentLoadedContext = React.createContext({
   markAsLoaded: () => {},
-  isContentLoaded: false
+  isContentLoaded: true
 });
 
 const ChatbotWidget = lazy(() => import('./components/ChatbotWidget'));
 
 function App() {
-  const { isLoading, loadingProgress, loadingMessage, loadingSubMessage } = useAppBoot();
-  const [contentLoaded, setContentLoaded] = useState(false);
-  const [showSplash, setShowSplash] = useState(false); // start false until we check setting
-  const [splashReady, setSplashReady] = useState(false); // settings loaded?
+  const [contentLoaded, setContentLoaded] = useState(true);
   const location = useLocation();
 
   const markContentAsLoaded = () => setContentLoaded(true);
@@ -40,41 +35,39 @@ function App() {
     };
   }, []);
 
-  // Fetch global settings to determine if splash is enabled
+  // Lenis smooth scrolling (initialized on demand without blocking React)
   useEffect(() => {
-    // Disable splash for non-builder routes to drastically improve LCP (Largest Contentful Paint)
-    if (!isBuilderRoute) {
-      setSplashReady(true);
-      setShowSplash(false);
-      return;
-    }
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+    if (prefersReduced || !hasFinePointer) return;
 
-    const apiBase = (import.meta.env.VITE_API_BASE || '').trim();
-    const endpoint = apiBase ? `${apiBase}/api/home/settings` : '/api/home/settings';
-    fetch(endpoint)
-      .then(res => res.json())
-      .then(data => {
-        setShowSplash(data.splashEnabled !== false);
-        setSplashReady(true);
-      })
-      .catch(() => {
-        // On error, default to showing splash
-        setShowSplash(true);
-        setSplashReady(true);
-      });
-  }, [isBuilderRoute]);
+    let lenis;
+    let raf;
+    let cancelled = false;
+
+    import('lenis').then(({ default: Lenis }) => {
+      if (cancelled) return;
+      lenis = new Lenis({ duration: 1.2, smoothWheel: true, smoothTouch: false });
+      const loop = (time) => {
+        lenis?.raf(time);
+        raf = requestAnimationFrame(loop);
+      };
+      raf = requestAnimationFrame(loop);
+    });
+
+    return () => {
+      cancelled = true;
+      if (raf) cancelAnimationFrame(raf);
+      lenis?.destroy?.();
+    };
+  }, []);
 
   return (
     <ContentLoadedContext.Provider value={{
       markAsLoaded: markContentAsLoaded,
       isContentLoaded: contentLoaded
     }}>
-      {!splashReady ? null : showSplash ? (
-        <SplashLoading
-          progress={loadingProgress}
-          onComplete={() => setShowSplash(false)}
-        />
-      ) : isBuilderRoute ? (
+      {isBuilderRoute ? (
         <div className={`transition-opacity duration-500 opacity-100 ${is3DEditor ? 'h-[100vh] overflow-hidden' : 'min-h-screen'}`}>
           <main className="h-full w-full">
             <Outlet />
