@@ -11,6 +11,7 @@ import { categoryChips } from '../data/home/categoryChips';
 
 // Lazy load below-the-fold sections for instant Mobile LCP
 const FeaturedCategories = lazy(() => import('../components/Home/Feature'));
+const TopSellingProducts = lazy(() => import('../components/Home/Top'));
 const Testimonials = lazy(() => import('../components/Home/Customer'));
 const Videos = lazy(() => import('../components/Home/Videos'));
 const FAQ = lazy(() => import('../components/Home/Faq'));
@@ -480,7 +481,9 @@ const Home = () => {
         </div>
       </section>
 
-      <TopSellingProducts />
+      <Suspense fallback={<div className="min-h-[100px]" />}>
+        <TopSellingProducts />
+      </Suspense>
 
       
     
