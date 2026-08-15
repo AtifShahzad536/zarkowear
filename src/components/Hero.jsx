@@ -245,28 +245,32 @@ const Hero = () => {
         <div className="absolute top-[35%] md:top-[32%] left-1/2 -translate-x-1/2 w-44 md:w-[260px] h-6 md:h-9 rounded-full border border-yellow-400/20 bg-yellow-400/5 shadow-[0_0_20px_rgba(234,179,8,0.2)] transform -rotate-[3deg]" />
       </div>
 
-      {/* Top Center: Minimal Looping Manufacturing Steps with High-Contrast AAA Badge */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-30">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentStepIndex}
-            initial={{ opacity: 0, x: -25 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 25 }}
-            transition={{ duration: 0.4 }}
-            className="flex items-center select-none bg-slate-900/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-slate-700 shadow-sm"
-          >
-            {/* Step Circle */}
-            <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-indigo-500 text-white flex items-center justify-center text-[9px] sm:text-[10px] font-black mr-2 flex-shrink-0">
-              {currentStepIndex + 1}
-            </span>
-
-            {/* Step Title Label */}
-            <span className="text-[10px] sm:text-[11px] uppercase tracking-wider font-bold text-white whitespace-nowrap">
+      {/* Top Center: Minimal Looping Manufacturing Steps with 100% Solid WCAG AAA Container */}
+      <div 
+        className="absolute top-4 left-1/2 -translate-x-1/2 z-30 flex items-center select-none bg-[#0A0C16] px-4 py-1.5 rounded-full border border-slate-700 shadow-md max-w-[90vw] overflow-hidden"
+        style={{ backgroundColor: '#0A0C16' }}
+      >
+        <span 
+          className="w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[10px] font-black mr-2.5 flex-shrink-0"
+          style={{ backgroundColor: '#4F46E5', color: '#FFFFFF' }}
+        >
+          {currentStepIndex + 1}
+        </span>
+        <div className="overflow-hidden relative h-5 flex items-center">
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={currentStepIndex}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.25 }}
+              className="text-[11px] sm:text-xs uppercase tracking-wider font-bold text-white whitespace-nowrap block"
+              style={{ color: '#FFFFFF' }}
+            >
               {STEPS[currentStepIndex]}
-            </span>
-          </motion.div>
-        </AnimatePresence>
+            </motion.span>
+          </AnimatePresence>
+        </div>
       </div>
 
       {/* Floating Sparkle Particles around active product area — memoized to prevent reflow */}
