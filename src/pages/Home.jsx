@@ -15,6 +15,7 @@ const TopSellingProducts = lazy(() => import('../components/Home/Top'));
 const Testimonials = lazy(() => import('../components/Home/Customer'));
 const Videos = lazy(() => import('../components/Home/Videos'));
 const FAQ = lazy(() => import('../components/Home/Faq'));
+const BlogPreview = lazy(() => import('../components/Home/BlogPreview'));
 
 const JERSEYS = [
   '/images/hero_football.webp',
@@ -586,6 +587,7 @@ const Home = () => {
       {/* Below-the-fold sections loaded on demand */}
       <Suspense fallback={<div className="min-h-[100px]" />}>
         <Videos />
+        <BlogPreview />
         <FAQ />
         <section className="max-w-[94%] mx-auto px-4 py-12">
           <Testimonials />
