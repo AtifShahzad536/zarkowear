@@ -12,9 +12,9 @@ const BlogPreview = () => {
     getBlogs()
       .then((data) => {
         if (!alive) return;
-        // Sort and get the 3 most recent blogs
+        // Sort and get all recent blogs
         const sorted = (data || []).sort((a, b) => new Date(b.createdAt || b.date) - new Date(a.createdAt || a.date));
-        setBlogs(sorted.slice(0, 3));
+        setBlogs(sorted);
       })
       .catch(() => {})
       .finally(() => {
@@ -29,10 +29,26 @@ const BlogPreview = () => {
   if (loading || !blogs.length) return null;
 
   const featuredBlog = blogs[0];
-  const sideBlogs = blogs.slice(1, 3);
+  const sideBlogs = blogs.slice(1); // Show all remaining blogs in the scrollable panel
 
   return (
     <section className="w-full py-20 bg-white border-b border-slate-200">
+      <style>{`
+        .blog-scroll-container::-webkit-scrollbar {
+          width: 5px;
+        }
+        .blog-scroll-container::-webkit-scrollbar-track {
+          background: #f1f5f9;
+        }
+        .blog-scroll-container::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 0px;
+        }
+        .blog-scroll-container::-webkit-scrollbar-thumb:hover {
+          background: #94a3b8;
+        }
+      `}</style>
+
       <div className="max-w-[94%] mx-auto px-4">
         
         {/* Header Area */}
@@ -57,16 +73,16 @@ const BlogPreview = () => {
         </div>
 
         {/* 2-Column Split Layout - No Rounded Corners */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left Column: One Large Main Blog Post */}
-          <div className="lg:col-span-7 flex flex-col">
+          {/* Left Column: One Large Main Featured Blog Post */}
+          <div className="lg:col-span-7 flex flex-col h-full">
             {featuredBlog && (
               <motion.article
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="flex flex-col h-full bg-white border border-slate-200 rounded-none overflow-hidden hover:shadow-md transition-shadow duration-300 group"
+                className="flex flex-col bg-white border border-slate-200 rounded-none overflow-hidden hover:shadow-md transition-shadow duration-300 group"
               >
                 {/* Large Thumbnail */}
                 <Link to={`/blogs/${featuredBlog.slug}`} className="aspect-[1.8] relative overflow-hidden bg-slate-100 block rounded-none">
@@ -85,7 +101,7 @@ const BlogPreview = () => {
                 </Link>
 
                 {/* Content */}
-                <div className="p-6 flex-1 flex flex-col justify-between rounded-none">
+                <div className="p-6 flex flex-col justify-between rounded-none min-h-[220px]">
                   <div className="space-y-3">
                     <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest block">
                       {new Date(featuredBlog.createdAt || featuredBlog.date).toLocaleDateString('en-US', {
@@ -119,60 +135,66 @@ const BlogPreview = () => {
             )}
           </div>
 
-          {/* Right Column: Other Blog Posts Stacked Vertically */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            {sideBlogs.map((blog, idx) => (
-              <motion.article
-                key={blog.id || blog._id || idx}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + idx * 0.1, duration: 0.5 }}
-                className="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-none overflow-hidden hover:shadow-md transition-shadow duration-300 group flex-1"
-              >
-                {/* Small Thumbnail */}
-                <Link to={`/blogs/${blog.slug}`} className="w-full sm:w-40 aspect-[1.5] sm:aspect-square relative overflow-hidden bg-slate-100 block shrink-0 rounded-none">
-                  {blog.coverImage ? (
-                    <img
-                      src={imageUrl(blog.coverImage, { width: 400 })}
-                      alt={blog.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 rounded-none"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-slate-150 text-slate-400 font-black uppercase text-xs rounded-none">
-                      ZARKO
+          {/* Right Column: Other Blog Posts in a Scrollable Panel */}
+          <div className="lg:col-span-5 flex flex-col gap-4 overflow-y-auto max-h-[550px] pr-2 blog-scroll-container">
+            {sideBlogs.length > 0 ? (
+              sideBlogs.map((blog, idx) => (
+                <motion.article
+                  key={blog.id || blog._id || idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 + idx * 0.05, duration: 0.4 }}
+                  className="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-none overflow-hidden hover:shadow-md transition-shadow duration-300 group h-auto sm:h-32 shrink-0"
+                >
+                  {/* Small Thumbnail */}
+                  <Link to={`/blogs/${blog.slug}`} className="w-full sm:w-32 aspect-[1.7] sm:aspect-square relative overflow-hidden bg-slate-100 block shrink-0 rounded-none">
+                    {blog.coverImage ? (
+                      <img
+                        src={imageUrl(blog.coverImage, { width: 400 })}
+                        alt={blog.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 rounded-none"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-slate-150 text-slate-400 font-black uppercase text-[10px] rounded-none">
+                        ZARKO
+                      </div>
+                    )}
+                  </Link>
+
+                  {/* Content */}
+                  <div className="p-4 flex-1 flex flex-col justify-between rounded-none min-w-0">
+                    <div className="space-y-1.5">
+                      <span className="text-[9px] font-bold text-indigo-600 uppercase tracking-widest block">
+                        {new Date(blog.createdAt || blog.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })}
+                      </span>
+                      <Link to={`/blogs/${blog.slug}`}>
+                        <h3 className="text-xs sm:text-sm font-black text-slate-900 group-hover:text-indigo-600 transition-colors uppercase leading-snug tracking-tight line-clamp-2 rounded-none" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                          {blog.title}
+                        </h3>
+                      </Link>
                     </div>
-                  )}
-                </Link>
 
-                {/* Content */}
-                <div className="p-5 flex-1 flex flex-col justify-between rounded-none">
-                  <div className="space-y-2">
-                    <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest block">
-                      {new Date(blog.createdAt || blog.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </span>
-                    <Link to={`/blogs/${blog.slug}`}>
-                      <h3 className="text-sm font-black text-slate-900 group-hover:text-indigo-600 transition-colors uppercase leading-snug tracking-tight line-clamp-2 rounded-none" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                        {blog.title}
-                      </h3>
-                    </Link>
+                    <div className="pt-2 mt-2 border-t border-slate-100 flex justify-between items-center">
+                      <Link
+                        to={`/blogs/${blog.slug}`}
+                        className="inline-flex items-center gap-1.5 text-[9px] font-bold text-slate-900 hover:text-indigo-600 transition-colors uppercase"
+                      >
+                        Read Article <span>→</span>
+                      </Link>
+                    </div>
                   </div>
-
-                  <div className="pt-3 mt-4 border-t border-slate-100">
-                    <Link
-                      to={`/blogs/${blog.slug}`}
-                      className="inline-flex items-center gap-1.5 text-[10px] font-bold text-slate-900 hover:text-indigo-600 transition-colors uppercase"
-                    >
-                      Read Article <span>→</span>
-                    </Link>
-                  </div>
-                </div>
-              </motion.article>
-            ))}
+                </motion.article>
+              ))
+            ) : (
+              <div className="flex flex-col items-center justify-center py-20 border border-dashed border-slate-200 text-slate-400 text-xs font-semibold uppercase tracking-wider rounded-none">
+                More Articles Coming Soon
+              </div>
+            )}
           </div>
 
         </div>
