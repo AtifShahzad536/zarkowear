@@ -63,25 +63,19 @@ const Videos = () => {
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className="bg-white border border-slate-200 rounded-none overflow-hidden transition-all duration-300 flex flex-col group"
             >
-              {/* Lazy Video Player (preload none saves 9MB on initial load) */}
+              {/* Lazy Video Player (preload metadata serves as placeholder and loads fast) */}
               <div className="h-64 sm:h-72 lg:h-80 relative overflow-hidden bg-slate-900">
-                {isInView ? (
-                  <video
-                    src={imageUrl(video.url)}
-                    controls
-                    loop
-                    muted
-                    playsInline
-                    preload="none"
-                    className="w-full h-full object-cover"
-                  >
-                    <track kind="captions" label="English" src="" default={false} />
-                  </video>
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-slate-800 text-slate-400">
-                    <span className="text-xs font-semibold">Video ready to play</span>
-                  </div>
-                )}
+                <video
+                  src={imageUrl(video.url)}
+                  controls
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-cover"
+                >
+                  <track kind="captions" label="English" src="" default={false} />
+                </video>
               </div>
 
               {/* Text Info */}
