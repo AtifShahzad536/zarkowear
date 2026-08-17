@@ -12,6 +12,17 @@ export const categoryConfigs = {
     heroDescription: 'Engineered for high-intensity play. Custom football uniforms featuring double-knit interlock fabric, ventilation panels, and ergonomic styling.',
     gradient: defaultGradient,
     accent: { ...defaultAccent },
+    seoTitle: "Custom Football Uniforms & Sublimated Jerseys Wholesale | Zarko",
+    seoDescription: "Order NFHS compliant custom football uniforms wholesale direct from manufacturer. Premium double-knit interlock polyester, ventilation panels, low MOQ.",
+    seoKeywords: "custom football uniforms, wholesale football jerseys, custom football jerseys USA, sublimated football uniforms Sialkot, direct manufacturer football apparel",
+    technicalSpecs: {
+      fabric: "100% Moisture-Wicking Interlock Double-Knit Polyester (180-220 GSM)",
+      printing: "4K Full dye-sublimation or tackle-twill stitching options",
+      compliance: "NFHS & NCAA uniform regulations compliant",
+      moq: "15 sets per design",
+      shipping: "3-5 business days express delivery to US/Canada",
+      sizing: "Youth XS to Adult 4XL (Detailed size charts available)"
+    },
     featured: {
       name: 'Elite Football Kit Pro',
       image: '/images/slide1.jpg',
@@ -44,6 +55,17 @@ export const categoryConfigs = {
     heroDescription: 'Lightweight, UV-shielded cricket kits designed for long field innings, featuring advanced dry-fit mesh panels for optimum heat release.',
     gradient: defaultGradient,
     accent: { ...defaultAccent },
+    seoTitle: "Custom Cricket Kits & Team Uniforms Wholesale | Zarko Sportswear",
+    seoDescription: "Buy premium custom cricket kits and team jerseys direct from Sialkot factory. Moisture-wicking dry-fit mesh, UV protection, fast shipping.",
+    seoKeywords: "custom cricket uniforms, wholesale cricket jerseys, cricket kits supplier Pakistan, custom cricket uniforms wholesale, dry fit cricket shirts",
+    technicalSpecs: {
+      fabric: "150-170 GSM Dry-Fit Polyester with UV protection",
+      printing: "Full digital dye-sublimation with Japanese inks",
+      compliance: "ICC standards compliant layout and branding areas",
+      moq: "15 sets per design",
+      shipping: "Worldwide express shipping (DHL/FedEx)",
+      sizing: "Standard sizing charts (Youth & Adult)"
+    },
     featured: {
       name: 'Premium Cricket Kit Pro',
       image: '/images/slide2.jpg',
@@ -77,6 +99,17 @@ export const categoryConfigs = {
     heroDescription: 'Wide-armhole mesh basketball jerseys designed to facilitate broad range of arm motion and dynamic court cuts with rapid moisture evaporation.',
     gradient: defaultGradient,
     accent: { ...defaultAccent },
+    seoTitle: "Custom Basketball Uniforms & Sublimated Jerseys Wholesale | Zarko",
+    seoDescription: "Order custom basketball uniforms and mesh jerseys wholesale direct from factory. High breathability mesh, NFHS compliant designs, low MOQ.",
+    seoKeywords: "custom basketball uniforms, wholesale basketball jerseys, basketball jersey manufacturer, sublimated basketball uniforms USA",
+    technicalSpecs: {
+      fabric: "160-190 GSM Breathable Poly Mesh & Interlock Polyester",
+      printing: "Digital dye-sublimation or premium screen-printing options",
+      compliance: "NFHS compliant designs and numbers",
+      moq: "15 sets per design",
+      shipping: "Direct factory wholesale shipping worldwide",
+      sizing: "Standard loose basketball fitment size charts"
+    },
     featured: {
       name: 'Pro Basketball Kit Elite',
       image: '/images/slide1.jpg',
@@ -453,6 +486,17 @@ export const categoryConfigs = {
     heroDescription: 'High-stretch, lightweight apparel designed for vertical agility, quick lateral dives, and exceptional breathability.',
     gradient: defaultGradient,
     accent: { ...defaultAccent },
+    seoTitle: "Custom Volleyball Uniforms & Team Jerseys Wholesale | Zarko",
+    seoDescription: "Order high-stretch custom volleyball jerseys and uniforms wholesale direct from factory. Lycra blend fabrics, flatlock stitching, low MOQ.",
+    seoKeywords: "custom volleyball uniforms, wholesale volleyball jerseys, volleyball jersey manufacturer, sublimated volleyball apparel",
+    technicalSpecs: {
+      fabric: "190-220 GSM Premium Elastane-Polyester Blend",
+      printing: "4K fade-resistant dye sublimation",
+      compliance: "USAV and NFHS volleyball uniform compliant",
+      moq: "15 sets per design",
+      shipping: "Direct factory express shipping worldwide",
+      sizing: "Tailored athletic compression sizes"
+    },
     featured: {
       name: 'Apex Volleyball Uniform Set',
       image: '/images/sports/volleyball.webp',
@@ -478,6 +522,17 @@ export const categoryConfigs = {
     heroDescription: 'Classic double-knit jerseys and custom pants engineered for base-running velocity and durable play.',
     gradient: defaultGradient,
     accent: { ...defaultAccent },
+    seoTitle: "Custom Baseball Jerseys & Team Uniforms Wholesale | Zarko",
+    seoDescription: "Order custom baseball jerseys and uniforms wholesale direct from Sialkot factory. Heavy-duty double-knit polyester, 3D embroidery options, low MOQ.",
+    seoKeywords: "custom baseball jerseys, wholesale baseball uniforms, baseball jersey manufacturer, sublimated baseball uniforms USA",
+    technicalSpecs: {
+      fabric: "250-280 GSM Heavy-Duty Double-Knit Polyester",
+      printing: "Tackle twill, custom embroidery, or dye-sublimation",
+      compliance: "USSSA and high school baseball compliance guidelines",
+      moq: "15 pieces per style",
+      shipping: "3-5 business days express delivery to US/Canada",
+      sizing: "Traditional baseball fit sizes (Youth & Adult)"
+    },
     featured: {
       name: 'Legend Baseball Jersey Pro',
       image: '/images/sports/baseball.webp',
@@ -503,6 +558,17 @@ export const categoryConfigs = {
     heroDescription: 'Ergonomic, lightweight team uniforms tailored for fastpitch mobility and sliding protection.',
     gradient: defaultGradient,
     accent: { ...defaultAccent },
+    seoTitle: "Custom Softball Uniforms & Fastpitch Jerseys Wholesale | Zarko",
+    seoDescription: "Order premium fastpitch custom softball uniforms direct from Sialkot manufacturer. Moisture-wicking flex-knit fabrics, low MOQ, express shipping.",
+    seoKeywords: "custom softball jerseys, wholesale fastpitch uniforms, softball apparel manufacturer, sublimated softball uniforms",
+    technicalSpecs: {
+      fabric: "180-220 GSM High-Flex Polyester & Stretch Mesh",
+      printing: "Premium digital sublimation or tackle-twill embroidery",
+      compliance: "NCAA and high school softball uniform compliant",
+      moq: "15 pieces per style",
+      shipping: "Direct door-to-door express delivery to US",
+      sizing: "Youth & womens tailored fastpitch sizes"
+    },
     featured: {
       name: 'Fastpitch Elite Jersey',
       image: '/images/sports/softball.webp',
@@ -527,6 +593,17 @@ export const categoryConfigs = {
     heroDescription: 'Heavyweight, oversized jerseys built to wear over protective padding while ensuring full range of motion.',
     gradient: defaultGradient,
     accent: { ...defaultAccent },
+    seoTitle: "Custom Ice Hockey Jerseys & Team Uniforms Wholesale | Zarko",
+    seoDescription: "Order premium heavyweight custom ice hockey jerseys wholesale direct from factory. Double-layer elbows, heavy knit polyester, low MOQ.",
+    seoKeywords: "custom ice hockey jerseys, wholesale hockey jerseys, hockey uniform manufacturer, sublimated hockey jerseys USA",
+    technicalSpecs: {
+      fabric: "220-250 GSM Heavyweight Pro-Knit Polyester",
+      printing: "Full 4K sublimation or tackle-twill embroidery",
+      compliance: "USA Hockey uniform dimensions and padding specifications",
+      moq: "15 pieces per style",
+      shipping: "Express shipping within 3-5 business days to US/Canada",
+      sizing: "Oversized pad-compliant sizing (S to 3XL, Goalie styles)"
+    },
     featured: {
       name: 'Championship Ice Hockey Jersey',
       image: '/images/sports/ice-hockey.webp',
