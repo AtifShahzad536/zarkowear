@@ -1,7 +1,7 @@
 const homeSeo = {
-  title: "Custom Sportswear USA | Zarko Sportswear",
+  title: "Custom Sports Uniforms & Teamwear Manufacturer | Zarko Sportswear",
   description:
-    "Get premium Custom Sportswear in the USA direct from the manufacturer. High-quality custom sports uniforms, sublimation jerseys & fast shipping. Free quote!",
+    "Direct factory custom team uniforms, wrestling singlets, and sublimated jerseys. NFHS-compliant, pro-grade technical fabrics, and fast US delivery. Get a free mockup today.",
   canonical: "https://www.zarkosportswear.com/",
   keywords:
     "custom sportswear USA, custom sports apparel usa, custom sportswear manufacturer usa, sportswear factory, sportswear wholesale supplier, private label sportswear manufacturer, teamwear manufacturer, custom sportswear company, custom sportswear apparel, custom sports uniforms USA, custom teamwear USA, 3d custom jersey builder, custom wrestling singlets USA, custom sports uniforms online, custom soccer jerseys USA, custom basketball uniforms, sportswear supplier USA, gym wear manufacturer USA, custom athletic wear, zarko sportswear USA, best sportswear manufacturer in pakistan, best sportswear manufacturer in sialkot, sportswear manufacturer in sialkot, hamco sportswear, Custom Sportswear Manufacturer, Sportswear Factory in Pakistan, OEM Sportswear Manufacturer, Private Label Sportswear, Team Uniform Manufacturer",
@@ -12,9 +12,9 @@ const homeSeo = {
   siteName: "Zarko Sportswear",
   locale: "en_US",
   openGraph: {
-    'og:title': 'Custom Sportswear USA | Zarko Sportswear',
+    'og:title': 'Custom Sports Uniforms & Teamwear Manufacturer | Zarko Sportswear',
     'og:description':
-      'Get premium Custom Sportswear in the USA direct from the manufacturer. High-quality custom sports uniforms, sublimation jerseys & fast shipping. Free quote!',
+      'Direct factory custom team uniforms, wrestling singlets, and sublimated jerseys. NFHS-compliant, pro-grade technical fabrics, and fast US delivery. Get a free mockup today.',
     'og:url': 'https://www.zarkosportswear.com/',
     'og:image': 'https://www.zarkosportswear.com/og-cover.jpg',
     'og:image:width': '1200',
@@ -24,8 +24,8 @@ const homeSeo = {
     'og:locale': 'en_US',
   },
   twitter: {
-    'twitter:title': 'Custom Sportswear USA | Zarko Sportswear',
-    'twitter:description': 'Get premium Custom Sportswear in the USA direct from the manufacturer. High-quality custom sports uniforms, sublimation jerseys & fast shipping. Free quote!',
+    'twitter:title': 'Custom Sports Uniforms & Teamwear Manufacturer | Zarko Sportswear',
+    'twitter:description': 'Direct factory custom team uniforms, wrestling singlets, and sublimated jerseys. NFHS-compliant, pro-grade technical fabrics, and fast US delivery. Get a free mockup today.',
     'twitter:card': 'summary_large_image',
     'twitter:image': 'https://www.zarkosportswear.com/og-cover.jpg',
     'twitter:site': '@zarkosportswear',

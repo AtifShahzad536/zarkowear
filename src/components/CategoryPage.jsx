@@ -211,10 +211,10 @@ const CategoryPage = ({ slug }) => {
   const buttonClass = resolvedAccent.button || defaultAccent.button;
 
   const cleanSport = name.replace(/( Kits & Apparel| Singlets & Gear| Apparel & Accessories| & Training Gear| & Footwear| & Hand Protection| & Headwear| & Gear Packs)/gi, '');
-  const pageTitle = `Custom ${cleanSport} Uniforms & Sportswear USA | Zarko Sportswear`;
-  const pageDescription = `Looking for custom uniform USA? Design & buy premium custom ${cleanSport.toLowerCase()} sportswear, jerseys, and team wear. Top quality, quick ship options, and custom gear for teams and businesses.`;
+  const pageTitle = fallbackConfig?.seoTitle || `Custom ${cleanSport} Uniforms & Sportswear USA | Zarko Sportswear`;
+  const pageDescription = fallbackConfig?.seoDescription || `Looking for custom uniform USA? Design & buy premium custom ${cleanSport.toLowerCase()} sportswear, jerseys, and team wear. Top quality, quick ship options, and custom gear for teams and businesses.`;
 
-  const pageKeywords = [
+  const pageKeywords = fallbackConfig?.seoKeywords || [
     `custom sportswear USA`,
     `custom sports apparel usa`,
     `custom sportswear manufacturer usa`,
@@ -237,7 +237,7 @@ const CategoryPage = ({ slug }) => {
     `design ${cleanSport.toLowerCase()} jerseys USA`
   ].join(', ');
 
-  const jsonLd = {
+  const mainSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     'name': pageTitle,
@@ -257,6 +257,37 @@ const CategoryPage = ({ slug }) => {
       }
     }
   };
+
+  const technicalSpecs = fallbackConfig?.technicalSpecs;
+  const jsonLd = technicalSpecs ? [
+    mainSchema,
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      'name': pageTitle,
+      'description': pageDescription,
+      'image': `https://www.zarkosportswear.com${featured?.image || products[0]?.image || '/images/placeholder.jpg'}`,
+      'brand': {
+        '@type': 'Brand',
+        'name': 'Zarko Sportswear'
+      },
+      'offers': {
+        '@type': 'AggregateOffer',
+        'priceCurrency': 'USD',
+        'lowPrice': '15.00',
+        'highPrice': '45.00',
+        'offerCount': '10',
+        'priceRange': '$$',
+        'eligibleQuantity': {
+          '@type': 'QuantitativeValue',
+          'value': parseInt(technicalSpecs.moq) || 15,
+          'unitCode': 'C62'
+        }
+      },
+      'material': technicalSpecs.fabric,
+      'productionDate': '2025'
+    }
+  ] : mainSchema;
 
   return (
     <main className="bg-slate-50/50 min-h-screen">
@@ -347,20 +378,75 @@ const CategoryPage = ({ slug }) => {
                 );
               })()}
 
+              {/* Technical B2B Specifications Details */}
+              {technicalSpecs && (
+                <div className="rounded-xl border border-indigo-100 bg-indigo-50/30 p-4 space-y-3">
+                  <div className="text-xs font-bold text-indigo-700 uppercase tracking-widest flex items-center gap-1.5">
+                    ⚙️ Technical B2B Specifications
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs">
+                    {technicalSpecs.fabric && (
+                      <div className="flex justify-between py-1 border-b border-slate-100/50">
+                        <span className="text-slate-500 font-semibold">Fabric</span>
+                        <span className="text-slate-800 font-bold text-right max-w-[60%]">{technicalSpecs.fabric}</span>
+                      </div>
+                    )}
+                    {technicalSpecs.printing && (
+                      <div className="flex justify-between py-1 border-b border-slate-100/50">
+                        <span className="text-slate-500 font-semibold">Customization</span>
+                        <span className="text-slate-800 font-bold text-right max-w-[60%]">{technicalSpecs.printing}</span>
+                      </div>
+                    )}
+                    {technicalSpecs.compliance && (
+                      <div className="flex justify-between py-1 border-b border-slate-100/50">
+                        <span className="text-slate-500 font-semibold">Compliance</span>
+                        <span className="text-slate-800 font-bold text-right max-w-[60%] text-indigo-600">{technicalSpecs.compliance}</span>
+                      </div>
+                    )}
+                    {technicalSpecs.moq && (
+                      <div className="flex justify-between py-1 border-b border-slate-100/50">
+                        <span className="text-slate-500 font-semibold">MOQ Limit</span>
+                        <span className="text-slate-800 font-bold text-right max-w-[60%]">{technicalSpecs.moq}</span>
+                      </div>
+                    )}
+                    {technicalSpecs.shipping && (
+                      <div className="flex justify-between py-1 border-b border-slate-100/50">
+                        <span className="text-slate-500 font-semibold">US Shipping</span>
+                        <span className="text-slate-800 font-bold text-right max-w-[60%] text-emerald-600">{technicalSpecs.shipping}</span>
+                      </div>
+                    )}
+                    {technicalSpecs.sizing && (
+                      <div className="flex justify-between py-1 border-b border-slate-100/50">
+                        <span className="text-slate-500 font-semibold">Size Chart</span>
+                        <span className="text-slate-800 font-bold text-right max-w-[60%]">{technicalSpecs.sizing}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
               {/* Action Buttons */}
-              <div className="pt-4 flex flex-wrap items-center gap-4 border-t border-slate-100">
+              <div className="pt-4 flex flex-wrap items-center gap-3 border-t border-slate-100">
                 <Link
                   to={`/custom?product=${encodeURIComponent(name)}`}
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 text-sm font-semibold shadow-md shadow-indigo-600/20 transition-all hover:scale-[1.02]"
                 >
-                  <span>Customize Your Kit</span>
+                  <span>Request 3D Mockup</span>
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </Link>
+                <a
+                  href={`https://wa.me/923039220750?text=${encodeURIComponent(`Hi, I'm interested in ordering custom ${cleanSport} uniforms from Zarko Sportswear. Please share a B2B catalog and bulk price list.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 text-sm font-semibold shadow-md shadow-emerald-600/10 transition-all hover:scale-[1.02]"
+                >
+                  <span>WhatsApp Quote</span>
+                </a>
                 <a
                   href="#related-products"
                   className="inline-flex items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 px-5 py-2.5 text-sm font-semibold transition-all"
                 >
-                  View All Kits ↓
+                  View Designs ↓
                 </a>
               </div>
             </div>

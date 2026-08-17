@@ -110,6 +110,17 @@ export const categoryConfigs = {
     heroDescription: 'High-compression spandex wrestling singlets with 4-way stretch zones and flatlock stitching for maximum comfort and durability on the mat.',
     gradient: defaultGradient,
     accent: { ...defaultAccent },
+    seoTitle: "Custom Wrestling Singlets & Gear Manufacturer | Zarko",
+    seoDescription: "Order NFHS compliant custom wrestling singlets direct from the manufacturer. Premium 4-way stretch compression lycra and double flatlock seams. Low MOQ!",
+    seoKeywords: "custom wrestling singlets, wrestling gear manufacturer, USA wrestling uniforms, custom wrestling singlets direct factory, sublimated wrestling gear, NFHS compliant singlets",
+    technicalSpecs: {
+      fabric: "280 GSM Premium 4-Way Stretch Lycra/Spandex",
+      printing: "Full-color 4K sublimation (fade-resistant)",
+      compliance: "NFHS Uniform Rule Compliant & USA Wrestling Approved",
+      moq: "15 pieces per design",
+      shipping: "3-5 business days express delivery to USA",
+      sizing: "Youth XS to Adult 4XL (detailed size guides available)"
+    },
     featured: {
       name: 'Pro Wrestling Singlet Elite',
       image: '/images/slide1.jpg',
@@ -258,6 +269,17 @@ export const categoryConfigs = {
     heroDescription: 'Versatile training apparel that moves with you through every workout.',
     gradient: defaultGradient,
     accent: { ...defaultAccent },
+    seoTitle: "OEM Private Label Activewear & Gym Wear Manufacturer | Zarko",
+    seoDescription: "Direct-factory OEM activewear & private label gym wear manufacturer. Low MOQ, custom woven tags, custom branding, and premium fabrics for apparel brands.",
+    seoKeywords: "private label activewear manufacturer, oem gym wear supplier, custom activewear manufacturer low MOQ, sportswear direct factory, custom gym clothing wholesale, activewear direct manufacturer",
+    technicalSpecs: {
+      fabric: "Nylon-Spandex blends, premium French Terry, Flex Fleece",
+      printing: "Silicone print, 3D embroidery, heat-transfer, sublimation",
+      compliance: "OEM Brand Standards & Private Label Customization",
+      moq: "50 pieces per style/color",
+      shipping: "Direct factory wholesale shipping worldwide",
+      sizing: "Tailored fitments (Western sizing benchmarks)"
+    },
     featured: {
       name: 'Hybrid Training Set',
       image: '/images/slide2.jpg',
@@ -394,6 +416,17 @@ export const categoryConfigs = {
     heroDescription: 'Lightweight, aerated mesh soccer uniforms engineered for high-intensity movement and durability on the pitch.',
     gradient: defaultGradient,
     accent: { ...defaultAccent },
+    seoTitle: "Custom Soccer Jerseys & Sublimated Uniforms Wholesale | Zarko",
+    seoDescription: "Get premium custom soccer uniforms & sublimated soccer jerseys direct from Sialkot factory. High-density moisture-wicking interlock fabrics. Fast USA shipping!",
+    seoKeywords: "custom soccer jerseys USA, sublimated soccer uniforms wholesale, soccer jerseys Sialkot direct factory, custom team soccer kits wholesale supplier, sublimated soccer uniforms Sialkot",
+    technicalSpecs: {
+      fabric: "160-180 GSM Moisture-Wicking Dri-FIT Interlock Polyester",
+      printing: "Eco-friendly Italian ink 4K dye sublimation",
+      compliance: "USSF and high school soccer uniform standards compliant",
+      moq: "15 sets per design",
+      shipping: "Express door-to-door delivery within 3-5 business days to US/Canada",
+      sizing: "Comprehensive youth to adult custom fit charts"
+    },
     featured: {
       name: 'Championship Soccer Kit',
       image: '/images/sports/soccer.webp',

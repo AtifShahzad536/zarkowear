@@ -304,8 +304,8 @@ const Hero = () => {
         <button
           onClick={() => setShowPopup(!showPopup)}
           className={`w-11 h-11 rounded-full border flex items-center justify-center transition active:scale-95 shadow-md hover:shadow-lg cursor-pointer ${showPopup
-              ? 'bg-[#0A0C16] text-white border-[#0A0C16]'
-              : 'bg-white text-gray-500 hover:text-[#0A0C16] border-gray-150'
+            ? 'bg-[#0A0C16] text-white border-[#0A0C16]'
+            : 'bg-white text-gray-500 hover:text-[#0A0C16] border-gray-150'
             }`}
           title="Product Specifications"
         >
@@ -558,8 +558,8 @@ const Hero = () => {
               key={prod.id}
               onClick={() => handleCategorySelect(idx)}
               className={`h-1 rounded-full transition-colors duration-150 relative flex items-center justify-center ${isSelected
-                  ? 'w-8 bg-[#0A0C16]'
-                  : 'w-3.5 bg-gray-200 hover:bg-gray-300'
+                ? 'w-8 bg-[#0A0C16]'
+                : 'w-3.5 bg-gray-200 hover:bg-gray-300'
                 }`}
               aria-label={`Select ${prod.category}`}
             >
@@ -572,20 +572,20 @@ const Hero = () => {
       </div>
 
       {/* 3. Bottom Section: Copywriting (Bottom-Left) and Features (Bottom-Right) in a clean split layout */}
-      <div className="max-w-[94%] mx-auto px-8 w-full flex flex-col md:flex-row justify-between items-end gap-8 z-20 mt-10 pt-4 border-t border-gray-100">
-        {/* Bottom-Left: Copywriting */}
-        <div className="text-left space-y-2 max-w-sm xl:max-w-xl">
+      <div className="max-w-[94%] mx-auto px-8 w-full flex flex-col gap-6 z-20 mt-10 pt-4 border-t border-gray-100">
+        {/* Top of Bottom Section: Copywriting (Full Width to keep heading on one line) */}
+        <div className="text-left space-y-2 w-full">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="space-y-0.5"
           >
-            <span className="text-[clamp(9px,0.8vw,12px)] uppercase tracking-[0.15em] text-[#0A0C16] font-semibold block">
-              NEW SEASON GEAR
+            <span className="text-[clamp(9px,0.8vw,12px)] uppercase tracking-[0.15em] text-indigo-600 font-extrabold block">
+              Direct-from-Factory Manufacturer
             </span>
-            <h1 className="text-[clamp(1.125rem,2.5vw,3rem)] font-bold text-[#111827] leading-tight tracking-tight uppercase">
-              CUSTOM SPORTS UNIFORMS <span className="text-[#0A0C16]">USA</span>
+            <h1 className="text-lg sm:text-xl lg:text-[22px] font-black text-[#111827] leading-snug tracking-tight uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
+              Direct from Factory Custom Team Uniforms & Sportswear Engineered for US Athletics
             </h1>
           </motion.div>
 
@@ -593,72 +593,73 @@ const Hero = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-gray-600 text-[clamp(12px,1vw,16px)] leading-relaxed font-medium"
+            className="text-gray-600 text-[clamp(12px,1vw,14px)] leading-relaxed font-semibold"
           >
-            OEM sportswear manufacturer delivering premium custom sports uniforms and teamwear. Engineered with export-grade fabrics for elite performance, designed for champions.
+            Full cut & sew customization, NFHS-compliant designs, and pro-grade performance fabrics without middleman markups.
           </motion.p>
+        </div>
 
+        {/* Bottom of Bottom Section: CTA Button on Left, Features / Trust Badges on Right */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 w-full pb-1">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="pt-1"
           >
             <button
-              onClick={() => handleProtectedNavigation(activeProduct.link)}
-              className="inline-flex items-center gap-1.5 rounded-md bg-[#0A0C16] hover:bg-[#4338ca] text-white font-semibold text-[clamp(10px,0.9vw,14px)] tracking-wider px-4 py-2 shadow-sm transition"
+              onClick={() => handleProtectedNavigation('/custom')}
+              className="inline-flex items-center gap-1.5 rounded-md bg-[#0A0C16] hover:bg-[#4338ca] text-white font-semibold text-[clamp(10px,0.9vw,13px)] tracking-wider px-5 py-3 shadow-md shadow-slate-900/10 transition hover:scale-[1.02] uppercase"
             >
-              EXPLORE COLLECTION <span>→</span>
+              Request a Free 3D Mockup <span>→</span>
             </button>
           </motion.div>
-        </div>
 
-        {/* Bottom-Right: Features arranged side-by-side cleanly */}
-        <div className="flex flex-col sm:flex-row gap-6 md:gap-8 justify-end items-start pb-1">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-start gap-2.5 max-w-[200px]"
-          >
-            <span className="text-[#eab308] text-[clamp(16px,1.5vw,24px)] mt-0.5">
-              <FiAward strokeWidth={1.5} />
-            </span>
-            <div>
-              <p className="font-bold text-[#111827] text-[clamp(10px,0.9vw,13px)] tracking-wider uppercase">PREMIUM QUALITY</p>
-              <p className="text-[clamp(10px,0.8vw,12px)] text-gray-500 mt-0.5 leading-tight font-medium">Top quality fabrics for maximum performance.</p>
-            </div>
-          </motion.div>
+          <div className="flex flex-col sm:flex-row gap-6 md:gap-8 justify-end items-start">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex items-start gap-2.5 max-w-[200px]"
+            >
+              <span className="text-[#eab308] text-[clamp(16px,1.5vw,24px)] mt-0.5">
+                <FiAward strokeWidth={1.5} />
+              </span>
+              <div>
+                <p className="font-bold text-[#111827] text-[clamp(10px,0.9vw,12px)] tracking-wider uppercase">Direct Sialkot Hub</p>
+                <p className="text-[clamp(10px,0.8vw,11px)] text-gray-500 mt-0.5 leading-tight font-medium">Direct-from-factory pricing & quality.</p>
+              </div>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex items-start gap-2.5 max-w-[200px]"
-          >
-            <span className="text-[#eab308] text-[clamp(16px,1.5vw,24px)] mt-0.5">
-              <FiFeather strokeWidth={1.5} />
-            </span>
-            <div>
-              <p className="font-bold text-[#111827] text-[clamp(10px,0.9vw,13px)] tracking-wider uppercase">LIGHTWEIGHT</p>
-              <p className="text-[clamp(10px,0.8vw,12px)] text-gray-500 mt-0.5 leading-tight font-medium">Stay light. Move fast. Win more.</p>
-            </div>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="flex items-start gap-2.5 max-w-[200px]"
+            >
+              <span className="text-[#eab308] text-[clamp(16px,1.5vw,24px)] mt-0.5">
+                <FiSliders strokeWidth={1.5} />
+              </span>
+              <div>
+                <p className="font-bold text-[#111827] text-[clamp(10px,0.9vw,12px)] tracking-wider uppercase">NFHS Compliant</p>
+                <p className="text-[clamp(10px,0.8vw,11px)] text-gray-500 mt-0.5 leading-tight font-medium">Uniform specs aligned with US league rules.</p>
+              </div>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex items-start gap-2.5 max-w-[200px]"
-          >
-            <span className="text-[#eab308] text-[clamp(16px,1.5vw,24px)] mt-0.5">
-              <FiWind strokeWidth={1.5} />
-            </span>
-            <div>
-              <p className="font-bold text-[#111827] text-[clamp(10px,0.9vw,13px)] tracking-wider uppercase">BREATHABLE</p>
-              <p className="text-[clamp(10px,0.8vw,12px)] text-gray-500 mt-0.5 leading-tight font-medium">Advanced technology keeps you cool.</p>
-            </div>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex items-start gap-2.5 max-w-[200px]"
+            >
+              <span className="text-[#eab308] text-[clamp(16px,1.5vw,24px)] mt-0.5">
+                <FiWind strokeWidth={1.5} />
+              </span>
+              <div>
+                <p className="font-bold text-[#111827] text-[clamp(10px,0.9vw,12px)] tracking-wider uppercase">Low MOQ & Express</p>
+                <p className="text-[clamp(10px,0.8vw,11px)] text-gray-500 mt-0.5 leading-tight font-medium">3-5 business days express delivery to US.</p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
 

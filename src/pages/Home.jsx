@@ -593,36 +593,72 @@ const Home = () => {
       </Suspense>
 
       {/* SEO Content Section to boost word count and keyword relevance */}
+      {/* SEO Content Section to boost word count and keyword relevance */}
       <section className="bg-white text-slate-600 py-16 border-t border-slate-200">
         <div className="max-w-[94%] mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-xs sm:text-sm leading-relaxed">
-            <div>
-              <h2 className="text-2xl font-black text-slate-900 mb-4 uppercase tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                Professional Teamwear & Custom Athletic Jerseys
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-sm leading-relaxed">
+            <div className="space-y-6">
+              <h2 className="text-2xl font-black text-slate-900 uppercase tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                Direct Manufacturer of Custom Team Uniforms & Athletic Kits
               </h2>
-              <p className="mb-4">
-                Zarko Sportswear is your premier partner for high-performance athletic apparel. As a direct clothing manufacturer, we control the entire supply chain, delivering professional-grade uniforms to teams, schools, and club leagues globally. Whether you need soccer kits, wrestling singlets, basketball uniforms, or training tracksuits, our state-of-the-art facility ensures export-quality apparel tailored to your squad's exact specifications.
+              <p className="text-gray-500 font-medium">
+                Zarko Sportswear is your direct factory partner for professional-grade custom athletic apparel. We engineer tournament-ready uniforms for US high schools, colleges, and club leagues—eliminating middleman markups without compromising performance.
               </p>
-              <p className="mb-4">
-                We specialize in advanced dye-sublimation printing, ensuring your team colors, sponsors, and player names never fade, crack, or peel. From initial 3D mockup to final seam stitching, our production is monitored for durability and comfort. Our heavy-GSM polyester blends provide moisture-wicking and quick-drying capabilities, keeping athletes cool under pressure.
-              </p>
-              <p>
-                We understand that team identity matters. That is why our custom design team works closely with you to realize your vision. With standard production times of 8-12 days and fully tracked worldwide door-to-door express delivery, outfitting your squad with premium sportswear has never been simpler.
-              </p>
+              <ul className="space-y-3.5 text-xs font-semibold text-slate-700">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-indigo-600 text-sm mt-0.5">✓</span>
+                  <span><strong>Advanced Dye-Sublimation:</strong> Permanent colors, crisp numbers, and sponsor logos that never crack, peel, or fade.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-indigo-600 text-sm mt-0.5">✓</span>
+                  <span><strong>Pro-Grade Fabrics:</strong> Heavy-GSM moisture-wicking micro-polyester and 4-way stretch spandex built for peak mobility.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-indigo-600 text-sm mt-0.5">✓</span>
+                  <span><strong>Turnaround & Logistics:</strong> 8–12 business days production with fully tracked express delivery to the United States.</span>
+                </li>
+              </ul>
+              <div className="pt-2">
+                <Link
+                  to="/custom"
+                  className="inline-flex items-center gap-2 rounded-xl bg-[#0A0C16] hover:bg-[#4338ca] text-white font-semibold text-xs tracking-wider px-6 py-3.5 shadow-md shadow-slate-900/10 transition active:scale-95 uppercase"
+                >
+                  Request Free 3D Mockup
+                </Link>
+              </div>
             </div>
-            <div>
-              <h3 className="text-xl font-black text-slate-900 mb-4 uppercase tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                Comprehensive Custom Sportswear & Accessories
+
+            <div className="space-y-6">
+              <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                NFHS-Compliant Accessories & Custom Sideline Apparel
               </h3>
-              <p className="mb-4">
-                Beyond traditional match-day uniforms, we produce a wide variety of secondary apparel and gear. Our custom collections feature premium gym wear, lightweight running kits, tennis skirts, and sideline warm-up hoodies. We utilize soft, anti-chafe flatlock seams and 4-way stretch fabrics to guarantee maximum mobility and athletic longevity.
+              <p className="text-gray-500 font-medium">
+                Complete your team’s identity from the field to the sidelines. We produce full secondary apparel lines engineered with anti-chafe flatlock stitching and eco-certified inks.
               </p>
-              <p className="mb-4">
-                To complete your unified look, we also customize sports gear bags, hats, and glove kits. Whether you are ordering for a local school team or a professional regional league, we adjust our production capacities to match your volume. We offer low minimum order quantities (MOQs) for smaller academies, alongside bulk shipping logistics for large tournaments.
-              </p>
-              <p>
-                At Zarko Sportswear, we are dedicated to ethical and sustainable apparel creation. We utilize clean production procedures and eco-certified inks to limit our environmental footprint while maintaining vibrant, high-definition designs. Contact us today to request a mockup and discover why squads globally trust Zarko to elevate their game.
-              </p>
+              <ul className="space-y-3.5 text-xs font-semibold text-slate-700">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-600 text-sm mt-0.5">✓</span>
+                  <span><strong>Sideline & Training:</strong> Custom warm-up hoodies, training tracksuits, gym wear, and running kits.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-600 text-sm mt-0.5">✓</span>
+                  <span><strong>Team Accessories:</strong> Matching custom sports bags, sideline caps, and compression gear.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-600 text-sm mt-0.5">✓</span>
+                  <span><strong>Flexible Order Volume:</strong> Low MOQs for local youth academies alongside scalable bulk capacities for tournaments.</span>
+                </li>
+              </ul>
+              <div className="pt-2">
+                <a
+                  href="https://wa.me/923039220750"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs tracking-wider px-6 py-3.5 shadow-md shadow-emerald-600/10 transition active:scale-95 uppercase"
+                >
+                  Chat on WhatsApp
+                </a>
+              </div>
             </div>
           </div>
         </div>
