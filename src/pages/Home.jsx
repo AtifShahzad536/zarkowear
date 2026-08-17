@@ -654,7 +654,7 @@ const Home = () => {
                   href="https://wa.me/923039220750"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs tracking-wider px-6 py-3.5 shadow-md shadow-emerald-600/10 transition active:scale-95 uppercase"
+                  className="inline-flex items-center gap-2 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-semibold text-xs tracking-wider px-6 py-3.5 shadow-md shadow-emerald-800/10 transition active:scale-95 uppercase"
                 >
                   Chat on WhatsApp
                 </a>
