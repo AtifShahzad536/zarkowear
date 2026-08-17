@@ -614,19 +614,19 @@ const Hero = () => {
             </button>
           </motion.div>
 
-          <div className="flex flex-col sm:flex-row gap-6 md:gap-8 justify-end items-start">
+          <div className="flex flex-row gap-2 sm:gap-6 md:gap-8 justify-between md:justify-end items-start w-full md:w-auto">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex items-start gap-2.5 max-w-[200px]"
+              className="flex items-start gap-1 sm:gap-2.5 flex-1 min-w-0"
             >
-              <span className="text-[#eab308] text-[clamp(16px,1.5vw,24px)] mt-0.5">
+              <span className="text-[#eab308] text-[14px] sm:text-[clamp(16px,1.5vw,24px)] mt-0.5 flex-shrink-0">
                 <FiAward strokeWidth={1.5} />
               </span>
-              <div>
-                <p className="font-bold text-[#111827] text-[clamp(10px,0.9vw,12px)] tracking-wider uppercase">Direct Sialkot Hub</p>
-                <p className="text-[clamp(10px,0.8vw,11px)] text-gray-500 mt-0.5 leading-tight font-medium">Direct-from-factory pricing & quality.</p>
+              <div className="min-w-0">
+                <p className="font-bold text-[#111827] text-[9px] sm:text-[clamp(10px,0.9vw,12px)] tracking-tight sm:tracking-wider uppercase truncate">Direct Sialkot</p>
+                <p className="hidden sm:block text-[clamp(10px,0.8vw,11px)] text-gray-500 mt-0.5 leading-tight font-medium">Direct-from-factory pricing & quality.</p>
               </div>
             </motion.div>
 
@@ -634,14 +634,14 @@ const Hero = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="flex items-start gap-2.5 max-w-[200px]"
+              className="flex items-start gap-1 sm:gap-2.5 flex-1 min-w-0"
             >
-              <span className="text-[#eab308] text-[clamp(16px,1.5vw,24px)] mt-0.5">
+              <span className="text-[#eab308] text-[14px] sm:text-[clamp(16px,1.5vw,24px)] mt-0.5 flex-shrink-0">
                 <FiSliders strokeWidth={1.5} />
               </span>
-              <div>
-                <p className="font-bold text-[#111827] text-[clamp(10px,0.9vw,12px)] tracking-wider uppercase">NFHS Compliant</p>
-                <p className="text-[clamp(10px,0.8vw,11px)] text-gray-500 mt-0.5 leading-tight font-medium">Uniform specs aligned with US league rules.</p>
+              <div className="min-w-0">
+                <p className="font-bold text-[#111827] text-[9px] sm:text-[clamp(10px,0.9vw,12px)] tracking-tight sm:tracking-wider uppercase truncate">NFHS Rules</p>
+                <p className="hidden sm:block text-[clamp(10px,0.8vw,11px)] text-gray-500 mt-0.5 leading-tight font-medium">Uniform specs aligned with US league rules.</p>
               </div>
             </motion.div>
 
@@ -649,14 +649,14 @@ const Hero = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex items-start gap-2.5 max-w-[200px]"
+              className="flex items-start gap-1 sm:gap-2.5 flex-1 min-w-0"
             >
-              <span className="text-[#eab308] text-[clamp(16px,1.5vw,24px)] mt-0.5">
+              <span className="text-[#eab308] text-[14px] sm:text-[clamp(16px,1.5vw,24px)] mt-0.5 flex-shrink-0">
                 <FiWind strokeWidth={1.5} />
               </span>
-              <div>
-                <p className="font-bold text-[#111827] text-[clamp(10px,0.9vw,12px)] tracking-wider uppercase">Low MOQ & Express</p>
-                <p className="text-[clamp(10px,0.8vw,11px)] text-gray-500 mt-0.5 leading-tight font-medium">3-5 business days express delivery to US.</p>
+              <div className="min-w-0">
+                <p className="font-bold text-[#111827] text-[9px] sm:text-[clamp(10px,0.9vw,12px)] tracking-tight sm:tracking-wider uppercase truncate">Low MOQ / USA</p>
+                <p className="hidden sm:block text-[clamp(10px,0.8vw,11px)] text-gray-500 mt-0.5 leading-tight font-medium">3-5 business days express delivery to US.</p>
               </div>
             </motion.div>
           </div>
