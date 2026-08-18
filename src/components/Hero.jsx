@@ -542,9 +542,9 @@ const Hero = () => {
                     title={prod.name}
                     width={280}
                     height={280}
-                    loading={isActive ? 'eager' : 'lazy'}
-                    fetchPriority={isActive ? 'high' : 'low'}
-                    decoding={isActive ? 'sync' : 'async'}
+                    loading={idx === 0 ? 'eager' : 'lazy'}
+                    fetchPriority={idx === 0 ? 'high' : 'low'}
+                    decoding={idx === 0 ? 'sync' : 'async'}
                     className="w-full h-full object-contain pointer-events-none"
                   />
                 </div>
