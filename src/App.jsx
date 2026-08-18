@@ -27,7 +27,7 @@ function App() {
     const handleInteraction = () => setLoadChatbot(true);
     const events = ['scroll', 'mousemove', 'touchstart', 'click'];
     events.forEach(e => window.addEventListener(e, handleInteraction, { once: true, passive: true }));
-    const timer = setTimeout(() => setLoadChatbot(true), 3500);
+    const timer = setTimeout(() => setLoadChatbot(true), 8000);
     return () => {
       events.forEach(e => window.removeEventListener(e, handleInteraction));
       clearTimeout(timer);
