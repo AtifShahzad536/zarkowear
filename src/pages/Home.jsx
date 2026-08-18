@@ -141,7 +141,7 @@ const Home = () => {
               const custom = dbCategoryImages.find(c => c.slug === sport.slug);
               return {
                 ...sport,
-                image: custom && custom.image ? imageUrl(custom.image) : sport.image
+                image: custom && custom.image ? imageUrl(custom.image, { width: 400 }) : sport.image
               };
             }).map((sport, i) => (
               <motion.div

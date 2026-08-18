@@ -537,7 +537,7 @@ const Hero = () => {
                   style={{ willChange: isActive ? 'transform' : 'auto' }}
                 >
                   <img
-                    src={prod.image}
+                    src={imageUrl(prod.image, { width: 400 })}
                     alt={prod.name}
                     title={prod.name}
                     width={280}
