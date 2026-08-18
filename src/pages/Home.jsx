@@ -8,6 +8,7 @@ import { FiLayers, FiGlobe, FiSliders, FiShoppingBag } from 'react-icons/fi';
 import homeSeo from '../seo/homeSeo';
 import { clubs } from '../data/home/partners';
 import { categoryChips } from '../data/home/categoryChips';
+import { getHomeSettings, imageUrl } from '../services/api';
 
 // Lazy load below-the-fold sections for instant Mobile LCP
 const FeaturedCategories = lazy(() => import('../components/Home/Feature'));
@@ -18,16 +19,27 @@ const FAQ = lazy(() => import('../components/Home/Faq'));
 const BlogPreview = lazy(() => import('../components/Home/BlogPreview'));
 
 const JERSEYS = [
-  '/images/hero_football.webp',
-  '/images/hero_basketball.webp',
-  '/images/hero_wrestling.webp',
-  '/images/hero_cricket.webp',
-  '/images/hero_gym.webp'
+  '/images/hero_football.png',
+  '/images/hero_basketball.png',
+  '/images/hero_wrestling.png',
+  '/images/hero_cricket.png',
+  '/images/hero_gym.png'
 ];
 
 const Home = () => {
   const path = window.location.pathname;
   const [activeJerseyIndex, setActiveJerseyIndex] = useState(0);
+  const [dbCategoryImages, setDbCategoryImages] = useState([]);
+
+  useEffect(() => {
+    getHomeSettings()
+      .then(data => {
+        if (data && data.categoryImages) {
+          setDbCategoryImages(data.categoryImages);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -73,51 +85,65 @@ const Home = () => {
                 title: 'Football',
                 tagline: 'Professional match kits & gear',
                 to: '/football',
+                slug: 'football',
                 image: '/images/sports/football.webp'
               },
               {
                 title: 'Cricket',
                 tagline: 'Premium club uniforms & wear',
                 to: '/cricket',
+                slug: 'cricket',
                 image: '/images/sports/cricket.webp'
               },
               {
                 title: 'Basketball',
                 tagline: 'Elite sublimated jerseys',
                 to: '/basketball',
+                slug: 'basketball',
                 image: '/images/sports/basketball.webp'
               },
               {
                 title: 'Wrestling',
                 tagline: 'Heavy-duty performance singlets',
                 to: '/wrestling',
+                slug: 'wrestling',
                 image: '/images/sports/wrestling.webp'
               },
               {
                 title: 'Softball',
                 tagline: 'Custom jerseys & team apparel',
                 to: '/softball',
+                slug: 'softball',
                 image: '/images/sports/softball.webp'
               },
               {
                 title: 'Soccer',
                 tagline: 'Performance soccer kits',
                 to: '/soccer',
+                slug: 'soccer',
                 image: '/images/sports/soccer.webp'
               },
               {
                 title: 'Volleyball',
                 tagline: 'Elite volleyball uniforms',
                 to: '/volleyball',
+                slug: 'volleyball',
                 image: '/images/sports/volleyball.webp'
               },
               {
                 title: 'Ice Hockey',
                 tagline: 'Durable pro hockey jerseys',
                 to: '/ice-hockey',
+                slug: 'ice-hockey',
                 image: '/images/sports/ice-hockey.webp'
               }
-            ].map((sport, i) => (
+            ].map(sport => {
+              const custom = dbCategoryImages.find(c => c.slug === sport.slug);
+              return {
+                ...sport,
+                image: custom && custom.image ? imageUrl(custom.image) : sport.image
+              };
+            }).map((sport, i) => (
               <motion.div
                 key={sport.title}
                 initial={{ opacity: 0, y: 30 }}

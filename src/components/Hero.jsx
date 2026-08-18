@@ -13,6 +13,7 @@ import {
 } from 'react-icons/fa';
 import { GiCricketBat, GiWeightLiftingUp } from 'react-icons/gi';
 import { FiAward, FiWind, FiFeather, FiInfo, FiSliders, FiMail } from 'react-icons/fi';
+import { getHomeSettings, imageUrl } from '../services/api';
 
 // Premium products definition (5 items)
 const PRODUCTS = [
@@ -22,7 +23,7 @@ const PRODUCTS = [
     name: 'Elite Football Jersey',
     tagline: 'Football Gear',
     description: 'Engineered using export-grade lightweight micro-polyester with advanced sweat-wicking properties. Features custom sublimation printing, heat-pressed logos, and double-stitched reinforcements for ultimate comfort and durability during high-intensity football matches.',
-    image: '/images/hero_football.webp',
+    image: '/images/hero_football.png',
     link: '/football',
     icon: FaFootballBall,
   },
@@ -32,7 +33,7 @@ const PRODUCTS = [
     name: 'Pro Basketball Jersey',
     tagline: 'Basketball Gear',
     description: 'Crafted with high-ventilation mesh knit fabric designed to maximize airflow and keep athletes cool. Offers an optimized sleeveless cut for absolute arm mobility, combined with moisture-control technology to handle sweat on the court.',
-    image: '/images/hero_basketball.webp',
+    image: '/images/hero_basketball.png',
     link: '/basketball',
     icon: FaBasketballBall,
   },
@@ -42,7 +43,7 @@ const PRODUCTS = [
     name: 'Elite Wrestling Singlet',
     tagline: 'Wrestling Gear',
     description: 'A professional-grade singlet constructed from heavy-duty 4-way stretch spandex. Offers compression support, reinforced flatlock seams to prevent chafing, and integrated anti-slip silicone leg grips to keep the singlet locked in place.',
-    image: '/images/hero_wrestling.webp',
+    image: '/images/hero_wrestling.png',
     link: '/wrestling',
     icon: FaRunning,
   },
@@ -52,7 +53,7 @@ const PRODUCTS = [
     name: 'Premium Cricket Jersey',
     tagline: 'Cricket Gear',
     description: 'Designed for long matches in the heat, featuring strategically placed mesh ventilation panels and UV-shielding fabric. The ultra-lightweight fabric allows free body rotation for batsmen and bowlers alike while keeping you cool.',
-    image: '/images/hero_cricket.webp',
+    image: '/images/hero_cricket.png',
     link: '/cricket',
     icon: GiCricketBat,
   },
@@ -62,7 +63,7 @@ const PRODUCTS = [
     name: 'Performance Gym Hoodie',
     tagline: 'Gym Gear',
     description: 'The ultimate workout layering piece made of an ultra-soft fleeced flex fabric. Features moisture-wicking technology, a structured adjustable hood, utility zip pockets, and ergonomic stitching built to support stretching, lifting, and outdoor running.',
-    image: '/images/hero_gym.webp',
+    image: '/images/hero_gym.png',
     link: '/gym',
     icon: GiWeightLiftingUp,
   }
@@ -89,6 +90,32 @@ const Hero = () => {
   const pauseTimerRef = useRef(null);
   const [isAutoplayPaused, setIsAutoplayPaused] = useState(false);
   const [pendingNavigation, setPendingNavigation] = useState(null);
+  const [dbHeroImages, setDbHeroImages] = useState([]);
+
+  useEffect(() => {
+    let alive = true;
+    getHomeSettings()
+      .then(data => {
+        if (!alive) return;
+        if (data && data.heroImages && data.heroImages.length > 0) {
+          setDbHeroImages(data.heroImages);
+        }
+      })
+      .catch(() => {});
+    return () => { alive = false; };
+  }, []);
+
+  const dynamicProducts = useMemo(() => {
+    return PRODUCTS.map((prod, idx) => {
+      if (dbHeroImages[idx]) {
+        return {
+          ...prod,
+          image: dbHeroImages[idx]
+        };
+      }
+      return prod;
+    });
+  }, [dbHeroImages]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -140,7 +167,7 @@ const Hero = () => {
   const startAutoplay = () => {
     if (autoplayTimerRef.current) clearInterval(autoplayTimerRef.current);
     autoplayTimerRef.current = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % PRODUCTS.length);
+      setActiveIndex((prev) => (prev + 1) % dynamicProducts.length);
     }, 4000);
   };
 
@@ -151,7 +178,7 @@ const Hero = () => {
     return () => {
       if (autoplayTimerRef.current) clearInterval(autoplayTimerRef.current);
     };
-  }, [isAutoplayPaused]);
+  }, [isAutoplayPaused, dynamicProducts]);
 
   // Handle Category click / navigation controls
   const handleCategorySelect = (index) => {
@@ -167,14 +194,14 @@ const Hero = () => {
   };
 
   const handleNext = () => {
-    handleCategorySelect((activeIndex + 1) % PRODUCTS.length);
+    handleCategorySelect((activeIndex + 1) % dynamicProducts.length);
   };
 
   const handlePrev = () => {
-    handleCategorySelect((activeIndex - 1 + PRODUCTS.length) % PRODUCTS.length);
+    handleCategorySelect((activeIndex - 1 + dynamicProducts.length) % dynamicProducts.length);
   };
 
-  const activeProduct = PRODUCTS[activeIndex];
+  const activeProduct = dynamicProducts[activeIndex];
 
   const productSpecs = useMemo(() => {
     switch (activeProduct.id) {
@@ -453,9 +480,9 @@ const Hero = () => {
       {/* 1. Upper Section: Wide V-shape Products (Center and spacious at top) */}
       <div className="w-full relative flex-1 flex flex-col items-center justify-center min-h-[350px] md:min-h-[440px] z-10 px-8 pt-6">
         <div className="relative w-full h-full flex items-center justify-center">
-          {PRODUCTS.map((prod, idx) => {
+          {dynamicProducts.map((prod, idx) => {
             let diff = idx - activeIndex;
-            const N = PRODUCTS.length;
+            const N = dynamicProducts.length;
             if (diff > N / 2) diff -= N;
             if (diff <= -N / 2) diff += N;
 
@@ -551,7 +578,7 @@ const Hero = () => {
       {/* 2. Middle Section: Mini Bars indicators instead of dots */}
       <div className="flex justify-center items-center gap-2.5 mt-8 z-20">
         {/* Horizontal Mini Bars indicators */}
-        {PRODUCTS.map((prod, idx) => {
+        {dynamicProducts.map((prod, idx) => {
           const isSelected = activeIndex === idx;
           return (
             <button

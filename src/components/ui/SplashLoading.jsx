@@ -105,12 +105,12 @@ const SplashLoading = ({ progress = 0, onComplete }) => {
               transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
               className="flex flex-col items-center justify-center w-full"
             >
-              <h1 
+              <div 
                 className="text-[34px] sm:text-[52px] md:text-[115px] font-black tracking-[0.08em] sm:tracking-[0.15em] md:tracking-[0.25em] uppercase leading-none welcome-water-text py-2 whitespace-nowrap"
                 style={{ fontFamily: "'Outfit', sans-serif" }}
               >
                 WELCOME
-              </h1>
+              </div>
               <div className="h-[2px] w-20 md:w-24 bg-gradient-to-r from-indigo-500 to-purple-500 mt-4 rounded-full" />
             </motion.div>
           )}

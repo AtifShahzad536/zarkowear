@@ -21,6 +21,13 @@ const fallbackItems = [
   { image: '/images/slide2.jpg', name: 'Tennis Performance Polo', link: '/tennis' },
 ];
 
+const resolveLink = (link) => {
+  if (link === '/hoodie') return '/gym';
+  if (link === '/cap') return '/caps';
+  if (link === '/polo') return '/tennis';
+  return link || '#';
+};
+
 const TopSellingProducts = () => {
   const containerRef = useRef(null);
   const isSwiperInView = useInView(containerRef, { once: true, margin: "200px" });
@@ -52,7 +59,7 @@ const TopSellingProducts = () => {
   
   const handleProductClick = (product) => {
     if (product.link) {
-      navigate(product.link);
+      navigate(resolveLink(product.link));
     }
   };
 
@@ -139,7 +146,7 @@ const TopSellingProducts = () => {
                 {displayedItems.map((item, i) => (
                   <SwiperSlide key={`${item.id || i}-${i}`}>
                     <MotionLink
-                      to={item.link || '#'}
+                      to={resolveLink(item.link)}
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       

@@ -83,9 +83,7 @@ const ProductCard = ({
         {/* Rating and Price */}
         <div className="flex items-center justify-between pt-2 border-t border-slate-100">
           <div className="flex items-center gap-1">
-            <span className="text-xs text-amber-400">★</span>
-            <span className="text-xs font-semibold text-slate-700">{rating}</span>
-            <span className="text-[10px] text-slate-400">({reviewCount})</span>
+            <span className="text-xs font-bold text-slate-500">Premium Fit</span>
           </div>
           <div>
             <span className="text-xs font-semibold text-indigo-900 uppercase tracking-wider">

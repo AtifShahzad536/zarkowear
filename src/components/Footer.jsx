@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaPinterestP } from 'react-icons/fa';
 import toast from 'react-hot-toast';
+import { COMPANY_DETAILS } from '../data/constants';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -104,15 +105,15 @@ const Footer = () => {
               Contact Us
             </h3>
             <ul className="space-y-3 text-xs font-semibold text-slate-400 leading-relaxed">
-              <li className="text-white">Export Distribution Hub:</li>
-              <li>Shipping directly to USA & Worldwide</li>
+              <li className="text-white">Export & Manufacturing Hub:</li>
+              <li>{COMPANY_DETAILS.address}</li>
               <li className="text-white mt-2">WhatsApp Support:</li>
               <li>
-                <a href="tel:+923039200750" className="hover:text-white transition">+92 303 9200750</a>
+                <a href={`https://wa.me/${COMPANY_DETAILS.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="hover:text-white transition">{COMPANY_DETAILS.whatsapp}</a>
               </li>
               <li className="text-white mt-2">Email Desk:</li>
               <li>
-                <a href="mailto:zarkosportswear@gmail.com" className="hover:text-white transition break-all">zarkosportswear@gmail.com</a>
+                <a href={`mailto:${COMPANY_DETAILS.email}`} className="hover:text-white transition break-all">{COMPANY_DETAILS.email}</a>
               </li>
             </ul>
           </div>
@@ -133,8 +134,11 @@ const Footer = () => {
               <a href="https://www.instagram.com/zarko_sports.wear/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-white/5 hover:bg-indigo-600 flex items-center justify-center border border-white/10 hover:border-transparent text-slate-400 hover:text-white transition" aria-label="Instagram">
                 <FaInstagram size={14} />
               </a>
-              <a href="https://www.linkedin.com/in/atif-shahzad903/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-white/5 hover:bg-indigo-600 flex items-center justify-center border border-white/10 hover:border-transparent text-slate-400 hover:text-white transition" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/zarko-sports-wear-186b1942a/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-white/5 hover:bg-indigo-600 flex items-center justify-center border border-white/10 hover:border-transparent text-slate-400 hover:text-white transition" aria-label="LinkedIn">
                 <FaLinkedinIn size={14} />
+              </a>
+              <a href="https://pin.it/7x8HJGoJx" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-white/5 hover:bg-indigo-600 flex items-center justify-center border border-white/10 hover:border-transparent text-slate-400 hover:text-white transition" aria-label="Pinterest">
+                <FaPinterestP size={14} />
               </a>
             </div>
           </div>

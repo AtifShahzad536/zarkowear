@@ -9,11 +9,12 @@ export default function AdminHome() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [heroImages, setHeroImages] = useState([]);
+  const [categoryImages, setCategoryImages] = useState([]);
   const [testimonials, setTestimonials] = useState([]);
   const [topSelling, setTopSelling] = useState([]);
   const [uploads, setUploads] = useState([]);
   const [newHero, setNewHero] = useState('');
-  const [tab, setTab] = useState('hero'); // 'hero' | 'testimonials' | 'top'
+  const [tab, setTab] = useState('hero'); // 'hero' | 'testimonials' | 'top' | 'categories'
   // shared hidden file inputs state
   const [tUploadIndex, setTUploadIndex] = useState(-1);
   const [tsUploadIndex, setTsUploadIndex] = useState(-1);
@@ -23,6 +24,7 @@ export default function AdminHome() {
     const p = location.pathname;
     if (p.endsWith('/admin/testimonials')) setTab('testimonials');
     else if (p.endsWith('/admin/top-selling')) setTab('top');
+    else if (p.endsWith('/admin/category-images')) setTab('categories');
     else setTab('hero');
   }, [location.pathname]);
 
@@ -34,6 +36,7 @@ export default function AdminHome() {
         const [home, files] = await Promise.all([adminGetHome(), adminListUploads()]);
         if (!alive) return;
         setHeroImages(home.heroImages || []);
+        setCategoryImages(home.categoryImages || []);
         setTestimonials(home.testimonials || []);
         setTopSelling(home.topSelling || []);
         setUploads(files || []);
@@ -85,7 +88,7 @@ export default function AdminHome() {
   async function save() {
     try {
       setLoading(true);
-      await adminUpdateHome({ heroImages, testimonials, topSelling });
+      await adminUpdateHome({ heroImages, categoryImages, testimonials, topSelling });
     } catch (e) {
       setError(e.message || 'Save failed');
     } finally {
@@ -102,6 +105,7 @@ export default function AdminHome() {
       {/* Tabs */}
       <div className="mb-6 flex flex-wrap gap-2">
         <button onClick={()=>navigate('/admin/home')} className={`px-3 py-2 rounded border ${tab==='hero'?'bg-black text-white border-black':'bg-white hover:bg-gray-50'}`}>Hero Images</button>
+        <button onClick={()=>navigate('/admin/category-images')} className={`px-3 py-2 rounded border ${tab==='categories'?'bg-black text-white border-black':'bg-white hover:bg-gray-50'}`}>Category Images</button>
         <button onClick={()=>navigate('/admin/testimonials')} className={`px-3 py-2 rounded border ${tab==='testimonials'?'bg-black text-white border-black':'bg-white hover:bg-gray-50'}`}>Testimonials</button>
         <button onClick={()=>navigate('/admin/top-selling')} className={`px-3 py-2 rounded border ${tab==='top'?'bg-black text-white border-black':'bg-white hover:bg-gray-50'}`}>Top Selling</button>
       </div>
@@ -132,6 +136,86 @@ export default function AdminHome() {
               <img src={imageUrl(f.url)} alt={f.name} title={f.name} className="w-full h-24 object-cover" />
             </button>
           ))}
+        </div>
+      </section>
+      )}
+
+      {/* Category Images */}
+      {tab==='categories' && (
+      <section className="mb-10">
+        <h2 className="text-xl font-semibold mb-3">Sport Category Grid Images</h2>
+        <p className="text-sm text-gray-500 mb-6">Upload or set custom background images for each sport category in the homepage grid.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {[
+            { label: 'Football', slug: 'football' },
+            { label: 'Cricket', slug: 'cricket' },
+            { label: 'Basketball', slug: 'basketball' },
+            { label: 'Wrestling', slug: 'wrestling' },
+            { label: 'Softball', slug: 'softball' },
+            { label: 'Soccer', slug: 'soccer' },
+            { label: 'Volleyball', slug: 'volleyball' },
+            { label: 'Ice Hockey', slug: 'ice-hockey' }
+          ].map((item, idx) => {
+            const currentItem = categoryImages.find(c => c.slug === item.slug) || { slug: item.slug, image: '' };
+            return (
+              <div key={idx} className="rounded-xl ring-1 ring-gray-200 bg-white p-4 shadow-sm space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-gray-800 text-sm">{item.label}</span>
+                  <span className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">{item.slug}</span>
+                </div>
+                <div className="flex gap-2">
+                  <input 
+                    className="border rounded px-2 py-1 flex-1 text-xs" 
+                    placeholder="Image URL (/uploads/... or https://...)" 
+                    value={currentItem.image} 
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setCategoryImages(prev => {
+                        const copy = [...prev];
+                        const f = copy.find(c => c.slug === item.slug);
+                        if (f) f.image = val;
+                        else copy.push({ slug: item.slug, image: val });
+                        return copy;
+                      });
+                    }}
+                  />
+                  <input 
+                    id={`file-cat-${item.slug}`}
+                    type="file" 
+                    accept="image/*" 
+                    className="hidden" 
+                    onChange={async (e) => {
+                      const f = e.target.files?.[0]; if (!f) return;
+                      try {
+                        const res = await adminUploadFile(f);
+                        setCategoryImages(prev => {
+                          const copy = [...prev];
+                          const exist = copy.find(c => c.slug === item.slug);
+                          if (exist) exist.image = res.url;
+                          else copy.push({ slug: item.slug, image: res.url });
+                          return copy;
+                        });
+                      } catch (err) {
+                        alert('Upload failed');
+                      }
+                      e.target.value = '';
+                    }}
+                  />
+                  <button 
+                    onClick={() => document.getElementById(`file-cat-${item.slug}`).click()} 
+                    className="px-3 py-1 text-xs border rounded bg-gray-50 hover:bg-gray-100 font-semibold"
+                  >
+                    Upload
+                  </button>
+                </div>
+                {currentItem.image && (
+                  <div className="h-32 rounded-lg overflow-hidden border bg-gray-50 relative">
+                    <img src={imageUrl(currentItem.image)} alt={item.label} className="w-full h-full object-cover" />
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </section>
       )}

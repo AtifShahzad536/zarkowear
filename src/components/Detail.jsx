@@ -3,10 +3,12 @@ import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { imageUrl } from '../services/api';
 import toast from 'react-hot-toast';
 import SizeChartModal from './SizeChartModal';
+import SeoHead from './SeoHead';
+import { categoryConfigs } from '../data/categories';
 
 const defaultProduct = {
   name: 'Premium Team Jersey',
-  image: '/images/placeholder.jpg',
+  image: '/images/slide1.jpg',
   description: 'Designed for elite performance, this premium jersey features high-breathability mesh panels, moisture-wicking technology, and an athletic fit tailored for professionals.',
   details: [
     'Export-grade breathable dry-fit fabric',
@@ -20,24 +22,63 @@ const defaultProduct = {
 };
 
 const relatedProducts = [
-  { name: 'Wrestling Singlet Pro', image: '/images/placeholder.jpg', description: 'Heavy-duty 4-way stretch singlet.' },
-  { name: 'Elite Football Jersey', image: '/images/placeholder.jpg', description: 'Ultra-light breathable match jersey.' },
-  { name: 'Training Windbreaker', image: '/images/placeholder.jpg', description: 'Water-resistant lightweight training jacket.' },
-  { name: 'Athletic Compression Shorts', image: '/images/placeholder.jpg', description: 'High-tension performance compression.' },
+  { name: 'Wrestling Singlet Pro', image: '/images/slide1.jpg', description: 'Heavy-duty 4-way stretch singlet.' },
+  { name: 'Elite Football Jersey', image: '/images/slide2.jpg', description: 'Ultra-light breathable match jersey.' },
+  { name: 'Training Windbreaker', image: '/images/slide1.jpg', description: 'Water-resistant lightweight training jacket.' },
+  { name: 'Athletic Compression Shorts', image: '/images/slide2.jpg', description: 'High-tension performance compression.' },
 ];
 
+const cleanSlug = (name) => {
+  if (!name) return '';
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+};
+
 const ProductInquiry = () => {
-  const { pathname, state } = useLocation();
+  const { pathname, search, state } = useLocation();
   const navigate = useNavigate();
   const [isSizeChartOpen, setIsSizeChartOpen] = useState(false);
+  const [product, setProduct] = useState(defaultProduct);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    // 1. Try resolving product from state
+    if (state?.product) {
+      setProduct(state.product);
+      window.scrollTo(0, 0);
+      return;
+    }
+    if (state && state.name) {
+      setProduct(state);
+      window.scrollTo(0, 0);
+      return;
+    }
 
-  // Read dynamic product from route state or fallback
-  const product = state?.product || state || defaultProduct;
-  const displayImage = imageUrl(product.image || '/images/placeholder.jpg');
+    // 2. Try resolving product from search query ?product=slug
+    const query = new URLSearchParams(search);
+    const productSlug = query.get('product');
+    let foundProduct = null;
+
+    if (productSlug) {
+      for (const catKey in categoryConfigs) {
+        const cat = categoryConfigs[catKey];
+        // Check featured product
+        if (cat.featured && cleanSlug(cat.featured.name) === productSlug) {
+          foundProduct = cat.featured;
+          break;
+        }
+        // Check products list
+        const prod = cat.products?.find(p => cleanSlug(p.name) === productSlug);
+        if (prod) {
+          foundProduct = prod;
+          break;
+        }
+      }
+    }
+
+    setProduct(foundProduct || defaultProduct);
+    window.scrollTo(0, 0);
+  }, [pathname, search, state]);
+
+  const displayImage = imageUrl(product.image || '/images/slide1.jpg');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,8 +100,61 @@ const ProductInquiry = () => {
     toast.success('Inquiry submitted! Redirecting to WhatsApp...', { icon: '💬' });
   };
 
+  const getSportAndType = (name) => {
+    const lowerName = name.toLowerCase();
+    let sport = 'Teamwear';
+    if (lowerName.includes('football') || lowerName.includes('soccer')) sport = 'Football';
+    else if (lowerName.includes('wrestling') || lowerName.includes('singlet')) sport = 'Wrestling';
+    else if (lowerName.includes('cricket')) sport = 'Cricket';
+    else if (lowerName.includes('basketball')) sport = 'Basketball';
+    else if (lowerName.includes('baseball')) sport = 'Baseball';
+    else if (lowerName.includes('softball')) sport = 'Softball';
+    else if (lowerName.includes('volleyball')) sport = 'Volleyball';
+    else if (lowerName.includes('hockey')) sport = 'Hockey';
+    else if (lowerName.includes('gym') || lowerName.includes('fitness') || lowerName.includes('activewear')) sport = 'Gym & Fitness';
+
+    let type = 'Uniforms';
+    if (lowerName.includes('jersey')) type = 'Jerseys';
+    else if (lowerName.includes('singlet')) type = 'Singlets';
+    else if (lowerName.includes('shorts')) type = 'Shorts';
+    else if (lowerName.includes('jacket') || lowerName.includes('windbreaker')) type = 'Jackets';
+    else if (lowerName.includes('pants') || lowerName.includes('joggers')) type = 'Pants';
+    else if (lowerName.includes('hoodie')) type = 'Hoodies';
+    else if (lowerName.includes('glove')) type = 'Gloves';
+    else if (lowerName.includes('cap')) type = 'Caps';
+    else if (lowerName.includes('bag')) type = 'Bags';
+
+    return { sport, type };
+  };
+
+  const { sport, type } = getSportAndType(product.name);
+  const moqDetail = product.details?.find(d => d.includes('MOQ:'));
+  const moq = moqDetail ? moqDetail.replace(/[^0-9]/g, '') : 25;
+
+  const pageTitle = `Custom ${sport} ${type} USA | Factory-Direct, Low MOQ ${moq} Units | Zarko Sportswear`;
+  const pageDescription = `Order custom sublimated ${product.name.toLowerCase()} for your team. Direct from factory with high-performance breathable fabrics, low ${moq} unit MOQ, and fast USA delivery.`;
+  const productSlug = cleanSlug(product.name);
+  const canonicalUrl = `https://www.zarkosportswear.com/detail?product=${productSlug}`;
+
   return (
-    <section className="w-full min-h-screen bg-slate-50/50 py-16 px-4 sm:px-6 lg:px-8">
+    <>
+      <SeoHead
+        title={pageTitle}
+        description={pageDescription}
+        canonical={canonicalUrl}
+        keywords={`custom ${product.name.toLowerCase()}, custom ${sport.toLowerCase()} ${type.toLowerCase()}, sialkot sportswear manufacturer, custom teamwear USA`}
+        openGraph={{
+          'og:title': pageTitle,
+          'og:description': pageDescription,
+          'og:url': canonicalUrl,
+          'og:type': 'product'
+        }}
+        twitter={{
+          'twitter:title': pageTitle,
+          'twitter:description': pageDescription,
+        }}
+      />
+      <section className="w-full min-h-screen bg-slate-50/50 py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
 
         {/* Back Button */}
@@ -212,7 +306,7 @@ const ProductInquiry = () => {
             {relatedProducts.map((item, idx) => (
               <Link
                 key={idx}
-                to="/detail"
+                to={`/detail?product=${cleanSlug(item.name)}`}
                 state={{ product: item }}
                 className="group bg-white rounded-2xl border border-slate-100 p-4 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between block"
               >
@@ -223,7 +317,7 @@ const ProductInquiry = () => {
                     className="w-full h-full object-contain p-4 transition-transform duration-300 group-hover:scale-105"
                     onError={(e) => {
                       e.currentTarget.onerror = null;
-                      e.currentTarget.src = imageUrl('/images/placeholder.jpg');
+                      e.currentTarget.src = imageUrl('/images/slide1.jpg');
                     }}
                   />
                 </div>
@@ -239,6 +333,7 @@ const ProductInquiry = () => {
       </div>
       <SizeChartModal isOpen={isSizeChartOpen} onClose={() => setIsSizeChartOpen(false)} />
     </section>
+    </>
   );
 };
 

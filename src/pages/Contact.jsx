@@ -4,6 +4,7 @@ import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 import { useToast } from '../components/Toast.jsx';
+import { COMPANY_DETAILS } from '../data/constants';
 
 const Contact = () => {
   const path = window.location.pathname;
@@ -89,25 +90,25 @@ const Contact = () => {
               <p className="text-sm text-gray-500">Choose the channel that suits you best or review our <Link to="/about" className="text-indigo-600 hover:underline">manufacturing process</Link> and <Link to="/custom" className="text-indigo-600 hover:underline">custom order guide</Link>.</p>
               <div className="grid gap-4">
                 {[{
-                  title: 'Call us',
-                  content: '+92 303 9200750',
+                  title: 'WhatsApp Support',
+                  content: COMPANY_DETAILS.whatsapp,
                   Icon: FaPhoneAlt,
-                  sub: 'Coordinating around USA, UK, Europe & Australia time zones',
+                  sub: 'Direct chat for instant custom team uniform quotes',
                 }, {
-                  title: 'Email',
-                  content: 'zarkosportswear@gmail.com',
+                  title: 'Email Address',
+                  content: COMPANY_DETAILS.email,
                   Icon: FaEnvelope,
-                  sub: 'Replies within one business day',
+                  sub: 'Send design files and specs',
                 }, {
-                  title: 'Distribution',
-                  content: 'Exporting directly to USA & Worldwide',
+                  title: 'Manufacturing HQ',
+                  content: COMPANY_DETAILS.address,
                   Icon: FaMapMarkerAlt,
-                  sub: 'Production HQ & global shipping hub',
+                  sub: 'Sialkot export factory direct to USA & Worldwide',
                 }, {
-                  title: 'Working hours',
+                  title: 'Support Hours',
                   content: 'Mon – Sat, 9:00 – 18:00 EST Support',
                   Icon: FaClock,
-                  sub: 'Custom timezone appointments available',
+                  sub: 'USA & UK timezone coordination available',
                 }].map(({ title, content, Icon, sub }) => (
                   <div key={title} className="flex items-start gap-4 rounded-2xl border border-indigo-100 bg-white/95 p-4 shadow-sm">
                     <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-indigo-600/10 text-indigo-600">
