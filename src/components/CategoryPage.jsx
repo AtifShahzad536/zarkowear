@@ -618,30 +618,62 @@ const CategoryFaq = ({ slug, cleanSport }) => {
         </p>
       </div>
 
-      <div className="max-w-3xl mx-auto space-y-4">
-        {faqs.map((faq, idx) => {
-          const isOpen = activeFaq === idx;
-          return (
-            <div key={idx} className="border border-slate-200 bg-white rounded-none">
-              <button
-                onClick={() => toggleFaq(idx)}
-                className="w-full py-4 px-6 flex justify-between items-center text-left text-slate-800 font-semibold hover:bg-slate-50/50 transition-colors cursor-pointer"
-              >
-                <span className="text-xs sm:text-sm">{faq.question}</span>
-                <span className="text-indigo-600 shrink-0 text-xs ml-4">
-                  {isOpen ? '−' : '+'}
-                </span>
-              </button>
-              {isOpen && (
-                <div className="px-6 pb-4 border-t border-slate-100 pt-3">
-                  <p className="text-xs text-slate-500 leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </div>
-              )}
-            </div>
-          );
-        })}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+        {/* Left Column (Even Indexes) */}
+        <div className="space-y-4">
+          {faqs.filter((_, idx) => idx % 2 === 0).map((faq, idx) => {
+            const actualIndex = idx * 2;
+            const isOpen = activeFaq === actualIndex;
+            return (
+              <div key={actualIndex} className="border border-slate-200 bg-white rounded-none">
+                <button
+                  onClick={() => toggleFaq(actualIndex)}
+                  className="w-full py-4 px-6 flex justify-between items-center text-left text-slate-800 font-semibold hover:bg-slate-50/50 transition-colors cursor-pointer"
+                >
+                  <span className="text-xs sm:text-sm pr-2">{faq.question}</span>
+                  <span className="text-indigo-600 shrink-0 text-xs ml-4">
+                    {isOpen ? '−' : '+'}
+                  </span>
+                </button>
+                {isOpen && (
+                  <div className="px-6 pb-4 border-t border-slate-100 pt-3">
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Right Column (Odd Indexes) */}
+        <div className="space-y-4">
+          {faqs.filter((_, idx) => idx % 2 !== 0).map((faq, idx) => {
+            const actualIndex = idx * 2 + 1;
+            const isOpen = activeFaq === actualIndex;
+            return (
+              <div key={actualIndex} className="border border-slate-200 bg-white rounded-none">
+                <button
+                  onClick={() => toggleFaq(actualIndex)}
+                  className="w-full py-4 px-6 flex justify-between items-center text-left text-slate-800 font-semibold hover:bg-slate-50/50 transition-colors cursor-pointer"
+                >
+                  <span className="text-xs sm:text-sm pr-2">{faq.question}</span>
+                  <span className="text-indigo-600 shrink-0 text-xs ml-4">
+                    {isOpen ? '−' : '+'}
+                  </span>
+                </button>
+                {isOpen && (
+                  <div className="px-6 pb-4 border-t border-slate-100 pt-3">
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
