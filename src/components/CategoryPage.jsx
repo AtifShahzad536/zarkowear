@@ -29,7 +29,7 @@ const defaultAccent = {
 };
 
 const SectionTitle = ({ eyebrow, title, description }) => (
-  <div className="mx-auto max-w-[94%] text-center">
+  <div className="text-center max-w-3xl mx-auto">
     {eyebrow && (
       <span className="inline-flex items-center justify-center rounded-full border border-indigo-200 bg-white/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-indigo-500">
         {eyebrow}
@@ -307,7 +307,7 @@ const CategoryPage = ({ slug }) => {
           'twitter:description': pageDescription,
         }}
       />
-      <div className="mx-auto max-w-[94%] px-4 py-8 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[94%] px-6 py-8">
 
         {/* TOP PRODUCT DETAIL HERO CONTAINER (Left: Picture, Right: Details) */}
         <section className="bg-transparent overflow-hidden py-4 sm:py-6">
@@ -605,7 +605,7 @@ const CategoryFaq = ({ slug, cleanSport }) => {
   };
 
   return (
-    <section className="mt-20 border-t border-slate-100 pt-16 mx-auto max-w-[94%]">
+    <section className="mt-20 border-t border-slate-100 pt-16">
       <div className="text-center mb-12">
         <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-indigo-600 block">
           FAQ Section
