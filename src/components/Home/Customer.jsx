@@ -86,24 +86,7 @@ const Testimonials = () => {
                   className="relative h-full rounded-none bg-white/95 backdrop-blur px-6 pt-12 pb-8 shadow-[0_16px_45px_-30px_rgba(10,12,22,0.8)] ring-1 ring-gray-150 hover:ring-gray-200 transition"
                 >
                   <span className="absolute top-4 left-6 text-5xl text-gray-200">“</span>
-                  <motion.div
-                    initial={{ opacity: 0, x: 16, y: -16, scale: 0.7 }}
-                    animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-                    
-                    transition={{ duration: 0.45, delay: 0.1 + index * 0.03 }}
-                    className="absolute top-4 right-6 w-12 h-12 rounded-full overflow-hidden shadow-lg ring-4 ring-white bg-white"
-                  >
-                    <img
-                      src={imageUrl(t.image || '/uploads/placeholder.jpg', { width: 100 })}
-                      alt={t.name} title={t.name}
-                      width={48}
-                      height={48}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover"
-                    />
-                  </motion.div>
-                  <div className="flex items-center gap-1 text-amber-400 mb-4">
+                  <div className="flex items-center gap-1 text-amber-400 mb-4 mt-4">
                     {Array.from({ length: Math.max(1, Math.round(t.rating || 5)) }).map((_, starIndex) => (
                       <FaStar key={starIndex} className="drop-shadow" />
                     ))}
