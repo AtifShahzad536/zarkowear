@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { imageUrl } from '../services/api';
+import { imageUrl, getCategories } from '../services/api';
 import toast from 'react-hot-toast';
 import SizeChartModal from './SizeChartModal';
 import SeoHead from './SeoHead';
@@ -38,6 +38,33 @@ const ProductInquiry = () => {
   const navigate = useNavigate();
   const [isSizeChartOpen, setIsSizeChartOpen] = useState(false);
   const [product, setProduct] = useState(defaultProduct);
+  const [relatedProductsState, setRelatedProductsState] = useState(relatedProducts);
+
+  useEffect(() => {
+    getCategories()
+      .then((data) => {
+        if (Array.isArray(data)) {
+          const allProds = [];
+          data.forEach(cat => {
+            if (cat.featured) {
+              allProds.push({ ...cat.featured, categorySlug: cat.slug });
+            }
+            if (Array.isArray(cat.products)) {
+              cat.products.forEach(p => {
+                allProds.push({ ...p, categorySlug: cat.slug });
+              });
+            }
+          });
+
+          const filtered = allProds.filter(p => p.name !== product?.name);
+          if (filtered.length > 0) {
+            const shuffled = filtered.sort(() => 0.5 - Math.random());
+            setRelatedProductsState(shuffled.slice(0, 4));
+          }
+        }
+      })
+      .catch((err) => console.error('Failed to load related products from backend:', err));
+  }, [product]);
 
   useEffect(() => {
     // 1. Try resolving product from state
@@ -303,7 +330,7 @@ const ProductInquiry = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {relatedProducts.map((item, idx) => (
+            {relatedProductsState.map((item, idx) => (
               <Link
                 key={idx}
                 to={`/detail?product=${cleanSlug(item.name)}`}
