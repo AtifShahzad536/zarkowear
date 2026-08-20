@@ -21,13 +21,6 @@ const defaultProduct = {
   sizes: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL'],
 };
 
-const relatedProducts = [
-  { name: 'Wrestling Singlet Pro', image: '/images/slide1.jpg', description: 'Heavy-duty 4-way stretch singlet.' },
-  { name: 'Elite Football Jersey', image: '/images/slide2.jpg', description: 'Ultra-light breathable match jersey.' },
-  { name: 'Training Windbreaker', image: '/images/slide1.jpg', description: 'Water-resistant lightweight training jacket.' },
-  { name: 'Athletic Compression Shorts', image: '/images/slide2.jpg', description: 'High-tension performance compression.' },
-];
-
 const cleanSlug = (name) => {
   if (!name) return '';
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
@@ -38,7 +31,7 @@ const ProductInquiry = () => {
   const navigate = useNavigate();
   const [isSizeChartOpen, setIsSizeChartOpen] = useState(false);
   const [product, setProduct] = useState(defaultProduct);
-  const [relatedProductsState, setRelatedProductsState] = useState(relatedProducts);
+  const [relatedProductsState, setRelatedProductsState] = useState([]);
 
   useEffect(() => {
     getCategories()
