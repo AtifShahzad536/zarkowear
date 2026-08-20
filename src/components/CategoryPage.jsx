@@ -489,7 +489,7 @@ const CategoryPage = ({ slug }) => {
             description="Share your concept, tech packs, or references and our product team will engineer export-grade samples."
           />
           <div className="mt-8">
-            <Custom />
+            <Custom isEmbedded={true} />
           </div>
         </section>
 

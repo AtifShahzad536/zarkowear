@@ -4,15 +4,17 @@ import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
 import { FaUpload, FaFileAlt, FaInbox, FaTruck, FaPalette, FaTags, FaClock, FaCheckCircle, FaShieldAlt } from 'react-icons/fa';
 
-const Custom = () => {
+const Custom = ({ isEmbedded = false }) => {
   const [fileName, setFileName] = useState('');
   const [status, setStatus] = useState('');
   const [error, setError] = useState('');
   const path = window.location.pathname;
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [path]);
+    if (!isEmbedded) {
+      window.scrollTo(0, 0);
+    }
+  }, [path, isEmbedded]);
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -49,48 +51,54 @@ const Custom = () => {
     }
   }
 
-  return (
-    <main className="min-h-screen bg-slate-50">
-      <SeoHead
-        title="Custom Sportswear USA | Free Design & Fast Delivery Zarko"
-        description="Order custom sportswear online built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear."
-        canonical="https://www.zarkosportswear.com/custom"
-        keywords="custom sportswear USA, custom sports uniforms USA, custom teamwear USA, private label teamwear, custom wrestling singlets, custom soccer jerseys USA, custom basketball uniforms"
-        openGraph={{
-          'og:title': 'Custom Sportswear USA | Free Design & Fast Delivery - Zarko',
-          'og:description': 'Order custom sportswear online built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear.',
-          'og:url': 'https://www.zarkosportswear.com/custom',
-        }}
-        twitter={{
-          'twitter:title': 'Custom Sportswear USA | Free Design & Fast Delivery Zarko',
-          'twitter:description': 'Order custom sportswear online built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear.',
-        }}
-      />
+  const containerClass = isEmbedded ? 'w-full' : 'mx-auto max-w-[94%] px-4';
+
+  const content = (
+    <>
+      {!isEmbedded && (
+        <SeoHead
+          title="Custom Sportswear USA | Free Design & Fast Delivery Zarko"
+          description="Order custom sportswear online built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear."
+          canonical="https://www.zarkosportswear.com/custom"
+          keywords="custom sportswear USA, custom sports uniforms USA, custom teamwear USA, private label teamwear, custom wrestling singlets, custom soccer jerseys USA, custom basketball uniforms"
+          openGraph={{
+            'og:title': 'Custom Sportswear USA | Free Design & Fast Delivery - Zarko',
+            'og:description': 'Order custom sportswear online built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear.',
+            'og:url': 'https://www.zarkosportswear.com/custom',
+          }}
+          twitter={{
+            'twitter:title': 'Custom Sportswear USA | Free Design & Fast Delivery Zarko',
+            'twitter:description': 'Order custom sportswear online built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear.',
+          }}
+        />
+      )}
 
       {/* Hero Header Section */}
-      <section className="bg-[#0A0C16] text-white py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(79,70,229,0.15),transparent_45%)]" />
-        <div className="mx-auto max-w-[94%] px-4 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="inline-flex items-center gap-2 border border-indigo-500/30 bg-indigo-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-400 rounded-none">
-              USA Teamwear Supplier
-            </span>
-            <h1 className="mt-6 text-3xl sm:text-4xl font-semibold tracking-tight text-white max-w-4xl mx-auto leading-[1.15]">
-              Custom Sportswear & Team Uniforms Built for USA Teams
-            </h1>
-            <p className="mt-6 text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto leading-relaxed">
-              Zarko Sportswear manufactures high-performance custom jerseys, uniforms, and fitness apparel. Get factory-direct USD pricing, no minimums, and quick DHL door-to-door shipping to CA, TX, NY, FL, and nationwide.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      {!isEmbedded && (
+        <section className="bg-[#0A0C16] text-white py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(79,70,229,0.15),transparent_45%)]" />
+          <div className="mx-auto max-w-[94%] px-4 relative z-10 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="inline-flex items-center gap-2 border border-indigo-500/30 bg-indigo-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-400 rounded-none">
+                USA Teamwear Supplier
+              </span>
+              <h1 className="mt-6 text-3xl sm:text-4xl font-semibold tracking-tight text-white max-w-4xl mx-auto leading-[1.15]">
+                Custom Sportswear & Team Uniforms Built for USA Teams
+              </h1>
+              <p className="mt-6 text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                Zarko Sportswear manufactures high-performance custom jerseys, uniforms, and fitness apparel. Get factory-direct USD pricing, no minimums, and quick DHL door-to-door shipping to CA, TX, NY, FL, and nationwide.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* Trust & Benefits Grid */}
-      <section className="py-12 mx-auto max-w-[94%] px-4 -mt-10 relative z-20">
+      <section className={`py-12 relative z-20 ${isEmbedded ? 'w-full' : 'mx-auto max-w-[94%] px-4 -mt-10'}`}>
         <div className="grid gap-6 md:grid-cols-3">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -147,7 +155,7 @@ const Custom = () => {
 
       {/* Timeline Section */}
       <section className="py-12 bg-white border-y border-slate-200/50">
-        <div className="mx-auto max-w-[94%] px-4">
+        <div className={containerClass}>
           <div className="text-center mb-12">
             <h2 className="text-xl font-semibold text-slate-800">How It Works</h2>
             <p className="text-[11px] text-slate-500 mt-1">Get custom uniforms manufactured and shipped in 4 simple steps</p>
@@ -178,7 +186,7 @@ const Custom = () => {
       </section>
 
       {/* Main Request Form & Information */}
-      <section className="py-16 mx-auto max-w-[94%] px-4">
+      <section className={`py-16 ${containerClass}`}>
         <div className="grid gap-8 lg:grid-cols-[1.5fr_1fr] items-start">
           
           {/* Form */}
@@ -302,6 +310,16 @@ const Custom = () => {
 
         </div>
       </section>
+    </>
+  );
+
+  if (isEmbedded) {
+    return content;
+  }
+
+  return (
+    <main className="min-h-screen bg-slate-50">
+      {content}
     </main>
   );
 };
