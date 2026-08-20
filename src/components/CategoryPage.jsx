@@ -44,7 +44,7 @@ const getSportHighlights = (sportName) => {
   const defaults = {
     fabric: 'Moisture-Wicking',
     printing: '4K Sublimation',
-    moq: '25 Kits',
+    moq: '10 Kits',
     dispatch: 'Worldwide Express'
   };
 
@@ -498,7 +498,7 @@ const CategoryPage = ({ slug }) => {
 
         {/* SEO RICH CONTENT SECTION */}
         <section className="mt-20 border-t border-slate-100 pt-16">
-          <div className="max-w-4xl mx-auto text-slate-700 space-y-6">
+          <div className="text-slate-700 space-y-6 w-full">
             <h3 className="text-2xl font-bold text-slate-900">
               Premium Custom {cleanSport} Uniforms & Gear in the USA
             </h3>
