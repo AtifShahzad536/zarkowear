@@ -493,6 +493,9 @@ const CategoryPage = ({ slug }) => {
           </div>
         </section>
 
+        {/* DYNAMIC FAQ SECTION */}
+        <CategoryFaq slug={slug} cleanSport={cleanSport} />
+
         {/* SEO RICH CONTENT SECTION */}
         <section className="mt-20 border-t border-slate-100 pt-16">
           <div className="max-w-4xl mx-auto text-slate-700 space-y-6">
@@ -509,6 +512,138 @@ const CategoryPage = ({ slug }) => {
         </section>
       </div>
     </main>
+  );
+};
+
+// ─── FAQ Dynamic Config Helpers & Components ───────────────────────────
+
+const getCategoryFaqs = (slug, cleanSport) => {
+  const defaults = [
+    {
+      question: `What materials do you use for custom ${cleanSport}?`,
+      answer: `We use high-grade, moisture-wicking interlock polyester with reinforced stitching. This ensures maximum breathability, quick evaporation, and flexibility during intense gameplay.`
+    },
+    {
+      question: "Can we submit our own team crests, sponsor logos, and player numbers?",
+      answer: `Yes, absolutely. We use high-definition dye sublimation which infuses the inks directly into the fabric fibers, meaning your logos, numbers, and names will never crack, peel, or fade.`
+    },
+    {
+      question: `What is your minimum order quantity (MOQ) for custom ${cleanSport.toLowerCase()}?`,
+      answer: "Our standard MOQ starts at 15 to 25 units per design. However, we can accommodate smaller team rosters or replacement orders upon request."
+    },
+    {
+      question: "How long does manufacturing and delivery to the USA take?",
+      answer: "Once you approve the digital design mockups, production typically takes 2-3 weeks. Express DHL or FedEx shipping to the USA takes an additional 3-5 business days."
+    }
+  ];
+
+  const key = slug.toLowerCase();
+  if (key.includes('wrestling')) {
+    return [
+      {
+        question: "Are your custom wrestling singlets compliance-approved?",
+        answer: "Yes, our wrestling singlets are engineered strictly according to NFHS and NCAA regulations, featuring correct sizing boundaries, necklines, and side panel spacing requirements."
+      },
+      {
+        question: "What fabric is used to ensure durability during intense grappling?",
+        answer: "We utilize double-stitch 280 GSM Lycra fabric (80% polyester, 20% spandex) with flatlock seams to prevent chafing and withstand high-impact grappling matches."
+      },
+      {
+        question: "Do you offer silicon gripper bands on the legs?",
+        answer: "Yes, custom leg band grippers (both silicone elastic and compression bands) are available to keep the singlet securely in place during matches."
+      },
+      {
+        question: "What is the MOQ and production timeline for wrestling singlets?",
+        answer: "Our MOQ for wrestling singlets is 15 units. Production takes 2 weeks followed by 3-5 days DHL express delivery to USA destinations."
+      }
+    ];
+  }
+
+  if (key.includes('gym') || key.includes('running')) {
+    return [
+      {
+        question: "What makes your private-label activewear suitable for brand launches?",
+        answer: "We offer high-end fabric blends (nylon/spandex, combed cotton polyester), flatlock anti-chafe stitching, custom wash care labels, and low MOQs starting at 30 pieces."
+      },
+      {
+        question: "Can you provide custom embroidery or screen printing?",
+        answer: "Yes, we support premium embroidery, 3D silicone printing, heat-transfer, and screen printing options based on your brand's aesthetic guidelines."
+      },
+      {
+        question: "Do you supply fabric swatches before bulk production?",
+        answer: "Yes, we can send fabric swatches or produce a pre-production sample for your quality check before launching full-scale manufacturing."
+      }
+    ];
+  }
+
+  if (key.includes('shoes')) {
+    return [
+      {
+        question: "Are the custom shoes suitable for turf and indoor athletic play?",
+        answer: "Yes, our custom shoes feature vulcanized rubber traction outsoles, molded branding slots, and breathable mesh linings perfect for athletic turf or everyday team training."
+      },
+      {
+        question: "What customization options are available for shoes?",
+        answer: "You can fully customize the base colors, laces, side logos, and tongues with your team crests. Custom sizing ranges from US Youth 1 to Adult Mens 15."
+      },
+      {
+        question: "What is the MOQ for custom footwear orders?",
+        answer: "Due to custom sole molds, our minimum order quantity for custom shoes starts at 50 pairs per design layout."
+      }
+    ];
+  }
+
+  return defaults;
+};
+
+const CategoryFaq = ({ slug, cleanSport }) => {
+  const [activeFaq, setActiveFaq] = useState(null);
+  const faqs = useMemo(() => getCategoryFaqs(slug, cleanSport), [slug, cleanSport]);
+
+  const toggleFaq = (index) => {
+    setActiveFaq(activeFaq === index ? null : index);
+  };
+
+  return (
+    <section className="mt-20 border-t border-slate-100 pt-16 mx-auto max-w-[94%]">
+      <div className="text-center mb-12">
+        <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-indigo-600 block">
+          FAQ Section
+        </span>
+        <h2 className="text-2xl sm:text-3xl font-bold text-indigo-950 mt-2">
+          Frequently Asked Questions
+        </h2>
+        <p className="text-xs text-slate-500 mt-2">
+          Everything you need to know about our custom {cleanSport.toLowerCase()} uniforms and teamwear.
+        </p>
+      </div>
+
+      <div className="max-w-3xl mx-auto space-y-4">
+        {faqs.map((faq, idx) => {
+          const isOpen = activeFaq === idx;
+          return (
+            <div key={idx} className="border border-slate-200 bg-white rounded-none">
+              <button
+                onClick={() => toggleFaq(idx)}
+                className="w-full py-4 px-6 flex justify-between items-center text-left text-slate-800 font-semibold hover:bg-slate-50/50 transition-colors cursor-pointer"
+              >
+                <span className="text-xs sm:text-sm">{faq.question}</span>
+                <span className="text-indigo-600 shrink-0 text-xs ml-4">
+                  {isOpen ? '−' : '+'}
+                </span>
+              </button>
+              {isOpen && (
+                <div className="px-6 pb-4 border-t border-slate-100 pt-3">
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </section>
   );
 };
 
