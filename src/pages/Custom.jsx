@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
-import { FaUpload, FaFileAlt, FaInbox } from 'react-icons/fa';
+import { FaUpload, FaFileAlt, FaInbox, FaTruck, FaPalette, FaTags, FaClock, FaCheckCircle, FaShieldAlt } from 'react-icons/fa';
 
 const Custom = () => {
   const [fileName, setFileName] = useState('');
@@ -17,7 +17,7 @@ const Custom = () => {
   async function onSubmit(e) {
     e.preventDefault();
     setStatus(''); setError('');
-    const formEl = e.currentTarget; // capture before await
+    const formEl = e.currentTarget;
     const apiBase = (import.meta.env.VITE_API_BASE || '').trim();
     const endpoint = apiBase ? `${apiBase}/api/inquiry/custom` : '/api/inquiry/custom';
     const fd = new FormData(formEl);
@@ -42,7 +42,6 @@ const Custom = () => {
       } else {
         setStatus('Your request has been submitted. We will contact you soon.');
       }
-      setStatus('Your request has been submitted. We will contact you soon.');
       formEl.reset();
       setFileName('');
     } catch (err) {
@@ -51,114 +50,256 @@ const Custom = () => {
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-slate-50">
       <SeoHead
-        title="Custom Sportswear USA | Free Design & Fast Delivery - Zarko"
-        description="Order custom sportswear online — built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear."
+        title="Custom Sportswear USA | Free Design & Fast Delivery Zarko"
+        description="Order custom sportswear online built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear."
         canonical="https://www.zarkosportswear.com/custom"
         keywords="custom sportswear USA, custom sports uniforms USA, custom teamwear USA, private label teamwear, custom wrestling singlets, custom soccer jerseys USA, custom basketball uniforms"
         openGraph={{
           'og:title': 'Custom Sportswear USA | Free Design & Fast Delivery - Zarko',
-          'og:description': 'Order custom sportswear online — built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear.',
+          'og:description': 'Order custom sportswear online built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear.',
           'og:url': 'https://www.zarkosportswear.com/custom',
         }}
         twitter={{
-          'twitter:title': 'Custom Sportswear USA | Free Design & Fast Delivery - Zarko',
-          'twitter:description': 'Order custom sportswear online — built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear.',
+          'twitter:title': 'Custom Sportswear USA | Free Design & Fast Delivery Zarko',
+          'twitter:description': 'Order custom sportswear online built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear.',
         }}
       />
-      <section>
-        <div className="mx-auto max-w-[94%] px-4 pb-16 pt-12">
-          <motion.header initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}  transition={{ duration: 0.6 }} className="text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-600">
-              Custom manufacturing
-            </span>
-            <h1 className="mt-5 text-3xl sm:text-4xl font-bold text-indigo-900">Custom Sportswear for USA Sports Teams & Clubs</h1>
-            <p className="mt-4 text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Zarko Sportswear is a trusted OEM & private label sportswear manufacturer in Sialkot, Pakistan, exporting premium-grade custom sports uniforms directly to USA customers. Whether you need custom soccer/football kits, basketball uniforms, baseball wear, or durable wrestling kits, we offer fully personalized apparel featuring custom team names, logos, and player numbers with reliable international delivery.
-            </p>
-          </motion.header>
 
-          {status && <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="mt-6 px-4 py-3 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-700 text-sm">{status}</motion.div>}
-          {error && <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="mt-6 px-4 py-3 rounded-xl border border-rose-200 bg-rose-50 text-rose-700 text-sm">{error}</motion.div>}
-
-          <motion.form
-            initial={{ opacity: 0, y: 24 }}
+      {/* Hero Header Section */}
+      <section className="bg-[#0A0C16] text-white py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(79,70,229,0.15),transparent_45%)]" />
+        <div className="mx-auto max-w-[94%] px-4 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            
-            transition={{ duration: 0.6 }}
-            onSubmit={onSubmit}
-            className="mt-12 rounded-2xl border border-indigo-100 bg-white p-8 shadow-md space-y-6"
+            transition={{ duration: 0.5 }}
           >
-            <div className="grid gap-4 sm:grid-cols-2">
-              <label className="space-y-2 text-sm font-semibold text-gray-700">
-                Full name
-                <input name="name" className="w-full rounded-xl border border-indigo-100 px-4 py-3 text-sm shadow-inner focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" placeholder="Jane Smith" required />
-              </label>
-              <label className="space-y-2 text-sm font-semibold text-gray-700">
-                Email
-                <input name="email" className="w-full rounded-xl border border-indigo-100 px-4 py-3 text-sm shadow-inner focus:outline-none focus:ring-2 focus:ring-indigo-500" type="email" placeholder="you@club.com" required />
-              </label>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <label className="space-y-2 text-sm font-semibold text-gray-700">
-                Phone (optional)
-                <input name="phone" className="w-full rounded-xl border border-indigo-100 px-4 py-3 text-sm shadow-inner focus:outline-none focus:ring-2 focus:ring-indigo-500" type="tel" placeholder="+1 (555) 000-0000" />
-              </label>
-              <label className="space-y-2 text-sm font-semibold text-gray-700">
-                Company / Team name
-                <input name="company" className="w-full rounded-xl border border-indigo-100 px-4 py-3 text-sm shadow-inner focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" placeholder="LA Mavericks" />
-              </label>
-            </div>
-            <label className="space-y-2 text-sm font-semibold text-gray-700 block">
-              Project brief
-              <textarea name="message" className="w-full rounded-xl border border-indigo-100 px-4 py-3 text-sm shadow-inner focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="5" placeholder="Sport, quantities, sizes, fabrics, colors, logos, deadline…" required />
-            </label>
+            <span className="inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] text-indigo-400">
+              USA Teamwear Supplier
+            </span>
+            <h1 className="mt-6 text-4xl sm:text-5xl font-black tracking-tight text-white max-w-4xl mx-auto leading-[1.15]">
+              Custom Sportswear & Team Uniforms Built for USA Teams
+            </h1>
+            <p className="mt-6 text-sm sm:text-base md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              Zarko Sportswear manufactures high-performance custom jerseys, uniforms, and fitness apparel. Get factory-direct USD pricing, no minimums, and quick DHL door-to-door shipping to CA, TX, NY, FL, and nationwide.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
-            <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.7fr)]">
-              <label className="flex flex-col gap-3 rounded-2xl border border-indigo-100 bg-indigo-50/40 p-6 text-sm text-indigo-700 hover:border-indigo-200 hover:bg-indigo-50 transition cursor-pointer" htmlFor="file-upload">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-indigo-600/10 text-indigo-600 text-xl">
-                  <FaUpload />
-                </span>
-                <div>
-                  <p className="font-semibold">Upload design files</p>
-                  <p className="text-xs text-indigo-500">PDF, PNG, JPG up to 10MB</p>
-                </div>
-                <input
-                  id="file-upload"
-                  name="file"
-                  type="file"
-                  accept=".pdf,.png,.jpg,.jpeg"
-                  onChange={(e) => setFileName(e.target.files?.[0]?.name || '')}
-                  className="hidden"
-                />
+      {/* Trust & Benefits Grid */}
+      <section className="py-12 mx-auto max-w-[94%] px-4 -mt-10 relative z-20">
+        <div className="grid gap-6 md:grid-cols-3">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col items-start gap-4"
+          >
+            <div className="h-12 w-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl font-bold">
+              <FaPalette />
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 text-base">Free Design & Mockups</h3>
+              <p className="text-xs text-slate-500 mt-2 leading-relaxed">
+                Send us your logos, sketches, or design ideas. Our professional design squad will draft digital mockups for your team within 24 hours — completely free.
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col items-start gap-4"
+          >
+            <div className="h-12 w-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl font-bold">
+              <FaTags />
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 text-base">No Minimum Quantities</h3>
+              <p className="text-xs text-slate-500 mt-2 leading-relaxed">
+                Whether you need to outfit a roster of 100 players or simply want a single replacement jersey, we support low and no MOQ orders to keep sizing flexible.
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col items-start gap-4"
+          >
+            <div className="h-12 w-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl font-bold">
+              <FaTruck />
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 text-base">Fast Door-to-Door Delivery</h3>
+              <p className="text-xs text-slate-500 mt-2 leading-relaxed">
+                We handle the manufacturing and export directly. All custom shipments are sent via express DHL/FedEx air courier with tracking straight to your clubhouse or home.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section className="py-12 bg-white border-y border-slate-200/50">
+        <div className="mx-auto max-w-[94%] px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl font-bold text-slate-900">How It Works</h2>
+            <p className="text-xs text-slate-500 mt-1">Get custom uniforms manufactured and shipped in 4 simple steps</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-4 relative">
+            <div className="flex flex-col items-center text-center p-4">
+              <div className="h-10 w-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-sm mb-4">1</div>
+              <h4 className="font-bold text-sm text-slate-800">Submit Details</h4>
+              <p className="text-[11px] text-slate-400 mt-2">Fill the secure form below with your sport, sizes, and design notes.</p>
+            </div>
+            <div className="flex flex-col items-center text-center p-4">
+              <div className="h-10 w-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-sm mb-4">2</div>
+              <h4 className="font-bold text-sm text-slate-800">Approve Design</h4>
+              <p className="text-[11px] text-slate-400 mt-2">Our team sends high-resolution mockups within 24h for your signoff.</p>
+            </div>
+            <div className="flex flex-col items-center text-center p-4">
+              <div className="h-10 w-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-sm mb-4">3</div>
+              <h4 className="font-bold text-sm text-slate-800">Dye-Sub Production</h4>
+              <p className="text-[11px] text-slate-400 mt-2">Factory production processes layout, printing, cutting, and stitching.</p>
+            </div>
+            <div className="flex flex-col items-center text-center p-4">
+              <div className="h-10 w-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-sm mb-4">4</div>
+              <h4 className="font-bold text-sm text-slate-800">Express Delivery</h4>
+              <p className="text-[11px] text-slate-400 mt-2">DHL Courier ships directly to your USA doorstep with live GPS tracking.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Request Form & Information */}
+      <section className="py-16 mx-auto max-w-[94%] px-4">
+        <div className="grid gap-8 lg:grid-cols-[1.5fr_1fr] items-start">
+          
+          {/* Form */}
+          <div className="bg-white rounded-3xl border border-slate-200/80 p-8 shadow-sm space-y-6">
+            <div>
+              <h2 className="text-xl font-bold text-slate-900">Request a Free Custom Quote</h2>
+              <p className="text-xs text-slate-500 mt-1">Provide your details and custom uniform requirements below. We reply within 12 hours.</p>
+            </div>
+
+            {status && <div className="p-4 rounded-xl bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-100 flex items-center gap-2"><FaCheckCircle /> {status}</div>}
+            {error && <div className="p-4 rounded-xl bg-rose-50 text-rose-700 text-xs font-semibold border border-rose-100 flex items-center gap-2">{error}</div>}
+
+            <form onSubmit={onSubmit} className="space-y-6">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <label className="space-y-2 text-xs font-bold text-slate-700 flex flex-col">
+                  Full Name
+                  <input name="name" className="w-full rounded-xl border border-slate-200 px-4 py-3 text-xs bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" placeholder="Jane Smith" required />
+                </label>
+                <label className="space-y-2 text-xs font-bold text-slate-700 flex flex-col">
+                  Email Address
+                  <input name="email" className="w-full rounded-xl border border-slate-200 px-4 py-3 text-xs bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500" type="email" placeholder="you@club.com" required />
+                </label>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <label className="space-y-2 text-xs font-bold text-slate-700 flex flex-col">
+                  Phone (Optional)
+                  <input name="phone" className="w-full rounded-xl border border-slate-200 px-4 py-3 text-xs bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500" type="tel" placeholder="+1 (555) 000-0000" />
+                </label>
+                <label className="space-y-2 text-xs font-bold text-slate-700 flex flex-col">
+                  Team / Club Name
+                  <input name="company" className="w-full rounded-xl border border-slate-200 px-4 py-3 text-xs bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" placeholder="LA Mavericks" />
+                </label>
+              </div>
+
+              <label className="space-y-2 text-xs font-bold text-slate-700 flex flex-col">
+                Project Details
+                <textarea name="message" className="w-full rounded-xl border border-slate-200 px-4 py-3 text-xs bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="5" placeholder="Specify sport, estimated quantities, sizes required, design notes, colors..." required />
               </label>
-              <div className="rounded-2xl border border-indigo-100 bg-white p-5 shadow-sm text-sm text-gray-600">
-                <div className="flex items-center gap-3 text-indigo-600 font-semibold text-base">
-                  <FaInbox />
-                  What happens next?
-                </div>
-                <ul className="mt-3 space-y-2 text-xs text-gray-500">
-                  <li>• We review your brief and files within 24h.</li>
-                  <li>• Receive design mockups and production timeline.</li>
-                  <li>• Approve, then we begin manufacturing and export.</li>
-                </ul>
-                {fileName && (
-                  <div className="mt-3 flex items-center gap-2 text-indigo-700">
-                    <FaFileAlt />
-                    <span className="text-xs">{fileName}</span>
+
+              <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+                <label className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-indigo-300 bg-indigo-50/20 p-6 text-center text-indigo-700 hover:bg-indigo-50/40 transition cursor-pointer" htmlFor="file-upload">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-lg">
+                    <FaUpload />
+                  </span>
+                  <div>
+                    <p className="font-bold text-xs">Upload layout, logos or drafts</p>
+                    <p className="text-[10px] text-indigo-500 mt-1">PDF, PNG, JPG up to 10MB</p>
                   </div>
-                )}
+                  <input
+                    id="file-upload"
+                    name="file"
+                    type="file"
+                    accept=".pdf,.png,.jpg,.jpeg"
+                    onChange={(e) => setFileName(e.target.files?.[0]?.name || '')}
+                    className="hidden"
+                  />
+                </label>
+                
+                <div className="rounded-2xl border border-slate-200/80 bg-slate-50/50 p-5 text-slate-600 flex flex-col justify-between">
+                  <div>
+                    <h4 className="font-bold text-slate-700 text-xs flex items-center gap-2">
+                      <FaInbox className="text-indigo-600" /> What's Next?
+                    </h4>
+                    <p className="text-[11px] text-slate-400 mt-2 leading-relaxed">
+                      We evaluate your requirements and generate design drafts with a customized direct-factory USD invoice within 12h.
+                    </p>
+                  </div>
+                  {fileName && (
+                    <div className="mt-3 flex items-center gap-2 text-indigo-700 font-medium text-xs bg-white p-2 rounded-lg border">
+                      <FaFileAlt />
+                      <span className="truncate max-w-[150px]">{fileName}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-100">
+                <p className="text-[10px] text-slate-400 flex items-center gap-1.5"><FaShieldAlt /> 100% Secure Team Order Processing</p>
+                <button type="submit" className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 px-8 py-3 text-xs font-bold text-white shadow-md shadow-indigo-100 hover:shadow-indigo-200 transition">
+                  Submit Mockup Request
+                </button>
+              </div>
+            </form>
+          </div>
+
+          {/* Info Sidebar */}
+          <div className="space-y-6">
+            <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm space-y-4">
+              <h3 className="font-bold text-slate-900 text-sm">Design Assets Checklist</h3>
+              <p className="text-xs text-slate-500">Ensure fast processing by sharing the following elements if available:</p>
+              <ul className="space-y-3 text-xs text-slate-600">
+                <li className="flex items-start gap-2">
+                  <FaCheckCircle className="text-emerald-500 mt-0.5" />
+                  <span><strong>High-Resolution Logos:</strong> Vector formats (.AI, .EPS, .PDF) are ideal for dye sublimation.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <FaCheckCircle className="text-emerald-500 mt-0.5" />
+                  <span><strong>HEX Color Codes:</strong> Specify exact color schemes to guarantee uniform matching.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <FaCheckCircle className="text-emerald-500 mt-0.5" />
+                  <span><strong>Size Breakdown:</strong> Provide size ratios based on standard US athletic fits.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-[#0A0C16] text-white rounded-3xl p-6 shadow-sm space-y-4 relative overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(79,70,229,0.1),transparent_50%)]" />
+              <div className="relative z-10 space-y-3">
+                <div className="h-8 w-8 rounded-lg bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-sm">
+                  <FaClock />
+                </div>
+                <h4 className="font-bold text-sm">Urgent League Deadline?</h4>
+                <p className="text-[11px] text-slate-400 leading-relaxed">
+                  If you have a tournament or league season commencing shortly, we offer expedited factory lines. Mark your required deadline in the project details.
+                </p>
               </div>
             </div>
+          </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <p className="text-xs text-gray-500">We keep your assets confidential and can sign NDAs on request.</p>
-              <button type="submit" className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-7 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-indigo-500">
-                Submit request
-              </button>
-            </div>
-          </motion.form>
         </div>
       </section>
     </main>
@@ -166,4 +307,3 @@ const Custom = () => {
 };
 
 export default Custom;
-
