@@ -53,7 +53,7 @@ const getSportHighlights = (sportName) => {
     return {
       fabric: 'Dri-FIT Polyester',
       printing: '4K Sublimation',
-      moq: '25 Kits',
+      moq: '10 Kits',
       dispatch: 'Worldwide Express'
     };
   }
@@ -61,7 +61,7 @@ const getSportHighlights = (sportName) => {
     return {
       fabric: '4-Way Stretch Lycra',
       printing: 'Double-Stitch Sublimation',
-      moq: '15 Singlets',
+      moq: '10 Singlets',
       dispatch: 'Worldwide Express'
     };
   }
@@ -69,7 +69,7 @@ const getSportHighlights = (sportName) => {
     return {
       fabric: 'Breathable Dry-Fit Mesh',
       printing: 'Vibrant Sublimation',
-      moq: '25 Kits',
+      moq: '10 Kits',
       dispatch: 'Worldwide Express'
     };
   }
@@ -77,7 +77,7 @@ const getSportHighlights = (sportName) => {
     return {
       fabric: 'Pro-Mesh Athletic Fabric',
       printing: 'Sublimated Print',
-      moq: '25 Kits',
+      moq: '10 Kits',
       dispatch: 'Worldwide Express'
     };
   }
@@ -85,7 +85,7 @@ const getSportHighlights = (sportName) => {
     return {
       fabric: 'Ultra-Light Anti-Chafe',
       printing: 'Reflective/Sublimated',
-      moq: '30 Items',
+      moq: '10 Items',
       dispatch: 'Worldwide Express'
     };
   }
@@ -93,7 +93,7 @@ const getSportHighlights = (sportName) => {
     return {
       fabric: 'Breathable Mesh / Rubber',
       printing: 'Molded Branding',
-      moq: '50 Pairs',
+      moq: '10 Pairs',
       dispatch: 'Worldwide Express'
     };
   }
@@ -101,7 +101,7 @@ const getSportHighlights = (sportName) => {
     return {
       fabric: 'Silicone Grip & Lycra',
       printing: 'High-Density Print',
-      moq: '50 Pairs',
+      moq: '10 Pairs',
       dispatch: 'Worldwide Express'
     };
   }
@@ -109,7 +109,7 @@ const getSportHighlights = (sportName) => {
     return {
       fabric: 'Premium Cotton/Twill',
       printing: '3D Embroidery',
-      moq: '50 Caps',
+      moq: '10 Caps',
       dispatch: 'Worldwide Express'
     };
   }
@@ -117,7 +117,7 @@ const getSportHighlights = (sportName) => {
     return {
       fabric: 'Water-Resistant Cordura',
       printing: 'Embroidered/Screened',
-      moq: '20 Bags',
+      moq: '10 Bags',
       dispatch: 'Worldwide Express'
     };
   }
