@@ -53,18 +53,18 @@ const Custom = () => {
   return (
     <main className="min-h-screen bg-white">
       <SeoHead
-        title="Order Custom Sports Uniforms & Sportswear | Zarko"
-        description="Get premium custom sportswear for USA sports teams and clubs. High-quality custom sports uniforms, soccer/football, basketball, baseball, and wrestling kits from Sialkot, Pakistan."
+        title="Custom Sportswear USA | Free Design & Fast Delivery - Zarko"
+        description="Order custom sportswear online — built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear."
         canonical="https://www.zarkosportswear.com/custom"
         keywords="custom sportswear USA, custom sports uniforms USA, custom teamwear USA, private label teamwear, custom wrestling singlets, custom soccer jerseys USA, custom basketball uniforms"
         openGraph={{
-          'og:title': 'Custom Sportswear USA | Zarko Sportswear',
-          'og:description': 'Get premium custom sportswear for USA sports teams and clubs. High-quality custom sports uniforms, soccer/football, basketball, baseball, and wrestling kits from Sialkot, Pakistan.',
+          'og:title': 'Custom Sportswear USA | Free Design & Fast Delivery - Zarko',
+          'og:description': 'Order custom sportswear online — built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear.',
           'og:url': 'https://www.zarkosportswear.com/custom',
         }}
         twitter={{
-          'twitter:title': 'Custom Sportswear USA | Zarko Sportswear',
-          'twitter:description': 'Get premium custom sportswear for USA sports teams and clubs. High-quality custom sports uniforms, soccer/football, basketball, baseball, and wrestling kits from Sialkot, Pakistan.',
+          'twitter:title': 'Custom Sportswear USA | Free Design & Fast Delivery - Zarko',
+          'twitter:description': 'Order custom sportswear online — built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear.',
         }}
       />
       <section>
