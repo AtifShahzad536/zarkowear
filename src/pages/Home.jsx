@@ -582,15 +582,15 @@ const Home = () => {
                 </tr>
                 <tr className="bg-slate-50/50">
                   <td className="p-6 border-r border-slate-200">
-                    <span className="text-[10px] text-gray-400 uppercase tracking-wider block mb-1">Key Tech Specs</span>
+                    <span className="text-[10px] text-slate-600 font-bold uppercase tracking-wider block mb-1">Key Tech Specs</span>
                     Sublimation Printing, Micro-Polyester Mesh Panels
                   </td>
                   <td className="p-6 border-r border-slate-200">
-                    <span className="text-[10px] text-gray-400 uppercase tracking-wider block mb-1">Key Tech Specs</span>
+                    <span className="text-[10px] text-slate-600 font-bold uppercase tracking-wider block mb-1">Key Tech Specs</span>
                     4-Way Spandex, Silicone Leg Grip Grippers, Flatlock Stitching
                   </td>
                   <td className="p-6">
-                    <span className="text-[10px] text-gray-400 uppercase tracking-wider block mb-1">Key Tech Specs</span>
+                    <span className="text-[10px] text-slate-600 font-bold uppercase tracking-wider block mb-1">Key Tech Specs</span>
                     Direct-to-Fabric Sublimation, Custom Private Labeling
                   </td>
                 </tr>
@@ -782,7 +782,7 @@ const Home = () => {
 
       {/* Document Freshness & Last Modified Signal */}
       <footer className="bg-slate-50 py-6 border-t border-slate-200 text-center">
-        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+        <p className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">
           Last Updated: August 2026 | Zarko Sportswear Official Site
         </p>
       </footer>
