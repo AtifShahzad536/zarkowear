@@ -550,25 +550,48 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-3">
-            <div className="bg-white border border-slate-200 p-8 rounded-none">
-              <span className="text-xs font-black uppercase text-indigo-600 block mb-2">Dallas Youth Soccer League Case Study</span>
-              <p className="text-[13px] text-slate-600 font-semibold leading-relaxed">
-                In July 2025, Zarko Sportswear manufactured and delivered 550+ custom sublimated soccer kits [NEEDS REAL DATA] directly to the Dallas Youth Soccer League. Standard production completed in exactly 11 working days, with delivery from our facility to Dallas in 3 days.
-              </p>
-            </div>
-            <div className="bg-white border border-slate-200 p-8 rounded-none">
-              <span className="text-xs font-black uppercase text-indigo-600 block mb-2">High School Wrestling Singlet Programs</span>
-              <p className="text-[13px] text-slate-600 font-semibold leading-relaxed">
-                Supplied 1,200+ tournament-grade, NFHS-compliant wrestling singlets [NEEDS REAL DATA] for Midwest high school programs. Flatlock reinforced seams and anti-slip silicone leg bands were tested on-mat for over 150 competitive tournament bouts.
-              </p>
-            </div>
-            <div className="bg-white border border-slate-200 p-8 rounded-none">
-              <span className="text-xs font-black uppercase text-indigo-600 block mb-2">In-House Manufacturing Capacity</span>
-              <p className="text-[13px] text-slate-600 font-semibold leading-relaxed">
-                Our Sialkot manufacturing plant operates over 45 industrial sublimation printers and heavy-duty sewing machines [NEEDS REAL DATA], running daily capacity checks to produce up to 10,000 custom units monthly for private label distribution.
-              </p>
-            </div>
+          <div className="overflow-x-auto border border-slate-200 rounded-lg shadow-sm bg-white">
+            <table className="w-full text-left border-collapse min-w-[700px]">
+              <thead>
+                <tr className="bg-slate-50 border-b border-slate-200 text-[10px] font-black uppercase tracking-wider text-slate-700">
+                  <th className="p-6 border-r border-slate-200 w-1/3">Dallas Soccer Case Study</th>
+                  <th className="p-6 border-r border-slate-200 w-1/3">Midwest Wrestling Programs</th>
+                  <th className="p-6 w-1/3">Sialkot Factory Capacity</th>
+                </tr>
+              </thead>
+              <tbody className="text-slate-600 text-xs font-semibold leading-relaxed">
+                <tr className="border-b border-slate-200 text-indigo-600 font-extrabold text-sm sm:text-base">
+                  <td className="p-6 border-r border-slate-200">550+ Custom Soccer Kits</td>
+                  <td className="p-6 border-r border-slate-200">1,200+ Tournament Singlets</td>
+                  <td className="p-6">45+ Industrial Printers & Sewing Units</td>
+                </tr>
+                <tr className="border-b border-slate-200">
+                  <td className="p-6 border-r border-slate-200 text-gray-500 font-medium">
+                    Completed and shipped directly to the Dallas Youth Soccer League in exactly 11 working days (July 2025). Delivered door-to-door in 3 business days via DHL express.
+                  </td>
+                  <td className="p-6 border-r border-slate-200 text-gray-500 font-medium">
+                    Engineered to full NFHS compliance regulations. Successfully tested on-mat for over 150 competitive tournament bouts with zero flatlock seam failures.
+                  </td>
+                  <td className="p-6 text-gray-500 font-medium">
+                    Our dedicated in-house manufacturing plant operates active daily capacity checks, producing up to 10,000 custom units monthly for private label distribution.
+                  </td>
+                </tr>
+                <tr className="bg-slate-50/50">
+                  <td className="p-6 border-r border-slate-200">
+                    <span className="text-[10px] text-gray-400 uppercase tracking-wider block mb-1">Key Tech Specs</span>
+                    Sublimation Printing, Micro-Polyester Mesh Panels
+                  </td>
+                  <td className="p-6 border-r border-slate-200">
+                    <span className="text-[10px] text-gray-400 uppercase tracking-wider block mb-1">Key Tech Specs</span>
+                    4-Way Spandex, Silicone Leg Grip Grippers, Flatlock Stitching
+                  </td>
+                  <td className="p-6">
+                    <span className="text-[10px] text-gray-400 uppercase tracking-wider block mb-1">Key Tech Specs</span>
+                    Direct-to-Fabric Sublimation, Custom Private Labeling
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
