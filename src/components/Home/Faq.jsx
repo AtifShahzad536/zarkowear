@@ -65,15 +65,25 @@ const FAQ = () => {
                 }`}
               >
                 <div
-                  className="w-full text-left p-6 flex justify-between items-start gap-4 cursor-pointer"
+                  className="w-full text-left p-6 flex flex-col gap-2 cursor-pointer"
                   onClick={() => toggleIndex(idx)}
                 >
-                  <h3 className="text-xs sm:text-sm font-bold text-white tracking-wide leading-snug">
-                    {item.question}
-                  </h3>
-                  <span className={`text-sm shrink-0 font-bold ${isOpen ? 'text-indigo-400' : 'text-slate-400'}`}>
-                    {isOpen ? '✕' : '＋'}
-                  </span>
+                  <div className="flex justify-between items-start gap-4">
+                    <h3 className="text-xs sm:text-sm font-bold text-white tracking-wide leading-snug">
+                      {item.question}
+                    </h3>
+                    <span className={`text-sm shrink-0 font-bold ${isOpen ? 'text-indigo-400' : 'text-slate-400'}`}>
+                      {isOpen ? '✕' : '＋'}
+                    </span>
+                  </div>
+                  {/* Concise AEO answer always visible in DOM */}
+                  <p className="text-[11px] text-slate-400 font-medium leading-relaxed mt-1">
+                    {idx === 0 && "Zarko custom teamwear orders take 8 to 12 working days to manufacture, plus 3 to 5 business days for express delivery to the USA."}
+                    {idx === 1 && "Zarko sportswear requires a minimum order quantity (MOQ) of 15 units per custom design layout."}
+                    {idx === 2 && "Yes, all our custom jerseys and singlets comply fully with NFHS, USA Wrestling, and US Soccer requirements."}
+                    {idx === 3 && "We manufacture custom teamwear for soccer, basketball, wrestling, cricket, rugby, tennis, and running using dry-fit polyester and spandex."}
+                    {idx === 4 && "Yes, you can order matching shorts, warm-up hoodies, tracksuits, caps, and team bags matching your custom jerseys."}
+                  </p>
                 </div>
                 
                 <motion.div

@@ -1,5 +1,5 @@
 const homeSeo = {
-  title: "Custom Sports Uniforms & Teamwear Manufacturer | Zarko Sportswear",
+  title: "Custom Team Uniforms USA | Factory-Direct Sportswear Manufacturer",
   description:
     "Direct factory custom team uniforms, wrestling singlets, and sublimated jerseys. NFHS-compliant, premium fabrics, and fast US shipping. Free mockup today.",
   canonical: "https://www.zarkosportswear.com/",
@@ -12,7 +12,7 @@ const homeSeo = {
   siteName: "Zarko Sportswear",
   locale: "en_US",
   openGraph: {
-    'og:title': 'Custom Sports Uniforms & Teamwear Manufacturer | Zarko Sportswear',
+    'og:title': 'Custom Team Uniforms USA | Factory-Direct Sportswear Manufacturer',
     'og:description':
       'Direct factory custom team uniforms, wrestling singlets, and sublimated jerseys. NFHS-compliant, premium fabrics, and fast US shipping. Free mockup today.',
     'og:url': 'https://www.zarkosportswear.com/',
@@ -24,7 +24,7 @@ const homeSeo = {
     'og:locale': 'en_US',
   },
   twitter: {
-    'twitter:title': 'Custom Sports Uniforms & Teamwear Manufacturer | Zarko Sportswear',
+    'twitter:title': 'Custom Team Uniforms USA | Factory-Direct Sportswear Manufacturer',
     'twitter:description': 'Direct factory custom team uniforms, wrestling singlets, and sublimated jerseys. NFHS-compliant, premium fabrics, and fast US shipping. Free mockup today.',
     'twitter:card': 'summary_large_image',
     'twitter:image': 'https://www.zarkosportswear.com/og-cover.jpg',
@@ -115,7 +115,7 @@ const homeSeo = {
         '@type': 'WebPage',
         '@id': 'https://www.zarkosportswear.com/'
       },
-      headline: "Custom Sports Uniforms & Teamwear Manufacturer | Zarko Sportswear",
+      headline: "Custom Team Uniforms USA | Factory-Direct Sportswear Manufacturer",
       description: "Direct factory custom team uniforms, wrestling singlets, and sublimated jerseys. NFHS-compliant, premium fabrics, and fast US shipping.",
       image: "https://www.zarkosportswear.com/og-cover.jpg",
       datePublished: "2024-01-15T08:00:00+00:00",

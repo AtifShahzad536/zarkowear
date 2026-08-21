@@ -233,6 +233,9 @@ const Home = () => {
               <span className="inline-block px-3 py-1 bg-white/10 text-white text-[9px] uppercase tracking-[0.2em] font-extrabold rounded-none">
                 WHY TEAMS CHOOSE ZARKO
               </span>
+              <p className="text-xs text-indigo-300 font-bold leading-normal">
+                Teams choose Zarko Sportswear for direct factory-to-club shipping, zero middleman markup, custom sublimated design proofs in 12 hours, and guaranteed NFHS compliance.
+              </p>
               <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white uppercase leading-tight">
                 Premium Teamwear,<br />Built to Win.
               </h2>
@@ -609,6 +612,9 @@ const Home = () => {
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
               Export Ready Craftsmanship
             </h2>
+            <p className="text-xs sm:text-sm text-slate-500 font-bold max-w-xl mx-auto leading-relaxed">
+              Programs choose Zarko for our export-ready craftsmanship, offering 100% custom dye-sublimated designs, low minimum order quantities, and 3–5 day door-to-door shipping across the USA.
+            </p>
             <div className="w-16 h-0.5 bg-indigo-600 mt-2" />
           </div>
 
