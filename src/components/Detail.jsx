@@ -178,12 +178,13 @@ const ProductInquiry = () => {
       <div className="max-w-6xl mx-auto">
 
         {/* Back Button */}
-        <button
-          onClick={() => navigate(-1)}
+        <Link
+          to="/"
+          onClick={(e) => { e.preventDefault(); navigate(-1); }}
           className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-800 transition"
         >
           ← Back to Collection
-        </button>
+        </Link>
 
         {/* Two-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start bg-transparent py-4 sm:py-6">
@@ -193,7 +194,7 @@ const ProductInquiry = () => {
             <div className="relative aspect-square w-full rounded-2xl bg-white overflow-hidden flex items-center justify-center p-6 group shadow-sm">
               <img
                 src={displayImage}
-                alt={product.name} title={product.name}
+                alt={product?.name || "Product Image"} title={product?.name || "Product Image"}
                 className="w-full h-full object-contain p-6 transition-transform duration-500 group-hover:scale-105"
                 onError={(e) => {
                   e.currentTarget.onerror = null;
@@ -230,7 +231,7 @@ const ProductInquiry = () => {
             {/* Sizes */}
             <div>
               <div className="flex justify-between items-center mb-3">
-                <h4 className="text-xs font-black text-slate-400 uppercase tracking-widest">Available Sizes</h4>
+                <h2 className="text-xs font-black text-slate-400 uppercase tracking-widest">Available Sizes</h2>
                 <button
                   type="button"
                   onClick={() => setIsSizeChartOpen(true)}
@@ -333,7 +334,7 @@ const ProductInquiry = () => {
                 <div className="aspect-square w-full rounded-xl bg-slate-50 overflow-hidden mb-4 flex items-center justify-center">
                   <img
                     src={imageUrl(item.image)}
-                    alt={item.name} title={item.name}
+                    alt={item?.name || "Recommended Product"} title={item?.name || "Recommended Product"}
                     className="w-full h-full object-contain p-4 transition-transform duration-300 group-hover:scale-105"
                     onError={(e) => {
                       e.currentTarget.onerror = null;

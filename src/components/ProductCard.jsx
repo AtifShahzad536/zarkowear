@@ -1,6 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { imageUrl } from '../services/api';
 
 const ProductCard = ({
@@ -10,24 +9,17 @@ const ProductCard = ({
   price,
   isTopSelling = false,
   discount,
-  rating = 4.8,
-  reviewCount = 18
 }) => {
   const navigate = useNavigate();
   const displayImage = imageUrl(image || '/images/placeholder.jpg');
 
-  const handleCardClick = () => {
-    navigate('/detail', {
-      state: {
-        product: { name, image, description, price, discount }
-      }
-    });
-  };
-
   return (
-    <div
-      onClick={handleCardClick}
-      className="group relative bg-white rounded-2xl border border-slate-200/80 hover:border-indigo-500/30 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between max-w-[290px] w-full mx-auto"
+    <Link
+      to="/detail"
+      state={{
+        product: { name, image, description, price, discount }
+      }}
+      className="group relative bg-white rounded-2xl border border-slate-200/80 hover:border-indigo-500/30 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between max-w-[290px] w-full mx-auto block"
     >
       {/* Top Accent Line on Hover */}
       <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
@@ -37,7 +29,8 @@ const ProductCard = ({
         <img
           loading="lazy"
           src={displayImage}
-          alt={name} title={name}
+          alt={name || "Custom Teamwear Product"}
+          title={name || "Custom Teamwear Product"}
           className="h-full w-full object-contain transform group-hover:scale-105 transition-transform duration-500"
           onError={(e) => {
             e.currentTarget.onerror = null;
@@ -94,18 +87,18 @@ const ProductCard = ({
 
         {/* Action Button */}
         <div className="flex justify-center pt-1">
-          <button
+          <Link
+            to={`/custom?product=${encodeURIComponent(name)}`}
             onClick={(e) => {
               e.stopPropagation();
-              navigate(`/custom?product=${encodeURIComponent(name)}`);
             }}
-            className="px-6 py-2 bg-indigo-50 group-hover:bg-indigo-600 text-indigo-700 group-hover:text-white text-xs font-semibold rounded-xl border border-indigo-100 group-hover:border-transparent transition-all duration-200 text-center shadow-sm"
+            className="px-6 py-2 bg-indigo-50 group-hover:bg-indigo-600 text-indigo-700 group-hover:text-white text-xs font-semibold rounded-xl border border-indigo-100 group-hover:border-transparent transition-all duration-200 text-center shadow-sm block"
           >
             Customize Now
-          </button>
+          </Link>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

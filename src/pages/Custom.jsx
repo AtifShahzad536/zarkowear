@@ -110,7 +110,7 @@ const Custom = ({ isEmbedded = false }) => {
               <FaPalette />
             </div>
             <div>
-              <h3 className="font-semibold text-slate-800 text-sm">Free Design & Mockups</h3>
+              <h2 className="font-semibold text-slate-800 text-sm">Free Design & Mockups</h2>
               <p className="text-[11px] text-slate-500 mt-2 leading-relaxed">
                 Send us your logos, sketches, or design ideas. Our professional design squad will draft digital mockups for your team within 24 hours — completely free.
               </p>
@@ -127,7 +127,7 @@ const Custom = ({ isEmbedded = false }) => {
               <FaTags />
             </div>
             <div>
-              <h3 className="font-semibold text-slate-800 text-sm">No Minimum Quantities</h3>
+              <h2 className="font-semibold text-slate-800 text-sm">No Minimum Quantities</h2>
               <p className="text-[11px] text-slate-500 mt-2 leading-relaxed">
                 Whether you need to outfit a roster of 100 players or simply want a single replacement jersey, we support low and no MOQ orders to keep sizing flexible.
               </p>
@@ -144,7 +144,7 @@ const Custom = ({ isEmbedded = false }) => {
               <FaTruck />
             </div>
             <div>
-              <h3 className="font-semibold text-slate-800 text-sm">Fast Door-to-Door Delivery</h3>
+              <h2 className="font-semibold text-slate-800 text-sm">Fast Door-to-Door Delivery</h2>
               <p className="text-[11px] text-slate-500 mt-2 leading-relaxed">
                 We handle the manufacturing and export directly. All custom shipments are sent via express DHL/FedEx air courier with tracking straight to your clubhouse or home.
               </p>
@@ -163,22 +163,22 @@ const Custom = ({ isEmbedded = false }) => {
           <div className="grid gap-6 md:grid-cols-4 relative">
             <div className="flex flex-col items-center text-center p-4">
               <div className="h-10 w-10 bg-indigo-600 text-white flex items-center justify-center font-bold text-sm mb-4 rounded-none">1</div>
-              <h4 className="font-semibold text-xs text-slate-700">Submit Details</h4>
+              <h3 className="font-semibold text-xs text-slate-700">Submit Details</h3>
               <p className="text-[10px] text-slate-400 mt-2">Fill the secure form below with your sport, sizes, and design notes.</p>
             </div>
             <div className="flex flex-col items-center text-center p-4">
               <div className="h-10 w-10 bg-indigo-600 text-white flex items-center justify-center font-bold text-sm mb-4 rounded-none">2</div>
-              <h4 className="font-semibold text-xs text-slate-700">Approve Design</h4>
+              <h3 className="font-semibold text-xs text-slate-700">Approve Design</h3>
               <p className="text-[10px] text-slate-400 mt-2">Our team sends high-resolution mockups within 24h for your signoff.</p>
             </div>
             <div className="flex flex-col items-center text-center p-4">
               <div className="h-10 w-10 bg-indigo-600 text-white flex items-center justify-center font-bold text-sm mb-4 rounded-none">3</div>
-              <h4 className="font-semibold text-xs text-slate-700">Dye-Sub Production</h4>
+              <h3 className="font-semibold text-xs text-slate-700">Dye-Sub Production</h3>
               <p className="text-[10px] text-slate-400 mt-2">Factory production processes layout, printing, cutting, and stitching.</p>
             </div>
             <div className="flex flex-col items-center text-center p-4">
               <div className="h-10 w-10 bg-indigo-600 text-white flex items-center justify-center font-bold text-sm mb-4 rounded-none">4</div>
-              <h4 className="font-semibold text-xs text-slate-700">Express Delivery</h4>
+              <h3 className="font-semibold text-xs text-slate-700">Express Delivery</h3>
               <p className="text-[10px] text-slate-400 mt-2">DHL Courier ships directly to your USA doorstep with live GPS tracking.</p>
             </div>
           </div>
@@ -248,9 +248,9 @@ const Custom = ({ isEmbedded = false }) => {
                 
                 <div className="border border-slate-200 bg-slate-50/50 p-5 text-slate-600 flex flex-col justify-between rounded-none">
                   <div>
-                    <h4 className="font-semibold text-slate-700 text-xs flex items-center gap-2">
+                    <h3 className="font-semibold text-slate-700 text-xs flex items-center gap-2">
                       <FaInbox className="text-indigo-600" /> What's Next?
-                    </h4>
+                    </h3>
                     <p className="text-[10px] text-slate-400 mt-2 leading-relaxed">
                       We evaluate your requirements and generate design drafts with a customized direct-factory USD invoice within 12h.
                     </p>

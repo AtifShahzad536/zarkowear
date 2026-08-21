@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaChevronLeft,
@@ -340,22 +340,22 @@ const Hero = () => {
         </button>
 
         {/* 3D Customizer / Builder Button */}
-        <button
-          onClick={() => navigate('/builder')}
+        <Link
+          to="/builder"
           className="w-11 h-11 rounded-full border bg-white text-gray-500 hover:text-[#0A0C16] border-gray-150 flex items-center justify-center transition active:scale-95 shadow-md hover:shadow-lg cursor-pointer"
           title="3D Jersey Builder"
         >
           <FiSliders className="text-sm" />
-        </button>
+        </Link>
 
         {/* Contact Us Form Button */}
-        <button
-          onClick={() => navigate('/contact')}
+        <Link
+          to="/contact"
           className="w-11 h-11 rounded-full border bg-white text-gray-500 hover:text-[#0A0C16] border-gray-150 flex items-center justify-center transition active:scale-95 shadow-md hover:shadow-lg cursor-pointer"
           title="Contact Us"
         >
           <FiMail className="text-sm" />
-        </button>
+        </Link>
 
         {/* Floating Details Popup: Left Side Glassmorphism */}
         <AnimatePresence>
@@ -538,8 +538,8 @@ const Hero = () => {
                 >
                   <img
                     src={imageUrl(prod.image, { width: 400 })}
-                    alt={prod.name}
-                    title={prod.name}
+                    alt={prod?.name || "Sportswear Product"}
+                    title={prod?.name || "Sportswear Product"}
                     width={280}
                     height={280}
                     loading={idx === 0 ? 'eager' : 'lazy'}

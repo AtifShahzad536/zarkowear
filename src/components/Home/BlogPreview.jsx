@@ -89,7 +89,7 @@ const BlogPreview = () => {
                   {featuredBlog.coverImage ? (
                     <img
                       src={imageUrl(featuredBlog.coverImage, { width: 800 })}
-                      alt={featuredBlog.title}
+                      alt={featuredBlog?.title || "Featured Blog Article"}
                       loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 rounded-none"
                     />
@@ -151,7 +151,7 @@ const BlogPreview = () => {
                     {blog.coverImage ? (
                       <img
                         src={imageUrl(blog.coverImage, { width: 400 })}
-                        alt={blog.title}
+                        alt={blog?.title || "Blog Article"}
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 rounded-none"
                       />

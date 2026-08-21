@@ -178,7 +178,8 @@ const Home = () => {
                   {/* Full size action image */}
                   <img
                     src={sport.image}
-                    alt={sport.title} title={sport.title}
+                    alt={sport?.title || "Sport Category Image"}
+                    title={sport?.title || "Sport Category Image"}
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                     loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholder.jpg"; }}
                   />
