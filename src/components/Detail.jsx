@@ -194,7 +194,7 @@ const ProductInquiry = () => {
             <div className="relative aspect-square w-full rounded-2xl bg-white overflow-hidden flex items-center justify-center p-6 group shadow-sm">
               <img
                 src={displayImage}
-                alt={product?.name || "Product Image"} title={product?.name || "Product Image"}
+                alt="Zarko Custom Sportswear Pro Kit" title="Zarko Custom Sportswear Pro Kit"
                 className="w-full h-full object-contain p-6 transition-transform duration-500 group-hover:scale-105"
                 onError={(e) => {
                   e.currentTarget.onerror = null;
@@ -334,7 +334,7 @@ const ProductInquiry = () => {
                 <div className="aspect-square w-full rounded-xl bg-slate-50 overflow-hidden mb-4 flex items-center justify-center">
                   <img
                     src={imageUrl(item.image)}
-                    alt={item?.name || "Recommended Product"} title={item?.name || "Recommended Product"}
+                    alt="Recommended Custom Teamwear Product" title="Recommended Custom Teamwear Product"
                     className="w-full h-full object-contain p-4 transition-transform duration-300 group-hover:scale-105"
                     onError={(e) => {
                       e.currentTarget.onerror = null;

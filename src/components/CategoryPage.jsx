@@ -321,7 +321,7 @@ const CategoryPage = ({ slug }) => {
 
                 <img
                   src={imageUrl(featured?.image || products[0]?.image || '/images/placeholder.jpg')}
-                  alt={name} title={name}
+                  alt="Zarko Custom Sportswear Pro Kit" title="Zarko Custom Sportswear Pro Kit"
                   className="relative z-10 max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
                   onError={(e) => {
                     e.currentTarget.onerror = null;

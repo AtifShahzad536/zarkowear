@@ -89,7 +89,7 @@ const BlogPreview = () => {
                   {featuredBlog.coverImage ? (
                     <img
                       src={imageUrl(featuredBlog.coverImage, { width: 800 })}
-                      alt={featuredBlog?.title || "Featured Blog Article"}
+                      alt="Zarko Sportswear Blog Featured Cover"
                       loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 rounded-none"
                     />
@@ -151,7 +151,7 @@ const BlogPreview = () => {
                     {blog.coverImage ? (
                       <img
                         src={imageUrl(blog.coverImage, { width: 400 })}
-                        alt={blog?.title || "Blog Article"}
+                        alt="Zarko Sportswear Blog Thumbnail"
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 rounded-none"
                       />

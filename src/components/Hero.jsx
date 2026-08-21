@@ -538,8 +538,8 @@ const Hero = () => {
                 >
                   <img
                     src={imageUrl(prod.image, { width: 400 })}
-                    alt={prod?.name || "Sportswear Product"}
-                    title={prod?.name || "Sportswear Product"}
+                    alt="Zarko Sportswear Custom Team Jersey"
+                    title="Zarko Sportswear Custom Team Jersey"
                     width={280}
                     height={280}
                     loading={idx === 0 ? 'eager' : 'lazy'}

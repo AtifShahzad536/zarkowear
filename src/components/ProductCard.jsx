@@ -29,8 +29,8 @@ const ProductCard = ({
         <img
           loading="lazy"
           src={displayImage}
-          alt={name || "Custom Teamwear Product"}
-          title={name || "Custom Teamwear Product"}
+          alt="Zarko Custom Sportswear Product"
+          title="Zarko Custom Sportswear Product"
           className="h-full w-full object-contain transform group-hover:scale-105 transition-transform duration-500"
           onError={(e) => {
             e.currentTarget.onerror = null;
