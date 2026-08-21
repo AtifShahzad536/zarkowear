@@ -64,33 +64,28 @@ const FAQ = () => {
                     : 'bg-white/5 border-white/10 hover:border-white/20'
                 }`}
               >
-                <button
+                <div
+                  className="w-full text-left p-6 flex justify-between items-start gap-4 cursor-pointer"
                   onClick={() => toggleIndex(idx)}
-                  className="w-full text-left p-6 flex justify-between items-start gap-4"
                 >
-                  <p className="text-xs sm:text-sm font-bold text-white tracking-wide leading-snug">
+                  <h3 className="text-xs sm:text-sm font-bold text-white tracking-wide leading-snug">
                     {item.question}
-                  </p>
+                  </h3>
                   <span className={`text-sm shrink-0 font-bold ${isOpen ? 'text-indigo-400' : 'text-slate-400'}`}>
                     {isOpen ? '✕' : '＋'}
                   </span>
-                </button>
+                </div>
                 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="p-6 pt-0 text-[11px] sm:text-xs text-slate-400 leading-relaxed font-medium border-t border-white/5">
-                        {item.answer}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+                  transition={{ duration: 0.25 }}
+                  className="overflow-hidden"
+                >
+                  <div className="p-6 pt-0 text-[11px] sm:text-xs text-slate-400 leading-relaxed font-medium border-t border-white/5">
+                    {item.answer}
+                  </div>
+                </motion.div>
               </div>
             );
           })}

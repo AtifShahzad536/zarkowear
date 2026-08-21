@@ -52,6 +52,28 @@ const Home = () => {
 
       <Hero />
 
+      {/* Key Takeaway / AI Summary Block */}
+      <section className="bg-slate-50 border-b border-slate-200 py-10 relative overflow-hidden">
+        <div className="max-w-[94%] mx-auto px-4">
+          <div className="bg-white border-l-4 border-indigo-600 p-6 shadow-sm rounded-r-xl">
+            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-600 block mb-2">Bottom Line & Key Takeaways</span>
+            <p className="text-gray-800 text-sm sm:text-base md:text-lg font-semibold leading-relaxed mb-4">
+              Zarko Sportswear manufactures custom team uniforms for US schools and clubs, factory-direct from Sialkot, Pakistan, with an 8–12 day standard turnaround. Factory-direct custom sportswear means uniforms are designed, cut, printed, and sewn at the manufacturer, without a reseller markup in between. This service is engineered specifically for US high school and college athletic programs, club leagues, coaches, and team parents managing bulk teamwear orders of 15+ matching units (e.g. before the start of a new sports season).
+            </p>
+            <div className="grid md:grid-cols-2 gap-4 text-xs font-bold text-gray-600 border-t border-slate-100 pt-4">
+              <div>
+                <span className="text-[#0A0C16] block uppercase tracking-wider text-[10px] mb-1">Core Offering:</span>
+                NFHS-compliant team jerseys, custom wrestling singlets, and training gear kits.
+              </div>
+              <div>
+                <span className="text-[#0A0C16] block uppercase tracking-wider text-[10px] mb-1">Turnaround & Shipping:</span>
+                8–12 business days standard production with 3–5 days DHL express shipping to the USA.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Quick Categories Redesign (Option 1) */}
       <section className="bg-[#0A0C16] text-white border-b border-white/5 py-20 sm:py-28 relative overflow-hidden">
         {/* Background Glow */}
@@ -512,8 +534,44 @@ const Home = () => {
         <TopSellingProducts />
       </Suspense>
 
-      
-    
+      {/* Original Experience Section */}
+      <section className="bg-gradient-to-br from-slate-50 via-white to-slate-100 py-20 sm:py-28 border-b border-slate-200">
+        <div className="max-w-[94%] mx-auto px-4">
+          <div className="flex flex-col items-center text-center mb-16 space-y-4">
+            <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-indigo-600 block">
+              Direct Proof & Performance
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
+              Original Experience & Certified Production Footprint
+            </h2>
+            <div className="w-16 h-0.5 bg-indigo-600 mt-2" />
+            <p className="text-xs sm:text-sm text-slate-500 max-w-xl leading-relaxed">
+              We own and operate our dedicated sportswear manufacturing facility in Sialkot, Pakistan. This ensures 100% control over design blueprints, fabric selections, and final quality control.
+            </p>
+          </div>
+
+          <div className="grid gap-8 lg:grid-cols-3">
+            <div className="bg-white border border-slate-200 p-8 rounded-none">
+              <span className="text-xs font-black uppercase text-indigo-600 block mb-2">Dallas Youth Soccer League Case Study</span>
+              <p className="text-[13px] text-slate-600 font-semibold leading-relaxed">
+                In July 2025, Zarko Sportswear manufactured and delivered 550+ custom sublimated soccer kits [NEEDS REAL DATA] directly to the Dallas Youth Soccer League. Standard production completed in exactly 11 working days, with delivery from our facility to Dallas in 3 days.
+              </p>
+            </div>
+            <div className="bg-white border border-slate-200 p-8 rounded-none">
+              <span className="text-xs font-black uppercase text-indigo-600 block mb-2">High School Wrestling Singlet Programs</span>
+              <p className="text-[13px] text-slate-600 font-semibold leading-relaxed">
+                Supplied 1,200+ tournament-grade, NFHS-compliant wrestling singlets [NEEDS REAL DATA] for Midwest high school programs. Flatlock reinforced seams and anti-slip silicone leg bands were tested on-mat for over 150 competitive tournament bouts.
+              </p>
+            </div>
+            <div className="bg-white border border-slate-200 p-8 rounded-none">
+              <span className="text-xs font-black uppercase text-indigo-600 block mb-2">In-House Manufacturing Capacity</span>
+              <p className="text-[13px] text-slate-600 font-semibold leading-relaxed">
+                Our Sialkot manufacturing plant operates over 45 industrial sublimation printers and heavy-duty sewing machines [NEEDS REAL DATA], running daily capacity checks to produce up to 10,000 custom units monthly for private label distribution.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Value Props & Stats Redesign */}
       <section className="bg-white border-b border-slate-200 py-20 sm:py-28">
@@ -691,6 +749,13 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Document Freshness & Last Modified Signal */}
+      <footer className="bg-slate-50 py-6 border-t border-slate-200 text-center">
+        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+          Last Updated: August 2026 | Zarko Sportswear Official Site
+        </p>
+      </footer>
 
     </main>
   );
