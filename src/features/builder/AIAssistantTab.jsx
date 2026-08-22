@@ -245,24 +245,24 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
   };
 
   return (
-    <div className="w-full p-4 pb-0">
+    <div className="flex flex-col h-full bg-[#0c0e1a]">
       
       {/* 1. Scrollable Chat area (history and presets) */}
       <div 
         ref={chatEndRef}
-        className="w-full space-y-5"
+        className="flex-1 overflow-y-auto p-4 space-y-5 no-scrollbar"
       >
         {/* Welcome Message or Chat Log */}
         {history.length === 0 ? (
           <div className="flex flex-col items-center justify-center text-center p-6 opacity-60 min-h-[160px]">
-            <RiRobotLine className="text-4xl text-blue-500 mb-2 animate-bounce" />
-            <h4 className="text-[11.5px] font-bold text-slate-700 uppercase tracking-widest">WearConnect AI Designer</h4>
-            <p className="text-[9px] text-slate-400 max-w-[200px] mt-1.5 font-medium leading-relaxed">
+            <RiRobotLine className="text-4xl text-indigo-500 mb-2 animate-bounce" />
+            <h4 className="text-[11.5px] font-bold text-slate-300 uppercase tracking-widest">WearConnect AI Designer</h4>
+            <p className="text-[9px] text-slate-500 max-w-[200px] mt-1.5 font-medium leading-relaxed">
               Describe any color edits, text additions, or pattern styles in the chat box below to customize your 3D sportswear live.
             </p>
           </div>
         ) : (
-          <div className="space-y-4">
+          <div className="space-y-4 pb-4">
             {history.map((msg, idx) => (
               <div
                 key={idx}
@@ -270,16 +270,16 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
                   msg.role === 'user' ? 'items-end' : 'items-start'
                 }`}
               >
-                <span className="text-[8px] font-bold text-gray-400 uppercase tracking-wider">
+                <span className="text-[8px] font-bold text-slate-500 uppercase tracking-wider">
                   {msg.role === 'user' ? 'You' : msg.role === 'error' ? 'System Error' : 'AI Designer'}
                 </span>
                 <div
                   className={`p-3 rounded-xl text-[10.5px] font-medium leading-relaxed max-w-[85%] ${
                     msg.role === 'user'
-                      ? 'bg-blue-600 text-white rounded-tr-none shadow-sm'
+                      ? 'bg-indigo-600 text-white rounded-tr-none shadow-sm'
                       : msg.role === 'error'
-                      ? 'bg-red-50 border border-red-100 text-red-700 rounded-tl-none font-semibold'
-                      : 'bg-slate-50 border border-slate-100 text-slate-700 rounded-tl-none shadow-sm'
+                      ? 'bg-red-900/30 border border-red-500/30 text-red-400 rounded-tl-none font-semibold'
+                      : 'bg-[#161a2b] border border-white/5 text-slate-300 rounded-tl-none shadow-sm'
                   }`}
                 >
                   {msg.text}
@@ -290,9 +290,9 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
         )}
 
         {/* Quick Design Presets */}
-        <div className="space-y-2.5 pt-4 border-t border-gray-100">
-          <p className="text-[8.5px] font-bold text-gray-400 uppercase tracking-widest">Quick Design Presets</p>
-          <div className="grid grid-cols-2 gap-2">
+        <div className="space-y-2.5 pt-4 border-t border-white/5 pb-4">
+          <p className="text-[8.5px] font-bold text-slate-500 uppercase tracking-widest">Quick Design Presets</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             {[
               { label: '🔥 Neon Cyberpunk', prompt: 'Stealth carbon black base panels with glowing neon cyan borders and neon pink sleeve trims.' },
               { label: '👑 Classic Premium', prompt: 'Deep navy body panels, solid clean gold collars and sleeve cuffs, and silver details.' },
@@ -303,7 +303,7 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
                 key={idx}
                 type="button"
                 onClick={() => applyPreset(preset.prompt)}
-                className="px-3 py-2 text-[9px] font-semibold text-slate-600 border border-gray-100 hover:border-blue-600 hover:bg-blue-50/20 text-left transition-all rounded-lg cursor-pointer"
+                className="px-3 py-2 text-[9px] font-semibold text-slate-400 border border-white/10 hover:border-indigo-500 hover:bg-indigo-500/10 text-left transition-all rounded-lg cursor-pointer"
               >
                 {preset.label}
               </button>
@@ -312,155 +312,152 @@ const AIAssistantTab = ({ meshes, meshStates, updateMeshStates, addDecal, decals
         </div>
       </div>
 
-      {/* 2. Pinned Floating Controls rendered via React Portal */}
-      {document.getElementById('ai-input-portal-target') && createPortal(
-        <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-xl space-y-3">
+      {/* 2. Fixed Bottom Input Area */}
+      <div className="flex-shrink-0 p-4 bg-[#0e101f] border-t border-white/5 space-y-3 relative">
+        
+        {/* Processing Timer Mode (Thinking indicator) */}
+        {isLoading && (
+          <div className="flex items-center gap-3 p-3 bg-indigo-900/20 border border-indigo-500/30 rounded-xl animate-pulse">
+            <div className="w-4 h-4 border-2 border-slate-600 border-t-indigo-500 rounded-full animate-spin flex-shrink-0" />
+            <div className="flex-1 min-w-0">
+              <h5 className="text-[9.5px] font-bold text-slate-300 uppercase tracking-wider">AI Thinking & Customizing</h5>
+              <p className="text-[8px] font-semibold text-slate-500 uppercase mt-0.5">Elapsed time: {processingSeconds}s</p>
+            </div>
+          </div>
+        )}
+
+        {/* Quota / Credit Banner */}
+        {isQuotaExceeded && (
+          <div className="flex items-center gap-2.5 p-3 bg-red-900/20 border border-red-500/30 rounded-xl text-red-400 animate-in fade-in duration-200">
+            <span className="text-sm">⚠️</span>
+            <div className="flex-1 min-w-0">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-red-400">Zarko AI model quota out of reach</p>
+              <p className="text-[9px] font-medium opacity-90 mt-0.5 text-slate-300">Your Zarko AI design credits are depleted. Please check your config or recharge credits.</p>
+            </div>
+          </div>
+        )}
+
+        {/* General Request Error Banner */}
+        {error && !isQuotaExceeded && (
+          <div className="flex items-center gap-2.5 p-3 bg-red-900/20 border border-red-500/30 rounded-xl text-red-400 animate-in fade-in duration-200">
+            <span className="text-sm">❌</span>
+            <div className="flex-1 min-w-0">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-red-400">AI Customization Failure</p>
+              <p className="text-[9px] font-semibold opacity-90 mt-0.5 text-slate-300">{error}</p>
+            </div>
+          </div>
+        )}
+
+        <form onSubmit={handleAISubmit} className="space-y-1.5">
+          <label className="block text-[8px] font-bold text-slate-500 uppercase tracking-widest">What kind of design do you want?</label>
           
-          {/* Processing Timer Mode (Thinking indicator) */}
-          {isLoading && (
-            <div className="flex items-center gap-3 p-3 bg-blue-50/40 border border-blue-100/50 rounded-xl animate-pulse">
-              <div className="w-4 h-4 border-2 border-slate-300 border-t-blue-600 rounded-full animate-spin flex-shrink-0" />
-              <div className="flex-1 min-w-0">
-                <h5 className="text-[9.5px] font-bold text-slate-700 uppercase tracking-wider">AI Thinking & Customizing</h5>
-                <p className="text-[8px] font-semibold text-slate-400 uppercase mt-0.5">Elapsed time: {processingSeconds}s</p>
-              </div>
-            </div>
-          )}
-
-          {/* Quota / Credit Banner */}
-          {isQuotaExceeded && (
-            <div className="flex items-center gap-2.5 p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 animate-in fade-in duration-200">
-              <span className="text-sm">⚠️</span>
-              <div className="flex-1 min-w-0">
-                <p className="text-[10px] font-bold uppercase tracking-wider text-red-800">Zarko AI model quota out of reach</p>
-                <p className="text-[9px] font-medium opacity-90 mt-0.5">Your Zarko AI design credits are depleted. Please check your config or recharge credits.</p>
-              </div>
-            </div>
-          )}
-
-          {/* General Request Error Banner */}
-          {error && !isQuotaExceeded && (
-            <div className="flex items-center gap-2.5 p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 animate-in fade-in duration-200">
-              <span className="text-sm">❌</span>
-              <div className="flex-1 min-w-0">
-                <p className="text-[10px] font-bold uppercase tracking-wider text-red-800">AI Customization Failure</p>
-                <p className="text-[9px] font-semibold opacity-90 mt-0.5">{error}</p>
-              </div>
-            </div>
-          )}
-
-          <form onSubmit={handleAISubmit} className="space-y-1.5">
-            <label className="block text-[8px] font-bold text-gray-400 uppercase tracking-widest">What kind of design do you want?</label>
+          {/* Chat Bar Container */}
+          <div className="relative border border-white/10 rounded-xl bg-[#161a2b] p-2 focus-within:ring-1 focus-within:ring-indigo-500 transition-all">
             
-            {/* Chat Bar Container */}
-            <div className="relative border border-gray-100 rounded-xl bg-gray-50 p-2 focus-within:ring-1 focus-within:ring-blue-600 focus-within:bg-white transition-all">
-              
-              {/* Attached Tags above text area */}
-              {uploadedFiles.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 mb-2 px-1">
-                  {uploadedFiles.map((file, idx) => (
-                    <div key={idx} className="flex items-center gap-1.5 px-2.5 py-1 bg-blue-50 border border-blue-100/50 rounded-lg text-[9px] font-semibold text-blue-700">
-                      <span className="opacity-60">{file.type === 'logo' ? '🖼️ Logo:' : '🏁 Pattern:'}</span>
-                      <span className="truncate max-w-[80px]">{file.name}</span>
-                      <button 
-                        type="button" 
-                        onClick={() => removeUploadedFile(idx)}
-                        className="ml-1 hover:text-red-500 transition-colors"
-                      >
-                        ×
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Prompt Textarea */}
-              <textarea
-                value={prompt}
-                onChange={(e) => setPrompt(e.target.value)}
-                placeholder="e.g. Add glowing neon pink sleeve trims with stealth black body panels..."
-                rows={2}
-                className="w-full text-[11px] font-medium px-2 py-1 bg-transparent border-none focus:outline-none resize-none placeholder:text-gray-300"
-                disabled={isLoading}
-              />
-
-              {/* Bottom bar with action (+) dropdown and send button */}
-              <div className="flex items-center justify-between border-t border-gray-100/60 pt-2 px-1 relative">
-                <div className="relative">
-                  {/* Plus (+) Action Toggle Button */}
-                  <button
-                    type="button"
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="w-7 h-7 flex items-center justify-center bg-gray-200 hover:bg-gray-300 rounded-full text-slate-600 transition-all cursor-pointer"
-                  >
-                    <HiPlus className={`text-sm transition-transform duration-200 ${dropdownOpen ? 'rotate-45 text-blue-600 bg-blue-50 rounded-full p-0.5' : ''}`} />
-                  </button>
-
-                  {/* Add Context Action Menu dropdown */}
-                  {dropdownOpen && (
-                    <>
-                      {/* Backdrop to close dropdown on click outside */}
-                      <div className="fixed inset-0 z-40" onClick={() => setDropdownOpen(false)} />
-                      
-                      <div className="absolute bottom-9 left-0 w-36 bg-white text-slate-800 border border-slate-100 rounded-xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-bottom-2 duration-150 text-left">
-                        <p className="px-3 py-1 text-[8.5px] font-bold text-gray-400 uppercase tracking-widest border-b border-gray-50 pb-1.5 mb-1">Add Context</p>
-                        
-                        <label className="flex items-center gap-2.5 px-3 py-2 text-[10px] font-semibold text-slate-700 hover:bg-slate-50 cursor-pointer transition-colors">
-                          <RiImageAddLine className="text-slate-400 text-sm" />
-                          <span>Upload Logo</span>
-                          <input
-                            type="file"
-                            accept="image/*"
-                            onChange={(e) => { handleFileUpload(e, 'logo'); setDropdownOpen(false); }}
-                            className="hidden"
-                            disabled={isLoading}
-                          />
-                        </label>
-
-                        <label className="flex items-center gap-2.5 px-3 py-2 text-[10px] font-semibold text-slate-700 hover:bg-slate-50 cursor-pointer transition-colors">
-                          <HiOutlineCloudUpload className="text-slate-400 text-sm" />
-                          <span>Upload Pattern</span>
-                          <input
-                            type="file"
-                            accept="image/*"
-                            onChange={(e) => { handleFileUpload(e, 'pattern'); setDropdownOpen(false); }}
-                            className="hidden"
-                            disabled={isLoading}
-                          />
-                        </label>
-                      </div>
-                    </>
-                  )}
-                </div>
-
-                {/* Apply/Generate Button */}
-                <button
-                  type="submit"
-                  disabled={isLoading || !prompt.trim()}
-                  className={`px-4 py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-widest flex items-center gap-1.5 transition-all cursor-pointer ${
-                    isLoading 
-                      ? 'bg-gray-100 text-gray-400' 
-                      : 'bg-blue-600 text-white hover:bg-blue-700 shadow-md shadow-blue-600/10'
-                  }`}
-                >
-                  {isLoading ? (
-                    <>
-                      <div className="w-3 h-3 border-2 border-gray-300 border-t-blue-600 rounded-full animate-spin" />
-                      <span>Styling...</span>
-                    </>
-                  ) : (
-                    <>
-                      <HiOutlineLightningBolt className="text-xs" />
-                      <span>Generate</span>
-                    </>
-                  )}
-                </button>
+            {/* Attached Tags above text area */}
+            {uploadedFiles.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 mb-2 px-1">
+                {uploadedFiles.map((file, idx) => (
+                  <div key={idx} className="flex items-center gap-1.5 px-2.5 py-1 bg-indigo-900/30 border border-indigo-500/30 rounded-lg text-[9px] font-semibold text-indigo-300">
+                    <span className="opacity-60">{file.type === 'logo' ? '🖼️ Logo:' : '🏁 Pattern:'}</span>
+                    <span className="truncate max-w-[80px]">{file.name}</span>
+                    <button 
+                      type="button" 
+                      onClick={() => removeUploadedFile(idx)}
+                      className="ml-1 hover:text-red-400 transition-colors"
+                    >
+                      ×
+                    </button>
+                  </div>
+                ))}
               </div>
+            )}
+
+            {/* Prompt Textarea */}
+            <textarea
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              placeholder="e.g. Add glowing neon pink sleeve trims with stealth black body panels..."
+              rows={2}
+              className="w-full text-[11px] font-medium px-2 py-1 bg-transparent border-none focus:outline-none resize-none text-slate-200 placeholder:text-slate-600"
+              disabled={isLoading}
+            />
+
+            {/* Bottom bar with action (+) dropdown and send button */}
+            <div className="flex items-center justify-between border-t border-white/5 pt-2 px-1 relative">
+              <div className="relative">
+                {/* Plus (+) Action Toggle Button */}
+                <button
+                  type="button"
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  className="w-7 h-7 flex items-center justify-center bg-white/5 hover:bg-white/10 rounded-full text-slate-400 transition-all cursor-pointer"
+                >
+                  <HiPlus className={`text-sm transition-transform duration-200 ${dropdownOpen ? 'rotate-45 text-indigo-400 bg-indigo-500/20 rounded-full p-0.5' : ''}`} />
+                </button>
+
+                {/* Add Context Action Menu dropdown */}
+                {dropdownOpen && (
+                  <>
+                    {/* Backdrop to close dropdown on click outside */}
+                    <div className="fixed inset-0 z-40" onClick={() => setDropdownOpen(false)} />
+                    
+                    <div className="absolute bottom-9 left-0 w-36 bg-[#1e2338] text-slate-300 border border-white/10 rounded-xl shadow-2xl py-2 z-50 animate-in fade-in slide-in-from-bottom-2 duration-150 text-left">
+                      <p className="px-3 py-1 text-[8.5px] font-bold text-slate-500 uppercase tracking-widest border-b border-white/5 pb-1.5 mb-1">Add Context</p>
+                      
+                      <label className="flex items-center gap-2.5 px-3 py-2 text-[10px] font-semibold hover:bg-white/5 cursor-pointer transition-colors">
+                        <RiImageAddLine className="text-slate-400 text-sm" />
+                        <span>Upload Logo</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => { handleFileUpload(e, 'logo'); setDropdownOpen(false); }}
+                          className="hidden"
+                          disabled={isLoading}
+                        />
+                      </label>
+
+                      <label className="flex items-center gap-2.5 px-3 py-2 text-[10px] font-semibold hover:bg-white/5 cursor-pointer transition-colors">
+                        <HiOutlineCloudUpload className="text-slate-400 text-sm" />
+                        <span>Upload Pattern</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => { handleFileUpload(e, 'pattern'); setDropdownOpen(false); }}
+                          className="hidden"
+                          disabled={isLoading}
+                        />
+                      </label>
+                    </div>
+                  </>
+                )}
+              </div>
+
+              {/* Apply/Generate Button */}
+              <button
+                type="submit"
+                disabled={isLoading || !prompt.trim()}
+                className={`px-4 py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-widest flex items-center gap-1.5 transition-all cursor-pointer ${
+                  isLoading 
+                    ? 'bg-white/5 text-slate-500' 
+                    : 'bg-indigo-600 text-white hover:bg-indigo-500 shadow-lg shadow-indigo-600/20'
+                }`}
+              >
+                {isLoading ? (
+                  <>
+                    <div className="w-3 h-3 border-2 border-slate-500 border-t-white rounded-full animate-spin" />
+                    <span>Styling...</span>
+                  </>
+                ) : (
+                  <>
+                    <HiOutlineLightningBolt className="text-xs" />
+                    <span>Generate</span>
+                  </>
+                )}
+              </button>
             </div>
-          </form>
-        </div>,
-        document.getElementById('ai-input-portal-target')
-      )}
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
