@@ -105,12 +105,12 @@ const Navbar = ({ onBack, backTo }) => {
   return (
     <div
       ref={barRef}
-      className="w-full h-11 bg-[#0C0E1A] border-b border-white/5 flex items-center select-none z-[70] flex-shrink-0 relative px-4"
+      className="w-full h-11 bg-[#0C0E1A] border-b border-white/5 flex items-center select-none z-[70] flex-shrink-0 relative px-2 md:px-4"
       style={{ fontFamily: "'Outfit', sans-serif" }}
     >
       {/* ── Brand Logo / Left Section ── */}
-      <div className="flex items-center gap-4 mr-6">
-        <Link to="/" className="flex items-center gap-2.5 hover:scale-105 transition-transform flex-shrink-0">
+      <div className="flex items-center gap-2 md:gap-4 mr-2 md:mr-6">
+        <Link to="/" className="flex items-center gap-2 md:gap-2.5 hover:scale-105 transition-transform flex-shrink-0">
           <picture>
             <source srcSet="/new-logo.webp" type="image/webp" />
             <img src="/new-logo.webp" alt="ZSW Logo" title="ZSW Logo" width={24} height={24} className="h-6 w-auto object-contain" onError={(e) => { e.currentTarget.src = '/new-logo.png'; }} />
@@ -125,15 +125,16 @@ const Navbar = ({ onBack, backTo }) => {
       <div className="flex items-stretch h-full">
         {/* DESIGNER Tab (Active) */}
         <div className="flex items-stretch border-b-2 border-indigo-500">
-          <button className="px-4 text-[9px] font-bold text-white uppercase tracking-wider cursor-pointer">
-            Designer
+          <button className="px-2 md:px-4 text-[9px] font-bold text-white uppercase tracking-wider cursor-pointer flex items-center gap-1.5">
+            <span className="hidden md:inline">Designer</span>
+            <span className="md:hidden">3D</span>
           </button>
         </div>
 
         {menuData.map((menu) => (
           <div key={menu.label} className="relative flex items-stretch border-b-2 border-transparent">
             <button
-              className={`px-4 text-[9px] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors outline-none cursor-pointer
+              className={`px-2 md:px-4 text-[9px] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors outline-none cursor-pointer
                 ${activeMenu === menu.label ? 'text-indigo-400' : 'text-slate-400 hover:text-white'}`}
               onClick={() => setActiveMenu(prev => prev === menu.label ? null : menu.label)}
               onMouseEnter={() => activeMenu && setActiveMenu(menu.label)}
@@ -177,7 +178,7 @@ const Navbar = ({ onBack, backTo }) => {
       </div>
 
       {/* ── Right Actions & Save Section ── */}
-      <div className="flex items-center gap-4 ml-6 pl-4 border-l border-white/5 h-full">
+      <div className="flex items-center gap-2 md:gap-4 ml-auto md:ml-6 pl-2 md:pl-4 border-l-0 md:border-l border-white/5 h-full">
         {/* Exit Button */}
         <button 
           onClick={handleExit} 
@@ -185,14 +186,14 @@ const Navbar = ({ onBack, backTo }) => {
           title="Exit to Store"
         >
           <HiOutlineArrowLeft size={13} />
-          <span>Exit</span>
+          <span className="hidden md:inline">Exit</span>
         </button>
 
         {/* Undo / Redo */}
         <button 
           onClick={() => window.dispatchEvent(new CustomEvent('eay:undo'))} 
           disabled={!hasUndo}
-          className={`text-slate-400 hover:text-white transition-colors cursor-pointer ${!hasUndo ? 'opacity-40 pointer-events-none' : ''}`}
+          className={`hidden md:block text-slate-400 hover:text-white transition-colors cursor-pointer ${!hasUndo ? 'opacity-40 pointer-events-none' : ''}`}
           title="Undo"
         >
           <BiUndo size={14} />
@@ -200,17 +201,17 @@ const Navbar = ({ onBack, backTo }) => {
         <button 
           onClick={() => window.dispatchEvent(new CustomEvent('eay:redo'))} 
           disabled={!hasRedo}
-          className={`text-slate-400 hover:text-white transition-colors cursor-pointer ${!hasRedo ? 'opacity-40 pointer-events-none' : ''}`}
+          className={`hidden md:block text-slate-400 hover:text-white transition-colors cursor-pointer ${!hasRedo ? 'opacity-40 pointer-events-none' : ''}`}
           title="Redo"
         >
           <BiRedo size={14} />
         </button>
 
         {/* Help / Notifications */}
-        <button className="text-slate-400 hover:text-white transition-colors cursor-pointer" title="Help">
+        <button className="hidden md:block text-slate-400 hover:text-white transition-colors cursor-pointer" title="Help">
           <BiHelpCircle size={14} />
         </button>
-        <button className="text-slate-400 hover:text-white transition-colors cursor-pointer relative" title="Notifications">
+        <button className="hidden md:block text-slate-400 hover:text-white transition-colors cursor-pointer relative" title="Notifications">
           <BiBell size={14} />
           <span className="absolute top-0 right-0 w-1.5 h-1.5 bg-indigo-500 rounded-full" />
         </button>
@@ -219,11 +220,11 @@ const Navbar = ({ onBack, backTo }) => {
         <div className="flex items-stretch bg-indigo-600 hover:bg-indigo-700 transition-colors border border-indigo-500/20 text-white font-bold text-[9px] tracking-wider uppercase h-7">
           <button 
             onClick={() => window.dispatchEvent(new CustomEvent('eay:save'))}
-            className="px-3 flex items-center gap-1.5 cursor-pointer"
+            className="px-2 md:px-3 flex items-center gap-1.5 cursor-pointer"
           >
             <span>Save</span>
           </button>
-          <button className="px-1.5 border-l border-white/10 hover:bg-indigo-700/50 flex items-center justify-center cursor-pointer">
+          <button className="px-1 md:px-1.5 border-l border-white/10 hover:bg-indigo-700/50 flex items-center justify-center cursor-pointer">
             <BiChevronDown size={11} />
           </button>
         </div>
