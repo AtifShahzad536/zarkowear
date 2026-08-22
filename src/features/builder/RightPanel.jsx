@@ -1467,7 +1467,7 @@ const RightPanel = (props) => {
 
         {/* Tab contents scroll pane */}
         <div className="flex-1 relative min-h-0">
-          <div className={`absolute inset-0 overflow-y-auto overflow-x-hidden touch-auto custom-scrollbar ${activeTab === 'ai' ? 'pb-52' : 'pb-24'}`} data-lenis-prevent onWheel={(e) => e.stopPropagation()} style={{ WebkitOverflowScrolling: 'touch' }}>
+          <div className={`absolute inset-0 ${activeTab === 'ai' ? 'overflow-hidden pb-0' : 'overflow-y-auto pb-24'} overflow-x-hidden touch-auto custom-scrollbar`} data-lenis-prevent onWheel={(e) => e.stopPropagation()} style={{ WebkitOverflowScrolling: 'touch' }}>
             
             {activeTab === 'colors' ? (
               <MeshProperties
