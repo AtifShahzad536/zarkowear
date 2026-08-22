@@ -1432,6 +1432,12 @@ const ModelViewTab = ({ uvView, flatView, modelName }) => {
 
 const RightPanel = (props) => {
   const [activeTab, setActiveTab] = useState('colors');
+
+  useEffect(() => {
+    const handleOpenCheckout = () => setActiveTab('roster');
+    window.addEventListener('eay:openCheckout', handleOpenCheckout);
+    return () => window.removeEventListener('eay:openCheckout', handleOpenCheckout);
+  }, []);
   
   const mainTabs = [
     { id: 'colors', label: 'Colors', icon: <BiPalette /> },

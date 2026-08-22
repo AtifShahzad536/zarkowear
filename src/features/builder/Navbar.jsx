@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { HiOutlineSaveAs, HiOutlineCubeTransparent, HiOutlineArrowLeft } from 'react-icons/hi';
 import { toast } from 'react-hot-toast';
 import { VscHistory } from 'react-icons/vsc';
-import { BiUndo, BiRedo, BiHelpCircle, BiBell, BiChevronDown } from 'react-icons/bi';
+import { BiUndo, BiRedo, BiHelpCircle, BiBell, BiChevronDown, BiCart } from 'react-icons/bi';
 import { canUndo, canRedo, subscribeUndoRedo } from './undoMiddleware';
 
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4001';
@@ -214,6 +214,15 @@ const Navbar = ({ onBack, backTo }) => {
         <button className="hidden md:block text-slate-400 hover:text-white transition-colors cursor-pointer relative" title="Notifications">
           <BiBell size={14} />
           <span className="absolute top-0 right-0 w-1.5 h-1.5 bg-indigo-500 rounded-full" />
+        </button>
+
+        {/* Checkout Button */}
+        <button 
+          onClick={() => window.dispatchEvent(new CustomEvent('eay:openCheckout'))}
+          className="flex items-center gap-1.5 px-3 md:px-4 py-1 bg-green-600 hover:bg-green-500 transition-colors border border-green-500/30 text-white font-bold text-[9px] tracking-wider uppercase h-7 cursor-pointer shadow-lg shadow-green-600/20 mr-1 md:mr-2"
+        >
+          <BiCart size={12} />
+          <span>Checkout</span>
         </button>
 
         {/* Premium Save Split Button */}
