@@ -520,9 +520,13 @@ const Builder = memo(({ defaultPatterns, defaultLogos }) => {
           setAssetSubTab={setAssetSubTab}
           rightPanelComponent={
             <div className={`transition-all duration-500 ease-in-out bg-[#0A0C16] z-[70] 
-              max-md:fixed max-md:bottom-0 max-md:left-0 max-md:right-0 max-md:h-[65vh] max-md:rounded-t-3xl max-md:border-t max-md:border-white/10 max-md:shadow-[0_-10px_40px_rgba(0,0,0,0.8)]
+              max-md:fixed max-md:bottom-0 max-md:left-0 max-md:right-0 max-md:h-[45vh] max-md:rounded-t-3xl max-md:border-t max-md:border-white/10 max-md:shadow-[0_-10px_40px_rgba(0,0,0,0.8)]
               md:relative md:h-full md:border-l md:border-white/5 md:flex-shrink-0
               ${isHUDVisible ? 'max-md:translate-y-0 md:w-[480px] opacity-100' : 'max-md:translate-y-full md:w-0 opacity-0 md:translate-x-full overflow-hidden border-none'}`}>
+              
+              {/* Mobile Drag Indicator Pill */}
+              <div className="md:hidden absolute top-2 left-1/2 -translate-x-1/2 w-12 h-1 bg-white/20 rounded-full z-[100] pointer-events-none" />
+
               <RightPanel
                 meshes={meshes}
                 activeMesh={activeMesh}

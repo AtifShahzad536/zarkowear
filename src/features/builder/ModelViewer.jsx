@@ -1706,11 +1706,18 @@ const ModelViewer = memo(({ modelUrl, layersMetadata = {}, meshStates, onMeshesD
   const [isDraggingHandle, setIsDraggingHandle] = React.useState(false);
   const selectedDecal = decals.find(d => d.id === selectedDecalId);
 
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="flex-1 w-full bg-[#090b15] relative" style={{ height: '100%' }}>
       <Canvas
         gl={{ preserveDrawingBuffer: true, antialias: true }}
-        camera={{ position: [0, 0, 2.5], fov: 42 }}
+        camera={{ position: [0, 0, isMobile ? 2.0 : 2.5], fov: isMobile ? 35 : 42 }}
         onPointerMissed={() => setSelectedDecalId(null)}
       >
         <ambientLight intensity={lightingPreset === 'night' ? 0.25 : 0.85} />
