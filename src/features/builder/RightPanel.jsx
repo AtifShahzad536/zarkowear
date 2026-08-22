@@ -1333,6 +1333,103 @@ const CheckoutRosterTab = ({ roster, setRoster, onCheckout }) => {
 
 import AIAssistantTab from './AIAssistantTab';
 
+// ── Model View Tab (UV & 2D Flat views) ──────────────────────────────────────
+const ModelViewTab = ({ uvView, flatView, modelName }) => {
+  const [activeView, setActiveView] = React.useState('uv');
+  const hasUV = !!(uvView && uvView.trim());
+  const hasFlat = !!(flatView && flatView.trim());
+  const hasAny = hasUV || hasFlat;
+
+  // Auto-select whichever is available
+  React.useEffect(() => {
+    if (!hasUV && hasFlat) setActiveView('flat');
+    else setActiveView('uv');
+  }, [uvView, flatView]);
+
+  return (
+    <div className="flex flex-col h-full">
+      {/* Header */}
+      <div className="px-5 py-3 border-b border-white/5 bg-[#0e101f] flex-shrink-0">
+        <div className="flex items-center gap-2 mb-2">
+          <BiMapAlt className="text-indigo-400" size={16} />
+          <span className="text-[10px] font-black uppercase tracking-widest text-white">Model Reference Views</span>
+        </div>
+        <p className="text-[9px] text-slate-500 uppercase tracking-wider">{modelName || 'Current Model'}</p>
+
+        {/* Sub-tab switcher */}
+        {hasAny && (
+          <div className="flex gap-1 mt-3">
+            <button
+              onClick={() => setActiveView('uv')}
+              disabled={!hasUV}
+              className={`flex-1 py-1.5 text-[8px] font-bold uppercase tracking-widest rounded-none transition
+                ${activeView === 'uv' ? 'bg-indigo-600 text-white' : 'bg-[#0A0C16] text-slate-500 hover:text-white border border-white/5'}
+                ${!hasUV ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer'}`}
+            >
+              UV Layout
+            </button>
+            <button
+              onClick={() => setActiveView('flat')}
+              disabled={!hasFlat}
+              className={`flex-1 py-1.5 text-[8px] font-bold uppercase tracking-widest rounded-none transition
+                ${activeView === 'flat' ? 'bg-indigo-600 text-white' : 'bg-[#0A0C16] text-slate-500 hover:text-white border border-white/5'}
+                ${!hasFlat ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer'}`}
+            >
+              2D Flat View
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 overflow-y-auto p-4 flex flex-col items-center justify-center" data-lenis-prevent>
+        {!hasAny ? (
+          /* No images uploaded yet */
+          <div className="flex flex-col items-center gap-4 py-12 text-center">
+            <div className="w-16 h-16 rounded-none bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
+              <BiMapAlt size={28} className="text-indigo-400/50" />
+            </div>
+            <div>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">No view images uploaded</p>
+              <p className="text-[9px] text-slate-600 mt-1 max-w-[180px] leading-relaxed">
+                Upload a UV layout or 2D flat diagram for this model in the admin panel.
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div className="w-full">
+            {activeView === 'uv' && hasUV && (
+              <div className="flex flex-col items-center gap-3">
+                <div className="w-full bg-[#0e101f] border border-white/5 rounded-none overflow-hidden">
+                  <img
+                    src={uvView}
+                    alt="UV Layout"
+                    className="w-full object-contain max-h-[340px]"
+                    style={{ imageRendering: 'crisp-edges' }}
+                  />
+                </div>
+                <p className="text-[8px] text-slate-600 uppercase tracking-widest">UV Texture Layout Map</p>
+              </div>
+            )}
+            {activeView === 'flat' && hasFlat && (
+              <div className="flex flex-col items-center gap-3">
+                <div className="w-full bg-[#0e101f] border border-white/5 rounded-none overflow-hidden">
+                  <img
+                    src={flatView}
+                    alt="2D Flat View"
+                    className="w-full object-contain max-h-[340px]"
+                  />
+                </div>
+                <p className="text-[8px] text-slate-600 uppercase tracking-widest">2D Flat / Front–Back Diagram</p>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const RightPanel = (props) => {
   const [activeTab, setActiveTab] = useState('colors');
   
@@ -1340,6 +1437,7 @@ const RightPanel = (props) => {
     { id: 'colors', label: 'Colors', icon: <BiPalette /> },
     { id: 'names', label: 'Names', icon: <BiText /> },
     { id: 'logos', label: 'Logos', icon: <BiImage /> },
+    { id: 'view', label: 'View', icon: <BiMapAlt /> },
     { id: 'ai', label: 'AI Tools', icon: <HiOutlineSparkles /> },
     { id: 'config', label: 'Studio', icon: <HiOutlineAdjustments /> },
     { id: 'roster', label: 'Checkout', icon: <BiCart /> },
@@ -1350,7 +1448,7 @@ const RightPanel = (props) => {
     : 'Select Part';
 
   return (
-    <div className="flex flex-1 md:flex-none w-full md:w-[480px] h-full flex-shrink-0 border-t md:border-t-0 md:border-l border-white/5 bg-[#0A0C16] flex-row z-50 relative overflow-hidden min-h-0">
+    <div className="flex flex-1 md:flex-none w-full md:w-[480px] h-full flex-shrink-0 border-t md:border-t-0 md:border-l border-white/5 bg-[#0A0C16] flex-col-reverse md:flex-row z-50 relative overflow-hidden min-h-0">
       {/* ── Active Tab Area on Left ── */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Workspace details header */}
@@ -1393,6 +1491,8 @@ const RightPanel = (props) => {
               <NamesNumbersTab {...props} />
             ) : activeTab === 'logos' ? (
               <LogosFlagsTab {...props} />
+            ) : activeTab === 'view' ? (
+              <ModelViewTab uvView={props.uvView} flatView={props.flatView} modelName={props.modelName} />
             ) : activeTab === 'ai' ? (
               <AIAssistantTab
                 meshes={props.meshes}
@@ -1423,15 +1523,15 @@ const RightPanel = (props) => {
         </div>
       </div>
 
-      {/* ── Vertical Toolbar on Right (Figma style menu) ── */}
-      <div className="w-16 bg-[#0e101f] border-l border-white/5 flex flex-col items-center py-4 gap-4 flex-shrink-0">
+      {/* ── Toolbar (Horizontal on Mobile, Vertical on Desktop) ── */}
+      <div className="w-full md:w-16 h-16 md:h-auto bg-[#0e101f] border-t md:border-t-0 md:border-l border-white/5 flex flex-row md:flex-col items-center justify-between md:justify-start px-2 md:px-0 py-0 md:py-4 gap-2 md:gap-4 flex-shrink-0 overflow-x-auto overflow-y-hidden no-scrollbar">
         {mainTabs.map(tab => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`w-12 h-12 flex flex-col items-center justify-center gap-1 transition-all rounded-none cursor-pointer relative group
+            className={`w-12 h-12 flex flex-col items-center justify-center gap-1 transition-all rounded-none cursor-pointer relative group flex-shrink-0
               ${activeTab === tab.id 
-                ? 'text-indigo-400 bg-indigo-500/10 shadow-inner border-l-2 border-indigo-500' 
+                ? 'text-indigo-400 bg-indigo-500/10 shadow-inner border-b-2 md:border-b-0 md:border-l-2 border-indigo-500' 
                 : 'text-slate-500 hover:text-white hover:bg-[#0A0C16]/5'}`}
           >
             <span className="text-lg">{tab.icon}</span>

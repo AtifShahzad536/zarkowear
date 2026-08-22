@@ -585,10 +585,21 @@ const LeftPanel = ({
           
           {/* 3D Viewport canvas container */}
           <div className="flex-grow flex flex-col min-h-0 relative bg-[#090b15] min-w-0">
-            {/* Top viewport navigation bar */}
             <div className="h-10 bg-[#0c0e1a] border-b border-white/5 px-4 flex items-center justify-between z-10 flex-shrink-0">
               <div className="flex items-center gap-3">
-                <button className="px-2.5 h-6 bg-slate-950/40 border border-white/5 text-[9px] font-bold uppercase tracking-wider text-slate-400 hover:text-white rounded-none cursor-pointer">
+                <button 
+                  onClick={() => setIsSidebarOpen(true)}
+                  className="md:hidden px-2.5 h-6 flex items-center gap-1.5 bg-indigo-500/10 border border-indigo-500/20 text-[9px] font-bold uppercase tracking-wider text-indigo-400 hover:bg-indigo-500/20 rounded-none cursor-pointer"
+                >
+                  <VscLayers size={12} /> Layers
+                </button>
+                <button 
+                  onClick={() => window.dispatchEvent(new CustomEvent('eay:toggleHUD'))}
+                  className="md:hidden px-2.5 h-6 flex items-center gap-1.5 bg-slate-800 border border-white/10 text-[9px] font-bold uppercase tracking-wider text-white hover:bg-slate-700 rounded-none cursor-pointer"
+                >
+                  <BiPalette size={12} /> {isHUDVisible ? 'Hide Tools' : 'Show Tools'}
+                </button>
+                <button className="hidden md:block px-2.5 h-6 bg-slate-950/40 border border-white/5 text-[9px] font-bold uppercase tracking-wider text-slate-400 hover:text-white rounded-none cursor-pointer">
                   Select
                 </button>
                 <div className="flex items-center gap-1 border-l border-white/10 pl-3">
