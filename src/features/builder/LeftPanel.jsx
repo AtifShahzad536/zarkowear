@@ -279,6 +279,8 @@ const LeftPanel = ({
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [outlinerSearch, setOutlinerSearch] = useState('');
   const [assetSearch, setAssetSearch] = useState('');
+  const [assetViewMode, setAssetViewMode] = useState('grid');
+  const [assetFilter, setAssetFilter] = useState('all');
   const [activeTab, setActiveTab] = useState('3D View'); // '3D View', 'UV View', '2D Pattern'
   
   // Playback state
@@ -302,16 +304,16 @@ const LeftPanel = ({
   const activeDisplayName = activeState.displayName || activeMeta.display_name || (activeMesh ? formatMeshName(activeMesh) : '');
 
   const fabricPresets = [
-    { id: 'fleece', name: 'Fleece', color: '#a1a8b5' },
-    { id: 'mesh_knit', name: 'Mesh', color: '#5b6473' },
-    { id: 'jersey_knit', name: 'Jersey', color: '#7e8796' },
-    { id: 'cotton', name: 'Cotton', color: '#cbd5e1' },
-    { id: 'polyester', name: 'Polyester', color: '#475569' },
-    { id: 'ripstop', name: 'Ripstop', color: '#1e293b' },
-    { id: 'pique', name: 'Pique', color: '#334155' },
-    { id: 'wool', name: 'Wool', color: '#0f172a' },
-    { id: 'satin', name: 'Satin', color: '#e2e8f0' },
-    { id: 'nylon', name: 'Nylon', color: '#94a3b8' },
+    { id: 'fleece', name: 'Fleece', color: '#a1a8b5', category: 'Warm' },
+    { id: 'mesh_knit', name: 'Mesh', color: '#5b6473', category: 'Performance' },
+    { id: 'jersey_knit', name: 'Jersey', color: '#7e8796', category: 'Performance' },
+    { id: 'cotton', name: 'Cotton', color: '#cbd5e1', category: 'Natural' },
+    { id: 'polyester', name: 'Polyester', color: '#475569', category: 'Synthetic' },
+    { id: 'ripstop', name: 'Ripstop', color: '#1e293b', category: 'Synthetic' },
+    { id: 'pique', name: 'Pique', color: '#334155', category: 'Performance' },
+    { id: 'wool', name: 'Wool', color: '#0f172a', category: 'Natural' },
+    { id: 'satin', name: 'Satin', color: '#e2e8f0', category: 'Natural' },
+    { id: 'nylon', name: 'Nylon', color: '#94a3b8', category: 'Synthetic' },
   ];
 
   return (
@@ -764,21 +766,30 @@ const LeftPanel = ({
             </div>
             
             <div className="flex items-center gap-3">
-              <select className="bg-[#0c0e1a] border border-white/5 text-[8px] font-bold text-slate-400 px-2 py-0.5 outline-none cursor-pointer">
+              <select 
+                value={assetFilter}
+                onChange={(e) => setAssetFilter(e.target.value)}
+                className="bg-[#0c0e1a] border border-white/5 text-[8px] font-bold text-slate-400 px-2 py-0.5 outline-none cursor-pointer"
+              >
                 <option value="all">All Items</option>
+                <option value="Performance">Performance</option>
+                <option value="Synthetic">Synthetic</option>
+                <option value="Natural">Natural</option>
+                <option value="Warm">Warm</option>
               </select>
               <div className="flex items-center gap-2 border-l border-white/10 pl-3">
-                <span className="text-[8.5px] font-bold text-indigo-400 cursor-pointer">Grid</span>
-                <span className="text-[8.5px] font-bold text-slate-500 hover:text-white cursor-pointer">List</span>
+                <span onClick={() => setAssetViewMode('grid')} className={`text-[8.5px] font-bold cursor-pointer ${assetViewMode === 'grid' ? 'text-indigo-400' : 'text-slate-500 hover:text-white'}`}>Grid</span>
+                <span onClick={() => setAssetViewMode('list')} className={`text-[8.5px] font-bold cursor-pointer ${assetViewMode === 'list' ? 'text-indigo-400' : 'text-slate-500 hover:text-white'}`}>List</span>
               </div>
             </div>
           </div>
 
           {/* Scrollable grid tray of material spheres */}
-          <div className="flex-1 overflow-x-auto no-scrollbar flex items-center gap-4 px-4 py-2 bg-[#070911]">
+          <div className={`flex-1 overflow-x-auto custom-scrollbar flex ${assetViewMode === 'grid' ? 'items-center' : 'items-start pt-2'} gap-4 px-4 py-2 bg-[#070911]`}>
             {assetSubTab === 'Fabrics' && (
               fabricPresets
                 .filter(f => f.name.toLowerCase().includes(assetSearch.toLowerCase()))
+                .filter(f => assetFilter === 'all' || f.category === assetFilter)
                 .map(f => (
                   <button
                     key={f.id}
@@ -787,11 +798,11 @@ const LeftPanel = ({
                         updateMeshProp?.(activeMesh, 'fabricTexture', f.id);
                       }
                     }}
-                    className={`flex flex-col items-center gap-1.5 cursor-pointer group flex-shrink-0
-                      ${activeState.fabricTexture === f.id ? 'scale-105' : 'opacity-85 hover:opacity-100'}`}
+                    className={`flex ${assetViewMode === 'grid' ? 'flex-col items-center gap-1.5' : 'flex-row items-center gap-3 w-32 bg-slate-900/50 p-2 rounded-lg border border-white/5 hover:border-indigo-500/50'} cursor-pointer group flex-shrink-0
+                      ${activeState.fabricTexture === f.id ? (assetViewMode === 'grid' ? 'scale-105' : 'border-indigo-500 bg-indigo-500/10') : 'opacity-85 hover:opacity-100'}`}
                   >
                     <div 
-                      className={`w-12 h-12 rounded-full shadow-lg border transition-all duration-300 relative overflow-hidden group-hover:scale-105
+                      className={`${assetViewMode === 'grid' ? 'w-12 h-12 rounded-full' : 'w-8 h-8 rounded-md'} shadow-lg border transition-all duration-300 relative overflow-hidden group-hover:scale-105 flex-shrink-0
                         ${activeState.fabricTexture === f.id ? 'border-indigo-500 shadow-indigo-500/20' : 'border-white/5'}`}
                       style={{ 
                         background: `radial-gradient(circle at 35% 35%, ${f.color}, #090c15)`,
@@ -800,7 +811,12 @@ const LeftPanel = ({
                     >
                       <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-repeat" style={{ backgroundImage: `url('/fabric-tile.png')`, backgroundSize: '6px' }} />
                     </div>
-                    <span className="text-[7.5px] font-bold uppercase tracking-wider text-slate-400 group-hover:text-white leading-none">{f.name}</span>
+                    <div className={`flex flex-col ${assetViewMode === 'grid' ? 'items-center' : 'items-start flex-1 overflow-hidden'}`}>
+                      <span className={`text-[7.5px] font-bold uppercase tracking-wider text-slate-400 group-hover:text-white leading-none ${assetViewMode === 'grid' ? 'text-center max-w-[50px]' : 'text-left w-full'} truncate`}>{f.name}</span>
+                      {assetViewMode === 'list' && (
+                        <span className="text-[6px] text-slate-500 uppercase tracking-widest mt-1">{f.category}</span>
+                      )}
+                    </div>
                   </button>
                 ))
             )}
