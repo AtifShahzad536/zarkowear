@@ -335,7 +335,7 @@ const LeftPanel = ({
       )}
 
       {/* ── 2. SIDE BAR (Outliner + Properties Drawer) ── */}
-      <div className={`transition-all duration-500 ease-in-out z-[60] flex flex-col bg-[#0c0e1a] border-r border-white/5 flex-shrink-0 overflow-hidden
+      <div className={`transition-all duration-500 ease-in-out z-[80] flex flex-col bg-[#0c0e1a] border-r border-white/5 flex-shrink-0 overflow-hidden
         ${isMobile ? 'fixed inset-y-0 left-0 shadow-2xl' : 'relative'}
         ${isHUDVisible && isSidebarOpen ? (isMobile ? 'w-64' : 'w-64') : 'w-0 opacity-0 pointer-events-none'}`}
       >
