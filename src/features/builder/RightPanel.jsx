@@ -1523,7 +1523,7 @@ const RightPanel = (props) => {
       </div>
 
       {/* ── Toolbar (Horizontal on Mobile, Vertical on Desktop) ── */}
-      <div className="w-full md:w-16 h-16 md:h-auto bg-[#0e101f] border-t md:border-t-0 md:border-l border-white/5 flex flex-row md:flex-col items-center justify-between md:justify-start px-2 md:px-0 py-0 md:py-4 gap-2 md:gap-4 flex-shrink-0 overflow-x-auto md:overflow-x-hidden overflow-y-hidden md:overflow-y-auto no-scrollbar">
+      <div className="w-full md:w-16 h-16 md:h-full bg-[#0e101f] border-t md:border-t-0 md:border-l border-white/5 flex flex-row md:flex-col items-center justify-between md:justify-start px-2 md:px-0 py-0 md:py-4 gap-2 md:gap-4 flex-shrink-0 overflow-x-auto md:overflow-x-hidden overflow-y-hidden md:overflow-y-auto no-scrollbar">
         {mainTabs.map(tab => (
           <button
             key={tab.id}
