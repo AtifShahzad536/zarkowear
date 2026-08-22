@@ -10,34 +10,30 @@ body {
   font-family:  "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
 }
 
-/* Custom scrollbar */
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  width: 10px;
+/* Custom premium thin scrollbar rules globally */
+*::-webkit-scrollbar {
+  width: 4px !important;
+  height: 4px !important;
 }
 
-html::-webkit-scrollbar-track,
-body::-webkit-scrollbar-track {
-  background: rgba(191, 219, 254, 0.4);
-  border-radius: 999px;
+*::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-radius: 99px !important;
 }
 
-html::-webkit-scrollbar-thumb,
-body::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #1d4ed8, #3b82f6);
-  border-radius: 999px;
-  border: 2px solid rgba(219, 234, 254, 0.9);
+*::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.25) !important;
+  border-radius: 99px !important;
 }
 
-html::-webkit-scrollbar-thumb:hover,
-body::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #1e40af, #2563eb);
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.6) !important;
 }
 
 /* Firefox */
-html {
+* {
   scrollbar-width: thin;
-  scrollbar-color: #1d4ed8 rgba(191, 219, 254, 0.4);
+  scrollbar-color: rgba(99, 102, 241, 0.25) rgba(255, 255, 255, 0.02);
 }
 
 .clip-polygon {
@@ -147,4 +143,67 @@ html.lenis {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Custom premium thin scrollbar rules for panels and containers */
+.custom-scrollbar::-webkit-scrollbar,
+[class*="overflow-y-auto"]::-webkit-scrollbar,
+[class*="overflow-x-auto"]::-webkit-scrollbar,
+.overflow-y-auto::-webkit-scrollbar,
+.overflow-x-auto::-webkit-scrollbar {
+  width: 4px !important;
+  height: 4px !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track,
+[class*="overflow-y-auto"]::-webkit-scrollbar-track,
+[class*="overflow-x-auto"]::-webkit-scrollbar-track,
+.overflow-y-auto::-webkit-scrollbar-track,
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-radius: 99px !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb,
+[class*="overflow-y-auto"]::-webkit-scrollbar-thumb,
+[class*="overflow-x-auto"]::-webkit-scrollbar-thumb,
+.overflow-y-auto::-webkit-scrollbar-thumb,
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.3) !important;
+  border-radius: 99px !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover,
+[class*="overflow-y-auto"]::-webkit-scrollbar-thumb:hover,
+[class*="overflow-x-auto"]::-webkit-scrollbar-thumb:hover,
+.overflow-y-auto::-webkit-scrollbar-thumb:hover,
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.65) !important;
+}
+
+/* Make sure no-scrollbar hides elements perfectly */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* Premium accordion collapse and expand animation classes */
+.acc-body {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: max-height 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s linear;
+}
+
+.acc-body.open {
+  max-height: 1500px;
+  opacity: 1;
+  pointer-events: auto;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s linear;
 }

@@ -561,13 +561,8 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle }) => {
           onPointerDown={(e) => handlePointerDown(e, c.id)}
           onPointerMove={(e) => handlePointerMove(e, c.id)}
           onPointerUp={handlePointerUp}
-          onPointerOut={(e) => {
-            if (activeCorner === c.id) {
-              // optionally handle pointer leaving the sphere if capture fails
-            }
-          }}
         >
-          <sphereGeometry args={[0.02, 16, 16]} />
+          <boxGeometry args={[0.012, 0.012, 0.012]} />
           <meshBasicMaterial color="#00b0f0" depthTest={false} transparent opacity={0.9} />
         </mesh>
       ))}
@@ -894,10 +889,12 @@ const MeshPart = memo(function MeshPart({ node, state, finish, globalPattern, fa
     u.uMaxY.value = node.geometry.boundingBox.max.y;
 
     // Apply material finish (gloss/metallic/matte)
-    const roughness = finish === 'gloss' ? 0.1 : finish === 'metallic' ? 0.2 : 0.8;
+    const roughness = state.roughness !== undefined ? parseFloat(state.roughness) : (finish === 'gloss' ? 0.1 : finish === 'metallic' ? 0.2 : 0.8);
     const metalness = finish === 'metallic' ? 0.8 : 0.0;
     material.roughness = roughness;
     material.metalness = metalness;
+    material.opacity = state.opacity !== undefined ? parseFloat(state.opacity) : 1.0;
+    material.transparent = material.opacity < 1.0;
 
     // Handle Pattern (Combine global and local)
     const pType = globalPattern === 'carbon' ? 1.0 : globalPattern === 'camo' ? 2.0 : globalPattern === 'dots' ? 3.0 : 0.0;
@@ -924,8 +921,7 @@ const MeshPart = memo(function MeshPart({ node, state, finish, globalPattern, fa
   return <primitive object={node} material={material} />;
 })
 
-// ─── MODEL (with DecalGeometry-based text system from script1.js) ────────────
-const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMeshesDetected, decals, selectedDecalId, setSelectedDecalId, updateDecal, removeDecal, finish, globalPattern, mouseFollow }) {
+const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMeshesDetected, decals, selectedDecalId, setSelectedDecalId, updateDecal, removeDecal, finish, globalPattern, mouseFollow, timelineVal = 0, setTimelineVal, isPlaying = false }) {
   const { scene: rootScene, viewport, invalidate } = useThree();
   const { scene } = useGLTF(url);
   const clonedScene = useMemo(() => {
@@ -968,17 +964,34 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
   }, [mouseFollow]);
 
 
-  useFrame((state) => {
+  useFrame((state, delta) => {
     if (!meshRef.current) return;
-    if (mouseFollow) {
-      const targetX = mouse.current.x * 0.8;
-      const targetY = mouse.current.y * 0.3;
-      meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, targetX, 0.05);
-      meshRef.current.rotation.x = THREE.MathUtils.lerp(meshRef.current.rotation.x, -targetY, 0.05);
+
+    if (isPlaying) {
+      // Auto-rotation turntable showcase
+      meshRef.current.rotation.y += delta * 0.45;
+      const currentRot = meshRef.current.rotation.y % (Math.PI * 2);
+      let val = Math.round((currentRot / (Math.PI * 2)) * 100);
+      if (val < 0) val += 100;
+      
+      if (setTimelineVal && val !== timelineVal) {
+        setTimelineVal(val);
+      }
     } else {
-      // Gentle auto-rotation when mouse follow is OFF
-      meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, 0, 0.05);
-      meshRef.current.rotation.x = THREE.MathUtils.lerp(meshRef.current.rotation.x, 0, 0.05);
+      if (timelineVal !== undefined) {
+        // Map 0-100 timeline value to 0 to 360 degrees
+        const targetRot = (timelineVal / 100) * Math.PI * 2;
+        meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, targetRot, 0.15);
+      }
+      
+      if (mouseFollow) {
+        const targetX = mouse.current.x * 0.8;
+        const targetY = mouse.current.y * 0.3;
+        meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, targetX, 0.05);
+        meshRef.current.rotation.x = THREE.MathUtils.lerp(meshRef.current.rotation.x, -targetY, 0.05);
+      } else {
+        meshRef.current.rotation.x = THREE.MathUtils.lerp(meshRef.current.rotation.x, 0, 0.05);
+      }
     }
   });
 
@@ -1689,20 +1702,19 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
   );
 })
 
-// ─── MAIN VIEWER ─────────────────────────────────────────────────────────────
-const ModelViewer = memo(({ modelUrl, layersMetadata = {}, meshStates, onMeshesDetected, decals, selectedDecalId, setSelectedDecalId, updateDecal, removeDecal, globalPattern, materialFinish, lightingPreset, mouseFollow }) => {
+const ModelViewer = memo(({ modelUrl, layersMetadata = {}, meshStates, onMeshesDetected, decals, selectedDecalId, setSelectedDecalId, updateDecal, removeDecal, globalPattern, materialFinish, lightingPreset, mouseFollow, timelineVal = 0, setTimelineVal, isPlaying = false }) => {
   const [isDraggingHandle, setIsDraggingHandle] = React.useState(false);
   const selectedDecal = decals.find(d => d.id === selectedDecalId);
 
   return (
-    <div className="flex-1 w-full bg-white relative" style={{ height: '100%' }}>
+    <div className="flex-1 w-full bg-[#090b15] relative" style={{ height: '100%' }}>
       <Canvas
         gl={{ preserveDrawingBuffer: true, antialias: true }}
         camera={{ position: [0, 0, 2.5], fov: 42 }}
         onPointerMissed={() => setSelectedDecalId(null)}
       >
-        <ambientLight intensity={lightingPreset === 'night' ? 0.2 : 0.8} />
-        <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} intensity={lightingPreset === 'studio' ? 2.5 : 1.5} />
+        <ambientLight intensity={lightingPreset === 'night' ? 0.25 : 0.85} />
+        <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} intensity={lightingPreset === 'studio' ? 2.8 : 1.7} />
         <directionalLight position={[-5, 5, -5]} intensity={lightingPreset === 'night' ? 0.1 : 0.5} />
         <Suspense fallback={<CoolLoader />}>
           <Model
@@ -1718,70 +1730,36 @@ const ModelViewer = memo(({ modelUrl, layersMetadata = {}, meshStates, onMeshesD
             finish={materialFinish}
             globalPattern={globalPattern}
             mouseFollow={mouseFollow}
+            timelineVal={timelineVal}
+            setTimelineVal={setTimelineVal}
+            isPlaying={isPlaying}
           />
 
-          {/* Floating Controls — theme-matched, just above text */}
+          {/* Floating Controls — theme-matched, placed below text */}
           {/* Hide floating controls for pattern decals — patterns are locked in place */}
           {selectedDecal && selectedDecal.worldPoint && selectedDecal.type !== 'pattern' && (
             <Html
-              position={[selectedDecal.worldPoint[0], selectedDecal.worldPoint[1] + 0.06, selectedDecal.worldPoint[2] + 0.02]}
+              position={[selectedDecal.worldPoint[0], selectedDecal.worldPoint[1] - 0.08, selectedDecal.worldPoint[2] + 0.02]}
               center
               style={{ pointerEvents: 'none' }}
               zIndexRange={[100, 0]}
             >
-              <div className="flex items-center gap-0.5 bg-white rounded-full shadow-lg border border-gray-100 px-1 py-0.5" style={{ whiteSpace: 'nowrap', pointerEvents: 'auto' }}>
-                <button
-                  onClick={(ev) => {
-                    ev.stopPropagation();
-                    const scale = selectedDecal.decalScale || 0.15;
-                    const nextScale = Math.max(0.01, scale - 0.02);
-                    const ratio = nextScale / scale;
-                    const updates = { decalScale: nextScale };
-                    if (selectedDecal.decalScaleX !== undefined) {
-                      updates.decalScaleX = selectedDecal.decalScaleX * ratio;
-                    }
-                    if (selectedDecal.decalScaleY !== undefined) {
-                      updates.decalScaleY = selectedDecal.decalScaleY * ratio;
-                    }
-                    updateDecal(selectedDecalId, updates);
-                  }}
-                  title="Decrease Size"
-                  className="w-5 h-5 flex items-center justify-center rounded-full hover:bg-[#00b0f0]/10 text-[#00b0f0] text-[11px] font-bold transition-colors"
-                >−</button>
-                <button
-                  onClick={(ev) => {
-                    ev.stopPropagation();
-                    const scale = selectedDecal.decalScale || 0.15;
-                    const nextScale = scale + 0.02;
-                    const ratio = nextScale / scale;
-                    const updates = { decalScale: nextScale };
-                    if (selectedDecal.decalScaleX !== undefined) {
-                      updates.decalScaleX = selectedDecal.decalScaleX * ratio;
-                    }
-                    if (selectedDecal.decalScaleY !== undefined) {
-                      updates.decalScaleY = selectedDecal.decalScaleY * ratio;
-                    }
-                    updateDecal(selectedDecalId, updates);
-                  }}
-                  title="Increase Size"
-                  className="w-5 h-5 flex items-center justify-center rounded-full hover:bg-[#00b0f0]/10 text-[#00b0f0] text-[11px] font-bold transition-colors"
-                >+</button>
-                <div className="w-px h-3 bg-gray-200" />
+              <div className="flex items-center gap-1 bg-slate-950/90 rounded-full shadow-xl border border-white/10 px-2 py-0.5 backdrop-blur-md scale-90" style={{ whiteSpace: 'nowrap', pointerEvents: 'auto' }}>
                 <button
                   onClick={(ev) => { ev.stopPropagation(); updateDecal(selectedDecalId, { rotation: (selectedDecal.rotation || 0) - 15 * Math.PI / 180 }); }}
                   title="Rotate Counter-Clockwise"
-                  className="w-5 h-5 flex items-center justify-center rounded-full hover:bg-[#00b0f0]/10 text-[#00b0f0] text-[11px] font-bold transition-colors"
+                  className="w-4 h-4 flex items-center justify-center rounded-full hover:bg-white/10 text-slate-200 hover:text-white text-[9px] transition-all cursor-pointer font-bold"
                 >⟲</button>
                 <button
                   onClick={(ev) => { ev.stopPropagation(); updateDecal(selectedDecalId, { rotation: (selectedDecal.rotation || 0) + 15 * Math.PI / 180 }); }}
                   title="Rotate Clockwise"
-                  className="w-5 h-5 flex items-center justify-center rounded-full hover:bg-[#00b0f0]/10 text-[#00b0f0] text-[11px] font-bold transition-colors"
+                  className="w-4 h-4 flex items-center justify-center rounded-full hover:bg-white/10 text-slate-200 hover:text-white text-[9px] transition-all cursor-pointer font-bold"
                 >⟳</button>
-                <div className="w-px h-3 bg-gray-200" />
+                <div className="w-px h-2.5 bg-white/10 mx-0.5" />
                 <button
                   onClick={(ev) => { ev.stopPropagation(); removeDecal(selectedDecalId); }}
                   title="Remove Layer"
-                  className="w-5 h-5 flex items-center justify-center rounded-full hover:bg-red-50 text-red-400 text-[10px] transition-colors"
+                  className="w-4 h-4 flex items-center justify-center rounded-full hover:bg-red-500/20 text-red-400 hover:text-red-300 text-[8px] transition-all cursor-pointer font-bold"
                 >✕</button>
               </div>
             </Html>
@@ -1790,7 +1768,7 @@ const ModelViewer = memo(({ modelUrl, layersMetadata = {}, meshStates, onMeshesD
           <Environment preset={lightingPreset || "city"} />
           <ContactShadows position={[0, -1.5, 0]} opacity={0.4} scale={15} blur={2.5} far={4} />
 
-          {/* Hide blue boundary box for pattern decals — patterns are locked in place */}
+          {/* Transform handles boundary enabled with extremely sleek PicsArt design */}
           {selectedDecal && selectedDecal.worldPoint && selectedDecal.type !== 'pattern' && (
             <DecalTransformHandles
               decal={selectedDecal}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useNavigate, useSearchParams, Link } from 'react-router-dom';
-import { HiArrowRight, HiOutlineCube, HiArrowLeft } from 'react-icons/hi';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { HiArrowRight, HiArrowLeft, HiSearch } from 'react-icons/hi';
 import DesignPreview from '../features/builder/DesignPreview';
 import { useSelector } from 'react-redux';
 import SeoHead from '../components/SeoHead';
@@ -15,6 +15,10 @@ export const ModelSelectionPage = () => {
   const [loading, setLoading] = useState(true);
   const [builderEnabled, setBuilderEnabled] = useState(true);
   const builderState = useSelector((state) => state.builder);
+
+  // Search and filter states
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   useEffect(() => {
     const apiBase = (import.meta.env.VITE_API_BASE || '').trim();
@@ -33,16 +37,7 @@ export const ModelSelectionPage = () => {
           return;
         }
         setBuilderEnabled(true);
-        let allDesigns = data.dynamicDesigns || [];
-        if (categoryParam && categoryParam.toLowerCase() !== 'all') {
-          allDesigns = allDesigns.filter(d => 
-            d.name.toLowerCase().includes(categoryParam.toLowerCase()) || 
-            (d.category && d.category.toLowerCase().includes(categoryParam.toLowerCase()))
-          );
-          if (allDesigns.length === 0) {
-            allDesigns = data.dynamicDesigns || [];
-          }
-        }
+        const allDesigns = data.dynamicDesigns || [];
         setModels(allDesigns);
         setLoading(false);
       })
@@ -50,7 +45,37 @@ export const ModelSelectionPage = () => {
         console.error('Error fetching models:', err);
         setLoading(false);
       });
-  }, [categoryParam, navigate]);
+  }, []);
+
+  // Sync category param from URL if present and valid in catalog
+  useEffect(() => {
+    const validCategories = new Set(models.map(m => m.category ? m.category.toLowerCase() : ''));
+    if (categoryParam && categoryParam.toLowerCase() !== 'all' && validCategories.has(categoryParam.toLowerCase())) {
+      setSelectedCategory(categoryParam);
+    } else {
+      setSelectedCategory('all');
+    }
+  }, [categoryParam, models]);
+
+  // Compute unique categories
+  const categories = useMemo(() => {
+    const set = new Set();
+    models.forEach(m => {
+      if (m.category) set.add(m.category);
+    });
+    return ['all', ...Array.from(set)];
+  }, [models]);
+
+  // Filter models
+  const filteredModels = useMemo(() => {
+    return models.filter(model => {
+      const matchesSearch = model.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                            (model.category && model.category.toLowerCase().includes(searchQuery.toLowerCase()));
+      const matchesCategory = selectedCategory.toLowerCase() === 'all' || 
+                              (model.category && model.category.toLowerCase() === selectedCategory.toLowerCase());
+      return matchesSearch && matchesCategory;
+    });
+  }, [models, searchQuery, selectedCategory]);
 
   const handleSelectModel = (modelId) => {
     navigate(`/builder/${modelId}`);
@@ -81,46 +106,86 @@ export const ModelSelectionPage = () => {
   }
 
   return (
-    <div className="w-full min-h-screen bg-slate-50 font-['Plus_Jakarta_Sans',sans-serif] text-slate-800 py-12 px-6 lg:px-12">
+    <div className="w-full min-h-screen bg-[#0A0C16] text-white py-12 px-6 lg:px-12 relative overflow-x-hidden font-['Outfit']">
       <SeoHead {...seoData} />
-      <div className="max-w-[94%] mx-auto flex flex-col gap-10">
+      
+      {/* Premium Spotlight Glow */}
+      <div className="absolute top-[5%] left-[50%] -translate-x-1/2 w-[800px] h-[350px] bg-indigo-500/10 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="max-w-[94%] mx-auto flex flex-col gap-8 relative z-10">
         
-        {/* Navigation Breadcrumb & Back */}
-        <div className="flex items-center justify-between border-b border-slate-200/80 pb-6">
-          <div className="flex items-center gap-4">
+        {/* Navigation Breadcrumb & Title */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-white/5 pb-8 gap-6">
+          <div className="flex items-start gap-4">
             <button
               onClick={() => navigate('/builder')}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-700 hover:bg-slate-100 transition"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-none text-xs font-bold text-slate-300 hover:bg-white/10 hover:border-white/20 transition cursor-pointer"
             >
-              <HiArrowLeft size={16} /> Back to Basis
+              <HiArrowLeft size={16} /> Return to Hub
             </button>
             <div>
-              <span className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">Model Variations</span>
-              <h1 className="text-2xl lg:text-3xl font-black text-slate-900 uppercase tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                {categoryParam} Models & Variations
+              <span className="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-1">Model Variations</span>
+              <h1 className="text-2xl lg:text-3xl font-black text-white uppercase tracking-tight leading-none">
+                3D Kit Catalog
               </h1>
             </div>
           </div>
-          <span className="px-4 py-1.5 bg-indigo-50 text-indigo-600 rounded-lg text-xs font-bold uppercase tracking-widest">
-            {models.length} Models Found
-          </span>
+
+          {/* Search Input Box */}
+          <div className="relative w-full md:w-80">
+            <input
+              type="text"
+              placeholder="Search custom jerseys..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-[#121626] border border-white/10 px-4 py-2.5 pl-10 text-xs text-white rounded-none outline-none focus:border-indigo-500/80 transition-colors placeholder-slate-500 font-medium"
+            />
+            <HiSearch className="absolute left-3 top-3 text-slate-500" size={16} />
+          </div>
+        </div>
+
+        {/* Dynamic Category Chips */}
+        <div className="flex flex-wrap gap-2 pb-2">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider transition-all border cursor-pointer rounded-none ${
+                selectedCategory.toLowerCase() === cat.toLowerCase()
+                  ? 'bg-indigo-600 border-indigo-500 text-white shadow-lg'
+                  : 'bg-white/5 border-white/10 text-slate-400 hover:text-white hover:border-white/20'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
 
         {/* Model Cards Grid */}
         {loading ? (
           <div className="flex flex-col items-center justify-center py-32 gap-4">
-            <div className="w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin" />
-            <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Loading model variations...</span>
+            <div className="w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Loading dynamic 3D templates...</span>
+          </div>
+        ) : filteredModels.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-32 gap-3 border border-dashed border-white/5">
+            <span className="text-sm font-bold text-slate-500 uppercase tracking-widest">No matching templates found</span>
+            <button 
+              onClick={() => { setSearchQuery(''); setSelectedCategory('all'); }}
+              className="text-xs font-bold text-indigo-400 hover:text-white uppercase tracking-wider underline cursor-pointer"
+            >
+              Reset Filters
+            </button>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8">
-            {models.map((model) => (
+            {filteredModels.map((model) => (
               <div
                 key={model.id}
                 onClick={() => handleSelectModel(model.id)}
-                className="group flex flex-col gap-3 bg-white p-4 rounded-2xl border border-slate-200 hover:border-indigo-500/40 hover:shadow-xl transition-all duration-300 cursor-pointer"
+                className="group flex flex-col gap-3 bg-[#0c0e1a]/80 p-4 rounded-none border border-white/5 hover:border-indigo-500/50 hover:shadow-[0_0_30px_rgba(99,102,241,0.12)] transition-all duration-300 cursor-pointer"
               >
-                <div className="aspect-[4/5] relative bg-slate-50 rounded-xl overflow-hidden border border-slate-100 flex items-center justify-center">
+                <div className="aspect-[4/5] relative bg-slate-950/20 rounded-none overflow-hidden border border-white/5 flex items-center justify-center">
                   <DesignPreview
                     modelUrl={model.modelUrl}
                     mapping={model.mapping}
@@ -129,22 +194,22 @@ export const ModelSelectionPage = () => {
                     thirdColor={builderState.thirdColor || '#ffffff'}
                     layersMetadata={model.layers_metadata || {}}
                   />
-                  <div className="absolute top-3 left-3 px-2 py-0.5 bg-white/90 rounded text-[9px] font-black text-slate-700 uppercase">
-                    {model.id}
+                  <div className="absolute top-3 left-3 px-2 py-0.5 bg-indigo-600 text-white rounded-none text-[9px] font-black uppercase tracking-wider">
+                    {model.category ? model.category.toUpperCase() : "PRO KIT"}
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-1 px-1">
-                  <h3 className="text-sm font-extrabold text-slate-800 uppercase group-hover:text-indigo-600 transition-colors">
+                <div className="flex flex-col gap-1 px-1 mt-2">
+                  <h3 className="text-sm font-extrabold text-white uppercase group-hover:text-indigo-400 transition-colors">
                     {model.name}
                   </h3>
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                    Click to open 3D Customizer
+                    Click to launch 3D Designer
                   </span>
                 </div>
 
-                <button className="w-full mt-2 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition">
-                  <span>Open Customizer</span>
+                <button className="w-full mt-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-none text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition cursor-pointer">
+                  <span>Start Design</span>
                   <HiArrowRight size={12} />
                 </button>
               </div>
@@ -158,4 +223,3 @@ export const ModelSelectionPage = () => {
 };
 
 export default ModelSelectionPage;
-

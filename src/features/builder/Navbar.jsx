@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect, useSyncExternalStore } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { HiOutlineFolderOpen, HiOutlineSaveAs, HiOutlineDownload, HiOutlineCubeTransparent, HiOutlineArrowLeft } from 'react-icons/hi';
+import { HiOutlineSaveAs, HiOutlineCubeTransparent, HiOutlineArrowLeft } from 'react-icons/hi';
 import { toast } from 'react-hot-toast';
 import { VscHistory } from 'react-icons/vsc';
+import { BiUndo, BiRedo, BiHelpCircle, BiBell, BiChevronDown } from 'react-icons/bi';
 import { canUndo, canRedo, subscribeUndoRedo } from './undoMiddleware';
 
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4001';
@@ -25,17 +26,17 @@ const Navbar = ({ onBack, backTo }) => {
 
   let menuData = [
     {
-      label: 'File',
+      label: 'Options',
       items: [
         {
-          label: 'Import Model (.glb)', icon: <HiOutlineCubeTransparent />, action: () => {
+          label: 'Upload 3D Template (.glb)', icon: <HiOutlineCubeTransparent />, action: () => {
             const input = document.createElement('input');
             input.type = 'file';
             input.accept = '.glb,.gltf';
             input.onchange = (e) => {
               const file = e.target.files[0];
               if (file) {
-                const toastId = toast.loading('Uploading 3D model to server...');
+                const toastId = toast.loading('Uploading 3D template to server...');
                 const formData = new FormData();
                 formData.append('file', file);
 
@@ -49,10 +50,10 @@ const Navbar = ({ onBack, backTo }) => {
                   .then(res => res.json())
                   .then(data => {
                     if (data.success && data.url) {
-                      toast.success('3D model uploaded and ready!', { id: toastId });
+                      toast.success('3D template uploaded and ready!', { id: toastId });
                       window.dispatchEvent(new CustomEvent('eay:importModel', { detail: data.url }));
                     } else {
-                      toast.error(data.message || 'Failed to upload model.', { id: toastId });
+                      toast.error(data.message || 'Failed to upload template.', { id: toastId });
                     }
                   })
                   .catch(err => {
@@ -64,40 +65,31 @@ const Navbar = ({ onBack, backTo }) => {
             input.click();
           }
         },
-        { label: 'Save Design', icon: <HiOutlineSaveAs />, action: () => window.dispatchEvent(new CustomEvent('eay:save')) },
-        { label: 'Export PNG', icon: <HiOutlineDownload />, action: () => window.dispatchEvent(new CustomEvent('eay:export')) },
+        { label: 'Save Design Blueprint', icon: <HiOutlineSaveAs />, action: () => window.dispatchEvent(new CustomEvent('eay:save')) },
       ]
     },
     {
-      label: 'Edit',
+      label: 'History',
       items: [
-        { label: 'Undo', action: () => window.dispatchEvent(new CustomEvent('eay:undo')), disabled: !hasUndo },
-        { label: 'Redo', action: () => window.dispatchEvent(new CustomEvent('eay:redo')), disabled: !hasRedo },
+        { label: 'Undo Action', action: () => window.dispatchEvent(new CustomEvent('eay:undo')), disabled: !hasUndo },
+        { label: 'Redo Action', action: () => window.dispatchEvent(new CustomEvent('eay:redo')), disabled: !hasRedo },
         { type: 'separator' },
-        { label: 'Clear Colors', icon: <VscHistory />, action: () => window.dispatchEvent(new CustomEvent('eay:resetAll')) },
+        { label: 'Reset Design Colors', icon: <VscHistory />, action: () => window.dispatchEvent(new CustomEvent('eay:resetAll')) },
       ]
     },
     {
-      label: 'View',
+      label: 'Settings',
       items: [
-        { label: 'Toggle HUD', action: () => window.dispatchEvent(new CustomEvent('eay:toggleHUD')) },
+        { label: 'Hide HUD Controls', action: () => window.dispatchEvent(new CustomEvent('eay:toggleHUD')) },
       ]
     }
   ];
 
-  const isLandingPage = !window.location.pathname.includes('/builder/');
-
-  if (isLandingPage) {
-    menuData = menuData.filter(m => m.label !== 'File' && m.label !== 'View');
-  }
-
   const navigate = useNavigate();
 
-  // Helper to determine where the Exit button should go
   const handleExit = () => {
     const persistedFrom = sessionStorage.getItem('builder_from_page');
     if (persistedFrom === '/dealer/designs') {
-      // Clear storage after exit to prevent sticky redirects in other sessions
       sessionStorage.removeItem('builder_from_page');
       navigate('/dealer/designs');
       return;
@@ -113,43 +105,36 @@ const Navbar = ({ onBack, backTo }) => {
   return (
     <div
       ref={barRef}
-      className="w-full h-9 bg-white border-b border-gray-200 flex items-stretch select-none z-[70] flex-shrink-0 relative"
+      className="w-full h-11 bg-[#0C0E1A] border-b border-white/5 flex items-center select-none z-[70] flex-shrink-0 relative px-4"
       style={{ fontFamily: "'Outfit', sans-serif" }}
     >
-      {/* ── Navigation / Exit Logic (Always Shown) ── */}
-      <div className="flex items-stretch border-r border-gray-100">
-        <button
-          onClick={handleExit}
-          className="px-4 flex items-center gap-2 hover:bg-gray-100 transition-colors border-r border-gray-100 group"
-          title={onBack ? "Return to Library" : "Exit to Store"}
-        >
-          <HiOutlineArrowLeft className="text-gray-400 group-hover:text-indigo-600 transition-colors" size={14} />
-          <span className="text-[10px] font-bold text-gray-500 group-hover:text-gray-900 uppercase tracking-tighter">Exit</span>
-        </button>
+      {/* ── Brand Logo / Left Section ── */}
+      <div className="flex items-center gap-4 mr-6">
+        <Link to="/" className="flex items-center gap-2.5 hover:scale-105 transition-transform flex-shrink-0">
+          <picture>
+            <source srcSet="/new-logo.webp" type="image/webp" />
+            <img src="/new-logo.webp" alt="ZSW Logo" title="ZSW Logo" width={24} height={24} className="h-6 w-auto object-contain" onError={(e) => { e.currentTarget.src = '/new-logo.png'; }} />
+          </picture>
+          <span className="hidden sm:inline text-[10px] font-black text-white uppercase tracking-[0.18em] whitespace-nowrap">
+            ZARKOWEAR <span className="text-indigo-400">LAB v3D</span>
+          </span>
+        </Link>
       </div>
 
-      {/* ── VS Code Style Logo & Branding ── */}
-      <div className="flex items-center px-4 gap-4 border-r border-gray-100 bg-gray-50/10">
-        <div className="flex items-center gap-2.5">
-          <Link to="/" className="flex items-center gap-2 hover:scale-105 transition-transform flex-shrink-0">
-            <picture>
-              <source srcSet="/new-logo.webp" type="image/webp" />
-              <img src="/new-logo.webp" alt="ZSW Logo" title="ZSW Logo" width={28} height={28} className="h-7 w-auto object-contain" onError={(e) => { e.currentTarget.src = '/new-logo.png'; }} />
-            </picture>
-            <span className="hidden sm:inline text-[10px] font-bold text-gray-900 uppercase tracking-[0.1em] whitespace-nowrap">
-              Zarko <span className="text-indigo-600">Studio</span>
-            </span>
-          </Link>
+      {/* ── Editor Tabs Navigation (Figma Style) ── */}
+      <div className="flex items-stretch h-full">
+        {/* DESIGNER Tab (Active) */}
+        <div className="flex items-stretch border-b-2 border-indigo-500">
+          <button className="px-4 text-[9px] font-bold text-white uppercase tracking-wider cursor-pointer">
+            Designer
+          </button>
         </div>
-      </div>
 
-      {/* ── Editor Menu Bar ── */}
-      <div className="flex items-stretch">
         {menuData.map((menu) => (
-          <div key={menu.label} className="relative flex items-stretch">
+          <div key={menu.label} className="relative flex items-stretch border-b-2 border-transparent">
             <button
-              className={`px-3 h-full text-[10px] font-medium tracking-wide flex items-center gap-1.5 transition-colors outline-none
-                ${activeMenu === menu.label ? 'bg-gray-100 text-blue-600' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}`}
+              className={`px-4 text-[9px] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors outline-none cursor-pointer
+                ${activeMenu === menu.label ? 'text-indigo-400' : 'text-slate-400 hover:text-white'}`}
               onClick={() => setActiveMenu(prev => prev === menu.label ? null : menu.label)}
               onMouseEnter={() => activeMenu && setActiveMenu(menu.label)}
             >
@@ -157,29 +142,23 @@ const Navbar = ({ onBack, backTo }) => {
             </button>
 
             {activeMenu === menu.label && (
-              <div className="absolute top-full left-0 mt-0 w-max min-w-[220px] bg-white border border-gray-200 shadow-xl z-50 py-1 animate-in fade-in slide-in-from-top-1 duration-100">
+              <div className="absolute top-full left-0 mt-0 w-max min-w-[220px] bg-[#0e101f] border border-white/10 shadow-xl z-[80] py-1 animate-in fade-in slide-in-from-top-1 duration-100">
                 {menu.items.map((item, i) => (
                   item.type === 'separator' ? (
-                    <div key={i} className="my-1 border-t border-gray-100" />
+                    <div key={i} className="my-1 border-t border-white/5" />
                   ) : (
-                  <button
-                    key={i}
-                    onClick={() => { if (!item.disabled) { item.action?.(); setActiveMenu(null); } }}
-                    disabled={item.disabled}
-                    className={`w-full text-left px-4 py-2 text-[10px] font-medium flex items-center justify-between group transition-colors duration-75
-                      ${item.disabled ? 'text-gray-300 cursor-default' : 'text-gray-700 hover:bg-blue-600 hover:text-white'}`}
-                  >
-                    <div className="flex items-center gap-3">
-                      {item.icon && <span className="text-xs opacity-60 group-hover:opacity-100">{item.icon}</span>}
-                      <span className="tracking-wide whitespace-nowrap">{item.label}</span>
-                    </div>
-                    <span className="text-[8px] opacity-40 group-hover:opacity-60 ml-8 tracking-tighter">
-                      {item.label === 'Undo' ? 'CTRL+Z' : ''}
-                      {item.label === 'Redo' ? 'CTRL+Y' : ''}
-                      {item.label === 'Save Design' ? 'CTRL+S' : ''}
-                      {item.label === 'Clear Colors' ? 'CTRL+R' : ''}
-                    </span>
-                  </button>
+                    <button
+                      key={i}
+                      onClick={() => { if (!item.disabled) { item.action?.(); setActiveMenu(null); } }}
+                      disabled={item.disabled}
+                      className={`w-full text-left px-4 py-2.5 text-[9px] font-medium flex items-center justify-between group transition-colors duration-75 cursor-pointer
+                        ${item.disabled ? 'text-slate-600 cursor-default' : 'text-slate-300 hover:bg-indigo-650 hover:text-white'}`}
+                    >
+                      <div className="flex items-center gap-3">
+                        {item.icon && <span className="text-xs opacity-60 group-hover:opacity-100 text-indigo-400">{item.icon}</span>}
+                        <span className="tracking-wide whitespace-nowrap">{item.label}</span>
+                      </div>
+                    </button>
                   )
                 ))}
               </div>
@@ -188,27 +167,65 @@ const Navbar = ({ onBack, backTo }) => {
         ))}
       </div>
 
-      {/* ── Active File / Project Name Indicator ── */}
-      <div className="hidden md:flex flex-1 items-center justify-center pointer-events-none">
-        <div className="px-3 py-0.5 bg-gray-50 border border-gray-100 rounded-none flex items-center gap-2">
-          <span className="text-[8px] font-bold text-gray-400 uppercase tracking-[0.2em]">Active Workspace:</span>
-          <span className="text-[9px] font-semibold text-gray-700 uppercase tracking-widest">
-            {window.location.pathname.includes('/builder/') ? 'Jersey_Library_Context' : 'Studio_Entry_Context'}
-          </span>
-        </div>
+      {/* ── Active Blueprint Status Indicator (Center-Right) ── */}
+      <div className="hidden lg:flex items-center gap-2.5 bg-slate-950/40 border border-white/5 px-3 py-1 ml-auto">
+        <span className="text-[7.5px] font-bold text-slate-500 uppercase tracking-widest leading-none">Active Blueprint</span>
+        <span className="text-[9px] font-bold text-slate-200 uppercase tracking-wider leading-none">
+          {window.location.pathname.includes('/builder/') ? 'ZSW_ATHLETIC_BLUEPRINT' : 'ZSW_KIT_LAB_CANVAS'}
+        </span>
+        <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
       </div>
 
-      {/* ── System Status ── */}
-      <div className="ml-auto flex items-center gap-3 px-4">
-        <div className="hidden lg:flex items-center gap-3">
-          <div className="flex flex-col items-end leading-none">
-            <span className="text-[7px] font-bold text-gray-300 uppercase tracking-[0.2em]">Build</span>
-            <span className="text-[8px] font-semibold text-gray-500 tracking-wider">v1.0.4-PRO</span>
-          </div>
-          <div className="flex items-center gap-1.5 px-2 py-0.5 bg-green-50 border border-green-100">
-            <div className="w-1 h-1 rounded-none bg-green-500 animate-pulse" />
-            <span className="text-[8px] font-bold text-green-600 uppercase">Live</span>
-          </div>
+      {/* ── Right Actions & Save Section ── */}
+      <div className="flex items-center gap-4 ml-6 pl-4 border-l border-white/5 h-full">
+        {/* Exit Button */}
+        <button 
+          onClick={handleExit} 
+          className="text-slate-400 hover:text-white text-[9px] font-bold uppercase tracking-wider cursor-pointer flex items-center gap-1.5 transition-colors"
+          title="Exit to Store"
+        >
+          <HiOutlineArrowLeft size={13} />
+          <span>Exit</span>
+        </button>
+
+        {/* Undo / Redo */}
+        <button 
+          onClick={() => window.dispatchEvent(new CustomEvent('eay:undo'))} 
+          disabled={!hasUndo}
+          className={`text-slate-400 hover:text-white transition-colors cursor-pointer ${!hasUndo ? 'opacity-40 pointer-events-none' : ''}`}
+          title="Undo"
+        >
+          <BiUndo size={14} />
+        </button>
+        <button 
+          onClick={() => window.dispatchEvent(new CustomEvent('eay:redo'))} 
+          disabled={!hasRedo}
+          className={`text-slate-400 hover:text-white transition-colors cursor-pointer ${!hasRedo ? 'opacity-40 pointer-events-none' : ''}`}
+          title="Redo"
+        >
+          <BiRedo size={14} />
+        </button>
+
+        {/* Help / Notifications */}
+        <button className="text-slate-400 hover:text-white transition-colors cursor-pointer" title="Help">
+          <BiHelpCircle size={14} />
+        </button>
+        <button className="text-slate-400 hover:text-white transition-colors cursor-pointer relative" title="Notifications">
+          <BiBell size={14} />
+          <span className="absolute top-0 right-0 w-1.5 h-1.5 bg-indigo-500 rounded-full" />
+        </button>
+
+        {/* Premium Save Split Button */}
+        <div className="flex items-stretch bg-indigo-600 hover:bg-indigo-700 transition-colors border border-indigo-500/20 text-white font-bold text-[9px] tracking-wider uppercase h-7">
+          <button 
+            onClick={() => window.dispatchEvent(new CustomEvent('eay:save'))}
+            className="px-3 flex items-center gap-1.5 cursor-pointer"
+          >
+            <span>Save</span>
+          </button>
+          <button className="px-1.5 border-l border-white/10 hover:bg-indigo-700/50 flex items-center justify-center cursor-pointer">
+            <BiChevronDown size={11} />
+          </button>
         </div>
       </div>
     </div>
@@ -216,4 +233,3 @@ const Navbar = ({ onBack, backTo }) => {
 };
 
 export default Navbar;
-

@@ -19,7 +19,7 @@ function App() {
   const markContentAsLoaded = () => setContentLoaded(true);
 
   const isBuilderRoute = location.pathname.startsWith('/builder');
-  const is3DEditor = /^\/builder\/.+/.test(location.pathname);
+  const is3DEditor = /^\/builder\/.+/.test(location.pathname) && !location.pathname.startsWith('/builder/models');
 
   const [loadChatbot, setLoadChatbot] = useState(false);
 

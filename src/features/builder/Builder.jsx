@@ -86,6 +86,7 @@ const Builder = memo(({ defaultPatterns, defaultLogos }) => {
   const [isHUDVisible, setIsHUDVisible] = useState(true);
   const [saveModalOpen, setSaveModalOpen] = useState(false);
   const [saveName, setSaveName] = useState('');
+  const [assetSubTab, setAssetSubTab] = useState('Fabrics');
 
   // Checkout Form States
   const [checkoutModalOpen, setCheckoutModalOpen] = useState(false);
@@ -489,9 +490,10 @@ const Builder = memo(({ defaultPatterns, defaultLogos }) => {
   if (!design) return <div className="p-20 text-center font-bold text-gray-400">Loading Design...</div>;
 
   return (
-    <div className="flex-1 flex flex-col md:flex-row bg-white relative h-full min-h-0 overflow-hidden" style={{ minWidth: 0 }}>
-      {/* ── Left Viewport & Component Dock ── */}
-      <div className="flex-1 min-h-[350px] md:min-h-0 min-w-0 overflow-hidden">
+    <div className="flex-1 flex flex-col bg-[#090b15] relative h-full min-h-0 overflow-hidden font-['Outfit']" style={{ minWidth: 0 }}>
+      
+      {/* Main workspace panels wrapper */}
+      <div className="flex-grow flex flex-col min-h-0 overflow-hidden relative">
         <LeftPanel
           modelUrl={design.modelUrl}
           layersMetadata={design.layers_metadata || {}}
@@ -499,51 +501,78 @@ const Builder = memo(({ defaultPatterns, defaultLogos }) => {
           activeMesh={activeMesh}
           setActiveMesh={(id) => dispatch(setActiveMesh(id))}
           meshStates={meshStates}
+          updateMeshProp={(meshId, prop, val) => dispatch(updateMeshProp({ meshId, prop, val }))}
           onMeshesDetected={handleMeshesDetected}
           decals={decals}
           selectedDecalId={selectedDecalId}
           setSelectedDecalId={(id) => dispatch(setSelectedDecalId(id))}
           updateDecal={(id, updates) => dispatch(updateDecal({ id, updates }))}
           removeDecal={(id) => dispatch(removeDecal(id))}
+          addDecal={(type, text, imageUrl, meshId, color) => dispatch(addDecal({ type, text, imageUrl, meshId: meshId || activeMesh, color }))}
+          defaultPatterns={defaultPatterns}
+          defaultLogos={defaultLogos}
           globalPattern={globalPattern}
           materialFinish={materialFinish}
           lightingPreset={lightingPreset}
           mouseFollow={mouseFollow}
           isHUDVisible={isHUDVisible}
+          assetSubTab={assetSubTab}
+          setAssetSubTab={setAssetSubTab}
+          rightPanelComponent={
+            <div className={`transition-all duration-500 ease-in-out border-l border-white/5 bg-[#0A0C16] flex-shrink-0 h-full
+              ${isHUDVisible ? 'w-full md:w-[480px] opacity-100' : 'w-0 opacity-0 translate-x-full overflow-hidden border-none'}`}>
+              <RightPanel
+                meshes={meshes}
+                activeMesh={activeMesh}
+                setActiveMesh={(id) => dispatch(setActiveMesh(id))}
+                layersMetadata={design.layers_metadata || {}}
+                meshStates={meshStates}
+                updateMeshStates={(states) => dispatch(updateMeshStates(states))}
+                updateMeshProp={(meshId, prop, val) => dispatch(updateMeshProp({ meshId, prop, val }))}
+                decals={decals}
+                selectedDecalId={selectedDecalId}
+                setSelectedDecalId={(id) => dispatch(setSelectedDecalId(id))}
+                addDecal={(type, text, imageUrl, meshId, color) => dispatch(addDecal({ type, text, imageUrl, meshId: meshId || activeMesh, color }))}
+                updateDecal={(id, updates) => dispatch(updateDecal({ id, updates }))}
+                removeDecal={(id) => dispatch(removeDecal(id))}
+                globalPattern={globalPattern}
+                setGlobalPattern={(val) => dispatch(setGlobalPattern(val))}
+                lightingPreset={lightingPreset}
+                setLightingPreset={(val) => dispatch(setLightingPreset(val))}
+                materialFinish={materialFinish}
+                setMaterialFinish={(val) => dispatch(setMaterialFinish(val))}
+                mouseFollow={mouseFollow}
+                setMouseFollow={(val) => dispatch(setMouseFollow(val))}
+                roster={roster}
+                setRoster={(val) => dispatch(setRoster(val))}
+                onCheckout={handleCheckoutClick}
+                defaultPatterns={defaultPatterns}
+                defaultLogos={defaultLogos}
+              />
+            </div>
+          }
         />
       </div>
 
-      {/* ── Right Panel (Workstation) ── */}
-      <div className={`transition-all duration-500 ease-in-out border-l border-gray-100 bg-white flex-shrink-0
-        ${isHUDVisible ? 'w-full md:w-[420px] flex-1 md:flex-none md:h-full opacity-100' : 'w-0 h-0 opacity-0 translate-x-full overflow-hidden border-none'}`}>
-        <RightPanel
-          meshes={meshes}
-          activeMesh={activeMesh}
-          setActiveMesh={(id) => dispatch(setActiveMesh(id))}
-          layersMetadata={design.layers_metadata || {}}
-          meshStates={meshStates}
-          updateMeshStates={(states) => dispatch(updateMeshStates(states))}
-          updateMeshProp={(meshId, prop, val) => dispatch(updateMeshProp({ meshId, prop, val }))}
-          decals={decals}
-          selectedDecalId={selectedDecalId}
-          setSelectedDecalId={(id) => dispatch(setSelectedDecalId(id))}
-          addDecal={(type, text, imageUrl, meshId, color) => dispatch(addDecal({ type, text, imageUrl, meshId: meshId || activeMesh, color }))}
-          updateDecal={(id, updates) => dispatch(updateDecal({ id, updates }))}
-          removeDecal={(id) => dispatch(removeDecal(id))}
-          globalPattern={globalPattern}
-          setGlobalPattern={(val) => dispatch(setGlobalPattern(val))}
-          lightingPreset={lightingPreset}
-          setLightingPreset={(val) => dispatch(setLightingPreset(val))}
-          materialFinish={materialFinish}
-          setMaterialFinish={(val) => dispatch(setMaterialFinish(val))}
-          mouseFollow={mouseFollow}
-          setMouseFollow={(val) => dispatch(setMouseFollow(val))}
-          roster={roster}
-          setRoster={(val) => dispatch(setRoster(val))}
-          onCheckout={handleCheckoutClick}
-          defaultPatterns={defaultPatterns}
-          defaultLogos={defaultLogos}
-        />
+      {/* ── 6. PREMIUM FOOTER STATUS BAR ── */}
+      <div className="h-6 bg-[#0c0e1a] border-t border-white/5 px-4 flex items-center justify-between text-[8px] font-bold text-slate-400 flex-shrink-0">
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1.5">
+            <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
+            <span className="uppercase text-slate-350">3D ENGINE ONLINE</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <span className="text-emerald-500 font-bold">✓</span>
+            <span className="text-slate-500 uppercase">Autosaved 2m ago</span>
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="text-slate-550 tracking-wider">Version 1.0.4-PRO</span>
+          <div className="flex items-center gap-1 bg-indigo-500/10 border border-indigo-500/25 px-1.5 py-0.5 text-indigo-400">
+            <div className="w-1 h-1 bg-indigo-400" />
+            <span className="uppercase">LIVE</span>
+          </div>
+        </div>
       </div>
 
       {/* Cinematic View Helper */}

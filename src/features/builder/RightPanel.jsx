@@ -87,15 +87,15 @@ const ColorGrid = ({ selected, onSelect }) => {
   return (
     <div className="mt-2 space-y-3">
       {/* Category Tabs */}
-      <div className="flex gap-1 border-b border-gray-100 pb-1">
+      <div className="flex gap-1 border-b border-white/5 pb-1">
         {Object.keys(colorCategories).map((cat) => (
           <button
             key={cat}
             type="button"
             onClick={() => setActiveCategory(cat)}
             className={`px-2.5 py-1 text-[8.5px] font-bold uppercase tracking-wider transition-all border-b-2 rounded-t-sm ${activeCategory === cat
-                ? 'border-blue-600 text-blue-600 bg-blue-50/10'
-                : 'border-transparent text-gray-400 hover:text-gray-600'
+                ? 'border-indigo-500 text-indigo-400 bg-indigo-500/10/10'
+                : 'border-transparent text-slate-500 hover:text-slate-400'
               }`}
           >
             {cat}
@@ -113,12 +113,12 @@ const ColorGrid = ({ selected, onSelect }) => {
               title={c.name}
               onClick={() => onSelect(c.hex)}
               className={`swatch aspect-square rounded-lg cursor-pointer border transition-all duration-300 transform hover:scale-110
-                ${isActive ? 'border-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.2)] scale-105 z-10' : 'border-gray-100 hover:border-gray-300'}`}
+                ${isActive ? 'border-indigo-500 shadow-[0_0_10px_rgba(37,99,235,0.2)] scale-105 z-10' : 'border-white/5 hover:border-white/30'}`}
               style={{ backgroundColor: c.hex }}
             >
               {isActive && (
                 <div className="w-full h-full flex items-center justify-center">
-                  <div className="w-1.5 h-1.5 rounded-full bg-white shadow-sm" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#0A0C16] shadow-sm" />
                 </div>
               )}
             </div>
@@ -132,13 +132,13 @@ const ColorGrid = ({ selected, onSelect }) => {
 const SecHeader = ({ label, icon, isOpen, onToggle }) => (
   <button
     onClick={onToggle}
-    className="w-full flex items-center justify-between px-5 py-3.5 border-b border-gray-50 cursor-pointer outline-none transition-all hover:bg-gray-50/50 bg-white group"
+    className="w-full flex items-center justify-between px-5 py-3.5 border-b border-white/5 cursor-pointer outline-none transition-all hover:bg-[#0e101f]/50 bg-[#0A0C16] group"
   >
     <div className="flex items-center gap-3">
-      <span className={`text-xl transition-colors ${isOpen ? 'text-blue-600' : 'text-gray-400'}`}>{icon}</span>
-      <span className={`text-[10px] font-semibold tracking-[0.15em] uppercase transition-colors ${isOpen ? 'text-gray-900' : 'text-gray-400'}`}>{label}</span>
+      <span className={`text-xl transition-colors ${isOpen ? 'text-indigo-400' : 'text-slate-500'}`}>{icon}</span>
+      <span className={`text-[10px] font-semibold tracking-[0.15em] uppercase transition-colors ${isOpen ? 'text-white' : 'text-slate-500'}`}>{label}</span>
     </div>
-    <HiOutlineChevronDown className={`text-gray-300 text-sm transition-transform duration-300 ${isOpen ? 'rotate-180 text-blue-600' : ''}`} />
+    <HiOutlineChevronDown className={`text-gray-300 text-sm transition-transform duration-300 ${isOpen ? 'rotate-180 text-indigo-400' : ''}`} />
   </button>
 );
 
@@ -207,19 +207,19 @@ const MeshProperties = ({
     }
   };
 
-  if (!state) return <div className="p-10 text-center text-gray-400 font-semibold uppercase tracking-widest text-[10px]">Select a part to edit</div>;
+  if (!state) return <div className="p-10 text-center text-slate-500 font-semibold uppercase tracking-widest text-[10px]">Select a part to edit</div>;
 
   const meta = layersMetadata[activeMesh] || {};
   const isLocked = !!meta.is_locked;
 
   if (isLocked) {
     return (
-      <div className="flex flex-col items-center justify-center p-12 text-center bg-white min-h-[300px]">
+      <div className="flex flex-col items-center justify-center p-12 text-center bg-[#0A0C16] min-h-[300px]">
         <div className="w-16 h-16 rounded-full bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-500 mb-4 animate-pulse">
           <HiOutlineLockClosed size={28} />
         </div>
-        <h4 className="text-[12px] font-bold text-gray-800 uppercase tracking-widest mb-1.5">Layer is Locked</h4>
-        <p className="text-[10px] text-gray-400 font-medium uppercase max-w-[240px] leading-relaxed">
+        <h4 className="text-[12px] font-bold text-white uppercase tracking-widest mb-1.5">Layer is Locked</h4>
+        <p className="text-[10px] text-slate-500 font-medium uppercase max-w-[240px] leading-relaxed">
           This layer has been locked by the administrator and cannot be modified in the builder.
         </p>
       </div>
@@ -230,15 +230,15 @@ const MeshProperties = ({
   const selectedPattern = patternDecals.find(d => d.id === selectedDecalId);
 
   return (
-    <div className="flex flex-col bg-white">
+    <div className="flex flex-col bg-[#0A0C16]">
       <SecHeader label="Fill Color" icon={<VscSymbolColor />} isOpen={openSections.includes('fill')} onToggle={() => toggleSection('fill')} />
       <div className={`acc-body ${openSections.includes('fill') ? 'open' : ''}`}>
-        <div className="p-5 bg-white border-b border-gray-50">
-          <div className="flex items-center gap-4 p-3 bg-gray-50 border border-gray-100 rounded-none mb-4">
+        <div className="p-5 bg-[#0A0C16] border-b border-white/5">
+          <div className="flex items-center gap-4 p-3 bg-[#0e101f] border border-white/5 rounded-none mb-4">
             <div className="w-10 h-10 rounded-none border border-white shadow-sm flex-shrink-0" style={{ backgroundColor: state.color }} />
             <div>
-              <div className="text-[8px] font-semibold text-gray-400 uppercase tracking-widest">Active Material</div>
-              <div className="text-[12px] font-semibold text-gray-800 tracking-wider">{getColorName(state.color)}</div>
+              <div className="text-[8px] font-semibold text-slate-500 uppercase tracking-widest">Active Material</div>
+              <div className="text-[12px] font-semibold text-white tracking-wider">{getColorName(state.color)}</div>
             </div>
           </div>
           <ColorGrid selected={state.color} onSelect={(hex) => { updateProp('color', hex); updateProp('isGrad', false); }} />
@@ -248,8 +248,8 @@ const MeshProperties = ({
       {/* ─── FABRIC MATERIAL ─── */}
       <SecHeader label="Fabric Material" icon={<BiWater />} isOpen={openSections.includes('fabric')} onToggle={() => toggleSection('fabric')} />
       <div className={`acc-body ${openSections.includes('fabric') ? 'open' : ''}`}>
-        <div className="p-5 bg-white border-b border-gray-50">
-          <p className="text-[8px] font-semibold text-gray-400 uppercase tracking-widest mb-4">Select Fabric Weave Texture</p>
+        <div className="p-5 bg-[#0A0C16] border-b border-white/5">
+          <p className="text-[8px] font-semibold text-slate-500 uppercase tracking-widest mb-4">Select Fabric Weave Texture</p>
           <div className="grid grid-cols-2 gap-2">
             {[
               { key: 'none',        label: 'Plain',        emoji: '⬜', desc: 'Smooth flat finish' },
@@ -273,14 +273,14 @@ const MeshProperties = ({
                   onClick={() => updateProp('fabricTexture', fab.key)}
                   className={`flex flex-col items-center gap-1.5 p-3 border rounded-none transition-all duration-200 cursor-pointer text-center
                     ${isActive
-                      ? 'border-blue-600 bg-blue-50/40 shadow-[0_0_8px_rgba(37,99,235,0.15)]'
-                      : 'border-gray-100 hover:border-gray-200 bg-white hover:bg-gray-50/50'
+                      ? 'border-indigo-500 bg-indigo-500/10/40 shadow-[0_0_8px_rgba(37,99,235,0.15)]'
+                      : 'border-white/5 hover:border-white/10 bg-[#0A0C16] hover:bg-[#0e101f]/50'
                     }`}
                 >
                   <span className="text-xl leading-none">{fab.emoji}</span>
-                  <span className={`text-[9px] font-bold uppercase tracking-wider ${isActive ? 'text-blue-600' : 'text-gray-700'}`}>{fab.label}</span>
-                  <span className="text-[7.5px] text-gray-400 font-medium leading-tight">{fab.desc}</span>
-                  {isActive && <span className="mt-0.5 w-1.5 h-1.5 rounded-full bg-blue-500 inline-block" />}
+                  <span className={`text-[9px] font-bold uppercase tracking-wider ${isActive ? 'text-indigo-400' : 'text-slate-300'}`}>{fab.label}</span>
+                  <span className="text-[7.5px] text-slate-500 font-medium leading-tight">{fab.desc}</span>
+                  {isActive && <span className="mt-0.5 w-1.5 h-1.5 rounded-full bg-indigo-500/100 inline-block" />}
                 </button>
               );
             })}
@@ -290,14 +290,14 @@ const MeshProperties = ({
 
       <SecHeader label="Gradient Engine" icon={<HiOutlineSparkles />} isOpen={openSections.includes('grad')} onToggle={() => toggleSection('grad')} />
       <div className={`acc-body ${openSections.includes('grad') ? 'open' : ''}`}>
-        <div className="p-5 bg-white border-b border-gray-50">
+        <div className="p-5 bg-[#0A0C16] border-b border-white/5">
           <div className="flex gap-2 mb-5">
-            <button onClick={() => updateProp('isGrad', false)} className={`flex-1 py-2 rounded-none text-[9px] font-semibold tracking-widest border transition-all ${!state.isGrad ? 'border-blue-600 bg-blue-50 text-blue-600 shadow-sm' : 'border-gray-100 text-gray-400'}`}>SOLID</button>
-            <button onClick={() => updateProp('isGrad', true)} className={`flex-1 py-2 rounded-none text-[9px] font-semibold tracking-widest border transition-all ${state.isGrad ? 'border-blue-600 bg-blue-50 text-blue-600 shadow-sm' : 'border-gray-100 text-gray-400'}`}>GRADIENT</button>
+            <button onClick={() => updateProp('isGrad', false)} className={`flex-1 py-2 rounded-none text-[9px] font-semibold tracking-widest border transition-all ${!state.isGrad ? 'border-indigo-500 bg-indigo-500/10 text-indigo-400 shadow-sm' : 'border-white/5 text-slate-500'}`}>SOLID</button>
+            <button onClick={() => updateProp('isGrad', true)} className={`flex-1 py-2 rounded-none text-[9px] font-semibold tracking-widest border transition-all ${state.isGrad ? 'border-indigo-500 bg-indigo-500/10 text-indigo-400 shadow-sm' : 'border-white/5 text-slate-500'}`}>GRADIENT</button>
           </div>
           {state.isGrad && (
             <div className="fade-up space-y-5">
-              <div className="h-6 rounded-none border border-gray-100 shadow-inner" style={{ background: `linear-gradient(to right, ${state.grad1}, ${state.grad2})` }} />
+              <div className="h-6 rounded-none border border-white/5 shadow-inner" style={{ background: `linear-gradient(to right, ${state.grad1}, ${state.grad2})` }} />
               <ColorGrid selected={state.grad1} onSelect={(val) => updateProp('grad1', val)} />
               <ColorGrid selected={state.grad2} onSelect={(val) => updateProp('grad2', val)} />
             </div>
@@ -307,16 +307,16 @@ const MeshProperties = ({
 
       <SecHeader label="Pattern Overlay" icon={<HiOutlinePhotograph />} isOpen={openSections.includes('pat')} onToggle={() => toggleSection('pat')} />
       <div className={`acc-body ${openSections.includes('pat') ? 'open' : ''}`}>
-        <div className="p-5 bg-white border-b border-gray-50">
-          <div className="p-3 bg-blue-50/50 border border-blue-100 rounded-none text-[8.5px] text-blue-700/80 font-bold uppercase tracking-wider flex items-center gap-2 mb-4">
+        <div className="p-5 bg-[#0A0C16] border-b border-white/5">
+          <div className="p-3 bg-indigo-500/10/50 border border-indigo-500/20 rounded-none text-[8.5px] text-indigo-400/80 font-bold uppercase tracking-wider flex items-center gap-2 mb-4">
             <span className="text-xs">💡</span>
             <span>Patterns are now placed as interactive layers! Scale, rotate, tint, and click to position them anywhere on the model.</span>
           </div>
 
           <div className="flex gap-3 mb-2">
-            <label className="flex-1 h-14 rounded-none border border-dashed border-gray-200 flex flex-col items-center justify-center gap-1 cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition-all text-gray-300 group">
-              <HiOutlinePlus className="text-lg group-hover:text-blue-600" />
-              <span className="text-[9px] font-bold group-hover:text-blue-600 uppercase">Upload Pattern Layer</span>
+            <label className="flex-1 h-14 rounded-none border border-dashed border-white/10 flex flex-col items-center justify-center gap-1 cursor-pointer hover:border-indigo-500 hover:bg-indigo-500/10 transition-all text-gray-300 group">
+              <HiOutlinePlus className="text-lg group-hover:text-indigo-400" />
+              <span className="text-[9px] font-bold group-hover:text-indigo-400 uppercase">Upload Pattern Layer</span>
               <input
                 type="file"
                 accept="image/*"
@@ -357,18 +357,18 @@ const MeshProperties = ({
 
           {defaultPatterns && defaultPatterns.length > 0 && (
             <div className="mb-4">
-              <p className="text-[8.5px] font-bold text-gray-400 uppercase tracking-widest mb-2.5">Default Patterns</p>
+              <p className="text-[8.5px] font-bold text-slate-500 uppercase tracking-widest mb-2.5">Default Patterns</p>
               <div className="grid grid-cols-4 gap-2">
                 {defaultPatterns.map((pat) => (
                   <button
                     key={pat.id}
                     type="button"
                     onClick={() => addDecal('pattern', pat.name, pat.imageUrl, activeMesh)}
-                    className="aspect-square bg-gray-50 border border-gray-100 rounded-none p-1.5 hover:border-blue-600 hover:bg-blue-50 transition-all flex flex-col items-center justify-center gap-1 group cursor-pointer"
+                    className="aspect-square bg-[#0e101f] border border-white/5 rounded-none p-1.5 hover:border-indigo-500 hover:bg-indigo-500/10 transition-all flex flex-col items-center justify-center gap-1 group cursor-pointer"
                     title={pat.name}
                   >
                     <img src={pat.imageUrl} alt={pat.name} title={pat.name} className="w-full h-full object-contain opacity-60 group-hover:opacity-100 transition-opacity" />
-                    <span className="text-[6.5px] font-semibold text-gray-400 uppercase truncate w-full text-center group-hover:text-blue-600">{pat.name}</span>
+                    <span className="text-[6.5px] font-semibold text-slate-500 uppercase truncate w-full text-center group-hover:text-indigo-400">{pat.name}</span>
                   </button>
                 ))}
               </div>
@@ -377,10 +377,10 @@ const MeshProperties = ({
 
           {/* ACTIVE PATTERN LAYERS LIST */}
           {patternDecals.length > 0 && (
-            <div className="mt-4 pt-4 border-t border-gray-100">
-              <h4 className="text-[8.5px] font-bold text-gray-400 uppercase tracking-widest mb-3 flex items-center justify-between">
+            <div className="mt-4 pt-4 border-t border-white/5">
+              <h4 className="text-[8.5px] font-bold text-slate-500 uppercase tracking-widest mb-3 flex items-center justify-between">
                 <span>Active Pattern Layers</span>
-                <span className="text-[8px] bg-gray-100 px-2 py-0.5 rounded-none text-gray-400 border border-gray-100">{patternDecals.length}</span>
+                <span className="text-[8px] bg-slate-950/40 px-2 py-0.5 rounded-none text-slate-500 border border-white/5">{patternDecals.length}</span>
               </h4>
               <div className="space-y-1.5">
                 {patternDecals.map(d => (
@@ -396,10 +396,10 @@ const MeshProperties = ({
                         }
                       }
                     }}
-                    className={`p-3.5 rounded-none border transition-all flex items-center justify-between bg-white cursor-pointer ${selectedDecalId === d.id ? 'border-blue-600 bg-blue-50/20' : 'border-gray-50 hover:border-gray-100'}`}
+                    className={`p-3.5 rounded-none border transition-all flex items-center justify-between bg-[#0A0C16] cursor-pointer ${selectedDecalId === d.id ? 'border-indigo-500 bg-indigo-500/10/20' : 'border-white/5 hover:border-white/5'}`}
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-none border border-gray-100 bg-cover bg-center flex-shrink-0" style={{ backgroundImage: `url(${d.imageUrl})` }} />
+                      <div className="w-8 h-8 rounded-none border border-white/5 bg-cover bg-center flex-shrink-0" style={{ backgroundImage: `url(${d.imageUrl})` }} />
                       <div className="flex flex-col text-left">
                         <span className="text-[10px] font-semibold truncate max-w-[150px]">{d.text || 'Pattern Layer'}</span>
                         <span className="text-[7px] font-semibold text-gray-300 uppercase mt-0.5">SIZE {((d.decalScale || 0.8) * 100).toFixed(0)}%</span>
@@ -416,9 +416,9 @@ const MeshProperties = ({
           )}
 
           {selectedPattern && (
-            <div className="mt-6 p-4 bg-gray-50 rounded-none border border-gray-100 space-y-6 text-left">
+            <div className="mt-6 p-4 bg-[#0e101f] rounded-none border border-white/5 space-y-6 text-left">
               {/* Tip Banner */}
-              <div className="p-3 bg-blue-50/50 border border-blue-100 rounded-none text-[8.5px] text-blue-700/80 font-bold uppercase tracking-wider flex items-center gap-2">
+              <div className="p-3 bg-indigo-500/10/50 border border-indigo-500/20 rounded-none text-[8.5px] text-indigo-400/80 font-bold uppercase tracking-wider flex items-center gap-2">
                 <span className="text-xs">💡</span>
                 <span>Tip: click anywhere on the 3D model to move this layer.</span>
               </div>
@@ -426,12 +426,12 @@ const MeshProperties = ({
               {/* Pattern Tint Color */}
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Pattern Tint Color</p>
+                  <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Pattern Tint Color</p>
                   <button
                     onClick={() => updateDecal(selectedPattern.id, { color: 'original' })}
                     className={`text-[8.5px] font-bold uppercase px-2.5 py-1.5 transition-all border cursor-pointer ${selectedPattern.color === 'original'
-                      ? 'border-blue-600 text-blue-600 bg-blue-50/20'
-                      : 'border-gray-200 text-gray-500 hover:border-gray-300 bg-white'
+                      ? 'border-indigo-500 text-indigo-400 bg-indigo-500/10/20'
+                      : 'border-white/10 text-slate-400 hover:border-white/30 bg-[#0A0C16]'
                       }`}
                   >
                     Original Colors
@@ -441,25 +441,25 @@ const MeshProperties = ({
               </div>
 
               {/* Sizing & Stretching */}
-              <div className="space-y-4 pt-4 border-t border-gray-200">
-                <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">
+              <div className="space-y-4 pt-4 border-t border-white/10">
+                <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">
                   {selectedPattern.type === 'pattern' ? 'Pattern Repeat / Density' : 'Sizing & Stretching'}
                 </p>
 
                 {/* Uniform Scale */}
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[9px] font-semibold text-gray-500 uppercase tracking-wider">
+                    <span className="text-[9px] font-semibold text-slate-400 uppercase tracking-wider">
                       {selectedPattern.type === 'pattern' ? 'Pattern Density / Repeat' : 'Overall Scale (Uniform)'}
                     </span>
-                    <span className="text-[10px] font-semibold text-blue-600">{((selectedPattern.decalScale || 0.8) * 100).toFixed(0)}%</span>
+                    <span className="text-[10px] font-semibold text-indigo-400">{((selectedPattern.decalScale || 0.8) * 100).toFixed(0)}%</span>
                   </div>
                   <input
                     type="range"
                     min="0.03"
                     max="4.0"
                     step="0.01"
-                    className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                    className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                     value={selectedPattern.decalScale || 0.8}
                     onChange={(e) => {
                       const v = parseFloat(e.target.value);
@@ -477,15 +477,15 @@ const MeshProperties = ({
                     {/* Horizontal Stretch (Width) */}
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-[9px] font-semibold text-gray-500 uppercase tracking-wider">Width (Horizontal Stretch)</span>
-                        <span className="text-[10px] font-semibold text-blue-600">{((selectedPattern.decalScaleX !== undefined ? selectedPattern.decalScaleX : (selectedPattern.decalScale || 0.8)) * 100).toFixed(0)}%</span>
+                        <span className="text-[9px] font-semibold text-slate-400 uppercase tracking-wider">Width (Horizontal Stretch)</span>
+                        <span className="text-[10px] font-semibold text-indigo-400">{((selectedPattern.decalScaleX !== undefined ? selectedPattern.decalScaleX : (selectedPattern.decalScale || 0.8)) * 100).toFixed(0)}%</span>
                       </div>
                       <input
                         type="range"
                         min="0.03"
                         max="4.0"
                         step="0.01"
-                        className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                        className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                         value={selectedPattern.decalScaleX !== undefined ? selectedPattern.decalScaleX : (selectedPattern.decalScale || 0.8)}
                         onChange={(e) => updateDecal(selectedPattern.id, { decalScaleX: parseFloat(e.target.value) })}
                       />
@@ -494,15 +494,15 @@ const MeshProperties = ({
                     {/* Vertical Stretch (Height) */}
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-[9px] font-semibold text-gray-500 uppercase tracking-wider">Height (Vertical Stretch)</span>
-                        <span className="text-[10px] font-semibold text-blue-600">{((selectedPattern.decalScaleY !== undefined ? selectedPattern.decalScaleY : (selectedPattern.decalScale || 0.8)) * 100).toFixed(0)}%</span>
+                        <span className="text-[9px] font-semibold text-slate-400 uppercase tracking-wider">Height (Vertical Stretch)</span>
+                        <span className="text-[10px] font-semibold text-indigo-400">{((selectedPattern.decalScaleY !== undefined ? selectedPattern.decalScaleY : (selectedPattern.decalScale || 0.8)) * 100).toFixed(0)}%</span>
                       </div>
                       <input
                         type="range"
                         min="0.03"
                         max="4.0"
                         step="0.01"
-                        className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                        className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                         value={selectedPattern.decalScaleY !== undefined ? selectedPattern.decalScaleY : (selectedPattern.decalScale || 0.8)}
                         onChange={(e) => updateDecal(selectedPattern.id, { decalScaleY: parseFloat(e.target.value) })}
                       />
@@ -512,22 +512,22 @@ const MeshProperties = ({
               </div>
 
               {/* Edge Blending (Gradient Fade) */}
-              <div className="space-y-4 pt-4 border-t border-gray-200 text-left">
-                <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Edge Blending (Gradient Fade)</p>
+              <div className="space-y-4 pt-4 border-t border-white/10 text-left">
+                <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Edge Blending (Gradient Fade)</p>
 
                 <div className="grid grid-cols-2 gap-x-4 gap-y-3">
                   {/* Fade Top */}
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-[8px] font-semibold text-gray-400 uppercase tracking-wider">Fade Top</span>
-                      <span className="text-[8.5px] font-semibold text-blue-600">{Math.round((selectedPattern.pFadeTop || 0.0) * 100)}%</span>
+                      <span className="text-[8px] font-semibold text-slate-500 uppercase tracking-wider">Fade Top</span>
+                      <span className="text-[8.5px] font-semibold text-indigo-400">{Math.round((selectedPattern.pFadeTop || 0.0) * 100)}%</span>
                     </div>
                     <input
                       type="range"
                       min="0.0"
                       max="1.0"
                       step="0.01"
-                      className="w-full h-1 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                      className="w-full h-1 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                       value={selectedPattern.pFadeTop || 0.0}
                       onChange={(e) => updateDecal(selectedPattern.id, { pFadeTop: parseFloat(e.target.value) })}
                     />
@@ -536,15 +536,15 @@ const MeshProperties = ({
                   {/* Fade Bottom */}
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-[8px] font-semibold text-gray-400 uppercase tracking-wider">Fade Bottom</span>
-                      <span className="text-[8.5px] font-semibold text-blue-600">{Math.round((selectedPattern.pFadeBottom || 0.0) * 100)}%</span>
+                      <span className="text-[8px] font-semibold text-slate-500 uppercase tracking-wider">Fade Bottom</span>
+                      <span className="text-[8.5px] font-semibold text-indigo-400">{Math.round((selectedPattern.pFadeBottom || 0.0) * 100)}%</span>
                     </div>
                     <input
                       type="range"
                       min="0.0"
                       max="1.0"
                       step="0.01"
-                      className="w-full h-1 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                      className="w-full h-1 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                       value={selectedPattern.pFadeBottom || 0.0}
                       onChange={(e) => updateDecal(selectedPattern.id, { pFadeBottom: parseFloat(e.target.value) })}
                     />
@@ -553,15 +553,15 @@ const MeshProperties = ({
                   {/* Fade Left */}
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-[8px] font-semibold text-gray-400 uppercase tracking-wider">Fade Left</span>
-                      <span className="text-[8.5px] font-semibold text-blue-600">{Math.round((selectedPattern.pFadeLeft || 0.0) * 100)}%</span>
+                      <span className="text-[8px] font-semibold text-slate-500 uppercase tracking-wider">Fade Left</span>
+                      <span className="text-[8.5px] font-semibold text-indigo-400">{Math.round((selectedPattern.pFadeLeft || 0.0) * 100)}%</span>
                     </div>
                     <input
                       type="range"
                       min="0.0"
                       max="1.0"
                       step="0.01"
-                      className="w-full h-1 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                      className="w-full h-1 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                       value={selectedPattern.pFadeLeft || 0.0}
                       onChange={(e) => updateDecal(selectedPattern.id, { pFadeLeft: parseFloat(e.target.value) })}
                     />
@@ -570,15 +570,15 @@ const MeshProperties = ({
                   {/* Fade Right */}
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-[8px] font-semibold text-gray-400 uppercase tracking-wider">Fade Right</span>
-                      <span className="text-[8.5px] font-semibold text-blue-600">{Math.round((selectedPattern.pFadeRight || 0.0) * 100)}%</span>
+                      <span className="text-[8px] font-semibold text-slate-500 uppercase tracking-wider">Fade Right</span>
+                      <span className="text-[8.5px] font-semibold text-indigo-400">{Math.round((selectedPattern.pFadeRight || 0.0) * 100)}%</span>
                     </div>
                     <input
                       type="range"
                       min="0.0"
                       max="1.0"
                       step="0.01"
-                      className="w-full h-1 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                      className="w-full h-1 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                       value={selectedPattern.pFadeRight || 0.0}
                       onChange={(e) => updateDecal(selectedPattern.id, { pFadeRight: parseFloat(e.target.value) })}
                     />
@@ -587,15 +587,15 @@ const MeshProperties = ({
                   {/* Fade Top Left */}
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-[8px] font-semibold text-gray-400 uppercase tracking-wider">Top Left</span>
-                      <span className="text-[8.5px] font-semibold text-blue-600">{Math.round((selectedPattern.pFadeTopLeft || 0.0) * 100)}%</span>
+                      <span className="text-[8px] font-semibold text-slate-500 uppercase tracking-wider">Top Left</span>
+                      <span className="text-[8.5px] font-semibold text-indigo-400">{Math.round((selectedPattern.pFadeTopLeft || 0.0) * 100)}%</span>
                     </div>
                     <input
                       type="range"
                       min="0.0"
                       max="1.0"
                       step="0.01"
-                      className="w-full h-1 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                      className="w-full h-1 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                       value={selectedPattern.pFadeTopLeft || 0.0}
                       onChange={(e) => updateDecal(selectedPattern.id, { pFadeTopLeft: parseFloat(e.target.value) })}
                     />
@@ -604,15 +604,15 @@ const MeshProperties = ({
                   {/* Fade Top Right */}
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-[8px] font-semibold text-gray-400 uppercase tracking-wider">Top Right</span>
-                      <span className="text-[8.5px] font-semibold text-blue-600">{Math.round((selectedPattern.pFadeTopRight || 0.0) * 100)}%</span>
+                      <span className="text-[8px] font-semibold text-slate-500 uppercase tracking-wider">Top Right</span>
+                      <span className="text-[8.5px] font-semibold text-indigo-400">{Math.round((selectedPattern.pFadeTopRight || 0.0) * 100)}%</span>
                     </div>
                     <input
                       type="range"
                       min="0.0"
                       max="1.0"
                       step="0.01"
-                      className="w-full h-1 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                      className="w-full h-1 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                       value={selectedPattern.pFadeTopRight || 0.0}
                       onChange={(e) => updateDecal(selectedPattern.id, { pFadeTopRight: parseFloat(e.target.value) })}
                     />
@@ -621,15 +621,15 @@ const MeshProperties = ({
                   {/* Fade Bottom Left */}
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-[8px] font-semibold text-gray-400 uppercase tracking-wider">Bottom Left</span>
-                      <span className="text-[8.5px] font-semibold text-blue-600">{Math.round((selectedPattern.pFadeBottomLeft || 0.0) * 100)}%</span>
+                      <span className="text-[8px] font-semibold text-slate-500 uppercase tracking-wider">Bottom Left</span>
+                      <span className="text-[8.5px] font-semibold text-indigo-400">{Math.round((selectedPattern.pFadeBottomLeft || 0.0) * 100)}%</span>
                     </div>
                     <input
                       type="range"
                       min="0.0"
                       max="1.0"
                       step="0.01"
-                      className="w-full h-1 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                      className="w-full h-1 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                       value={selectedPattern.pFadeBottomLeft || 0.0}
                       onChange={(e) => updateDecal(selectedPattern.id, { pFadeBottomLeft: parseFloat(e.target.value) })}
                     />
@@ -638,15 +638,15 @@ const MeshProperties = ({
                   {/* Fade Bottom Right */}
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-[8px] font-semibold text-gray-400 uppercase tracking-wider">Bottom Right</span>
-                      <span className="text-[8.5px] font-semibold text-blue-600">{Math.round((selectedPattern.pFadeBottomRight || 0.0) * 100)}%</span>
+                      <span className="text-[8px] font-semibold text-slate-500 uppercase tracking-wider">Bottom Right</span>
+                      <span className="text-[8.5px] font-semibold text-indigo-400">{Math.round((selectedPattern.pFadeBottomRight || 0.0) * 100)}%</span>
                     </div>
                     <input
                       type="range"
                       min="0.0"
                       max="1.0"
                       step="0.01"
-                      className="w-full h-1 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                      className="w-full h-1 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                       value={selectedPattern.pFadeBottomRight || 0.0}
                       onChange={(e) => updateDecal(selectedPattern.id, { pFadeBottomRight: parseFloat(e.target.value) })}
                     />
@@ -655,17 +655,17 @@ const MeshProperties = ({
               </div>
 
               {/* Rotation */}
-              <div className="space-y-4 pt-4 border-t border-gray-200">
+              <div className="space-y-4 pt-4 border-t border-white/10">
                 <div className="flex items-center justify-between mb-3">
-                  <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-widest">Rotation</p>
-                  <span className="text-[10px] font-semibold text-blue-600">{Math.round((selectedPattern.rotation || 0) * 180 / Math.PI)}°</span>
+                  <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-widest">Rotation</p>
+                  <span className="text-[10px] font-semibold text-indigo-400">{Math.round((selectedPattern.rotation || 0) * 180 / Math.PI)}°</span>
                 </div>
                 <input
                   type="range"
                   min="-180"
                   max="180"
                   step="1"
-                  className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                  className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                   value={Math.round((selectedPattern.rotation || 0) * 180 / Math.PI)}
                   onChange={(e) => updateDecal(selectedPattern.id, { rotation: parseFloat(e.target.value) * Math.PI / 180 })}
                 />
@@ -704,7 +704,7 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
         <button
           key={c.hex + i}
           onClick={() => safeUpdate({ [targetProp]: c.hex })}
-          className={`w-7 h-7 rounded-none border cursor-pointer transition-all hover:scale-110 ${selected?.[targetProp] === c.hex ? 'border-blue-600 shadow-lg ring-1 ring-blue-100 z-10' : 'border-gray-200 hover:border-gray-400'}`}
+          className={`w-7 h-7 rounded-none border cursor-pointer transition-all hover:scale-110 ${selected?.[targetProp] === c.hex ? 'border-indigo-500 shadow-lg ring-1 ring-blue-100 z-10' : 'border-white/10 hover:border-gray-400'}`}
           style={{ backgroundColor: c.hex }}
           title={c.name}
         />
@@ -715,13 +715,13 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
   const renderSection = (id, label, content) => {
     const isOpen = openSection === id;
     return (
-      <div key={id} className={`bg-white border-b border-gray-100 ${isLocked ? 'opacity-40 pointer-events-none' : ''}`}>
+      <div key={id} className={`bg-[#0A0C16] border-b border-white/5 ${isLocked ? 'opacity-40 pointer-events-none' : ''}`}>
         <button
           onClick={() => { if (!isLocked) setOpenSection(isOpen ? null : id); }}
-          className={`w-full flex items-center justify-between px-5 py-3 hover:bg-gray-50 transition-colors cursor-pointer ${isOpen ? 'bg-gray-50' : ''}`}
+          className={`w-full flex items-center justify-between px-5 py-3 hover:bg-[#0e101f] transition-colors cursor-pointer ${isOpen ? 'bg-[#0e101f]' : ''}`}
         >
-          <span className={`text-[10px] font-semibold uppercase tracking-widest ${isOpen ? 'text-blue-600' : 'text-gray-700'}`}>{label}</span>
-          <span className={`text-[10px] transition-transform duration-300 ${isOpen ? 'rotate-45 text-blue-600' : 'text-gray-300'}`}>＋</span>
+          <span className={`text-[10px] font-semibold uppercase tracking-widest ${isOpen ? 'text-indigo-400' : 'text-slate-300'}`}>{label}</span>
+          <span className={`text-[10px] transition-transform duration-300 ${isOpen ? 'rotate-45 text-indigo-400' : 'text-gray-300'}`}>＋</span>
         </button>
         {isOpen && (
           <div className="p-5">
@@ -733,22 +733,22 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
   };
 
   return (
-    <div className="flex flex-col bg-white">
-      <div className="p-6 bg-white border-b border-gray-50">
-        <h3 className="text-[9px] font-semibold text-gray-400 uppercase tracking-widest mb-4 flex items-center justify-between">
+    <div className="flex flex-col bg-[#0A0C16]">
+      <div className="p-6 bg-[#0A0C16] border-b border-white/5">
+        <h3 className="text-[9px] font-semibold text-slate-500 uppercase tracking-widest mb-4 flex items-center justify-between">
           <span>Active Text Layers</span>
-          <span className="text-[8px] bg-gray-100 px-2 py-0.5 rounded-none text-gray-400 border border-gray-100">{textDecals.length} TOTAL</span>
+          <span className="text-[8px] bg-slate-950/40 px-2 py-0.5 rounded-none text-slate-500 border border-white/5">{textDecals.length} TOTAL</span>
         </h3>
         <div className="space-y-1.5">
           {textDecals.map((d, i) => (
             <div
               key={d.id}
               onClick={() => setSelectedDecalId(d.id)}
-              className={`p-3.5 rounded-none border transition-all flex items-center justify-between bg-white cursor-pointer
-                ${selectedDecalId === d.id ? 'border-blue-600 bg-blue-50/20' : 'border-gray-50 hover:border-gray-100'}`}
+              className={`p-3.5 rounded-none border transition-all flex items-center justify-between bg-[#0A0C16] cursor-pointer
+                ${selectedDecalId === d.id ? 'border-indigo-500 bg-indigo-500/10/20' : 'border-white/5 hover:border-white/5'}`}
             >
               <div className="flex flex-col">
-                <span className={`text-[10px] font-semibold tracking-widest ${selectedDecalId === d.id ? 'text-gray-900' : 'text-gray-500'}`}>{d.text || 'EMPTY'}</span>
+                <span className={`text-[10px] font-semibold tracking-widest ${selectedDecalId === d.id ? 'text-white' : 'text-slate-400'}`}>{d.text || 'EMPTY'}</span>
                 <span className="text-[7px] font-semibold text-gray-300 uppercase tracking-widest mt-0.5">{d.font} • SIZE {((d.decalScale || 0.15) * 100).toFixed(0)}%</span>
               </div>
               <div className="flex items-center gap-3">
@@ -758,19 +758,19 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
             </div>
           ))}
           {textDecals.length === 0 && (
-            <div className="text-center py-10 border border-dashed border-gray-100 rounded-none bg-gray-50/30">
+            <div className="text-center py-10 border border-dashed border-white/5 rounded-none bg-[#0e101f]/30">
               <p className="text-[8px] font-semibold text-gray-300 uppercase tracking-widest">No Text Layers Added</p>
             </div>
           )}
         </div>
       </div>
 
-      <div className="bg-white p-6 border-b border-gray-50 relative z-10">
+      <div className="bg-[#0A0C16] p-6 border-b border-white/5 relative z-10">
         <div className="flex gap-2">
           <input
             type="text"
             placeholder="TYPE HERE..."
-            className="flex-1 bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-[10px] font-semibold uppercase tracking-widest focus:border-blue-600 focus:bg-white outline-none transition-all"
+            className="flex-1 bg-[#0e101f] border border-white/5 rounded-none px-4 py-3 text-[10px] font-semibold uppercase tracking-widest text-slate-200 focus:border-indigo-500 focus:bg-[#0A0C16] outline-none transition-all"
             onChange={(e) => {
               const val = e.target.value.toUpperCase();
               setLocalText(val);
@@ -781,7 +781,7 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
           />
           <button
             onClick={() => addDecal('text', localText || 'TEAM NAME')}
-            className="px-6 bg-gray-800 text-white rounded-none text-[10px] font-semibold uppercase tracking-widest hover:bg-blue-600 transition-all active:scale-95"
+            className="px-6 bg-gray-800 text-white rounded-none text-[10px] font-semibold uppercase tracking-widest hover:bg-indigo-600 transition-all active:scale-95"
           >
             ADD
           </button>
@@ -792,17 +792,17 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
         {renderSection('font', 'Font & Color', (
           <div className="space-y-6">
             <div>
-              <p className="text-[9px] font-semibold text-gray-400 uppercase mb-3">Primary Color</p>
+              <p className="text-[9px] font-semibold text-slate-500 uppercase mb-3">Primary Color</p>
               {renderColorGrid('color')}
             </div>
             <div>
-              <p className="text-[9px] font-semibold text-gray-400 uppercase mb-3">Sports Typography</p>
+              <p className="text-[9px] font-semibold text-slate-500 uppercase mb-3">Sports Typography</p>
               <div className="grid grid-cols-2 gap-2">
                 {fonts.map(f => (
                   <button
                     key={f}
                     onClick={() => safeUpdate({ font: f })}
-                    className={`py-3 rounded-none border text-[10px] font-semibold cursor-pointer transition-all ${selected?.font === f ? 'border-blue-600 bg-blue-50 text-blue-600' : 'border-gray-100 text-gray-500 hover:border-gray-300'}`}
+                    className={`py-3 rounded-none border text-[10px] font-semibold cursor-pointer transition-all ${selected?.font === f ? 'border-indigo-500 bg-indigo-500/10 text-indigo-400' : 'border-white/5 text-slate-400 hover:border-white/30'}`}
                     style={{ fontFamily: f }}
                   >
                     {f}
@@ -815,13 +815,13 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
 
         {renderSection('outline', 'Outline Layer 1', (
           <div className="space-y-5">
-            <div className="flex items-center justify-between bg-gray-50 p-3 rounded-none">
-              <p className="text-[9px] font-semibold text-gray-400 uppercase">Thickness</p>
-              <span className="text-[10px] font-semibold text-blue-600 bg-white px-2 py-1 rounded-none shadow-sm">{selected?.outline1Width || 0}PX</span>
+            <div className="flex items-center justify-between bg-[#0e101f] p-3 rounded-none">
+              <p className="text-[9px] font-semibold text-slate-500 uppercase">Thickness</p>
+              <span className="text-[10px] font-semibold text-indigo-400 bg-[#0A0C16] px-2 py-1 rounded-none shadow-sm">{selected?.outline1Width || 0}PX</span>
             </div>
-            <input type="range" min="0" max="12" step="1" className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600" value={selected?.outline1Width || 0} onChange={(e) => safeUpdate({ outline1Width: parseInt(e.target.value) })} />
+            <input type="range" min="0" max="12" step="1" className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500" value={selected?.outline1Width || 0} onChange={(e) => safeUpdate({ outline1Width: parseInt(e.target.value) })} />
             <div>
-              <p className="text-[9px] font-semibold text-gray-400 uppercase mb-3">Outline Color</p>
+              <p className="text-[9px] font-semibold text-slate-500 uppercase mb-3">Outline Color</p>
               {renderColorGrid('outline1Color')}
             </div>
           </div>
@@ -829,13 +829,13 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
 
         {renderSection('outline2', 'Outline Layer 2', (
           <div className="space-y-5">
-            <div className="flex items-center justify-between bg-gray-50 p-3 rounded-none">
-              <p className="text-[9px] font-semibold text-gray-400 uppercase">Outer Thickness</p>
-              <span className="text-[10px] font-semibold text-blue-600 bg-white px-2 py-1 rounded-none shadow-sm">{selected?.outline2Width || 0}PX</span>
+            <div className="flex items-center justify-between bg-[#0e101f] p-3 rounded-none">
+              <p className="text-[9px] font-semibold text-slate-500 uppercase">Outer Thickness</p>
+              <span className="text-[10px] font-semibold text-indigo-400 bg-[#0A0C16] px-2 py-1 rounded-none shadow-sm">{selected?.outline2Width || 0}PX</span>
             </div>
-            <input type="range" min="0" max="12" step="1" className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600" value={selected?.outline2Width || 0} onChange={(e) => safeUpdate({ outline2Width: parseInt(e.target.value) })} />
+            <input type="range" min="0" max="12" step="1" className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500" value={selected?.outline2Width || 0} onChange={(e) => safeUpdate({ outline2Width: parseInt(e.target.value) })} />
             <div>
-              <p className="text-[9px] font-semibold text-gray-400 uppercase mb-3">Outer Color</p>
+              <p className="text-[9px] font-semibold text-slate-500 uppercase mb-3">Outer Color</p>
               {renderColorGrid('outline2Color')}
             </div>
           </div>
@@ -843,22 +843,22 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
 
         {renderSection('effect', 'Text Curvature', (
           <div className="space-y-4">
-            <div className="flex items-center justify-between p-4 rounded-none border border-gray-50 bg-white">
-              <span className="text-[10px] font-semibold text-gray-700 uppercase tracking-wider">Arch Effect</span>
+            <div className="flex items-center justify-between p-4 rounded-none border border-white/5 bg-[#0A0C16]">
+              <span className="text-[10px] font-semibold text-slate-300 uppercase tracking-wider">Arch Effect</span>
               <button
                 onClick={() => safeUpdate({ effect: selected?.effect === 'arch' ? 'none' : 'arch' })}
-                className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer ${selected?.effect === 'arch' ? 'bg-blue-600' : 'bg-gray-200'}`}
+                className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer ${selected?.effect === 'arch' ? 'bg-indigo-600' : 'bg-gray-200'}`}
               >
-                <div className={`absolute top-1 left-1 w-3 h-3 rounded-full bg-white transition-all ${selected?.effect === 'arch' ? 'translate-x-5' : ''}`} />
+                <div className={`absolute top-1 left-1 w-3 h-3 rounded-full bg-[#0A0C16] transition-all ${selected?.effect === 'arch' ? 'translate-x-5' : ''}`} />
               </button>
             </div>
             {selected?.effect === 'arch' && (
-              <div className="p-4 bg-white border border-gray-50 space-y-4">
+              <div className="p-4 bg-[#0A0C16] border border-white/5 space-y-4">
                 <div className="flex items-center justify-between">
-                  <p className="text-[9px] font-semibold text-gray-400 uppercase">Bend Intensity</p>
-                  <span className="text-[10px] font-semibold text-blue-600">{((selected?.effectIntensity || 0.5) * 100).toFixed(0)}%</span>
+                  <p className="text-[9px] font-semibold text-slate-500 uppercase">Bend Intensity</p>
+                  <span className="text-[10px] font-semibold text-indigo-400">{((selected?.effectIntensity || 0.5) * 100).toFixed(0)}%</span>
                 </div>
-                <input type="range" min="0.1" max="1.5" step="0.1" className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600" value={selected?.effectIntensity || 0.5} onChange={(e) => safeUpdate({ effectIntensity: parseFloat(e.target.value) })} />
+                <input type="range" min="0.1" max="1.5" step="0.1" className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500" value={selected?.effectIntensity || 0.5} onChange={(e) => safeUpdate({ effectIntensity: parseFloat(e.target.value) })} />
               </div>
             )}
           </div>
@@ -867,7 +867,7 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
         {renderSection('transform', 'Layer Size & Rotation', (
           <div className="space-y-6">
             {/* Tip Banner */}
-            <div className="p-3 bg-blue-50/50 border border-blue-100 rounded-none text-[8.5px] text-blue-700/80 font-bold uppercase tracking-wider flex items-center gap-2">
+            <div className="p-3 bg-indigo-500/10/50 border border-indigo-500/20 rounded-none text-[8.5px] text-indigo-400/80 font-bold uppercase tracking-wider flex items-center gap-2">
               <span className="text-xs">💡</span>
               <span>Tip: click anywhere on the 3D model to move this layer.</span>
             </div>
@@ -875,15 +875,15 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
             <div className="space-y-4">
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-widest">Overall Scale</p>
-                  <span className="text-[10px] font-semibold text-blue-600">{((selected?.decalScale || 0.15) * 100).toFixed(0)}%</span>
+                  <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-widest">Overall Scale</p>
+                  <span className="text-[10px] font-semibold text-indigo-400">{((selected?.decalScale || 0.15) * 100).toFixed(0)}%</span>
                 </div>
                 <input
                   type="range"
                   min="0.03"
                   max="1.5"
                   step="0.01"
-                  className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                  className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                   value={selected?.decalScale || 0.15}
                   onChange={(e) => {
                     const v = parseFloat(e.target.value);
@@ -894,15 +894,15 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
 
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-widest">Width (Horizontal Stretch)</p>
-                  <span className="text-[10px] font-semibold text-blue-600">{((selected?.decalScaleX !== undefined ? selected.decalScaleX : (selected?.decalScale || 0.15)) * 100).toFixed(0)}%</span>
+                  <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-widest">Width (Horizontal Stretch)</p>
+                  <span className="text-[10px] font-semibold text-indigo-400">{((selected?.decalScaleX !== undefined ? selected.decalScaleX : (selected?.decalScale || 0.15)) * 100).toFixed(0)}%</span>
                 </div>
                 <input
                   type="range"
                   min="0.03"
                   max="1.5"
                   step="0.01"
-                  className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                  className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                   value={selected?.decalScaleX !== undefined ? selected.decalScaleX : (selected?.decalScale || 0.15)}
                   onChange={(e) => safeUpdate({ decalScaleX: parseFloat(e.target.value) })}
                 />
@@ -910,15 +910,15 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
 
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-widest">Height (Vertical Stretch)</p>
-                  <span className="text-[10px] font-semibold text-blue-600">{((selected?.decalScaleY !== undefined ? selected.decalScaleY : (selected?.decalScale || 0.15)) * 100).toFixed(0)}%</span>
+                  <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-widest">Height (Vertical Stretch)</p>
+                  <span className="text-[10px] font-semibold text-indigo-400">{((selected?.decalScaleY !== undefined ? selected.decalScaleY : (selected?.decalScale || 0.15)) * 100).toFixed(0)}%</span>
                 </div>
                 <input
                   type="range"
                   min="0.03"
                   max="1.5"
                   step="0.01"
-                  className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                  className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                   value={selected?.decalScaleY !== undefined ? selected.decalScaleY : (selected?.decalScale || 0.15)}
                   onChange={(e) => safeUpdate({ decalScaleY: parseFloat(e.target.value) })}
                 />
@@ -926,15 +926,15 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
 
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-widest">Rotation</p>
-                  <span className="text-[10px] font-semibold text-blue-600">{Math.round((selected?.rotation || 0) * 180 / Math.PI)}°</span>
+                  <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-widest">Rotation</p>
+                  <span className="text-[10px] font-semibold text-indigo-400">{Math.round((selected?.rotation || 0) * 180 / Math.PI)}°</span>
                 </div>
                 <input
                   type="range"
                   min="-180"
                   max="180"
                   step="1"
-                  className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                  className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                   value={Math.round((selected?.rotation || 0) * 180 / Math.PI)}
                   onChange={(e) => safeUpdate({ rotation: parseFloat(e.target.value) * Math.PI / 180 })}
                 />
@@ -1052,18 +1052,18 @@ const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, 
   };
 
   return (
-    <div className="flex flex-col bg-white">
+    <div className="flex flex-col bg-[#0A0C16]">
       {/* ADD LOGO - PREMIUM OVERHAUL */}
-      <div className="p-6 bg-white border-b border-gray-50">
-        <h3 className="text-[9px] font-semibold text-gray-400 uppercase tracking-widest mb-4">Add Components</h3>
-        <label className="group relative flex flex-col items-center justify-center py-10 border border-dashed border-gray-200 rounded-none bg-gray-50/30 hover:bg-blue-50/30 hover:border-blue-600 transition-all cursor-pointer overflow-hidden">
+      <div className="p-6 bg-[#0A0C16] border-b border-white/5">
+        <h3 className="text-[9px] font-semibold text-slate-500 uppercase tracking-widest mb-4">Add Components</h3>
+        <label className="group relative flex flex-col items-center justify-center py-10 border border-dashed border-white/10 rounded-none bg-[#0e101f]/30 hover:bg-indigo-500/10/30 hover:border-indigo-500 transition-all cursor-pointer overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-blue-50/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-          <div className="w-12 h-12 rounded-none bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-400 group-hover:text-blue-600 group-hover:scale-110 transition-all mb-4">
+          <div className="w-12 h-12 rounded-none bg-[#0A0C16] shadow-sm border border-white/5 flex items-center justify-center text-slate-500 group-hover:text-indigo-400 group-hover:scale-110 transition-all mb-4">
             <HiOutlineCloudUpload size={24} className="animate-bounce-subtle" />
           </div>
           <div className="text-center relative z-10">
-            <p className="text-[10px] font-semibold text-gray-900 uppercase tracking-widest">Upload Custom Artwork</p>
-            <p className="text-[8px] text-gray-400 uppercase tracking-widest mt-1">PNG, SVG, JPG (Max 5MB)</p>
+            <p className="text-[10px] font-semibold text-white uppercase tracking-widest">Upload Custom Artwork</p>
+            <p className="text-[8px] text-slate-500 uppercase tracking-widest mt-1">PNG, SVG, JPG (Max 5MB)</p>
           </div>
           <input type="file" accept="image/*" className="hidden" onChange={handleUpload} />
         </label>
@@ -1071,20 +1071,20 @@ const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, 
 
       {/* ACTIVE LOGOS LIST */}
       {imageDecals.length > 0 && (
-        <div className="p-6 bg-white border-b border-gray-50">
-          <h3 className="text-[9px] font-semibold text-gray-400 uppercase tracking-widest mb-4 flex items-center justify-between">
+        <div className="p-6 bg-[#0A0C16] border-b border-white/5">
+          <h3 className="text-[9px] font-semibold text-slate-500 uppercase tracking-widest mb-4 flex items-center justify-between">
             <span>Active Logos</span>
-            <span className="text-[8px] bg-gray-100 px-2 py-0.5 rounded-none text-gray-400 border border-gray-100">{imageDecals.length}</span>
+            <span className="text-[8px] bg-slate-950/40 px-2 py-0.5 rounded-none text-slate-500 border border-white/5">{imageDecals.length}</span>
           </h3>
           <div className="space-y-1.5">
             {imageDecals.map(d => (
               <div
                 key={d.id}
                 onClick={() => setSelectedDecalId(d.id)}
-                className={`p-3.5 rounded-none border transition-all flex items-center justify-between bg-white cursor-pointer ${selectedDecalId === d.id ? 'border-blue-600 bg-blue-50/20' : 'border-gray-50 hover:border-gray-100'}`}
+                className={`p-3.5 rounded-none border transition-all flex items-center justify-between bg-[#0A0C16] cursor-pointer ${selectedDecalId === d.id ? 'border-indigo-500 bg-indigo-500/10/20' : 'border-white/5 hover:border-white/5'}`}
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-none border border-gray-100 bg-cover bg-center flex-shrink-0" style={{ backgroundImage: `url(${d.imageUrl})` }} />
+                  <div className="w-8 h-8 rounded-none border border-white/5 bg-cover bg-center flex-shrink-0" style={{ backgroundImage: `url(${d.imageUrl})` }} />
                   <div className="flex flex-col text-left">
                     <span className="text-[10px] font-semibold truncate max-w-[150px]">{d.text || 'Logo'}</span>
                     <span className="text-[7px] font-semibold text-gray-300 uppercase mt-0.5">SIZE {((d.decalScale || 0.12) * 100).toFixed(0)}%</span>
@@ -1096,29 +1096,29 @@ const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, 
           </div>
 
           {selected && (
-            <div className="mt-6 p-4 bg-gray-50 rounded-none border border-gray-100 space-y-6 text-left">
+            <div className="mt-6 p-4 bg-[#0e101f] rounded-none border border-white/5 space-y-6 text-left">
               {/* Tip Banner */}
-              <div className="p-3 bg-blue-50/50 border border-blue-100 rounded-none text-[8.5px] text-blue-700/80 font-bold uppercase tracking-wider flex items-center gap-2">
+              <div className="p-3 bg-indigo-500/10/50 border border-indigo-500/20 rounded-none text-[8.5px] text-indigo-400/80 font-bold uppercase tracking-wider flex items-center gap-2">
                 <span className="text-xs">💡</span>
                 <span>Tip: click anywhere on the 3D model to move this layer.</span>
               </div>
 
               {/* Sizing & Stretching */}
-              <div className="space-y-4 pt-4 border-t border-gray-200">
-                <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Sizing & Stretching</p>
+              <div className="space-y-4 pt-4 border-t border-white/10">
+                <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Sizing & Stretching</p>
 
                 {/* Uniform Scale */}
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[9px] font-semibold text-gray-500 uppercase tracking-wider">Overall Scale (Uniform)</span>
-                    <span className="text-[10px] font-semibold text-blue-600">{((selected.decalScale || 0.12) * 100).toFixed(0)}%</span>
+                    <span className="text-[9px] font-semibold text-slate-400 uppercase tracking-wider">Overall Scale (Uniform)</span>
+                    <span className="text-[10px] font-semibold text-indigo-400">{((selected.decalScale || 0.12) * 100).toFixed(0)}%</span>
                   </div>
                   <input
                     type="range"
                     min="0.03"
                     max="4.0"
                     step="0.01"
-                    className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                    className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                     value={selected.decalScale || 0.12}
                     onChange={(e) => {
                       const v = parseFloat(e.target.value);
@@ -1130,15 +1130,15 @@ const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, 
                 {/* Horizontal Stretch (Width) */}
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[9px] font-semibold text-gray-500 uppercase tracking-wider">Width (Horizontal Stretch)</span>
-                    <span className="text-[10px] font-semibold text-blue-600">{((selected.decalScaleX !== undefined ? selected.decalScaleX : (selected.decalScale || 0.12)) * 100).toFixed(0)}%</span>
+                    <span className="text-[9px] font-semibold text-slate-400 uppercase tracking-wider">Width (Horizontal Stretch)</span>
+                    <span className="text-[10px] font-semibold text-indigo-400">{((selected.decalScaleX !== undefined ? selected.decalScaleX : (selected.decalScale || 0.12)) * 100).toFixed(0)}%</span>
                   </div>
                   <input
                     type="range"
                     min="0.03"
                     max="4.0"
                     step="0.01"
-                    className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                    className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                     value={selected.decalScaleX !== undefined ? selected.decalScaleX : (selected.decalScale || 0.12)}
                     onChange={(e) => safeUpdate({ decalScaleX: parseFloat(e.target.value) })}
                   />
@@ -1147,15 +1147,15 @@ const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, 
                 {/* Vertical Stretch (Height) */}
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[9px] font-semibold text-gray-500 uppercase tracking-wider">Height (Vertical Stretch)</span>
-                    <span className="text-[10px] font-semibold text-blue-600">{((selected.decalScaleY !== undefined ? selected.decalScaleY : (selected.decalScale || 0.12)) * 100).toFixed(0)}%</span>
+                    <span className="text-[9px] font-semibold text-slate-400 uppercase tracking-wider">Height (Vertical Stretch)</span>
+                    <span className="text-[10px] font-semibold text-indigo-400">{((selected.decalScaleY !== undefined ? selected.decalScaleY : (selected.decalScale || 0.12)) * 100).toFixed(0)}%</span>
                   </div>
                   <input
                     type="range"
                     min="0.03"
                     max="4.0"
                     step="0.01"
-                    className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                    className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                     value={selected.decalScaleY !== undefined ? selected.decalScaleY : (selected.decalScale || 0.12)}
                     onChange={(e) => safeUpdate({ decalScaleY: parseFloat(e.target.value) })}
                   />
@@ -1164,15 +1164,15 @@ const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, 
 
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-widest">Rotation</p>
-                  <span className="text-[10px] font-semibold text-blue-600">{Math.round((selected.rotation || 0) * 180 / Math.PI)}°</span>
+                  <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-widest">Rotation</p>
+                  <span className="text-[10px] font-semibold text-indigo-400">{Math.round((selected.rotation || 0) * 180 / Math.PI)}°</span>
                 </div>
                 <input
                   type="range"
                   min="-180"
                   max="180"
                   step="1"
-                  className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-blue-600"
+                  className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                   value={Math.round((selected.rotation || 0) * 180 / Math.PI)}
                   onChange={(e) => safeUpdate({ rotation: parseFloat(e.target.value) * Math.PI / 180 })}
                 />
@@ -1185,28 +1185,28 @@ const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, 
       {/* LOGO CATEGORIES */}
       <div className="flex-1">
         {mergedLogoCategories.map((cat, i) => (
-          <div key={cat.name} className="border-b border-gray-50 bg-white">
+          <div key={cat.name} className="border-b border-white/5 bg-[#0A0C16]">
             <button
               onClick={() => setExpandedCat(expandedCat === i ? null : i)}
-              className={`w-full flex items-center justify-between px-5 py-3.5 transition-colors cursor-pointer hover:bg-gray-50 ${expandedCat === i ? 'bg-gray-50' : ''}`}
+              className={`w-full flex items-center justify-between px-5 py-3.5 transition-colors cursor-pointer hover:bg-[#0e101f] ${expandedCat === i ? 'bg-[#0e101f]' : ''}`}
             >
               <div className="flex items-center gap-3">
-                <span className={`text-lg transition-colors ${expandedCat === i ? 'text-blue-600' : 'text-gray-400'}`}>{cat.icon}</span>
-                <span className={`text-[10px] font-semibold uppercase tracking-widest ${expandedCat === i ? 'text-gray-900' : 'text-gray-400'}`}>{cat.name}</span>
+                <span className={`text-lg transition-colors ${expandedCat === i ? 'text-indigo-400' : 'text-slate-500'}`}>{cat.icon}</span>
+                <span className={`text-[10px] font-semibold uppercase tracking-widest ${expandedCat === i ? 'text-white' : 'text-slate-500'}`}>{cat.name}</span>
               </div>
-              <span className={`text-[10px] transition-transform duration-300 ${expandedCat === i ? 'rotate-45 text-blue-600' : 'text-gray-300'}`}>＋</span>
+              <span className={`text-[10px] transition-transform duration-300 ${expandedCat === i ? 'rotate-45 text-indigo-400' : 'text-gray-300'}`}>＋</span>
             </button>
             {expandedCat === i && (
-              <div className="p-4 bg-white border-t border-gray-50">
+              <div className="p-4 bg-[#0A0C16] border-t border-white/5">
                 <div className="grid grid-cols-3 gap-2">
                   {cat.items?.map((item, idx) => (
                     <button
                       key={idx}
                       onClick={() => addDecal('image', item.name, item.url)}
-                      className="aspect-square bg-gray-50 border border-gray-100 rounded-none p-2 hover:border-blue-600 hover:bg-blue-50 transition-all flex flex-col items-center justify-center gap-1 group cursor-pointer"
+                      className="aspect-square bg-[#0e101f] border border-white/5 rounded-none p-2 hover:border-indigo-500 hover:bg-indigo-500/10 transition-all flex flex-col items-center justify-center gap-1 group cursor-pointer"
                     >
                       <img src={item.url} alt={item.name} title={item.name} className="w-full h-full object-contain opacity-60 group-hover:opacity-100 transition-opacity" />
-                      <span className="text-[6px] font-semibold text-gray-400 uppercase truncate w-full text-center group-hover:text-blue-600">{item.name}</span>
+                      <span className="text-[6px] font-semibold text-slate-500 uppercase truncate w-full text-center group-hover:text-indigo-400">{item.name}</span>
                     </button>
                   ))}
                 </div>
@@ -1225,49 +1225,49 @@ const StudioConfigTab = ({ globalPattern, setGlobalPattern, lightingPreset, setL
   const renderSection = (id, label, icon, content) => {
     const isOpen = openSection === id;
     return (
-      <div className="bg-white border-b border-gray-50">
+      <div className="bg-[#0A0C16] border-b border-white/5">
         <button
           onClick={() => setOpenSection(isOpen ? null : id)}
-          className={`w-full flex items-center justify-between px-5 py-4 hover:bg-gray-50 transition-colors cursor-pointer ${isOpen ? 'bg-gray-50' : ''}`}
+          className={`w-full flex items-center justify-between px-5 py-4 hover:bg-[#0e101f] transition-colors cursor-pointer ${isOpen ? 'bg-[#0e101f]' : ''}`}
         >
           <div className="flex items-center gap-3">
-            <span className={`text-lg transition-colors ${isOpen ? 'text-blue-600' : 'text-gray-400'}`}>{icon}</span>
-            <span className={`text-[10px] font-semibold uppercase tracking-widest ${isOpen ? 'text-gray-900' : 'text-gray-400'}`}>{label}</span>
+            <span className={`text-lg transition-colors ${isOpen ? 'text-indigo-400' : 'text-slate-500'}`}>{icon}</span>
+            <span className={`text-[10px] font-semibold uppercase tracking-widest ${isOpen ? 'text-white' : 'text-slate-500'}`}>{label}</span>
           </div>
-          <span className={`text-[10px] transition-transform duration-300 ${isOpen ? 'rotate-45 text-blue-600' : 'text-gray-300'}`}>＋</span>
+          <span className={`text-[10px] transition-transform duration-300 ${isOpen ? 'rotate-45 text-indigo-400' : 'text-gray-300'}`}>＋</span>
         </button>
-        {isOpen && <div className="p-5 bg-white">{content}</div>}
+        {isOpen && <div className="p-5 bg-[#0A0C16]">{content}</div>}
       </div>
     );
   };
 
   return (
-    <div className="flex flex-col bg-white h-full font-['Outfit']">
+    <div className="flex flex-col bg-[#0A0C16] h-full font-['Outfit']">
       {renderSection('pattern', 'Fabric Options', <HiOutlineCube />, (
         <div className="grid grid-cols-2 gap-2">
           {['none', 'carbon', 'camo', 'dots'].map(p => (
-            <button key={p} onClick={() => setGlobalPattern(p === 'none' ? null : p)} className={`py-3 rounded-none text-[9px] font-semibold uppercase tracking-widest border transition-all ${globalPattern === p || (p === 'none' && !globalPattern) ? 'border-blue-600 bg-blue-50 text-blue-600' : 'border-gray-100 text-gray-400 hover:border-gray-300'}`}>{p}</button>
+            <button key={p} onClick={() => setGlobalPattern(p === 'none' ? null : p)} className={`py-3 rounded-none text-[9px] font-semibold uppercase tracking-widest border transition-all ${globalPattern === p || (p === 'none' && !globalPattern) ? 'border-indigo-500 bg-indigo-500/10 text-indigo-400' : 'border-white/5 text-slate-500 hover:border-white/30'}`}>{p}</button>
           ))}
         </div>
       ))}
       {renderSection('finish', 'Material Finish', <HiOutlineColorSwatch />, (
         <div className="grid grid-cols-3 gap-2">
           {['matte', 'gloss', 'metallic'].map(f => (
-            <button key={f} onClick={() => setMaterialFinish(f)} className={`py-3 rounded-none text-[9px] font-semibold uppercase tracking-widest border transition-all ${materialFinish === f ? 'border-blue-600 bg-blue-50 text-blue-600' : 'border-gray-100 text-gray-400 hover:border-gray-300'}`}>{f}</button>
+            <button key={f} onClick={() => setMaterialFinish(f)} className={`py-3 rounded-none text-[9px] font-semibold uppercase tracking-widest border transition-all ${materialFinish === f ? 'border-indigo-500 bg-indigo-500/10 text-indigo-400' : 'border-white/5 text-slate-500 hover:border-white/30'}`}>{f}</button>
           ))}
         </div>
       ))}
       {renderSection('lighting', 'Studio Lighting', <HiOutlineLightningBolt />, (
         <div className="grid grid-cols-3 gap-2">
           {['city', 'studio', 'night'].map(l => (
-            <button key={l} onClick={() => setLightingPreset(l)} className={`py-3 rounded-none text-[9px] font-semibold uppercase tracking-widest border transition-all ${lightingPreset === l ? 'border-blue-600 bg-blue-50 text-blue-600' : 'border-gray-100 text-gray-400 hover:border-gray-300'}`}>{l}</button>
+            <button key={l} onClick={() => setLightingPreset(l)} className={`py-3 rounded-none text-[9px] font-semibold uppercase tracking-widest border transition-all ${lightingPreset === l ? 'border-indigo-500 bg-indigo-500/10 text-indigo-400' : 'border-white/5 text-slate-500 hover:border-white/30'}`}>{l}</button>
           ))}
         </div>
       ))}
       {renderSection('interaction', 'Viewport Settings', <HiOutlineCursorClick />, (
         <div className="space-y-4">
-          <button onClick={() => setMouseFollow(!mouseFollow)} className={`w-full py-3.5 rounded-none text-[10px] font-semibold uppercase tracking-widest border transition-all flex items-center justify-center gap-3 ${mouseFollow ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-gray-400 border-gray-100 hover:border-blue-600'}`}>
-            <div className={`w-2 h-2 rounded-none ${mouseFollow ? 'bg-white' : 'bg-gray-200'}`} />
+          <button onClick={() => setMouseFollow(!mouseFollow)} className={`w-full py-3.5 rounded-none text-[10px] font-semibold uppercase tracking-widest border transition-all flex items-center justify-center gap-3 ${mouseFollow ? 'bg-indigo-600 text-white border-indigo-500' : 'bg-[#0A0C16] text-slate-500 border-white/5 hover:border-indigo-500'}`}>
+            <div className={`w-2 h-2 rounded-none ${mouseFollow ? 'bg-[#0A0C16]' : 'bg-gray-200'}`} />
             360 Mouse Follow: {mouseFollow ? 'ACTIVE' : 'OFF'}
           </button>
         </div>
@@ -1283,40 +1283,40 @@ const CheckoutRosterTab = ({ roster, setRoster, onCheckout }) => {
   const updateRow = (id, field, value) => setRoster(roster.map(r => r.id === id ? { ...r, [field]: value } : r));
 
   return (
-    <div className="flex flex-col bg-white h-full">
-      <div className="p-6 bg-white border-b border-gray-50">
+    <div className="flex flex-col bg-[#0A0C16] h-full">
+      <div className="p-6 bg-[#0A0C16] border-b border-white/5">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h3 className="text-[10px] font-semibold uppercase tracking-widest text-gray-800">Order Roster</h3>
-            <p className="text-[8px] font-semibold text-gray-400 uppercase mt-1">{roster.length} Total Units</p>
+            <h3 className="text-[10px] font-semibold uppercase tracking-widest text-white">Order Roster</h3>
+            <p className="text-[8px] font-semibold text-slate-500 uppercase mt-1">{roster.length} Total Units</p>
           </div>
-          <button onClick={addRow} className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-none text-[9px] font-semibold uppercase tracking-widest shadow-lg shadow-blue-500/10"><HiOutlineUserAdd /> Add Unit</button>
+          <button onClick={addRow} className="flex items-center gap-2 px-3 py-2 bg-indigo-600 text-white rounded-none text-[9px] font-semibold uppercase tracking-widest shadow-lg shadow-blue-500/10"><HiOutlineUserAdd /> Add Unit</button>
         </div>
-        <div className="flex items-center justify-between bg-gray-50 rounded-none p-3 border border-gray-100">
+        <div className="flex items-center justify-between bg-[#0e101f] rounded-none p-3 border border-white/5">
           <div className="flex items-center gap-3">
-            <div className={`w-8 h-8 rounded-none flex items-center justify-center text-sm ${isPersonalized ? 'bg-blue-100 text-blue-600' : 'bg-gray-200 text-gray-400'}`}><BiText /></div>
+            <div className={`w-8 h-8 rounded-none flex items-center justify-center text-sm ${isPersonalized ? 'bg-indigo-500/20 text-indigo-400' : 'bg-gray-200 text-slate-500'}`}><BiText /></div>
             <div>
-              <p className="text-[9px] font-semibold uppercase tracking-widest text-gray-700">Personalization</p>
-              <p className="text-[7px] font-semibold text-gray-400 uppercase">Names & Numbers</p>
+              <p className="text-[9px] font-semibold uppercase tracking-widest text-slate-300">Personalization</p>
+              <p className="text-[7px] font-semibold text-slate-500 uppercase">Names & Numbers</p>
             </div>
           </div>
-          <button onClick={() => setIsPersonalized(!isPersonalized)} className={`w-10 h-5 rounded-full relative transition-all duration-300 ${isPersonalized ? 'bg-blue-600' : 'bg-gray-300'}`}><div className={`absolute top-1 w-3 h-3 bg-white rounded-full transition-all duration-300 ${isPersonalized ? 'left-6' : 'left-1'}`} /></button>
+          <button onClick={() => setIsPersonalized(!isPersonalized)} className={`w-10 h-5 rounded-full relative transition-all duration-300 ${isPersonalized ? 'bg-indigo-600' : 'bg-gray-300'}`}><div className={`absolute top-1 w-3 h-3 bg-[#0A0C16] rounded-full transition-all duration-300 ${isPersonalized ? 'left-6' : 'left-1'}`} /></button>
         </div>
       </div>
       <div className="flex-1 overflow-y-auto h-[calc(100%-10rem)] p-4 py-12 space-y-3 right-scroll" data-lenis-prevent>
         {roster.map((row, index) => (
-          <div key={row.id} className="bg-white rounded-none border border-gray-50 p-3 relative group">
+          <div key={row.id} className="bg-[#0A0C16] rounded-none border border-white/5 p-3 relative group">
             <div className="flex items-center gap-3">
-              <div className="w-6 h-6 rounded-none bg-gray-50 flex items-center justify-center text-[9px] font-semibold text-gray-400 border border-gray-100">{index + 1}</div>
+              <div className="w-6 h-6 rounded-none bg-[#0e101f] flex items-center justify-center text-[9px] font-semibold text-slate-500 border border-white/5">{index + 1}</div>
               <div className="flex-1 grid grid-cols-12 gap-2">
                 {isPersonalized ? (
                   <>
-                    <div className="col-span-6"><input type="text" value={row.name} onChange={(e) => updateRow(row.id, 'name', e.target.value.toUpperCase())} placeholder="PLAYER NAME" className="w-full bg-gray-50 border-none px-2 py-2 text-[10px] font-semibold focus:ring-1 focus:ring-blue-600 transition-all" /></div>
-                    <div className="col-span-3"><input type="text" value={row.number} onChange={(e) => updateRow(row.id, 'number', e.target.value)} placeholder="00" maxLength={3} className="w-full bg-gray-50 border-none px-2 py-2 text-[10px] font-semibold text-center focus:ring-1 focus:ring-blue-600 transition-all" /></div>
-                    <div className="col-span-3"><select value={row.size} onChange={(e) => updateRow(row.id, 'size', e.target.value)} className="w-full bg-gray-50 border-none px-2 py-2 text-[10px] font-semibold appearance-none focus:ring-1 focus:ring-blue-600 transition-all cursor-pointer">{['YS', 'YM', 'YL', 'S', 'M', 'L', 'XL', '2XL', '3XL'].map(s => <option key={s} value={s}>{s}</option>)}</select></div>
+                    <div className="col-span-6"><input type="text" value={row.name} onChange={(e) => updateRow(row.id, 'name', e.target.value.toUpperCase())} placeholder="PLAYER NAME" className="w-full bg-[#0e101f] border-none px-2 py-2 text-[10px] font-semibold focus:ring-1 focus:ring-indigo-500 transition-all" /></div>
+                    <div className="col-span-3"><input type="text" value={row.number} onChange={(e) => updateRow(row.id, 'number', e.target.value)} placeholder="00" maxLength={3} className="w-full bg-[#0e101f] border-none px-2 py-2 text-[10px] font-semibold text-center focus:ring-1 focus:ring-indigo-500 transition-all" /></div>
+                    <div className="col-span-3"><select value={row.size} onChange={(e) => updateRow(row.id, 'size', e.target.value)} className="w-full bg-[#0e101f] border-none px-2 py-2 text-[10px] font-semibold appearance-none focus:ring-1 focus:ring-indigo-500 transition-all cursor-pointer">{['YS', 'YM', 'YL', 'S', 'M', 'L', 'XL', '2XL', '3XL'].map(s => <option key={s} value={s}>{s}</option>)}</select></div>
                   </>
                 ) : (
-                  <div className="col-span-12 flex items-center justify-between bg-gray-50 px-3 py-1.5"><span className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest">Select Size</span><select value={row.size} onChange={(e) => updateRow(row.id, 'size', e.target.value)} className="bg-transparent border-none py-1 text-[12px] font-semibold text-blue-600 appearance-none focus:ring-0 cursor-pointer text-right">{['YS', 'YM', 'YL', 'S', 'M', 'L', 'XL', '2XL', '3XL'].map(s => <option key={s} value={s}>{s}</option>)}</select></div>
+                  <div className="col-span-12 flex items-center justify-between bg-[#0e101f] px-3 py-1.5"><span className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest">Select Size</span><select value={row.size} onChange={(e) => updateRow(row.id, 'size', e.target.value)} className="bg-transparent border-none py-1 text-[12px] font-semibold text-indigo-400 appearance-none focus:ring-0 cursor-pointer text-right">{['YS', 'YM', 'YL', 'S', 'M', 'L', 'XL', '2XL', '3XL'].map(s => <option key={s} value={s}>{s}</option>)}</select></div>
                 )}
               </div>
               <button onClick={() => removeRow(row.id)} className="w-6 h-6 flex items-center justify-center text-gray-200 hover:text-red-500 transition-colors"><HiOutlineTrash /></button>
@@ -1324,8 +1324,8 @@ const CheckoutRosterTab = ({ roster, setRoster, onCheckout }) => {
           </div>
         ))}
       </div>
-      <div className="p-6 bg-white border-t border-gray-100">
-        <button onClick={onCheckout} className="w-full bg-blue-600 text-white py-4 rounded-none text-[11px] font-semibold uppercase tracking-[0.2em] shadow-xl shadow-blue-500/20 hover:bg-blue-700 transition-all flex items-center justify-center gap-3">Finalize & Checkout <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /></button>
+      <div className="p-6 bg-[#0A0C16] border-t border-white/5">
+        <button onClick={onCheckout} className="w-full bg-indigo-600 text-white py-4 rounded-none text-[11px] font-semibold uppercase tracking-[0.2em] shadow-xl shadow-blue-500/20 hover:bg-indigo-700 transition-all flex items-center justify-center gap-3">Finalize & Checkout <div className="w-1.5 h-1.5 rounded-full bg-[#0A0C16] animate-pulse" /></button>
       </div>
     </div>
   );
@@ -1335,92 +1335,116 @@ import AIAssistantTab from './AIAssistantTab';
 
 const RightPanel = (props) => {
   const [activeTab, setActiveTab] = useState('colors');
+  
   const mainTabs = [
-    { id: 'colors', label: 'Colors Patterns', icon: <BiPalette /> },
-    { id: 'names', label: 'Names Numbers', icon: <BiText /> },
-    { id: 'logos', label: 'Logos Flags', icon: <BiImage /> },
-    { id: 'ai', label: 'AI Customizer', icon: <HiOutlineSparkles /> },
-    { id: 'config', label: 'Studio Config', icon: <HiOutlineAdjustments /> },
-    { id: 'roster', label: 'Checkout Roster', icon: <BiCart /> },
+    { id: 'colors', label: 'Colors', icon: <BiPalette /> },
+    { id: 'names', label: 'Names', icon: <BiText /> },
+    { id: 'logos', label: 'Logos', icon: <BiImage /> },
+    { id: 'ai', label: 'AI Tools', icon: <HiOutlineSparkles /> },
+    { id: 'config', label: 'Studio', icon: <HiOutlineAdjustments /> },
+    { id: 'roster', label: 'Checkout', icon: <BiCart /> },
   ];
 
-  return (
-    <div className="flex flex-1 md:flex-none w-full md:w-[420px] h-full flex-shrink-0 border-t md:border-t-0 md:border-l border-gray-100 bg-white flex-col z-50 relative overflow-hidden min-h-0">
-      <div className="flex border-b border-gray-100 bg-white flex-shrink-0 overflow-x-auto no-scrollbar scroll-smooth">
-        {mainTabs.map(tab => (
-          <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`flex-1 min-w-[70px] md:min-w-0 py-4 px-1 flex flex-col items-center gap-2 transition-all relative cursor-pointer flex-shrink-0 rounded-none ${activeTab === tab.id ? 'text-blue-600 bg-white' : 'text-gray-400 hover:text-gray-900 hover:bg-gray-50'}`}>
-            <span className="text-xl">{tab.icon}</span>
-            <span className="text-[8px] font-semibold uppercase tracking-widest text-center leading-tight">
-              {tab.label.split(' ').map((s, i) => <span key={i} className="block">{s}</span>)}
-            </span>
-            {activeTab === tab.id && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600" />}
-          </button>
-        ))}
-      </div>
+  const activeMeshDisplayName = props.activeMesh 
+    ? (props.layersMetadata?.[props.activeMesh]?.display_name || props.activeMesh.replace(/\.obj$/i, '').replace(/_/g, ' '))
+    : 'Select Part';
 
-      <div className="px-6 py-4 border-b border-gray-50 flex items-center justify-between bg-white flex-shrink-0">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-none bg-blue-50 flex items-center justify-center text-blue-600 border border-blue-100"><BiCube size={22} /></div>
-          <div>
-            <div className="text-[10px] font-semibold text-gray-900 uppercase tracking-widest">
-              {props.activeMesh ? (props.layersMetadata?.[props.activeMesh]?.display_name || props.activeMesh.replace(/_/g, ' ')) : 'Select Part'}
+  return (
+    <div className="flex flex-1 md:flex-none w-full md:w-[480px] h-full flex-shrink-0 border-t md:border-t-0 md:border-l border-white/5 bg-[#0A0C16] flex-row z-50 relative overflow-hidden min-h-0">
+      {/* ── Active Tab Area on Left ── */}
+      <div className="flex-1 flex flex-col min-w-0">
+        {/* Workspace details header */}
+        <div className="px-5 py-3.5 border-b border-white/5 flex items-center justify-between bg-[#0e101f] flex-shrink-0">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-none bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/20"><BiCube size={18} /></div>
+            <div>
+              <div className="text-[9px] font-bold text-white uppercase tracking-widest truncate max-w-[160px]">
+                {activeMeshDisplayName}
+              </div>
+              <div className="text-[7.5px] font-bold text-indigo-400 uppercase tracking-widest mt-0.5">Active Component</div>
             </div>
-            <div className="text-[8px] font-semibold text-gray-400 uppercase tracking-widest mt-0.5">Active Workspace</div>
+          </div>
+          <div className="px-2 py-0.5 rounded-none border border-indigo-500/20 bg-indigo-500/10 text-indigo-400 text-[8px] font-bold tracking-widest uppercase">Live Customizer</div>
+        </div>
+
+        {/* Tab contents scroll pane */}
+        <div className="flex-1 relative min-h-0">
+          <div className={`absolute inset-0 overflow-y-auto overflow-x-hidden touch-auto custom-scrollbar ${activeTab === 'ai' ? 'pb-52' : 'pb-24'}`} data-lenis-prevent onWheel={(e) => e.stopPropagation()} style={{ WebkitOverflowScrolling: 'touch' }}>
+            
+            {activeTab === 'colors' ? (
+              <MeshProperties
+                state={props.meshStates[props.activeMesh]}
+                updateProp={(prop, val) => props.updateMeshProp(props.activeMesh, prop, val)}
+                meshStates={props.meshStates}
+                updateMeshStates={props.updateMeshStates}
+                activeMesh={props.activeMesh}
+                setActiveMesh={props.setActiveMesh}
+                layersMetadata={props.layersMetadata || {}}
+                updateMeshProp={props.updateMeshProp}
+                addDecal={props.addDecal}
+                decals={props.decals}
+                selectedDecalId={props.selectedDecalId}
+                setSelectedDecalId={props.setSelectedDecalId}
+                updateDecal={props.updateDecal}
+                removeDecal={props.removeDecal}
+                defaultPatterns={props.defaultPatterns}
+              />
+            ) : activeTab === 'names' ? (
+              <NamesNumbersTab {...props} />
+            ) : activeTab === 'logos' ? (
+              <LogosFlagsTab {...props} />
+            ) : activeTab === 'ai' ? (
+              <AIAssistantTab
+                meshes={props.meshes}
+                meshStates={props.meshStates}
+                updateMeshStates={props.updateMeshStates}
+                addDecal={props.addDecal}
+                decals={props.decals}
+                updateDecal={props.updateDecal}
+                removeDecal={props.removeDecal}
+                defaultPatterns={props.defaultPatterns}
+                defaultLogos={props.defaultLogos}
+              />
+            ) : activeTab === 'config' ? (
+              <StudioConfigTab {...props} />
+            ) : (
+              <CheckoutRosterTab roster={props.roster} setRoster={props.setRoster} onCheckout={props.onCheckout} />
+            )}
+
+          </div>
+          <div id="ai-input-portal-target" className="absolute bottom-4 left-4 right-4 z-30 pointer-events-auto" />
+        </div>
+
+        <div className="px-4 py-2 bg-[#0e101f] border-t border-white/5 flex items-center justify-between flex-shrink-0">
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse shadow-[0_0_8px_rgba(99,102,241,0.5)]" />
+            <span className="text-[8px] font-bold text-slate-455 uppercase tracking-widest">3D Customization Engine Online</span>
           </div>
         </div>
-        <div className="px-2 py-1 rounded-none border border-green-200 bg-green-50 text-green-600 text-[8px] font-semibold tracking-widest uppercase">Live View</div>
       </div>
 
-      <div className="flex-1 relative min-h-0">
-        <div className={`absolute inset-0 overflow-y-auto overflow-x-hidden touch-auto custom-scrollbar ${activeTab === 'ai' ? 'pb-52' : 'pb-24'}`} data-lenis-prevent onWheel={(e) => e.stopPropagation()} style={{ WebkitOverflowScrolling: 'touch' }}>
-          {activeTab === 'colors' ? (
-            <MeshProperties
-              state={props.meshStates[props.activeMesh]}
-              updateProp={(prop, val) => props.updateMeshProp(props.activeMesh, prop, val)}
-              meshStates={props.meshStates}
-              updateMeshStates={props.updateMeshStates}
-              activeMesh={props.activeMesh}
-              setActiveMesh={props.setActiveMesh}
-              layersMetadata={props.layersMetadata || {}}
-              updateMeshProp={props.updateMeshProp}
-              addDecal={props.addDecal}
-              decals={props.decals}
-              selectedDecalId={props.selectedDecalId}
-              setSelectedDecalId={props.setSelectedDecalId}
-              updateDecal={props.updateDecal}
-              removeDecal={props.removeDecal}
-              defaultPatterns={props.defaultPatterns}
-            />
-          ) : activeTab === 'names' ? (
-            <NamesNumbersTab {...props} />
-          ) : activeTab === 'logos' ? (
-            <LogosFlagsTab {...props} />
-          ) : activeTab === 'ai' ? (
-            <AIAssistantTab
-              meshes={props.meshes}
-              meshStates={props.meshStates}
-              updateMeshStates={props.updateMeshStates}
-              addDecal={props.addDecal}
-              decals={props.decals}
-              updateDecal={props.updateDecal}
-              removeDecal={props.removeDecal}
-              defaultPatterns={props.defaultPatterns}
-              defaultLogos={props.defaultLogos}
-            />
-          ) : activeTab === 'config' ? (
-            <StudioConfigTab {...props} />
-          ) : (
-            <CheckoutRosterTab roster={props.roster} setRoster={props.setRoster} onCheckout={props.onCheckout} />
-          )}
-        </div>
-        <div id="ai-input-portal-target" className="absolute bottom-4 left-4 right-4 z-30 pointer-events-auto" />
-      </div>
-
-      <div className="px-4 py-2 bg-gray-50 border-t border-gray-100 flex items-center justify-between flex-shrink-0">
-        <div className="flex items-center gap-2">
-          <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.5)]" />
-          <span className="text-[8px] font-semibold text-gray-400 uppercase tracking-widest">Workspace Connected</span>
-        </div>
+      {/* ── Vertical Toolbar on Right (Figma style menu) ── */}
+      <div className="w-16 bg-[#0e101f] border-l border-white/5 flex flex-col items-center py-4 gap-4 flex-shrink-0">
+        {mainTabs.map(tab => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`w-12 h-12 flex flex-col items-center justify-center gap-1 transition-all rounded-none cursor-pointer relative group
+              ${activeTab === tab.id 
+                ? 'text-indigo-400 bg-indigo-500/10 shadow-inner border-l-2 border-indigo-500' 
+                : 'text-slate-500 hover:text-white hover:bg-[#0A0C16]/5'}`}
+          >
+            <span className="text-lg">{tab.icon}</span>
+            <span className="text-[7.5px] font-bold uppercase tracking-tighter text-center leading-none max-w-[42px] truncate">
+              {tab.label.split(' ')[0]}
+            </span>
+            
+            {/* Tooltip */}
+            <div className="absolute right-full mr-2 px-2.5 py-1.5 bg-slate-900 border border-white/10 text-white text-[8px] font-bold uppercase tracking-wider rounded-none opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 shadow-xl">
+              {tab.label}
+            </div>
+          </button>
+        ))}
       </div>
     </div>
   );
