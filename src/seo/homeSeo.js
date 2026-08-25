@@ -1,5 +1,5 @@
 const homeSeo = {
-  title: "Custom Team Uniforms USA | Factory-Direct Sportswear Manufacturer",
+  title: "Custom Team Uniforms Manufacturer USA | Zarko Sportswear",
   description:
     "Direct factory custom team uniforms, wrestling singlets, and sublimated jerseys. NFHS-compliant, premium fabrics, and fast US shipping. Free mockup today.",
   canonical: "https://www.zarkosportswear.com/",
@@ -12,7 +12,7 @@ const homeSeo = {
   siteName: "Zarko Sportswear",
   locale: "en_US",
   openGraph: {
-    'og:title': 'Custom Team Uniforms USA | Factory-Direct Sportswear Manufacturer',
+    'og:title': 'Custom Team Uniforms Manufacturer USA | Zarko Sportswear',
     'og:description':
       'Direct factory custom team uniforms, wrestling singlets, and sublimated jerseys. NFHS-compliant, premium fabrics, and fast US shipping. Free mockup today.',
     'og:url': 'https://www.zarkosportswear.com/',
@@ -24,7 +24,7 @@ const homeSeo = {
     'og:locale': 'en_US',
   },
   twitter: {
-    'twitter:title': 'Custom Team Uniforms USA | Factory-Direct Sportswear Manufacturer',
+    'twitter:title': 'Custom Team Uniforms Manufacturer USA | Zarko Sportswear',
     'twitter:description': 'Direct factory custom team uniforms, wrestling singlets, and sublimated jerseys. NFHS-compliant, premium fabrics, and fast US shipping. Free mockup today.',
     'twitter:card': 'summary_large_image',
     'twitter:image': 'https://www.zarkosportswear.com/og-cover.jpg',
@@ -115,7 +115,7 @@ const homeSeo = {
         '@type': 'WebPage',
         '@id': 'https://www.zarkosportswear.com/'
       },
-      headline: "Custom Team Uniforms USA | Factory-Direct Sportswear Manufacturer",
+      headline: "Custom Team Uniforms Manufacturer USA | Zarko Sportswear",
       description: "Direct factory custom team uniforms, wrestling singlets, and sublimated jerseys. NFHS-compliant, premium fabrics, and fast US shipping.",
       image: "https://www.zarkosportswear.com/og-cover.jpg",
       datePublished: "2024-01-15T08:00:00+00:00",
