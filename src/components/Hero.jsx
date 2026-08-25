@@ -612,7 +612,7 @@ const Hero = () => {
               Direct-from-Factory Manufacturer
             </span>
             <h1 className="text-lg sm:text-xl lg:text-[22px] font-black text-[#111827] leading-snug tracking-tight uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              Factory-Direct Custom Team Uniforms & Sportswear for US Clubs & Leagues
+              Premium Custom Team Uniforms & Athletic Sportswear for US Clubs & Leagues
             </h1>
           </motion.div>
 
