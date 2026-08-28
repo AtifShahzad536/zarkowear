@@ -325,13 +325,13 @@ export default function BlogDetail() {
               
               {/* Related Articles Card */}
               <div className="bg-white rounded-none p-5 border border-slate-200/80 shadow-sm space-y-3">
-                <h3 className="text-[11px] font-extrabold text-slate-900 uppercase tracking-wider rounded-none">Related Articles</h3>
+                <h2 className="text-[11px] font-extrabold text-slate-900 uppercase tracking-wider rounded-none">Related Articles</h2>
                 <ul className="text-[11px] font-bold text-slate-600 space-y-3.5 rounded-none">
                   {displayRelated.map((rel, idx) => (
                     <li key={idx} className="flex gap-3 items-center rounded-none">
                       <Link to={`/blogs/${rel.slug}`} className="w-14 aspect-[1.3] bg-slate-100 overflow-hidden border border-slate-200/80 rounded-none flex-shrink-0">
                         {rel.coverImage ? (
-                          <img src={imageUrl(rel.coverImage, { width: 150 })} alt="" className="w-full h-full object-cover rounded-none" />
+                          <img src={imageUrl(rel.coverImage, { width: 150 })} alt={rel.title ? rel.title + " cover image" : "Related article cover"} className="w-full h-full object-cover rounded-none" />
                         ) : (
                           <div className="w-full h-full bg-slate-200 flex items-center justify-center text-[7px] text-slate-450 font-bold uppercase rounded-none">Zarko</div>
                         )}
@@ -346,7 +346,7 @@ export default function BlogDetail() {
 
               {/* Categories Card */}
               <div className="bg-white rounded-none p-5 border border-slate-200/80 shadow-sm space-y-3">
-                <h3 className="text-[11px] font-extrabold text-slate-900 uppercase tracking-wider rounded-none">Categories</h3>
+                <h2 className="text-[11px] font-extrabold text-slate-900 uppercase tracking-wider rounded-none">Categories</h2>
                 <ul className="divide-y divide-slate-100 text-[11px] font-bold text-slate-600 space-y-1 rounded-none">
                   {categoriesList.map((cat, idx) => (
                     <li key={idx} className="pt-2.5 pb-2.5 first:pt-0 rounded-none">

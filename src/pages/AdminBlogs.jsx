@@ -190,7 +190,7 @@ export default function AdminBlogs() {
                         {blog.coverImage ? (
                           <img
                             src={imageUrl(blog.coverImage, { width: 150 })}
-                            alt=""
+                            alt={blog.title ? blog.title + " cover image" : "Blog cover"}
                             className="w-full h-full object-cover"
                           />
                         ) : (

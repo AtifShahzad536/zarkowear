@@ -218,7 +218,7 @@ export default function Blogs() {
                         {blog.coverImage ? (
                           <img
                             src={imageUrl(blog.coverImage, { width: 500 })}
-                            alt={blog.title}
+                            alt={blog.title ? `${blog.title} - Zarko Sportswear Blog` : "Zarko Sportswear Blog Cover"}
                             className="w-full h-full object-cover transition-transform duration-500 hover:scale-103 rounded-none"
                             loading="lazy"
                           />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { adminGetHome, adminUpdateHome, adminListUploads, adminUploadFile } from '../services/api';
 import { imageUrl } from '../services/api';
 
@@ -104,10 +104,10 @@ export default function AdminHome() {
 
       {/* Tabs */}
       <div className="mb-6 flex flex-wrap gap-2">
-        <button onClick={()=>navigate('/admin/home')} className={`px-3 py-2 rounded border ${tab==='hero'?'bg-black text-white border-black':'bg-white hover:bg-gray-50'}`}>Hero Images</button>
-        <button onClick={()=>navigate('/admin/category-images')} className={`px-3 py-2 rounded border ${tab==='categories'?'bg-black text-white border-black':'bg-white hover:bg-gray-50'}`}>Category Images</button>
-        <button onClick={()=>navigate('/admin/testimonials')} className={`px-3 py-2 rounded border ${tab==='testimonials'?'bg-black text-white border-black':'bg-white hover:bg-gray-50'}`}>Testimonials</button>
-        <button onClick={()=>navigate('/admin/top-selling')} className={`px-3 py-2 rounded border ${tab==='top'?'bg-black text-white border-black':'bg-white hover:bg-gray-50'}`}>Top Selling</button>
+        <Link to="/admin/home" className={`px-3 py-2 rounded border inline-block ${tab==='hero'?'bg-black text-white border-black':'bg-white hover:bg-gray-50'}`}>Hero Images</Link>
+        <Link to="/admin/category-images" className={`px-3 py-2 rounded border inline-block ${tab==='categories'?'bg-black text-white border-black':'bg-white hover:bg-gray-50'}`}>Category Images</Link>
+        <Link to="/admin/testimonials" className={`px-3 py-2 rounded border inline-block ${tab==='testimonials'?'bg-black text-white border-black':'bg-white hover:bg-gray-50'}`}>Testimonials</Link>
+        <Link to="/admin/top-selling" className={`px-3 py-2 rounded border inline-block ${tab==='top'?'bg-black text-white border-black':'bg-white hover:bg-gray-50'}`}>Top Selling</Link>
       </div>
       {tab==='hero' && (
       <section className="mb-10">

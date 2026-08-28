@@ -367,7 +367,7 @@ const MeshProperties = ({
                     className="aspect-square bg-[#0e101f] border border-white/5 rounded-none p-1.5 hover:border-indigo-500 hover:bg-indigo-500/10 transition-all flex flex-col items-center justify-center gap-1 group cursor-pointer"
                     title={pat.name}
                   >
-                    <img src={pat.imageUrl} alt={pat.name} title={pat.name} className="w-full h-full object-contain opacity-60 group-hover:opacity-100 transition-opacity" />
+                    <img src={pat.imageUrl} alt={pat.name ? `${pat.name} pattern` : "Pattern texture"} title={pat.name} className="w-full h-full object-contain opacity-60 group-hover:opacity-100 transition-opacity" />
                     <span className="text-[6.5px] font-semibold text-slate-500 uppercase truncate w-full text-center group-hover:text-indigo-400">{pat.name}</span>
                   </button>
                 ))}
@@ -1205,7 +1205,7 @@ const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, 
                       onClick={() => addDecal('image', item.name, item.url)}
                       className="aspect-square bg-[#0e101f] border border-white/5 rounded-none p-2 hover:border-indigo-500 hover:bg-indigo-500/10 transition-all flex flex-col items-center justify-center gap-1 group cursor-pointer"
                     >
-                      <img src={item.url} alt={item.name} title={item.name} className="w-full h-full object-contain opacity-60 group-hover:opacity-100 transition-opacity" />
+                      <img src={item.url} alt={item.name ? `${item.name} graphic` : "Graphic icon"} title={item.name} className="w-full h-full object-contain opacity-60 group-hover:opacity-100 transition-opacity" />
                       <span className="text-[6px] font-semibold text-slate-500 uppercase truncate w-full text-center group-hover:text-indigo-400">{item.name}</span>
                     </button>
                   ))}
