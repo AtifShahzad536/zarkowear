@@ -612,6 +612,127 @@ const routesData = {
         <p>Equip your team with matching custom athletic duffel bags and backpacks. Factory-direct wholesale pricing and express USA shipping.</p>
       </section>
     `
+  },
+  // Keyword & local landing pages
+  '/custom-wrestling-gear': {
+    title: 'Custom Wrestling Gear & Team Singlets USA | Zarko Sportswear',
+    description: 'Order factory-direct custom wrestling gear, fight shorts, and compression singlets with fast USA delivery. High-durability 4-way stretch fabrics.',
+    canonical: 'https://www.zarkosportswear.com/custom-wrestling-gear',
+    h1: 'Custom Wrestling Gear & Singlets Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Custom Wrestling Apparel & Tournament Team Singlets</h2>
+        <p>Zarko Sportswear manufactures high-performance wrestling gear, singlets, and fight shorts for school teams and tournament wrestling clubs across the USA.</p>
+      </section>
+    `
+  },
+  '/custom-wrestling-singlets-manufacturer': {
+    title: 'Custom Wrestling Singlets Manufacturer USA | Zarko Sportswear',
+    description: 'Factory-direct custom sublimated wrestling singlets manufacturer for USA teams, schools, and clubs. Low MOQ, durable flatlock seams & fast shipping.',
+    canonical: 'https://www.zarkosportswear.com/custom-wrestling-singlets-manufacturer',
+    h1: 'Custom Wrestling Singlets Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>USA Custom Wrestling Singlets Direct Manufacturer</h2>
+        <p>Order sublimated wrestling singlets directly from our factory with low minimum order quantities and fast express delivery across all 50 US states.</p>
+      </section>
+    `
+  },
+  '/custom-soccer-uniforms': {
+    title: 'Custom Soccer Uniforms & Sublimated Kits USA | Zarko Sportswear',
+    description: 'Design custom soccer uniforms and team kits online. Breathable moisture-wicking jerseys, goalie kits, and fast shipping to USA clubs.',
+    canonical: 'https://www.zarkosportswear.com/custom-soccer-uniforms',
+    h1: 'Custom Soccer Uniforms & Team Kits Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Custom Sublimated Soccer Team Uniforms USA</h2>
+        <p>High-quality soccer kits, matchday jerseys, and goalkeeper uniforms manufactured direct from the factory for USA soccer academies and competitive clubs.</p>
+      </section>
+    `
+  },
+  '/sublimated-soccer-jerseys-wholesale': {
+    title: 'Sublimated Soccer Jerseys Wholesale USA | Zarko Sportswear',
+    description: 'Wholesale custom sublimated soccer jerseys direct from manufacturer. Premium lightweight fabrics, vibrant printing, and fast USA delivery.',
+    canonical: 'https://www.zarkosportswear.com/sublimated-soccer-jerseys-wholesale',
+    h1: 'Sublimated Soccer Jerseys Wholesale Supplier USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Wholesale Custom Sublimation Soccer Jerseys</h2>
+        <p>Save on bulk soccer jersey orders with direct factory pricing, low minimum order quantities, and express shipping to USA soccer leagues.</p>
+      </section>
+    `
+  },
+  '/oem-private-label-sportswear': {
+    title: 'OEM Private Label Sportswear Manufacturer USA | Zarko Sportswear',
+    description: 'OEM private label activewear and custom sportswear manufacturing. Low MOQs, custom woven tags, premium fabrics, and fast USA shipping.',
+    canonical: 'https://www.zarkosportswear.com/oem-private-label-sportswear',
+    h1: 'OEM Private Label Sportswear Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Private Label Activewear & Custom Sportswear Production</h2>
+        <p>We manufacture private label gym apparel, compression wear, and athletic uniforms for sports brands and fitness businesses throughout the United States.</p>
+      </section>
+    `
+  },
+  '/private-label-activewear-low-moq': {
+    title: 'Private Label Activewear Low MOQ USA | Zarko Sportswear',
+    description: 'Launch your activewear brand with low MOQ private label sportswear manufacturing. Premium custom gym wear, hoodies, and leggings with USA fulfillment.',
+    canonical: 'https://www.zarkosportswear.com/private-label-activewear-low-moq',
+    h1: 'Low MOQ Private Label Activewear Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Low MOQ Activewear & Gym Apparel Manufacturing</h2>
+        <p>Start or scale your athletic apparel brand with low minimum order quantities starting at just 15-25 pieces per design with fast USA delivery.</p>
+      </section>
+    `
+  },
+  '/custom-sportswear-california': {
+    title: 'Custom Sportswear & Sports Uniforms in California | Zarko',
+    description: 'Custom sports uniforms, soccer jerseys, and wrestling singlets in California direct from the manufacturer. Fast shipping to LA, SF, San Diego.',
+    canonical: 'https://www.zarkosportswear.com/custom-sportswear-california',
+    h1: 'Custom Sportswear & Uniforms California USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Custom Sports Uniforms for California Teams & Leagues</h2>
+        <p>Supplying California high schools, youth soccer clubs, wrestling academies, and adult leagues with factory-direct custom sportswear.</p>
+      </section>
+    `
+  },
+  '/custom-sportswear-texas': {
+    title: 'Custom Sportswear & Sports Uniforms in Texas | Zarko',
+    description: 'High-durability custom sports uniforms, baseball jerseys, and wrestling singlets in Texas. Fast delivery to Houston, Dallas, Austin, San Antonio.',
+    canonical: 'https://www.zarkosportswear.com/custom-sportswear-texas',
+    h1: 'Custom Sportswear & Uniforms Texas USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Custom Sports Uniforms for Texas Teams & Leagues</h2>
+        <p>Supplying Texas high schools, youth baseball leagues, football organizations, and wrestling clubs with factory-direct teamwear.</p>
+      </section>
+    `
+  },
+  '/custom-sportswear-new-york': {
+    title: 'Custom Sportswear & Sports Uniforms in New York | Zarko',
+    description: 'Custom sports uniforms, basketball jerseys, and athletic apparel in New York. Direct factory delivery to NYC, Buffalo, Rochester, Albany.',
+    canonical: 'https://www.zarkosportswear.com/custom-sportswear-new-york',
+    h1: 'Custom Sportswear & Uniforms New York USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Custom Sports Uniforms for New York Teams & Leagues</h2>
+        <p>Supplying New York scholastic leagues, basketball programs, club teams, and tournament organizers with factory-direct uniforms.</p>
+      </section>
+    `
+  },
+  '/custom-sportswear-florida': {
+    title: 'Custom Sportswear & Sports Uniforms in Florida | Zarko',
+    description: 'Moisture-wicking custom sports uniforms and team jerseys in Florida. Fast shipping to Miami, Orlando, Tampa, Jacksonville.',
+    canonical: 'https://www.zarkosportswear.com/custom-sportswear-florida',
+    h1: 'Custom Sportswear & Uniforms Florida USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Custom Sports Uniforms for Florida Teams & Leagues</h2>
+        <p>Supplying Florida athletic programs, soccer tournaments, baseball academies, and beach volleyball teams with breathable UV-protected custom sportswear.</p>
+      </section>
+    `
   }
 };
 
@@ -725,10 +846,16 @@ function runPrerender() {
       html = html.replace('</noscript>', `</noscript>\n${staticCrawlerMarkup}`);
     }
 
-    // Write file to route directory
+    // Write file to route directory: dist/<route>/index.html
     const outputFilePath = path.join(routeDir, 'index.html');
     fs.writeFileSync(outputFilePath, html, 'utf-8');
-    console.log(`Successfully pre-rendered: ${route} (${meta.title}) -> ${outputFilePath}`);
+
+    // Also write clean URL file: dist/<route>.html
+    const cleanFilePath = path.join(DIST_DIR, `${route.replace(/^\//, '')}.html`);
+    fs.mkdirSync(path.dirname(cleanFilePath), { recursive: true });
+    fs.writeFileSync(cleanFilePath, html, 'utf-8');
+
+    console.log(`Successfully pre-rendered: ${route} (${meta.title})`);
   });
 
   console.log('Pre-rendering finished successfully!');
