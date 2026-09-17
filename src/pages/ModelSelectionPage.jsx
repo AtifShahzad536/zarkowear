@@ -1,14 +1,36 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { HiArrowRight, HiArrowLeft, HiSearch } from 'react-icons/hi';
-import DesignPreview from '../features/builder/DesignPreview';
+import { HiArrowRight, HiArrowLeft, HiSearch, HiX, HiOutlineColorSwatch, HiOutlineCube, HiOutlineShieldCheck, HiOutlineTruck, HiOutlineSparkles } from 'react-icons/hi';
+import { FaChevronDown } from 'react-icons/fa';
+import Card2DPreview from '../features/builder/Card2DPreview';
 import { useSelector } from 'react-redux';
 import SeoHead from '../components/SeoHead';
 import MaintenancePage from './MaintenancePage';
 
+const FAQItem = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="border border-white/10 bg-[#0c0e1a]/70 rounded-none overflow-hidden transition-colors hover:border-indigo-500/40">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full text-left p-4 md:p-4.5 flex items-center justify-between gap-4 cursor-pointer"
+        aria-expanded={isOpen}
+      >
+        <span className="text-xs md:text-sm font-bold text-white tracking-wide">{question}</span>
+        <FaChevronDown className={`text-indigo-400 text-xs transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      {isOpen && (
+        <div className="px-4 pb-4 md:px-4.5 md:pb-4.5 text-[11px] md:text-xs text-slate-300 leading-relaxed border-t border-white/5 pt-3 animate-fade-in">
+          {answer}
+        </div>
+      )}
+    </div>
+  );
+};
+
 export const ModelSelectionPage = () => {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const categoryParam = searchParams.get('category') || 'All';
   
   const [models, setModels] = useState([]);
@@ -47,7 +69,7 @@ export const ModelSelectionPage = () => {
       });
   }, []);
 
-  // Sync category param from URL if present and valid in catalog
+  // Sync category param from URL if present
   useEffect(() => {
     const validCategories = new Set(models.map(m => m.category ? m.category.toLowerCase() : ''));
     if (categoryParam && categoryParam.toLowerCase() !== 'all' && validCategories.has(categoryParam.toLowerCase())) {
@@ -57,7 +79,27 @@ export const ModelSelectionPage = () => {
     }
   }, [categoryParam, models]);
 
-  // Compute unique categories
+  const handleCategoryChange = (cat) => {
+    setSelectedCategory(cat);
+    if (cat.toLowerCase() === 'all') {
+      setSearchParams({});
+    } else {
+      setSearchParams({ category: cat });
+    }
+  };
+
+  // Compute unique categories with counts
+  const categoryStats = useMemo(() => {
+    const counts = { all: models.length };
+    models.forEach(m => {
+      if (m.category) {
+        const cat = m.category;
+        counts[cat] = (counts[cat] || 0) + 1;
+      }
+    });
+    return counts;
+  }, [models]);
+
   const categories = useMemo(() => {
     const set = new Set();
     models.forEach(m => {
@@ -66,13 +108,18 @@ export const ModelSelectionPage = () => {
     return ['all', ...Array.from(set)];
   }, [models]);
 
-  // Filter models
+  // Filter models based on search query and category
   const filteredModels = useMemo(() => {
     return models.filter(model => {
-      const matchesSearch = model.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                            (model.category && model.category.toLowerCase().includes(searchQuery.toLowerCase()));
+      const q = searchQuery.toLowerCase().trim();
+      const matchesSearch = !q || 
+        (model.name && model.name.toLowerCase().includes(q)) || 
+        (model.category && model.category.toLowerCase().includes(q)) ||
+        (model.id && model.id.toLowerCase().includes(q));
+      
       const matchesCategory = selectedCategory.toLowerCase() === 'all' || 
-                              (model.category && model.category.toLowerCase() === selectedCategory.toLowerCase());
+        (model.category && model.category.toLowerCase() === selectedCategory.toLowerCase());
+      
       return matchesSearch && matchesCategory;
     });
   }, [models, searchQuery, selectedCategory]);
@@ -131,116 +178,209 @@ export const ModelSelectionPage = () => {
   }
 
   return (
-    <div className="w-full min-h-screen bg-[#0A0C16] text-white py-12 px-6 lg:px-12 relative overflow-x-hidden font-['Outfit']">
+    <div className="w-full min-h-screen bg-[#0A0C16] text-white py-8 md:py-12 px-4 sm:px-6 lg:px-10 relative overflow-x-hidden font-['Outfit']">
       <SeoHead {...seoData} />
       
-      {/* Premium Spotlight Glow */}
-      <div className="absolute top-[5%] left-[50%] -translate-x-1/2 w-[800px] h-[350px] bg-indigo-500/10 rounded-full blur-[140px] pointer-events-none" />
+      {/* Background Spotlight Glow */}
+      <div className="absolute top-[3%] left-[50%] -translate-x-1/2 w-[900px] h-[360px] bg-indigo-500/10 rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="max-w-[94%] mx-auto flex flex-col gap-8 relative z-10">
+      <div className="max-w-[1440px] mx-auto flex flex-col gap-8 relative z-10">
         
-        {/* Navigation Breadcrumb & Title */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-white/5 pb-8 gap-6">
-          <div className="flex items-start gap-4">
+        {/* Navigation Breadcrumb, Header & Search Bar */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between border-b border-white/10 pb-6 gap-6">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
             <button
               onClick={() => navigate('/builder')}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-none text-xs font-bold text-slate-300 hover:bg-white/10 hover:border-white/20 transition cursor-pointer"
+              className="inline-flex items-center gap-2 px-3.5 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-[11px] font-bold text-slate-300 uppercase tracking-wider transition-colors cursor-pointer w-fit"
             >
-              <HiArrowLeft size={16} /> Return to Hub
+              <HiArrowLeft size={14} /> Back to 3D Hub
             </button>
-            <div>
-              <span className="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-1">Model Variations</span>
-              <h1 className="text-2xl lg:text-3xl font-black text-white uppercase tracking-tight leading-none">
-                3D Kit Catalog
+            <div className="flex flex-col">
+              <span className="text-[9.5px] font-black text-indigo-400 uppercase tracking-widest">
+                Base Template Library
+              </span>
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-white uppercase tracking-tight">
+                3D Sports Uniform Catalog
               </h1>
             </div>
           </div>
 
-          {/* Search Input Box */}
-          <div className="relative w-full md:w-80">
-            <input
-              type="text"
-              placeholder="Search custom jerseys..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#121626] border border-white/10 px-4 py-2.5 pl-10 text-xs text-white rounded-none outline-none focus:border-indigo-500/80 transition-colors placeholder-slate-500 font-medium"
-            />
-            <HiSearch className="absolute left-3 top-3 text-slate-500" size={16} />
+          {/* Search Bar with clear button and live counter */}
+          <div className="flex items-center gap-3 w-full lg:w-auto">
+            <div className="relative flex-1 lg:w-96">
+              <input
+                type="text"
+                placeholder="Search templates (e.g. soccer, singlet, shorts)..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-[#121626] border border-white/10 px-4 py-2.5 pl-10 pr-10 text-xs text-white rounded-none outline-none focus:border-indigo-500 transition-colors placeholder-slate-500 font-medium"
+              />
+              <HiSearch className="absolute left-3 top-3 text-slate-500" size={16} />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3 top-3 text-slate-400 hover:text-white transition-colors cursor-pointer"
+                  title="Clear search"
+                >
+                  <HiX size={16} />
+                </button>
+              )}
+            </div>
+            <div className="hidden sm:flex items-center px-3 py-2.5 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-[10px] font-bold uppercase tracking-wider whitespace-nowrap">
+              {filteredModels.length} Models
+            </div>
           </div>
         </div>
 
-        {/* Dynamic Category Chips */}
-        <div className="flex flex-wrap gap-2 pb-2">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider transition-all border cursor-pointer rounded-none ${
-                selectedCategory.toLowerCase() === cat.toLowerCase()
-                  ? 'bg-indigo-600 border-indigo-500 text-white shadow-lg'
-                  : 'bg-white/5 border-white/10 text-slate-400 hover:text-white hover:border-white/20'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        {/* Dynamic Category Chips with Counts */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+          {categories.map((cat) => {
+            const isSelected = selectedCategory.toLowerCase() === cat.toLowerCase();
+            const count = categoryStats[cat] || 0;
+            return (
+              <button
+                key={cat}
+                onClick={() => handleCategoryChange(cat)}
+                className={`px-3.5 py-1.5 text-[10px] font-black uppercase tracking-wider transition-all border cursor-pointer whitespace-nowrap flex items-center gap-2 ${
+                  isSelected
+                    ? 'bg-indigo-600 border-indigo-500 text-white shadow-lg'
+                    : 'bg-white/5 border-white/10 text-slate-400 hover:text-white hover:border-white/20'
+                }`}
+              >
+                <span>{cat}</span>
+                <span className={`px-1.5 py-0.2 rounded-none text-[8.5px] ${isSelected ? 'bg-indigo-800 text-white' : 'bg-black/40 text-slate-400'}`}>
+                  {count}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Model Cards Grid */}
+        {/* 5-Column Compact Card Grid */}
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-32 gap-4">
-            <div className="w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin" />
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Loading dynamic 3D templates...</span>
+          <div className="flex flex-col items-center justify-center py-28 gap-4">
+            <div className="w-10 h-10 border-3 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Loading Catalog Models...</span>
           </div>
         ) : filteredModels.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-32 gap-3 border border-dashed border-white/5">
-            <span className="text-sm font-bold text-slate-500 uppercase tracking-widest">No matching templates found</span>
+          <div className="flex flex-col items-center justify-center py-24 gap-3 bg-[#0c0e1a]/60 border border-dashed border-white/10 p-8 text-center">
+            <span className="text-sm font-bold text-slate-300 uppercase tracking-wider">No matching sportswear templates found</span>
+            <p className="text-xs text-slate-500 max-w-md">Try searching for a different sport, model name, or clear your search query.</p>
             <button 
-              onClick={() => { setSearchQuery(''); setSelectedCategory('all'); }}
-              className="text-xs font-bold text-indigo-400 hover:text-white uppercase tracking-wider underline cursor-pointer"
+              onClick={() => { setSearchQuery(''); handleCategoryChange('all'); }}
+              className="mt-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold uppercase tracking-wider transition cursor-pointer"
             >
               Reset Filters
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-4.5">
             {filteredModels.map((model) => (
               <div
                 key={model.id}
                 onClick={() => handleSelectModel(model.id)}
-                className="group flex flex-col gap-3 bg-[#0c0e1a]/80 p-4 rounded-none border border-white/5 hover:border-indigo-500/50 hover:shadow-[0_0_30px_rgba(99,102,241,0.12)] transition-all duration-300 cursor-pointer"
+                className="group flex flex-col gap-2.5 bg-[#0c0e1a] p-3 rounded-none border border-white/5 hover:border-indigo-500/50 hover:shadow-[0_0_25px_rgba(99,102,241,0.15)] transition-all duration-300 cursor-pointer select-none"
               >
-                <div className="aspect-[4/5] relative bg-slate-950/20 rounded-none overflow-hidden border border-white/5 flex items-center justify-center">
-                  <DesignPreview
+                {/* 2D Canvas Preview Area */}
+                <div className="aspect-[4/5] relative bg-slate-950/40 rounded-none overflow-hidden border border-white/5 flex items-center justify-center">
+                  <Card2DPreview
                     modelUrl={model.modelUrl}
                     mapping={model.mapping}
                     primaryColor={builderState.primaryColor || '#ffffff'}
+                    primaryIsGrad={builderState.primaryIsGrad || false}
+                    primaryColor2={builderState.primaryColor2 || '#ffffff'}
                     secondaryColor={builderState.secondaryColor || '#ffffff'}
+                    secondaryIsGrad={builderState.secondaryIsGrad || false}
+                    secondaryColor2={builderState.secondaryColor2 || '#ffffff'}
                     thirdColor={builderState.thirdColor || '#ffffff'}
+                    thirdIsGrad={builderState.thirdIsGrad || false}
+                    thirdColor2={builderState.thirdColor2 || '#ffffff'}
+                    pattern={builderState.globalPattern || 'none'}
+                    finish={builderState.materialFinish || 'matte'}
                     layersMetadata={model.layers_metadata || {}}
                   />
-                  <div className="absolute top-3 left-3 px-2 py-0.5 bg-indigo-600 text-white rounded-none text-[9px] font-black uppercase tracking-wider">
+
+                  {/* Pro Kit Badge */}
+                  <div className="absolute top-2.5 left-2.5 px-2 py-0.5 bg-[#0c0e1a]/90 border border-white/10 text-indigo-400 rounded-none text-[8px] font-black uppercase tracking-widest max-w-[100px] truncate">
                     {model.category ? model.category.toUpperCase() : "PRO KIT"}
+                  </div>
+
+                  {/* Hover Customize CTA Overlay */}
+                  <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-3 backdrop-blur-[2px]">
+                    <span className="flex items-center gap-1.5 bg-indigo-600 text-white px-3.5 py-1.5 text-[9px] font-black uppercase tracking-wider shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform duration-200">
+                      Customize <HiArrowRight size={11} />
+                    </span>
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-1 px-1 mt-2">
-                  <h3 className="text-sm font-extrabold text-white uppercase group-hover:text-indigo-400 transition-colors">
-                    {model.name}
+                {/* Card Title & Category */}
+                <div className="flex flex-col gap-0.5 px-0.5">
+                  <h3 className="text-[11.5px] font-extrabold text-white uppercase tracking-tight truncate group-hover:text-indigo-400 transition-colors" title={model.name}>
+                    {model.name.split(' / ')[0]}
                   </h3>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                    Click to launch 3D Designer
+                  <span className="text-[8.5px] font-bold text-slate-400 uppercase tracking-widest truncate">
+                    {model.name.split(' / ')[1] || model.category || 'Custom Model'}
                   </span>
                 </div>
-
-                <button className="w-full mt-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-none text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition cursor-pointer">
-                  <span>Start Design</span>
-                  <HiArrowRight size={12} />
-                </button>
               </div>
             ))}
           </div>
         )}
+
+        {/* ── SEO Rich Content & FAQ Section ── */}
+        <section className="mt-12 pt-10 border-t border-white/10 flex flex-col gap-8">
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="p-4 bg-[#0c0e1a]/70 border border-white/5 flex items-start gap-3">
+              <div className="p-2 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                <HiOutlineSparkles size={18} />
+              </div>
+              <div className="flex flex-col gap-1">
+                <h4 className="text-xs font-black text-white uppercase tracking-wide">4K Full Sublimation</h4>
+                <p className="text-[11px] text-slate-400 leading-relaxed">Colors, vector sponsor graphics, and roster names infused permanently into moisture-wicking fabrics.</p>
+              </div>
+            </div>
+
+            <div className="p-4 bg-[#0c0e1a]/70 border border-white/5 flex items-start gap-3">
+              <div className="p-2 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                <HiOutlineShieldCheck size={18} />
+              </div>
+              <div className="flex flex-col gap-1">
+                <h4 className="text-xs font-black text-white uppercase tracking-wide">Low 15-Piece MOQ</h4>
+                <p className="text-[11px] text-slate-400 leading-relaxed">Direct factory manufacturing with flexible low minimum order quantities for sports clubs and school teams.</p>
+              </div>
+            </div>
+
+            <div className="p-4 bg-[#0c0e1a]/70 border border-white/5 flex items-start gap-3">
+              <div className="p-2 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                <HiOutlineTruck size={18} />
+              </div>
+              <div className="flex flex-col gap-1">
+                <h4 className="text-xs font-black text-white uppercase tracking-wide">Direct USA Express Shipping</h4>
+                <p className="text-[11px] text-slate-400 leading-relaxed">Door-to-door express international air delivery across all 50 US states with real-time tracking support.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <h2 className="text-lg font-black text-white uppercase tracking-tight">Frequently Asked Questions</h2>
+            <div className="flex flex-col gap-2.5">
+              <FAQItem
+                question="How do I customize a 3D sports model template?"
+                answer="Click on any template in the catalog above to open our real-time 3D interactive builder. You can customize primary and secondary Pantone colors, add custom vector logos, change fabric finishes, and input your complete player roster."
+              />
+              <FAQItem
+                question="Can I order custom uniforms for multiple sports in one order?"
+                answer="Yes! You can design soccer jerseys, basketball kits, wrestling singlets, and baseball apparel separately and submit your combined roster for unified factory-direct production and consolidated USA shipping."
+              />
+              <FAQItem
+                question="What is the production turnaround time for custom sublimation uniforms?"
+                answer="Standard sublimation production takes approximately 10 to 14 business days from digital mockup approval, followed by express international air freight (4–7 business days) directly to your USA address."
+              />
+            </div>
+          </div>
+
+        </section>
 
       </div>
     </div>
