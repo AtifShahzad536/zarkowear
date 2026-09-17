@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { colors } from './data/designs';
-import DesignPreview from './DesignPreview';
+import Card2DPreview from './Card2DPreview';
 import { HiArrowRight, HiViewGrid, HiOutlineCube, HiOutlineLightningBolt, HiOutlineColorSwatch, HiOutlineX } from 'react-icons/hi';
 import { FaChevronDown } from 'react-icons/fa';
 
@@ -81,7 +81,7 @@ const DesignCard = ({
       onClick={() => onSelectDesign(design)}
     >
       <div className={`aspect-[4/5] relative bg-slate-950/20 rounded-none border border-white/5 transition-all duration-500 overflow-hidden ${comparing.includes(design.id) ? 'ring-2 ring-indigo-500' : 'hover:shadow-[0_0_30px_rgba(99,102,241,0.12)] hover:border-white/15'}`}>
-        <DesignPreview
+        <Card2DPreview
           modelUrl={design.modelUrl}
           mapping={design.mapping}
           primaryColor={primaryColor}
@@ -94,9 +94,6 @@ const DesignCard = ({
           thirdIsGrad={thirdIsGrad}
           thirdColor2={thirdColor2}
           pattern={globalPattern}
-          lighting={lightingPreset}
-          finish={materialFinish}
-          mouseFollow={mouseFollow}
           layersMetadata={design.layers_metadata || {}}
         />
 
