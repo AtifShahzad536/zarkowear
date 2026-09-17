@@ -865,6 +865,11 @@ function runPrerender() {
     console.log(`Successfully pre-rendered: ${route} (${meta.title})`);
   });
 
+  // Copy original index.html to 404.html as a catch-all SPA fallback for Vercel/static hosts
+  const fallback404 = path.join(DIST_DIR, '404.html');
+  fs.copyFileSync(INDEX_HTML_PATH, fallback404);
+  console.log('SPA fallback 404.html created successfully!');
+
   console.log('Pre-rendering finished successfully!');
 }
 

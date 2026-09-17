@@ -62,7 +62,27 @@
   ],
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/builder/models",
+      "destination": "/builder/models/index.html"
+    },
+    {
+      "source": "/builder/:id*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/blogs/:slug*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/custom-sportswear-:state*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/((?!assets/|images/|videos/|favicon|robots|sitemap).*)",
       "destination": "/index.html"
     }
   ]
