@@ -278,16 +278,51 @@ const Card2DPreview = ({
         node.geometry.boundingBox.getCenter(center);
         center.applyMatrix4(node.matrixWorld);
 
-        const { x, y, z } = center;
-        let type = 'Body';
-        if (y > 0.45) type = "Neck";
-        else if (Math.abs(x) > 0.3) type = x > 0 ? "R_Sleeve" : "L_Sleeve";
-        else if (z > 0.02) type = "Front";
-        else if (z < -0.02) type = "Back";
-        else type = "Body";
+        const meshName = (node.name || '').toLowerCase();
+        const meta = layersMetadata[node.name] || {};
+        const parentKey = (meta.merge_parent || '').toLowerCase();
 
-        const colorType = mapping[type] || mapping['Body'] || 'primary';
-        const config = colors[colorType];
+        // 1. Direct explicit mapping check
+        let colorKey = null;
+        if (mapping && mapping[node.name]) colorKey = mapping[node.name];
+        else if (mapping && meta.merge_parent && mapping[meta.merge_parent]) colorKey = mapping[meta.merge_parent];
+
+        // 2. Mesh Name check
+        if (!colorKey) {
+          if (
+            meshName.includes('neck') || meshName.includes('collar') ||
+            meshName.includes('trim') || meshName.includes('rib') ||
+            meshName.includes('cuff') || meshName.includes('waist') ||
+            meshName.includes('band') || parentKey.includes('collar') ||
+            parentKey.includes('neck') || parentKey.includes('trim')
+          ) {
+            colorKey = mapping?.Neck || mapping?.Collar || mapping?.Trim || 'third';
+          } else if (
+            meshName.includes('sleeve') || meshName.includes('arm') ||
+            meshName.includes('shoulder') || meshName.includes('stripe') ||
+            meshName.includes('panel') || meshName.includes('side') ||
+            parentKey.includes('sleeve') || parentKey.includes('stripe')
+          ) {
+            colorKey = mapping?.Sleeves || mapping?.R_Sleeve || mapping?.L_Sleeve || 'secondary';
+          }
+        }
+
+        // 3. Spatial / Geometric position check
+        if (!colorKey) {
+          const { x, y } = center;
+          if (y > 0.28) {
+            // Upper collar / neckline
+            colorKey = mapping?.Neck || mapping?.Collar || 'third';
+          } else if (Math.abs(x) > 0.22) {
+            // Outer sleeves & side panels
+            colorKey = mapping?.Sleeves || mapping?.R_Sleeve || mapping?.L_Sleeve || 'secondary';
+          } else {
+            // Main body
+            colorKey = mapping?.Body || mapping?.Front || mapping?.Back || 'primary';
+          }
+        }
+
+        const config = colors[colorKey] || colors.primary;
 
         if (config) {
           const u = node.material.userData.uniforms;
@@ -297,7 +332,7 @@ const Card2DPreview = ({
           const configColor = config.color || '#ffffff';
           const configColor2 = config.color2 || '#ffffff';
 
-          if (configColor === '#ffffff' || !isOriginalWhite) {
+          if (!isOriginalWhite && configColor === '#ffffff') {
             u.uColor.value.copy(originalColor).convertSRGBToLinear();
             u.uColor2.value.copy(originalColor).convertSRGBToLinear();
           } else {

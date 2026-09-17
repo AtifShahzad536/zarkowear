@@ -160,7 +160,7 @@ const LandingPage = ({
   const [comparing, setComparing] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedSportTab, setSelectedSportTab] = useState('ALL');
-  const itemsPerPage = 8;
+  const itemsPerPage = 12;
 
   // Filter designs by category tab if needed
   const filteredDesigns = useMemo(() => {
@@ -323,8 +323,9 @@ const LandingPage = ({
               <span>🎨</span> Team Color Palette (Solid / Grad)
             </span>
             <div className="flex flex-col gap-2.5">
-              <ColorGridMini label="Primary" selected={primaryColor} onSelect={setPrimaryColor} isGrad={primaryIsGrad} onToggleGrad={() => setPrimaryIsGrad(!primaryIsGrad)} selected2={primaryColor2} onSelect2={setPrimaryColor2} />
-              <ColorGridMini label="Secondary" selected={secondaryColor} onSelect={setSecondaryColor} isGrad={secondaryIsGrad} onToggleGrad={() => setSecondaryIsGrad(!secondaryIsGrad)} selected2={secondaryColor2} onSelect2={setSecondaryColor2} />
+              <ColorGridMini label="Primary (Body)" selected={primaryColor} onSelect={setPrimaryColor} isGrad={primaryIsGrad} onToggleGrad={() => setPrimaryIsGrad(!primaryIsGrad)} selected2={primaryColor2} onSelect2={setPrimaryColor2} />
+              <ColorGridMini label="Secondary (Sleeves)" selected={secondaryColor} onSelect={setSecondaryColor} isGrad={secondaryIsGrad} onToggleGrad={() => setSecondaryIsGrad(!secondaryIsGrad)} selected2={secondaryColor2} onSelect2={setSecondaryColor2} />
+              <ColorGridMini label="Accent (Collar & Trim)" selected={thirdColor} onSelect={setThirdColor} isGrad={thirdIsGrad} onToggleGrad={() => setThirdIsGrad(!thirdIsGrad)} selected2={thirdColor2} onSelect2={setThirdColor2} />
             </div>
           </div>
 
@@ -332,8 +333,8 @@ const LandingPage = ({
       </aside>
 
       {/* ── RIGHT PANEL: DESIGN GALLERY & RICH SEO CONTENT (Only this panel scrolls) ── */}
-      <main className="flex-1 h-full max-h-full overflow-y-auto overscroll-contain relative z-10 p-5 md:p-8 lg:p-10" data-lenis-prevent>
-        <div className="max-w-[1240px] mx-auto flex flex-col gap-12 pb-16">
+      <main className="flex-1 h-full max-h-full overflow-y-auto overscroll-contain relative z-10 p-4 md:p-6 lg:p-8" data-lenis-prevent>
+        <div className="max-w-[1360px] mx-auto flex flex-col gap-10 pb-16">
 
           {/* Gallery Header & SEO H1 */}
           <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-6 gap-4">
@@ -380,8 +381,8 @@ const LandingPage = ({
             </div>
           )}
 
-          {/* Design Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+          {/* Design Grid (4 Columns per row on Desktop) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
             {paginatedDesigns.map((design) => (
               <DesignCard
                 key={design.id}
