@@ -96,34 +96,41 @@ const routesData = {
     `
   },
   '/builder': {
-    title: '3D Custom Sports Uniform Builder | Design Online USA',
-    description: 'Design custom sports jerseys, team uniforms, and wrestling singlets online in real-time with our 3D builder tool. Instant customization and fast USA shipping.',
+    title: '3D Custom Sports Jersey & Uniform Builder USA | Zarko Sportswear',
+    description: 'Design custom sports jerseys & team uniforms online in real-time 3D. Full-dye sublimation, team colors, vector crests & fast factory-direct USA shipping.',
     canonical: 'https://www.zarkosportswear.com/builder',
-    h1: '3D Custom Sports Uniform Builder - Design Team Jerseys Online',
+    h1: '3D Custom Sports Jersey & Uniform Builder - Factory Direct USA Supply',
     bodyContent: `
       <section class="seo-content-block">
-        <h2>Real-Time 3D Interactive Jersey & Uniform Customizer</h2>
-        <p>Take full creative control of your team's visual identity with the Zarko Sportswear 3D Uniform Builder. Our cutting-edge 3D customization tool allows coaches, team managers, and athletic directors to design custom sports jerseys, wrestling singlets, and full uniforms in real-time with 360-degree interactive preview capabilities.</p>
+        <h2>Real-Time 3D Interactive Jersey & Team Uniform Customizer</h2>
+        <p>Take full creative control of your team's visual identity with the Zarko Sportswear 3D Uniform Builder. Our cutting-edge 3D customization tool allows coaches, team managers, and athletic directors to design custom sports jerseys, wrestling singlets, and full team uniforms in real-time with 360-degree interactive preview capabilities.</p>
 
-        <h2>How to Use the 3D Customizer</h2>
+        <h2>How Our 3D Sports Jersey Customizer Works</h2>
+        <ol>
+          <li><strong>Pick Your Base 3D Model:</strong> Select from football kits, wrestling singlets, basketball uniforms, baseball jerseys, cricket kits, and athletic activewear.</li>
+          <li><strong>Apply Custom Solid & Gradient Colors:</strong> Choose primary, secondary, and accent colors with unlimited Pantone accuracy.</li>
+          <li><strong>Select High-Tech Pattern Overlays:</strong> Add camo, carbon fiber, hexagon, or zebra pattern overlays with matte, gloss, or metallic lighting finishes.</li>
+          <li><strong>Submit Roster for Factory Direct Production:</strong> Add player names, numbers, and sizes for rapid sublimation manufacturing and express USA shipping.</li>
+        </ol>
+
+        <h2>Key Features of Zarko 3D Customizer</h2>
         <ul>
-          <li><strong>Choose Your Sport:</strong> Select your category from football, basketball, wrestling singlets, baseball, cricket, and more.</li>
-          <li><strong>Pick a Base Design:</strong> Browse dozens of modern athletic templates engineered for optimal sublimation aesthetics.</li>
-          <li><strong>Customize Colors:</strong> Change primary, secondary, collar, sleeve, and accent colors instantly.</li>
-          <li><strong>Add Logos & Text:</strong> Upload your team crest, sponsor graphics, and customize player name/number fonts.</li>
-          <li><strong>Request Factory Production:</strong> Submit your 3D design directly to our manufacturing queue for instant pricing and quick production turnaround.</li>
+          <li><strong>360° Real-Time 3D Rendering:</strong> Interactive WebGL canvas with 360-degree mouse follow and dynamic studio environment lighting presets.</li>
+          <li><strong>4K Full-Dye Sublimation Printing:</strong> Precision digital sublimation infused directly into high-performance moisture-wicking fabrics — guaranteed never to crack, peel, or fade.</li>
+          <li><strong>Low Minimum Order Quantities (MOQs):</strong> Low MOQs starting at only 15 units with tiered wholesale pricing for clubs, high schools, and collegiate programs.</li>
+          <li><strong>Direct Express USA Shipping:</strong> Fast international air freight delivering directly to all 50 US states with end-to-end tracking.</li>
         </ul>
 
-        <h2>Factory Precision from 3D Screen to On-Field Reality</h2>
-        <p>Our 3D models are precision-mapped to actual production cut-and-sew patterns. When you approve your 3D design, our automated pre-press systems generate exact dye-sublimation print files, ensuring that the physical sportswear you receive in the USA matches your online creation with pinpoint accuracy.</p>
+        <h2>Custom Sports Uniform Categories We Manufacture</h2>
+        <p>Explore our complete sports range: <a href="/wrestling">Custom Wrestling Singlets</a>, <a href="/soccer">Custom Soccer Uniforms</a>, <a href="/football">Football Jerseys</a>, <a href="/basketball">Basketball Kits</a>, <a href="/baseball">Baseball Jerseys</a>, <a href="/cricket">Cricket Teamwear</a>, <a href="/ice-hockey">Ice Hockey Uniforms</a>, <a href="/gym">Gym Activewear</a>, and <a href="/custom">Custom Team Roster Orders</a>.</p>
       </section>
     `
   },
   '/builder/models': {
-    title: '3D Custom Jersey Templates & Models | Zarko Sportswear USA',
-    description: 'Explore our 3D custom sports uniform templates. Customize sublimation jerseys, singlets, and teamwear online with real-time 3D previews and fast USA delivery.',
+    title: '3D Custom Sports Uniform Templates & Kit Catalog USA | Zarko Sportswear',
+    description: 'Browse professional 3D custom sports jersey templates for soccer, wrestling, basketball, baseball, cricket & gym. Launch real-time 3D designer with instant USA shipping.',
     canonical: 'https://www.zarkosportswear.com/builder/models',
-    h1: '3D Sports Uniform Templates & Custom Jersey Base Models',
+    h1: '3D Sports Uniform Templates & Custom Jersey Base Models Catalog',
     bodyContent: `
       <section class="seo-content-block">
         <h2>Explore Professional 3D Uniform Templates Across All Sports</h2>

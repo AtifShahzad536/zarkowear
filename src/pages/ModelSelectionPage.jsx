@@ -82,21 +82,46 @@ export const ModelSelectionPage = () => {
   };
 
   const seoData = useMemo(() => {
-    const categoryTitle = categoryParam ? categoryParam.toUpperCase() : 'Sports';
+    const categoryTitle = categoryParam && categoryParam.toLowerCase() !== 'all' ? categoryParam.toUpperCase() : 'Sports Uniform';
     const hasCategory = categoryParam && categoryParam.toLowerCase() !== 'all';
     const canonicalUrl = hasCategory 
       ? `https://www.zarkosportswear.com/builder/models?category=${encodeURIComponent(categoryParam)}`
       : 'https://www.zarkosportswear.com/builder/models';
     return {
-      title: `Custom ${categoryTitle} Jerseys USA | 3D Templates`,
-      description: `Select and customize premium ${categoryTitle} uniform templates online. Personalize your teamwear in real-time with fast USA shipping.`,
-      keywords: `custom ${categoryTitle.toLowerCase()} jersey usa, 3d sports uniforms templates, team jerseys builder usa, zarko customization`,
+      title: `3D Custom ${categoryTitle} Templates & Models Catalog USA | Zarko`,
+      description: `Browse 3D custom ${categoryTitle.toLowerCase()} templates. Real-time 3D jersey customizer with 4K sublimation printing, vector logos, and fast USA delivery.`,
+      keywords: `3d custom ${categoryTitle.toLowerCase()} templates, 3d sports uniforms catalog, custom jerseys builder models usa, teamwear 3d design templates, zarko sportswear`,
       canonical: canonicalUrl,
       openGraph: {
-        'og:title': `Custom ${categoryTitle} Jerseys USA | 3D Templates`,
-        'og:description': `Select a base model template and customize your ${categoryTitle} uniform in real-time.`,
+        'og:title': `3D Custom ${categoryTitle} Templates & Models Catalog USA | Zarko`,
+        'og:description': `Select a base 3D model template and design your custom ${categoryTitle.toLowerCase()} online in real-time. Direct factory USA supply.`,
         'og:type': 'website',
         'og:url': canonicalUrl
+      },
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "CollectionPage",
+            "@id": `${canonicalUrl}#collection`,
+            "name": `3D Custom ${categoryTitle} Templates & Models`,
+            "url": canonicalUrl,
+            "description": `Browse 3D custom sports uniform templates for ${categoryTitle.toLowerCase()} with live 3D customizer.`,
+            "isPartOf": {
+              "@type": "WebSite",
+              "name": "Zarko Sportswear",
+              "url": "https://www.zarkosportswear.com"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.zarkosportswear.com/" },
+              { "@type": "ListItem", "position": 2, "name": "3D Builder", "item": "https://www.zarkosportswear.com/builder" },
+              { "@type": "ListItem", "position": 3, "name": `${categoryTitle} Templates`, "item": canonicalUrl }
+            ]
+          }
+        ]
       }
     };
   }, [categoryParam]);

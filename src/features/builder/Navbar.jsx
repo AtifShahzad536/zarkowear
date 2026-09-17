@@ -8,7 +8,7 @@ import { canUndo, canRedo, subscribeUndoRedo } from './undoMiddleware';
 
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4001';
 
-const Navbar = ({ onBack, backTo }) => {
+const Navbar = ({ onBack, backTo, isEditor = false }) => {
   const [activeMenu, setActiveMenu] = useState(null);
   const barRef = useRef(null);
   const hasUndo = useSyncExternalStore(subscribeUndoRedo, canUndo);
@@ -105,138 +105,176 @@ const Navbar = ({ onBack, backTo }) => {
   return (
     <div
       ref={barRef}
-      className="w-full h-11 bg-[#0C0E1A] border-b border-white/5 flex items-center select-none z-[70] flex-shrink-0 relative px-2 md:px-4"
+      className="w-full h-11 bg-[#0C0E1A] border-b border-white/5 flex items-center justify-between select-none z-[70] flex-shrink-0 relative px-3 md:px-6"
       style={{ fontFamily: "'Outfit', sans-serif" }}
     >
       {/* ── Brand Logo / Left Section ── */}
-      <div className="flex items-center gap-2 md:gap-4 mr-2 md:mr-6">
+      <div className="flex items-center gap-3 md:gap-5 flex-shrink-0">
         <Link to="/" className="flex items-center gap-2 md:gap-2.5 hover:scale-105 transition-transform flex-shrink-0">
           <picture>
             <source srcSet="/new-logo.webp" type="image/webp" />
             <img src="/new-logo.webp" alt="ZSW Logo" title="ZSW Logo" width={24} height={24} className="h-6 w-auto object-contain" onError={(e) => { e.currentTarget.src = '/new-logo.png'; }} />
           </picture>
-          <span className="hidden sm:inline text-[10px] font-black text-white uppercase tracking-[0.18em] whitespace-nowrap">
-            ZARKOWEAR <span className="text-indigo-400">LAB v3D</span>
+          <span className="text-[10px] font-black text-white uppercase tracking-[0.18em] whitespace-nowrap">
+            ZARKOWEAR <span className="text-indigo-400">3D LAB</span>
           </span>
         </Link>
+
+        {/* Status / Breadcrumb on Landing Page */}
+        {!isEditor && (
+          <div className="hidden sm:flex items-center gap-2 pl-3 border-l border-white/10">
+            <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
+            <span className="text-[9px] font-extrabold text-slate-300 uppercase tracking-widest">
+              3D Customizer Studio
+            </span>
+          </div>
+        )}
       </div>
 
-      {/* ── Editor Tabs Navigation (Figma Style) ── */}
-      <div className="flex items-stretch h-full">
-        {/* DESIGNER Tab (Active) */}
-        <div className="flex items-stretch border-b-2 border-indigo-500">
-          <button className="px-2 md:px-4 text-[9px] font-bold text-white uppercase tracking-wider cursor-pointer flex items-center gap-1.5">
-            <span className="hidden md:inline">Designer</span>
-            <span className="md:hidden">3D</span>
-          </button>
-        </div>
+      {/* ── Editor Tabs Navigation (Only shown when inside 3D Editor /builder/:id) ── */}
+      {isEditor && (
+        <div className="flex items-stretch h-full">
+          {/* DESIGNER Tab (Active) */}
+          <div className="flex items-stretch border-b-2 border-indigo-500">
+            <button className="px-2 md:px-4 text-[9px] font-bold text-white uppercase tracking-wider cursor-pointer flex items-center gap-1.5">
+              <span className="hidden md:inline">Designer</span>
+              <span className="md:hidden">3D</span>
+            </button>
+          </div>
 
-        {menuData.map((menu) => (
-          <div key={menu.label} className="relative flex items-stretch border-b-2 border-transparent">
-            <button
-              className={`px-2 md:px-4 text-[9px] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors outline-none cursor-pointer
-                ${activeMenu === menu.label ? 'text-indigo-400' : 'text-slate-400 hover:text-white'}`}
-              onClick={() => setActiveMenu(prev => prev === menu.label ? null : menu.label)}
-              onMouseEnter={() => activeMenu && setActiveMenu(menu.label)}
+          {menuData.map((menu) => (
+            <div key={menu.label} className="relative flex items-stretch border-b-2 border-transparent">
+              <button
+                className={`px-2 md:px-4 text-[9px] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors outline-none cursor-pointer
+                  ${activeMenu === menu.label ? 'text-indigo-400' : 'text-slate-400 hover:text-white'}`}
+                onClick={() => setActiveMenu(prev => prev === menu.label ? null : menu.label)}
+                onMouseEnter={() => activeMenu && setActiveMenu(menu.label)}
+              >
+                {menu.label}
+              </button>
+
+              {activeMenu === menu.label && (
+                <div className="absolute top-full left-0 mt-0 w-max min-w-[220px] bg-[#0e101f] border border-white/10 shadow-xl z-[80] py-1 animate-in fade-in slide-in-from-top-1 duration-100">
+                  {menu.items.map((item, i) => (
+                    item.type === 'separator' ? (
+                      <div key={i} className="my-1 border-t border-white/5" />
+                    ) : (
+                      <button
+                        key={i}
+                        onClick={() => { if (!item.disabled) { item.action?.(); setActiveMenu(null); } }}
+                        disabled={item.disabled}
+                        className={`w-full text-left px-4 py-2.5 text-[9px] font-medium flex items-center justify-between group transition-colors duration-75 cursor-pointer
+                          ${item.disabled ? 'text-slate-600 cursor-default' : 'text-slate-300 hover:bg-indigo-650 hover:text-white'}`}
+                      >
+                        <div className="flex items-center gap-3">
+                          {item.icon && <span className="text-xs opacity-60 group-hover:opacity-100 text-indigo-400">{item.icon}</span>}
+                          <span className="tracking-wide whitespace-nowrap">{item.label}</span>
+                        </div>
+                      </button>
+                    )
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* ── Active Blueprint Status Indicator (Only in Editor) ── */}
+      {isEditor && (
+        <div className="hidden lg:flex items-center gap-2.5 bg-slate-950/40 border border-white/5 px-3 py-1">
+          <span className="text-[7.5px] font-bold text-slate-500 uppercase tracking-widest leading-none">Active Blueprint</span>
+          <span className="text-[9px] font-bold text-slate-200 uppercase tracking-wider leading-none">
+            ZSW_ATHLETIC_BLUEPRINT
+          </span>
+          <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
+        </div>
+      )}
+
+      {/* ── Right Actions Section ── */}
+      <div className="flex items-center gap-2 md:gap-3.5 h-full">
+        {/* Navigation back to custom orders or store */}
+        {!isEditor && (
+          <div className="flex items-center gap-2 md:gap-3">
+            <Link
+              to="/custom"
+              className="hidden md:inline-flex items-center gap-1 text-[10px] font-extrabold text-indigo-400 hover:text-white uppercase tracking-wider px-2.5 py-1 bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 transition-colors"
             >
-              {menu.label}
+              Custom Roster Orders
+            </Link>
+            <Link
+              to="/"
+              className="inline-flex items-center gap-1.5 text-slate-300 hover:text-white text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 bg-white/5 hover:bg-white/10 border border-white/10 transition-colors"
+            >
+              <HiOutlineArrowLeft size={13} />
+              <span>Back to Store</span>
+            </Link>
+          </div>
+        )}
+
+        {/* Editor Controls: Undo, Redo, Help, Notifications, Checkout, Save (Only inside 3D Editor) */}
+        {isEditor && (
+          <>
+            {/* Exit Button */}
+            <button 
+              onClick={handleExit} 
+              className="text-slate-400 hover:text-white text-[9px] font-bold uppercase tracking-wider cursor-pointer flex items-center gap-1.5 transition-colors pr-2 md:pr-3 border-r border-white/10"
+              title="Return to Models Catalog"
+            >
+              <HiOutlineArrowLeft size={13} />
+              <span className="hidden md:inline">Catalog</span>
             </button>
 
-            {activeMenu === menu.label && (
-              <div className="absolute top-full left-0 mt-0 w-max min-w-[220px] bg-[#0e101f] border border-white/10 shadow-xl z-[80] py-1 animate-in fade-in slide-in-from-top-1 duration-100">
-                {menu.items.map((item, i) => (
-                  item.type === 'separator' ? (
-                    <div key={i} className="my-1 border-t border-white/5" />
-                  ) : (
-                    <button
-                      key={i}
-                      onClick={() => { if (!item.disabled) { item.action?.(); setActiveMenu(null); } }}
-                      disabled={item.disabled}
-                      className={`w-full text-left px-4 py-2.5 text-[9px] font-medium flex items-center justify-between group transition-colors duration-75 cursor-pointer
-                        ${item.disabled ? 'text-slate-600 cursor-default' : 'text-slate-300 hover:bg-indigo-650 hover:text-white'}`}
-                    >
-                      <div className="flex items-center gap-3">
-                        {item.icon && <span className="text-xs opacity-60 group-hover:opacity-100 text-indigo-400">{item.icon}</span>}
-                        <span className="tracking-wide whitespace-nowrap">{item.label}</span>
-                      </div>
-                    </button>
-                  )
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+            {/* Undo / Redo */}
+            <button 
+              onClick={() => window.dispatchEvent(new CustomEvent('eay:undo'))} 
+              disabled={!hasUndo}
+              className={`hidden md:block text-slate-400 hover:text-white transition-colors cursor-pointer ${!hasUndo ? 'opacity-40 pointer-events-none' : ''}`}
+              title="Undo"
+            >
+              <BiUndo size={14} />
+            </button>
+            <button 
+              onClick={() => window.dispatchEvent(new CustomEvent('eay:redo'))} 
+              disabled={!hasRedo}
+              className={`hidden md:block text-slate-400 hover:text-white transition-colors cursor-pointer ${!hasRedo ? 'opacity-40 pointer-events-none' : ''}`}
+              title="Redo"
+            >
+              <BiRedo size={14} />
+            </button>
 
-      {/* ── Active Blueprint Status Indicator (Center-Right) ── */}
-      <div className="hidden lg:flex items-center gap-2.5 bg-slate-950/40 border border-white/5 px-3 py-1 ml-auto">
-        <span className="text-[7.5px] font-bold text-slate-500 uppercase tracking-widest leading-none">Active Blueprint</span>
-        <span className="text-[9px] font-bold text-slate-200 uppercase tracking-wider leading-none">
-          {window.location.pathname.includes('/builder/') ? 'ZSW_ATHLETIC_BLUEPRINT' : 'ZSW_KIT_LAB_CANVAS'}
-        </span>
-        <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
-      </div>
+            {/* Help / Notifications */}
+            <button className="hidden md:block text-slate-400 hover:text-white transition-colors cursor-pointer" title="Help">
+              <BiHelpCircle size={14} />
+            </button>
+            <button className="hidden md:block text-slate-400 hover:text-white transition-colors cursor-pointer relative" title="Notifications">
+              <BiBell size={14} />
+              <span className="absolute top-0 right-0 w-1.5 h-1.5 bg-indigo-500 rounded-full" />
+            </button>
 
-      {/* ── Right Actions & Save Section ── */}
-      <div className="flex items-center gap-2 md:gap-4 ml-auto md:ml-6 pl-2 md:pl-4 border-l-0 md:border-l border-white/5 h-full">
-        {/* Exit Button */}
-        <button 
-          onClick={handleExit} 
-          className="text-slate-400 hover:text-white text-[9px] font-bold uppercase tracking-wider cursor-pointer flex items-center gap-1.5 transition-colors"
-          title="Exit to Store"
-        >
-          <HiOutlineArrowLeft size={13} />
-          <span className="hidden md:inline">Exit</span>
-        </button>
+            {/* Checkout Button */}
+            <button 
+              onClick={() => window.dispatchEvent(new CustomEvent('eay:openCheckout'))}
+              className="flex items-center gap-1.5 px-3 md:px-4 py-1 bg-green-600 hover:bg-green-500 transition-colors border border-green-500/30 text-white font-bold text-[9px] tracking-wider uppercase h-7 cursor-pointer shadow-lg shadow-green-600/20 mr-1 md:mr-2"
+            >
+              <BiCart size={12} />
+              <span>Checkout</span>
+            </button>
 
-        {/* Undo / Redo */}
-        <button 
-          onClick={() => window.dispatchEvent(new CustomEvent('eay:undo'))} 
-          disabled={!hasUndo}
-          className={`hidden md:block text-slate-400 hover:text-white transition-colors cursor-pointer ${!hasUndo ? 'opacity-40 pointer-events-none' : ''}`}
-          title="Undo"
-        >
-          <BiUndo size={14} />
-        </button>
-        <button 
-          onClick={() => window.dispatchEvent(new CustomEvent('eay:redo'))} 
-          disabled={!hasRedo}
-          className={`hidden md:block text-slate-400 hover:text-white transition-colors cursor-pointer ${!hasRedo ? 'opacity-40 pointer-events-none' : ''}`}
-          title="Redo"
-        >
-          <BiRedo size={14} />
-        </button>
-
-        {/* Help / Notifications */}
-        <button className="hidden md:block text-slate-400 hover:text-white transition-colors cursor-pointer" title="Help">
-          <BiHelpCircle size={14} />
-        </button>
-        <button className="hidden md:block text-slate-400 hover:text-white transition-colors cursor-pointer relative" title="Notifications">
-          <BiBell size={14} />
-          <span className="absolute top-0 right-0 w-1.5 h-1.5 bg-indigo-500 rounded-full" />
-        </button>
-
-        {/* Checkout Button */}
-        <button 
-          onClick={() => window.dispatchEvent(new CustomEvent('eay:openCheckout'))}
-          className="flex items-center gap-1.5 px-3 md:px-4 py-1 bg-green-600 hover:bg-green-500 transition-colors border border-green-500/30 text-white font-bold text-[9px] tracking-wider uppercase h-7 cursor-pointer shadow-lg shadow-green-600/20 mr-1 md:mr-2"
-        >
-          <BiCart size={12} />
-          <span>Checkout</span>
-        </button>
-
-        {/* Premium Save Split Button */}
-        <div className="flex items-stretch bg-indigo-600 hover:bg-indigo-700 transition-colors border border-indigo-500/20 text-white font-bold text-[9px] tracking-wider uppercase h-7">
-          <button 
-            onClick={() => window.dispatchEvent(new CustomEvent('eay:save'))}
-            className="px-2 md:px-3 flex items-center gap-1.5 cursor-pointer"
-          >
-            <span>Save</span>
-          </button>
-          <button className="px-1 md:px-1.5 border-l border-white/10 hover:bg-indigo-700/50 flex items-center justify-center cursor-pointer">
-            <BiChevronDown size={11} />
-          </button>
-        </div>
+            {/* Premium Save Split Button */}
+            <div className="flex items-stretch bg-indigo-600 hover:bg-indigo-700 transition-colors border border-indigo-500/20 text-white font-bold text-[9px] tracking-wider uppercase h-7">
+              <button 
+                onClick={() => window.dispatchEvent(new CustomEvent('eay:save'))}
+                className="px-2 md:px-3 flex items-center gap-1.5 cursor-pointer"
+              >
+                <span>Save</span>
+              </button>
+              <button className="px-1 md:px-1.5 border-l border-white/10 hover:bg-indigo-700/50 flex items-center justify-center cursor-pointer">
+                <BiChevronDown size={11} />
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
