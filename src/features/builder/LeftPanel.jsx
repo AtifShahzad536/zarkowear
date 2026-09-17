@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ModelViewer from './ModelViewer';
+import UVBlueprintView from './UVBlueprintView';
+import Pattern2DView from './Pattern2DView';
 import { 
   HiOutlineCamera, HiOutlineZoomIn, HiOutlineZoomOut, 
   HiOutlineChevronDown, HiOutlineChevronRight, HiOutlineX, 
@@ -98,153 +100,7 @@ const ActivityBtn = ({ icon, label, onClick, active = false }) => (
   </button>
 );
 
-const UVBlueprintView = ({ meshStates = {} }) => {
-  const baseColor = getComponentColor('Fabric Core', meshStates, 0) || '#ffffff';
-  const leftSleeveColor = getComponentColor('Left Sleeve', meshStates, 2) || baseColor;
-  const rightSleeveColor = getComponentColor('Right Sleeve', meshStates, 3) || baseColor;
-  const isGradient = baseColor.startsWith('linear');
 
-  return (
-    <div className="absolute inset-0 bg-[#070913] overflow-auto custom-scrollbar p-6 select-none z-10 flex items-center justify-start md:justify-center">
-      <div className="w-full max-w-[380px] min-w-[300px] aspect-square border border-indigo-500/20 bg-[#090b15]/60 relative flex flex-col items-center justify-center p-4 flex-shrink-0 my-auto">
-        <div className="absolute top-2 left-2 text-[7.5px] font-bold text-slate-500 font-mono">UV COORDINATES (0.0 - 1.0)</div>
-        
-        {/* Semi-transparent grid backdrop indicating fabric background */}
-        <div className="absolute inset-4 opacity-10 blur-[2px]" 
-             style={{ 
-               background: isGradient ? baseColor : undefined,
-               backgroundColor: isGradient ? undefined : baseColor
-             }} 
-        />
-        
-        <svg viewBox="0 0 100 100" className="w-full h-full text-indigo-500/40 fill-none stroke-current stroke-[0.4] relative z-10">
-          {/* Main Jersey body UV layout block filled with dynamic color */}
-          <path d="M 30,10 L 70,10 L 75,30 L 70,80 L 30,80 L 25,30 Z" className="stroke-indigo-500/80" 
-                style={{ 
-                  fill: isGradient ? 'rgba(99, 102, 241, 0.15)' : baseColor, 
-                  fillOpacity: isGradient ? 0.15 : 0.75 
-                }} 
-          />
-          <path d="M 30,20 L 70,20 M 27,40 L 73,40 M 29,60 L 71,60 M 40,10 L 40,80 M 50,10 L 50,80 M 60,10 L 60,80" className="stroke-indigo-500/25" />
-          
-          {/* Left sleeve piece */}
-          <path d="M 10,20 L 23,25 L 20,45 L 8,40 Z" className="stroke-indigo-500/80" 
-                style={{ 
-                  fill: leftSleeveColor.startsWith('linear') ? 'rgba(99, 102, 241, 0.15)' : leftSleeveColor, 
-                  fillOpacity: leftSleeveColor.startsWith('linear') ? 0.15 : 0.75 
-                }} 
-          />
-          
-          {/* Right sleeve piece */}
-          <path d="M 90,20 L 77,25 L 80,45 L 92,40 Z" className="stroke-indigo-500/80" 
-                style={{ 
-                  fill: rightSleeveColor.startsWith('linear') ? 'rgba(99, 102, 241, 0.15)' : rightSleeveColor, 
-                  fillOpacity: rightSleeveColor.startsWith('linear') ? 0.15 : 0.75 
-                }} 
-          />
-        </svg>
-
-        <div className="absolute bottom-3 left-3 bg-slate-950/80 border border-white/5 px-2 py-1 text-[7px] font-bold text-indigo-400 font-mono flex flex-col gap-0.5">
-          <span>SHEET: UV_MAP_JERSEY_GEN_1</span>
-          <span>RESOLUTION: 2048 x 2048 PX</span>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const Pattern2DView = ({ meshStates = {} }) => {
-  const bodyColor = getComponentColor('Fabric Core', meshStates, 0) || '#ffffff';
-  const leftSleeveColor = getComponentColor('Left Sleeve', meshStates, 2) || bodyColor;
-  const rightSleeveColor = getComponentColor('Right Sleeve', meshStates, 3) || bodyColor;
-  const collarColor = getComponentColor('Neckline', meshStates, 1) || '#0f172a';
-
-  return (
-    <div className="absolute inset-0 bg-[#070913] flex flex-col select-none z-10 overflow-hidden">
-      {/* Floating coordinates rulers (sticky at top/left viewport borders) */}
-      <div className="h-5 border-b border-white/5 bg-[#0e101f]/60 flex items-center justify-between px-4 text-[7px] font-bold text-slate-500 font-mono flex-shrink-0 pl-14">
-        <span>0cm</span><span>20cm</span><span>40cm</span><span>60cm</span><span>80cm</span><span>100cm</span>
-      </div>
-
-      <div className="flex-1 flex flex-row min-h-0 relative">
-        {/* Left ruler */}
-        <div className="w-10 border-r border-white/5 bg-[#0e101f]/60 flex flex-col justify-between py-6 items-center text-[7px] font-bold text-slate-500 font-mono flex-shrink-0">
-          <span>0cm</span><span>20cm</span><span>40cm</span><span>60cm</span><span>80cm</span>
-        </div>
-
-        {/* Workspace centered container without scrollbars */}
-        <div className="flex-1 flex items-center justify-center p-4 overflow-hidden">
-          <div className="flex items-center gap-6 py-2 my-auto">
-            
-            {/* FRONT PANEL */}
-            <div className="flex flex-col items-center gap-2">
-              <span className="text-[7.5px] font-bold uppercase tracking-widest text-slate-500">FRONT PANEL</span>
-              <div className="w-24 h-36 border border-white/10 relative overflow-hidden flex items-center justify-center shadow-lg transition-all"
-                   style={{ 
-                     background: bodyColor.startsWith('linear') ? bodyColor : undefined,
-                     backgroundColor: bodyColor.startsWith('linear') ? undefined : bodyColor
-                   }}>
-                <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:10px_10px]" />
-                <span className="text-[9px] font-black text-white/40 uppercase tracking-widest">FRONT</span>
-              </div>
-            </div>
-
-            {/* BACK PANEL */}
-            <div className="flex flex-col items-center gap-2">
-              <span className="text-[7.5px] font-bold uppercase tracking-widest text-slate-500">BACK PANEL</span>
-              <div className="w-24 h-36 border border-white/10 relative overflow-hidden flex items-center justify-center shadow-lg transition-all"
-                   style={{ 
-                     background: bodyColor.startsWith('linear') ? bodyColor : undefined,
-                     backgroundColor: bodyColor.startsWith('linear') ? undefined : bodyColor
-                   }}>
-                <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:10px_10px]" />
-                <span className="text-[9px] font-black text-white/40 uppercase tracking-widest">BACK</span>
-              </div>
-            </div>
-
-            {/* SLEEVES & COLLAR DOCK */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-[7.5px] font-bold uppercase tracking-widest text-slate-500">L. SLEEVE</span>
-                <div className="w-16 h-12 border border-white/10 relative overflow-hidden flex items-center justify-center shadow-lg transition-all"
-                     style={{ 
-                       background: leftSleeveColor.startsWith('linear') ? leftSleeveColor : undefined,
-                       backgroundColor: leftSleeveColor.startsWith('linear') ? undefined : leftSleeveColor
-                     }}>
-                  <span className="text-[7.5px] font-black text-white/40 uppercase tracking-wider">LEFT</span>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-[7.5px] font-bold uppercase tracking-widest text-slate-500">R. SLEEVE</span>
-                <div className="w-16 h-12 border border-white/10 relative overflow-hidden flex items-center justify-center shadow-lg transition-all"
-                     style={{ 
-                       background: rightSleeveColor.startsWith('linear') ? rightSleeveColor : undefined,
-                       backgroundColor: rightSleeveColor.startsWith('linear') ? undefined : rightSleeveColor
-                     }}>
-                  <span className="text-[7.5px] font-black text-white/40 uppercase tracking-wider">RIGHT</span>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-[7.5px] font-bold uppercase tracking-widest text-slate-500">COLLAR</span>
-                <div className="w-16 h-5 border border-white/10 relative overflow-hidden flex items-center justify-center shadow-lg transition-all"
-                     style={{ 
-                       background: collarColor.startsWith('linear') ? collarColor : undefined,
-                       backgroundColor: collarColor.startsWith('linear') ? undefined : collarColor
-                     }}>
-                  <span className="text-[6.5px] font-black text-white/40 uppercase tracking-wider">NECK</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  );
-};
 
 const LeftPanel = ({
   modelUrl,
@@ -650,9 +506,18 @@ const LeftPanel = ({
                   setIsPlaying={setIsPlaying}
                 />
               ) : activeTab === 'UV View' ? (
-                <UVBlueprintView meshStates={meshStates} />
+                <UVBlueprintView 
+                  modelUrl={modelUrl}
+                  meshStates={meshStates} 
+                  decals={decals}
+                  layersMetadata={layersMetadata}
+                />
               ) : (
-                <Pattern2DView meshStates={meshStates} />
+                <Pattern2DView 
+                  meshStates={meshStates} 
+                  decals={decals}
+                  layersMetadata={layersMetadata}
+                />
               )}
 
               <div className={`absolute top-3 left-3 pointer-events-none select-none z-10 transition-all duration-500 
