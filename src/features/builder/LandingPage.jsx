@@ -94,6 +94,7 @@ const DesignCard = ({
           thirdIsGrad={thirdIsGrad}
           thirdColor2={thirdColor2}
           pattern={globalPattern}
+          finish={materialFinish}
           layersMetadata={design.layers_metadata || {}}
         />
 
