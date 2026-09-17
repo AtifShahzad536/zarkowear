@@ -762,7 +762,7 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
             >
               <div className="flex flex-col">
                 <span className={`text-[10px] font-semibold tracking-widest ${selectedDecalId === d.id ? 'text-white' : 'text-slate-400'}`}>{d.text || 'EMPTY'}</span>
-                <span className="text-[7px] font-semibold text-gray-300 uppercase tracking-widest mt-0.5">{d.font} • SIZE {((d.decalScale || 0.15) * 100).toFixed(0)}%</span>
+                <span className="text-[7px] font-semibold text-gray-300 uppercase tracking-widest mt-0.5">{d.font} • SIZE {((d.decalScale || 0.38) * 100).toFixed(0)}%</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-4 h-4 rounded-none border border-white shadow-sm" style={{ backgroundColor: d.color }} />
@@ -882,22 +882,22 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
             {/* Tip Banner */}
             <div className="p-3 bg-indigo-500/10/50 border border-indigo-500/20 rounded-none text-[8.5px] text-indigo-400/80 font-bold uppercase tracking-wider flex items-center gap-2">
               <span className="text-xs">💡</span>
-              <span>Tip: click anywhere on the 3D model to move this layer.</span>
+              <span>Tip: Drag the text directly on the 3D model to position it anywhere.</span>
             </div>
 
             <div className="space-y-4">
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-widest">Overall Scale</p>
-                  <span className="text-[10px] font-semibold text-indigo-400">{((selected?.decalScale || 0.15) * 100).toFixed(0)}%</span>
+                  <span className="text-[10px] font-semibold text-indigo-400">{((selected?.decalScale || 0.38) * 100).toFixed(0)}%</span>
                 </div>
                 <input
                   type="range"
-                  min="0.03"
+                  min="0.05"
                   max="1.5"
                   step="0.01"
                   className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
-                  value={selected?.decalScale || 0.15}
+                  value={selected?.decalScale || 0.38}
                   onChange={(e) => {
                     const v = parseFloat(e.target.value);
                     safeUpdate({ decalScale: v, decalScaleX: v, decalScaleY: v });
@@ -908,15 +908,15 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-widest">Width (Horizontal Stretch)</p>
-                  <span className="text-[10px] font-semibold text-indigo-400">{((selected?.decalScaleX !== undefined ? selected.decalScaleX : (selected?.decalScale || 0.15)) * 100).toFixed(0)}%</span>
+                  <span className="text-[10px] font-semibold text-indigo-400">{((selected?.decalScaleX !== undefined ? selected.decalScaleX : (selected?.decalScale || 0.38)) * 100).toFixed(0)}%</span>
                 </div>
                 <input
                   type="range"
-                  min="0.03"
+                  min="0.05"
                   max="1.5"
                   step="0.01"
                   className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
-                  value={selected?.decalScaleX !== undefined ? selected.decalScaleX : (selected?.decalScale || 0.15)}
+                  value={selected?.decalScaleX !== undefined ? selected.decalScaleX : (selected?.decalScale || 0.38)}
                   onChange={(e) => safeUpdate({ decalScaleX: parseFloat(e.target.value) })}
                 />
               </div>
@@ -924,15 +924,15 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-widest">Height (Vertical Stretch)</p>
-                  <span className="text-[10px] font-semibold text-indigo-400">{((selected?.decalScaleY !== undefined ? selected.decalScaleY : (selected?.decalScale || 0.15)) * 100).toFixed(0)}%</span>
+                  <span className="text-[10px] font-semibold text-indigo-400">{((selected?.decalScaleY !== undefined ? selected.decalScaleY : (selected?.decalScale || 0.38)) * 100).toFixed(0)}%</span>
                 </div>
                 <input
                   type="range"
-                  min="0.03"
+                  min="0.05"
                   max="1.5"
                   step="0.01"
                   className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
-                  value={selected?.decalScaleY !== undefined ? selected.decalScaleY : (selected?.decalScale || 0.15)}
+                  value={selected?.decalScaleY !== undefined ? selected.decalScaleY : (selected?.decalScale || 0.38)}
                   onChange={(e) => safeUpdate({ decalScaleY: parseFloat(e.target.value) })}
                 />
               </div>
@@ -1419,6 +1419,16 @@ const RightPanel = (props) => {
     window.addEventListener('eay:openCheckout', handleOpenCheckout);
     return () => window.removeEventListener('eay:openCheckout', handleOpenCheckout);
   }, []);
+
+  useEffect(() => {
+    if (props.selectedDecalId) {
+      const d = (props.decals || []).find(x => x.id === props.selectedDecalId);
+      if (d) {
+        if (d.type === 'text') setActiveTab('names');
+        else if (d.type === 'image') setActiveTab('logos');
+      }
+    }
+  }, [props.selectedDecalId, props.decals]);
   
   const mainTabs = [
     { id: 'colors', label: 'Colors', icon: <BiPalette /> },

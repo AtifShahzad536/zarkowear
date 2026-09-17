@@ -467,18 +467,19 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
   const basisX = new THREE.Vector3().setFromMatrixColumn(m4, 0).normalize();
   const basisY = new THREE.Vector3().setFromMatrixColumn(m4, 1).normalize();
 
-  const sx = Math.max(0.04, decal.decalScaleX !== undefined ? decal.decalScaleX : (decal.decalScale || 0.15));
-  const sy = Math.max(0.04, decal.decalScaleY !== undefined ? decal.decalScaleY : (decal.decalScale || 0.15));
+  const defaultScale = decal.type === 'image' ? 0.28 : 0.38;
+  const sx = Math.max(0.06, decal.decalScaleX !== undefined ? decal.decalScaleX : (decal.decalScale || defaultScale));
+  const sy = Math.max(0.06, decal.decalScaleY !== undefined ? decal.decalScaleY : (decal.decalScale || defaultScale));
 
   let actualSy = sy;
   if (decal.type !== 'image' && decal.type !== 'pattern') {
-    actualSy = Math.max(0.025, sy * 0.25);
+    actualSy = Math.max(0.035, sy * 0.25);
   }
 
   const hw = sx / 2;
   const hh = actualSy / 2;
 
-  // Corner handle positions
+  // Corner handle positions & directional vectors
   const corners = [
     { id: 'tl', signX: -1, signY: 1 },
     { id: 'tr', signX: 1, signY: 1 },
@@ -486,12 +487,24 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
     { id: 'bl', signX: -1, signY: -1 },
   ];
 
-  const cornerPositions = corners.map(c => {
+  const cornerData = corners.map(c => {
     const pos = point.clone()
       .add(basisX.clone().multiplyScalar(c.signX * hw))
       .add(basisY.clone().multiplyScalar(c.signY * hh))
       .add(normal.clone().multiplyScalar(0.015));
-    return { ...c, pos };
+
+    const diag = basisX.clone().multiplyScalar(c.signX).add(basisY.clone().multiplyScalar(c.signY)).normalize();
+    const arrowQuat = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), diag);
+    const invArrowQuat = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), diag.clone().negate());
+
+    // Corner L-bracket line points
+    const armLen = Math.min(0.025, hw * 0.4, hh * 0.4);
+    const p1 = pos.clone().sub(basisX.clone().multiplyScalar(c.signX * armLen));
+    const p2 = pos.clone();
+    const p3 = pos.clone().sub(basisY.clone().multiplyScalar(c.signY * armLen));
+    const bracketArray = new Float32Array([p1.x, p1.y, p1.z, p2.x, p2.y, p2.z, p3.x, p3.y, p3.z]);
+
+    return { ...c, pos, diag, arrowQuat, invArrowQuat, bracketArray };
   });
 
   // Top center position & Rotation handle position
@@ -500,7 +513,7 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
     .add(normal.clone().multiplyScalar(0.015));
 
   const rotHandlePos = point.clone()
-    .add(basisY.clone().multiplyScalar(hh + 0.035))
+    .add(basisY.clone().multiplyScalar(hh + 0.04))
     .add(normal.clone().multiplyScalar(0.015));
 
   // --- Corner Resize Handlers ---
@@ -525,14 +538,14 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
     const newHw = Math.abs(offset.dot(basisX));
     let newHh = Math.abs(offset.dot(basisY));
 
-    let newSx = Math.max(0.02, newHw * 2);
-    let newSy = Math.max(0.02, newHh * 2);
+    let newSx = Math.max(0.04, newHw * 2);
+    let newSy = Math.max(0.04, newHh * 2);
 
     if (decal.type !== 'image' && decal.type !== 'pattern') {
       newSy = newSy / 0.25;
     }
 
-    updateDecal(decal.id, { decalScaleX: newSx, decalScaleY: newSy });
+    updateDecal(decal.id, { decalScale: newSx, decalScaleX: newSx, decalScaleY: newSy });
   };
 
   const handleCornerUp = (e) => {
@@ -624,11 +637,11 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
 
   // Outer boundary line points (rectangle)
   const linePoints = [
-    cornerPositions[0].pos,
-    cornerPositions[1].pos,
-    cornerPositions[2].pos,
-    cornerPositions[3].pos,
-    cornerPositions[0].pos,
+    cornerData[0].pos,
+    cornerData[1].pos,
+    cornerData[2].pos,
+    cornerData[3].pos,
+    cornerData[0].pos,
   ];
   const linePointsArray = new Float32Array(linePoints.flatMap(p => [p.x, p.y, p.z]));
 
@@ -650,11 +663,11 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
         onPointerMove={handleMoveMove}
         onPointerUp={handleMoveUp}
       >
-        <planeGeometry args={[Math.max(0.06, sx), Math.max(0.03, actualSy)]} />
+        <planeGeometry args={[Math.max(0.08, sx), Math.max(0.04, actualSy)]} />
         <meshBasicMaterial transparent opacity={0.001} depthTest={false} />
       </mesh>
 
-      {/* Bounding Box Outline */}
+      {/* Bounding Box Outline (Dashed/Clean Modern Border) */}
       <line>
         <bufferGeometry attach="geometry">
           <bufferAttribute
@@ -680,29 +693,77 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
         <lineBasicMaterial attach="material" color="#6366f1" depthTest={false} linewidth={1.5} transparent opacity={0.8} />
       </line>
 
-      {/* Top Rotation Handle Circle */}
-      <mesh
-        position={rotHandlePos}
-        onPointerDown={handleRotDown}
-        onPointerMove={handleRotMove}
-        onPointerUp={handleRotUp}
-      >
-        <sphereGeometry args={[0.007, 16, 16]} />
-        <meshBasicMaterial color="#a5b4fc" depthTest={false} transparent opacity={0.95} />
-      </mesh>
-
-      {/* 4 Corner Resize Handles */}
-      {cornerPositions.map(c => (
+      {/* Top Rotation Handle (Circle & Orbit Marker) */}
+      <group position={rotHandlePos}>
         <mesh
-          key={c.id}
-          position={c.pos}
-          onPointerDown={(e) => handleCornerDown(e, c.id)}
-          onPointerMove={(e) => handleCornerMove(e, c.id)}
-          onPointerUp={handleCornerUp}
+          onPointerDown={handleRotDown}
+          onPointerMove={handleRotMove}
+          onPointerUp={handleRotUp}
         >
-          <boxGeometry args={[0.012, 0.012, 0.012]} />
-          <meshBasicMaterial color="#6366f1" depthTest={false} transparent opacity={0.95} />
+          <sphereGeometry args={[0.008, 16, 16]} />
+          <meshBasicMaterial color="#a5b4fc" depthTest={false} transparent opacity={0.95} />
         </mesh>
+        <mesh
+          onPointerDown={handleRotDown}
+          onPointerMove={handleRotMove}
+          onPointerUp={handleRotUp}
+        >
+          <ringGeometry args={[0.011, 0.014, 24]} />
+          <meshBasicMaterial color="#6366f1" depthTest={false} transparent opacity={0.9} side={THREE.DoubleSide} />
+        </mesh>
+      </group>
+
+      {/* 4 Corner Resize ARROWS & Corner Brackets */}
+      {cornerData.map(c => (
+        <group key={c.id}>
+          {/* L-Bracket corner indicator */}
+          <line>
+            <bufferGeometry attach="geometry">
+              <bufferAttribute
+                attach="attributes-position"
+                array={c.bracketArray}
+                count={3}
+                itemSize={3}
+              />
+            </bufferGeometry>
+            <lineBasicMaterial attach="material" color="#ffffff" depthTest={false} linewidth={2.5} transparent opacity={0.95} />
+          </line>
+
+          {/* Outward Diagonal Resize Arrow Head */}
+          <mesh position={c.pos.clone().add(c.diag.clone().multiplyScalar(0.018))} quaternion={c.arrowQuat}>
+            <coneGeometry args={[0.007, 0.013, 12]} />
+            <meshBasicMaterial color="#6366f1" depthTest={false} transparent opacity={0.95} />
+          </mesh>
+
+          {/* Inward Diagonal Resize Arrow Head (Double-ended arrow marker) */}
+          <mesh position={c.pos.clone().sub(c.diag.clone().multiplyScalar(0.006))} quaternion={c.invArrowQuat}>
+            <coneGeometry args={[0.0055, 0.010, 12]} />
+            <meshBasicMaterial color="#6366f1" depthTest={false} transparent opacity={0.95} />
+          </mesh>
+
+          {/* Arrow Connecting Shaft */}
+          <mesh position={c.pos.clone().add(c.diag.clone().multiplyScalar(0.006))} quaternion={c.arrowQuat}>
+            <cylinderGeometry args={[0.002, 0.002, 0.016, 8]} />
+            <meshBasicMaterial color="#a5b4fc" depthTest={false} transparent opacity={0.95} />
+          </mesh>
+
+          {/* Center glowing dot at corner point */}
+          <mesh position={c.pos}>
+            <sphereGeometry args={[0.004, 12, 12]} />
+            <meshBasicMaterial color="#ffffff" depthTest={false} transparent opacity={0.95} />
+          </mesh>
+
+          {/* Large Invisible Hitbox for smooth dragging */}
+          <mesh
+            position={c.pos.clone().add(c.diag.clone().multiplyScalar(0.006))}
+            onPointerDown={(e) => handleCornerDown(e, c.id)}
+            onPointerMove={(e) => handleCornerMove(e, c.id)}
+            onPointerUp={handleCornerUp}
+          >
+            <sphereGeometry args={[0.03, 12, 12]} />
+            <meshBasicMaterial transparent opacity={0.001} depthTest={false} />
+          </mesh>
+        </group>
       ))}
     </group>
   );
@@ -1221,17 +1282,47 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
 
     const clickPoint = e.point.clone();
 
-    // Check if user clicked near an existing decal -> select that decal
+    // Check if user clicked on or near an existing decal
     let closestDecal = null;
-    let closestDist = 0.12; // detection radius
+    let minScore = Infinity;
 
     decals.forEach(d => {
-      if (!d.worldPoint || d.type === 'pattern') return;
+      if (!d.worldPoint || !d.worldNormal || d.type === 'pattern') return;
       const decalPos = new THREE.Vector3().fromArray(d.worldPoint);
-      const dist = clickPoint.distanceTo(decalPos);
-      if (dist < closestDist) {
-        closestDist = dist;
-        closestDecal = d;
+      const decalNorm = new THREE.Vector3().fromArray(d.worldNormal).normalize();
+
+      const up = Math.abs(decalNorm.y) < 0.95 ? new THREE.Vector3(0, 1, 0) : new THREE.Vector3(1, 0, 0);
+      const right = new THREE.Vector3().crossVectors(up, decalNorm).normalize();
+      const newUp = new THREE.Vector3().crossVectors(decalNorm, right).normalize();
+      const m4 = new THREE.Matrix4().makeBasis(right, newUp, decalNorm);
+      const mRot = new THREE.Matrix4().makeRotationZ(d.rotation || 0);
+      m4.multiply(mRot);
+
+      const bX = new THREE.Vector3().setFromMatrixColumn(m4, 0).normalize();
+      const bY = new THREE.Vector3().setFromMatrixColumn(m4, 1).normalize();
+
+      const dSx = Math.max(0.06, d.decalScaleX !== undefined ? d.decalScaleX : (d.decalScale || (d.type === 'image' ? 0.28 : 0.38)));
+      const dSy = Math.max(0.06, d.decalScaleY !== undefined ? d.decalScaleY : (d.decalScale || (d.type === 'image' ? 0.28 : 0.38)));
+      const actualH = d.type === 'image' ? dSy : Math.max(0.035, dSy * 0.25);
+
+      const halfW = dSx / 2;
+      const halfH = actualH / 2;
+
+      const diff = clickPoint.clone().sub(decalPos);
+      const projX = Math.abs(diff.dot(bX));
+      const projY = Math.abs(diff.dot(bY));
+      const projZ = Math.abs(diff.dot(decalNorm));
+
+      // Check if click point is inside decal boundary with generous tolerance
+      const isInsideRect = projX <= (halfW + 0.08) && projY <= (halfH + 0.08) && projZ <= 0.25;
+      const distToCenter = clickPoint.distanceTo(decalPos);
+
+      if (isInsideRect || distToCenter < (Math.max(halfW, halfH) + 0.1)) {
+        const score = Math.max(projX / (halfW + 0.08), projY / (halfH + 0.08));
+        if (score < minScore) {
+          minScore = score;
+          closestDecal = d;
+        }
       }
     });
 
