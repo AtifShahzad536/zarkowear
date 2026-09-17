@@ -496,6 +496,8 @@ const Builder = memo(({ defaultPatterns, defaultLogos }) => {
       <div className="flex-grow flex flex-col min-h-0 overflow-hidden relative">
         <LeftPanel
           modelUrl={design.modelUrl}
+          designName={design.name}
+          category={design.category}
           layersMetadata={design.layers_metadata || {}}
           meshes={meshes}
           activeMesh={activeMesh}

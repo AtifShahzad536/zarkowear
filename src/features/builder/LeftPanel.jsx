@@ -104,8 +104,10 @@ const ActivityBtn = ({ icon, label, onClick, active = false }) => (
 
 const LeftPanel = ({
   modelUrl,
+  designName = '',
+  category = '',
   layersMetadata = {},
-  meshes,
+  meshes = [],
   activeMesh,
   setActiveMesh,
   meshStates,
@@ -508,12 +510,17 @@ const LeftPanel = ({
               ) : activeTab === 'UV View' ? (
                 <UVBlueprintView 
                   modelUrl={modelUrl}
+                  designName={designName}
+                  category={category}
                   meshStates={meshStates} 
                   decals={decals}
                   layersMetadata={layersMetadata}
                 />
               ) : (
                 <Pattern2DView 
+                  designName={designName}
+                  category={category}
+                  meshes={meshes}
                   meshStates={meshStates} 
                   decals={decals}
                   layersMetadata={layersMetadata}
