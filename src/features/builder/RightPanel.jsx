@@ -680,7 +680,7 @@ const MeshProperties = ({
   );
 };
 
-const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, updateDecal, removeDecal }) => {
+const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, updateDecal, removeDecal, activeMesh }) => {
   const textDecals = decals.filter(d => d.type === 'text');
   const selected = textDecals.find(d => d.id === selectedDecalId);
   const [localText, setLocalText] = useState('');
@@ -697,6 +697,19 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
     if (!selected) return;
     updateDecal(selected.id, updates);
   };
+
+  const colors = [
+    { name: 'White', hex: '#FFFFFF' },
+    { name: 'Black', hex: '#000000' },
+    { name: 'Navy', hex: '#000080' },
+    { name: 'Red', hex: '#FF0000' },
+    { name: 'Royal Blue', hex: '#4169E1' },
+    { name: 'Gold', hex: '#FFD700' },
+    { name: 'Forest Green', hex: '#228B22' },
+    { name: 'Silver Gray', hex: '#C0C0C0' },
+    { name: 'Maroon', hex: '#800000' },
+    { name: 'Orange', hex: '#FFA500' },
+  ];
 
   const renderColorGrid = (targetProp) => (
     <div className="flex flex-wrap gap-2">
@@ -776,11 +789,11 @@ const NamesNumbersTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal
               setLocalText(val);
               if (selected) safeUpdate({ text: val });
             }}
-            onKeyDown={(e) => { if (e.key === 'Enter') addDecal('text', localText || 'TEAM NAME'); }}
+            onKeyDown={(e) => { if (e.key === 'Enter') addDecal('text', localText || 'TEAM NAME', null, activeMesh); }}
             value={localText}
           />
           <button
-            onClick={() => addDecal('text', localText || 'TEAM NAME')}
+            onClick={() => addDecal('text', localText || 'TEAM NAME', null, activeMesh)}
             className="px-6 bg-gray-800 text-white rounded-none text-[10px] font-semibold uppercase tracking-widest hover:bg-indigo-600 transition-all active:scale-95"
           >
             ADD
@@ -991,7 +1004,7 @@ const logoCategories = [
   { name: 'WATERMARKS', icon: <BiGhost />, items: [{ name: 'Ghost', url: 'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/ghost.svg' }] },
 ];
 
-const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, updateDecal, removeDecal, defaultLogos = [] }) => {
+const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, updateDecal, removeDecal, defaultLogos = [], activeMesh }) => {
   const imageDecals = decals.filter(d => d.type === 'image');
   const selected = imageDecals.find(d => d.id === selectedDecalId);
   const [expandedCat, setExpandedCat] = useState(null);
@@ -1033,7 +1046,7 @@ const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, 
       .then(data => {
         if (data.success && data.url) {
           toast.success('Logo uploaded!', { id: toastId });
-          addDecal('image', file.name.replace(/\.[^.]+$/, ''), data.url);
+          addDecal('image', file.name.replace(/\.[^.]+$/, ''), data.url, activeMesh);
         } else {
           toast.error('Failed to upload logo.', { id: toastId });
         }
@@ -1053,7 +1066,7 @@ const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, 
 
   return (
     <div className="flex flex-col bg-[#0A0C16]">
-      {/* ADD LOGO - PREMIUM OVERHAUL */}
+      {/* ADD LOGO UPLOAD */}
       <div className="p-6 bg-[#0A0C16] border-b border-white/5">
         <h3 className="text-[9px] font-semibold text-slate-500 uppercase tracking-widest mb-4">Add Components</h3>
         <label className="group relative flex flex-col items-center justify-center py-10 border border-dashed border-white/10 rounded-none bg-[#0e101f]/30 hover:bg-indigo-500/10/30 hover:border-indigo-500 transition-all cursor-pointer overflow-hidden">
@@ -1100,7 +1113,7 @@ const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, 
               {/* Tip Banner */}
               <div className="p-3 bg-indigo-500/10/50 border border-indigo-500/20 rounded-none text-[8.5px] text-indigo-400/80 font-bold uppercase tracking-wider flex items-center gap-2">
                 <span className="text-xs">💡</span>
-                <span>Tip: click anywhere on the 3D model to move this layer.</span>
+                <span>Tip: Drag the graphic directly on the 3D model to position it anywhere.</span>
               </div>
 
               {/* Sizing & Stretching */}
@@ -1115,54 +1128,21 @@ const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, 
                   </div>
                   <input
                     type="range"
-                    min="0.03"
-                    max="4.0"
+                    min="0.05"
+                    max="0.8"
                     step="0.01"
                     className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
                     value={selected.decalScale || 0.12}
                     onChange={(e) => {
-                      const v = parseFloat(e.target.value);
-                      safeUpdate({ decalScale: v, decalScaleX: v, decalScaleY: v });
+                      const val = parseFloat(e.target.value);
+                      safeUpdate({ decalScale: val, decalScaleX: val, decalScaleY: val });
                     }}
-                  />
-                </div>
-
-                {/* Horizontal Stretch (Width) */}
-                <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-[9px] font-semibold text-slate-400 uppercase tracking-wider">Width (Horizontal Stretch)</span>
-                    <span className="text-[10px] font-semibold text-indigo-400">{((selected.decalScaleX !== undefined ? selected.decalScaleX : (selected.decalScale || 0.12)) * 100).toFixed(0)}%</span>
-                  </div>
-                  <input
-                    type="range"
-                    min="0.03"
-                    max="4.0"
-                    step="0.01"
-                    className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
-                    value={selected.decalScaleX !== undefined ? selected.decalScaleX : (selected.decalScale || 0.12)}
-                    onChange={(e) => safeUpdate({ decalScaleX: parseFloat(e.target.value) })}
-                  />
-                </div>
-
-                {/* Vertical Stretch (Height) */}
-                <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-[9px] font-semibold text-slate-400 uppercase tracking-wider">Height (Vertical Stretch)</span>
-                    <span className="text-[10px] font-semibold text-indigo-400">{((selected.decalScaleY !== undefined ? selected.decalScaleY : (selected.decalScale || 0.12)) * 100).toFixed(0)}%</span>
-                  </div>
-                  <input
-                    type="range"
-                    min="0.03"
-                    max="4.0"
-                    step="0.01"
-                    className="w-full h-1.5 bg-gray-200 rounded-none appearance-none cursor-pointer accent-indigo-500"
-                    value={selected.decalScaleY !== undefined ? selected.decalScaleY : (selected.decalScale || 0.12)}
-                    onChange={(e) => safeUpdate({ decalScaleY: parseFloat(e.target.value) })}
                   />
                 </div>
               </div>
 
-              <div>
+              {/* Rotation */}
+              <div className="space-y-4 pt-4 border-t border-white/10">
                 <div className="flex items-center justify-between mb-3">
                   <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-widest">Rotation</p>
                   <span className="text-[10px] font-semibold text-indigo-400">{Math.round((selected.rotation || 0) * 180 / Math.PI)}°</span>
@@ -1182,16 +1162,17 @@ const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, 
         </div>
       )}
 
-      {/* LOGO CATEGORIES */}
-      <div className="flex-1">
+      {/* GRAPHIC LIBRARY */}
+      <div className="p-6 space-y-4">
+        <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-widest mb-3">Graphic Library</p>
         {mergedLogoCategories.map((cat, i) => (
-          <div key={cat.name} className="border-b border-white/5 bg-[#0A0C16]">
+          <div key={cat.name} className="border border-white/5 rounded-none overflow-hidden">
             <button
               onClick={() => setExpandedCat(expandedCat === i ? null : i)}
-              className={`w-full flex items-center justify-between px-5 py-3.5 transition-colors cursor-pointer hover:bg-[#0e101f] ${expandedCat === i ? 'bg-[#0e101f]' : ''}`}
+              className={`w-full flex items-center justify-between p-3.5 bg-[#0A0C16] hover:bg-[#0e101f] transition-colors cursor-pointer ${expandedCat === i ? 'bg-[#0e101f]' : ''}`}
             >
               <div className="flex items-center gap-3">
-                <span className={`text-lg transition-colors ${expandedCat === i ? 'text-indigo-400' : 'text-slate-500'}`}>{cat.icon}</span>
+                <span className="text-slate-400 text-sm">{cat.icon}</span>
                 <span className={`text-[10px] font-semibold uppercase tracking-widest ${expandedCat === i ? 'text-white' : 'text-slate-500'}`}>{cat.name}</span>
               </div>
               <span className={`text-[10px] transition-transform duration-300 ${expandedCat === i ? 'rotate-45 text-indigo-400' : 'text-gray-300'}`}>＋</span>
@@ -1202,7 +1183,7 @@ const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, 
                   {cat.items?.map((item, idx) => (
                     <button
                       key={idx}
-                      onClick={() => addDecal('image', item.name, item.url)}
+                      onClick={() => addDecal('image', item.name, item.url, activeMesh)}
                       className="aspect-square bg-[#0e101f] border border-white/5 rounded-none p-2 hover:border-indigo-500 hover:bg-indigo-500/10 transition-all flex flex-col items-center justify-center gap-1 group cursor-pointer"
                     >
                       <img src={item.url} alt={item.name ? `${item.name} graphic` : "Graphic icon"} title={item.name} className="w-full h-full object-contain opacity-60 group-hover:opacity-100 transition-opacity" />

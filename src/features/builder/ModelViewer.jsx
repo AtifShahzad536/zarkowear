@@ -443,13 +443,15 @@ const CameraController = memo(function CameraController({ mouseFollow, isDraggin
 })
 
 // ─── DECAL TRANSFORM HANDLES ─────────────────────────────────────────────────
-const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle }) => {
+const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes = [], layersMetadata = {} }) => {
   const [activeCorner, setActiveCorner] = React.useState(null);
+  const [isDraggingMove, setIsDraggingMove] = React.useState(false);
+  const [isDraggingRot, setIsDraggingRot] = React.useState(false);
 
   if (!decal || !decal.worldPoint || !decal.worldNormal) return null;
 
   const point = new THREE.Vector3().fromArray(decal.worldPoint);
-  const normal = new THREE.Vector3().fromArray(decal.worldNormal);
+  const normal = new THREE.Vector3().fromArray(decal.worldNormal).normalize();
 
   const up = Math.abs(normal.y) < 0.95
     ? new THREE.Vector3(0, 1, 0)
@@ -465,17 +467,18 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle }) => {
   const basisX = new THREE.Vector3().setFromMatrixColumn(m4, 0).normalize();
   const basisY = new THREE.Vector3().setFromMatrixColumn(m4, 1).normalize();
 
-  const sx = decal.decalScaleX !== undefined ? decal.decalScaleX : (decal.decalScale || 0.15);
-  const sy = decal.decalScaleY !== undefined ? decal.decalScaleY : (decal.decalScale || 0.15);
+  const sx = Math.max(0.04, decal.decalScaleX !== undefined ? decal.decalScaleX : (decal.decalScale || 0.15));
+  const sy = Math.max(0.04, decal.decalScaleY !== undefined ? decal.decalScaleY : (decal.decalScale || 0.15));
 
   let actualSy = sy;
   if (decal.type !== 'image' && decal.type !== 'pattern') {
-    actualSy = sy * 0.25;
+    actualSy = Math.max(0.025, sy * 0.25);
   }
 
   const hw = sx / 2;
   const hh = actualSy / 2;
 
+  // Corner handle positions
   const corners = [
     { id: 'tl', signX: -1, signY: 1 },
     { id: 'tr', signX: 1, signY: 1 },
@@ -487,18 +490,28 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle }) => {
     const pos = point.clone()
       .add(basisX.clone().multiplyScalar(c.signX * hw))
       .add(basisY.clone().multiplyScalar(c.signY * hh))
-      .add(normal.clone().multiplyScalar(0.02)); // push out slightly
+      .add(normal.clone().multiplyScalar(0.015));
     return { ...c, pos };
   });
 
-  const handlePointerDown = (e, cornerId) => {
+  // Top center position & Rotation handle position
+  const topCenterPos = point.clone()
+    .add(basisY.clone().multiplyScalar(hh))
+    .add(normal.clone().multiplyScalar(0.015));
+
+  const rotHandlePos = point.clone()
+    .add(basisY.clone().multiplyScalar(hh + 0.035))
+    .add(normal.clone().multiplyScalar(0.015));
+
+  // --- Corner Resize Handlers ---
+  const handleCornerDown = (e, cornerId) => {
     e.stopPropagation();
     e.target.setPointerCapture(e.pointerId);
     setActiveCorner(cornerId);
     setIsDraggingHandle(true);
   };
 
-  const handlePointerMove = (e, cornerId) => {
+  const handleCornerMove = (e, cornerId) => {
     if (activeCorner !== cornerId) return;
     e.stopPropagation();
 
@@ -512,8 +525,8 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle }) => {
     const newHw = Math.abs(offset.dot(basisX));
     let newHh = Math.abs(offset.dot(basisY));
 
-    let newSx = Math.max(0.01, newHw * 2);
-    let newSy = Math.max(0.01, newHh * 2);
+    let newSx = Math.max(0.02, newHw * 2);
+    let newSy = Math.max(0.02, newHh * 2);
 
     if (decal.type !== 'image' && decal.type !== 'pattern') {
       newSy = newSy / 0.25;
@@ -522,14 +535,94 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle }) => {
     updateDecal(decal.id, { decalScaleX: newSx, decalScaleY: newSy });
   };
 
-  const handlePointerUp = (e) => {
+  const handleCornerUp = (e) => {
     if (!activeCorner) return;
     e.stopPropagation();
-    e.target.releasePointerCapture(e.pointerId);
+    try { e.target.releasePointerCapture(e.pointerId); } catch (_) {}
     setActiveCorner(null);
     setIsDraggingHandle(false);
   };
 
+  // --- Rotation Handle Handlers ---
+  const handleRotDown = (e) => {
+    e.stopPropagation();
+    e.target.setPointerCapture(e.pointerId);
+    setIsDraggingRot(true);
+    setIsDraggingHandle(true);
+  };
+
+  const handleRotMove = (e) => {
+    if (!isDraggingRot) return;
+    e.stopPropagation();
+
+    const plane = new THREE.Plane().setFromNormalAndCoplanarPoint(normal, point);
+    const intersect = new THREE.Vector3();
+    e.ray.intersectPlane(plane, intersect);
+    if (!intersect) return;
+
+    const offset = intersect.clone().sub(point);
+    const projX = offset.dot(right);
+    const projY = offset.dot(newUp);
+    const newAngle = -Math.atan2(projX, projY);
+    updateDecal(decal.id, { rotation: newAngle });
+  };
+
+  const handleRotUp = (e) => {
+    if (!isDraggingRot) return;
+    e.stopPropagation();
+    try { e.target.releasePointerCapture(e.pointerId); } catch (_) {}
+    setIsDraggingRot(false);
+    setIsDraggingHandle(false);
+  };
+
+  // --- Center Drag-and-Drop Surface Move Handlers ---
+  const handleMoveDown = (e) => {
+    e.stopPropagation();
+    e.target.setPointerCapture(e.pointerId);
+    setIsDraggingMove(true);
+    setIsDraggingHandle(true);
+  };
+
+  const handleMoveMove = (e) => {
+    if (!isDraggingMove) return;
+    e.stopPropagation();
+
+    if (!meshes || meshes.length === 0) return;
+
+    const raycaster = new THREE.Raycaster(e.ray.origin, e.ray.direction);
+    const validMeshes = meshes.filter(m => m.visible !== false && m.isMesh);
+    const hits = raycaster.intersectObjects(validMeshes, true).filter(h => h.face);
+
+    if (hits.length > 0) {
+      const hit = hits[0];
+      const wn = hit.face.normal.clone()
+        .transformDirection(hit.object.matrixWorld)
+        .normalize();
+
+      let targetMeshName = hit.object.name;
+      if (layersMetadata) {
+        const meta = layersMetadata[targetMeshName] || {};
+        targetMeshName = meta.merge_parent || targetMeshName;
+      }
+
+      updateDecal(decal.id, {
+        worldPoint: [hit.point.x, hit.point.y, hit.point.z],
+        worldNormal: [wn.x, wn.y, wn.z],
+        meshId: targetMeshName,
+        v: Date.now()
+      });
+    }
+  };
+
+  const handleMoveUp = (e) => {
+    if (!isDraggingMove) return;
+    e.stopPropagation();
+    try { e.target.releasePointerCapture(e.pointerId); } catch (_) {}
+    setIsDraggingMove(false);
+    setIsDraggingHandle(false);
+  };
+
+  // Outer boundary line points (rectangle)
   const linePoints = [
     cornerPositions[0].pos,
     cornerPositions[1].pos,
@@ -537,11 +630,31 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle }) => {
     cornerPositions[3].pos,
     cornerPositions[0].pos,
   ];
-
   const linePointsArray = new Float32Array(linePoints.flatMap(p => [p.x, p.y, p.z]));
+
+  // Stem line from top-center to rotation handle
+  const stemPointsArray = new Float32Array([
+    topCenterPos.x, topCenterPos.y, topCenterPos.z,
+    rotHandlePos.x, rotHandlePos.y, rotHandlePos.z
+  ]);
+
+  const planeQuat = new THREE.Quaternion().setFromRotationMatrix(m4);
 
   return (
     <group>
+      {/* Central Drag-to-Move Surface Area */}
+      <mesh
+        position={point.clone().add(normal.clone().multiplyScalar(0.012))}
+        quaternion={planeQuat}
+        onPointerDown={handleMoveDown}
+        onPointerMove={handleMoveMove}
+        onPointerUp={handleMoveUp}
+      >
+        <planeGeometry args={[Math.max(0.06, sx), Math.max(0.03, actualSy)]} />
+        <meshBasicMaterial transparent opacity={0.001} depthTest={false} />
+      </mesh>
+
+      {/* Bounding Box Outline */}
       <line>
         <bufferGeometry attach="geometry">
           <bufferAttribute
@@ -551,19 +664,44 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle }) => {
             itemSize={3}
           />
         </bufferGeometry>
-        <lineBasicMaterial attach="material" color="#00b0f0" depthTest={false} linewidth={2} transparent opacity={0.8} />
+        <lineBasicMaterial attach="material" color="#6366f1" depthTest={false} linewidth={2} transparent opacity={0.85} />
       </line>
 
+      {/* Rotation Stem Line */}
+      <line>
+        <bufferGeometry attach="geometry">
+          <bufferAttribute
+            attach="attributes-position"
+            array={stemPointsArray}
+            count={2}
+            itemSize={3}
+          />
+        </bufferGeometry>
+        <lineBasicMaterial attach="material" color="#6366f1" depthTest={false} linewidth={1.5} transparent opacity={0.8} />
+      </line>
+
+      {/* Top Rotation Handle Circle */}
+      <mesh
+        position={rotHandlePos}
+        onPointerDown={handleRotDown}
+        onPointerMove={handleRotMove}
+        onPointerUp={handleRotUp}
+      >
+        <sphereGeometry args={[0.007, 16, 16]} />
+        <meshBasicMaterial color="#a5b4fc" depthTest={false} transparent opacity={0.95} />
+      </mesh>
+
+      {/* 4 Corner Resize Handles */}
       {cornerPositions.map(c => (
         <mesh
           key={c.id}
           position={c.pos}
-          onPointerDown={(e) => handlePointerDown(e, c.id)}
-          onPointerMove={(e) => handlePointerMove(e, c.id)}
-          onPointerUp={handlePointerUp}
+          onPointerDown={(e) => handleCornerDown(e, c.id)}
+          onPointerMove={(e) => handleCornerMove(e, c.id)}
+          onPointerUp={handleCornerUp}
         >
           <boxGeometry args={[0.012, 0.012, 0.012]} />
-          <meshBasicMaterial color="#00b0f0" depthTest={false} transparent opacity={0.9} />
+          <meshBasicMaterial color="#6366f1" depthTest={false} transparent opacity={0.95} />
         </mesh>
       ))}
     </group>
@@ -921,7 +1059,7 @@ const MeshPart = memo(function MeshPart({ node, state, finish, globalPattern, fa
   return <primitive object={node} material={material} />;
 })
 
-const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMeshesDetected, decals, selectedDecalId, setSelectedDecalId, updateDecal, removeDecal, finish, globalPattern, mouseFollow, timelineVal = 0, setTimelineVal, isPlaying = false }) {
+const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMeshesDetected, decals, selectedDecalId, setSelectedDecalId, updateDecal, removeDecal, finish, globalPattern, mouseFollow, timelineVal = 0, setTimelineVal, isPlaying = false, setIsDraggingHandle, setActiveMesh }) {
   const { scene: rootScene, viewport, invalidate } = useThree();
   const { scene } = useGLTF(url);
   const clonedScene = useMemo(() => {
@@ -1065,7 +1203,7 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [meshes]);
 
-  // ─── Click-to-Place: dispatch world-space hit info (same as script1.js) ────
+  // ─── Click on Mesh: Select nearby decal or active mesh part ───────────────
   const handleMeshClick = useCallback((e) => {
     e.stopPropagation();
     if (!e.face) return;
@@ -1082,59 +1220,13 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
     }
 
     const clickPoint = e.point.clone();
-    const worldNormal = e.face.normal.clone()
-      .transformDirection(e.object.matrixWorld)
-      .normalize();
 
-    // If a decal is already selected → MOVE it to the clicked location
-    if (selectedDecalId) {
-      // Don't allow moving pattern decals — they are locked in place
-      const selectedDecal = decals.find(d => d.id === selectedDecalId);
-      if (selectedDecal && selectedDecal.type === 'pattern') {
-        return;
-      }
-
-      const clickedMeshName = e.object.name;
-
-      // Find all meshes in the same merged group as clickedMeshName
-      const targetMeshes = meshes.filter(m => {
-        if (m.name === clickedMeshName) return true;
-        const meta = layersMetadata[m.name] || {};
-        if (meta.merge_parent === clickedMeshName) return true;
-        const clickMeta = layersMetadata[clickedMeshName] || {};
-        if (clickMeta.merge_parent === m.name) return true;
-        if (meta.merge_parent && meta.merge_parent === clickMeta.merge_parent) return true;
-        return false;
-      });
-
-      // Find the mesh with the largest bounding box volume in the group
-      let primaryMesh = e.object;
-      let maxVolume = 0;
-      targetMeshes.forEach(m => {
-        const b = new THREE.Box3().setFromObject(m);
-        const s = b.getSize(new THREE.Vector3());
-        const vol = s.x * s.y * s.z;
-        if (vol > maxVolume) {
-          maxVolume = vol;
-          primaryMesh = m;
-        }
-      });
-
-      updateDecal(selectedDecalId, {
-        worldPoint: [clickPoint.x, clickPoint.y, clickPoint.z],
-        worldNormal: [worldNormal.x, worldNormal.y, worldNormal.z],
-        meshId: primaryMesh.name,
-        v: Date.now() // force re-render
-      });
-      return;
-    }
-
-    // If no decal is selected → try to select a nearby decal
+    // Check if user clicked near an existing decal -> select that decal
     let closestDecal = null;
-    let closestDist = 0.15; // wider detection radius
+    let closestDist = 0.12; // detection radius
 
     decals.forEach(d => {
-      if (!d.worldPoint) return;
+      if (!d.worldPoint || d.type === 'pattern') return;
       const decalPos = new THREE.Vector3().fromArray(d.worldPoint);
       const dist = clickPoint.distanceTo(decalPos);
       if (dist < closestDist) {
@@ -1145,8 +1237,12 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
 
     if (closestDecal) {
       setSelectedDecalId(closestDecal.id);
+    } else {
+      if (setActiveMesh) {
+        setActiveMesh(parentId);
+      }
     }
-  }, [setSelectedDecalId, selectedDecalId, updateDecal, decals, layersMetadata]);
+  }, [setSelectedDecalId, decals, layersMetadata, setActiveMesh]);
 
   // ─── Auto-place new decals on the front of the shirt ───────────────────────
   useEffect(() => {
@@ -1230,13 +1326,15 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
         // Use a generous 3.0x multiplier to guarantee full coverage of all merged panels (e.g. sleeve + back)
         patternCoverageX = Math.max(groupSize.x, groupSize.z) * 3.0;
         patternCoverageY = groupSize.y * 3.0;
-        // Don't override decalScale — it controls tile density, not coverage
       }
 
       const raycaster = new THREE.Raycaster();
       raycaster.set(shootOrigin, shootDir);
 
-      const hits = raycaster.intersectObject(targetMesh, true).filter(h => h.object === targetMesh);
+      let hits = raycaster.intersectObjects(targetMeshes, true);
+      if (hits.length === 0) {
+        hits = raycaster.intersectObjects(meshes, true);
+      }
       if (hits.length > 0) {
         const hit = hits[0];
         const wn = hit.face.normal.clone()
@@ -1255,7 +1353,7 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
         if (d.type === 'pattern') {
           baseUpdate.patternCoverageX = patternCoverageX;
           baseUpdate.patternCoverageY = patternCoverageY;
-          delete baseUpdate.decalScale; // Don't override — keep default 0.8 for tile density
+          delete baseUpdate.decalScale;
         }
         updateDecal(d.id, baseUpdate);
       } else {
@@ -1321,7 +1419,7 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
         }
       }
     });
-  }, [decals, meshes, updateDecal, layersMetadata]);
+  }, [decals, meshes, updateDecal, layersMetadata, clonedScene]);
 
   // ─── DecalGeometry Management (exact script1.js approach, extended for merged groups) ──────────────────
   useEffect(() => {
@@ -1680,31 +1778,45 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
     };
   }, [rootScene]);
 
+  const selectedDecal = decals.find(d => d.id === selectedDecalId);
+
   return (
-    <group ref={meshRef} position={[0, -0.2, 0]} scale={1.8} onPointerDown={handleMeshClick}>
-      {meshes.map(m => {
-        const meta = layersMetadata[m.name] || {};
-        const stateKey = meta.merge_parent || m.name;
-        const parentMeta = layersMetadata[stateKey] || {};
-        const isLocked = meta.is_locked || parentMeta.is_locked;
+    <>
+      <group ref={meshRef} position={[0, -0.2, 0]} scale={1.8} onPointerDown={handleMeshClick}>
+        {meshes.map(m => {
+          const meta = layersMetadata[m.name] || {};
+          const stateKey = meta.merge_parent || m.name;
+          const parentMeta = layersMetadata[stateKey] || {};
+          const isLocked = meta.is_locked || parentMeta.is_locked;
 
-        if (isLocked) {
+          if (isLocked) {
+            return (
+              <primitive key={m.uuid} object={m} />
+            );
+          }
+
           return (
-            <primitive key={m.uuid} object={m} />
+            <MeshPart key={m.uuid} node={m} state={meshStates[stateKey]} finish={finish} globalPattern={globalPattern} fabricTexture={meshStates[stateKey]?.fabricTexture} />
           );
-        }
+        })}
+      </group>
 
-        return (
-          <MeshPart key={m.uuid} node={m} state={meshStates[stateKey]} finish={finish} globalPattern={globalPattern} fabricTexture={meshStates[stateKey]?.fabricTexture} />
-        );
-      })}
-    </group>
+      {/* Direct Interactive Transform Controls (Surface Drag & Drop, Corner Scaling, Direct Rotation) */}
+      {selectedDecal && selectedDecal.worldPoint && selectedDecal.type !== 'pattern' && (
+        <DecalTransformHandles
+          decal={selectedDecal}
+          updateDecal={updateDecal}
+          setIsDraggingHandle={setIsDraggingHandle}
+          meshes={meshes}
+          layersMetadata={layersMetadata}
+        />
+      )}
+    </>
   );
 })
 
-const ModelViewer = memo(({ modelUrl, layersMetadata = {}, meshStates, onMeshesDetected, decals, selectedDecalId, setSelectedDecalId, updateDecal, removeDecal, globalPattern, materialFinish, lightingPreset, mouseFollow, timelineVal = 0, setTimelineVal, isPlaying = false }) => {
+const ModelViewer = memo(({ modelUrl, layersMetadata = {}, meshStates, onMeshesDetected, decals, selectedDecalId, setSelectedDecalId, updateDecal, removeDecal, globalPattern, materialFinish, lightingPreset, mouseFollow, timelineVal = 0, setTimelineVal, isPlaying = false, setActiveMesh, activeMesh }) => {
   const [isDraggingHandle, setIsDraggingHandle] = React.useState(false);
-  const selectedDecal = decals.find(d => d.id === selectedDecalId);
 
   const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
   React.useEffect(() => {
@@ -1740,49 +1852,12 @@ const ModelViewer = memo(({ modelUrl, layersMetadata = {}, meshStates, onMeshesD
             timelineVal={timelineVal}
             setTimelineVal={setTimelineVal}
             isPlaying={isPlaying}
+            setIsDraggingHandle={setIsDraggingHandle}
+            setActiveMesh={setActiveMesh}
           />
-
-          {/* Floating Controls — theme-matched, placed below text */}
-          {/* Hide floating controls for pattern decals — patterns are locked in place */}
-          {selectedDecal && selectedDecal.worldPoint && selectedDecal.type !== 'pattern' && (
-            <Html
-              position={[selectedDecal.worldPoint[0], selectedDecal.worldPoint[1] - 0.08, selectedDecal.worldPoint[2] + 0.02]}
-              center
-              style={{ pointerEvents: 'none' }}
-              zIndexRange={[100, 0]}
-            >
-              <div className="flex items-center gap-1 bg-slate-950/90 rounded-full shadow-xl border border-white/10 px-2 py-0.5 backdrop-blur-md scale-90" style={{ whiteSpace: 'nowrap', pointerEvents: 'auto' }}>
-                <button
-                  onClick={(ev) => { ev.stopPropagation(); updateDecal(selectedDecalId, { rotation: (selectedDecal.rotation || 0) - 15 * Math.PI / 180 }); }}
-                  title="Rotate Counter-Clockwise"
-                  className="w-4 h-4 flex items-center justify-center rounded-full hover:bg-white/10 text-slate-200 hover:text-white text-[9px] transition-all cursor-pointer font-bold"
-                >⟲</button>
-                <button
-                  onClick={(ev) => { ev.stopPropagation(); updateDecal(selectedDecalId, { rotation: (selectedDecal.rotation || 0) + 15 * Math.PI / 180 }); }}
-                  title="Rotate Clockwise"
-                  className="w-4 h-4 flex items-center justify-center rounded-full hover:bg-white/10 text-slate-200 hover:text-white text-[9px] transition-all cursor-pointer font-bold"
-                >⟳</button>
-                <div className="w-px h-2.5 bg-white/10 mx-0.5" />
-                <button
-                  onClick={(ev) => { ev.stopPropagation(); removeDecal(selectedDecalId); }}
-                  title="Remove Layer"
-                  className="w-4 h-4 flex items-center justify-center rounded-full hover:bg-red-500/20 text-red-400 hover:text-red-300 text-[8px] transition-all cursor-pointer font-bold"
-                >✕</button>
-              </div>
-            </Html>
-          )}
 
           <Environment preset={lightingPreset || "city"} />
           <ContactShadows position={[0, -1.5, 0]} opacity={0.4} scale={15} blur={2.5} far={4} />
-
-          {/* Transform handles boundary enabled with extremely sleek PicsArt design */}
-          {selectedDecal && selectedDecal.worldPoint && selectedDecal.type !== 'pattern' && (
-            <DecalTransformHandles
-              decal={selectedDecal}
-              updateDecal={updateDecal}
-              setIsDraggingHandle={setIsDraggingHandle}
-            />
-          )}
 
         </Suspense>
         <CameraController mouseFollow={mouseFollow} isDragging={isDraggingHandle} />
