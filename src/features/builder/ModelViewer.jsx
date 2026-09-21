@@ -398,14 +398,15 @@ const CameraController = memo(function CameraController({ mouseFollow, isDraggin
   const { camera } = useThree();
   const controlsRef = useRef();
   useEffect(() => {
-    const getResponsiveZ = () => (window.innerWidth < 768 ? 3.3 : 2.5);
+    const isMobile = window.innerWidth < 768;
+    const targetY = isMobile ? 0.35 : 0;
+    const defaultZ = 2.5;
 
     const onReset = () => {
-      const z = getResponsiveZ();
-      camera.position.set(0, 0, z);
+      camera.position.set(0, targetY, defaultZ);
       camera.updateProjectionMatrix();
       if (controlsRef.current) {
-        controlsRef.current.target.set(0, 0, 0);
+        controlsRef.current.target.set(0, targetY, 0);
         controlsRef.current.reset();
       }
     };
@@ -423,15 +424,14 @@ const CameraController = memo(function CameraController({ mouseFollow, isDraggin
     };
     const onSetCameraAngle = (e) => {
       const angle = e.detail || 'front';
-      const z = getResponsiveZ();
-      if (angle === 'front') camera.position.set(0, 0, z);
-      else if (angle === 'back') camera.position.set(0, 0, -z);
-      else if (angle === 'left') camera.position.set(-z, 0, 0);
-      else if (angle === 'right') camera.position.set(z, 0, 0);
-      else if (angle === 'top') camera.position.set(0, z, 0.5);
+      if (angle === 'front') camera.position.set(0, targetY, defaultZ);
+      else if (angle === 'back') camera.position.set(0, targetY, -defaultZ);
+      else if (angle === 'left') camera.position.set(-defaultZ, targetY, 0);
+      else if (angle === 'right') camera.position.set(defaultZ, targetY, 0);
+      else if (angle === 'top') camera.position.set(0, defaultZ + targetY, 0.5);
       camera.updateProjectionMatrix();
       if (controlsRef.current) {
-        controlsRef.current.target.set(0, 0, 0);
+        controlsRef.current.target.set(0, targetY, 0);
         controlsRef.current.update();
       }
     };
@@ -446,7 +446,15 @@ const CameraController = memo(function CameraController({ mouseFollow, isDraggin
       window.removeEventListener('eay:export', onExport);
     };
   }, [camera]);
-  return <OrbitControls ref={controlsRef} enabled={!mouseFollow && !isDragging} minPolarAngle={Math.PI / 4} maxPolarAngle={Math.PI / 1.8} />;
+  return (
+    <OrbitControls 
+      ref={controlsRef} 
+      target={[0, typeof window !== 'undefined' && window.innerWidth < 768 ? 0.35 : 0, 0]} 
+      enabled={!mouseFollow && !isDragging} 
+      minPolarAngle={Math.PI / 4} 
+      maxPolarAngle={Math.PI / 1.8} 
+    />
+  );
 })
 
 // ─── DECAL TRANSFORM HANDLES ─────────────────────────────────────────────────
@@ -1880,7 +1888,7 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
 
   return (
     <>
-      <group ref={meshRef} position={[0, isMobile ? -0.08 : -0.2, 0]} scale={isMobile ? 1.42 : 1.8} onPointerDown={handleMeshClick}>
+      <group ref={meshRef} position={[0, isMobile ? 0.35 : -0.2, 0]} scale={isMobile ? 1.55 : 1.8} onPointerDown={handleMeshClick}>
         {meshes.map(m => {
           const meta = layersMetadata[m.name] || {};
           const stateKey = meta.merge_parent || m.name;
@@ -1927,7 +1935,7 @@ const ModelViewer = memo(({ modelUrl, layersMetadata = {}, meshStates, onMeshesD
     <div className="flex-1 w-full bg-[#090b15] relative" style={{ height: '100%' }}>
       <Canvas
         gl={{ preserveDrawingBuffer: true, antialias: true }}
-        camera={{ position: [0, 0, isMobile ? 3.3 : 2.5], fov: isMobile ? 44 : 42 }}
+        camera={{ position: [0, isMobile ? 0.35 : 0, 2.5], fov: 42 }}
         onPointerMissed={() => setSelectedDecalId(null)}
       >
         <ambientLight intensity={lightingPreset === 'night' ? 0.25 : 0.85} />

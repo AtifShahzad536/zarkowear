@@ -113,15 +113,15 @@ const Navbar = ({ onBack, backTo, isEditor = false }) => {
         <Link to="/" className="flex items-center hover:opacity-90 transition-opacity flex-shrink-0" title="Home">
           <picture>
             <source srcSet="/new-logo.webp" type="image/webp" />
-            <img 
-              src="/new-logo.webp" 
-              alt="ZSW Logo" 
-              title="ZSW Logo" 
-              width={32} 
-              height={32} 
-              className="h-7 w-auto object-contain brightness-0 invert" 
+            <img
+              src="/new-logo.webp"
+              alt="ZSW Logo"
+              title="ZSW Logo"
+              width={32}
+              height={32}
+              className="h-7 w-auto object-contain brightness-0 invert"
               style={{ filter: 'brightness(0) invert(1)' }}
-              onError={(e) => { e.currentTarget.src = '/new-logo.png'; }} 
+              onError={(e) => { e.currentTarget.src = '/new-logo.png'; }}
             />
           </picture>
         </Link>
@@ -222,8 +222,8 @@ const Navbar = ({ onBack, backTo, isEditor = false }) => {
         {isEditor && (
           <>
             {/* Exit Button */}
-            <button 
-              onClick={handleExit} 
+            <button
+              onClick={handleExit}
               className="text-slate-400 hover:text-white text-[9px] font-bold uppercase tracking-wider cursor-pointer flex items-center gap-1.5 transition-colors pr-2 md:pr-3 border-r border-white/10"
               title="Return to Models Catalog"
             >
@@ -232,16 +232,16 @@ const Navbar = ({ onBack, backTo, isEditor = false }) => {
             </button>
 
             {/* Undo / Redo */}
-            <button 
-              onClick={() => window.dispatchEvent(new CustomEvent('eay:undo'))} 
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent('eay:undo'))}
               disabled={!hasUndo}
               className={`hidden md:block text-slate-400 hover:text-white transition-colors cursor-pointer ${!hasUndo ? 'opacity-40 pointer-events-none' : ''}`}
               title="Undo"
             >
               <BiUndo size={14} />
             </button>
-            <button 
-              onClick={() => window.dispatchEvent(new CustomEvent('eay:redo'))} 
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent('eay:redo'))}
               disabled={!hasRedo}
               className={`hidden md:block text-slate-400 hover:text-white transition-colors cursor-pointer ${!hasRedo ? 'opacity-40 pointer-events-none' : ''}`}
               title="Redo"
@@ -259,17 +259,17 @@ const Navbar = ({ onBack, backTo, isEditor = false }) => {
             </button>
 
             {/* Checkout Button */}
-            <button 
+            <button
               onClick={() => window.dispatchEvent(new CustomEvent('eay:openCheckout'))}
               className="flex items-center gap-1.5 px-3 md:px-4 py-1 bg-green-600 hover:bg-green-500 transition-colors border border-green-500/30 text-white font-bold text-[9px] tracking-wider uppercase h-7 cursor-pointer shadow-lg shadow-green-600/20 mr-1 md:mr-2"
             >
               <BiCart size={12} />
-              <span>Checkout</span>
+
             </button>
 
             {/* Premium Save Split Button */}
             <div className="flex items-stretch bg-indigo-600 hover:bg-indigo-700 transition-colors border border-indigo-500/20 text-white font-bold text-[9px] tracking-wider uppercase h-7">
-              <button 
+              <button
                 onClick={() => window.dispatchEvent(new CustomEvent('eay:save'))}
                 className="px-2 md:px-3 flex items-center gap-1.5 cursor-pointer"
               >
