@@ -398,17 +398,10 @@ const CameraController = memo(function CameraController({ mouseFollow, isDraggin
   const { camera } = useThree();
   const controlsRef = useRef();
   useEffect(() => {
-    const isMobile = window.innerWidth < 768;
-    const targetY = isMobile ? 0.35 : 0;
-    const defaultZ = 2.5;
-
     const onReset = () => {
-      camera.position.set(0, targetY, defaultZ);
+      camera.position.set(0, 0, 2.5);
       camera.updateProjectionMatrix();
-      if (controlsRef.current) {
-        controlsRef.current.target.set(0, targetY, 0);
-        controlsRef.current.reset();
-      }
+      if (controlsRef.current) controlsRef.current.reset();
     };
     const onZoom = (e) => {
       camera.position.z = Math.max(1.5, Math.min(8, camera.position.z + e.detail));
@@ -424,14 +417,14 @@ const CameraController = memo(function CameraController({ mouseFollow, isDraggin
     };
     const onSetCameraAngle = (e) => {
       const angle = e.detail || 'front';
-      if (angle === 'front') camera.position.set(0, targetY, defaultZ);
-      else if (angle === 'back') camera.position.set(0, targetY, -defaultZ);
-      else if (angle === 'left') camera.position.set(-defaultZ, targetY, 0);
-      else if (angle === 'right') camera.position.set(defaultZ, targetY, 0);
-      else if (angle === 'top') camera.position.set(0, defaultZ + targetY, 0.5);
+      if (angle === 'front') camera.position.set(0, 0, 2.5);
+      else if (angle === 'back') camera.position.set(0, 0, -2.5);
+      else if (angle === 'left') camera.position.set(-2.5, 0, 0);
+      else if (angle === 'right') camera.position.set(2.5, 0, 0);
+      else if (angle === 'top') camera.position.set(0, 2.5, 0.5);
       camera.updateProjectionMatrix();
       if (controlsRef.current) {
-        controlsRef.current.target.set(0, targetY, 0);
+        controlsRef.current.target.set(0, 0, 0);
         controlsRef.current.update();
       }
     };
@@ -446,15 +439,7 @@ const CameraController = memo(function CameraController({ mouseFollow, isDraggin
       window.removeEventListener('eay:export', onExport);
     };
   }, [camera]);
-  return (
-    <OrbitControls 
-      ref={controlsRef} 
-      target={[0, typeof window !== 'undefined' && window.innerWidth < 768 ? 0.35 : 0, 0]} 
-      enabled={!mouseFollow && !isDragging} 
-      minPolarAngle={Math.PI / 4} 
-      maxPolarAngle={Math.PI / 1.8} 
-    />
-  );
+  return <OrbitControls ref={controlsRef} enabled={!mouseFollow && !isDragging} minPolarAngle={Math.PI / 4} maxPolarAngle={Math.PI / 1.8} />;
 })
 
 // ─── DECAL TRANSFORM HANDLES ─────────────────────────────────────────────────
@@ -566,7 +551,7 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
   const handleCornerUp = (e) => {
     if (!activeCorner) return;
     e.stopPropagation();
-    try { e.target.releasePointerCapture(e.pointerId); } catch (_) {}
+    try { e.target.releasePointerCapture(e.pointerId); } catch (_) { }
     setActiveCorner(null);
     setIsDraggingHandle(false);
   };
@@ -598,7 +583,7 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
   const handleRotUp = (e) => {
     if (!isDraggingRot) return;
     e.stopPropagation();
-    try { e.target.releasePointerCapture(e.pointerId); } catch (_) {}
+    try { e.target.releasePointerCapture(e.pointerId); } catch (_) { }
     setIsDraggingRot(false);
     setIsDraggingHandle(false);
   };
@@ -645,7 +630,7 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
   const handleMoveUp = (e) => {
     if (!isDraggingMove) return;
     e.stopPropagation();
-    try { e.target.releasePointerCapture(e.pointerId); } catch (_) {}
+    try { e.target.releasePointerCapture(e.pointerId); } catch (_) { }
     setIsDraggingMove(false);
     setIsDraggingHandle(false);
   };
@@ -1135,7 +1120,7 @@ const MeshPart = memo(function MeshPart({ node, state, finish, globalPattern, fa
   return <primitive object={node} material={material} />;
 })
 
-const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMeshesDetected, decals, selectedDecalId, setSelectedDecalId, updateDecal, removeDecal, finish, globalPattern, mouseFollow, timelineVal = 0, setTimelineVal, isPlaying = false, setIsDraggingHandle, setActiveMesh, isMobile = false }) {
+const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMeshesDetected, decals, selectedDecalId, setSelectedDecalId, updateDecal, removeDecal, finish, globalPattern, mouseFollow, timelineVal = 0, setTimelineVal, isPlaying = false, setIsDraggingHandle, setActiveMesh }) {
   const { scene: rootScene, viewport, invalidate } = useThree();
   const { scene } = useGLTF(url);
   const clonedScene = useMemo(() => {
@@ -1187,7 +1172,7 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
       const currentRot = meshRef.current.rotation.y % (Math.PI * 2);
       let val = Math.round((currentRot / (Math.PI * 2)) * 100);
       if (val < 0) val += 100;
-      
+
       if (setTimelineVal && val !== timelineVal) {
         setTimelineVal(val);
       }
@@ -1197,7 +1182,7 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
         const targetRot = (timelineVal / 100) * Math.PI * 2;
         meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, targetRot, 0.15);
       }
-      
+
       if (mouseFollow) {
         const targetX = mouse.current.x * 0.8;
         const targetY = mouse.current.y * 0.3;
@@ -1888,7 +1873,7 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
 
   return (
     <>
-      <group ref={meshRef} position={[0, isMobile ? 0.35 : -0.2, 0]} scale={isMobile ? 1.55 : 1.8} onPointerDown={handleMeshClick}>
+      <group ref={meshRef} position={[0, -0.2, 0]} scale={1.8} onPointerDown={handleMeshClick}>
         {meshes.map(m => {
           const meta = layersMetadata[m.name] || {};
           const stateKey = meta.merge_parent || m.name;
@@ -1935,7 +1920,7 @@ const ModelViewer = memo(({ modelUrl, layersMetadata = {}, meshStates, onMeshesD
     <div className="flex-1 w-full bg-[#090b15] relative" style={{ height: '100%' }}>
       <Canvas
         gl={{ preserveDrawingBuffer: true, antialias: true }}
-        camera={{ position: [0, isMobile ? 0.35 : 0, 2.5], fov: 42 }}
+        camera={{ position: [0, 0, isMobile ? 2.0 : 2.5], fov: isMobile ? 35 : 42 }}
         onPointerMissed={() => setSelectedDecalId(null)}
       >
         <ambientLight intensity={lightingPreset === 'night' ? 0.25 : 0.85} />
@@ -1960,7 +1945,6 @@ const ModelViewer = memo(({ modelUrl, layersMetadata = {}, meshStates, onMeshesD
             isPlaying={isPlaying}
             setIsDraggingHandle={setIsDraggingHandle}
             setActiveMesh={setActiveMesh}
-            isMobile={isMobile}
           />
 
           <Environment preset={lightingPreset || "city"} />
