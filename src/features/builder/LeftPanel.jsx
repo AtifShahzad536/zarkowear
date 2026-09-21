@@ -445,24 +445,27 @@ const LeftPanel = ({
           
           {/* 3D Viewport canvas container */}
           <div className="flex-grow flex flex-col min-h-0 relative bg-[#090b15] min-w-0">
-            <div className="h-10 bg-[#0c0e1a] border-b border-white/5 px-4 flex items-center justify-between z-10 flex-shrink-0">
-              <div className="flex items-center gap-3">
+            <div className="h-10 bg-[#0c0e1a] border-b border-white/5 px-3 sm:px-4 flex items-center justify-between z-10 flex-shrink-0">
+              <div className="flex items-center gap-2 sm:gap-3 flex-nowrap overflow-x-auto no-scrollbar py-0.5">
                 <button 
                   onClick={() => setIsSidebarOpen(true)}
-                  className="md:hidden px-2.5 h-6 flex items-center gap-1.5 bg-indigo-500/10 border border-indigo-500/20 text-[9px] font-bold uppercase tracking-wider text-indigo-400 hover:bg-indigo-500/20 rounded-none cursor-pointer"
+                  className="md:hidden px-2.5 py-1 flex items-center gap-1.5 bg-indigo-500/10 border border-indigo-500/20 text-[10px] font-bold uppercase tracking-wider text-indigo-400 hover:bg-indigo-500/20 rounded-lg cursor-pointer whitespace-nowrap flex-shrink-0 shadow-sm transition"
                 >
-                  <VscLayers size={12} /> Layers
+                  <VscLayers size={13} />
+                  <span>Layers</span>
                 </button>
                 <button 
                   onClick={() => window.dispatchEvent(new CustomEvent('eay:toggleHUD'))}
-                  className="md:hidden px-2.5 h-6 flex items-center gap-1.5 bg-slate-800 border border-white/10 text-[9px] font-bold uppercase tracking-wider text-white hover:bg-slate-700 rounded-none cursor-pointer"
+                  className="md:hidden px-3 py-1 flex items-center gap-1.5 bg-slate-800 border border-white/10 text-[10px] font-bold uppercase tracking-wider text-white hover:bg-slate-700 rounded-lg cursor-pointer whitespace-nowrap flex-shrink-0 shadow-sm transition"
                 >
-                  <BiPalette size={12} /> {isHUDVisible ? 'Hide Tools' : 'Show Tools'}
+                  <BiPalette size={13} className="text-indigo-400" />
+                  <span>{isHUDVisible ? 'Hide Tools' : 'Show Tools'}</span>
                 </button>
                 <button className="hidden md:block px-2.5 h-6 bg-slate-950/40 border border-white/5 text-[9px] font-bold uppercase tracking-wider text-slate-400 hover:text-white rounded-none cursor-pointer">
                   Select
                 </button>
-                <div className="flex items-center gap-1 border-l border-white/10 pl-3">
+                {/* Blueprint tabs (3D View, UV View, 2D Pattern) - hidden on mobile so mobile stays clean & 100% focused on 3D Customization */}
+                <div className="hidden md:flex items-center gap-1 border-l border-white/10 pl-3">
                   {['3D View', 'UV View', '2D Pattern'].map((tab) => (
                     <button
                       key={tab}
@@ -472,7 +475,7 @@ const LeftPanel = ({
                           toast.success(`${tab} blueprint mode activated!`, { id: 'tab-toast', icon: '📐' });
                         }
                       }}
-                      className={`px-3 py-1 text-[8.5px] font-bold uppercase tracking-wider rounded-none transition-colors cursor-pointer
+                      className={`px-3 py-1 text-[8.5px] font-bold uppercase tracking-wider rounded-none transition-colors cursor-pointer whitespace-nowrap
                         ${activeTab === tab ? 'bg-indigo-500/10 border border-indigo-500/20 text-indigo-400' : 'text-slate-400 hover:text-white'}`}
                     >
                       {tab}
@@ -480,10 +483,23 @@ const LeftPanel = ({
                   ))}
                 </div>
               </div>
+
+              {/* Right Action on toolbar: Reset 3D View */}
+              <div className="flex items-center gap-1.5 flex-shrink-0 pl-2">
+                <button 
+                  onClick={() => window.dispatchEvent(new CustomEvent('eay:resetCamera'))} 
+                  className="px-2.5 py-1 bg-slate-950/40 hover:bg-white/5 border border-white/10 text-slate-300 hover:text-white rounded-lg flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider cursor-pointer whitespace-nowrap transition"
+                  title="Reset 3D View"
+                >
+                  <HiOutlineCamera size={12} className="text-indigo-400" />
+                  <span className="hidden sm:inline">Reset View</span>
+                  <span className="sm:hidden">Reset</span>
+                </button>
+              </div>
             </div>
 
             {/* Viewport Canvas wrapper */}
-            <div className="flex-1 relative overflow-hidden min-h-[250px]">
+            <div className="flex-1 relative overflow-hidden min-h-[260px]">
               {/* Radial Ambient Glow */}
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(99,102,241,0.08),transparent_70%)] pointer-events-none" />
 
@@ -529,15 +545,15 @@ const LeftPanel = ({
 
               <div className={`absolute top-3 left-3 pointer-events-none select-none z-10 transition-all duration-500 
                 ${isHUDVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
-                <div className="flex items-center gap-2 px-2.5 py-1 bg-[#090b15]/90 border border-white/5 rounded-none shadow-sm">
+                <div className="flex items-center gap-2 px-2.5 py-1 bg-[#090b15]/90 border border-white/5 rounded-lg shadow-sm">
                   <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
                   <span className="text-[9px] font-bold text-slate-350 tracking-wide">{meshes.length} Active Parts</span>
                 </div>
               </div>
             </div>
 
-            {/* ── 4. TIMELINE PLAYBACK SLIDER DOCK ── */}
-            <div className={`h-11 bg-[#0c0e1a] border-t border-white/5 flex items-center px-4 transition-all duration-500 flex-shrink-0 z-40
+            {/* ── 4. TIMELINE PLAYBACK SLIDER DOCK (Desktop Workstation only) ── */}
+            <div className={`hidden md:flex h-11 bg-[#0c0e1a] border-t border-white/5 items-center px-4 transition-all duration-500 flex-shrink-0 z-40
               ${isHUDVisible ? 'opacity-100' : 'h-0 opacity-0 translate-y-full overflow-hidden'}`}>
               <div className="flex items-center gap-4 w-full">
                 {/* Play/Pause controls */}
@@ -615,8 +631,8 @@ const LeftPanel = ({
           {rightPanelComponent}
         </div>
 
-        {/* ── 5. ASSETS LIBRARY HORIZONTAL PREVIEW CARDS (Figma Style spanning Viewport + RightPanel width!) ── */}
-        <div className={`h-32 bg-[#0A0C16] border-t border-white/5 flex flex-col transition-all duration-500 flex-shrink-0 z-40 overflow-hidden
+        {/* ── 5. ASSETS LIBRARY HORIZONTAL PREVIEW CARDS (Desktop Workstation only) ── */}
+        <div className={`hidden md:flex h-32 bg-[#0A0C16] border-t border-white/5 flex-col transition-all duration-500 flex-shrink-0 z-40 overflow-hidden
           ${isHUDVisible ? 'opacity-100' : 'h-0 opacity-0 overflow-hidden'}`}>
           
           {/* Header search, filter and grid options */}
