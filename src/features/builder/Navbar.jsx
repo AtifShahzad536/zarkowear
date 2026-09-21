@@ -110,14 +110,20 @@ const Navbar = ({ onBack, backTo, isEditor = false }) => {
     >
       {/* ── Brand Logo / Left Section ── */}
       <div className="flex items-center gap-3 md:gap-5 flex-shrink-0">
-        <Link to="/" className="flex items-center gap-2 md:gap-2.5 hover:scale-105 transition-transform flex-shrink-0">
+        <Link to="/" className="flex items-center hover:opacity-90 transition-opacity flex-shrink-0" title="Home">
           <picture>
             <source srcSet="/new-logo.webp" type="image/webp" />
-            <img src="/new-logo.webp" alt="ZSW Logo" title="ZSW Logo" width={24} height={24} className="h-6 w-auto object-contain" onError={(e) => { e.currentTarget.src = '/new-logo.png'; }} />
+            <img 
+              src="/new-logo.webp" 
+              alt="ZSW Logo" 
+              title="ZSW Logo" 
+              width={32} 
+              height={32} 
+              className="h-7 w-auto object-contain brightness-0 invert" 
+              style={{ filter: 'brightness(0) invert(1)' }}
+              onError={(e) => { e.currentTarget.src = '/new-logo.png'; }} 
+            />
           </picture>
-          <span className="text-[10px] font-black text-white uppercase tracking-[0.18em] whitespace-nowrap">
-            ZARKOWEAR <span className="text-indigo-400">3D LAB</span>
-          </span>
         </Link>
 
         {/* Status / Breadcrumb on Landing Page */}

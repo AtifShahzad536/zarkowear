@@ -398,10 +398,16 @@ const CameraController = memo(function CameraController({ mouseFollow, isDraggin
   const { camera } = useThree();
   const controlsRef = useRef();
   useEffect(() => {
+    const getResponsiveZ = () => (window.innerWidth < 768 ? 3.3 : 2.5);
+
     const onReset = () => {
-      camera.position.set(0, 0, 2.5);
+      const z = getResponsiveZ();
+      camera.position.set(0, 0, z);
       camera.updateProjectionMatrix();
-      if (controlsRef.current) controlsRef.current.reset();
+      if (controlsRef.current) {
+        controlsRef.current.target.set(0, 0, 0);
+        controlsRef.current.reset();
+      }
     };
     const onZoom = (e) => {
       camera.position.z = Math.max(1.5, Math.min(8, camera.position.z + e.detail));
@@ -417,11 +423,12 @@ const CameraController = memo(function CameraController({ mouseFollow, isDraggin
     };
     const onSetCameraAngle = (e) => {
       const angle = e.detail || 'front';
-      if (angle === 'front') camera.position.set(0, 0, 2.5);
-      else if (angle === 'back') camera.position.set(0, 0, -2.5);
-      else if (angle === 'left') camera.position.set(-2.5, 0, 0);
-      else if (angle === 'right') camera.position.set(2.5, 0, 0);
-      else if (angle === 'top') camera.position.set(0, 2.5, 0.5);
+      const z = getResponsiveZ();
+      if (angle === 'front') camera.position.set(0, 0, z);
+      else if (angle === 'back') camera.position.set(0, 0, -z);
+      else if (angle === 'left') camera.position.set(-z, 0, 0);
+      else if (angle === 'right') camera.position.set(z, 0, 0);
+      else if (angle === 'top') camera.position.set(0, z, 0.5);
       camera.updateProjectionMatrix();
       if (controlsRef.current) {
         controlsRef.current.target.set(0, 0, 0);
@@ -1120,7 +1127,7 @@ const MeshPart = memo(function MeshPart({ node, state, finish, globalPattern, fa
   return <primitive object={node} material={material} />;
 })
 
-const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMeshesDetected, decals, selectedDecalId, setSelectedDecalId, updateDecal, removeDecal, finish, globalPattern, mouseFollow, timelineVal = 0, setTimelineVal, isPlaying = false, setIsDraggingHandle, setActiveMesh }) {
+const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMeshesDetected, decals, selectedDecalId, setSelectedDecalId, updateDecal, removeDecal, finish, globalPattern, mouseFollow, timelineVal = 0, setTimelineVal, isPlaying = false, setIsDraggingHandle, setActiveMesh, isMobile = false }) {
   const { scene: rootScene, viewport, invalidate } = useThree();
   const { scene } = useGLTF(url);
   const clonedScene = useMemo(() => {
@@ -1873,7 +1880,7 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
 
   return (
     <>
-      <group ref={meshRef} position={[0, -0.2, 0]} scale={1.8} onPointerDown={handleMeshClick}>
+      <group ref={meshRef} position={[0, isMobile ? -0.08 : -0.2, 0]} scale={isMobile ? 1.42 : 1.8} onPointerDown={handleMeshClick}>
         {meshes.map(m => {
           const meta = layersMetadata[m.name] || {};
           const stateKey = meta.merge_parent || m.name;
@@ -1920,7 +1927,7 @@ const ModelViewer = memo(({ modelUrl, layersMetadata = {}, meshStates, onMeshesD
     <div className="flex-1 w-full bg-[#090b15] relative" style={{ height: '100%' }}>
       <Canvas
         gl={{ preserveDrawingBuffer: true, antialias: true }}
-        camera={{ position: [0, 0, isMobile ? 2.0 : 2.5], fov: isMobile ? 35 : 42 }}
+        camera={{ position: [0, 0, isMobile ? 3.3 : 2.5], fov: isMobile ? 44 : 42 }}
         onPointerMissed={() => setSelectedDecalId(null)}
       >
         <ambientLight intensity={lightingPreset === 'night' ? 0.25 : 0.85} />
@@ -1945,6 +1952,7 @@ const ModelViewer = memo(({ modelUrl, layersMetadata = {}, meshStates, onMeshesD
             isPlaying={isPlaying}
             setIsDraggingHandle={setIsDraggingHandle}
             setActiveMesh={setActiveMesh}
+            isMobile={isMobile}
           />
 
           <Environment preset={lightingPreset || "city"} />
