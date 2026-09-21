@@ -88,7 +88,7 @@ const FeaturedCategories = () => {
               {/* Image Area - 70% height equivalent */}
               <div className="w-full h-[clamp(224px,20vw,320px)] bg-slate-50/50 flex items-center justify-center p-6 overflow-hidden border-b border-slate-100">
                 <img
-                  src={imageUrl(cat.image || '/uploads/placeholder.jpg', { width: 400 })}
+                  src={imageUrl(cat.image || '/uploads/placeholder.jpg', { width: 1000, quality: 'auto:best' })}
                   alt={cat.name || cat.slug} title={cat.name || cat.slug}
                   width={400}
                   height={400}

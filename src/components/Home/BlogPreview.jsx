@@ -88,10 +88,9 @@ const BlogPreview = () => {
                 <Link to={`/blogs/${featuredBlog.slug}`} className="aspect-[1.8] relative overflow-hidden bg-slate-100 block rounded-none">
                   {featuredBlog.coverImage ? (
                     <img
-                      src={imageUrl(featuredBlog.coverImage, { width: 800 })}
-                      alt="Zarko Sportswear Blog Featured Cover"
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 rounded-none"
+                      src={imageUrl(featuredBlog.coverImage, { width: 1200, quality: 'auto:best' })}
+                      alt={featuredBlog.title ? featuredBlog.title + " cover image" : "Featured article cover"}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center bg-slate-150 text-slate-400 font-black uppercase text-2xl rounded-none">
@@ -150,7 +149,7 @@ const BlogPreview = () => {
                   <Link to={`/blogs/${blog.slug}`} className="w-full sm:w-32 aspect-[1.7] sm:aspect-square relative overflow-hidden bg-slate-100 block shrink-0 rounded-none">
                     {blog.coverImage ? (
                       <img
-                        src={imageUrl(blog.coverImage, { width: 400 })}
+                        src={imageUrl(blog.coverImage, { width: 600, quality: 'auto:best' })}
                         alt="Zarko Sportswear Blog Thumbnail"
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 rounded-none"

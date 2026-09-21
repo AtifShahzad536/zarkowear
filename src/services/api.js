@@ -160,10 +160,10 @@ export async function adminLogin({ email, password }) {
 
 // ─── Image Optimization ──────────────────────────────────────────────────────
 // Converts backend-relative paths to absolute URLs.
-// For Cloudinary URLs, automatically injects WebP + resize transformations.
-// Usage: imageUrl('/uploads/foo.jpg', { width: 400 })
+// For Cloudinary URLs, automatically injects high-definition delivery transformations.
+// Usage: imageUrl('/uploads/foo.jpg', { width: 1200 })
 // ─────────────────────────────────────────────────────────────────────────────
-export function imageUrl(path, { width = 800, quality = 'auto' } = {}) {
+export function imageUrl(path, { width = 1200, quality = 'auto:best' } = {}) {
   if (!path) return '';
 
   let url = String(path).replace(/\\/g, '/');
@@ -183,18 +183,23 @@ export function imageUrl(path, { width = 800, quality = 'auto' } = {}) {
   const match = url.match(cloudinaryUploadRe);
   if (match) {
     const [, base, existingTransforms, rest] = match;
-    if (existingTransforms && existingTransforms.startsWith('f_')) {
+    if (existingTransforms && (existingTransforms.startsWith('f_') || existingTransforms.includes('q_'))) {
       return url;
     }
-    const transforms = `f_webp,w_${width},q_${quality === 'auto' ? 'auto' : quality},c_limit`;
+    const qValue = quality === 'auto' ? 'auto:best' : quality;
+    const wValue = Math.max(width, 1000);
+    const transforms = `f_auto,q_${qValue},w_${wValue},c_limit,dpr_auto`;
     const kept = existingTransforms ? `${existingTransforms}/` : '';
     return `${base}${transforms}/${kept}${rest}`;
   }
 
-  // ── Backend Uploads CDN Optimization (Compresses heavy raw jpg/png uploads to WebP) ──
+  // ── Backend Uploads CDN Optimization (Compresses heavy raw jpg/png uploads to WebP while keeping crystal clear HD) ──
   if (url.includes('/uploads/') || url.includes('/service/uploads/')) {
-    const q = quality === 'auto' ? 75 : quality;
-    return `https://wsrv.nl/?url=${encodeURIComponent(url)}&w=${width}&output=webp&q=${q}&default=${encodeURIComponent(url)}`;
+    if (/^https?:\/\/(?!localhost|127\.0\.0\.1)/i.test(url)) {
+      const q = quality === 'auto' || quality === 'auto:best' ? 90 : (typeof quality === 'number' ? quality : 90);
+      const w = Math.max(width, 1000);
+      return `https://wsrv.nl/?url=${encodeURIComponent(url)}&w=${w}&output=webp&q=${q}&default=${encodeURIComponent(url)}`;
+    }
   }
 
   return url;

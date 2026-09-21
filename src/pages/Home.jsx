@@ -163,7 +163,7 @@ const Home = () => {
               const custom = dbCategoryImages.find(c => c.slug === sport.slug);
               return {
                 ...sport,
-                image: custom && custom.image ? imageUrl(custom.image, { width: 400 }) : sport.image
+                image: custom && custom.image ? imageUrl(custom.image, { width: 1200, quality: 'auto:best' }) : sport.image
               };
             }).map((sport, i) => (
               <motion.div

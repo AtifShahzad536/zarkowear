@@ -19,26 +19,26 @@ if (fs.existsSync(logoPng)) {
   execSync(`npx sharp-cli -i "${logoPng}" -o "${PUBLIC_DIR}" -f webp -q 85 resize 160`, { stdio: 'inherit' });
 }
 
-// 2. Compress and resize sports category webp images (target max width 400, quality 75)
+// 2. Compress and resize sports category webp images (target max width 1200, quality 92)
 const sportsFiles = fs.readdirSync(SPORTS_DIR).filter(f => f.endsWith('.webp') || f.endsWith('.png'));
 sportsFiles.forEach(file => {
   const filePath = path.join(SPORTS_DIR, file);
   console.log(`Optimizing sports image: ${file}`);
   try {
-    execSync(`npx sharp-cli -i "${filePath}" -o "${SPORTS_DIR}" -f webp -q 75 resize 400`, { stdio: 'inherit' });
+    execSync(`npx sharp-cli -i "${filePath}" -o "${SPORTS_DIR}" -f webp -q 92 resize 1200`, { stdio: 'inherit' });
   } catch (err) {
     console.error(`Error optimizing ${file}:`, err.message);
   }
 });
 
-// 3. Compress and resize hero jersey webp images (target max width 380, quality 80)
+// 3. Compress and resize hero jersey webp images (target max width 800, quality 92)
 const heroJerseys = ['hero_football.webp', 'hero_basketball.webp', 'hero_cricket.webp', 'hero_gym.webp', 'hero_wrestling.webp'];
 heroJerseys.forEach(file => {
   const pngEquivalent = file.replace('.webp', '.png');
   const srcFile = path.join(IMAGES_DIR, fs.existsSync(path.join(IMAGES_DIR, pngEquivalent)) ? pngEquivalent : file);
   console.log(`Optimizing hero jersey: ${file} from source ${path.basename(srcFile)}`);
   try {
-    execSync(`npx sharp-cli -i "${srcFile}" -o "${IMAGES_DIR}" -f webp -q 80 resize 380`, { stdio: 'inherit' });
+    execSync(`npx sharp-cli -i "${srcFile}" -o "${IMAGES_DIR}" -f webp -q 92 resize 800`, { stdio: 'inherit' });
   } catch (err) {
     console.error(`Error optimizing ${file}:`, err.message);
   }

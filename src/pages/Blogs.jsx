@@ -217,7 +217,7 @@ export default function Blogs() {
                       <Link to={`/blogs/${blog.slug}`} className="block overflow-hidden relative aspect-[1.5] bg-slate-100 rounded-none">
                         {blog.coverImage ? (
                           <img
-                            src={imageUrl(blog.coverImage, { width: 500 })}
+                            src={imageUrl(blog.coverImage, { width: 1000, quality: 'auto:best' })}
                             alt={blog.title ? `${blog.title} - Zarko Sportswear Blog` : "Zarko Sportswear Blog Cover"}
                             className="w-full h-full object-cover transition-transform duration-500 hover:scale-103 rounded-none"
                             loading="lazy"

@@ -537,7 +537,7 @@ const Hero = () => {
                   style={{ willChange: isActive ? 'transform' : 'auto' }}
                 >
                   <img
-                    src={imageUrl(prod.image, { width: 400 })}
+                    src={imageUrl(prod.image, { width: 900, quality: 'auto:best' })}
                     alt="Zarko Sportswear Custom Team Jersey"
                     title="Zarko Sportswear Custom Team Jersey"
                     width={280}

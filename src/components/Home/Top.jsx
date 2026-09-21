@@ -154,7 +154,7 @@ const TopSellingProducts = () => {
                       className="group relative overflow-hidden rounded-none shadow-md hover:shadow-2xl transition cursor-pointer hover:-translate-y-1 block"
                     >
                       <motion.img
-                        src={imageUrl(item.image, { width: 500 }) || item.image}
+                        src={imageUrl(item.image, { width: 1000, quality: 'auto:best' }) || item.image}
                         alt={item.name} title={item.name}
                         width={500}
                         height={500}

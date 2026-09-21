@@ -4,6 +4,7 @@ import { getCategory, imageUrl } from '../services/api';
 import ProductCard from './ProductCard';
 import Custom from '../pages/Custom';
 import CategoryHero from './CategoryHero';
+import CategoryHeroVideo from './CategoryHeroVideo';
 import { categoryConfigs } from '../data/categories';
 import SeoHead from './SeoHead';
 
@@ -142,6 +143,8 @@ const CategoryPage = ({ slug }) => {
         if (!mounted) return;
         setData({
           ...d,
+          heroVideo: d.heroVideo || fallbackConfig?.heroVideo || '',
+          heroBadge: d.heroBadge || fallbackConfig?.heroBadge || '',
           description: d.description || fallbackConfig?.description || fallbackConfig?.heroDescription,
           gradient: d.gradient || fallbackConfig?.gradient,
           accent: d.accent || fallbackConfig?.accent,
@@ -195,6 +198,8 @@ const CategoryPage = ({ slug }) => {
     description,
     gradient,
     accent = {},
+    heroVideo = '',
+    heroBadge = '',
     featured,
     products = [],
   } = data;
@@ -313,30 +318,15 @@ const CategoryPage = ({ slug }) => {
         <section className="bg-transparent overflow-hidden py-4 sm:py-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
-            {/* LEFT CONTAINER: FULL PICTURE DISPLAY (Pure White Background) */}
+            {/* LEFT CONTAINER: 3D SCROLL-CONTROLLED WEBM VIDEO DISPLAY */}
             <div className="lg:col-span-6 flex flex-col items-center">
-              <div className="relative w-full h-[400px] sm:h-[460px] rounded-2xl bg-white p-6 flex items-center justify-center shadow-sm overflow-hidden group">
-                {/* Subtle background glow */}
-                <div className="absolute inset-0 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:20px_20px] opacity-10" />
-
-                <img
-                  src={imageUrl(featured?.image || products[0]?.image || '/images/placeholder.jpg')}
-                  alt="Zarko Custom Sportswear Pro Kit" title="Zarko Custom Sportswear Pro Kit"
-                  className="relative z-10 max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = imageUrl('/images/placeholder.jpg');
-                  }}
-                />
-
-                {/* Floating Badges */}
-                <div className="absolute top-4 left-4 z-20 flex flex-wrap gap-2">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-900/90 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow">
-                    <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                    Customizable Pro Kit
-                  </span>
-                </div>
-              </div>
+              <CategoryHeroVideo
+                videoUrl={heroVideo}
+                featuredImage={featured?.image || products[0]?.image}
+                sportName={cleanSport || name}
+                slug={slug}
+                badgeText={heroBadge}
+              />
             </div>
 
             {/* RIGHT CONTAINER: CATEGORY & PRODUCT DETAILS */}
