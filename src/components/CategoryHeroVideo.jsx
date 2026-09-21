@@ -3,14 +3,16 @@ import { imageUrl } from '../services/api';
 
 /**
  * CategoryHeroVideo Component
- * Clean, Full-Width Cinematic 3D Background Video Hero that syncs with mouse scrolling
+ * Clean, 100% Full-Width Cinematic 3D Background Video Hero
+ * - Zero left/right padding (w-full object-cover)
+ * - Ultra-smooth 60FPS scroll-responsive velocity & parallax motion
+ * - Pure video stage without clutter
  */
 const CategoryHeroVideo = ({
   videoUrl = '',
   featuredImage = '',
   sportName = 'Sportswear',
   slug = '',
-  title = '',
 }) => {
   const containerRef = useRef(null);
   const videoRef = useRef(null);
@@ -18,155 +20,158 @@ const CategoryHeroVideo = ({
 
   const [hasVideo, setHasVideo] = useState(Boolean(videoUrl));
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
 
-  // 3D Parallax Tilt state
+  // 3D Parallax & Motion Physics state
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const [lightPos, setLightPos] = useState({ x: 50, y: 50 });
+  const [scrollYOffset, setScrollYOffset] = useState(0);
+
+  // Velocity tracking for silky smooth acceleration on scroll
+  const scrollVelocityRef = useRef(0);
+  const lastScrollYRef = useRef(0);
+  const targetScaleRef = useRef(1);
+  const currentScaleRef = useRef(1);
 
   useEffect(() => {
     setHasVideo(Boolean(videoUrl && videoUrl.trim()));
     setVideoLoaded(false);
   }, [videoUrl]);
 
-  // Target progress for smooth lerp scrubbing
-  const targetProgressRef = useRef(0);
-  const currentProgressRef = useRef(0);
-
-  // Synchronize video currentTime with smooth lerp
-  const updateVideoFrame = useCallback(() => {
+  // Smooth 60FPS physics animation loop
+  const updatePhysics = useCallback(() => {
     const video = videoRef.current;
-    if (video && video.duration && !isNaN(video.duration)) {
-      const diff = targetProgressRef.current - currentProgressRef.current;
-      if (Math.abs(diff) > 0.0008) {
-        currentProgressRef.current += diff * 0.18; // Smooth physics damping
-        const targetTime = Math.max(0, Math.min(video.duration, currentProgressRef.current * video.duration));
-        
-        if (Math.abs(video.currentTime - targetTime) > 0.02) {
-          try {
-            video.currentTime = targetTime;
-          } catch (e) {}
-        }
-        setScrollProgress(currentProgressRef.current);
+    
+    // Smooth scale lerp
+    currentScaleRef.current += (targetScaleRef.current - currentScaleRef.current) * 0.1;
+
+    // Decay scroll velocity smoothly
+    scrollVelocityRef.current *= 0.92;
+
+    if (video) {
+      // Dynamic playbackRate based on scroll velocity (normal 1.0x -> max 2.5x during scroll)
+      const targetRate = Math.min(3.0, Math.max(0.6, 1.0 + Math.abs(scrollVelocityRef.current) * 0.04));
+      const currentRate = video.playbackRate || 1.0;
+      video.playbackRate = currentRate + (targetRate - currentRate) * 0.15;
+
+      if (video.paused && videoLoaded) {
+        video.play().catch(() => {});
       }
     }
 
-    rafRef.current = requestAnimationFrame(updateVideoFrame);
-  }, []);
+    rafRef.current = requestAnimationFrame(updatePhysics);
+  }, [videoLoaded]);
 
   useEffect(() => {
-    rafRef.current = requestAnimationFrame(updateVideoFrame);
+    rafRef.current = requestAnimationFrame(updatePhysics);
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [updateVideoFrame]);
+  }, [updatePhysics]);
 
-  // Page Scroll listener to scrub video
+  // Window scroll listener for parallax & scroll velocity
   useEffect(() => {
+    let lastTime = performance.now();
+
     const handleScroll = () => {
       if (!containerRef.current) return;
+      const currentScrollY = window.scrollY || window.pageYOffset;
       const rect = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      const currentTime = performance.now();
+      const deltaTime = Math.max(1, currentTime - lastTime);
 
-      // Calculate progress relative to hero scroll (0 at top, 1 as you scroll through hero)
-      const totalScrollDistance = rect.height + windowHeight * 0.4;
-      const currentScrollOffset = windowHeight - rect.top;
-      const rawProgress = Math.max(0, Math.min(1, currentScrollOffset / totalScrollDistance));
+      // Parallax translateY when scrolling past hero
+      if (rect.bottom > 0 && rect.top < window.innerHeight) {
+        const offset = currentScrollY * 0.25;
+        setScrollYOffset(offset);
 
-      targetProgressRef.current = rawProgress;
+        // Calculate scroll speed/velocity
+        const deltaY = currentScrollY - lastScrollYRef.current;
+        const speed = Math.abs(deltaY) / deltaTime;
+        scrollVelocityRef.current = Math.min(25, scrollVelocityRef.current + speed * 12);
+        
+        // Slight dynamic zoom on rapid scroll
+        targetScaleRef.current = 1.0 + Math.min(0.08, speed * 0.05);
+      } else {
+        targetScaleRef.current = 1.0;
+      }
+
+      lastScrollYRef.current = currentScrollY;
+      lastTime = currentTime;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Mouse wheel scroll acceleration when over hero
-  const handleWheel = (e) => {
-    if (!hasVideo) return;
-    const delta = e.deltaY * 0.0006;
-    const newProgress = Math.max(0, Math.min(1, targetProgressRef.current + delta));
-    targetProgressRef.current = newProgress;
-  };
-
+  // Interactive mouse move 3D tilt
   const handleMouseMove = (e) => {
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = (e.clientY - rect.top) / rect.height;
-      setTilt({
-        x: (x - 0.5) * 10,
-        y: (0.5 - y) * 10
-      });
-      setLightPos({ x: x * 100, y: y * 100 });
-    }
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    setTilt({
+      x: (x - 0.5) * 6,
+      y: (0.5 - y) * 6,
+    });
   };
 
   const handleMouseLeave = () => {
     setTilt({ x: 0, y: 0 });
-    setLightPos({ x: 50, y: 50 });
+    targetScaleRef.current = 1.0;
   };
 
-  const fallbackImageSrc = imageUrl(featuredImage || '/images/placeholder.jpg', { width: 1400, quality: 'auto:best' });
+  const fallbackImageSrc = imageUrl(featuredImage || '/images/placeholder.jpg', { width: 1920, quality: 'auto:best' });
 
   return (
     <section
       ref={containerRef}
-      onWheel={handleWheel}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full h-[75vh] sm:h-[82vh] lg:h-[88vh] bg-[#0A0C16] text-white overflow-hidden border-b border-white/10 select-none flex items-center justify-center"
+      className="relative w-full h-[82vh] sm:h-[88vh] lg:h-[94vh] min-h-[580px] bg-black text-white overflow-hidden select-none"
       style={{
         perspective: '1200px',
       }}
     >
-      {/* 3D Tilted Inner Stage */}
+      {/* 3D Tilted & Parallax Canvas Stage */}
       <div
-        className="absolute inset-0 w-full h-full transition-transform duration-200 ease-out flex items-center justify-center pointer-events-none"
+        className="absolute inset-0 w-full h-full transition-transform duration-150 ease-out pointer-events-none"
         style={{
-          transform: `rotateX(${tilt.y}deg) rotateY(${tilt.x}deg) scale3d(1.02, 1.02, 1.02)`,
+          transform: `translate3d(0, ${scrollYOffset}px, 0) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg) scale3d(${currentScaleRef.current}, ${currentScaleRef.current}, 1)`,
           transformStyle: 'preserve-3d',
+          transformOrigin: 'center center',
         }}
       >
-        {/* Dynamic Studio Ambient Spotlight Glows */}
-        <div
-          className="absolute inset-0 pointer-events-none transition-opacity duration-300 opacity-60 z-10"
-          style={{
-            background: `radial-gradient(circle 600px at ${lightPos.x}% ${lightPos.y}%, rgba(99, 102, 241, 0.22), rgba(168, 85, 247, 0.08) 50%, transparent 80%)`,
-          }}
-        />
-
-        {/* Ambient Dark Studio Floor Grid */}
-        <div className="absolute inset-0 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:36px_36px] opacity-20 pointer-events-none" />
-
-        {/* 3D WebM / MP4 Full Video Layer (Scroll-Controlled) */}
+        {/* Full-bleed 3D Background Video */}
         {hasVideo ? (
           <video
             ref={videoRef}
             src={imageUrl(videoUrl)}
+            autoPlay
+            loop
             muted
             playsInline
             preload="auto"
-            onLoadedMetadata={() => {
+            onLoadedData={() => {
               setVideoLoaded(true);
+              if (videoRef.current) {
+                videoRef.current.play().catch(() => {});
+              }
             }}
-            className={`relative z-20 w-full h-full object-contain pointer-events-none transition-opacity duration-700 ${
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
               videoLoaded ? 'opacity-100' : 'opacity-0'
             }`}
           />
         ) : null}
 
-        {/* Fallback 3D Uniform Image (shown if no video or during buffer) */}
+        {/* Fallback 3D Uniform Image if no video is uploaded */}
         <div
-          className={`absolute inset-0 flex items-center justify-center p-6 transition-opacity duration-700 z-15 ${
+          className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-700 ${
             hasVideo && videoLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
           }`}
         >
           <img
             src={fallbackImageSrc}
-            alt={`${sportName} Custom Uniform 3D`}
-            className="max-h-[85%] max-w-[90%] object-contain filter drop-shadow-[0_35px_50px_rgba(0,0,0,0.85)] transform transition-transform duration-500"
+            alt={`${sportName} Custom 3D Showcase`}
+            className="w-full h-full object-cover filter drop-shadow-2xl"
             loading="eager"
             onError={(e) => {
               e.currentTarget.onerror = null;
@@ -174,6 +179,9 @@ const CategoryHeroVideo = ({
             }}
           />
         </div>
+
+        {/* Subtle Bottom Vignette Gradient for smooth transition to page content */}
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none" />
       </div>
     </section>
   );
