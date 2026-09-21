@@ -312,57 +312,70 @@ const CategoryPage = ({ slug }) => {
           'twitter:description': pageDescription,
         }}
       />
-      <div className="mx-auto max-w-[94%] px-6 py-8">
 
-        {/* TOP PRODUCT DETAIL HERO CONTAINER (Left: Picture, Right: Details) */}
-        <section className="bg-transparent overflow-hidden py-4 sm:py-6">
+      {/* ── FULL-WIDTH CINEMATIC 3D HERO SECTION (Spanning 100% viewport width) ── */}
+      <section className="w-full bg-[#0A0C16] text-white relative overflow-hidden py-12 sm:py-16 lg:py-20 border-b border-white/10">
+        {/* Background Ambient Spotlight Glows */}
+        <div className="absolute top-[10%] left-[15%] w-[450px] h-[450px] bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[10%] right-[15%] w-[450px] h-[450px] bg-purple-600/15 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:28px_28px] opacity-15 pointer-events-none" />
+
+        <div className="max-w-[94%] mx-auto px-4 lg:px-6 relative z-10">
+          
+          {/* Top Headline & Category Badge Header */}
+          <div className="mb-10 lg:mb-14 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 rounded-full bg-indigo-500/10 border border-indigo-500/30 px-4 py-1.5 text-xs font-black uppercase tracking-[0.2em] text-indigo-400 backdrop-blur-md mb-3 shadow-sm">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>{heroBadge || `Official ${cleanSport} 3D Uniform Spotlight • Factory Direct`}</span>
+            </div>
+            
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-none mt-2" style={{ fontFamily: "'Outfit', sans-serif" }}>
+              Custom <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-cyan-400">{cleanSport}</span> Uniforms & Gear
+            </h1>
+            
+            <p className="mt-4 text-sm sm:text-base lg:text-lg text-slate-300 font-medium max-w-3xl leading-relaxed">
+              {description || featured?.description || `Engineered for high-intensity competitive play. Custom ${cleanSport.toLowerCase()} uniforms featuring premium dry-fit fabric, 4K sublimation printing, and factory-direct USD wholesale pricing.`}
+            </p>
+          </div>
+
+          {/* Dual Column Grand 3D Stage & Technical Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-
-            {/* LEFT CONTAINER: 3D SCROLL-CONTROLLED WEBM VIDEO DISPLAY */}
-            <div className="lg:col-span-6 flex flex-col items-center">
+            
+            {/* LEFT / CENTER: FULL-SCALE 3D SCROLL-CONTROLLED WEBM VIDEO ARENA */}
+            <div className="lg:col-span-7 flex flex-col items-center">
               <CategoryHeroVideo
                 videoUrl={heroVideo}
                 featuredImage={featured?.image || products[0]?.image}
                 sportName={cleanSport || name}
                 slug={slug}
                 badgeText={heroBadge}
+                className="h-[440px] sm:h-[520px] lg:h-[580px]"
               />
             </div>
 
-            {/* RIGHT CONTAINER: CATEGORY & PRODUCT DETAILS */}
-            <div className="lg:col-span-6 space-y-6">
-              <div>
-                <div className="inline-flex items-center gap-2 rounded-full bg-indigo-50 border border-indigo-100 px-3.5 py-1 text-xs font-semibold text-indigo-600 uppercase tracking-widest">
-                  ⚽ Category Spotlight
-                </div>
-                <h1 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-normal leading-tight">
-                  {name}
-                </h1>
-                <p className="mt-3 text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
-                  {description || featured?.description || 'Match-ready, breathable, and durable kits engineered for professional clubs, academies, and brands.'}
-                </p>
-              </div>
-
-              {/* Specifications / Highlights Grid */}
+            {/* RIGHT COLUMN: SPECS, COMPLIANCE & CTAs */}
+            <div className="lg:col-span-5 space-y-6">
+              
+              {/* 4 Specifications / Highlights Glass Cards */}
               {(() => {
                 const highlights = getSportHighlights(cleanSport);
                 return (
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                    <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
-                      <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Fabric Tech</div>
-                      <div className="text-sm font-semibold text-slate-800 mt-0.5">{highlights.fabric}</div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-4 space-y-1 hover:border-indigo-500/40 transition">
+                      <div className="text-[11px] font-bold text-indigo-300 uppercase tracking-wider">Fabric Tech</div>
+                      <div className="text-sm font-black text-white">{highlights.fabric}</div>
                     </div>
-                    <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
-                      <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Printing</div>
-                      <div className="text-sm font-semibold text-slate-800 mt-0.5">{highlights.printing}</div>
+                    <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-4 space-y-1 hover:border-indigo-500/40 transition">
+                      <div className="text-[11px] font-bold text-indigo-300 uppercase tracking-wider">Printing</div>
+                      <div className="text-sm font-black text-white">{highlights.printing}</div>
                     </div>
-                    <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
-                      <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Min Order (MOQ)</div>
-                      <div className="text-sm font-semibold text-slate-800 mt-0.5">{highlights.moq}</div>
+                    <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-4 space-y-1 hover:border-indigo-500/40 transition">
+                      <div className="text-[11px] font-bold text-indigo-300 uppercase tracking-wider">Min Order (MOQ)</div>
+                      <div className="text-sm font-black text-white">{highlights.moq}</div>
                     </div>
-                    <div className="rounded-xl border border-slate-100 bg-slate-50 p-3.5">
-                      <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Dispatch</div>
-                      <div className="text-sm font-semibold text-slate-800 mt-0.5">{highlights.dispatch}</div>
+                    <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-4 space-y-1 hover:border-indigo-500/40 transition">
+                      <div className="text-[11px] font-bold text-indigo-300 uppercase tracking-wider">Dispatch</div>
+                      <div className="text-sm font-black text-white">{highlights.dispatch}</div>
                     </div>
                   </div>
                 );
@@ -370,79 +383,107 @@ const CategoryPage = ({ slug }) => {
 
               {/* Technical B2B Specifications Details */}
               {technicalSpecs && (
-                <div className="rounded-xl border border-indigo-100 bg-indigo-50/30 p-4 space-y-3">
-                  <div className="text-xs font-bold text-indigo-700 uppercase tracking-widest flex items-center gap-1.5">
-                    ⚙️ Technical B2B Specifications
+                <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5 space-y-3">
+                  <div className="text-xs font-black text-indigo-300 uppercase tracking-widest flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-indigo-400" />
+                    Technical B2B Manufacturing Specs
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 text-xs">
                     {technicalSpecs.fabric && (
-                      <div className="flex justify-between py-1 border-b border-slate-100/50">
-                        <span className="text-slate-500 font-semibold">Fabric</span>
-                        <span className="text-slate-800 font-bold text-right max-w-[60%]">{technicalSpecs.fabric}</span>
+                      <div className="flex justify-between py-1 border-b border-white/5">
+                        <span className="text-slate-400 font-medium">Fabric</span>
+                        <span className="text-white font-bold text-right max-w-[60%]">{technicalSpecs.fabric}</span>
                       </div>
                     )}
                     {technicalSpecs.printing && (
-                      <div className="flex justify-between py-1 border-b border-slate-100/50">
-                        <span className="text-slate-500 font-semibold">Customization</span>
-                        <span className="text-slate-800 font-bold text-right max-w-[60%]">{technicalSpecs.printing}</span>
+                      <div className="flex justify-between py-1 border-b border-white/5">
+                        <span className="text-slate-400 font-medium">Customization</span>
+                        <span className="text-white font-bold text-right max-w-[60%]">{technicalSpecs.printing}</span>
                       </div>
                     )}
                     {technicalSpecs.compliance && (
-                      <div className="flex justify-between py-1 border-b border-slate-100/50">
-                        <span className="text-slate-500 font-semibold">Compliance</span>
-                        <span className="text-slate-800 font-bold text-right max-w-[60%] text-indigo-600">{technicalSpecs.compliance}</span>
+                      <div className="flex justify-between py-1 border-b border-white/5">
+                        <span className="text-slate-400 font-medium">Compliance</span>
+                        <span className="text-indigo-400 font-bold text-right max-w-[60%]">{technicalSpecs.compliance}</span>
                       </div>
                     )}
                     {technicalSpecs.moq && (
-                      <div className="flex justify-between py-1 border-b border-slate-100/50">
-                        <span className="text-slate-500 font-semibold">MOQ Limit</span>
-                        <span className="text-slate-800 font-bold text-right max-w-[60%]">{technicalSpecs.moq}</span>
+                      <div className="flex justify-between py-1 border-b border-white/5">
+                        <span className="text-slate-400 font-medium">MOQ Limit</span>
+                        <span className="text-white font-bold text-right max-w-[60%]">{technicalSpecs.moq}</span>
                       </div>
                     )}
                     {technicalSpecs.shipping && (
-                      <div className="flex justify-between py-1 border-b border-slate-100/50">
-                        <span className="text-slate-500 font-semibold">US Shipping</span>
-                        <span className="text-slate-800 font-bold text-right max-w-[60%] text-emerald-600">{technicalSpecs.shipping}</span>
+                      <div className="flex justify-between py-1 border-b border-white/5">
+                        <span className="text-slate-400 font-medium">US Shipping</span>
+                        <span className="text-emerald-400 font-bold text-right max-w-[60%]">{technicalSpecs.shipping}</span>
                       </div>
                     )}
                     {technicalSpecs.sizing && (
-                      <div className="flex justify-between py-1 border-b border-slate-100/50">
-                        <span className="text-slate-500 font-semibold">Size Chart</span>
-                        <span className="text-slate-800 font-bold text-right max-w-[60%]">{technicalSpecs.sizing}</span>
+                      <div className="flex justify-between py-1 border-b border-white/5">
+                        <span className="text-slate-400 font-medium">Size Range</span>
+                        <span className="text-white font-bold text-right max-w-[60%]">{technicalSpecs.sizing}</span>
                       </div>
                     )}
                   </div>
                 </div>
               )}
 
-              {/* Action Buttons */}
-              <div className="pt-4 flex flex-wrap items-center gap-3 border-t border-slate-100">
+              {/* Action CTAs */}
+              <div className="pt-2 flex flex-wrap items-center gap-3">
                 <Link
                   to={`/custom?product=${encodeURIComponent(name)}`}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 text-sm font-semibold shadow-md shadow-indigo-600/20 transition-all hover:scale-[1.02]"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 text-xs font-black uppercase tracking-wider shadow-lg shadow-indigo-600/30 transition-all hover:scale-[1.02]"
                 >
                   <span>Request 3D Mockup</span>
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </Link>
+                
                 <a
                   href={`https://wa.me/923039220750?text=${encodeURIComponent(`Hi, I'm interested in ordering custom ${cleanSport} uniforms from Zarko Sportswear. Please share a B2B catalog and bulk price list.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white px-5 py-2.5 text-sm font-semibold shadow-md shadow-emerald-800/10 transition-all hover:scale-[1.02]"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-3 text-xs font-black uppercase tracking-wider shadow-lg shadow-emerald-600/20 transition-all hover:scale-[1.02]"
                 >
                   <span>WhatsApp Quote</span>
                 </a>
+                
                 <a
                   href="#related-products"
-                  className="inline-flex items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 px-5 py-2.5 text-sm font-semibold transition-all"
+                  className="inline-flex items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/10 px-5 py-3 text-xs font-bold uppercase tracking-wider transition-all"
                 >
-                  View Designs ↓
+                  View Catalog ↓
                 </a>
               </div>
             </div>
 
           </div>
-        </section>
+
+          {/* Bottom Trust Indicators Bar */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 pt-8 border-t border-white/10 text-xs font-bold text-slate-300">
+            <div className="flex items-center gap-2.5">
+              <span className="text-indigo-400 text-base">🚚</span>
+              <span>3–5 Days Express DHL Shipping</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <span className="text-emerald-400 text-base">🛡️</span>
+              <span>NFHS & NCAA Rule Compliant</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <span className="text-purple-400 text-base">🎨</span>
+              <span>Free Custom 3D Artwork Mockups</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <span className="text-amber-400 text-base">⭐</span>
+              <span>Factory Direct Sialkot Wholesale</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── MAIN CONTENT CONTAINER (Catalog & Forms) ── */}
+      <div className="mx-auto max-w-[94%] px-6 py-8">
 
         {/* RELATED PRODUCTS GRID */}
         <section id="related-products" className="mt-16">

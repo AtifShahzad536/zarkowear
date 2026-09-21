@@ -12,6 +12,7 @@ const CategoryHeroVideo = ({
   sportName = 'Sportswear',
   slug = '',
   badgeText = '',
+  className = '',
 }) => {
   const containerRef = useRef(null);
   const videoRef = useRef(null);
@@ -197,7 +198,9 @@ const CategoryHeroVideo = ({
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      className={`relative w-full h-[440px] sm:h-[500px] lg:h-[540px] rounded-3xl bg-slate-950 overflow-hidden shadow-2xl border border-slate-800 select-none group transition-all duration-300 ${
+      className={`relative w-full ${
+        className || 'h-[480px] sm:h-[540px] lg:h-[600px]'
+      } rounded-3xl bg-[#0d1021]/80 backdrop-blur-xl overflow-hidden shadow-2xl border border-white/10 select-none group transition-all duration-300 ${
         isDragging ? 'cursor-grabbing' : 'cursor-grab'
       }`}
       style={{
