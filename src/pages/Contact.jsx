@@ -14,9 +14,9 @@ const SPORTS_CATEGORIES = [
   '🏀 Basketball Jerseys & Team Shorts',
   '🤼 Wrestling Singlets & Compression Gear',
   '🏏 Cricket Uniforms & Whites',
-  '⚽ Soccer Sublimated Kits & Strips',
+  '⚽ Soccer Sublimated Uniforms & Strips',
   '🏑 Field / Ice Hockey Uniforms',
-  '🏉 Rugby Jerseys & Team Kits',
+  '🏉 Rugby Jerseys & Team Uniforms',
   '🏃 Tracksuits & Athletic Training Wear',
   '🥊 Boxing, MMA & Combat Sportswear',
   '👟 Custom Athletic Footwear & Turf Shoes',
@@ -27,17 +27,17 @@ const SPORTS_CATEGORIES = [
 const ORDER_TYPES = [
   'Full Custom Sublimation & Teamwear',
   'OEM / Private Label Brand Manufacturing',
-  'Bulk Wholesale Order (MOQ 10+ kits)',
+  'Bulk Wholesale Order (MOQ 10+ Pcs)',
   'Custom 3D Mockup & Sample Prototype',
   'Contract Embroidery & Screen Printing'
 ];
 
 const QUANTITY_RANGES = [
-  '10 – 25 Kits (Small Club / Squad)',
-  '25 – 100 Kits (School / Academy)',
-  '100 – 300 Kits (League / Tournament)',
-  '300 – 1,000+ Kits (Wholesale / Brand)',
-  '1,000+ Kits (Bulk Enterprise Order)'
+  '10 – 25 Pcs (Small Club / Squad)',
+  '25 – 100 Pcs (School / Academy)',
+  '100 – 300 Pcs (League / Tournament)',
+  '300 – 1,000+ Pcs (Wholesale / Brand)',
+  '1,000+ Pcs (Bulk Enterprise Order)'
 ];
 
 const TIMELINES = [
@@ -190,7 +190,7 @@ const Contact = () => {
             {/* Quick Trust Highlights */}
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs font-semibold text-slate-300">
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                <FaCheckCircle className="text-emerald-400" /> Low MOQ (10 Kits)
+                <FaCheckCircle className="text-emerald-400" /> Low MOQ (10 Pcs)
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
                 <FaTshirt className="text-indigo-400" /> Free 3D Digital Mockup
@@ -498,7 +498,7 @@ const Contact = () => {
                 Design In 3D Real-Time
               </h4>
               <p className="text-xs text-slate-300 leading-relaxed">
-                Prefer to customize your team kit visually? Use our 3D customizer to change colors, add team logos, player numbers, and request a factory sample.
+                Prefer to customize your team uniforms visually? Use our 3D customizer to change colors, add team logos, player numbers, and request a factory sample.
               </p>
               <Link
                 to="/builder"
