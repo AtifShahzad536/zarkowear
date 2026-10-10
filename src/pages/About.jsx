@@ -71,21 +71,58 @@ const About = () => {
     window.scrollTo(0, 0);
   }, [path]);
 
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'AboutPage',
+      '@id': 'https://www.zarkosportswear.com/about#about',
+      'name': 'About Zarko Sportswear | Custom Sportswear Manufacturer in Sialkot',
+      'description': 'Discover Zarko Sportswear: established sportswear manufacturer in Sialkot, Pakistan, crafting export-grade team uniforms, jerseys & athletic apparel for USA & global teams.',
+      'url': 'https://www.zarkosportswear.com/about',
+      'isPartOf': {
+        '@type': 'WebSite',
+        '@id': 'https://www.zarkosportswear.com/#website',
+        'name': 'Zarko Sportswear',
+        'url': 'https://www.zarkosportswear.com/'
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      '@id': 'https://www.zarkosportswear.com/about#breadcrumb',
+      'itemListElement': [
+        {
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'Home',
+          'item': 'https://www.zarkosportswear.com/'
+        },
+        {
+          '@type': 'ListItem',
+          'position': 2,
+          'name': 'About Us',
+          'item': 'https://www.zarkosportswear.com/about'
+        }
+      ]
+    }
+  ];
+
   return (
     <main className="min-h-screen bg-white">
       <SeoHead
-        title="About Zarko Sportswear | Premium USA Custom Uniforms"
-        description="Learn how Zarko Sportswear manufactures and ships premium custom team jerseys, wrestling singlets, and athletic apparel across the USA."
+        title="About Zarko Sportswear | Custom Sportswear Manufacturer in Sialkot"
+        description="Discover Zarko Sportswear: established sportswear manufacturer in Sialkot, Pakistan, crafting export-grade team uniforms, jerseys & athletic apparel for USA & global teams."
         canonical="https://www.zarkosportswear.com/about"
-        keywords="custom sports uniforms USA, custom team jerseys USA, USA sportswear manufacturer, custom athletic uniforms USA, team sportswear exporter"
+        keywords="sportswear manufacturer sialkot, custom sports uniforms USA, custom team jerseys, sportswear exporter pakistan"
+        jsonLd={jsonLd}
         openGraph={{
-          'og:title': 'About Zarko Sportswear | Premium USA Custom Uniforms',
-          'og:description': 'Learn how Zarko Sportswear manufactures and ships premium custom team jerseys, wrestling singlets, and athletic apparel across the USA.',
+          'og:title': 'About Zarko Sportswear | Custom Sportswear Manufacturer in Sialkot',
+          'og:description': 'Discover Zarko Sportswear: established sportswear manufacturer in Sialkot, Pakistan, crafting export-grade team uniforms, jerseys & athletic apparel for USA & global teams.',
           'og:url': 'https://www.zarkosportswear.com/about',
         }}
         twitter={{
-          'twitter:title': 'About Zarko Sportswear | Premium USA Custom Uniforms',
-          'twitter:description': 'Learn how Zarko Sportswear manufactures and ships premium custom team jerseys, wrestling singlets, and athletic apparel across the USA.',
+          'twitter:title': 'About Zarko Sportswear | Custom Sportswear Manufacturer in Sialkot',
+          'twitter:description': 'Discover Zarko Sportswear: established sportswear manufacturer in Sialkot, Pakistan, crafting export-grade team uniforms, jerseys & athletic apparel for USA & global teams.',
         }}
       />
       <section>

@@ -110,13 +110,6 @@ export const BuilderPage = () => {
                 "priceCurrency": "USD",
                 "availability": "https://schema.org/InStock"
               },
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.9",
-                "reviewCount": "184",
-                "bestRating": "5",
-                "worstRating": "1"
-              },
               "featureList": [
                 "Real-time 360 3D Rendering",
                 "4K Full-Dye Sublimation Pre-Press",

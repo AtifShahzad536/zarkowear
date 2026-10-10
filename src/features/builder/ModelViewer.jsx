@@ -479,7 +479,7 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
   const hw = sx / 2;
   const hh = actualSy / 2;
 
-  // Corner handle positions & directional vectors
+  // Corner handle definitions in LOCAL coordinates
   const corners = [
     { id: 'tl', signX: -1, signY: 1 },
     { id: 'tr', signX: 1, signY: 1 },
@@ -487,39 +487,10 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
     { id: 'bl', signX: -1, signY: -1 },
   ];
 
-  const cornerData = corners.map(c => {
-    const pos = point.clone()
-      .add(basisX.clone().multiplyScalar(c.signX * hw))
-      .add(basisY.clone().multiplyScalar(c.signY * hh))
-      .add(normal.clone().multiplyScalar(0.015));
-
-    const diag = basisX.clone().multiplyScalar(c.signX).add(basisY.clone().multiplyScalar(c.signY)).normalize();
-    const arrowQuat = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), diag);
-    const invArrowQuat = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), diag.clone().negate());
-
-    // Corner L-bracket line points
-    const armLen = Math.min(0.025, hw * 0.4, hh * 0.4);
-    const p1 = pos.clone().sub(basisX.clone().multiplyScalar(c.signX * armLen));
-    const p2 = pos.clone();
-    const p3 = pos.clone().sub(basisY.clone().multiplyScalar(c.signY * armLen));
-    const bracketArray = new Float32Array([p1.x, p1.y, p1.z, p2.x, p2.y, p2.z, p3.x, p3.y, p3.z]);
-
-    return { ...c, pos, diag, arrowQuat, invArrowQuat, bracketArray };
-  });
-
-  // Top center position & Rotation handle position
-  const topCenterPos = point.clone()
-    .add(basisY.clone().multiplyScalar(hh))
-    .add(normal.clone().multiplyScalar(0.015));
-
-  const rotHandlePos = point.clone()
-    .add(basisY.clone().multiplyScalar(hh + 0.04))
-    .add(normal.clone().multiplyScalar(0.015));
-
   // --- Corner Resize Handlers ---
   const handleCornerDown = (e, cornerId) => {
     e.stopPropagation();
-    e.target.setPointerCapture(e.pointerId);
+    try { e.target.setPointerCapture(e.pointerId); } catch (_) { }
     setActiveCorner(cornerId);
     setIsDraggingHandle(true);
   };
@@ -559,7 +530,7 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
   // --- Rotation Handle Handlers ---
   const handleRotDown = (e) => {
     e.stopPropagation();
-    e.target.setPointerCapture(e.pointerId);
+    try { e.target.setPointerCapture(e.pointerId); } catch (_) { }
     setIsDraggingRot(true);
     setIsDraggingHandle(true);
   };
@@ -591,7 +562,7 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
   // --- Center Drag-and-Drop Surface Move Handlers ---
   const handleMoveDown = (e) => {
     e.stopPropagation();
-    e.target.setPointerCapture(e.pointerId);
+    try { e.target.setPointerCapture(e.pointerId); } catch (_) { }
     setIsDraggingMove(true);
     setIsDraggingHandle(true);
   };
@@ -602,7 +573,8 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
 
     if (!meshes || meshes.length === 0) return;
 
-    const raycaster = new THREE.Raycaster(e.ray.origin, e.ray.direction);
+    const raycaster = new THREE.Raycaster();
+    raycaster.setFromCamera(e.pointer, camera);
     const validMeshes = meshes.filter(m => m.visible !== false && m.isMesh);
     const hits = raycaster.intersectObjects(validMeshes, true).filter(h => h.face);
 
@@ -613,7 +585,7 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
         .normalize();
 
       let targetMeshName = hit.object.name;
-      if (layersMetadata) {
+      if (layersMetadata && decal.type === 'pattern') {
         const meta = layersMetadata[targetMeshName] || {};
         targetMeshName = meta.merge_parent || targetMeshName;
       }
@@ -635,70 +607,74 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
     setIsDraggingHandle(false);
   };
 
-  // Outer boundary line points (rectangle)
-  const linePoints = [
-    cornerData[0].pos,
-    cornerData[1].pos,
-    cornerData[2].pos,
-    cornerData[3].pos,
-    cornerData[0].pos,
-  ];
-  const linePointsArray = new Float32Array(linePoints.flatMap(p => [p.x, p.y, p.z]));
+  const planeQuat = useMemo(() => new THREE.Quaternion().setFromRotationMatrix(m4), [m4]);
 
-  // Stem line from top-center to rotation handle
-  const stemPointsArray = new Float32Array([
-    topCenterPos.x, topCenterPos.y, topCenterPos.z,
-    rotHandlePos.x, rotHandlePos.y, rotHandlePos.z
-  ]);
+  // Local coordinates rectangle points
+  const localBoxPoints = useMemo(() => new Float32Array([
+    -hw, hh, 0.015,
+    hw, hh, 0.015,
+    hw, -hh, 0.015,
+    -hw, -hh, 0.015,
+    -hw, hh, 0.015
+  ]), [hw, hh]);
 
-  const planeQuat = new THREE.Quaternion().setFromRotationMatrix(m4);
+  // Local coordinates stem points
+  const localStemPoints = useMemo(() => new Float32Array([
+    0, hh, 0.015,
+    0, hh + 0.035, 0.015
+  ]), [hh]);
+
+  const armLen = Math.min(0.02, hw * 0.35, hh * 0.35);
 
   return (
-    <group>
+    <group position={point} quaternion={planeQuat}>
       {/* Central Drag-to-Move Surface Area */}
       <mesh
-        position={point.clone().add(normal.clone().multiplyScalar(0.012))}
-        quaternion={planeQuat}
+        position={[0, 0, 0.012]}
         onPointerDown={handleMoveDown}
         onPointerMove={handleMoveMove}
         onPointerUp={handleMoveUp}
+        onPointerOver={(e) => { e.stopPropagation(); document.body.style.cursor = 'grab'; }}
+        onPointerOut={() => { if (!isDraggingMove) document.body.style.cursor = 'auto'; }}
       >
-        <planeGeometry args={[Math.max(0.08, sx), Math.max(0.04, actualSy)]} />
-        <meshBasicMaterial transparent opacity={0.001} depthTest={false} />
+        <planeGeometry args={[Math.max(0.08, sx * 1.15), Math.max(0.04, actualSy * 1.15)]} />
+        <meshBasicMaterial transparent opacity={0.001} depthTest={false} side={THREE.DoubleSide} />
       </mesh>
 
-      {/* Bounding Box Outline (Dashed/Clean Modern Border) */}
-      <line>
-        <bufferGeometry attach="geometry">
+      {/* Bounding Box Outline (Clean Modern Border in Local Space) */}
+      <line key={`box_${decal.id}_${sx}_${actualSy}`}>
+        <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
-            array={linePointsArray}
+            array={localBoxPoints}
             count={5}
             itemSize={3}
           />
         </bufferGeometry>
-        <lineBasicMaterial attach="material" color="#6366f1" depthTest={false} linewidth={2} transparent opacity={0.85} />
+        <lineBasicMaterial color="#6366f1" depthTest={false} linewidth={2} transparent opacity={0.9} />
       </line>
 
       {/* Rotation Stem Line */}
-      <line>
-        <bufferGeometry attach="geometry">
+      <line key={`stem_${decal.id}_${hh}`}>
+        <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
-            array={stemPointsArray}
+            array={localStemPoints}
             count={2}
             itemSize={3}
           />
         </bufferGeometry>
-        <lineBasicMaterial attach="material" color="#6366f1" depthTest={false} linewidth={1.5} transparent opacity={0.8} />
+        <lineBasicMaterial color="#6366f1" depthTest={false} linewidth={1.5} transparent opacity={0.8} />
       </line>
 
       {/* Top Rotation Handle (Circle & Orbit Marker) */}
-      <group position={rotHandlePos}>
+      <group position={[0, hh + 0.035, 0.015]}>
         <mesh
           onPointerDown={handleRotDown}
           onPointerMove={handleRotMove}
           onPointerUp={handleRotUp}
+          onPointerOver={(e) => { e.stopPropagation(); document.body.style.cursor = 'crosshair'; }}
+          onPointerOut={() => { document.body.style.cursor = 'auto'; }}
         >
           <sphereGeometry args={[0.008, 16, 16]} />
           <meshBasicMaterial color="#a5b4fc" depthTest={false} transparent opacity={0.95} />
@@ -713,58 +689,84 @@ const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes
         </mesh>
       </group>
 
-      {/* 4 Corner Resize ARROWS & Corner Brackets */}
-      {cornerData.map(c => (
-        <group key={c.id}>
-          {/* L-Bracket corner indicator */}
-          <line>
-            <bufferGeometry attach="geometry">
-              <bufferAttribute
-                attach="attributes-position"
-                array={c.bracketArray}
-                count={3}
-                itemSize={3}
-              />
-            </bufferGeometry>
-            <lineBasicMaterial attach="material" color="#ffffff" depthTest={false} linewidth={2.5} transparent opacity={0.95} />
-          </line>
+      {/* 4 Corner Resize Arrows & Grab Handles */}
+      {corners.map(c => {
+        const cx = c.signX * hw;
+        const cy = c.signY * hh;
+        const cornerBracket = new Float32Array([
+          cx - c.signX * armLen, cy, 0.018,
+          cx, cy, 0.018,
+          cx, cy - c.signY * armLen, 0.018
+        ]);
 
-          {/* Outward Diagonal Resize Arrow Head */}
-          <mesh position={c.pos.clone().add(c.diag.clone().multiplyScalar(0.018))} quaternion={c.arrowQuat}>
-            <coneGeometry args={[0.007, 0.013, 12]} />
-            <meshBasicMaterial color="#6366f1" depthTest={false} transparent opacity={0.95} />
-          </mesh>
+        return (
+          <group key={c.id} position={[cx, cy, 0.018]}>
+            <line>
+              <bufferGeometry>
+                <bufferAttribute
+                  attach="attributes-position"
+                  array={new Float32Array([
+                    -c.signX * armLen, 0, 0,
+                    0, 0, 0,
+                    0, -c.signY * armLen, 0
+                  ])}
+                  count={3}
+                  itemSize={3}
+                />
+              </bufferGeometry>
+              <lineBasicMaterial color="#ffffff" depthTest={false} linewidth={2.5} transparent opacity={0.95} />
+            </line>
 
-          {/* Inward Diagonal Resize Arrow Head (Double-ended arrow marker) */}
-          <mesh position={c.pos.clone().sub(c.diag.clone().multiplyScalar(0.006))} quaternion={c.invArrowQuat}>
-            <coneGeometry args={[0.0055, 0.010, 12]} />
-            <meshBasicMaterial color="#6366f1" depthTest={false} transparent opacity={0.95} />
-          </mesh>
+            {/* Glowing corner dot */}
+            <mesh>
+              <sphereGeometry args={[0.006, 12, 12]} />
+              <meshBasicMaterial color="#6366f1" depthTest={false} transparent opacity={0.95} />
+            </mesh>
 
-          {/* Arrow Connecting Shaft */}
-          <mesh position={c.pos.clone().add(c.diag.clone().multiplyScalar(0.006))} quaternion={c.arrowQuat}>
-            <cylinderGeometry args={[0.002, 0.002, 0.016, 8]} />
-            <meshBasicMaterial color="#a5b4fc" depthTest={false} transparent opacity={0.95} />
-          </mesh>
+            {/* Interactive Hitbox for smooth dragging */}
+            <mesh
+              onPointerDown={(e) => handleCornerDown(e, c.id)}
+              onPointerMove={(e) => handleCornerMove(e, c.id)}
+              onPointerUp={handleCornerUp}
+              onPointerOver={(e) => { e.stopPropagation(); document.body.style.cursor = 'nwse-resize'; }}
+              onPointerOut={() => { document.body.style.cursor = 'auto'; }}
+            >
+              <sphereGeometry args={[0.025, 12, 12]} />
+              <meshBasicMaterial transparent opacity={0.001} depthTest={false} />
+            </mesh>
+          </group>
+        );
+      })}
 
-          {/* Center glowing dot at corner point */}
-          <mesh position={c.pos}>
-            <sphereGeometry args={[0.004, 12, 12]} />
-            <meshBasicMaterial color="#ffffff" depthTest={false} transparent opacity={0.95} />
-          </mesh>
-
-          {/* Large Invisible Hitbox for smooth dragging */}
-          <mesh
-            position={c.pos.clone().add(c.diag.clone().multiplyScalar(0.006))}
-            onPointerDown={(e) => handleCornerDown(e, c.id)}
-            onPointerMove={(e) => handleCornerMove(e, c.id)}
-            onPointerUp={handleCornerUp}
+      {/* Top Center delete cross (✕) */}
+      {removeDecal && (
+        <Html
+          position={[0, hh + 0.065, 0.02]}
+          center
+          style={{ pointerEvents: 'none' }}
+          zIndexRange={[120, 0]}
+        >
+          <button
+            onClick={(ev) => {
+              ev.stopPropagation();
+              removeDecal(decal.id);
+            }}
+            title="Remove Layer"
+            className="text-red-500 hover:text-red-400 font-bold transition-transform hover:scale-125 cursor-pointer select-none"
+            style={{
+              pointerEvents: 'auto',
+              background: 'transparent',
+              border: 'none',
+              fontSize: '18px',
+              lineHeight: 1,
+              padding: '2px',
+              textShadow: '0 2px 5px rgba(0,0,0,0.9), 0 0 3px rgba(0,0,0,0.8)'
+            }}
           >
-            <sphereGeometry args={[0.03, 12, 12]} />
-            <meshBasicMaterial transparent opacity={0.001} depthTest={false} />
-          </mesh>
-        </group>
-      ))}
+            ✕
+          </button>
+        </Html>
+      )}
     </group>
   );
 };
@@ -1343,29 +1345,34 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
     pending.forEach(d => {
       let initialMesh = meshes.find(m => m.name === d.meshId) || meshes[0];
 
-      // Find all meshes in the same merged group
-      const targetMeshes = meshes.filter(m => {
-        if (m.name === initialMesh.name) return true;
-        const meta = layersMetadata[m.name] || {};
-        if (meta.merge_parent === initialMesh.name) return true;
-        const initMeta = layersMetadata[initialMesh.name] || {};
-        if (initMeta.merge_parent === m.name) return true;
-        if (meta.merge_parent && meta.merge_parent === initMeta.merge_parent) return true;
-        return false;
-      });
-
-      // Find the mesh with the largest bounding box volume in the group
+      // For patterns: allow coverage of merged group siblings
+      // For text and images: strictly use the exact target mesh selected by the user!
       let targetMesh = initialMesh;
-      let maxVolume = 0;
-      targetMeshes.forEach(m => {
-        const b = new THREE.Box3().setFromObject(m);
-        const s = b.getSize(new THREE.Vector3());
-        const vol = s.x * s.y * s.z;
-        if (vol > maxVolume) {
-          maxVolume = vol;
-          targetMesh = m;
-        }
-      });
+      let targetMeshes = [initialMesh];
+
+      if (d.type === 'pattern') {
+        targetMeshes = meshes.filter(m => {
+          if (m.name === initialMesh.name) return true;
+          const meta = layersMetadata[m.name] || {};
+          if (meta.merge_parent === initialMesh.name) return true;
+          const initMeta = layersMetadata[initialMesh.name] || {};
+          if (initMeta.merge_parent === m.name) return true;
+          if (meta.merge_parent && meta.merge_parent === initMeta.merge_parent) return true;
+          return false;
+        });
+
+        // Find the mesh with the largest bounding box volume in the group for pattern origin
+        let maxVolume = 0;
+        targetMeshes.forEach(m => {
+          const b = new THREE.Box3().setFromObject(m);
+          const s = b.getSize(new THREE.Vector3());
+          const vol = s.x * s.y * s.z;
+          if (vol > maxVolume) {
+            maxVolume = vol;
+            targetMesh = m;
+          }
+        });
+      }
 
       // Force update world matrices immediately to prevent uninitialized matrices
       clonedScene.updateMatrixWorld(true);
@@ -1375,26 +1382,66 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
       const center = box.getCenter(new THREE.Vector3());
       const size = box.getSize(new THREE.Vector3());
 
-      // Detect mesh position type dynamically to shoot ray from the correct direction
-      let queryPoint = new THREE.Vector3(center.x, center.y + size.y * 0.1, box.max.z); // default front
-      let shootDir = new THREE.Vector3(0, 0, -1);
-      let shootOrigin = new THREE.Vector3(center.x, center.y + size.y * 0.1, box.max.z + 1);
+      // Compute average world surface normal and center from targetMesh geometry vertices
+      const positionAttr = targetMesh.geometry?.attributes?.position;
+      const normalAttr = targetMesh.geometry?.attributes?.normal;
 
-      if (center.z < -0.1) {
-        // Back
-        queryPoint.set(center.x, center.y + size.y * 0.1, box.min.z);
+      let avgNormal = new THREE.Vector3(0, 0, 1);
+      let avgCenter = center.clone();
+      let sampleCount = 0;
+
+      if (positionAttr && normalAttr) {
+        const sumN = new THREE.Vector3();
+        const sumP = new THREE.Vector3();
+        const tempV = new THREE.Vector3();
+        const tempN = new THREE.Vector3();
+        const normalMatrix = new THREE.Matrix3().getNormalMatrix(targetMesh.matrixWorld);
+        const step = Math.max(1, Math.floor(positionAttr.count / 100));
+
+        for (let i = 0; i < positionAttr.count; i += step) {
+          tempV.fromBufferAttribute(positionAttr, i);
+          tempN.fromBufferAttribute(normalAttr, i);
+          tempV.applyMatrix4(targetMesh.matrixWorld);
+          tempN.applyMatrix3(normalMatrix).normalize();
+          sumP.add(tempV);
+          sumN.add(tempN);
+          sampleCount++;
+        }
+        if (sampleCount > 0) {
+          avgCenter.copy(sumP.divideScalar(sampleCount));
+          if (sumN.lengthSq() > 0.001) {
+            avgNormal.copy(sumN.normalize());
+          }
+        }
+      }
+
+      // Determine shooting origin and ray direction based on the actual mesh surface orientation
+      let shootDir = new THREE.Vector3(0, 0, -1);
+      let shootOrigin = new THREE.Vector3(avgCenter.x, avgCenter.y + size.y * 0.1, box.max.z + 1.5);
+
+      if (avgNormal.z < -0.15) {
+        // Back side (Z-)
         shootDir.set(0, 0, 1);
-        shootOrigin.set(center.x, center.y + size.y * 0.1, box.min.z - 1);
-      } else if (center.x < -0.25) {
-        // Left
-        queryPoint.set(box.min.x, center.y, center.z);
+        shootOrigin.set(avgCenter.x, avgCenter.y + size.y * 0.1, box.min.z - 1.5);
+      } else if (avgNormal.z > 0.15) {
+        // Front side (Z+)
+        shootDir.set(0, 0, -1);
+        shootOrigin.set(avgCenter.x, avgCenter.y + size.y * 0.1, box.max.z + 1.5);
+      } else if (avgNormal.x < -0.25) {
+        // Left side (X-)
         shootDir.set(1, 0, 0);
-        shootOrigin.set(box.min.x - 1, center.y, center.z);
-      } else if (center.x > 0.25) {
-        // Right
-        queryPoint.set(box.max.x, center.y, center.z);
+        shootOrigin.set(box.min.x - 1.5, avgCenter.y, avgCenter.z);
+      } else if (avgNormal.x > 0.25) {
+        // Right side (X+)
         shootDir.set(-1, 0, 0);
-        shootOrigin.set(box.max.x + 1, center.y, center.z);
+        shootOrigin.set(box.max.x + 1.5, avgCenter.y, avgCenter.z);
+      } else if (avgNormal.y > 0.35) {
+        // Top / Collar (Y+)
+        shootDir.set(0, -1, 0);
+        shootOrigin.set(avgCenter.x, box.max.y + 1.5, avgCenter.z);
+      } else {
+        shootDir.copy(avgNormal).negate().normalize();
+        shootOrigin.copy(avgCenter).addScaledVector(avgNormal, 1.5);
       }
 
       // Calculate dynamic scale for patterns so they cover the entire mesh
@@ -1422,7 +1469,10 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
       const raycaster = new THREE.Raycaster();
       raycaster.set(shootOrigin, shootDir);
 
-      let hits = raycaster.intersectObjects(targetMeshes, true);
+      let hits = raycaster.intersectObject(targetMesh, true);
+      if (hits.length === 0 && d.type === 'pattern') {
+        hits = raycaster.intersectObjects(targetMeshes, true);
+      }
       if (hits.length === 0) {
         hits = raycaster.intersectObjects(meshes, true);
       }
@@ -1435,7 +1485,7 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
         const baseUpdate = {
           worldPoint: [hit.point.x, hit.point.y, hit.point.z],
           worldNormal: [wn.x, wn.y, wn.z],
-          meshId: hit.object.name,
+          meshId: targetMesh.name,
           decalScale: scale,
           decalScaleX: scaleX,
           decalScaleY: scaleY
@@ -1449,30 +1499,30 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
         updateDecal(d.id, baseUpdate);
       } else {
         // Fallback: Find the closest vertex of the target mesh on the detected side
-        const positionAttr = targetMesh.geometry?.attributes?.position;
-        const normalAttr = targetMesh.geometry?.attributes?.normal;
-        if (positionAttr) {
+        const positionAttrFallback = targetMesh.geometry?.attributes?.position;
+        const normalAttrFallback = targetMesh.geometry?.attributes?.normal;
+        if (positionAttrFallback) {
           let bestPoint = new THREE.Vector3();
-          let bestNormal = new THREE.Vector3(0, 0, 1);
+          let bestNormal = avgNormal.clone();
           let minD = Infinity;
 
           const tempV = new THREE.Vector3();
-          const step = Math.max(1, Math.floor(positionAttr.count / 100));
-          for (let i = 0; i < positionAttr.count; i += step) {
-            tempV.fromBufferAttribute(positionAttr, i);
+          const step = Math.max(1, Math.floor(positionAttrFallback.count / 100));
+          for (let i = 0; i < positionAttrFallback.count; i += step) {
+            tempV.fromBufferAttribute(positionAttrFallback, i);
             tempV.applyMatrix4(targetMesh.matrixWorld);
 
-            const dVal = tempV.distanceTo(queryPoint);
+            const dVal = tempV.distanceTo(avgCenter);
             if (dVal < minD) {
               minD = dVal;
               bestPoint.copy(tempV);
-              if (normalAttr) {
-                bestNormal.fromBufferAttribute(normalAttr, i);
+              if (normalAttrFallback) {
+                bestNormal.fromBufferAttribute(normalAttrFallback, i);
               }
             }
           }
 
-          if (normalAttr) {
+          if (normalAttrFallback) {
             const normalMatrix = new THREE.Matrix3().getNormalMatrix(targetMesh.matrixWorld);
             bestNormal.applyMatrix3(normalMatrix).normalize();
           }
@@ -1495,7 +1545,7 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
           // If no geometry attributes, fallback to bounding box center
           const centerUpdate = {
             worldPoint: [center.x, center.y, center.z],
-            worldNormal: [0, 0, 1],
+            worldNormal: [avgNormal.x, avgNormal.y, avgNormal.z],
             meshId: targetMesh.name,
             decalScale: scale,
             decalScaleX: scaleX,
@@ -1539,11 +1589,12 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
     decals.forEach(d => {
       if (!d.worldPoint || !d.worldNormal) return;
 
-      const targetMesh = meshes.find(m => m.name === d.meshId);
+      const norm = id => (id || '').replace(/\.obj$/i, '').trim().toLowerCase();
+      const targetMesh = meshes.find(m => m.name === d.meshId || norm(m.name) === norm(d.meshId)) || meshes[0];
       if (!targetMesh) return;
 
       // Version check — only recreate if something changed
-      const version = `${d.type}_${d.text}_${d.imageUrl || ''}_${d.worldPoint.join(',')}_${d.color}_${d.decalScale || 0.15}_${d.decalScaleX || 0}_${d.decalScaleY || 0}_${d.pFadeTop || 0}_${d.pFadeBottom || 0}_${d.pFadeLeft || 0}_${d.pFadeRight || 0}_${d.pFadeTopLeft || 0}_${d.pFadeTopRight || 0}_${d.pFadeBottomLeft || 0}_${d.pFadeBottomRight || 0}_${d.font}_${d.outline1Color}_${d.outline1Width}_${d.outline2Color}_${d.outline2Width}_${d.effect}_${d.effectIntensity}_${d.tail}_${d.v || 0}_${d.rotation || 0}`;
+      const version = `${d.meshId}_${d.type}_${d.text}_${d.imageUrl || ''}_${d.worldPoint.join(',')}_${d.color}_${d.decalScale || 0.15}_${d.decalScaleX || 0}_${d.decalScaleY || 0}_${d.pFadeTop || 0}_${d.pFadeBottom || 0}_${d.pFadeLeft || 0}_${d.pFadeRight || 0}_${d.pFadeTopLeft || 0}_${d.pFadeTopRight || 0}_${d.pFadeBottomLeft || 0}_${d.pFadeBottomRight || 0}_${d.font}_${d.outline1Color}_${d.outline1Width}_${d.outline2Color}_${d.outline2Width}_${d.effect}_${d.effectIntensity}_${d.tail}_${d.v || 0}_${d.rotation || 0}`;
       const existingList = decalMeshesRef.current[d.id];
       if (existingList && existingList.length > 0 && existingList[0].userData._v === version) return;
 
@@ -1620,17 +1671,16 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
           sx = d.decalScaleX !== undefined ? d.decalScaleX : (d.decalScale || 0.15);
           sy = d.decalScaleY !== undefined ? d.decalScaleY : (d.decalScale || 0.15);
         }
-        // Use a shallow depth (0.3m) for text and image decals so they do not bleed through to the back body.
+        // Use depth (0.8m) for text and image decals so curved shoulder and sleeve geometry are captured cleanly
         // Keep 3.0m for patterns since they are meant to project all the way through to both panels.
         const decalSize = (d.type === 'image' || d.type === 'pattern')
-          ? new THREE.Vector3(sx, sy, d.type === 'pattern' ? 3.0 : 0.3)
-          : new THREE.Vector3(sx, sy * 0.25, 0.3);
+          ? new THREE.Vector3(sx, sy, d.type === 'pattern' ? 3.0 : 0.8)
+          : new THREE.Vector3(sx, sy * 0.25, 0.8);
 
-        // Find target meshes — patterns apply to the selected mesh group only, not entire model
-        const targetMeshes = meshes.filter(m => {
+        // Find target meshes — patterns apply to the selected mesh group; text and image decals apply strictly to the selected mesh
+        let targetMeshes = meshes.filter(m => {
           if (d.type === 'pattern') {
-            // Only target the specific mesh and its merged group siblings
-            if (m.name === d.meshId) return true;
+            if (m.name === d.meshId || norm(m.name) === norm(d.meshId)) return true;
             const meta = layersMetadata[m.name] || {};
             const dMeta = layersMetadata[d.meshId] || {};
             if (meta.merge_parent === d.meshId) return true;
@@ -1638,22 +1688,12 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
             if (meta.merge_parent && meta.merge_parent === dMeta.merge_parent) return true;
             return false;
           }
-          if (m.name === d.meshId) return true;
-          if (m.name === d.meshId) return true;
-
-          // Child mesh target: check if child's parent is d.meshId
-          const meta = layersMetadata[m.name] || {};
-          if (meta.merge_parent === d.meshId) return true;
-
-          // Parent target: check if d.meshId itself is a child and has this mesh as parent
-          const dMeta = layersMetadata[d.meshId] || {};
-          if (dMeta.merge_parent === m.name) return true;
-
-          // Sibling target: check if they share the same parent
-          if (meta.merge_parent && meta.merge_parent === dMeta.merge_parent) return true;
-
-          return false;
+          return m.name === d.meshId || norm(m.name) === norm(d.meshId);
         });
+
+        if (targetMeshes.length === 0 && targetMesh) {
+          targetMeshes = [targetMesh];
+        }
 
         const meshesCreatedForDecal = [];
 

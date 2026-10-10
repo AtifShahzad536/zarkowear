@@ -620,124 +620,61 @@ const routesData = {
       </section>
     `
   },
-  // Keyword & local landing pages
-  '/custom-wrestling-gear': {
-    title: 'Custom Wrestling Gear & Team Singlets USA | Zarko Sportswear',
-    description: 'Order factory-direct custom wrestling gear, fight shorts, and compression singlets with fast USA delivery. High-durability 4-way stretch fabrics.',
-    canonical: 'https://www.zarkosportswear.com/custom-wrestling-gear',
-    h1: 'Custom Wrestling Gear & Singlets Manufacturer USA',
+  '/baseball': {
+    title: 'Custom Baseball Uniforms & Sublimated Jerseys USA | Zarko Sportswear',
+    description: 'Factory-direct custom baseball uniforms, button-down jerseys, and pants. Tackle twill, pro-grade fabrics, and fast shipping for USA teams & leagues.',
+    canonical: 'https://www.zarkosportswear.com/baseball',
+    h1: 'Custom Baseball Uniforms & Sublimated Team Jerseys Manufacturer USA',
     bodyContent: `
       <section class="seo-content-block">
-        <h2>Custom Wrestling Apparel & Tournament Team Singlets</h2>
-        <p>Zarko Sportswear manufactures high-performance wrestling gear, singlets, and fight shorts for school teams and tournament wrestling clubs across the USA.</p>
+        <h2>Professional Custom Baseball Jerseys & Full Uniform Sets USA</h2>
+        <p>Zarko Sportswear manufactures high-performance custom baseball uniforms, full-button jerseys, two-button henleys, and reinforced baseball pants for youth travel teams, high schools, adult leagues, and collegiate programs across the United States.</p>
+
+        <h2>Baseball Uniform Specifications & Craftsmanship</h2>
+        <ul>
+          <li><strong>Pro-Weight Warp Knit & Poly-Spandex:</strong> 220–250 GSM heavy-duty, snag-resistant fabric engineered for aggressive sliding and longevity.</li>
+          <li><strong>Full-Button & 2-Button Plackets:</strong> Traditional pro baseball styling with durable reinforced button plackets and clean edge-stitching.</li>
+          <li><strong>Sublimation & Stitched Tackle Twill:</strong> Choose full-dye sublimation for detailed colorways or multi-layer tackle twill embroidered crests and numbers.</li>
+          <li><strong>Custom Pants & Stirrup Socks:</strong> Complete team kits with reinforced knee panels, elastic cuffs or open bottoms, and matching custom socks.</li>
+        </ul>
+
+        <p>Request a custom baseball mockup and factory-direct quote today. Fast international express shipping to USA ballparks.</p>
       </section>
     `
   },
-  '/custom-wrestling-singlets-manufacturer': {
-    title: 'Custom Wrestling Singlets Manufacturer USA | Zarko Sportswear',
-    description: 'Factory-direct custom sublimated wrestling singlets manufacturer for USA teams, schools, and clubs. Low MOQ, durable flatlock seams & fast shipping.',
-    canonical: 'https://www.zarkosportswear.com/custom-wrestling-singlets-manufacturer',
-    h1: 'Custom Wrestling Singlets Manufacturer USA',
+  '/blogs': {
+    title: 'Sportswear Manufacturing & Uniform Design Blog | Zarko Sportswear',
+    description: 'Guides, manufacturing insights, fabric selection tips, and uniform design trends from custom sportswear manufacturer Zarko Sportswear.',
+    canonical: 'https://www.zarkosportswear.com/blogs',
+    h1: 'Zarko Sportswear Insights & Manufacturing Blog',
     bodyContent: `
       <section class="seo-content-block">
-        <h2>USA Custom Wrestling Singlets Direct Manufacturer</h2>
-        <p>Order sublimated wrestling singlets directly from our factory with low minimum order quantities and fast express delivery across all 50 US states.</p>
+        <h2>Sportswear Manufacturing Insights, Guides & Industry Trends</h2>
+        <p>Explore articles, design tips, and technical manufacturing breakdowns from Zarko Sportswear. Learn how high-performance sublimation, fabric GSM selection, and bespoke cut-and-sew apparel are produced for athletic programs worldwide.</p>
       </section>
     `
   },
-  '/custom-soccer-uniforms': {
-    title: 'Custom Soccer Uniforms & Sublimated Kits USA | Zarko Sportswear',
-    description: 'Design custom soccer uniforms and team kits online. Breathable moisture-wicking jerseys, goalie kits, and fast shipping to USA clubs.',
-    canonical: 'https://www.zarkosportswear.com/custom-soccer-uniforms',
-    h1: 'Custom Soccer Uniforms & Team Kits Manufacturer USA',
+  '/privacy-policy': {
+    title: 'Privacy Policy | Zarko Sportswear',
+    description: 'Read the privacy policy of Zarko Sportswear. Learn how we handle your custom uniform inquiry data, measurements, and contact information.',
+    canonical: 'https://www.zarkosportswear.com/privacy-policy',
+    h1: 'Privacy Policy - Zarko Sportswear',
     bodyContent: `
       <section class="seo-content-block">
-        <h2>Custom Sublimated Soccer Team Uniforms USA</h2>
-        <p>High-quality soccer kits, matchday jerseys, and goalkeeper uniforms manufactured direct from the factory for USA soccer academies and competitive clubs.</p>
+        <h2>Privacy Policy & Data Protection</h2>
+        <p>At Zarko Sportswear, we respect the privacy of our customers and website visitors. We collect only information required to provide accurate uniform mockups, production quotes, and international delivery updates.</p>
       </section>
     `
   },
-  '/sublimated-soccer-jerseys-wholesale': {
-    title: 'Sublimated Soccer Jerseys Wholesale USA | Zarko Sportswear',
-    description: 'Wholesale custom sublimated soccer jerseys direct from manufacturer. Premium lightweight fabrics, vibrant printing, and fast USA delivery.',
-    canonical: 'https://www.zarkosportswear.com/sublimated-soccer-jerseys-wholesale',
-    h1: 'Sublimated Soccer Jerseys Wholesale Supplier USA',
+  '/terms': {
+    title: 'Terms & Conditions | Zarko Sportswear',
+    description: 'Terms and conditions for custom sportswear orders, sample approvals, minimum order quantities, and international shipping from Zarko Sportswear.',
+    canonical: 'https://www.zarkosportswear.com/terms',
+    h1: 'Terms and Conditions of Service',
     bodyContent: `
       <section class="seo-content-block">
-        <h2>Wholesale Custom Sublimation Soccer Jerseys</h2>
-        <p>Save on bulk soccer jersey orders with direct factory pricing, low minimum order quantities, and express shipping to USA soccer leagues.</p>
-      </section>
-    `
-  },
-  '/oem-private-label-sportswear': {
-    title: 'OEM Private Label Sportswear Manufacturer USA | Zarko Sportswear',
-    description: 'OEM private label activewear and custom sportswear manufacturing. Low MOQs, custom woven tags, premium fabrics, and fast USA shipping.',
-    canonical: 'https://www.zarkosportswear.com/oem-private-label-sportswear',
-    h1: 'OEM Private Label Sportswear Manufacturer USA',
-    bodyContent: `
-      <section class="seo-content-block">
-        <h2>Private Label Activewear & Custom Sportswear Production</h2>
-        <p>We manufacture private label gym apparel, compression wear, and athletic uniforms for sports brands and fitness businesses throughout the United States.</p>
-      </section>
-    `
-  },
-  '/private-label-activewear-low-moq': {
-    title: 'Private Label Activewear Low MOQ USA | Zarko Sportswear',
-    description: 'Launch your activewear brand with low MOQ private label sportswear manufacturing. Premium custom gym wear, hoodies, and leggings with USA fulfillment.',
-    canonical: 'https://www.zarkosportswear.com/private-label-activewear-low-moq',
-    h1: 'Low MOQ Private Label Activewear Manufacturer USA',
-    bodyContent: `
-      <section class="seo-content-block">
-        <h2>Low MOQ Activewear & Gym Apparel Manufacturing</h2>
-        <p>Start or scale your athletic apparel brand with low minimum order quantities starting at just 15-25 pieces per design with fast USA delivery.</p>
-      </section>
-    `
-  },
-  '/custom-sportswear-california': {
-    title: 'Custom Sportswear & Sports Uniforms in California | Zarko',
-    description: 'Custom sports uniforms, soccer jerseys, and wrestling singlets in California direct from the manufacturer. Fast shipping to LA, SF, San Diego.',
-    canonical: 'https://www.zarkosportswear.com/custom-sportswear-california',
-    h1: 'Custom Sportswear & Uniforms California USA',
-    bodyContent: `
-      <section class="seo-content-block">
-        <h2>Custom Sports Uniforms for California Teams & Leagues</h2>
-        <p>Supplying California high schools, youth soccer clubs, wrestling academies, and adult leagues with factory-direct custom sportswear.</p>
-      </section>
-    `
-  },
-  '/custom-sportswear-texas': {
-    title: 'Custom Sportswear & Sports Uniforms in Texas | Zarko',
-    description: 'High-durability custom sports uniforms, baseball jerseys, and wrestling singlets in Texas. Fast delivery to Houston, Dallas, Austin, San Antonio.',
-    canonical: 'https://www.zarkosportswear.com/custom-sportswear-texas',
-    h1: 'Custom Sportswear & Uniforms Texas USA',
-    bodyContent: `
-      <section class="seo-content-block">
-        <h2>Custom Sports Uniforms for Texas Teams & Leagues</h2>
-        <p>Supplying Texas high schools, youth baseball leagues, football organizations, and wrestling clubs with factory-direct teamwear.</p>
-      </section>
-    `
-  },
-  '/custom-sportswear-new-york': {
-    title: 'Custom Sportswear & Sports Uniforms in New York | Zarko',
-    description: 'Custom sports uniforms, basketball jerseys, and athletic apparel in New York. Direct factory delivery to NYC, Buffalo, Rochester, Albany.',
-    canonical: 'https://www.zarkosportswear.com/custom-sportswear-new-york',
-    h1: 'Custom Sportswear & Uniforms New York USA',
-    bodyContent: `
-      <section class="seo-content-block">
-        <h2>Custom Sports Uniforms for New York Teams & Leagues</h2>
-        <p>Supplying New York scholastic leagues, basketball programs, club teams, and tournament organizers with factory-direct uniforms.</p>
-      </section>
-    `
-  },
-  '/custom-sportswear-florida': {
-    title: 'Custom Sportswear & Sports Uniforms in Florida | Zarko',
-    description: 'Moisture-wicking custom sports uniforms and team jerseys in Florida. Fast shipping to Miami, Orlando, Tampa, Jacksonville.',
-    canonical: 'https://www.zarkosportswear.com/custom-sportswear-florida',
-    h1: 'Custom Sportswear & Uniforms Florida USA',
-    bodyContent: `
-      <section class="seo-content-block">
-        <h2>Custom Sports Uniforms for Florida Teams & Leagues</h2>
-        <p>Supplying Florida athletic programs, soccer tournaments, baseball academies, and beach volleyball teams with breathable UV-protected custom sportswear.</p>
+        <h2>Terms & Conditions of Service</h2>
+        <p>Review the terms governing custom order manufacturing, digital mockup approvals, physical sampling, minimum order quantities, and international fulfillment with Zarko Sportswear.</p>
       </section>
     `
   }
@@ -839,18 +776,28 @@ function runPrerender() {
       html = html.replace(twitterDescRegex, `<meta name="twitter:description"\n    content="${escapeAttr(meta.description)}" />`);
     }
 
-    // 6. Inject Rich SEO Content for Search Crawlers (350-500+ Words) without causing visual layout shift
-    const staticCrawlerMarkup = `
-  <section class="seo-crawler-content" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;" aria-label="${escapeAttr(meta.title)}">
-    <h1>${meta.h1}</h1>
-    ${meta.bodyContent}
-  </section>`;
+    // 6. Update accessible <noscript> fallback with route-specific details (RFC/Google compliant, zero hidden text)
+    const noscriptContent = `  <noscript>
+    <div class="noscript-seo" style="max-width: 800px; margin: 30px auto; padding: 20px; font-family: Outfit, sans-serif; line-height: 1.6;">
+      <h2>${meta.h1}</h2>
+      <p>${escapeAttr(meta.description)}</p>
+      <p>
+        <strong>Zarko Sportswear</strong> — Factory-direct custom sports uniforms, team jerseys, wrestling singlets, and athletic apparel manufactured in Sialkot, Pakistan.
+      </p>
+      <p>
+        Visit our <a href="/custom">Custom Orders</a>, <a href="/about">About Us</a>, or <a href="/contact">Contact</a> pages.
+      </p>
+    </div>
+  </noscript>`;
 
     const crawlerRegex = /<section class="seo-crawler-content"[^]*?<\/section>/i;
     if (crawlerRegex.test(html)) {
-      html = html.replace(crawlerRegex, staticCrawlerMarkup.trim());
-    } else {
-      html = html.replace('</noscript>', `</noscript>\n${staticCrawlerMarkup}`);
+      html = html.replace(crawlerRegex, '');
+    }
+
+    const noscriptRegex = /<noscript>[^]*?<\/noscript>/i;
+    if (noscriptRegex.test(html)) {
+      html = html.replace(noscriptRegex, noscriptContent);
     }
 
     // Write file to route directory: dist/<route>/index.html

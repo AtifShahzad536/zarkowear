@@ -1,70 +1,64 @@
 const homeSeo = {
-  title: "Custom Team Uniforms Manufacturer USA | Zarko Sportswear",
+  title: "Custom Sportswear Manufacturer & Team Uniforms | Zarko",
   description:
-    "Direct factory custom team uniforms, wrestling singlets, and sublimated jerseys. NFHS-compliant, premium fabrics, and fast US shipping. Free mockup today.",
+    "Custom sportswear manufacturer based in Sialkot, Pakistan, producing factory-direct team uniforms, wrestling singlets, and sublimated jerseys for USA and international clubs.",
   canonical: "https://www.zarkosportswear.com/",
   keywords:
-    "custom sportswear USA, custom sports apparel usa, custom sportswear manufacturer usa, sportswear factory, sportswear wholesale supplier, private label sportswear manufacturer, teamwear manufacturer, custom sportswear company, custom sportswear apparel, custom sports uniforms USA, custom teamwear USA, 3d custom jersey builder, custom wrestling singlets USA, custom sports uniforms online, custom soccer jerseys USA, custom basketball uniforms, sportswear supplier USA, gym wear manufacturer USA, custom athletic wear, zarko sportswear USA, best sportswear manufacturer in pakistan, best sportswear manufacturer in sialkot, sportswear manufacturer in sialkot, hamco sportswear, Custom Sportswear Manufacturer, Sportswear Factory in Pakistan, OEM Sportswear Manufacturer, Private Label Sportswear, Team Uniform Manufacturer",
-  author: "Atif Shahzad & Hurairah Shahzad",
+    "custom sportswear manufacturer, custom sports uniforms USA, sportswear manufacturer Sialkot Pakistan, factory direct team jerseys, custom wrestling singlets, sublimation teamwear",
+  author: "Zarko Sportswear",
   robots: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   themeColor: "#0A0C16",
-  image: "https://www.zarkosportswear.com/og-cover.jpg",
+  image: "https://www.zarkosportswear.com/new-logo.png",
   siteName: "Zarko Sportswear",
   locale: "en_US",
   openGraph: {
-    'og:title': 'Custom Team Uniforms Manufacturer USA | Zarko Sportswear',
+    'og:title': 'Custom Sportswear Manufacturer & Team Uniforms | Zarko',
     'og:description':
-      'Direct factory custom team uniforms, wrestling singlets, and sublimated jerseys. NFHS-compliant, premium fabrics, and fast US shipping. Free mockup today.',
+      'Custom sportswear manufacturer based in Sialkot, Pakistan, producing factory-direct team uniforms, wrestling singlets, and sublimated jerseys for USA and international clubs.',
     'og:url': 'https://www.zarkosportswear.com/',
-    'og:image': 'https://www.zarkosportswear.com/og-cover.jpg',
-    'og:image:width': '1200',
-    'og:image:height': '630',
+    'og:image': 'https://www.zarkosportswear.com/new-logo.png',
+    'og:image:width': '512',
+    'og:image:height': '512',
     'og:type': 'website',
     'og:site_name': 'Zarko Sportswear',
     'og:locale': 'en_US',
   },
   twitter: {
-    'twitter:title': 'Custom Team Uniforms Manufacturer USA | Zarko Sportswear',
-    'twitter:description': 'Direct factory custom team uniforms, wrestling singlets, and sublimated jerseys. NFHS-compliant, premium fabrics, and fast US shipping. Free mockup today.',
+    'twitter:title': 'Custom Sportswear Manufacturer | Factory-Direct Team Uniforms | Zarko Sportswear',
+    'twitter:description':
+      'Custom sportswear manufacturer based in Sialkot, Pakistan, producing factory-direct team uniforms, wrestling singlets, and sublimated jerseys for USA and international clubs.',
     'twitter:card': 'summary_large_image',
-    'twitter:image': 'https://www.zarkosportswear.com/og-cover.jpg',
+    'twitter:image': 'https://www.zarkosportswear.com/new-logo.png',
     'twitter:site': '@zarkosportswear',
-    'twitter:creator': '@atifshahzad',
+    'twitter:creator': '@zarkosportswear',
   },
   jsonLd: [
     {
       '@context': 'https://schema.org',
-      '@type': 'LocalBusiness',
-      '@id': 'https://www.zarkosportswear.com/#localbusiness',
+      '@type': 'Organization',
+      '@id': 'https://www.zarkosportswear.com/#organization',
       name: 'Zarko Sportswear',
-      image: 'https://www.zarkosportswear.com/logo.png',
       url: 'https://www.zarkosportswear.com/',
-      telephone: '+92-303-9220750',
-      email: 'zarkosportswear@gmail.com',
+      logo: 'https://www.zarkosportswear.com/new-logo.png',
+      image: 'https://www.zarkosportswear.com/new-logo.png',
+      description:
+        'Custom sportswear manufacturer based in Sialkot, Pakistan, producing factory-direct sports uniforms, wrestling singlets, and sublimated team jerseys for athletic programs across the USA and worldwide.',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Sialkot Cantt',
+        streetAddress: 'Motra',
         addressLocality: 'Sialkot',
         addressRegion: 'Punjab',
-        postalCode: '51310',
+        postalCode: '51040',
         addressCountry: 'PK',
       },
-      openingHours: ['Mo-Sa 09:00-18:00'],
-      sameAs: [
-        'https://www.facebook.com/zarkosportswear',
-        'https://www.instagram.com/zarko_sports.wear/',
-        'https://www.linkedin.com/in/atif-shahzad903/'
-      ],
-      makesOffer: [
-        { '@type': 'Offer', name: 'Football & Soccer Kits' },
-        { '@type': 'Offer', name: 'Cricket Uniforms' },
-        { '@type': 'Offer', name: 'Basketball Jerseys' },
-        { '@type': 'Offer', name: 'Rugby Apparel' },
-        { '@type': 'Offer', name: 'Wrestling Gears & Singlets' },
-        { '@type': 'Offer', name: 'Hockey Uniforms & Wear' },
-      ],
-      areaServed: [
-        { '@type': 'Country', name: 'United States' }
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          telephone: '+92-303-9200750',
+          contactType: 'Customer Support',
+          areaServed: ['US', 'GB', 'PK'],
+          availableLanguage: ['English', 'Urdu'],
+        },
       ],
       founder: [
         {
@@ -72,68 +66,31 @@ const homeSeo = {
           '@id': 'https://www.zarkosportswear.com/#person-atif',
           name: 'Atif Shahzad',
           jobTitle: 'Co-Founder',
-          url: 'https://www.linkedin.com/in/atif-shahzad903/'
+          url: 'https://www.linkedin.com/in/atif-shahzad903/',
         },
         {
           '@type': 'Person',
           '@id': 'https://www.zarkosportswear.com/#person-hurairah',
           name: 'Hurairah Shahzad',
-          jobTitle: 'Co-Founder'
-        }
-      ],
-      description:
-        'Zarko Sportswear is a premier custom sportswear manufacturer and supplier for athletic teams, clubs, and leagues across the United States.',
-      priceRange: '$$',
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.8',
-        reviewCount: '150'
-      }
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      '@id': 'https://www.zarkosportswear.com/#organization',
-      name: 'Zarko Sportswear',
-      url: 'https://www.zarkosportswear.com/',
-      logo: 'https://www.zarkosportswear.com/logo.png',
-      description: 'Zarko Sportswear is a trusted sports wear manufacturer and exporter of premium custom sports uniforms supplying USA sports organizations.',
-      foundingDate: '2020',
-      contactPoint: {
-        '@type': 'ContactPoint',
-        telephone: '+92-303-9220750',
-        email: 'zarkosportswear@gmail.com',
-        contactType: 'customer service',
-        availableLanguage: ['English']
-      }
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      '@id': 'https://www.zarkosportswear.com/#article',
-      isPartOf: {
-        '@type': 'WebPage',
-        '@id': 'https://www.zarkosportswear.com/'
-      },
-      headline: "Custom Team Uniforms Manufacturer USA | Zarko Sportswear",
-      description: "Direct factory custom team uniforms, wrestling singlets, and sublimated jerseys. NFHS-compliant, premium fabrics, and fast US shipping.",
-      image: "https://www.zarkosportswear.com/og-cover.jpg",
-      datePublished: "2024-01-15T08:00:00+00:00",
-      dateModified: "2026-08-21T10:00:00+00:00",
-      author: [
-        {
-          '@type': 'Person',
-          '@id': 'https://www.zarkosportswear.com/#person-atif'
+          jobTitle: 'Co-Founder',
         },
-        {
-          '@type': 'Person',
-          '@id': 'https://www.zarkosportswear.com/#person-hurairah'
-        }
       ],
+      sameAs: [
+        'https://www.facebook.com/zarkosportswear',
+        'https://www.instagram.com/zarko_sports.wear/',
+        'https://www.linkedin.com/in/atif-shahzad903/',
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      '@id': 'https://www.zarkosportswear.com/#website',
+      url: 'https://www.zarkosportswear.com/',
+      name: 'Zarko Sportswear',
+      description: 'Factory-direct custom sportswear manufacturer supplying teams across the USA and worldwide.',
       publisher: {
-        '@type': 'Organization',
-        '@id': 'https://www.zarkosportswear.com/#organization'
-      }
+        '@id': 'https://www.zarkosportswear.com/#organization',
+      },
     },
     {
       '@context': 'https://schema.org',
@@ -144,9 +101,9 @@ const homeSeo = {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://www.zarkosportswear.com/'
-        }
-      ]
+          item: 'https://www.zarkosportswear.com/',
+        },
+      ],
     },
     {
       '@context': 'https://schema.org',
@@ -157,44 +114,44 @@ const homeSeo = {
           name: 'How long does a custom uniform order actually take from first call to delivery?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'A standard customized tailoring order runs about 8 to 12 working days from the moment you approve the final digital design mockup. Global shipping to the USA takes an additional 3 to 5 business days via DHL or FedEx Express.'
-          }
+            text: 'A standard customized tailoring order runs about 8 to 12 working days from the moment you approve the final digital design mockup. Global shipping to the USA takes an additional 3 to 5 business days via DHL or FedEx Express.',
+          },
         },
         {
           '@type': 'Question',
           name: 'Is there really no minimum order, even for a single jersey?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Our standard customized runs require a minimum order quantity (MOQ) of 15 pieces per customized design layout. However, we do offer physical custom sampling/mockups for team evaluations before full production starts.'
-          }
+            text: 'Our standard customized runs require a minimum order quantity (MOQ) of 15 pieces per customized design layout. However, we do offer physical custom sampling/mockups for team evaluations before full production starts.',
+          },
         },
         {
           '@type': 'Question',
           name: 'Are Zarko uniforms NFHS-, USA-Wrestling-, and US-Soccer-compliant?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Yes, all our custom sports uniforms and wrestling singlets are engineered to meet the strict uniform compliance standards (including number sizing, color limits, and logo placement guidelines) set by NFHS, USA Wrestling, US Soccer, and other major governing bodies.'
-          }
+            text: 'Yes, all our custom sports uniforms and wrestling singlets are engineered to meet the strict uniform compliance standards (including number sizing, color limits, and logo placement guidelines) set by NFHS, USA Wrestling, US Soccer, and other major governing bodies.',
+          },
         },
         {
           '@type': 'Question',
           name: 'Which sports does Zarko sportswear manufacture, and what fabrics are used?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'As a leading custom sportswear manufacturer, we produce high-performance team uniforms for Soccer/Football, Basketball, Wrestling, Rugby, Cricket, Hockey, Tennis, and Running. We use export-grade fabrics including dry-fit micro-polyester, heavy-duty 4-way stretch spandex, and premium flex fleece blends.'
-          }
+            text: 'As a leading custom sportswear manufacturer, we produce high-performance team uniforms for Soccer/Football, Basketball, Wrestling, Rugby, Cricket, Hockey, Tennis, and Running. We use export-grade fabrics including dry-fit micro-polyester, heavy-duty 4-way stretch spandex, and premium flex fleece blends.',
+          },
         },
         {
           '@type': 'Question',
           name: 'Can I order matching shorts, sideline jackets, warm-ups, and bags in the same design?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Absolutely! We synchronize dye batches and design blueprints across all product types (jerseys, shorts, hoodies, tracksuits, bags) to ensure your entire squad has a cohesive, 100% matching team look.'
-          }
-        }
-      ]
-    }
-  ]
+            text: 'Absolutely! We synchronize dye batches and design blueprints across all product types (jerseys, shorts, hoodies, tracksuits, bags) to ensure your entire squad has a cohesive, 100% matching team look.',
+          },
+        },
+      ],
+    },
+  ],
 };
 
 export default homeSeo;

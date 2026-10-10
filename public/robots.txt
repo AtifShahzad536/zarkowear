@@ -2,20 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /api/
-Disallow: /_next/
-Disallow: /node_modules/
 
 Sitemap: https://www.zarkosportswear.com/sitemap.xml
 
-# Specific bot permissions
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: Twitterbot
-Allow: /

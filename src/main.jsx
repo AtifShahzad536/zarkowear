@@ -1,6 +1,6 @@
 import { StrictMode, StrictMode as ReactStrictMode, Suspense, lazy } from 'react'
 import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import RequireAdmin from './components/admin/RequireAdmin.jsx'
@@ -24,7 +24,6 @@ const ModelSelectionPage = lazy(() => import('./pages/ModelSelectionPage.jsx'))
 const Blogs = lazy(() => import('./pages/Blogs.jsx'))
 const BlogDetail = lazy(() => import('./pages/BlogDetail.jsx'))
 const AdminBlogs = lazy(() => import('./pages/AdminBlogs.jsx'))
-const LocalLandingPage = lazy(() => import('./pages/LocalLandingPage.jsx'))
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy.jsx'))
 const Terms = lazy(() => import('./pages/Terms.jsx'))
 
@@ -42,15 +41,15 @@ const router = createBrowserRouter([
       { path: "detail", element: <ProductInquiry /> },
       { path: "blogs", element: <Blogs /> },
       { path: "blogs/:slug", element: <BlogDetail /> },
-      { path: "custom-sportswear-:state", element: <LocalLandingPage /> },
+      { path: "custom-sportswear-:state", element: <Navigate to="/custom" replace /> },
       { path: "privacy-policy", element: <PrivacyPolicy /> },
       { path: "terms", element: <Terms /> },
 
       // ✅ Sports Kits
       { path: "football", element: <CategoryRoute slug="football" /> },
       { path: "wrestling", element: <CategoryRoute slug="wrestling" /> },
-      { path: "custom-wrestling-gear", element: <CategoryRoute slug="wrestling" /> },
-      { path: "custom-wrestling-singlets-manufacturer", element: <CategoryRoute slug="wrestling" /> },
+      { path: "custom-wrestling-gear", element: <Navigate to="/wrestling" replace /> },
+      { path: "custom-wrestling-singlets-manufacturer", element: <Navigate to="/wrestling" replace /> },
       { path: "cricket", element: <CategoryRoute slug="cricket" /> },
       { path: "basketball", element: <CategoryRoute slug="basketball" /> },
       { path: "hockey", element: <CategoryRoute slug="hockey" /> },
@@ -58,12 +57,12 @@ const router = createBrowserRouter([
       { path: "tennis", element: <CategoryRoute slug="tennis" /> },
       { path: "running", element: <CategoryRoute slug="running" /> },
       { path: "gym", element: <CategoryRoute slug="gym" /> },
-      { path: "oem-private-label-sportswear", element: <CategoryRoute slug="gym" /> },
-      { path: "private-label-activewear-low-moq", element: <CategoryRoute slug="gym" /> },
+      { path: "oem-private-label-sportswear", element: <Navigate to="/gym" replace /> },
+      { path: "private-label-activewear-low-moq", element: <Navigate to="/gym" replace /> },
       { path: "softball", element: <CategoryRoute slug="softball" /> },
       { path: "soccer", element: <CategoryRoute slug="soccer" /> },
-      { path: "custom-soccer-uniforms", element: <CategoryRoute slug="soccer" /> },
-      { path: "sublimated-soccer-jerseys-wholesale", element: <CategoryRoute slug="soccer" /> },
+      { path: "custom-soccer-uniforms", element: <Navigate to="/soccer" replace /> },
+      { path: "sublimated-soccer-jerseys-wholesale", element: <Navigate to="/soccer" replace /> },
       { path: "volleyball", element: <CategoryRoute slug="volleyball" /> },
       { path: "ice-hockey", element: <CategoryRoute slug="ice-hockey" /> },
       { path: "baseball", element: <CategoryRoute slug="baseball" /> },

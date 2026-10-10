@@ -57,18 +57,53 @@ const Custom = ({ isEmbedded = false }) => {
     <>
       {!isEmbedded && (
         <SeoHead
-          title="Custom Sportswear USA | Free Design & Fast Delivery Zarko"
-          description="Order custom sportswear online built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear."
+          title="Start Your Custom Uniform Order | Factory-Direct Teamwear | Zarko"
+          description="Order custom sportswear directly from manufacturer in Sialkot, Pakistan. Low MOQ (15 units), free digital mockups, and express air delivery to the USA and worldwide."
           canonical="https://www.zarkosportswear.com/custom"
-          keywords="custom sportswear USA, custom sports uniforms USA, custom teamwear USA, private label teamwear, custom wrestling singlets, custom soccer jerseys USA, custom basketball uniforms"
+          keywords="custom sportswear USA, custom sports uniforms USA, custom teamwear factory, private label sportswear, custom wrestling singlets, custom soccer jerseys"
+          jsonLd={[
+            {
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              '@id': 'https://www.zarkosportswear.com/custom#webpage',
+              'name': 'Start Your Custom Uniform Order | Factory-Direct Teamwear | Zarko',
+              'description': 'Order custom sportswear directly from manufacturer in Sialkot, Pakistan. Low MOQ (15 units), free digital mockups, and express air delivery to the USA and worldwide.',
+              'url': 'https://www.zarkosportswear.com/custom',
+              'isPartOf': {
+                '@type': 'WebSite',
+                '@id': 'https://www.zarkosportswear.com/#website',
+                'name': 'Zarko Sportswear',
+                'url': 'https://www.zarkosportswear.com/'
+              }
+            },
+            {
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              '@id': 'https://www.zarkosportswear.com/custom#breadcrumb',
+              'itemListElement': [
+                {
+                  '@type': 'ListItem',
+                  'position': 1,
+                  'name': 'Home',
+                  'item': 'https://www.zarkosportswear.com/'
+                },
+                {
+                  '@type': 'ListItem',
+                  'position': 2,
+                  'name': 'Custom Orders',
+                  'item': 'https://www.zarkosportswear.com/custom'
+                }
+              ]
+            }
+          ]}
           openGraph={{
-            'og:title': 'Custom Sportswear USA | Free Design & Fast Delivery - Zarko',
-            'og:description': 'Order custom sportswear online built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear.',
+            'og:title': 'Start Your Custom Uniform Order | Factory-Direct Teamwear | Zarko',
+            'og:description': 'Order custom sportswear directly from manufacturer in Sialkot, Pakistan. Low MOQ (15 units), free digital mockups, and express air delivery to the USA and worldwide.',
             'og:url': 'https://www.zarkosportswear.com/custom',
           }}
           twitter={{
-            'twitter:title': 'Custom Sportswear USA | Free Design & Fast Delivery Zarko',
-            'twitter:description': 'Order custom sportswear online built for USA teams, no minimums, free design mockups. Get a free quote in minutes from Zarko Sportswear.',
+            'twitter:title': 'Start Your Custom Uniform Order | Factory-Direct Teamwear | Zarko',
+            'twitter:description': 'Order custom sportswear directly from manufacturer in Sialkot, Pakistan. Low MOQ (15 units), free digital mockups, and express air delivery to the USA and worldwide.',
           }}
         />
       )}
@@ -84,13 +119,13 @@ const Custom = ({ isEmbedded = false }) => {
               transition={{ duration: 0.5 }}
             >
               <span className="inline-flex items-center gap-2 border border-indigo-500/30 bg-indigo-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-400 rounded-none">
-                USA Teamwear Supplier
+                Direct Teamwear Manufacturer
               </span>
               <h1 className="mt-6 text-3xl sm:text-4xl font-semibold tracking-tight text-white max-w-4xl mx-auto leading-[1.15]">
-                Custom Sportswear & Team Uniforms Built for USA Teams
+                Custom Sportswear & Team Uniforms Direct from Manufacturer
               </h1>
               <p className="mt-6 text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                Zarko Sportswear manufactures high-performance custom jerseys, uniforms, and fitness apparel. Get factory-direct USD pricing, no minimums, and quick DHL door-to-door shipping to CA, TX, NY, FL, and nationwide.
+                Zarko Sportswear manufactures high-performance custom jerseys, uniforms, and athletic apparel. Get factory-direct pricing, flexible low MOQs (from 15 units), free digital 3D mockups, and fast express door-to-door delivery to the USA and worldwide.
               </p>
             </motion.div>
           </div>

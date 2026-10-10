@@ -4,6 +4,41 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/custom-wrestling-gear",
+      "destination": "/wrestling",
+      "permanent": true
+    },
+    {
+      "source": "/custom-wrestling-singlets-manufacturer",
+      "destination": "/wrestling",
+      "permanent": true
+    },
+    {
+      "source": "/custom-soccer-uniforms",
+      "destination": "/soccer",
+      "permanent": true
+    },
+    {
+      "source": "/sublimated-soccer-jerseys-wholesale",
+      "destination": "/soccer",
+      "permanent": true
+    },
+    {
+      "source": "/oem-private-label-sportswear",
+      "destination": "/gym",
+      "permanent": true
+    },
+    {
+      "source": "/private-label-activewear-low-moq",
+      "destination": "/gym",
+      "permanent": true
+    },
+    {
+      "source": "/custom-sportswear-:state",
+      "destination": "/custom",
+      "permanent": true
+    },
+    {
       "source": "/(.*)",
       "destination": "https://www.zarkosportswear.com/$1",
       "permanent": true,

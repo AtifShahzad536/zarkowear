@@ -216,83 +216,58 @@ const CategoryPage = ({ slug }) => {
   const buttonClass = resolvedAccent.button || defaultAccent.button;
 
   const cleanSport = name.replace(/( Kits & Apparel| Singlets & Gear| Apparel & Accessories| & Training Gear| & Footwear| & Hand Protection| & Headwear| & Gear Packs)/gi, '');
-  const pageTitle = fallbackConfig?.seoTitle || `Custom ${cleanSport} Uniforms & Sportswear USA | Zarko Sportswear`;
-  const pageDescription = fallbackConfig?.seoDescription || `Looking for custom uniform USA? Design & buy premium custom ${cleanSport.toLowerCase()} sportswear, jerseys, and team wear. Top quality, quick ship options, and custom gear for teams and businesses.`;
+  const pageTitle = fallbackConfig?.seoTitle || `Custom ${cleanSport} Uniforms & Jerseys Manufacturer | Zarko Sportswear`;
+  const pageDescription = fallbackConfig?.seoDescription || `Order factory-direct custom ${cleanSport.toLowerCase()} uniforms and team kits from Zarko Sportswear. Export-grade moisture-wicking fabrics, 4K sublimation, low MOQ, and express USA delivery.`;
 
   const pageKeywords = fallbackConfig?.seoKeywords || [
-    `custom sportswear USA`,
-    `custom sports apparel usa`,
-    `custom sportswear manufacturer usa`,
-    `${cleanSport.toLowerCase()} sportswear factory`,
-    `${cleanSport.toLowerCase()} sportswear supplier`,
-    `private label ${cleanSport.toLowerCase()} sportswear`,
-    `custom ${cleanSport.toLowerCase()} teamwear manufacturer`,
-    `custom sportswear company`,
-    `custom sportswear apparel`,
-    `custom uniform USA`,
-    `custom uniform usa ${cleanSport.toLowerCase()}`,
-    `custom uniform usa ${cleanSport.toLowerCase()} jersey`,
-    `custom uniform usa ${cleanSport.toLowerCase()} team`,
-    `custom uniform usa gear`,
-    `custom uniform usa for sale`,
-    `custom uniform usa quick ship`,
-    `custom uniform usa quality`,
-    `custom ${cleanSport.toLowerCase()} sportswear`,
     `custom ${cleanSport.toLowerCase()} uniforms`,
-    `design ${cleanSport.toLowerCase()} jerseys USA`
+    `custom ${cleanSport.toLowerCase()} jerseys`,
+    `custom ${cleanSport.toLowerCase()} teamwear`,
+    `${cleanSport.toLowerCase()} sportswear manufacturer`,
+    `sublimated ${cleanSport.toLowerCase()} kits`,
+    `teamwear manufacturer sialkot`,
+    `custom sportswear manufacturer usa`
   ].join(', ');
 
-  const mainSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    'name': pageTitle,
-    'description': pageDescription,
-    'url': `https://www.zarkosportswear.com/${slug}`,
-    'about': {
-      '@type': 'Thing',
-      'name': `Custom ${cleanSport} Sportswear`
-    },
-    'provider': {
-      '@type': 'LocalBusiness',
-      'name': 'Zarko Sportswear',
-      'image': 'https://www.zarkosportswear.com/logo.png',
-      'address': {
-        '@type': 'PostalAddress',
-        'addressCountry': 'US'
-      }
-    }
-  };
-
-  const technicalSpecs = fallbackConfig?.technicalSpecs;
-  const jsonLd = technicalSpecs ? [
-    mainSchema,
+  const jsonLd = [
     {
       '@context': 'https://schema.org',
-      '@type': 'Product',
+      '@type': 'CollectionPage',
+      '@id': `https://www.zarkosportswear.com/${slug}#collection`,
       'name': pageTitle,
       'description': pageDescription,
-      'image': `https://www.zarkosportswear.com${featured?.image || products[0]?.image || '/images/placeholder.jpg'}`,
-      'brand': {
-        '@type': 'Brand',
-        'name': 'Zarko Sportswear'
+      'url': `https://www.zarkosportswear.com/${slug}`,
+      'about': {
+        '@type': 'Thing',
+        'name': `Custom ${cleanSport} Uniforms & Sportswear`
       },
-      'offers': {
-        '@type': 'AggregateOffer',
-        'priceCurrency': 'USD',
-        'lowPrice': '15.00',
-        'highPrice': '45.00',
-        'offerCount': '10',
-        'priceRange': '$$',
-        'eligibleQuantity': {
-          '@type': 'QuantitativeValue',
-          'value': parseInt(technicalSpecs.moq) || 15,
-          'unitCode': 'C62'
+      'isPartOf': {
+        '@type': 'WebSite',
+        '@id': 'https://www.zarkosportswear.com/#website',
+        'name': 'Zarko Sportswear',
+        'url': 'https://www.zarkosportswear.com/'
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      '@id': `https://www.zarkosportswear.com/${slug}#breadcrumb`,
+      'itemListElement': [
+        {
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'Home',
+          'item': 'https://www.zarkosportswear.com/'
+        },
+        {
+          '@type': 'ListItem',
+          'position': 2,
+          'name': name,
+          'item': `https://www.zarkosportswear.com/${slug}`
         }
-      },
-      'material': technicalSpecs.fabric,
-      'productionDate': '2025'
+      ]
     }
-  ] : mainSchema;
+  ];
 
   return (
     <main className="bg-slate-50/50 min-h-screen">

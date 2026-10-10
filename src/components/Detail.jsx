@@ -156,6 +156,61 @@ const ProductInquiry = () => {
   const productSlug = cleanSlug(product.name);
   const canonicalUrl = `https://www.zarkosportswear.com/detail?product=${productSlug}`;
 
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      '@id': `${canonicalUrl}#product`,
+      'name': product.name,
+      'description': product.description || `Custom ${product.name} manufactured by Zarko Sportswear.`,
+      'image': displayImage.startsWith('http') ? displayImage : `https://www.zarkosportswear.com${displayImage}`,
+      'brand': {
+        '@type': 'Brand',
+        'name': 'Zarko Sportswear'
+      },
+      'manufacturer': {
+        '@type': 'Organization',
+        'name': 'Zarko Sportswear',
+        'url': 'https://www.zarkosportswear.com/'
+      },
+      'category': sport,
+      ...(product.price ? {
+        'offers': {
+          '@type': 'Offer',
+          'price': product.price.toString(),
+          'priceCurrency': 'USD',
+          'availability': 'https://schema.org/InStock',
+          'url': canonicalUrl
+        }
+      } : {})
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      '@id': `${canonicalUrl}#breadcrumb`,
+      'itemListElement': [
+        {
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'Home',
+          'item': 'https://www.zarkosportswear.com/'
+        },
+        {
+          '@type': 'ListItem',
+          'position': 2,
+          'name': `${sport} Uniforms`,
+          'item': `https://www.zarkosportswear.com/${cleanSlug(sport)}`
+        },
+        {
+          '@type': 'ListItem',
+          'position': 3,
+          'name': product.name,
+          'item': canonicalUrl
+        }
+      ]
+    }
+  ];
+
   return (
     <>
       <SeoHead
@@ -163,6 +218,7 @@ const ProductInquiry = () => {
         description={pageDescription}
         canonical={canonicalUrl}
         keywords={`custom ${product.name.toLowerCase()}, custom ${sport.toLowerCase()} ${type.toLowerCase()}, sialkot sportswear manufacturer, custom teamwear USA`}
+        jsonLd={jsonLd}
         openGraph={{
           'og:title': pageTitle,
           'og:description': pageDescription,
@@ -193,8 +249,9 @@ const ProductInquiry = () => {
           <div className="lg:col-span-5 space-y-6">
             <div className="relative aspect-square w-full rounded-2xl bg-white overflow-hidden flex items-center justify-center p-6 group shadow-sm">
               <img
+                alt={`${product?.name || 'Custom Sportswear'} - Custom ${sport} ${type} | Zarko Sportswear`}
                 src={displayImage}
-                alt="Zarko Custom Sportswear Pro Kit" title="Zarko Custom Sportswear Pro Kit"
+                title={`${product?.name || 'Custom Sportswear'} - Custom ${sport} ${type} | Zarko Sportswear`}
                 className="w-full h-full object-contain p-6 transition-transform duration-500 group-hover:scale-105"
                 onError={(e) => {
                   e.currentTarget.onerror = null;
@@ -333,8 +390,9 @@ const ProductInquiry = () => {
               >
                 <div className="aspect-square w-full rounded-xl bg-slate-50 overflow-hidden mb-4 flex items-center justify-center">
                   <img
+                    alt={`${item.name || 'Custom Sportswear'} - Recommended Team Uniform | Zarko`}
+                    title={`${item.name || 'Custom Sportswear'} - Recommended Team Uniform | Zarko`}
                     src={imageUrl(item.image)}
-                    alt="Recommended Custom Teamwear Product" title="Recommended Custom Teamwear Product"
                     className="w-full h-full object-contain p-4 transition-transform duration-300 group-hover:scale-105"
                     onError={(e) => {
                       e.currentTarget.onerror = null;

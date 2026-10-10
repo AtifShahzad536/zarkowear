@@ -152,20 +152,57 @@ const Contact = () => {
     return `https://wa.me/923039200750?text=${text}`;
   };
 
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ContactPage',
+      '@id': 'https://www.zarkosportswear.com/contact#contact',
+      'name': 'Contact Zarko Sportswear | Request Free Custom Uniform Quote',
+      'description': 'Contact Zarko Sportswear for factory-direct custom sports uniform quotes, 3D mockups, and fabric swatches. Direct export support for USA, UK, and international teams.',
+      'url': 'https://www.zarkosportswear.com/contact',
+      'isPartOf': {
+        '@type': 'WebSite',
+        '@id': 'https://www.zarkosportswear.com/#website',
+        'name': 'Zarko Sportswear',
+        'url': 'https://www.zarkosportswear.com/'
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      '@id': 'https://www.zarkosportswear.com/contact#breadcrumb',
+      'itemListElement': [
+        {
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'Home',
+          'item': 'https://www.zarkosportswear.com/'
+        },
+        {
+          '@type': 'ListItem',
+          'position': 2,
+          'name': 'Contact Us',
+          'item': 'https://www.zarkosportswear.com/contact'
+        }
+      ]
+    }
+  ];
+
   return (
     <main className="min-h-screen bg-slate-50/50">
       <SeoHead
-        title="Contact Zarko Sportswear | Custom Sports Uniforms & Teamwear Quotes USA"
-        description="Contact Zarko Sportswear for factory-direct custom team jerseys, wrestling singlets, football uniforms, and private label sportswear. Fast worldwide shipping to USA, UK & Europe."
+        title="Contact Zarko Sportswear | Request Free Custom Uniform Quote"
+        description="Get in touch with Zarko Sportswear for factory-direct custom uniform quotes, digital mockups, and fabric swatches. Fast response via WhatsApp or email."
         canonical="https://www.zarkosportswear.com/contact"
-        keywords="order sports uniforms USA, custom teamwear factory, sportswear manufacturer Sialkot, custom football jerseys quote, wrestling singlets wholesale USA, private label athletic apparel"
+        keywords="order sports uniforms USA, custom teamwear factory, sportswear manufacturer Sialkot, custom uniform quote, wrestling singlets wholesale"
+        jsonLd={jsonLd}
         openGraph={{
-          'og:title': 'Contact Zarko Sportswear | Custom Sports Uniforms & Teamwear Quotes USA',
+          'og:title': 'Contact Zarko Sportswear | Request Free Custom Uniform Quote',
           'og:description': 'Factory-direct custom team jerseys, wrestling singlets, football uniforms, and private label sportswear with fast USA express shipping.',
           'og:url': 'https://www.zarkosportswear.com/contact',
         }}
         twitter={{
-          'twitter:title': 'Contact Zarko Sportswear | Custom Sports Uniforms & Teamwear Quotes USA',
+          'twitter:title': 'Contact Zarko Sportswear | Request Free Custom Uniform Quote',
           'twitter:description': 'Factory-direct custom team jerseys, wrestling singlets, football uniforms, and private label sportswear with fast USA express shipping.',
         }}
       />

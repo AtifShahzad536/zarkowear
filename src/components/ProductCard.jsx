@@ -13,9 +13,11 @@ const ProductCard = ({
   const navigate = useNavigate();
   const displayImage = imageUrl(image || '/images/placeholder.jpg');
 
+  const productSlug = name ? name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') : '';
+
   return (
     <Link
-      to="/detail"
+      to={`/detail?product=${productSlug}`}
       state={{
         product: { name, image, description, price, discount }
       }}
@@ -27,10 +29,10 @@ const ProductCard = ({
       {/* Compact Image Area - Pure White Background */}
       <div className="relative h-52 w-full bg-white p-4 flex items-center justify-center overflow-hidden border-b border-slate-100">
         <img
-          loading="lazy"
+          alt={`${name || 'Custom Sportswear'} - Custom Team Uniform | Zarko`}
           src={displayImage}
-          alt="Zarko Custom Sportswear Product"
-          title="Zarko Custom Sportswear Product"
+          title={`${name || 'Custom Sportswear'} - Custom Team Uniform | Zarko`}
+          loading="lazy"
           className="h-full w-full object-contain transform group-hover:scale-105 transition-transform duration-500"
           onError={(e) => {
             e.currentTarget.onerror = null;

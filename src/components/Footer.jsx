@@ -56,32 +56,35 @@ const Footer = () => {
         {/* Five Column Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
 
-          {/* Col 1: Quick Links */}
+          {/* Col 1: Teamwear */}
           <div className="space-y-4">
             <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-indigo-400">
-              Quick Links
+              Teamwear
             </h3>
             <ul className="space-y-3 text-xs font-semibold text-slate-400">
               <li><Link to="/" className="hover:text-white transition">Home</Link></li>
               <li><Link to="/about" className="hover:text-white transition">About Us</Link></li>
-              <li><Link to="/football" className="hover:text-white transition">Soccer / Football</Link></li>
-              <li><Link to="/basketball" className="hover:text-white transition">Basketball</Link></li>
-              <li><Link to="/wrestling" className="hover:text-white transition">Wrestling</Link></li>
+              <li><Link to="/football" className="hover:text-white transition">Football Kits</Link></li>
+              <li><Link to="/wrestling" className="hover:text-white transition">Wrestling Singlets</Link></li>
+              <li><Link to="/basketball" className="hover:text-white transition">Basketball Uniforms</Link></li>
               <li><Link to="/gym" className="hover:text-white transition">Gym & Activewear</Link></li>
-              <li><Link to="/blogs" className="hover:text-white transition">Blogs & Stories</Link></li>
+              <li><Link to="/blogs" className="hover:text-white transition">Blogs & Guides</Link></li>
             </ul>
           </div>
 
-          {/* Col 2: Regional Services */}
+          {/* Col 2: More Sports */}
           <div className="space-y-4">
             <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-indigo-400">
-              Regional USA
+              More Sports
             </h3>
             <ul className="space-y-3 text-xs font-semibold text-slate-400">
-              <li><Link to="/custom-sportswear-california" className="hover:text-white transition">California Teamwear</Link></li>
-              <li><Link to="/custom-sportswear-texas" className="hover:text-white transition">Texas Teamwear</Link></li>
-              <li><Link to="/custom-sportswear-new-york" className="hover:text-white transition">New York Teamwear</Link></li>
-              <li><Link to="/custom-sportswear-florida" className="hover:text-white transition">Florida Teamwear</Link></li>
+              <li><Link to="/baseball" className="hover:text-white transition">Baseball Uniforms</Link></li>
+              <li><Link to="/soccer" className="hover:text-white transition">Soccer Kits</Link></li>
+              <li><Link to="/cricket" className="hover:text-white transition">Cricket Kits</Link></li>
+              <li><Link to="/softball" className="hover:text-white transition">Softball Uniforms</Link></li>
+              <li><Link to="/volleyball" className="hover:text-white transition">Volleyball Jerseys</Link></li>
+              <li><Link to="/ice-hockey" className="hover:text-white transition">Ice Hockey Jerseys</Link></li>
+              <li><Link to="/running" className="hover:text-white transition">Running & Track Wear</Link></li>
             </ul>
           </div>
 

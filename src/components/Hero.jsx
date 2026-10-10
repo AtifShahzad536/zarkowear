@@ -23,7 +23,7 @@ const PRODUCTS = [
     name: 'Elite Football Jersey',
     tagline: 'Football Gear',
     description: 'Engineered using export-grade lightweight micro-polyester with advanced sweat-wicking properties. Features custom sublimation printing, heat-pressed logos, and double-stitched reinforcements for ultimate comfort and durability during high-intensity football matches.',
-    image: '/images/hero_football.png',
+    image: '/images/hero_football.webp',
     link: '/football',
     icon: FaFootballBall,
   },
@@ -33,7 +33,7 @@ const PRODUCTS = [
     name: 'Pro Basketball Jersey',
     tagline: 'Basketball Gear',
     description: 'Crafted with high-ventilation mesh knit fabric designed to maximize airflow and keep athletes cool. Offers an optimized sleeveless cut for absolute arm mobility, combined with moisture-control technology to handle sweat on the court.',
-    image: '/images/hero_basketball.png',
+    image: '/images/hero_basketball.webp',
     link: '/basketball',
     icon: FaBasketballBall,
   },
@@ -43,7 +43,7 @@ const PRODUCTS = [
     name: 'Elite Wrestling Singlet',
     tagline: 'Wrestling Gear',
     description: 'A professional-grade singlet constructed from heavy-duty 4-way stretch spandex. Offers compression support, reinforced flatlock seams to prevent chafing, and integrated anti-slip silicone leg grips to keep the singlet locked in place.',
-    image: '/images/hero_wrestling.png',
+    image: '/images/hero_wrestling.webp',
     link: '/wrestling',
     icon: FaRunning,
   },
@@ -53,7 +53,7 @@ const PRODUCTS = [
     name: 'Premium Cricket Jersey',
     tagline: 'Cricket Gear',
     description: 'Designed for long matches in the heat, featuring strategically placed mesh ventilation panels and UV-shielding fabric. The ultra-lightweight fabric allows free body rotation for batsmen and bowlers alike while keeping you cool.',
-    image: '/images/hero_cricket.png',
+    image: '/images/hero_cricket.webp',
     link: '/cricket',
     icon: GiCricketBat,
   },
@@ -63,7 +63,7 @@ const PRODUCTS = [
     name: 'Performance Gym Hoodie',
     tagline: 'Gym Gear',
     description: 'The ultimate workout layering piece made of an ultra-soft fleeced flex fabric. Features moisture-wicking technology, a structured adjustable hood, utility zip pockets, and ergonomic stitching built to support stretching, lifting, and outdoor running.',
-    image: '/images/hero_gym.png',
+    image: '/images/hero_gym.webp',
     link: '/gym',
     icon: GiWeightLiftingUp,
   }
@@ -537,9 +537,9 @@ const Hero = () => {
                   style={{ willChange: isActive ? 'transform' : 'auto' }}
                 >
                   <img
+                    alt={`Custom ${prod.category || 'Sportswear'} - ${prod.name || 'Uniform'} | Zarko Sportswear`}
                     src={imageUrl(prod.image, { width: 900, quality: 'auto:best' })}
-                    alt="Zarko Sportswear Custom Team Jersey"
-                    title="Zarko Sportswear Custom Team Jersey"
+                    title={`Custom ${prod.category} - ${prod.name} | Zarko Sportswear`}
                     width={280}
                     height={280}
                     loading={idx === 0 ? 'eager' : 'lazy'}
@@ -609,10 +609,10 @@ const Hero = () => {
             className="space-y-0.5"
           >
             <span className="text-[clamp(9px,0.8vw,12px)] uppercase tracking-[0.15em] text-indigo-600 font-extrabold block">
-              Direct-from-Factory Manufacturer
+              Factory-Direct Sportswear Manufacturer
             </span>
             <h1 className="text-lg sm:text-xl lg:text-[22px] font-black text-[#111827] leading-snug tracking-tight uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              Premium Custom Athletic Apparel For US Clubs
+              Custom Sportswear Manufacturer & Team Uniforms
             </h1>
           </motion.div>
 
@@ -622,7 +622,7 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-gray-600 text-[clamp(12px,1vw,14px)] leading-relaxed font-semibold"
           >
-            Full cut & sew customization, NFHS-compliant designs, and pro-grade performance fabrics without middleman markups.
+            Factory-direct custom sportswear manufactured in Sialkot, Pakistan. Supplying sublimation team jerseys, wrestling singlets, and athletic teamwear directly to USA and international clubs with zero middleman markups.
           </motion.p>
         </div>
 
