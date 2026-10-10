@@ -776,17 +776,42 @@ function runPrerender() {
       html = html.replace(twitterDescRegex, `<meta name="twitter:description"\n    content="${escapeAttr(meta.description)}" />`);
     }
 
-    // 6. Update accessible <noscript> fallback with route-specific details (RFC/Google compliant, zero hidden text)
+    // 6. Update accessible <noscript> fallback with route-specific details & full catalog directory (zero orphan pages)
     const noscriptContent = `  <noscript>
-    <div class="noscript-seo" style="max-width: 800px; margin: 30px auto; padding: 20px; font-family: Outfit, sans-serif; line-height: 1.6;">
+    <div class="noscript-seo" style="max-width: 900px; margin: 30px auto; padding: 24px; text-align: center; font-family: Outfit, sans-serif; line-height: 1.8;">
       <h2>${meta.h1}</h2>
       <p>${escapeAttr(meta.description)}</p>
       <p>
-        <strong>Zarko Sportswear</strong> — Factory-direct custom sports uniforms, team jerseys, wrestling singlets, and athletic apparel manufactured in Sialkot, Pakistan.
+        <strong>Zarko Sportswear</strong> — Factory-direct custom sports uniforms, team jerseys, wrestling singlets, and athletic apparel manufactured in Sialkot, Pakistan. Supplying teams, schools, and brands across the USA and worldwide.
       </p>
-      <p>
-        Visit our <a href="/custom">Custom Orders</a>, <a href="/about">About Us</a>, or <a href="/contact">Contact</a> pages.
-      </p>
+      <div style="margin: 20px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 12px; font-size: 13px;">
+        <a href="/football">Custom Football Uniforms</a> |
+        <a href="/soccer">Custom Soccer Kits</a> |
+        <a href="/wrestling">Custom Wrestling Singlets</a> |
+        <a href="/baseball">Custom Baseball Uniforms</a> |
+        <a href="/softball">Custom Softball Uniforms</a> |
+        <a href="/basketball">Custom Basketball Uniforms</a> |
+        <a href="/cricket">Custom Cricket Kits</a> |
+        <a href="/volleyball">Custom Volleyball Jerseys</a> |
+        <a href="/ice-hockey">Custom Ice Hockey Jerseys</a> |
+        <a href="/hockey">Custom Field Hockey Kits</a> |
+        <a href="/rugby">Custom Rugby Jerseys</a> |
+        <a href="/tennis">Custom Tennis Apparel</a> |
+        <a href="/running">Custom Running Wear</a> |
+        <a href="/gym">Custom Gym & Activewear</a> |
+        <a href="/shoes">Athletic Shoes</a> |
+        <a href="/gloves">Sports Gloves</a> |
+        <a href="/caps">Team Caps</a> |
+        <a href="/bags">Sports Bags</a> |
+        <a href="/builder">3D Uniform Builder</a> |
+        <a href="/builder/models">3D Uniform Catalog</a> |
+        <a href="/custom">Start Custom Order</a> |
+        <a href="/blogs">Manufacturing Blog</a> |
+        <a href="/about">About Us</a> |
+        <a href="/contact">Contact Support</a> |
+        <a href="/privacy-policy">Privacy Policy</a> |
+        <a href="/terms">Terms of Service</a>
+      </div>
     </div>
   </noscript>`;
 

@@ -56,19 +56,19 @@ const Footer = () => {
         {/* Five Column Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
 
-          {/* Col 1: Teamwear */}
+          {/* Col 1: Popular Sports */}
           <div className="space-y-4">
             <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-indigo-400">
-              Teamwear
+              Team Sports
             </h3>
-            <ul className="space-y-3 text-xs font-semibold text-slate-400">
-              <li><Link to="/" className="hover:text-white transition">Home</Link></li>
-              <li><Link to="/about" className="hover:text-white transition">About Us</Link></li>
-              <li><Link to="/football" className="hover:text-white transition">Football Kits</Link></li>
+            <ul className="space-y-2.5 text-xs font-semibold text-slate-400">
+              <li><Link to="/football" className="hover:text-white transition">Football Uniforms</Link></li>
+              <li><Link to="/soccer" className="hover:text-white transition">Soccer Kits</Link></li>
               <li><Link to="/wrestling" className="hover:text-white transition">Wrestling Singlets</Link></li>
+              <li><Link to="/baseball" className="hover:text-white transition">Baseball Uniforms</Link></li>
               <li><Link to="/basketball" className="hover:text-white transition">Basketball Uniforms</Link></li>
-              <li><Link to="/gym" className="hover:text-white transition">Gym & Activewear</Link></li>
-              <li><Link to="/blogs" className="hover:text-white transition">Blogs & Guides</Link></li>
+              <li><Link to="/cricket" className="hover:text-white transition">Cricket Kits</Link></li>
+              <li><Link to="/softball" className="hover:text-white transition">Softball Uniforms</Link></li>
             </ul>
           </div>
 
@@ -77,79 +77,135 @@ const Footer = () => {
             <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-indigo-400">
               More Sports
             </h3>
-            <ul className="space-y-3 text-xs font-semibold text-slate-400">
-              <li><Link to="/baseball" className="hover:text-white transition">Baseball Uniforms</Link></li>
-              <li><Link to="/soccer" className="hover:text-white transition">Soccer Kits</Link></li>
-              <li><Link to="/cricket" className="hover:text-white transition">Cricket Kits</Link></li>
-              <li><Link to="/softball" className="hover:text-white transition">Softball Uniforms</Link></li>
+            <ul className="space-y-2.5 text-xs font-semibold text-slate-400">
               <li><Link to="/volleyball" className="hover:text-white transition">Volleyball Jerseys</Link></li>
               <li><Link to="/ice-hockey" className="hover:text-white transition">Ice Hockey Jerseys</Link></li>
+              <li><Link to="/hockey" className="hover:text-white transition">Field Hockey Kits</Link></li>
+              <li><Link to="/rugby" className="hover:text-white transition">Rugby Jerseys</Link></li>
+              <li><Link to="/tennis" className="hover:text-white transition">Tennis Apparel</Link></li>
               <li><Link to="/running" className="hover:text-white transition">Running & Track Wear</Link></li>
+              <li><Link to="/gym" className="hover:text-white transition">Gym & Activewear</Link></li>
             </ul>
           </div>
 
-          {/* Col 3: Support */}
+          {/* Col 3: Accessories & Gear */}
           <div className="space-y-4">
             <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-indigo-400">
-              Support
+              Gear & Accessories
             </h3>
-            <ul className="space-y-3 text-xs font-semibold text-slate-400">
-              <li><Link to="/custom" className="hover:text-white transition">Start Custom Order</Link></li>
+            <ul className="space-y-2.5 text-xs font-semibold text-slate-400">
+              <li><Link to="/shoes" className="hover:text-white transition">Athletic Shoes & Turf</Link></li>
+              <li><Link to="/gloves" className="hover:text-white transition">Sports & Goalie Gloves</Link></li>
+              <li><Link to="/caps" className="hover:text-white transition">Team Caps & Headwear</Link></li>
+              <li><Link to="/bags" className="hover:text-white transition">Equipment Duffels & Bags</Link></li>
               <li><Link to="/builder" className="hover:text-white transition">3D Uniform Builder</Link></li>
-              <li><Link to="/contact" className="hover:text-white transition">Request Quotes</Link></li>
-              <li><Link to="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="hover:text-white transition">Terms of Service</Link></li>
+              <li><Link to="/builder/models" className="hover:text-white transition">3D Uniform Templates</Link></li>
+              <li><Link to="/blogs" className="hover:text-white transition">Manufacturing Blog</Link></li>
             </ul>
           </div>
 
-          {/* Col 3: Contact Us */}
+          {/* Col 4: Orders & Support */}
           <div className="space-y-4">
             <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-indigo-400">
-              Contact Us
+              Order Support
             </h3>
-            <ul className="space-y-3 text-xs font-semibold text-slate-400 leading-relaxed">
-              <li className="text-white">Export & Manufacturing Hub:</li>
+            <ul className="space-y-2.5 text-xs font-semibold text-slate-400">
+              <li><Link to="/custom" className="hover:text-white transition">Start Custom Order</Link></li>
+              <li><Link to="/about" className="hover:text-white transition">About Our Factory</Link></li>
+              <li><Link to="/contact" className="hover:text-white transition">Request Direct Quote</Link></li>
+              <li><Link to="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="hover:text-white transition">Terms & Conditions</Link></li>
+            </ul>
+          </div>
+
+          {/* Col 5: Contact Info */}
+          <div className="space-y-4">
+            <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-indigo-400">
+              Direct Contact
+            </h3>
+            <ul className="space-y-2.5 text-xs font-semibold text-slate-400 leading-relaxed">
+              <li className="text-white font-bold">Factory & Export Hub:</li>
               <li>{COMPANY_DETAILS.address}</li>
-              <li className="text-white mt-2">WhatsApp Support:</li>
+              <li className="text-white font-bold mt-2">WhatsApp Support:</li>
               <li>
                 <a href={`https://wa.me/${COMPANY_DETAILS.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="hover:text-white transition">{COMPANY_DETAILS.whatsapp}</a>
               </li>
-              <li className="text-white mt-2">Email Desk:</li>
+              <li className="text-white font-bold mt-2">Email Desk:</li>
               <li>
                 <a href={`mailto:${COMPANY_DETAILS.email}`} className="hover:text-white transition break-all">{COMPANY_DETAILS.email}</a>
               </li>
             </ul>
-          </div>
-
-          {/* Col 4: Newsletter */}
-          <div className="space-y-4">
-            <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-indigo-400">
-              Join Our Newsletter
-            </h3>
-            <p className="text-xs text-slate-400 font-medium leading-relaxed">
-              Get the latest updates, exclusive custom apparel offers, and sports uniforms design tips delivered to your inbox!
-            </p>
             {/* Social Links */}
-            <div className="flex gap-3.5 pt-3">
-              <a href="https://www.facebook.com/zarkosportswear" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-white/5 hover:bg-indigo-600 flex items-center justify-center border border-white/10 hover:border-transparent text-slate-400 hover:text-white transition" aria-label="Facebook">
-                <FaFacebookF size={14} />
+            <div className="flex gap-2.5 pt-2">
+              <a href="https://www.facebook.com/zarkosportswear" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-lg bg-white/5 hover:bg-indigo-600 flex items-center justify-center border border-white/10 hover:border-transparent text-slate-400 hover:text-white transition" aria-label="Facebook">
+                <FaFacebookF size={12} />
               </a>
-              <a href="https://www.instagram.com/zarko_sports.wear/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-white/5 hover:bg-indigo-600 flex items-center justify-center border border-white/10 hover:border-transparent text-slate-400 hover:text-white transition" aria-label="Instagram">
-                <FaInstagram size={14} />
+              <a href="https://www.instagram.com/zarko_sports.wear/" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-lg bg-white/5 hover:bg-indigo-600 flex items-center justify-center border border-white/10 hover:border-transparent text-slate-400 hover:text-white transition" aria-label="Instagram">
+                <FaInstagram size={12} />
               </a>
-              <a href="https://www.linkedin.com/in/zarko-sports-wear-186b1942a/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-white/5 hover:bg-indigo-600 flex items-center justify-center border border-white/10 hover:border-transparent text-slate-400 hover:text-white transition" aria-label="LinkedIn">
-                <FaLinkedinIn size={14} />
+              <a href="https://www.linkedin.com/in/zarko-sports-wear-186b1942a/" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-lg bg-white/5 hover:bg-indigo-600 flex items-center justify-center border border-white/10 hover:border-transparent text-slate-400 hover:text-white transition" aria-label="LinkedIn">
+                <FaLinkedinIn size={12} />
               </a>
-              <a href="https://pin.it/7x8HJGoJx" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-white/5 hover:bg-indigo-600 flex items-center justify-center border border-white/10 hover:border-transparent text-slate-400 hover:text-white transition" aria-label="Pinterest">
-                <FaPinterestP size={14} />
+              <a href="https://pin.it/7x8HJGoJx" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-lg bg-white/5 hover:bg-indigo-600 flex items-center justify-center border border-white/10 hover:border-transparent text-slate-400 hover:text-white transition" aria-label="Pinterest">
+                <FaPinterestP size={12} />
               </a>
             </div>
           </div>
 
         </div>
 
+        {/* Category Index Navigation Strip (Guarantees incoming internal links across whole site) */}
+        <div className="border-t border-white/5 mt-12 pt-6">
+          <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-3">All Product & Sportswear Categories:</p>
+          <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-xs text-slate-400">
+            <Link to="/football" className="hover:text-white transition">Football</Link>
+            <span>•</span>
+            <Link to="/soccer" className="hover:text-white transition">Soccer</Link>
+            <span>•</span>
+            <Link to="/wrestling" className="hover:text-white transition">Wrestling</Link>
+            <span>•</span>
+            <Link to="/baseball" className="hover:text-white transition">Baseball</Link>
+            <span>•</span>
+            <Link to="/softball" className="hover:text-white transition">Softball</Link>
+            <span>•</span>
+            <Link to="/basketball" className="hover:text-white transition">Basketball</Link>
+            <span>•</span>
+            <Link to="/cricket" className="hover:text-white transition">Cricket</Link>
+            <span>•</span>
+            <Link to="/volleyball" className="hover:text-white transition">Volleyball</Link>
+            <span>•</span>
+            <Link to="/ice-hockey" className="hover:text-white transition">Ice Hockey</Link>
+            <span>•</span>
+            <Link to="/hockey" className="hover:text-white transition">Field Hockey</Link>
+            <span>•</span>
+            <Link to="/rugby" className="hover:text-white transition">Rugby</Link>
+            <span>•</span>
+            <Link to="/tennis" className="hover:text-white transition">Tennis</Link>
+            <span>•</span>
+            <Link to="/running" className="hover:text-white transition">Running</Link>
+            <span>•</span>
+            <Link to="/gym" className="hover:text-white transition">Gym & Activewear</Link>
+            <span>•</span>
+            <Link to="/shoes" className="hover:text-white transition">Shoes</Link>
+            <span>•</span>
+            <Link to="/gloves" className="hover:text-white transition">Gloves</Link>
+            <span>•</span>
+            <Link to="/caps" className="hover:text-white transition">Caps</Link>
+            <span>•</span>
+            <Link to="/bags" className="hover:text-white transition">Bags</Link>
+            <span>•</span>
+            <Link to="/builder" className="hover:text-white transition">3D Builder</Link>
+            <span>•</span>
+            <Link to="/builder/models" className="hover:text-white transition">3D Kit Catalog</Link>
+            <span>•</span>
+            <Link to="/custom" className="hover:text-white transition">Custom Orders</Link>
+            <span>•</span>
+            <Link to="/blogs" className="hover:text-white transition">Blog</Link>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="border-t border-white/5 mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-semibold text-slate-400">
+        <div className="border-t border-white/5 mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-semibold text-slate-400">
           <p>&copy; {new Date().getFullYear()} Zarko Sportswear. All rights reserved.</p>
           <div className="flex gap-4">
             <Link to="/privacy-policy" className="hover:text-slate-300 transition">Privacy Policy</Link>
