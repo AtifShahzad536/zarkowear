@@ -44,7 +44,7 @@ const routesData = {
   },
   '/contact': {
     title: 'Contact Zarko Sportswear | Request Free Uniform Quote USA',
-    description: 'Get in touch with Zarko Sportswear for factory-direct custom sports uniform quotes, fabric swatches, and team sizing assistance. Fast response & USA shipping.',
+    description: 'Contact Zarko Sportswear for factory-direct sports uniform quotes, fabric swatches, and team sizing assistance. Fast response & USA express delivery.',
     canonical: 'https://www.zarkosportswear.com/contact',
     h1: 'Contact Zarko Sportswear - USA Customer & Order Support Desk',
     bodyContent: `
@@ -128,7 +128,7 @@ const routesData = {
   },
   '/builder/models': {
     title: '3D Custom Sports Uniform Templates & Kit Catalog USA | Zarko Sportswear',
-    description: 'Browse professional 3D custom sports jersey templates for soccer, wrestling, basketball, baseball, cricket & gym. Launch real-time 3D designer with instant USA shipping.',
+    description: 'Browse 3D custom uniform templates for soccer, wrestling, basketball, baseball, cricket & gym. Launch 3D designer with factory-direct USA shipping.',
     canonical: 'https://www.zarkosportswear.com/builder/models',
     h1: '3D Sports Uniform Templates & Custom Jersey Base Models Catalog',
     bodyContent: `
@@ -174,7 +174,7 @@ const routesData = {
   },
   '/privacy-policy': {
     title: 'Privacy Policy | Zarko Sportswear USA',
-    description: 'Read the Privacy Policy of Zarko Sportswear to understand how we collect, protect, and handle your team order specifications and personal contact information.',
+    description: 'Read Zarko Sportswear\'s Privacy Policy. Learn how we handle your custom uniform orders, design specs, measurements, and customer contact data safely.',
     canonical: 'https://www.zarkosportswear.com/privacy-policy',
     h1: 'Privacy Policy - Zarko Sportswear USA Customer Data Protection',
     bodyContent: `
@@ -197,7 +197,7 @@ const routesData = {
   },
   '/terms': {
     title: 'Terms of Service | Zarko Sportswear USA',
-    description: 'Review the Terms of Service for Zarko Sportswear custom sports uniforms manufacturing orders, turnaround times, payments, mockups, and USA delivery policies.',
+    description: 'Review Terms of Service for Zarko Sportswear custom sports uniforms orders, turnaround times, digital mockups, sample approvals, and USA shipping.',
     canonical: 'https://www.zarkosportswear.com/terms',
     h1: 'Terms of Service - Zarko Sportswear Custom Manufacturing Policies',
     bodyContent: `
@@ -266,7 +266,7 @@ const routesData = {
   },
   '/wrestling': {
     title: 'Custom Wrestling Singlets & Gear USA | Zarko Sportswear',
-    description: 'High-durability custom wrestling singlets, fight shorts, and team gear. Premium 4-way stretch compression spandex engineered for top performance in the USA.',
+    description: 'High-durability custom wrestling singlets, fight shorts, and gear. Pro 4-way stretch compression spandex engineered for top performance in the USA.',
     canonical: 'https://www.zarkosportswear.com/wrestling',
     h1: 'Custom Wrestling Singlets & Team Gear Manufacturer USA',
     bodyContent: `
@@ -290,7 +290,7 @@ const routesData = {
   },
   '/cricket': {
     title: 'Custom Cricket Uniforms & Team Kits USA | Zarko Sportswear',
-    description: 'Premium custom sublimation cricket uniforms, test whites, and T20 kits. Ultra-breathable, lightweight mesh fabrics with fast factory shipping across the USA.',
+    description: 'Custom sublimation cricket uniforms, test whites, and T20 team kits. Ultra-breathable lightweight mesh fabrics with fast factory shipping to the USA.',
     canonical: 'https://www.zarkosportswear.com/cricket',
     h1: 'Custom Cricket Uniforms & Team Kits Manufacturer USA',
     bodyContent: `
@@ -336,7 +336,7 @@ const routesData = {
   },
   '/hockey': {
     title: 'Custom Field Hockey Uniforms & Jerseys USA | Zarko Sportswear',
-    description: 'Design durable custom field hockey uniforms and team jerseys. Reinforced pro stitching, breathable athletic fabrics, and fast factory shipping to USA clubs.',
+    description: 'Custom field hockey uniforms and team jerseys. Pro reinforced stitching, breathable athletic fabrics, and fast factory shipping to USA sports clubs.',
     canonical: 'https://www.zarkosportswear.com/hockey',
     h1: 'Custom Field Hockey Uniforms & Apparel Manufacturer USA',
     bodyContent: `
@@ -358,7 +358,7 @@ const routesData = {
   },
   '/rugby': {
     title: 'Custom Rugby Jerseys & Team Kits USA | Zarko Sportswear',
-    description: 'Engineered tough custom rugby jerseys, shorts, and team kits. Heavy-duty tear-resistant stretch fabrics designed for high-impact play with fast USA shipping.',
+    description: 'Heavy-duty custom rugby jerseys, shorts, and team kits. Tear-resistant stretch fabrics engineered for high-impact match play with fast USA shipping.',
     canonical: 'https://www.zarkosportswear.com/rugby',
     h1: 'Custom Rugby Jerseys & Heavy-Duty Teamwear Manufacturer USA',
     bodyContent: `
@@ -402,7 +402,7 @@ const routesData = {
   },
   '/running': {
     title: 'Custom Running Gear & Track Uniforms USA | Zarko Sportswear',
-    description: 'High-performance custom running singlets, track uniforms, and athletic shorts. Ultra-lightweight moisture-management fabrics with fast shipping across the USA.',
+    description: 'Custom running singlets, track uniforms, and athletic shorts. Ultra-lightweight moisture-management fabrics with fast express shipping across the USA.',
     canonical: 'https://www.zarkosportswear.com/running',
     h1: 'Custom Track & Field Running Uniforms Manufacturer USA',
     bodyContent: `
@@ -424,7 +424,7 @@ const routesData = {
   },
   '/gym': {
     title: 'Custom Gym Wear & Fitness Activewear USA | Zarko Sportswear',
-    description: 'Factory-direct custom gym wear, workout hoodies, compression shirts, and joggers. Premium stretch fabrics tailored for fitness brands and gyms across the USA.',
+    description: 'Custom gym wear, workout hoodies, compression gear, and joggers. Premium stretch fabrics tailored for fitness brands and training facilities in USA.',
     canonical: 'https://www.zarkosportswear.com/gym',
     h1: 'Custom Gym Wear & Fitness Activewear Manufacturer USA',
     bodyContent: `
@@ -446,7 +446,7 @@ const routesData = {
   },
   '/softball': {
     title: 'Custom Softball Jerseys & Uniforms USA | Zarko Sportswear',
-    description: 'Design custom softball jerseys, pants, and team uniforms. Sublimation printing, moisture-wicking stretch fabric, custom team rosters, and fast USA delivery.',
+    description: 'Custom softball jerseys, pants, and team uniforms. Sublimation printing, moisture-wicking stretch fabrics, team rosters, and fast factory USA delivery.',
     canonical: 'https://www.zarkosportswear.com/softball',
     h1: 'Custom Softball Jerseys & Fastpitch Uniforms Manufacturer USA',
     bodyContent: `
@@ -490,7 +490,7 @@ const routesData = {
   },
   '/volleyball': {
     title: 'Custom Volleyball Jerseys & Uniforms USA | Zarko Sportswear',
-    description: 'Premium custom volleyball jerseys, spandex shorts, and warmups. Ergonomic form-fitting cuts, vibrant sublimation graphics, and fast turnaround across the USA.',
+    description: 'Custom volleyball jerseys, spandex shorts, and warmups. Ergonomic form-fitting cuts, vibrant sublimation graphics, and fast turnaround across the USA.',
     canonical: 'https://www.zarkosportswear.com/volleyball',
     h1: 'Custom Volleyball Jerseys & Uniforms Manufacturer USA',
     bodyContent: `
@@ -556,7 +556,7 @@ const routesData = {
   },
   '/gloves': {
     title: 'Custom Sports Gloves & Goalkeeper Gear USA | Zarko Sportswear',
-    description: 'Professional custom sports gloves, soccer goalkeeper gloves, and batting hand protectors. All-weather grip latex, custom logo printing, and fast USA shipping.',
+    description: 'Custom sports gloves, soccer goalkeeper gloves, and batting handwear. All-weather grip German latex, custom logo printing, and fast shipping to USA.',
     canonical: 'https://www.zarkosportswear.com/gloves',
     h1: 'Custom Sports Gloves & Goalkeeper Hand Protection Manufacturer USA',
     bodyContent: `

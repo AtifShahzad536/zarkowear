@@ -1,7 +1,7 @@
 const homeSeo = {
   title: "Custom Sportswear Manufacturer & Team Uniforms | Zarko",
   description:
-    "Custom sportswear manufacturer based in Sialkot, Pakistan, producing factory-direct team uniforms, wrestling singlets, and sublimated jerseys for USA and international clubs.",
+    "Custom sportswear manufacturer in Sialkot, Pakistan. Factory-direct team uniforms, sublimated jerseys, and wrestling singlets for USA & global clubs.",
   canonical: "https://www.zarkosportswear.com/",
   keywords:
     "custom sportswear manufacturer, custom sports uniforms USA, sportswear manufacturer Sialkot Pakistan, factory direct team jerseys, custom wrestling singlets, sublimation teamwear",
@@ -14,7 +14,7 @@ const homeSeo = {
   openGraph: {
     'og:title': 'Custom Sportswear Manufacturer & Team Uniforms | Zarko',
     'og:description':
-      'Custom sportswear manufacturer based in Sialkot, Pakistan, producing factory-direct team uniforms, wrestling singlets, and sublimated jerseys for USA and international clubs.',
+      'Custom sportswear manufacturer in Sialkot, Pakistan. Factory-direct team uniforms, sublimated jerseys, and wrestling singlets for USA & global clubs.',
     'og:url': 'https://www.zarkosportswear.com/',
     'og:image': 'https://www.zarkosportswear.com/new-logo.png',
     'og:image:width': '512',
