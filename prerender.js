@@ -825,6 +825,19 @@ function runPrerender() {
       html = html.replace(noscriptRegex, noscriptContent);
     }
 
+    // 7. Update static HTML shell H1 and badge to match page's exact primary heading
+    // Eliminates "H1 tag missing or empty" warning when crawled with JavaScript disabled (Is rendered: FALSE)
+    const shellTitleRegex = /<h1 class="shell-title">[^]*?<\/h1>|<div class="shell-title">[^]*?<\/div>/i;
+    if (shellTitleRegex.test(html)) {
+      html = html.replace(shellTitleRegex, `<h1 class="shell-title">${meta.h1}</h1>`);
+    }
+
+    const shellBadgeRegex = /<span class="shell-badge">[^]*?<\/span>/i;
+    if (shellBadgeRegex.test(html)) {
+      const badgeText = meta.title.split('|')[0].trim();
+      html = html.replace(shellBadgeRegex, `<span class="shell-badge">${escapeAttr(badgeText)}</span>`);
+    }
+
     // Write file to route directory: dist/<route>/index.html
     const outputFilePath = path.join(routeDir, 'index.html');
     fs.writeFileSync(outputFilePath, html, 'utf-8');
