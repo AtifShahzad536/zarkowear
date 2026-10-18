@@ -11,14 +11,9 @@ import SeoHead from './SeoHead';
 const normalizeData = (slug) => {
   const config = categoryConfigs[slug];
   if (!config) return null;
-  const { name, heroDescription, gradient, accent, featured = {}, products = [] } = config;
   return {
-    name,
-    description: heroDescription,
-    gradient,
-    accent,
-    featured,
-    products,
+    ...config,
+    description: config.heroDescription || config.description,
   };
 };
 
@@ -142,12 +137,14 @@ const CategoryPage = ({ slug }) => {
       .then((d) => {
         if (!mounted) return;
         setData({
+          ...(fallbackConfig || {}),
           ...d,
           heroVideo: d.heroVideo || fallbackConfig?.heroVideo || '',
           heroBadge: d.heroBadge || fallbackConfig?.heroBadge || '',
           description: d.description || fallbackConfig?.description || fallbackConfig?.heroDescription,
           gradient: d.gradient || fallbackConfig?.gradient,
           accent: d.accent || fallbackConfig?.accent,
+          technicalSpecs: d.technicalSpecs || fallbackConfig?.technicalSpecs || categoryConfigs[slug]?.technicalSpecs || null,
         });
         setError('');
       })
@@ -202,7 +199,10 @@ const CategoryPage = ({ slug }) => {
     heroBadge = '',
     featured,
     products = [],
+    technicalSpecs: dataSpecs,
   } = data;
+
+  const technicalSpecs = dataSpecs || fallbackConfig?.technicalSpecs || categoryConfigs[slug]?.technicalSpecs || null;
 
   const resolvedGradient = gradient || fallbackConfig?.gradient || defaultGradient;
   const resolvedAccent = {
