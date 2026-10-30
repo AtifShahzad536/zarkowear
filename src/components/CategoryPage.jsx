@@ -47,8 +47,18 @@ const SUBCATEGORY_MAP = {
 
 const matchesSubcategory = (prod, sub) => {
   if (!sub || sub === 'All') return true;
-  const target = `${prod.name || ''} ${prod.description || ''}`.toLowerCase();
-  const words = sub.toLowerCase().split(/\s+|&|\//).filter(w => w.length > 2 && w !== 'all' && w !== 'wear');
+  const s = sub.trim().toLowerCase();
+
+  // 1. Direct match on product's subcategory property if it exists
+  if (prod.subcategory) {
+    const pSub = prod.subcategory.trim().toLowerCase();
+    if (pSub === s) return true;
+    if (pSub.includes(s) || s.includes(pSub)) return true;
+  }
+
+  // 2. Search in product name, description, and subcategory
+  const target = `${prod.name || ''} ${prod.description || ''} ${prod.subcategory || ''}`.toLowerCase();
+  const words = s.split(/\s+|&|\/|-/).filter(w => w.length > 2 && w !== 'all' && w !== 'wear' && w !== 'custom');
   if (words.length === 0) return true;
   return words.some(w => {
     const stem = w.endsWith('s') ? w.slice(0, -1) : w;
@@ -150,9 +160,17 @@ const CategoryPage = ({ slug }) => {
   }, [data?.name]);
 
   const subcategories = useMemo(() => {
-    if (SUBCATEGORY_MAP[slug]) return SUBCATEGORY_MAP[slug];
-    return ['All', 'Jerseys', 'Pants & Shorts', 'Training Wear', 'Youth Kits'];
-  }, [slug]);
+    const fromProducts = Array.isArray(data?.products)
+      ? [...new Set(data.products.map(p => p.subcategory).filter(Boolean))]
+      : [];
+    let base = SUBCATEGORY_MAP[slug] ? [...SUBCATEGORY_MAP[slug]] : ['All', 'Jerseys'];
+    const set = new Set(base);
+    fromProducts.forEach(sub => set.add(sub));
+    if (selectedSub && selectedSub !== 'All') {
+      set.add(selectedSub);
+    }
+    return Array.from(set);
+  }, [slug, data?.products, selectedSub]);
 
   // Dynamic Filtering based on Search, Subcategory, Price, and Sidebar Options
   const filteredProducts = useMemo(() => {
@@ -454,7 +472,16 @@ const CategoryPage = ({ slug }) => {
               return (
                 <button
                   key={sub}
-                  onClick={() => setSelectedSub(sub)}
+                  onClick={() => {
+                    setSelectedSub(sub);
+                    const next = new URLSearchParams(searchParams);
+                    if (sub === 'All') {
+                      next.delete('sub');
+                    } else {
+                      next.set('sub', sub);
+                    }
+                    setSearchParams(next);
+                  }}
                   className={`px-3.5 py-2 rounded-[5px] text-xs font-bold uppercase tracking-wider shrink-0 transition-all cursor-pointer flex items-center gap-1.5 ${
                     isActive
                       ? 'bg-slate-900 text-white shadow-2xs'

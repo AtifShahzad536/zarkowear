@@ -93,76 +93,76 @@ const megaCategories = {
         name: 'Baseball',
         to: '/baseball',
         subs: [
-          { label: 'Full Button Jerseys', to: '/detail?product=classic-full-button-jersey' },
-          { label: 'Crew Neck Jerseys', to: '/baseball' },
-          { label: 'Piped Game Pants', to: '/detail?product=piped-baseball-game-pants' },
-          { label: 'Cage Batting Jackets', to: '/detail?product=breathable-batter-warm-up-tee' },
-          { label: 'Pro Team Socks', to: '/detail?product=pro-player-socks' }
+          { label: 'Full Button Jerseys', to: '/baseball?sub=Full Button Jerseys' },
+          { label: 'Crew Neck Jerseys', to: '/baseball?sub=Crew Neck Jerseys' },
+          { label: 'Piped Game Pants', to: '/baseball?sub=Pants' },
+          { label: 'Cage Batting Jackets', to: '/baseball?sub=Cage Jackets' },
+          { label: 'Pro Team Socks', to: '/baseball?sub=Socks' }
         ]
       },
       {
         name: 'Softball',
         to: '/softball',
         subs: [
-          { label: 'Two Button Jerseys', to: '/detail?product=pro-fastpitch-jersey' },
-          { label: 'Crew Neck Jerseys', to: '/softball' },
-          { label: 'Knickers Pants', to: '/softball' },
-          { label: 'Fastpitch Caps & Visors', to: '/caps' },
-          { label: 'Padded Sliding Shorts', to: '/detail?product=sliding-shorts-with-padding' }
+          { label: 'Two Button Jerseys', to: '/softball?sub=Two Button Jerseys' },
+          { label: 'Crew Neck Jerseys', to: '/softball?sub=Crew Neck Jerseys' },
+          { label: 'Knickers Pants', to: '/softball?sub=Knickers Pants' },
+          { label: 'Fastpitch Caps & Visors', to: '/softball?sub=Caps' },
+          { label: 'Padded Sliding Shorts', to: '/softball?sub=Shorts' }
         ]
       },
       {
         name: 'American Football',
         to: '/football',
         subs: [
-          { label: 'Elite Game Jerseys (Tackle Twill)', to: '/detail?product=elite-game-jersey-tackle-twill' },
-          { label: 'Porthole Mesh Practice Jerseys', to: '/detail?product=porthole-mesh-practice-jersey' },
-          { label: 'Integrated 7-Pad Pants', to: '/detail?product=integrated-7-pad-football-pants' },
-          { label: 'Slotted Game Pants', to: '/detail?product=slotted-football-game-pants' },
-          { label: 'Compression Padded Girdles', to: '/detail?product=compression-padded-girdle' },
-          { label: 'Youth Tackle Football Kits', to: '/detail?product=youth-tackle-football-kit' }
+          { label: 'Elite Game Jerseys (Tackle Twill)', to: '/football?sub=Jerseys' },
+          { label: 'Porthole Mesh Practice Jerseys', to: '/football?sub=Jerseys' },
+          { label: 'Integrated 7-Pad Pants', to: '/football?sub=Pants' },
+          { label: 'Slotted Game Pants', to: '/football?sub=Pants' },
+          { label: 'Compression Padded Girdles', to: '/football?sub=Pants' },
+          { label: 'Youth Tackle Football Kits', to: '/football?sub=Jerseys' }
         ]
       },
       {
         name: 'Basketball',
         to: '/basketball',
         subs: [
-          { label: 'Pro Wide-Armhole Tops', to: '/detail?product=slam-dunk-jersey' },
-          { label: 'Team Game Shorts', to: '/detail?product=training-shorts' },
-          { label: 'Shooting Warm-up Shirts', to: '/detail?product=shooting-shirt' },
-          { label: 'Snap-Down Warm-Up Suits', to: '/basketball' },
-          { label: 'Youth Basketball Kits', to: '/detail?product=youth-kit' }
+          { label: 'Pro Wide-Armhole Tops', to: '/basketball?sub=Tops' },
+          { label: 'Team Game Shorts', to: '/basketball?sub=Shorts' },
+          { label: 'Shooting Warm-up Shirts', to: '/basketball?sub=Tops' },
+          { label: 'Snap-Down Warm-Up Suits', to: '/basketball?sub=Shorts' },
+          { label: 'Youth Basketball Kits', to: '/basketball?sub=Tops' }
         ]
       },
       {
         name: 'Soccer',
         to: '/soccer',
         subs: [
-          { label: 'Matchday Striker Jerseys', to: '/detail?product=classic-striped-soccer-jersey' },
-          { label: 'Performance Match Shorts', to: '/soccer' },
-          { label: 'Padded Goalkeeper Kits', to: '/detail?product=elite-goalkeeper-kit' },
-          { label: 'Club Training Tops & Bibs', to: '/detail?product=performance-training-jersey' },
-          { label: 'Soccer Travel Tracksuits', to: '/soccer' }
+          { label: 'Matchday Striker Jerseys', to: '/soccer?sub=Jerseys' },
+          { label: 'Performance Match Shorts', to: '/soccer?sub=Shorts' },
+          { label: 'Padded Goalkeeper Kits', to: '/soccer?sub=Jerseys' },
+          { label: 'Club Training Tops & Bibs', to: '/soccer?sub=Jerseys' },
+          { label: 'Soccer Travel Tracksuits', to: '/soccer?sub=Shorts' }
         ]
       },
       {
         name: 'Volleyball',
         to: '/volleyball',
         subs: [
-          { label: 'Elite Sleeveless Jerseys', to: '/detail?product=elite-sleeveless-jersey' },
-          { label: 'Active Long Sleeve Jerseys', to: '/detail?product=active-long-sleeve-game-jersey' },
-          { label: 'Lateral Agility Shorts', to: '/detail?product=pro-volleyball-team-shorts' },
-          { label: 'Training Compression Tops', to: '/detail?product=training-compression-tops' },
-          { label: 'Libero Contrast Uniforms', to: '/volleyball' }
+          { label: 'Elite Sleeveless Jerseys', to: '/volleyball?sub=Sleeveless Tops' },
+          { label: 'Active Long Sleeve Jerseys', to: '/volleyball?sub=Jerseys' },
+          { label: 'Lateral Agility Shorts', to: '/volleyball?sub=Shorts' },
+          { label: 'Training Compression Tops', to: '/volleyball?sub=Sleeveless Tops' },
+          { label: 'Libero Contrast Uniforms', to: '/volleyball?sub=Jerseys' }
         ]
       },
       {
         name: 'Ice Hockey',
         to: '/ice-hockey',
         subs: [
-          { label: 'Heavy Pro-Knit Sweaters', to: '/detail?product=elite-ice-hockey-jersey' },
-          { label: 'Practice Mesh Jerseys', to: '/detail?product=practice-mesh-hockey-jersey' },
-          { label: 'Pro Team Player Socks', to: '/detail?product=pro-player-socks' }
+          { label: 'Heavy Pro-Knit Sweaters', to: '/ice-hockey?sub=Jerseys' },
+          { label: 'Practice Mesh Jerseys', to: '/ice-hockey?sub=Jerseys' },
+          { label: 'Pro Team Player Socks', to: '/ice-hockey?sub=Jerseys' }
         ]
       },
       {
@@ -179,22 +179,22 @@ const megaCategories = {
         name: 'Cricket & Rugby',
         to: '/cricket',
         subs: [
-          { label: 'T20 Sublimated Color Jerseys', to: '/detail?product=t20-jersey' },
-          { label: 'Test Match Dry-Fit Shirts', to: '/detail?product=test-jersey' },
-          { label: 'Cricket Match White Pants', to: '/detail?product=cricket-kit-b' },
-          { label: 'Rugby Sublimated Heavy Shirts', to: '/detail?product=rugby-kit-a' },
-          { label: 'Rugby Heavy-Duty Shorts', to: '/detail?product=rugby-kit-b' }
+          { label: 'T20 Sublimated Color Jerseys', to: '/cricket?sub=T20 Jerseys' },
+          { label: 'Test Match Dry-Fit Shirts', to: '/cricket?sub=Test Shirts' },
+          { label: 'Cricket Match White Pants', to: '/cricket?sub=Match Pants' },
+          { label: 'Rugby Sublimated Heavy Shirts', to: '/rugby?sub=Heavy Jerseys' },
+          { label: 'Rugby Heavy-Duty Shorts', to: '/rugby?sub=Rugby Shorts' }
         ]
       },
       {
         name: 'Wrestling & Others',
         to: '/wrestling',
         subs: [
-          { label: 'NFHS Certified Singlets', to: '/detail?product=wrestling-singlet-a' },
-          { label: '2-Piece Compression Sets', to: '/wrestling' },
-          { label: 'Cheerleaders Uniform Sets', to: '/detail?product=cheerleader-uniform' },
-          { label: 'Swimming & Water Polo Suits', to: '/detail?product=swimming-suits' },
-          { label: 'Netball Match Uniforms', to: '/detail?product=netball-uniform' }
+          { label: 'NFHS Certified Singlets', to: '/wrestling?sub=Singlets' },
+          { label: '2-Piece Compression Sets', to: '/wrestling?sub=2-Piece Sets' },
+          { label: 'Cheerleaders Uniform Sets', to: '/wrestling' },
+          { label: 'Swimming & Water Polo Suits', to: '/wrestling' },
+          { label: 'Netball Match Uniforms', to: '/wrestling' }
         ]
       }
     ]
@@ -208,55 +208,55 @@ const megaCategories = {
     parents: [
       {
         name: 'Hoodies & Pullovers',
-        to: '/detail?product=performance-hoodie',
+        to: '/streetwear?sub=Hoodies',
         subs: [
-          { label: 'Custom Athletic Hoodies', to: '/detail?product=performance-hoodie' },
-          { label: 'Sleeveless Gym Hoodies', to: '/detail?product=sleeveless-hoodie' },
-          { label: 'Hoodie Shirts (Shooting Shirts)', to: '/detail?product=shooting-shirt' },
-          { label: 'Half-Zip Pullovers', to: '/detail?product=half-zip-pullover' },
-          { label: 'Heavyweight French Terry Hoodies', to: '/detail?product=heavyweight-terry-hoodie' }
+          { label: 'Custom Athletic Hoodies', to: '/streetwear?sub=Hoodies' },
+          { label: 'Sleeveless Gym Hoodies', to: '/streetwear?sub=Sleeveless Hoodies' },
+          { label: 'Hoodie Shirts (Shooting Shirts)', to: '/streetwear?sub=Hoodie Shirts' },
+          { label: 'Half-Zip Pullovers', to: '/streetwear?sub=Pullovers' },
+          { label: 'Heavyweight French Terry Hoodies', to: '/streetwear?sub=Hoodies' }
         ]
       },
       {
         name: 'Shirts & Casual Tops',
-        to: '/detail?product=training-tee',
+        to: '/streetwear?sub=Polo Shirts',
         subs: [
-          { label: 'Performance Polo Shirts', to: '/detail?product=polo-t-shirts' },
-          { label: 'Sublimated V-Neck Shirts', to: '/detail?product=v-neck-shirt' },
-          { label: 'Crew Neck Heavyweight Tees', to: '/detail?product=training-tee' },
-          { label: 'Oversized Drop-Shoulder Tees', to: '/detail?product=oversized-tee' },
-          { label: 'Streetwear Tank Tops', to: '/detail?product=streetwear-tank-top' }
+          { label: 'Performance Polo Shirts', to: '/streetwear?sub=Polo Shirts' },
+          { label: 'Sublimated V-Neck Shirts', to: '/streetwear?sub=V Necks' },
+          { label: 'Crew Neck Heavyweight Tees', to: '/streetwear?sub=Polo Shirts' },
+          { label: 'Oversized Drop-Shoulder Tees', to: '/streetwear?sub=Polo Shirts' },
+          { label: 'Streetwear Tank Tops', to: '/streetwear?sub=Polo Shirts' }
         ]
       },
       {
         name: 'Sweatshirts & Fleece',
-        to: '/detail?product=crewneck-sweatshirt',
+        to: '/streetwear?sub=Sweatshirts',
         subs: [
-          { label: 'Crewneck Sweatshirts', to: '/detail?product=crewneck-sweatshirt' },
-          { label: 'Custom Sweatsuits Combo', to: '/detail?product=custom-sweatsuits' },
-          { label: 'Brushed Fleece Sweaters', to: '/detail?product=brushed-fleece-sweater' },
-          { label: 'Raglan Sleeve Sweatshirts', to: '/detail?product=raglan-sweatshirt' }
+          { label: 'Crewneck Sweatshirts', to: '/streetwear?sub=Sweatshirts' },
+          { label: 'Custom Sweatsuits Combo', to: '/streetwear?sub=Tracksuits' },
+          { label: 'Brushed Fleece Sweaters', to: '/streetwear?sub=Sweatshirts' },
+          { label: 'Raglan Sleeve Sweatshirts', to: '/streetwear?sub=Sweatshirts' }
         ]
       },
       {
         name: 'Pants & Trousers',
-        to: '/detail?product=athletic-joggers',
+        to: '/streetwear?sub=Tracksuits',
         subs: [
-          { label: 'Athletic Joggers & Pants', to: '/detail?product=athletic-joggers' },
-          { label: 'Heavy Fleece Sweatpants', to: '/detail?product=fleece-sweat-pants' },
-          { label: 'Cargo Streetwear Trousers', to: '/detail?product=cargo-trousers' },
-          { label: 'Denim Jeans Pants', to: '/detail?product=denim-jeans-pants' }
+          { label: 'Athletic Joggers & Pants', to: '/streetwear?sub=Tracksuits' },
+          { label: 'Heavy Fleece Sweatpants', to: '/streetwear?sub=Tracksuits' },
+          { label: 'Cargo Streetwear Trousers', to: '/streetwear?sub=Tracksuits' },
+          { label: 'Denim Jeans Pants', to: '/streetwear?sub=Tracksuits' }
         ]
       },
       {
         name: 'Shorts & Outerwear',
-        to: '/detail?product=workout-shorts',
+        to: '/streetwear?sub=Tracksuits',
         subs: [
-          { label: 'Workout Training Shorts', to: '/detail?product=workout-shorts' },
-          { label: '3-Quarter Cargo Shorts', to: '/detail?product=three-quarter-shorts' },
-          { label: 'Custom Denim Shorts', to: '/detail?product=denim-shorts' },
-          { label: 'Windbreaker Sets (Jacket & Pants)', to: '/detail?product=windbreaker-sets' },
-          { label: 'Complete Team Tracksuits', to: '/detail?product=streetwear-tracksuit' }
+          { label: 'Workout Training Shorts', to: '/streetwear?sub=Tracksuits' },
+          { label: '3-Quarter Cargo Shorts', to: '/streetwear?sub=Tracksuits' },
+          { label: 'Custom Denim Shorts', to: '/streetwear?sub=Tracksuits' },
+          { label: 'Windbreaker Sets (Jacket & Pants)', to: '/streetwear?sub=Tracksuits' },
+          { label: 'Complete Team Tracksuits', to: '/streetwear?sub=Tracksuits' }
         ]
       }
     ]
@@ -270,52 +270,52 @@ const megaCategories = {
     parents: [
       {
         name: "Men's Tops & Tees",
-        to: '/detail?product=training-tee',
+        to: '/gym?sub=Tops & Tees',
         subs: [
-          { label: 'Performance Training Tees', to: '/detail?product=training-tee' },
-          { label: 'Gym Stringers & Tank Tops', to: '/detail?product=mens-tanktop' },
-          { label: 'Drop-Arm Workout Muscle Tees', to: '/detail?product=muscle-tee' },
-          { label: 'Seamless Raglan Gym Tops', to: '/detail?product=seamless-gym-top' }
+          { label: 'Performance Training Tees', to: '/gym?sub=Tops & Tees' },
+          { label: 'Gym Stringers & Tank Tops', to: '/gym?sub=Tops & Tees' },
+          { label: 'Drop-Arm Workout Muscle Tees', to: '/gym?sub=Tops & Tees' },
+          { label: 'Seamless Raglan Gym Tops', to: '/gym?sub=Tops & Tees' }
         ]
       },
       {
         name: "Men's Bottoms & Shorts",
-        to: '/detail?product=workout-shorts',
+        to: '/gym?sub=Shorts',
         subs: [
-          { label: 'Workout Training Shorts', to: '/detail?product=workout-shorts' },
-          { label: 'Athletic Tapered Joggers', to: '/detail?product=athletic-joggers' },
-          { label: '2-in-1 Compression Liner Shorts', to: '/detail?product=compression-liner-shorts' },
-          { label: 'Gym Fleece Track Pants', to: '/detail?product=fleece-sweat-pants' }
+          { label: 'Workout Training Shorts', to: '/gym?sub=Shorts' },
+          { label: 'Athletic Tapered Joggers', to: '/gym?sub=Shorts' },
+          { label: '2-in-1 Compression Liner Shorts', to: '/gym?sub=Shorts' },
+          { label: 'Gym Fleece Track Pants', to: '/gym?sub=Shorts' }
         ]
       },
       {
         name: 'Compression Gear',
-        to: '/detail?product=compression-tights',
+        to: '/gym?sub=Compression Tights',
         subs: [
-          { label: 'Long Sleeve Compression Tops', to: '/detail?product=compression-tops' },
-          { label: 'Short Sleeve Muscle Shield Tops', to: '/detail?product=training-compression-tops' },
-          { label: 'Full Length Compression Tights', to: '/detail?product=compression-tights' },
-          { label: 'Padded Base Layer Girdles', to: '/detail?product=compression-padded-girdle' }
+          { label: 'Long Sleeve Compression Tops', to: '/gym?sub=Compression Tights' },
+          { label: 'Short Sleeve Muscle Shield Tops', to: '/gym?sub=Compression Tights' },
+          { label: 'Full Length Compression Tights', to: '/gym?sub=Compression Tights' },
+          { label: 'Padded Base Layer Girdles', to: '/gym?sub=Compression Tights' }
         ]
       },
       {
         name: "Women's Active Tops",
-        to: '/detail?product=womens-active-tee',
+        to: '/gym?sub=Tops & Tees',
         subs: [
-          { label: 'High-Support Sports Bras', to: '/detail?product=womens-sports-bra' },
-          { label: 'Racerback Athletic Tank Tops', to: '/detail?product=womens-active-tank' },
-          { label: 'Breathable Dry-Fit Active Tees', to: '/detail?product=womens-active-tee' },
-          { label: 'Long Sleeve Seamless Crop Tops', to: '/detail?product=womens-crop-top' }
+          { label: 'High-Support Sports Bras', to: '/gym?sub=Tops & Tees' },
+          { label: 'Racerback Athletic Tank Tops', to: '/gym?sub=Tops & Tees' },
+          { label: 'Breathable Dry-Fit Active Tees', to: '/gym?sub=Tops & Tees' },
+          { label: 'Long Sleeve Seamless Crop Tops', to: '/gym?sub=Tops & Tees' }
         ]
       },
       {
         name: "Women's Bottoms & Tights",
-        to: '/detail?product=womens-athletic-bottoms',
+        to: '/gym?sub=Shorts',
         subs: [
-          { label: 'High-Waist Squat-Proof Leggings', to: '/detail?product=compression-tights' },
-          { label: 'Biker & Running Workout Shorts', to: '/detail?product=womens-active-shorts' },
-          { label: 'Athletic Fitted Track Trousers', to: '/detail?product=womens-athletic-bottoms' },
-          { label: 'Seamless Booty Contour Shorts', to: '/detail?product=contour-shorts' }
+          { label: 'High-Waist Squat-Proof Leggings', to: '/gym?sub=Compression Tights' },
+          { label: 'Biker & Running Workout Shorts', to: '/gym?sub=Shorts' },
+          { label: 'Athletic Fitted Track Trousers', to: '/gym?sub=Shorts' },
+          { label: 'Seamless Booty Contour Shorts', to: '/gym?sub=Shorts' }
         ]
       }
     ]
@@ -324,44 +324,44 @@ const megaCategories = {
     id: 'varsityJackets',
     label: 'VARSITY JACKETS',
     tagline: 'Custom Wool, Cowhide Leather, Satin & Cotton Fleece Letterman Outerwear',
-    viewAllTo: '/custom?category=varsity-jackets',
+    viewAllTo: '/custom',
     viewAllLabel: 'View All Varsity Jackets',
     parents: [
       {
         name: 'Wool & Genuine Leather',
-        to: '/detail?product=wool-leather-varsity-jacket',
+        to: '/custom',
         subs: [
-          { label: 'Melton Wool Body / Cowhide Leather Sleeves', to: '/detail?product=wool-leather-varsity-jacket' },
-          { label: 'Chenille Letterman Embroidery & Patches', to: '/detail?product=wool-leather-varsity-jacket' },
-          { label: 'Diamond Quilted Thermal Silk Lining', to: '/detail?product=wool-leather-varsity-jacket' },
-          { label: 'Heavy Striped Rib-Knit Trims', to: '/detail?product=wool-leather-varsity-jacket' }
+          { label: 'Melton Wool Body / Cowhide Leather Sleeves', to: '/custom' },
+          { label: 'Chenille Letterman Embroidery & Patches', to: '/custom' },
+          { label: 'Diamond Quilted Thermal Silk Lining', to: '/custom' },
+          { label: 'Heavy Striped Rib-Knit Trims', to: '/custom' }
         ]
       },
       {
         name: 'Satin & Retro Styles',
-        to: '/detail?product=satin-varsity-jacket',
+        to: '/custom',
         subs: [
-          { label: 'High-Gloss Retro Baseball Satin Jackets', to: '/detail?product=satin-varsity-jacket' },
-          { label: 'Matte Finish Lightweight Satin Letterman', to: '/detail?product=satin-varsity-jacket' },
-          { label: 'Sublimated All-Over Print Satin Jackets', to: '/detail?product=satin-varsity-jacket' }
+          { label: 'High-Gloss Retro Baseball Satin Jackets', to: '/custom' },
+          { label: 'Matte Finish Lightweight Satin Letterman', to: '/custom' },
+          { label: 'Sublimated All-Over Print Satin Jackets', to: '/custom' }
         ]
       },
       {
         name: 'Fleece & Casual Varsity',
-        to: '/detail?product=cotton-fleece-jacket',
+        to: '/custom',
         subs: [
-          { label: 'Heavyweight 380 GSM Cotton Fleece Jackets', to: '/detail?product=cotton-fleece-jacket' },
-          { label: 'Contrast Raglan Sleeve Fleece Letterman', to: '/detail?product=cotton-fleece-jacket' },
-          { label: 'Snap-Button Front Casual Campus Jackets', to: '/detail?product=cotton-fleece-jacket' }
+          { label: 'Heavyweight 380 GSM Cotton Fleece Jackets', to: '/custom' },
+          { label: 'Contrast Raglan Sleeve Fleece Letterman', to: '/custom' },
+          { label: 'Snap-Button Front Casual Campus Jackets', to: '/custom' }
         ]
       },
       {
         name: 'Bomber & Puffer Outerwear',
-        to: '/detail?product=custom-bomber-jacket',
+        to: '/custom',
         subs: [
-          { label: 'MA-1 Military Reversible Bomber Jackets', to: '/detail?product=custom-bomber-jacket' },
-          { label: 'Winter Down Insulated Puffer Jackets', to: '/detail?product=winter-puffer-jacket' },
-          { label: 'Softshell Windproof Coaching Jackets', to: '/detail?product=softshell-jacket' }
+          { label: 'MA-1 Military Reversible Bomber Jackets', to: '/custom' },
+          { label: 'Winter Down Insulated Puffer Jackets', to: '/custom' },
+          { label: 'Softshell Windproof Coaching Jackets', to: '/custom' }
         ]
       }
     ]
@@ -375,40 +375,40 @@ const megaCategories = {
     parents: [
       {
         name: 'Baseball & Snapback Caps',
-        to: '/caps',
+        to: '/caps?sub=Snapback Caps',
         subs: [
-          { label: 'Classic 6-Panel Structured Snapbacks', to: '/caps' },
-          { label: 'Flat Brim Pro Fit Team Caps', to: '/caps' },
-          { label: 'Curved Visor Low-Profile Dad Hats', to: '/caps' },
-          { label: '3D High-Density Puff Embroidery', to: '/caps' }
+          { label: 'Classic 6-Panel Structured Snapbacks', to: '/caps?sub=Snapback Caps' },
+          { label: 'Flat Brim Pro Fit Team Caps', to: '/caps?sub=Snapback Caps' },
+          { label: 'Curved Visor Low-Profile Dad Hats', to: '/caps?sub=Baseball Caps' },
+          { label: '3D High-Density Puff Embroidery', to: '/caps?sub=Snapback Caps' }
         ]
       },
       {
         name: 'Trucker Mesh Caps',
-        to: '/caps',
+        to: '/caps?sub=Baseball Caps',
         subs: [
-          { label: 'High-Crown Foam Front Trucker Caps', to: '/caps' },
-          { label: 'Breathable Polyester Mesh Back Caps', to: '/caps' },
-          { label: 'Vintage Washed Cotton Trucker Caps', to: '/caps' }
+          { label: 'High-Crown Foam Front Trucker Caps', to: '/caps?sub=Baseball Caps' },
+          { label: 'Breathable Polyester Mesh Back Caps', to: '/caps?sub=Baseball Caps' },
+          { label: 'Vintage Washed Cotton Trucker Caps', to: '/caps?sub=Baseball Caps' }
         ]
       },
       {
         name: 'Visors & Bucket Hats',
-        to: '/caps',
+        to: '/caps?sub=Visors',
         subs: [
-          { label: 'Performance Running & Tennis Visors', to: '/caps' },
-          { label: 'Laser-Perforated Quick-Dry Caps', to: '/caps' },
-          { label: '360° Custom Sublimated Bucket Hats', to: '/caps' },
-          { label: 'Wide-Brim Sun Protection Boonie Hats', to: '/caps' }
+          { label: 'Performance Running & Tennis Visors', to: '/caps?sub=Visors' },
+          { label: 'Laser-Perforated Quick-Dry Caps', to: '/caps?sub=Visors' },
+          { label: '360° Custom Sublimated Bucket Hats', to: '/caps?sub=Baseball Caps' },
+          { label: 'Wide-Brim Sun Protection Boonie Hats', to: '/caps?sub=Visors' }
         ]
       },
       {
         name: 'Knit Beanies & Cold Gear',
-        to: '/caps',
+        to: '/caps?sub=Beanies',
         subs: [
-          { label: 'Fold-Over Cuff Winter Knit Beanies', to: '/caps' },
-          { label: 'Fleece-Lined Thermal Team Beanies', to: '/caps' },
-          { label: 'Pom-Pom Jacquard Striped Ski Hats', to: '/caps' }
+          { label: 'Fold-Over Cuff Winter Knit Beanies', to: '/caps?sub=Beanies' },
+          { label: 'Fleece-Lined Thermal Team Beanies', to: '/caps?sub=Beanies' },
+          { label: 'Pom-Pom Jacquard Striped Ski Hats', to: '/caps?sub=Beanies' }
         ]
       }
     ]
@@ -417,36 +417,36 @@ const megaCategories = {
     id: 'workwear',
     label: 'WORKWEAR',
     tagline: 'ANSI Certified Hi-Vis Safety, Industrial Uniforms & Heavy-Duty Work Apparel',
-    viewAllTo: '/custom?category=workwear',
+    viewAllTo: '/custom',
     viewAllLabel: 'View All Workwear',
     parents: [
       {
         name: 'High-Visibility & Safety',
-        to: '/detail?product=hi-vis-safety-jacket',
+        to: '/custom',
         subs: [
-          { label: 'ANSI Class 2 & 3 Hi-Vis Safety Jackets', to: '/detail?product=hi-vis-safety-jacket' },
-          { label: 'Breathable Mesh Reflective Safety Vests', to: '/detail?product=ansi-safety-vest' },
-          { label: '3M Scotchlite Reflective Striping Wear', to: '/detail?product=ansi-safety-vest' },
-          { label: 'High-Vis Sublimated Polo Work Shirts', to: '/detail?product=hi-vis-polo' }
+          { label: 'ANSI Class 2 & 3 Hi-Vis Safety Jackets', to: '/custom' },
+          { label: 'Breathable Mesh Reflective Safety Vests', to: '/custom' },
+          { label: '3M Scotchlite Reflective Striping Wear', to: '/custom' },
+          { label: 'High-Vis Sublimated Polo Work Shirts', to: '/custom' }
         ]
       },
       {
         name: 'Pants & Heavy Coveralls',
-        to: '/detail?product=cargo-work-pants',
+        to: '/custom',
         subs: [
-          { label: 'Heavy-Duty Multi-Pocket Cargo Work Pants', to: '/detail?product=cargo-work-pants' },
-          { label: 'Reinforced Knee Pad Heavy Work Trousers', to: '/detail?product=cargo-work-pants' },
-          { label: 'Industrial 100% Cotton Work Coveralls', to: '/detail?product=industrial-coveralls' },
-          { label: 'Heavy Twill Mechanic Boiler Suits', to: '/detail?product=industrial-coveralls' }
+          { label: 'Heavy-Duty Multi-Pocket Cargo Work Pants', to: '/custom' },
+          { label: 'Reinforced Knee Pad Heavy Work Trousers', to: '/custom' },
+          { label: 'Industrial 100% Cotton Work Coveralls', to: '/custom' },
+          { label: 'Heavy Twill Mechanic Boiler Suits', to: '/custom' }
         ]
       },
       {
         name: 'Tactical & Protective',
-        to: '/detail?product=tactical-security-uniform',
+        to: '/custom',
         subs: [
-          { label: 'Tactical Security & Enforcement Uniforms', to: '/detail?product=tactical-security-uniform' },
-          { label: 'Ripstop BDU Field Combat Shirts', to: '/detail?product=tactical-security-uniform' },
-          { label: 'Flame Retardant (FR) Industrial Shirts', to: '/detail?product=flame-retardant-workwear' }
+          { label: 'Tactical Security & Enforcement Uniforms', to: '/custom' },
+          { label: 'Ripstop BDU Field Combat Shirts', to: '/custom' },
+          { label: 'Flame Retardant (FR) Industrial Shirts', to: '/custom' }
         ]
       }
     ]
@@ -462,31 +462,31 @@ const megaCategories = {
         name: 'Performance Footwear',
         to: '/shoes',
         subs: [
-          { label: 'Custom Turf Training Cleats', to: '/shoes' },
-          { label: 'Indoor Court Grip Athletic Shoes', to: '/shoes' },
-          { label: 'Speed Running Performance Shoes', to: '/shoes' },
-          { label: 'Molded Field Spikes', to: '/shoes' }
+          { label: 'Custom Turf Training Cleats', to: '/shoes?sub=Athletic Footwear' },
+          { label: 'Indoor Court Grip Athletic Shoes', to: '/shoes?sub=Athletic Footwear' },
+          { label: 'Speed Running Performance Shoes', to: '/shoes?sub=Athletic Footwear' },
+          { label: 'Molded Field Spikes', to: '/shoes?sub=Athletic Footwear' }
         ]
       },
       {
         name: 'Grip & Protective Gloves',
         to: '/gloves',
         subs: [
-          { label: 'Silicone Grip Football Receiver Gloves', to: '/gloves' },
-          { label: 'Latex Palm Soccer Goalkeeper Gloves', to: '/gloves' },
-          { label: 'Padded Baseball Batting Gloves', to: '/gloves' },
-          { label: 'Rugby & Field Impact Mitts', to: '/gloves' }
+          { label: 'Silicone Grip Football Receiver Gloves', to: '/gloves?sub=Training Gloves' },
+          { label: 'Latex Palm Soccer Goalkeeper Gloves', to: '/gloves?sub=Goalkeeper Gloves' },
+          { label: 'Padded Baseball Batting Gloves', to: '/gloves?sub=Batting Gloves' },
+          { label: 'Rugby & Field Impact Mitts', to: '/gloves?sub=Training Gloves' }
         ]
       },
       {
         name: 'Team Bags & Sideline Gear',
         to: '/bags',
         subs: [
-          { label: 'Heavy-Duty Team Equipment Duffles', to: '/bags' },
-          { label: 'Player Backpacks with Cleat Compartments', to: '/bags' },
-          { label: 'Compression Arm & Calf Sleeves', to: '/detail?product=compression-sleeves' },
-          { label: 'Elite Cushioned Team Match Socks', to: '/detail?product=team-match-socks' },
-          { label: 'Custom Sublimated Sideline Towels', to: '/detail?product=sideline-towels' }
+          { label: 'Heavy-Duty Team Equipment Duffles', to: '/bags?sub=Duffel Bags' },
+          { label: 'Player Backpacks with Cleat Compartments', to: '/bags?sub=Backpacks' },
+          { label: 'Compression Arm & Calf Sleeves', to: '/shoes?sub=Pro Socks' },
+          { label: 'Elite Cushioned Team Match Socks', to: '/shoes?sub=Pro Socks' },
+          { label: 'Custom Sublimated Sideline Towels', to: '/bags?sub=Team Gear Bags' }
         ]
       }
     ]
