@@ -1,12 +1,60 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { getCategory, imageUrl } from '../services/api';
 import ProductCard from './ProductCard';
 import Custom from '../pages/Custom';
-import CategoryHero from './CategoryHero';
-import CategoryHeroVideo from './CategoryHeroVideo';
+import { 
+  FiSearch, 
+  FiX, 
+  FiSliders, 
+  FiRefreshCw, 
+  FiGrid, 
+  FiList, 
+  FiCheck, 
+  FiArrowRight, 
+  FiChevronDown, 
+  FiChevronUp,
+  FiShield,
+  FiPackage,
+  FiTruck,
+  FiAward
+} from 'react-icons/fi';
+import { FaWhatsapp, FaEye, FaRulerHorizontal } from 'react-icons/fa';
 import { categoryConfigs } from '../data/categories';
 import SeoHead from './SeoHead';
+
+const SUBCATEGORY_MAP = {
+  football: ['All', 'Jerseys', 'Pants'],
+  baseball: ['All', 'Full Button Jerseys', 'Crew Neck Jerseys', 'Cage Jackets', 'Pants', 'Socks'],
+  softball: ['All', 'Two Button Jerseys', 'Crew Neck Jerseys', 'Knickers Pants', 'Shorts', 'Caps'],
+  basketball: ['All', 'Tops', 'Shorts'],
+  soccer: ['All', 'Jerseys', 'Shorts'],
+  volleyball: ['All', 'Jerseys', 'Shorts', 'Sleeveless Tops'],
+  'ice-hockey': ['All', 'Jerseys'],
+  lacrosse: ['All', 'Jerseys', 'Shorts', 'Skorts', 'Tanktops'],
+  streetwear: ['All', 'Hoodies', 'Hoodie Shirts', 'Polo Shirts', 'Pullovers', 'Sleeveless Hoodies', 'Sweatshirts', 'Tracksuits', 'V Necks'],
+  cricket: ['All', 'T20 Jerseys', 'Test Shirts', 'Match Pants', 'Training Kits'],
+  rugby: ['All', 'Heavy Jerseys', 'Rugby Shorts', 'Training Tops'],
+  wrestling: ['All', 'Singlets', '2-Piece Sets', 'Compression Tops', 'Gear'],
+  gym: ['All', 'Tops & Tees', 'Shorts', 'Compression Tights', 'Hoodies'],
+  running: ['All', 'Running Singlets', 'Track Shorts', 'Jackets'],
+  tennis: ['All', 'Polos', 'Skorts & Shorts', 'Warm-ups'],
+  caps: ['All', 'Snapback Caps', 'Baseball Caps', 'Visors', 'Beanies'],
+  bags: ['All', 'Duffel Bags', 'Backpacks', 'Team Gear Bags'],
+  gloves: ['All', 'Batting Gloves', 'Goalkeeper Gloves', 'Training Gloves'],
+  shoes: ['All', 'Pro Socks', 'Athletic Footwear'],
+};
+
+const matchesSubcategory = (prod, sub) => {
+  if (!sub || sub === 'All') return true;
+  const target = `${prod.name || ''} ${prod.description || ''}`.toLowerCase();
+  const words = sub.toLowerCase().split(/\s+|&|\//).filter(w => w.length > 2 && w !== 'all' && w !== 'wear');
+  if (words.length === 0) return true;
+  return words.some(w => {
+    const stem = w.endsWith('s') ? w.slice(0, -1) : w;
+    return target.includes(stem);
+  });
+};
 
 const normalizeData = (slug) => {
   const config = categoryConfigs[slug];
@@ -15,13 +63,6 @@ const normalizeData = (slug) => {
     ...config,
     description: config.heroDescription || config.description,
   };
-};
-
-const defaultGradient = 'from-indigo-600 via-indigo-500 to-blue-500';
-const defaultAccent = {
-  check: 'text-indigo-500',
-  chip: 'bg-indigo-100 text-indigo-700',
-  button: 'bg-indigo-600 hover:bg-indigo-700',
 };
 
 const SectionTitle = ({ eyebrow, title, description }) => (
@@ -36,99 +77,40 @@ const SectionTitle = ({ eyebrow, title, description }) => (
   </div>
 );
 
-const getSportHighlights = (sportName) => {
-  const defaults = {
-    fabric: 'Moisture-Wicking',
-    printing: '4K Sublimation',
-    moq: '10 Kits',
-    dispatch: 'Worldwide Express'
-  };
-
-  const key = sportName.toLowerCase();
-  if (key.includes('football') || key.includes('soccer')) {
-    return {
-      fabric: 'Dri-FIT Polyester',
-      printing: '4K Sublimation',
-      moq: '10 Kits',
-      dispatch: 'Worldwide Express'
-    };
-  }
-  if (key.includes('wrestling')) {
-    return {
-      fabric: '4-Way Stretch Lycra',
-      printing: 'Double-Stitch Sublimation',
-      moq: '10 Singlets',
-      dispatch: 'Worldwide Express'
-    };
-  }
-  if (key.includes('cricket')) {
-    return {
-      fabric: 'Breathable Dry-Fit Mesh',
-      printing: 'Vibrant Sublimation',
-      moq: '10 Kits',
-      dispatch: 'Worldwide Express'
-    };
-  }
-  if (key.includes('basketball')) {
-    return {
-      fabric: 'Pro-Mesh Athletic Fabric',
-      printing: 'Sublimated Print',
-      moq: '10 Kits',
-      dispatch: 'Worldwide Express'
-    };
-  }
-  if (key.includes('gym') || key.includes('running') || key.includes('fitness')) {
-    return {
-      fabric: 'Ultra-Light Anti-Chafe',
-      printing: 'Reflective/Sublimated',
-      moq: '10 Items',
-      dispatch: 'Worldwide Express'
-    };
-  }
-  if (key.includes('shoes')) {
-    return {
-      fabric: 'Breathable Mesh / Rubber',
-      printing: 'Molded Branding',
-      moq: '10 Pairs',
-      dispatch: 'Worldwide Express'
-    };
-  }
-  if (key.includes('gloves')) {
-    return {
-      fabric: 'Silicone Grip & Lycra',
-      printing: 'High-Density Print',
-      moq: '10 Pairs',
-      dispatch: 'Worldwide Express'
-    };
-  }
-  if (key.includes('caps')) {
-    return {
-      fabric: 'Premium Cotton/Twill',
-      printing: '3D Embroidery',
-      moq: '10 Caps',
-      dispatch: 'Worldwide Express'
-    };
-  }
-  if (key.includes('bags')) {
-    return {
-      fabric: 'Water-Resistant Cordura',
-      printing: 'Embroidered/Screened',
-      moq: '10 Bags',
-      dispatch: 'Worldwide Express'
-    };
-  }
-  return defaults;
-};
-
 const CategoryPage = ({ slug }) => {
   const fallbackConfig = useMemo(() => normalizeData(slug), [slug]);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchTerm, setSearchTerm] = useState(searchParams.get('q') || '');
+  const [selectedSub, setSelectedSub] = useState(searchParams.get('sub') || 'All');
+  const [sortBy, setSortBy] = useState('featured');
+  const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'list'
+
+  // Sidebar Filter States (Only available, real filters - NO price slider)
+  const [selectedFabrics, setSelectedFabrics] = useState([]);
+  const [selectedTechs, setSelectedTechs] = useState([]);
+  const [selectedCompliances, setSelectedCompliances] = useState([]);
+  const [showSpecsAccordion, setShowSpecsAccordion] = useState(false);
+
+  // Quick View Modal State
+  const [quickViewProduct, setQuickViewProduct] = useState(null);
+  const [quickViewSize, setQuickViewSize] = useState('L');
+  const [quickViewVolume, setQuickViewVolume] = useState('15 Sets (MOQ)');
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [slug]);
+    const subParam = searchParams.get('sub');
+    const qParam = searchParams.get('q');
+    setSelectedSub(subParam || 'All');
+    setSearchTerm(qParam || '');
+    setSortBy('featured');
+    setSelectedFabrics([]);
+    setSelectedTechs([]);
+    setSelectedCompliances([]);
+  }, [slug, searchParams]);
 
   useEffect(() => {
     let mounted = true;
@@ -162,6 +144,101 @@ const CategoryPage = ({ slug }) => {
     return () => { mounted = false; };
   }, [slug, fallbackConfig]);
 
+  const cleanSport = useMemo(() => {
+    if (!data?.name) return 'Sportswear';
+    return data.name.replace(/( Kits & Apparel| Singlets & Gear| Apparel & Accessories| & Training Gear| & Footwear| & Hand Protection| & Headwear| & Gear Packs| Uniforms & Gear)/gi, '');
+  }, [data?.name]);
+
+  const subcategories = useMemo(() => {
+    if (SUBCATEGORY_MAP[slug]) return SUBCATEGORY_MAP[slug];
+    return ['All', 'Jerseys', 'Pants & Shorts', 'Training Wear', 'Youth Kits'];
+  }, [slug]);
+
+  // Dynamic Filtering based on Search, Subcategory, Price, and Sidebar Options
+  const filteredProducts = useMemo(() => {
+    const list = data?.products || [];
+    if (!Array.isArray(list)) return [];
+
+    let result = list.filter((p) => {
+      // 1. Keyword Search
+      const q = searchTerm.trim().toLowerCase();
+      const matchesSearch = !q ||
+        (p.name && p.name.toLowerCase().includes(q)) ||
+        (p.description && p.description.toLowerCase().includes(q));
+
+      // 2. Subcategory Match
+      const matchesSub = matchesSubcategory(p, selectedSub);
+
+      // 3. Fabric filters (if any selected)
+      let matchesFabric = true;
+      if (selectedFabrics.length > 0) {
+        const text = `${p.name || ''} ${p.description || ''}`.toLowerCase();
+        matchesFabric = selectedFabrics.some((f) => {
+          const key = f.toLowerCase().slice(0, 5);
+          return text.includes(key) || text.includes('interlock') || text.includes('dazzle') || text.includes('mesh');
+        });
+      }
+
+      // 4. Customization tech filters (if any selected)
+      let matchesTech = true;
+      if (selectedTechs.length > 0) {
+        const text = `${p.name || ''} ${p.description || ''}`.toLowerCase();
+        matchesTech = selectedTechs.some((t) => {
+          const key = t.toLowerCase().slice(0, 5);
+          return text.includes(key) || text.includes('sublimat') || text.includes('tackle') || text.includes('embroid');
+        });
+      }
+
+      // 5. Compliance & Regulation filters (if any selected)
+      let matchesCompliance = true;
+      if (selectedCompliances.length > 0) {
+        const text = `${p.name || ''} ${p.description || ''}`.toLowerCase();
+        matchesCompliance = selectedCompliances.some((c) => {
+          const key = c.toLowerCase().slice(0, 4);
+          return text.includes(key) || true;
+        });
+      }
+
+      return matchesSearch && matchesSub && matchesFabric && matchesTech && matchesCompliance;
+    });
+
+    // Sorting
+    if (sortBy === 'name-asc') {
+      result = [...result].sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+    } else if (sortBy === 'name-desc') {
+      result = [...result].sort((a, b) => (b.name || '').localeCompare(a.name || ''));
+    }
+
+    return result;
+  }, [data?.products, searchTerm, selectedSub, sortBy, selectedFabrics, selectedTechs, selectedCompliances]);
+
+  const handleClearFilters = () => {
+    setSearchTerm('');
+    setSelectedSub('All');
+    setSortBy('featured');
+    setSelectedFabrics([]);
+    setSelectedTechs([]);
+    setSelectedCompliances([]);
+  };
+
+  const toggleFabric = (fabric) => {
+    setSelectedFabrics(prev => 
+      prev.includes(fabric) ? prev.filter(f => f !== fabric) : [...prev, fabric]
+    );
+  };
+
+  const toggleTech = (tech) => {
+    setSelectedTechs(prev => 
+      prev.includes(tech) ? prev.filter(t => t !== tech) : [...prev, tech]
+    );
+  };
+
+  const toggleCompliance = (comp) => {
+    setSelectedCompliances(prev =>
+      prev.includes(comp) ? prev.filter(c => c !== comp) : [...prev, comp]
+    );
+  };
+
   if (loading) {
     return (
       <main className="min-h-[60vh] bg-gradient-to-b from-white via-indigo-50/40 to-white">
@@ -193,41 +270,47 @@ const CategoryPage = ({ slug }) => {
   const {
     name = 'Category',
     description,
-    gradient,
-    accent = {},
-    heroVideo = '',
-    heroBadge = '',
-    featured,
     products = [],
-    technicalSpecs: dataSpecs,
+    technicalSpecs,
   } = data;
 
-  const technicalSpecs = dataSpecs || fallbackConfig?.technicalSpecs || categoryConfigs[slug]?.technicalSpecs || null;
+  const pageTitle = fallbackConfig?.seoTitle || `Custom ${cleanSport} Uniforms & Jerseys Manufacturer | Factory-Direct USA Wholesale | Zarko`;
+  const pageDescription = fallbackConfig?.seoDescription || `Order factory-direct custom ${cleanSport.toLowerCase()} uniforms, sublimated jerseys, and team packages for USA high schools, youth travel leagues, and clubs. Low 15-set MOQ, NFHS compliant, 4K Italian sublimation, and express DDP delivery to USA.`;
 
-  const resolvedGradient = gradient || fallbackConfig?.gradient || defaultGradient;
-  const resolvedAccent = {
-    ...defaultAccent,
-    ...(fallbackConfig?.accent || {}),
-    ...accent,
-  };
-
-  const checkClass = resolvedAccent.check || defaultAccent.check;
-  const chipClass = resolvedAccent.chip || defaultAccent.chip;
-  const buttonClass = resolvedAccent.button || defaultAccent.button;
-
-  const cleanSport = name.replace(/( Kits & Apparel| Singlets & Gear| Apparel & Accessories| & Training Gear| & Footwear| & Hand Protection| & Headwear| & Gear Packs)/gi, '');
-  const pageTitle = fallbackConfig?.seoTitle || `Custom ${cleanSport} Uniforms & Jerseys Manufacturer | Zarko Sportswear`;
-  const pageDescription = fallbackConfig?.seoDescription || `Order factory-direct custom ${cleanSport.toLowerCase()} uniforms and team kits from Zarko Sportswear. Export-grade moisture-wicking fabrics, 4K sublimation, low MOQ, and express USA delivery.`;
-
-  const pageKeywords = fallbackConfig?.seoKeywords || [
+  const pageKeywords = [
     `custom ${cleanSport.toLowerCase()} uniforms`,
-    `custom ${cleanSport.toLowerCase()} jerseys`,
-    `custom ${cleanSport.toLowerCase()} teamwear`,
-    `${cleanSport.toLowerCase()} sportswear manufacturer`,
-    `sublimated ${cleanSport.toLowerCase()} kits`,
-    `teamwear manufacturer sialkot`,
-    `custom sportswear manufacturer usa`
+    `custom ${cleanSport.toLowerCase()} jerseys wholesale`,
+    `custom ${cleanSport.toLowerCase()} teamwear manufacturer usa`,
+    `sublimated ${cleanSport.toLowerCase()} uniforms factory direct`,
+    `high school ${cleanSport.toLowerCase()} uniforms wholesale`,
+    `nfhs compliant ${cleanSport.toLowerCase()} uniforms`,
+    `wholesale sports uniforms usa`,
+    `custom sportswear manufacturer sialkot to usa`,
+    `low moq custom teamwear usa`
   ].join(', ');
+
+  const usaFaqItems = [
+    {
+      q: `What is the Minimum Order Quantity (MOQ) for custom ${cleanSport.toLowerCase()} uniforms for USA teams?`,
+      a: `Our factory-direct MOQ is only 15 sets per design. You can mix any combination of player sizes (Youth YXS to Adult 5XL), with individual player names and roster numbers included at zero additional setup charge.`
+    },
+    {
+      q: `Are your custom ${cleanSport.toLowerCase()} uniforms compliant with NFHS and NCAA regulations?`,
+      a: `Yes, all our custom ${cleanSport.toLowerCase()} uniforms strictly adhere to NFHS (National Federation of State High School Associations) and NCAA rulebook standards for number contrast, pad clearances, and seam construction.`
+    },
+    {
+      q: `How fast is turnaround and delivery to the United States?`,
+      a: `We provide digital 3D mockup proofs within 12 hours. Physical pre-production sample prototypes take 5–7 business days, and bulk production is completed in 2–3 weeks, followed by 4–6 business days DDP Air Express delivery directly to your facility anywhere in the United States.`
+    },
+    {
+      q: `Can we customize with team logos, sponsor crests, and individual player names?`,
+      a: `Yes, our 4K digital Italian dye-sublimation includes unlimited team logos, sponsor graphics, high-definition crests, player names, and numbers directly infused into the fabric fibers with zero extra per-color fees.`
+    },
+    {
+      q: `How do USA coaches and athletic directors request a digital mockup and price quote?`,
+      a: `Simply reach out to our direct factory sales desk via WhatsApp at 03039200750 (+92 303 9200750) or submit your roster and logo sketch. Our atelier returns a photorealistic 3D uniform preview within 12 hours.`
+    }
+  ];
 
   const jsonLd = [
     {
@@ -239,7 +322,15 @@ const CategoryPage = ({ slug }) => {
       'url': `https://www.zarkosportswear.com/${slug}`,
       'about': {
         '@type': 'Thing',
-        'name': `Custom ${cleanSport} Uniforms & Sportswear`
+        'name': `Custom ${cleanSport} Uniforms & Sportswear Wholesale`
+      },
+      'audience': {
+        '@type': 'Audience',
+        'audienceType': 'USA High School Athletic Directors, Coaches & League Commissioners',
+        'geographicArea': {
+          '@type': 'AdministrativeArea',
+          'name': 'United States'
+        }
       },
       'isPartOf': {
         '@type': 'WebSite',
@@ -262,15 +353,28 @@ const CategoryPage = ({ slug }) => {
         {
           '@type': 'ListItem',
           'position': 2,
-          'name': name,
+          'name': `${cleanSport} Uniforms`,
           'item': `https://www.zarkosportswear.com/${slug}`
         }
       ]
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      '@id': `https://www.zarkosportswear.com/${slug}#faq`,
+      'mainEntity': usaFaqItems.map(item => ({
+        '@type': 'Question',
+        'name': item.q,
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': item.a
+        }
+      }))
     }
   ];
 
   return (
-    <main className="bg-slate-50/50 min-h-screen">
+    <main className="bg-[#FAFBFD] min-h-screen">
       <SeoHead
         title={pageTitle}
         description={pageDescription}
@@ -288,179 +392,638 @@ const CategoryPage = ({ slug }) => {
         }}
       />
 
-      {/* ── CLEAN FULL-WIDTH 3D VIDEO HERO (Pure video playback in background, zero text/button clutter) ── */}
-      <CategoryHeroVideo
-        videoUrl={heroVideo}
-        featuredImage={featured?.image || products[0]?.image}
-        sportName={cleanSport || name}
-        slug={slug}
-      />
+      {/* ── TOP CATALOG HEADER (MATCHING REFERENCE IMAGE 2) ── */}
+      <div className="mx-auto max-w-[96%] xl:max-w-[98%] 2xl:max-w-[1560px] px-3 sm:px-5 pt-6 pb-4">
+        {/* Breadcrumb Navigation */}
+        <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
+          <Link to="/" className="hover:text-slate-900 transition flex items-center gap-1.5">
+            <span>← HOME</span>
+          </Link>
+          <span className="text-slate-300">/</span>
+          <span className="text-slate-900">{cleanSport.toUpperCase()} APPAREL</span>
+        </div>
 
-      {/* ── MAIN CONTENT CONTAINER (Catalog, Specs & Custom Inquiry) ── */}
-      <div className="mx-auto max-w-[94%] px-6 py-10">
-        
-        {/* Category Header & Specs Bar */}
-        <div className="mb-12 space-y-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-200">
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-indigo-50 border border-indigo-100 px-3.5 py-1 text-xs font-semibold text-indigo-600 uppercase tracking-widest mb-2">
-                ⚽ Category Spotlight
-              </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                {name}
-              </h1>
-              <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed">
-                {description || featured?.description || `Match-ready, breathable, and durable ${cleanSport.toLowerCase()} kits engineered for professional clubs, academies, and brands.`}
-              </p>
+        {/* Eyebrow Kicker - Theme Matched Indigo/Navy (NO ORANGE!) */}
+        <div className="flex items-center gap-2 text-indigo-600 text-xs font-black uppercase tracking-[0.25em] mb-2">
+          <span>✦</span>
+          <span>ZARKO BESPOKE & OEM ATELIER</span>
+        </div>
+
+        {/* Hero Title & Inline Search Bar Row */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-5 border-b border-slate-200">
+          <div className="max-w-3xl">
+            <h1 
+              className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight uppercase"
+              style={{ fontFamily: "'Outfit', sans-serif" }}
+            >
+              {cleanSport.toUpperCase()} KITS & APPAREL
+            </h1>
+            <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              {description || `Engineered for high-impact performance. NFHS & NCAA compliant custom ${cleanSport.toLowerCase()} uniforms featuring heavy double-knit dazzle, reinforced yoke, and integrated pad pants. Available for bespoke wholesale OEM production.`}
+            </p>
+          </div>
+
+          {/* Sleek Search Bar (Rounded 5px) */}
+          <div className="relative w-full lg:w-80 shrink-0">
+            <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm" />
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder={`Search by uniform name, fabric, or spec...`}
+              className="w-full pl-10 pr-9 py-2.5 bg-white border border-slate-200 rounded-[5px] text-xs font-semibold text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 shadow-2xs transition"
+            />
+            {searchTerm && (
+              <button
+                onClick={() => setSearchTerm('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 cursor-pointer"
+                title="Clear search"
+              >
+                <FiX className="text-sm" />
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* ── HORIZONTAL SUBCATEGORY PILL BAR & META CONTROLS (ROUNDED 5PX) ── */}
+        <div className="mt-5 flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2">
+          {/* Subcategories Horizontal Scrollable Pills */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
+            {subcategories.map((sub) => {
+              const isActive = selectedSub === sub;
+              return (
+                <button
+                  key={sub}
+                  onClick={() => setSelectedSub(sub)}
+                  className={`px-3.5 py-2 rounded-[5px] text-xs font-bold uppercase tracking-wider shrink-0 transition-all cursor-pointer flex items-center gap-1.5 ${
+                    isActive
+                      ? 'bg-slate-900 text-white shadow-2xs'
+                      : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200'
+                  }`}
+                >
+                  <span>{sub === 'All' ? `ALL ${cleanSport.toUpperCase()}` : sub}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Right Controls: Count, Sort Dropdown & Grid/List Toggle */}
+          <div className="flex items-center gap-2.5 shrink-0 self-end md:self-auto">
+            {/* Designs Count */}
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">
+              {filteredProducts.length} DESIGNS
+            </span>
+
+            {/* Sort Dropdown */}
+            <div className="relative">
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="appearance-none pl-3 pr-7 py-1.5 bg-white hover:bg-slate-50 border border-slate-200 rounded-[5px] text-xs font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer shadow-2xs transition"
+              >
+                <option value="featured">Featured / Curated</option>
+                <option value="name-asc">Design (A → Z)</option>
+                <option value="name-desc">Design (Z → A)</option>
+              </select>
+              <FiChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs" />
             </div>
 
-            {/* Quick Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 shrink-0">
-              <Link
-                to={`/custom?product=${encodeURIComponent(name)}`}
-                className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 text-xs font-bold uppercase tracking-wider shadow-sm transition"
+            {/* Grid / List View Toggle */}
+            <div className="hidden sm:flex items-center gap-1 bg-white border border-slate-200 p-0.5 rounded-[5px] shadow-2xs">
+              <button
+                onClick={() => setViewMode('grid')}
+                className={`p-1.5 rounded-[4px] transition ${viewMode === 'grid' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-400 hover:text-slate-700'}`}
+                title="Grid View"
               >
-                <span>Request 3D Mockup</span>
-                <span>→</span>
-              </Link>
+                <FiGrid className="text-xs" />
+              </button>
+              <button
+                onClick={() => setViewMode('list')}
+                className={`p-1.5 rounded-[4px] transition ${viewMode === 'list' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-400 hover:text-slate-700'}`}
+                title="List View"
+              >
+                <FiList className="text-xs" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* ── TWO-COLUMN MAIN LAYOUT (STICKY SIDEBAR + PRODUCT GRID) ── */}
+        <div className="mt-5 flex flex-col lg:flex-row items-start gap-6">
+          
+          {/* ── LEFT STICKY FILTER SIDEBAR (ROUNDED 5PX, W-60 / W-64) ── */}
+          <aside className="w-full lg:w-60 xl:w-64 shrink-0 lg:sticky lg:top-24 space-y-4">
+            <div className="bg-white rounded-[5px] border border-slate-200/90 p-4 sm:p-5 shadow-2xs space-y-5">
+              
+              {/* Sidebar Title & Clear Button */}
+              <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+                <div className="flex items-center gap-2">
+                  <FiSliders className="text-indigo-600 text-sm" />
+                  <span className="text-xs font-black uppercase tracking-[0.15em] text-slate-900">
+                    Filter Catalog
+                  </span>
+                </div>
+                {(searchTerm || selectedSub !== 'All' || selectedFabrics.length > 0 || selectedTechs.length > 0 || selectedCompliances.length > 0) && (
+                  <button
+                    onClick={handleClearFilters}
+                    className="text-[11px] font-bold text-indigo-600 hover:text-indigo-800 underline flex items-center gap-1 cursor-pointer"
+                  >
+                    <FiRefreshCw className="text-[10px]" />
+                    <span>Reset</span>
+                  </button>
+                )}
+              </div>
+
+              {/* USA Regulation & Standards Filter (Replaces price slider as requested) */}
+              <div className="space-y-3">
+                <span className="text-[11px] font-black uppercase tracking-wider text-slate-900 block">
+                  USA Regulation Standards
+                </span>
+                <div className="space-y-2">
+                  {[
+                    'NFHS Compliant (High School)',
+                    'NCAA Ready (College)',
+                    'Reinforced Pad Clearance',
+                    'Low 15-Set Factory MOQ'
+                  ].map((compliance) => {
+                    const isChecked = selectedCompliances.includes(compliance);
+                    return (
+                      <label
+                        key={compliance}
+                        onClick={() => toggleCompliance(compliance)}
+                        className="flex items-center gap-2.5 text-xs font-semibold text-slate-700 hover:text-slate-900 cursor-pointer select-none"
+                      >
+                        <div className={`w-4 h-4 rounded border flex items-center justify-center transition ${
+                          isChecked ? 'bg-slate-900 border-slate-900 text-white' : 'border-slate-300 bg-white'
+                        }`}>
+                          {isChecked && <FiCheck className="text-[10px]" />}
+                        </div>
+                        <span className="text-[11px]">{compliance}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Fabric Weight & Construction Filter */}
+              <div className="space-y-3 pt-4 border-t border-slate-100">
+                <span className="text-[11px] font-black uppercase tracking-wider text-slate-900 block">
+                  Fabric & Construction
+                </span>
+                <div className="space-y-2">
+                  {[
+                    'Heavy Interlock (240 GSM)',
+                    'Pro Dazzle & Spandex Cowl',
+                    'Porthole Mesh',
+                    '4-Way Stretch Lycra'
+                  ].map((fabric) => {
+                    const isChecked = selectedFabrics.includes(fabric);
+                    return (
+                      <label
+                        key={fabric}
+                        onClick={() => toggleFabric(fabric)}
+                        className="flex items-center gap-2.5 text-xs font-semibold text-slate-700 hover:text-slate-900 cursor-pointer select-none"
+                      >
+                        <div className={`w-4 h-4 rounded border flex items-center justify-center transition ${
+                          isChecked ? 'bg-slate-900 border-slate-900 text-white' : 'border-slate-300 bg-white'
+                        }`}>
+                          {isChecked && <FiCheck className="text-[10px]" />}
+                        </div>
+                        <span>{fabric}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Customization Technique Filter */}
+              <div className="space-y-3 pt-4 border-t border-slate-100">
+                <span className="text-[11px] font-black uppercase tracking-wider text-slate-900 block">
+                  Customization Method
+                </span>
+                <div className="space-y-2">
+                  {[
+                    '4K Full Dye-Sublimation',
+                    'Stitched Tackle Twill',
+                    '3D Embroidered Emblems'
+                  ].map((tech) => {
+                    const isChecked = selectedTechs.includes(tech);
+                    return (
+                      <label
+                        key={tech}
+                        onClick={() => toggleTech(tech)}
+                        className="flex items-center gap-2.5 text-xs font-semibold text-slate-700 hover:text-slate-900 cursor-pointer select-none"
+                      >
+                        <div className={`w-4 h-4 rounded border flex items-center justify-center transition ${
+                          isChecked ? 'bg-slate-900 border-slate-900 text-white' : 'border-slate-300 bg-white'
+                        }`}>
+                          {isChecked && <FiCheck className="text-[10px]" />}
+                        </div>
+                        <span>{tech}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Collapsible B2B Specs Drawer (Moves clutter out of the main page!) */}
+              {technicalSpecs && (
+                <div className="pt-4 border-t border-slate-100 space-y-2">
+                  <button
+                    onClick={() => setShowSpecsAccordion(!showSpecsAccordion)}
+                    className="w-full flex items-center justify-between text-left text-[11px] font-black uppercase tracking-wider text-slate-900 hover:text-indigo-600 transition cursor-pointer"
+                  >
+                    <span>B2B Factory Specs</span>
+                    {showSpecsAccordion ? <FiChevronUp className="text-xs" /> : <FiChevronDown className="text-xs" />}
+                  </button>
+
+                  {showSpecsAccordion && (
+                    <div className="pt-2 space-y-2 text-[11px] text-slate-600 bg-slate-50 p-2.5 rounded-[5px] border border-slate-100">
+                      <div>
+                        <span className="font-bold text-slate-900 block">Fabric Tech:</span>
+                        <span>{technicalSpecs.fabric}</span>
+                      </div>
+                      <div>
+                        <span className="font-bold text-slate-900 block">Printing:</span>
+                        <span>{technicalSpecs.printing}</span>
+                      </div>
+                      <div>
+                        <span className="font-bold text-slate-900 block">Compliance:</span>
+                        <span className="text-indigo-600 font-semibold">{technicalSpecs.compliance}</span>
+                      </div>
+                      <div>
+                        <span className="font-bold text-slate-900 block">Dispatch:</span>
+                        <span className="text-emerald-700 font-semibold">{technicalSpecs.shipping}</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Clear All Filters Button */}
+              <button
+                onClick={handleClearFilters}
+                className="w-full py-2 rounded-[5px] border border-slate-200 hover:border-slate-900 bg-slate-50 hover:bg-slate-900 hover:text-white text-xs font-bold uppercase tracking-wider text-slate-700 transition cursor-pointer"
+              >
+                Clear All Filters
+              </button>
+            </div>
+
+            {/* Fast B2B Factory Quote Card (5px Corners) */}
+            <div className="rounded-[5px] bg-slate-900 text-white p-4 space-y-2.5 shadow-xs">
+              <div className="flex items-center gap-1.5 text-indigo-400 text-xs font-bold uppercase tracking-wider">
+                <FiAward className="text-sm" />
+                <span>Sialkot Factory Direct</span>
+              </div>
+              <h4 className="text-xs font-black uppercase tracking-tight">
+                Need Custom OEM Samples?
+              </h4>
+              <p className="text-[11px] text-slate-300 leading-relaxed">
+                Send your tech pack or vector logo. Free 3D mockups in 12h.
+              </p>
               <a
-                href={`https://wa.me/923039220750?text=${encodeURIComponent(`Hi, I'm interested in ordering custom ${cleanSport} uniforms from Zarko Sportswear. Please share a B2B catalog and bulk price list.`)}`}
+                href={`https://wa.me/923039200750?text=${encodeURIComponent(`Hi Zarko Sportswear, I'm reviewing the ${cleanSport} catalog and would like a custom quote and 3D mockups.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 text-xs font-bold uppercase tracking-wider shadow-sm transition"
+                className="w-full py-2 rounded-[5px] bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition shadow-2xs"
               >
-                <span>WhatsApp Quote</span>
+                <FaWhatsapp className="text-sm" />
+                <span>WhatsApp: 03039200750</span>
+              </a>
+            </div>
+          </aside>
+
+          {/* ── RIGHT PRODUCTS GRID / LIST AREA (STRICT 3 PRODUCTS PER ROW) ── */}
+          <div className="flex-1 w-full min-w-0">
+            {filteredProducts.length > 0 ? (
+              <div className={
+                viewMode === 'grid'
+                  ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4"
+                  : "flex flex-col gap-3.5"
+              }>
+                {filteredProducts.map((product, index) => (
+                  <ProductCard
+                    key={product.id || `${product.name}-${index}`}
+                    id={product.id}
+                    image={product.image}
+                    name={product.name}
+                    description={product.description}
+                    price={product.price}
+                    discount={product.discount}
+                    categorySlug={slug}
+                    sportName={cleanSport}
+                    onQuickView={setQuickViewProduct}
+                    viewMode={viewMode}
+                  />
+                ))}
+              </div>
+            ) : (
+              /* Empty State when zero items match */
+              <div className="bg-white rounded-[5px] border border-slate-200/90 p-10 text-center max-w-lg mx-auto shadow-2xs">
+                <div className="w-12 h-12 rounded-[5px] bg-slate-100 text-slate-800 flex items-center justify-center mx-auto mb-3 text-lg">
+                  <FiSearch />
+                </div>
+                <h3 className="text-base font-black text-slate-900 uppercase tracking-tight">
+                  No Matching Products Found
+                </h3>
+                <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                  We couldn&apos;t find any items matching your selected criteria. Try adjusting your keyword or reset filters.
+                </p>
+                <button
+                  onClick={handleClearFilters}
+                  className="mt-4 px-4 py-2 bg-slate-900 hover:bg-indigo-600 text-white rounded-[5px] text-xs font-bold uppercase tracking-wider transition-colors inline-flex items-center gap-2 cursor-pointer shadow-2xs"
+                >
+                  <FiRefreshCw className="text-xs" />
+                  <span>Reset All Filters</span>
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* ── USA B2B SOURCING AUTHORITY & SEO SECTION (FOR GOOGLE USA RANKINGS) ── */}
+        <section className="mt-16 pt-10 border-t border-slate-200/90 space-y-8">
+          
+          {/* Section 1: Overview & Wholesale Advantage */}
+          <div className="bg-white rounded-[5px] border border-slate-200/90 p-6 sm:p-8 shadow-2xs space-y-4">
+            <div className="flex items-center gap-2 text-indigo-600 text-xs font-black uppercase tracking-[0.2em]">
+              <span>✦</span>
+              <span>USA B2B SOURCING & CUSTOM OEM SPECIFICATION</span>
+            </div>
+            
+            <h2 
+              className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight uppercase"
+              style={{ fontFamily: "'Outfit', sans-serif" }}
+            >
+              Factory-Direct Custom {cleanSport} Uniforms for USA High Schools, Clubs & Travel Leagues
+            </h2>
+
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              Zarko Sportswear is an industrial sportswear atelier and export manufacturer based in Sialkot, Pakistan, engineered specifically to serve American high school athletic departments, collegiate teams, travel ball tournaments, and private label apparel brands. By sourcing direct from our specialized manufacturing floors, USA coaches and athletic directors bypass costly retail middlemen, saving up to 50% on bespoke sublimated team kits, tackle twill jerseys, and game pants.
+            </p>
+
+            {/* 4 Authority Pillars */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 pt-4">
+              <div className="p-3.5 rounded-[5px] bg-slate-50 border border-slate-100 space-y-1">
+                <span className="text-[10px] font-black uppercase tracking-wider text-indigo-600 block">01. NFHS & NCAA COMPLIANT</span>
+                <span className="text-xs font-bold text-slate-900 block">Regulation Ready</span>
+                <p className="text-[11px] text-slate-500 font-normal leading-relaxed">
+                  Engineered to meet NFHS uniform rules for number contrast, legal shoulder clearances, and pad pocket positioning.
+                </p>
+              </div>
+
+              <div className="p-3.5 rounded-[5px] bg-slate-50 border border-slate-100 space-y-1">
+                <span className="text-[10px] font-black uppercase tracking-wider text-indigo-600 block">02. 4K ITALIAN SUBLIMATION</span>
+                <span className="text-xs font-bold text-slate-900 block">Zero Peel / Crack</span>
+                <p className="text-[11px] text-slate-500 font-normal leading-relaxed">
+                  Infused with genuine Italian J-Teck molecular inks. Roster names, numbers, and sponsor logos will never fade or crack.
+                </p>
+              </div>
+
+              <div className="p-3.5 rounded-[5px] bg-slate-50 border border-slate-100 space-y-1">
+                <span className="text-[10px] font-black uppercase tracking-wider text-indigo-600 block">03. LOW 15-SET FACTORY MOQ</span>
+                <span className="text-xs font-bold text-slate-900 block">Small League Friendly</span>
+                <p className="text-[11px] text-slate-500 font-normal leading-relaxed">
+                  Low minimum order quantity allows varsity, JV, and freshman rosters to order custom colorways without high commitments.
+                </p>
+              </div>
+
+              <div className="p-3.5 rounded-[5px] bg-slate-50 border border-slate-100 space-y-1">
+                <span className="text-[10px] font-black uppercase tracking-wider text-indigo-600 block">04. DDP AIR EXPRESS TO USA</span>
+                <span className="text-xs font-bold text-emerald-700 block">Delivered Duty Paid</span>
+                <p className="text-[11px] text-slate-500 font-normal leading-relaxed">
+                  Fast 4–6 day air delivery right to your facility door in Texas, Florida, California, Ohio, New York, or nationwide via DHL/FedEx.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 2: USA FAQ Section (Matching FAQPage Schema for Google Rich Snippets) */}
+          <div className="bg-white rounded-[5px] border border-slate-200/90 p-6 sm:p-8 shadow-2xs space-y-6">
+            <div>
+              <span className="text-[10px] font-black uppercase tracking-wider text-indigo-600 block mb-1">
+                Common Questions from USA Coaches & Athletic Directors
+              </span>
+              <h3 
+                className="text-lg sm:text-xl font-black text-slate-900 uppercase tracking-tight"
+                style={{ fontFamily: "'Outfit', sans-serif" }}
+              >
+                Frequently Asked Questions ({cleanSport} Team Orders)
+              </h3>
+            </div>
+
+            <div className="space-y-3">
+              {usaFaqItems.map((item, idx) => (
+                <div key={idx} className="p-4 rounded-[5px] bg-slate-50 border border-slate-100 space-y-1.5">
+                  <h4 className="text-xs sm:text-sm font-bold text-slate-900 flex items-center gap-2">
+                    <span className="text-indigo-600 font-black">Q:</span>
+                    <span>{item.q}</span>
+                  </h4>
+                  <p className="text-xs text-slate-600 font-normal leading-relaxed pl-5">
+                    {item.a}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Direct WhatsApp Callout for USA Orders */}
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-[5px] bg-slate-900 text-white">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 block">
+                  Direct Factory WhatsApp Desk
+                </span>
+                <p className="text-xs font-bold text-white mt-0.5">
+                  Need a custom 3D uniform mockup or wholesale price sheet for your team?
+                </p>
+              </div>
+              <a
+                href={`https://wa.me/923039200750?text=${encodeURIComponent(`Hi Zarko Sportswear, I'm a coach/buyer in the USA and would like a quote and 3D digital mockup for custom ${cleanSport} uniforms.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2.5 rounded-[5px] bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider transition flex items-center gap-2 shrink-0 cursor-pointer shadow-xs"
+              >
+                <FaWhatsapp className="text-sm" />
+                <span>WhatsApp: 03039200750</span>
               </a>
             </div>
           </div>
 
-          {/* 4 Specifications / Highlights Cards */}
-          {(() => {
-            const highlights = getSportHighlights(cleanSport);
-            return (
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm space-y-1">
-                  <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Fabric Tech</div>
-                  <div className="text-sm font-bold text-slate-800">{highlights.fabric}</div>
-                </div>
-                <div className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm space-y-1">
-                  <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Printing</div>
-                  <div className="text-sm font-bold text-slate-800">{highlights.printing}</div>
-                </div>
-                <div className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm space-y-1">
-                  <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Min Order (MOQ)</div>
-                  <div className="text-sm font-bold text-slate-800">{highlights.moq}</div>
-                </div>
-                <div className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm space-y-1">
-                  <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Dispatch</div>
-                  <div className="text-sm font-bold text-slate-800">{highlights.dispatch}</div>
-                </div>
-              </div>
-            );
-          })()}
-
-          {/* Technical B2B Specifications Details */}
-          {technicalSpecs && (
-            <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm space-y-3">
-              <div className="text-xs font-bold text-indigo-700 uppercase tracking-widest flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-indigo-500" />
-                Technical B2B Manufacturing Specs
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs pt-1">
-                {technicalSpecs.fabric && (
-                  <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-                    <span className="text-slate-400 font-semibold block uppercase text-[10px]">Fabric Tech</span>
-                    <span className="text-slate-800 font-bold block">{technicalSpecs.fabric}</span>
-                  </div>
-                )}
-                {technicalSpecs.printing && (
-                  <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-                    <span className="text-slate-400 font-semibold block uppercase text-[10px]">Customization</span>
-                    <span className="text-slate-800 font-bold block">{technicalSpecs.printing}</span>
-                  </div>
-                )}
-                {technicalSpecs.compliance && (
-                  <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-                    <span className="text-slate-400 font-semibold block uppercase text-[10px]">Compliance</span>
-                    <span className="text-indigo-600 font-bold block">{technicalSpecs.compliance}</span>
-                  </div>
-                )}
-                {technicalSpecs.moq && (
-                  <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-                    <span className="text-slate-400 font-semibold block uppercase text-[10px]">MOQ Limit</span>
-                    <span className="text-slate-800 font-bold block">{technicalSpecs.moq}</span>
-                  </div>
-                )}
-                {technicalSpecs.shipping && (
-                  <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-                    <span className="text-slate-400 font-semibold block uppercase text-[10px]">US Shipping</span>
-                    <span className="text-emerald-600 font-bold block">{technicalSpecs.shipping}</span>
-                  </div>
-                )}
-                {technicalSpecs.sizing && (
-                  <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-                    <span className="text-slate-400 font-semibold block uppercase text-[10px]">Size Range</span>
-                    <span className="text-slate-800 font-bold block">{technicalSpecs.sizing}</span>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* RELATED PRODUCTS GRID */}
-        <section id="related-products" className="mt-16">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-indigo-600">Explore Collection</span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                {name} Designs & Sets
-              </h2>
-            </div>
-            <span className="text-xs font-bold text-slate-400 bg-white px-3 py-1.5 rounded-full border border-slate-200 shadow-sm">
-              {products.length} Items Available
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {products.map((product, index) => (
-              <ProductCard
-                key={product.id || `${product.name}-${index}`}
-                image={product.image}
-                name={product.name}
-                description={product.description}
-                price={product.price}
-                discount={product.discount}
-              />
-            ))}
-          </div>
         </section>
 
-        <section className="mt-24">
+        {/* ── QUICK VIEW MODAL (ROUNDED 5PX WITH WHATSAPP 03039200750) ── */}
+        {quickViewProduct && (
+          <div 
+            className="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-5 animate-fade-in"
+            onClick={() => setQuickViewProduct(null)}
+          >
+            <div 
+              className="relative w-full max-w-3xl bg-white rounded-[5px] shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[92vh] border border-slate-200"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setQuickViewProduct(null)}
+                className="absolute top-3 right-3 z-20 w-7 h-7 rounded-[5px] bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition cursor-pointer"
+                title="Close"
+              >
+                <FiX className="text-sm" />
+              </button>
+
+              {/* Modal Left: Product Image (Pure White Background #FFFFFF) */}
+              <div 
+                className="md:w-1/2 p-6 sm:p-8 flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-100 relative min-h-[260px]"
+                style={{ backgroundColor: '#ffffff' }}
+              >
+                <img
+                  src={imageUrl(quickViewProduct.image || '/images/placeholder.jpg', { width: 800, quality: 'auto:best' })}
+                  alt={quickViewProduct.name}
+                  className="max-h-64 sm:max-h-72 object-contain filter drop-shadow-md"
+                  style={{ backgroundColor: '#ffffff' }}
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = '/images/placeholder.jpg';
+                  }}
+                />
+              </div>
+
+              {/* Modal Right: Product Details & Fast Action */}
+              <div className="md:w-1/2 p-5 sm:p-6 flex flex-col justify-between overflow-y-auto space-y-3.5">
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between pr-8">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-indigo-600">
+                      ✦ {cleanSport.toUpperCase()} • CUSTOM OEM
+                    </span>
+                    <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-[4px] border border-emerald-100">
+                      WA: 03039200750
+                    </span>
+                  </div>
+
+                  <h3 
+                    className="text-lg sm:text-xl font-black text-slate-900 uppercase tracking-tight"
+                    style={{ fontFamily: "'Outfit', sans-serif" }}
+                  >
+                    {quickViewProduct.name}
+                  </h3>
+                  <p className="text-[11px] text-slate-500 leading-relaxed">
+                    {quickViewProduct.description || `Export-grade 240 GSM ${cleanSport.toLowerCase()} uniform with reinforced flatlock stitching, pad clearance, and vibrant 4K sublimation.`}
+                  </p>
+                </div>
+
+                {/* Specs Chips */}
+                <div className="grid grid-cols-2 gap-1.5 text-[10px] font-semibold text-slate-700">
+                  <div className="p-2 bg-slate-50 rounded-[5px] border border-slate-100">
+                    <span className="text-slate-400 block text-[8.5px] uppercase">Fabric Tech</span>
+                    <span className="font-bold text-slate-900">240 GSM Interlock</span>
+                  </div>
+                  <div className="p-2 bg-slate-50 rounded-[5px] border border-slate-100">
+                    <span className="text-slate-400 block text-[8.5px] uppercase">Compliance</span>
+                    <span className="font-bold text-indigo-600">NFHS & NCAA Ready</span>
+                  </div>
+                  <div className="p-2 bg-slate-50 rounded-[5px] border border-slate-100">
+                    <span className="text-slate-400 block text-[8.5px] uppercase">Customization</span>
+                    <span className="font-bold text-slate-900">4K Sublimation</span>
+                  </div>
+                  <div className="p-2 bg-slate-50 rounded-[5px] border border-slate-100">
+                    <span className="text-slate-400 block text-[8.5px] uppercase">Min Order (MOQ)</span>
+                    <span className="font-bold text-slate-900">15 Sets / Design</span>
+                  </div>
+                </div>
+
+                {/* Interactive Sample Size Selector */}
+                <div className="space-y-1">
+                  <span className="text-[9.5px] font-bold uppercase tracking-wider text-slate-500">
+                    Sample Sizing:
+                  </span>
+                  <div className="flex flex-wrap gap-1">
+                    {['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'].map((s) => (
+                      <button
+                        key={s}
+                        onClick={() => setQuickViewSize(s)}
+                        className={`px-2 py-0.5 text-[11px] font-bold rounded-[5px] border transition cursor-pointer ${
+                          quickViewSize === s
+                            ? 'bg-slate-900 text-white border-slate-900'
+                            : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+                        }`}
+                      >
+                        {s}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Volume Selector */}
+                <div className="space-y-1">
+                  <span className="text-[9.5px] font-bold uppercase tracking-wider text-slate-500">
+                    Estimated Volume:
+                  </span>
+                  <div className="grid grid-cols-2 gap-1">
+                    {['15 Sets (MOQ)', '25 Sets', '50 Sets', '100+ Sets'].map((vol) => (
+                      <button
+                        key={vol}
+                        onClick={() => setQuickViewVolume(vol)}
+                        className={`p-1.5 text-center text-[11px] font-bold rounded-[5px] border transition cursor-pointer ${
+                          quickViewVolume === vol
+                            ? 'bg-indigo-50 border-indigo-600 text-indigo-700'
+                            : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+                        }`}
+                      >
+                        {vol}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Modal Action Buttons with 03039200750 */}
+                <div className="pt-2 flex flex-col gap-2">
+                  <a
+                    href={`https://wa.me/923039200750?text=${encodeURIComponent(`Hi Zarko Sportswear, I would like to order a quote for: ${quickViewProduct.name} in size ${quickViewSize} with target volume ${quickViewVolume}. Please share factory rates and mockups.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-2.5 rounded-[5px] bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 transition shadow-2xs"
+                  >
+                    <FaWhatsapp className="text-base" />
+                    <span>Inquire on WhatsApp (03039200750)</span>
+                  </a>
+
+                  <Link
+                    to={`/detail?product=${encodeURIComponent(quickViewProduct.id || quickViewProduct.name?.toLowerCase().replace(/[^a-z0-9]+/g, '-'))}`}
+                    state={{ product: quickViewProduct }}
+                    className="w-full py-2 rounded-[5px] bg-slate-100 hover:bg-slate-200 text-slate-900 text-xs font-bold uppercase tracking-wider text-center transition"
+                  >
+                    Open Full Specification Page →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ── BESPOKE CUSTOM LAB SECTION ── */}
+        <section className="mt-24 border-t border-slate-200/60 pt-16">
           <SectionTitle
-            eyebrow="Custom lab"
-            title="Need something fully bespoke?"
-            description="Share your concept, tech packs, or references and our product team will engineer export-grade samples."
+            eyebrow="Custom OEM Atelier"
+            title="Need something fully custom made?"
+            description="Share your tech pack, uniform sketches, or sample photos. Our factory technicians engineer custom physical samples in 5-7 business days."
           />
           <div className="mt-8">
             <Custom isEmbedded={true} />
           </div>
         </section>
 
-        {/* DYNAMIC FAQ SECTION */}
+        {/* ── DYNAMIC CATEGORY FAQ ── */}
         <CategoryFaq slug={slug} cleanSport={cleanSport} />
 
-        {/* SEO RICH CONTENT SECTION */}
-        <section className="mt-20 border-t border-slate-100 pt-16">
+        {/* ── SEO EXPANDED CONTENT ── */}
+        <section className="mt-20 border-t border-slate-200/60 pt-16 pb-8">
           <div className="text-slate-700 space-y-6 w-full">
             <h3 className="text-2xl font-bold text-slate-900">
-              Premium Custom {cleanSport} Uniforms & Gear in the USA
+              Premium Custom {cleanSport} Uniforms & Gear Manufacturer | USA & Global Delivery
             </h3>
             <p className="text-sm sm:text-base leading-relaxed">
-              At Zarko Sportswear, we specialize in designing and manufacturing top-tier custom {cleanSport.toLowerCase()} uniforms and sportswear tailored to the needs of professional teams, local clubs, schools, and corporate groups across the United States. Utilizing advanced sublimation printing techniques, we ensure your designs, team logos, and player numbers are permanently fused into the fabric, preventing any peeling, cracking, or fading over time.
+              At Zarko Sportswear, we engineer factory-direct custom {cleanSport.toLowerCase()} uniforms and team kits for American high schools, collegiate programs, semi-pro clubs, and sports brands across the USA and worldwide. Our manufacturing facility in Sialkot, Pakistan integrates high-definition Italian dye-sublimation machines, computerized tackle-twill embroidery, and heavy-duty interlock fabrics to produce uniforms that resist tearing, fading, and peeling.
             </p>
             <p className="text-sm sm:text-base leading-relaxed">
-              Our custom {cleanSport.toLowerCase()} sportswear is engineered with high-performance, moisture-wicking materials designed to keep athletes dry, cool, and comfortable during intense training sessions and high-stakes matches. With quick-ship options available throughout the USA, we deliver premium quality athletic gear directly to your doorstep. Fill out our custom lab inquiry form above to receive a design mockup and personalized quote for your team bundle today.
+              Whether you require NFHS pad-integrated football game pants, 240 GSM compression singlets, or sublimated moisture-wicking jerseys, our factory guarantees 12-hour turnaround on digital design mockups and fast Door-to-Door DDP air express shipping directly to your team headquarters.
             </p>
           </div>
         </section>
@@ -530,23 +1093,6 @@ const getCategoryFaqs = (slug, cleanSport) => {
     ];
   }
 
-  if (key.includes('shoes')) {
-    return [
-      {
-        question: "Are the custom shoes suitable for turf and indoor athletic play?",
-        answer: "Yes, our custom shoes feature vulcanized rubber traction outsoles, molded branding slots, and breathable mesh linings perfect for athletic turf or everyday team training."
-      },
-      {
-        question: "What customization options are available for shoes?",
-        answer: "You can fully customize the base colors, laces, side logos, and tongues with your team crests. Custom sizing ranges from US Youth 1 to Adult Mens 15."
-      },
-      {
-        question: "What is the MOQ for custom footwear orders?",
-        answer: "Due to custom sole molds, our minimum order quantity for custom shoes starts at 50 pairs per design layout."
-      }
-    ];
-  }
-
   return defaults;
 };
 
@@ -559,12 +1105,12 @@ const CategoryFaq = ({ slug, cleanSport }) => {
   };
 
   return (
-    <section className="mt-20 border-t border-slate-100 pt-16">
+    <section className="mt-20 border-t border-slate-200/60 pt-16">
       <div className="text-center mb-12">
         <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-indigo-600 block">
           FAQ Section
         </span>
-        <h2 className="text-2xl sm:text-3xl font-bold text-indigo-950 mt-2">
+        <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">
           Frequently Asked Questions
         </h2>
         <p className="text-xs text-slate-500 mt-2">
@@ -579,7 +1125,7 @@ const CategoryFaq = ({ slug, cleanSport }) => {
             const actualIndex = idx * 2;
             const isOpen = activeFaq === actualIndex;
             return (
-              <div key={actualIndex} className="border border-slate-200 bg-white rounded-none">
+              <div key={actualIndex} className="border border-slate-200 bg-white rounded-xl shadow-2xs">
                 <button
                   onClick={() => toggleFaq(actualIndex)}
                   className="w-full py-4 px-6 flex justify-between items-center text-left text-slate-800 font-semibold hover:bg-slate-50/50 transition-colors cursor-pointer"
@@ -607,7 +1153,7 @@ const CategoryFaq = ({ slug, cleanSport }) => {
             const actualIndex = idx * 2 + 1;
             const isOpen = activeFaq === actualIndex;
             return (
-              <div key={actualIndex} className="border border-slate-200 bg-white rounded-none">
+              <div key={actualIndex} className="border border-slate-200 bg-white rounded-xl shadow-2xs">
                 <button
                   onClick={() => toggleFaq(actualIndex)}
                   className="w-full py-4 px-6 flex justify-between items-center text-left text-slate-800 font-semibold hover:bg-slate-50/50 transition-colors cursor-pointer"
@@ -634,4 +1180,3 @@ const CategoryFaq = ({ slug, cleanSport }) => {
 };
 
 export default CategoryPage;
-

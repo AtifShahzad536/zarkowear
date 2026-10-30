@@ -66,12 +66,18 @@ const router = createBrowserRouter([
       { path: "volleyball", element: <CategoryRoute slug="volleyball" /> },
       { path: "ice-hockey", element: <CategoryRoute slug="ice-hockey" /> },
       { path: "baseball", element: <CategoryRoute slug="baseball" /> },
+      { path: "lacrosse", element: <CategoryRoute slug="lacrosse" /> },
+      { path: "streetwear", element: <CategoryRoute slug="streetwear" /> },
+      { path: "sports-wears", element: <Navigate to="/streetwear" replace /> },
 
       // ✅ Accessories
       { path: "shoes", element: <CategoryRoute slug="shoes" /> },
       { path: "gloves", element: <CategoryRoute slug="gloves" /> },
       { path: "caps", element: <CategoryRoute slug="caps" /> },
       { path: "bags", element: <CategoryRoute slug="bags" /> },
+      { path: "headwear", element: <Navigate to="/caps" replace /> },
+      { path: "varsity-jackets", element: <Navigate to="/custom" replace /> },
+      { path: "workwear", element: <Navigate to="/custom" replace /> },
 
       // ✅ 3D Jersey Builder
       { path: "builder", element: <BuilderPage /> },

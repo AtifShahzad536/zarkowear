@@ -1,210 +1,347 @@
-import React, { useEffect, useMemo, useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/autoplay';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { getTopSelling, imageUrl } from '../../services/api';
-import { FaArrowRight } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { FiChevronUp, FiChevronDown, FiCheck } from 'react-icons/fi';
+import { FaArrowRight } from 'react-icons/fa';
+import { getCategories, imageUrl } from '../../services/api';
 
-const MotionLink = motion(Link);
-
-const fallbackItems = [
-  { image: '/images/slide1.jpg', name: 'Pro Football Jersey', link: '/football' },
-  { image: '/images/slide2.jpg', name: 'Cricket ODI Kit', link: '/cricket' },
-  { image: '/images/slide1.jpg', name: 'Basketball Sleeveless Set', link: '/basketball' },
-  { image: '/images/slide2.jpg', name: 'Hockey Team Jersey', link: '/hockey' },
-  { image: '/images/slide1.jpg', name: 'Rugby Pro Shorts', link: '/rugby' },
-  { image: '/images/slide2.jpg', name: 'Tennis Performance Polo', link: '/tennis' },
+const TOP_CATEGORIES = [
+  {
+    id: 'football',
+    slug: 'football',
+    name: 'Football',
+    tag: '1999',
+    eyebrow: 'GRIDIRON PRO SERIES',
+    title: 'FOOTBALL UNIFORMS',
+    watermark: 'FOOTBALL',
+    productName: 'Championship American Football Game Uniform',
+    productSubtitle: 'Heavyweight Dazzle Interlock with Double-Ply Pad Yoke',
+    defaultImage: '/images/hero_football.webp',
+    description:
+      'Engineered for maximum tackle tear-resistance and speed. Features reinforced double-ply shoulder yoke for pad clearance, spandex flex side inserts, and integrated pad pants for high school, college, and semi-pro football programs.',
+    link: '/football',
+    specs: ['240-260 GSM Dazzle Interlock', 'Double-Ply Shoulder Yoke', 'Spandex Flex Panels', 'DDP USA Express']
+  },
+  {
+    id: 'baseball',
+    slug: 'baseball',
+    name: 'Baseball',
+    tag: '1985',
+    eyebrow: 'WORLDWIDE OEM',
+    title: 'BASEBALL GEAR',
+    watermark: 'BASEBALL',
+    productName: 'Legend Baseball Jersey Pro',
+    productSubtitle: '250 GSM Double-Knit Polyester with Piped Front & Tackle Twill',
+    defaultImage: '/images/sports/baseball.webp',
+    description:
+      'Zarko Sportswear manufactures pro-spec baseball jerseys and uniform sets for high schools, travel leagues, and clubs. Engineered with heavy 250 GSM double-knit polyester, reinforced button plackets, moisture-transport weave, and authentic tackle-twill embroidery.',
+    link: '/baseball',
+    specs: ['250 GSM Double Knit', 'NFHS Compliant', 'Tackle Twill & Sublimation', '15-Set MOQ']
+  },
+  {
+    id: 'soccer',
+    slug: 'soccer',
+    name: 'Soccer',
+    tag: '2014',
+    eyebrow: 'PRO MATCHDAY KITS',
+    title: 'SOCCER UNIFORMS',
+    watermark: 'SOCCER',
+    productName: 'Pro Matchday Sublimated Soccer Kit',
+    productSubtitle: '160 GSM Dri-FIT Micro-Interlock Matchday Set',
+    defaultImage: '/images/sports/soccer.webp',
+    description:
+      'Ultra-breathable Dri-FIT sublimated matchday sets engineered for competitive club play. Features dynamic anti-chafing flatlock seams, micro-mesh heat exhaust zones, and vibrant 4K Italian dye-sublimation.',
+    link: '/soccer',
+    specs: ['160 GSM Dri-FIT Interlock', '4K Italian Sublimation', 'Ergonomic Athletic Fit', '10-12 Days Production']
+  },
+  {
+    id: 'softball',
+    slug: 'softball',
+    name: 'Softball',
+    tag: '2020',
+    eyebrow: 'FASTPITCH TOURNAMENT',
+    title: 'SOFTBALL UNIFORMS',
+    watermark: 'SOFTBALL',
+    productName: 'Fastpitch Pro Softball Uniform Set',
+    productSubtitle: 'High-Flex Women & Youth Cut with Reinforced Sliding Panels',
+    defaultImage: '/images/sports/softball.webp',
+    description:
+      'Tailored fastpitch softball cut designed specifically for high mobility and sliding protection. Crafted with reinforced knee and hip zones, fade-proof full digital sublimation, and ultra-durable stretch stitching.',
+    link: '/softball',
+    specs: ['Tailored Fastpitch Cut', 'Reinforced Sliding Zones', 'Full Sublimation Inks', '15 Sets MOQ']
+  },
+  {
+    id: 'volleyball',
+    slug: 'volleyball',
+    name: 'Volleyball',
+    tag: '2023',
+    eyebrow: 'COURT AGILITY SERIES',
+    title: 'VOLLEYBALL SETS',
+    watermark: 'VOLLEYBALL',
+    productName: 'Elite High-Performance Volleyball Kit',
+    productSubtitle: 'Featherweight 4-Way Stretch with Anti-Chafe Construction',
+    defaultImage: '/images/sports/volleyball.webp',
+    description:
+      'Featherweight, moisture-evaporating volleyball jerseys and spandex shorts engineered for explosive vertical jumps, court dives, and swift lateral movement. Treated with anti-microbial fabric finish.',
+    link: '/volleyball',
+    specs: ['4-Way Stretch Spandex Blend', 'Featherweight Heat-Release', 'Anti-Chafe Flatlock Seams', 'Custom Team Logos']
+  },
+  {
+    id: 'icehockey',
+    slug: 'ice-hockey',
+    name: 'Ice Hockey',
+    tag: '2026',
+    eyebrow: 'HEAVYWEIGHT TEAMWEAR',
+    title: 'HOCKEY UNIFORMS',
+    watermark: 'HOCKEY',
+    productName: 'Pro Hockey Kit Elite Teamwear',
+    productSubtitle: 'Abrasion-Resistant Pro Mesh with Fight-Strap Option',
+    defaultImage: '/images/sports/ice-hockey.webp',
+    description:
+      'Built to withstand aggressive boards, ice abrasion, and extreme play. Features heavy pro-mesh weave, underarm ventilation inserts, pad-clearance elbows, and optional authentic sewn fight-straps.',
+    link: '/ice-hockey',
+    specs: ['Heavy Pro-Mesh Fabric', 'Fight-Strap Construction', 'Reinforced Elbow Yoke', 'Worldwide Express']
+  }
 ];
 
-const resolveLink = (link) => {
-  if (link === '/hoodie') return '/gym';
-  if (link === '/cap') return '/caps';
-  if (link === '/polo') return '/tennis';
-  return link || '#';
-};
-
 const TopSellingProducts = () => {
-  const containerRef = useRef(null);
-  const isSwiperInView = useInView(containerRef, { once: true, margin: "200px" });
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [categoriesData, setCategoriesData] = useState([]);
 
   useEffect(() => {
-    let alive = true;
-    const loadTopSelling = async () => {
-      try {
-        const data = await getTopSelling();
-        if (alive) {
-          setItems(Array.isArray(data?.topSelling) ? data.topSelling : fallbackItems);
+    getCategories()
+      .then(data => {
+        if (Array.isArray(data)) {
+          setCategoriesData(data);
         }
-      } catch (error) {
-        console.error('Error loading top selling products:', error);
-        if (alive) setItems(fallbackItems);
-      } finally {
-        if (alive) setLoading(false);
-      }
-    };
-    
-    loadTopSelling();
-    return () => { alive = false; };
+      })
+      .catch((err) => {
+        console.error('Failed to load categories for Top showcase:', err);
+      });
   }, []);
 
-  const displayedItems = useMemo(() => items, [items]);
-  
-  const handleProductClick = (product) => {
-    if (product.link) {
-      navigate(resolveLink(product.link));
-    }
+  const activeSport = TOP_CATEGORIES[activeIndex];
+
+  // Match the category from backend database
+  const currentDbCategory = categoriesData.find(c => 
+    c.slug?.toLowerCase() === activeSport.slug?.toLowerCase() ||
+    c.slug?.toLowerCase() === activeSport.id?.toLowerCase()
+  );
+
+  // Extract the 1st product from DB for this category
+  const firstProduct = (currentDbCategory?.products && currentDbCategory.products.length > 0)
+    ? currentDbCategory.products[0]
+    : null;
+
+  // Resolve Product Image: use 1st product image from DB if present, else fallback
+  const activeImage = firstProduct?.image
+    ? imageUrl(firstProduct.image, { width: 1200, quality: 'auto:best' })
+    : activeSport.defaultImage;
+
+  // Resolve Product Name: use 1st product name from DB, else fallback
+  const activeProductName = firstProduct?.name
+    ? firstProduct.name
+    : activeSport.productName;
+
+  // Resolve Product Subtitle: use 1st product description (trimmed) from DB, else fallback
+  const activeProductSubtitle = firstProduct?.description
+    ? (firstProduct.description.trim().length > 70 
+        ? firstProduct.description.trim().slice(0, 70) + '...' 
+        : firstProduct.description.trim())
+    : activeSport.productSubtitle;
+
+  // View link: if product has an id, can view detail, otherwise category page
+  const productViewLink = firstProduct?.id
+    ? `/detail?product=${encodeURIComponent(firstProduct.id)}`
+    : activeSport.link;
+
+  const handlePrev = () => {
+    setActiveIndex(prev => (prev === 0 ? TOP_CATEGORIES.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setActiveIndex(prev => (prev === TOP_CATEGORIES.length - 1 ? 0 : prev + 1));
   };
 
   return (
-    <section className="w-full py-12">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+    <section className="w-full py-16 sm:py-24 bg-white relative overflow-hidden border-b border-slate-200">
+      <div className="max-w-[94%] xl:max-w-7xl 2xl:max-w-[1440px] mx-auto px-4">
         
-        className="max-w-[94%] mx-auto px-4"
-      >
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4">
-          <div>
-            <span className="text-xs font-black uppercase tracking-[0.25em] text-indigo-600 block mb-2">
-              POPULAR ITEMS
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              Our Bestselling Sportswear
-            </h2>
-            <div className="w-12 h-0.5 bg-indigo-600 mt-2" />
-          </div>
+        {/* Main 3-Column / Timeline Interactive Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Custom Nav buttons top right */}
-          <div className="flex gap-2 relative z-20">
-            <button aria-label="Previous Slide" className="custom-prev-top p-3 border border-slate-200 rounded-none bg-white text-slate-800 hover:bg-slate-50 transition-colors">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button aria-label="Next Slide" className="custom-next-top p-3 border border-slate-200 rounded-none bg-white text-slate-800 hover:bg-slate-50 transition-colors">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-        </div>
+          {/* Column 1: Vertical Timeline / Category Selector (Lg: 3 cols) */}
+          <div className="lg:col-span-3 flex lg:flex-col items-center lg:items-start justify-between lg:justify-center relative">
+            
+            {/* Vertical Guide Line */}
+            <div className="hidden lg:block absolute left-[15px] top-6 bottom-16 w-[1.5px] bg-slate-200 -z-0" />
 
-        {/* Product Carousel */}
-        <div className="relative group">
-          {loading || !isSwiperInView ? (
-            <div ref={containerRef} className="grid grid-cols-2 md:grid-cols-4 gap-4 px-2 min-h-[400px]">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="group relative bg-white border border-slate-100 rounded-2xl overflow-hidden shadow-sm h-full">
-                  <div className="aspect-[4/5] bg-gray-100 animate-pulse relative"></div>
-                  <div className="p-5 relative z-10 bg-white">
-                    <div className="space-y-2">
-                      <div className="h-3 bg-gray-100 rounded-full animate-pulse"></div>
-                      <div className="h-3 bg-gray-100 rounded-full w-5/6 animate-pulse"></div>
-                      <div className="h-3 bg-gray-100 rounded-full w-2/3 animate-pulse"></div>
+            {/* Timeline Items */}
+            <div className="flex flex-wrap lg:flex-col gap-3 lg:gap-6 relative z-10 w-full">
+              {TOP_CATEGORIES.map((sport, idx) => {
+                const isActive = idx === activeIndex;
+                return (
+                  <button
+                    key={sport.id}
+                    onClick={() => setActiveIndex(idx)}
+                    className="flex items-center gap-3.5 group text-left transition-all duration-300 focus:outline-none cursor-pointer"
+                  >
+                    {/* Timeline Node Indicator */}
+                    <div className="hidden lg:flex items-center justify-center w-[30px] shrink-0">
+                      <div
+                        className={`transition-all duration-300 rounded-full ${
+                          isActive
+                            ? 'w-3 h-3 bg-indigo-600 ring-4 ring-indigo-600/20 shadow-sm'
+                            : 'w-2 h-2 bg-slate-300 group-hover:bg-slate-400'
+                        }`}
+                      />
                     </div>
-                    <div className="h-10 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-none animate-pulse mt-4"></div>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                    {/* Tag / Category Pill */}
+                    {isActive ? (
+                      <span className="px-3.5 py-1.5 rounded-[5px] bg-slate-900 text-white font-black text-xs uppercase tracking-wider shadow-sm transition-all duration-300 flex items-center gap-1.5">
+                        <span>{sport.name}</span>
+                      </span>
+                    ) : (
+                      <span className="text-xs font-bold text-slate-400 group-hover:text-slate-800 uppercase tracking-wider transition-colors px-2 py-1">
+                        {sport.name}
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Timeline Navigation Chevrons */}
+            <div className="hidden lg:flex items-center gap-2 mt-10 ml-1 relative z-10">
+              <button
+                onClick={handlePrev}
+                aria-label="Previous Category"
+                className="w-8 h-8 rounded-[5px] border border-slate-200 bg-white hover:bg-slate-100 flex items-center justify-center text-slate-700 shadow-2xs transition active:scale-95 cursor-pointer"
+              >
+                <FiChevronUp className="text-base" />
+              </button>
+              <button
+                onClick={handleNext}
+                aria-label="Next Category"
+                className="w-8 h-8 rounded-[5px] border border-slate-200 bg-white hover:bg-slate-100 flex items-center justify-center text-slate-700 shadow-2xs transition active:scale-95 cursor-pointer"
+              >
+                <FiChevronDown className="text-base" />
+              </button>
+            </div>
+          </div>
+
+          {/* Column 2: Story, Headline, and Description with Giant Ghost Watermark (Lg: 5 cols) */}
+          <div className="lg:col-span-5 relative z-10 text-left">
+            {/* Giant Ghost Watermark */}
+            <div className="absolute -left-6 lg:-left-12 top-1/2 -translate-y-1/2 select-none pointer-events-none -z-10 leading-none overflow-hidden">
+              <span className="text-slate-200/50 font-black text-[90px] sm:text-[140px] xl:text-[170px] uppercase tracking-tighter block whitespace-nowrap opacity-70">
+                {activeSport.watermark}
+              </span>
+            </div>
+
+            {/* Small Eyebrow Tag */}
+            <span className="text-xs font-black text-indigo-600 tracking-[0.25em] uppercase block mb-2">
+              {activeSport.eyebrow}
+            </span>
+
+            {/* Main Headline */}
+            <h2
+              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-[#0B132B] tracking-tight uppercase leading-[1.05]"
+              style={{ fontFamily: "'Outfit', sans-serif" }}
+            >
+              {activeSport.title}
+            </h2>
+
+            {/* Descriptive Paragraph */}
+            <p className="mt-4 sm:mt-5 text-xs sm:text-sm text-slate-600 font-medium leading-relaxed max-w-lg">
+              {activeSport.description}
+            </p>
+
+            {/* Key Technical Specs Chips */}
+            <div className="grid grid-cols-2 gap-2 mt-6 max-w-md">
+              {activeSport.specs.map(spec => (
+                <div key={spec} className="flex items-center gap-1.5 text-[11px] font-bold text-slate-700">
+                  <FiCheck className="text-indigo-600 shrink-0 text-xs" />
+                  <span className="truncate">{spec}</span>
                 </div>
               ))}
             </div>
-          ) : (
-            <div ref={containerRef}>
-            <Swiper
-              modules={[Navigation, Autoplay]}
-              navigation={{
-                nextEl: '.custom-next-top',
-                prevEl: '.custom-prev-top',
-              }}
-              spaceBetween={20}
-              slidesPerView={1.8}
-              autoplay={{
-                delay: 4000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true
-              }}
-              loop={true}
-              breakpoints={{
-                480: { slidesPerView: 2.2, spaceBetween: 16 },
-                640: { slidesPerView: 2.8, spaceBetween: 16 },
-                768: { slidesPerView: 3.2, spaceBetween: 20 },
-                1024: { slidesPerView: 3.8, spaceBetween: 20 },
-                1280: { slidesPerView: 4.2, spaceBetween: 24 },
-                1536: { slidesPerView: 4.5, spaceBetween: 24 }
-              }}
-              className="py-2 px-1 sm:px-2"
-            >
-              <AnimatePresence initial={false}>
-                {displayedItems.map((item, i) => (
-                  <SwiperSlide key={`${item.id || i}-${i}`}>
-                    <MotionLink
-                      to={resolveLink(item.link)}
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      
-                      transition={{ duration: 0.5, delay: i * 0.05 }}
-                      className="group relative overflow-hidden rounded-none shadow-md hover:shadow-2xl transition cursor-pointer hover:-translate-y-1 block"
-                    >
-                      <motion.img
-                        src={imageUrl(item.image, { width: 1000, quality: 'auto:best' }) || item.image}
-                        alt={item.name} title={item.name}
-                        width={500}
-                        height={500}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-80 object-contain bg-white transform group-hover:scale-110 transition duration-700 ease-out"
-                        onError={(e) => {
-                          e.target.src = '/images/placeholder.jpg';
-                        }}
-                      />
-                      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition duration-500" />
-                      <div className="absolute inset-0 z-20 flex flex-col justify-end p-5">
-                        <div className="space-y-1">
-                          <h3 className="text-lg md:text-xl font-bold tracking-wide text-white drop-shadow-lg transition duration-300 group-hover:-translate-y-1">
-                            {item.name}
-                          </h3>
-                          <div className="max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
-                            <p className="text-xs md:text-sm text-gray-200/90 leading-relaxed line-clamp-2 mt-2">
-                              {item.description || `Premium ${item.name} with export-grade fabrics and customizable options.`}
-                            </p>
-                            <span className="inline-flex items-center justify-center gap-2 w-full rounded-none bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2.5 text-xs md:text-sm tracking-wide shadow-md transition duration-300 mt-3">
-                              Customize Now
-                              <span aria-hidden>→</span>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      {item.discount && (
-                        <motion.span
-                          className="absolute top-3 right-3 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md z-30"
-                          initial={{ scale: 0.8, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          transition={{ delay: 0.2 }}
-                        >
-                          -{item.discount}% OFF
-                        </motion.span>
-                      )}
-                    </MotionLink>
-                  </SwiperSlide>
-                ))}
-              </AnimatePresence>
-            </Swiper>
+
+            {/* Action CTA Button */}
+            <div className="mt-8 flex items-center gap-5">
+              <Link
+                to={activeSport.link}
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-slate-900 hover:text-indigo-600 uppercase tracking-wider group transition-colors"
+              >
+                <span>SEE MORE</span>
+                <FiChevronDown className="text-base group-hover:translate-y-0.5 transition-transform" />
+              </Link>
+
+              <Link
+                to={activeSport.link}
+                className="px-4 py-2 bg-slate-900 hover:bg-indigo-600 text-white text-xs font-bold rounded-[5px] uppercase tracking-wider transition-colors shadow-sm inline-flex items-center gap-1.5"
+              >
+                <span>Explore Collection</span>
+                <FaArrowRight className="text-[10px]" />
+              </Link>
             </div>
-          )}
+          </div>
+
+          {/* Column 3: Featured First Product Showcase - Card removed, pure clean image with View button */}
+          <div className="lg:col-span-4 flex flex-col items-center justify-center relative">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeSport.id}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
+                className="w-full flex flex-col items-center justify-center"
+              >
+                {/* Product Image without Card Container */}
+                <Link
+                  to={productViewLink}
+                  className="w-full flex items-center justify-center p-2 relative group cursor-pointer"
+                  title={`View ${activeProductName}`}
+                >
+                  <img
+                    src={activeImage}
+                    alt={activeProductName}
+                    title={activeProductName}
+                    loading="lazy"
+                    className="w-full h-auto max-h-[360px] sm:max-h-[400px] object-contain transform group-hover:scale-105 transition-transform duration-500 ease-out filter drop-shadow-[0_12px_28px_rgba(0,0,0,0.09)]"
+                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholder.jpg"; }}
+                  />
+                </Link>
+
+                {/* Just Below Image: Product Name & View Button */}
+                <div className="mt-3 flex flex-col items-center text-center gap-2.5">
+                  <h4
+                    className="text-sm sm:text-base font-black text-slate-900 uppercase tracking-wide truncate max-w-xs"
+                    style={{ fontFamily: "'Outfit', sans-serif" }}
+                  >
+                    {activeProductName}
+                  </h4>
+                  <Link
+                    to={productViewLink}
+                    className="px-6 py-2.5 bg-slate-900 hover:bg-indigo-600 text-white text-xs font-bold rounded-[5px] uppercase tracking-wider transition-all shadow-sm hover:shadow-md inline-flex items-center gap-2 group active:scale-95"
+                  >
+                    <span>View Product</span>
+                    <FaArrowRight className="text-[10px] group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
         </div>
 
-        
-      </motion.div>
+      </div>
     </section>
   );
 };
 
 export default TopSellingProducts;
+
+

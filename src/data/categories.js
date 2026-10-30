@@ -1,3 +1,5 @@
+import ingestedCategories from './products.json';
+
 const defaultGradient = 'from-indigo-600 via-indigo-500 to-blue-500';
 const defaultAccent = {
   check: 'text-indigo-500',
@@ -8,46 +10,46 @@ const defaultAccent = {
 
 export const categoryConfigs = {
   football: {
-    name: 'Football Kits & Apparel',
-    heroDescription: 'Engineered for high-intensity play. Custom football uniforms featuring double-knit interlock fabric, ventilation panels, and ergonomic styling.',
+    name: 'American Football Uniforms & Gear',
+    heroDescription: 'Engineered for high-impact gridiron action. NFHS & NCAA compliant custom football uniforms featuring heavy double-knit dazzle, reinforced yoke, and integrated pad pants.',
     gradient: defaultGradient,
     accent: { ...defaultAccent },
-    seoTitle: "Custom Football Uniforms & Sublimated Jerseys Wholesale | Zarko",
-    seoDescription: "Order NFHS compliant custom football uniforms wholesale direct from manufacturer. Premium double-knit interlock polyester, ventilation panels, low MOQ.",
-    seoKeywords: "custom football uniforms, wholesale football jerseys, custom football jerseys USA, sublimated football uniforms Sialkot, direct manufacturer football apparel",
+    seoTitle: "Custom American Football Uniforms & Sublimated Jerseys Wholesale | Zarko",
+    seoDescription: "Order NFHS compliant custom American football uniforms wholesale direct from Sialkot factory. Heavyweight dazzle & interlock, integrated 7-pad pants, low 15-set MOQ.",
+    seoKeywords: "custom american football uniforms, wholesale football jerseys, tackle twill football jerseys USA, integrated football pants, sublimated football uniforms Sialkot, direct manufacturer football apparel",
     technicalSpecs: {
-      fabric: "100% Moisture-Wicking Interlock Double-Knit Polyester (180-220 GSM)",
-      printing: "4K Full dye-sublimation or tackle-twill stitching options",
-      compliance: "NFHS & NCAA uniform regulations compliant",
+      fabric: "220-260 GSM Heavyweight Pro-Interlock with Spandex Flex Panels & Dazzle Cowl",
+      printing: "4K Full dye-sublimation or premium stitched tackle-twill numbers",
+      compliance: "NFHS & NCAA gridiron uniform regulations compliant",
       moq: "15 sets per design",
-      shipping: "3-5 business days express delivery to US/Canada",
-      sizing: "Youth XS to Adult 4XL (Detailed size charts available)"
+      shipping: "Door-to-Door DDP Air Express (4-6 business days to USA/Canada)",
+      sizing: "Youth XS to Adult 4XL (Pad-compatible sizing charts available)"
     },
     featured: {
-      name: 'Elite Football Kit Pro',
-      image: '/images/slide1.jpg',
+      name: 'Championship American Football Game Uniform',
+      image: '/images/hero_football.webp',
       description:
-        'Engineered with cutting-edge fabric technology, our professional football kits deliver exceptional breathability, durability, and comfort for match-ready performance.',
+        'Engineered for maximum tackle tear-resistance and speed. Features reinforced double-ply shoulder yoke for pad clearance, spandex side inserts, and breathable moisture-control interlock.',
       details: [
-        'Premium polyester fabric for superior comfort',
-        'Advanced moisture-wicking technology',
-        'Ergonomic fit for unrestricted movement',
-        'Sublimation printing for vibrant, long-lasting colors',
-        'Reinforced seams for enhanced durability',
-        'Lightweight and breathable design',
-        'Custom team branding available',
+        'Heavy-duty 240-260 GSM interlock fabric with dazzle cowl',
+        'Reinforced double-layered shoulders built for pad clearance',
+        'Spandex side and underarm panels for full range of motion',
+        'Full dye-sublimation or custom tackle twill embroidery',
+        'Bar-tacked high stress points for maximum tackle resistance',
+        'Includes customizable game jersey and integrated pad pants',
+        'Custom team roster names and numbers included',
       ],
-      sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL'],
+      sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL', '4XL'],
     },
     products: [
-      { name: 'Pro Football Kit A', image: '/images/slide1.jpg' },
-      { name: 'Pro Football Kit B', image: '/images/slide2.jpg' },
-      { name: 'Training Kit', image: '/images/slide1.jpg' },
-      { name: 'Goalkeeper Set', image: '/images/slide2.jpg' },
-      { name: 'Youth Football Kit', image: '/images/slide1.jpg' },
-      { name: 'Away Jersey', image: '/images/slide2.jpg' },
-      { name: 'Match Day Bundle', image: '/images/slide1.jpg' },
-      { name: 'Training Shorts', image: '/images/slide2.jpg' },
+      { name: 'Elite Game Jersey (Tackle Twill)', image: '/images/hero_football.webp' },
+      { name: 'Integrated 7-Pad Football Pants', image: '/images/slide1.jpg' },
+      { name: 'Porthole Mesh Practice Jersey', image: '/images/slide2.jpg' },
+      { name: 'Compression Padded Girdle', image: '/images/hero_football.webp' },
+      { name: 'Sublimated High School Uniform Set', image: '/images/slide1.jpg' },
+      { name: 'Slotted Football Game Pants', image: '/images/slide2.jpg' },
+      { name: 'Youth Tackle Football Kit', image: '/images/hero_football.webp' },
+      { name: 'Coach Sideline Polo & Tech Shorts', image: '/images/slide1.jpg' },
     ],
   },
   cricket: {
@@ -623,4 +625,82 @@ export const categoryConfigs = {
       { name: 'Pro Player Socks', image: '/images/sports/ice-hockey.webp' },
     ],
   },
+  lacrosse: {
+    name: 'Lacrosse Kits & Teamwear',
+    heroDescription: 'Engineered for high-intensity field performance. Custom lacrosse jerseys, shorts, skorts, and racerback tank tops crafted with moisture-wicking pinhole mesh and reinforced seams.',
+    gradient: defaultGradient,
+    accent: { ...defaultAccent },
+    seoTitle: "Custom Lacrosse Uniforms & Sublimated Jerseys Wholesale | Zarko Sportswear",
+    seoDescription: "Direct factory manufacturer of custom lacrosse jerseys, shorts, skorts, and reversible pinnies for USA high schools, colleges, and clubs. Low 15-set MOQ.",
+    seoKeywords: "custom lacrosse uniforms, wholesale lacrosse jerseys, sublimated lacrosse pinnies, women lacrosse skorts, men lacrosse shorts, USA lacrosse apparel manufacturer",
+    technicalSpecs: {
+      fabric: "160-220 GSM Breathable Pinhole Mesh & 4-Way Stretch Interlock",
+      printing: "High-definition full digital dye-sublimation with Japanese inks",
+      compliance: "USA Lacrosse & NFHS equipment clearance compliant",
+      moq: "15 sets per design",
+      shipping: "Door-to-Door DDP Air Express (4-6 business days to USA/Canada)",
+      sizing: "Youth S-XL and Adult XS-4XL (Athletic pad-compatible cuts)"
+    },
+    featured: {
+      name: 'Pro Lacrosse Championship Game Uniform',
+      image: '/uploads/products/lacrosse/jerseys/1.jpg',
+      description: 'Engineered with lightweight pinhole mesh for maximum pad ventilation and 4-way stretch interlock body. Built to withstand stick checks and high-velocity gameplay.',
+      details: [
+        'Breathable 180 GSM eyelet mesh with reinforced pad clearance',
+        'Raglan athletic cut for full-velocity cradling and shooting motion',
+        'Reinforced double-ply collar and bar-tacked stress zones',
+        '4K Full dye-sublimation with non-fading Japanese inks',
+        'Includes custom game jerseys, motion shorts, and fastpitch skorts',
+        'Complete team roster customization with names and numbers'
+      ],
+      sizes: ['YS', 'YM', 'YL', 'XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL']
+    },
+    products: []
+  },
+  streetwear: {
+    name: 'Sports Wear & Athleisure Streetwear',
+    heroDescription: 'Premium export-grade lifestyle activewear and cut & sew teamwear. Heavyweight French terry hoodies, crewneck sweatshirts, technical pullovers, polo shirts, and tracksuits.',
+    gradient: defaultGradient,
+    accent: { ...defaultAccent },
+    seoTitle: "Custom Sportswear & Streetwear Manufacturer Wholesale | Zarko Sportswear",
+    seoDescription: "OEM private label manufacturer of heavyweight French terry hoodies, sweatshirts, polo shirts, tracksuits, and activewear for USA brands and sports clubs.",
+    seoKeywords: "custom hoodies manufacturer Sialkot, wholesale streetwear supplier, private label tracksuits, custom embroidered sweatshirts, athletic polo shirts wholesale",
+    technicalSpecs: {
+      fabric: "300-380 GSM Heavyweight Cotton/Poly Fleece, French Terry & Pique Poly",
+      printing: "Screen printing, 3D puff embroidery, high-density silicone & sublimation",
+      compliance: "OEKO-TEX Standard 100 eco-friendly certified dyes",
+      moq: "15 pieces per style",
+      shipping: "Door-to-Door DDP Air Express (4-6 business days to USA/Canada)",
+      sizing: "Unisex XS to 4XL (Oversized, regular, and slim athletic fits available)"
+    },
+    featured: {
+      name: 'Heavyweight French Terry Streetwear Hoodie',
+      image: '/uploads/products/streetwear/hoodies/1.jpg',
+      description: 'Constructed from luxurious 380 GSM combed cotton-rich fleece with a double-layered structured hood, front kangaroo pocket, and heavy 2x2 lycra ribbing.',
+      details: [
+        '380 GSM ultra-heavyweight combed cotton fleece',
+        'Double-layered structured hood without synthetic drawcord fraying',
+        'Drop-shoulder modern athletic streetwear silhouette',
+        'Pre-shrunk premium yarn to prevent post-wash shrinkage',
+        'Available with 3D high-density embroidery, screen print, or silicone patch',
+        'Low 15-piece factory direct MOQ with rapid international dispatch'
+      ],
+      sizes: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL']
+    },
+    products: []
+  }
 };
+
+// Automatically sync live Cloudinary products from products.json into fallbacks
+(ingestedCategories || []).forEach((c) => {
+  if (categoryConfigs[c.slug]) {
+    if (Array.isArray(c.products) && c.products.length > 0) {
+      categoryConfigs[c.slug].products = c.products;
+    }
+    if (c.featured?.image && categoryConfigs[c.slug].featured) {
+      categoryConfigs[c.slug].featured.image = c.featured.image;
+    }
+  }
+});
+
+

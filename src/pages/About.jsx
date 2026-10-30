@@ -254,10 +254,10 @@ const About = () => {
               Ethical Production & International Standards
             </h2>
             <p className="mt-2 text-sm text-gray-600 max-w-2xl mx-auto">
-              Our factory operates under compliance regulations to verify safe working conditions and high production quality.
+              Our Sialkot manufacturing facility operates under verified international compliance frameworks ensuring safe labor, premium quality, and full US league compliance.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-4 max-w-6xl mx-auto">
+          <div className="grid gap-6 md:grid-cols-5 max-w-7xl mx-auto">
             <div className="bg-white border border-indigo-50 p-6 rounded-2xl shadow-sm text-center">
               <span className="text-xs font-bold text-indigo-600 block mb-1">BSCI CERTIFIED</span>
               <h3 className="font-semibold text-indigo-950 text-base">Ethical Standards</h3>
@@ -276,15 +276,49 @@ const About = () => {
               <span className="text-xs font-bold text-indigo-600 block mb-1">OEKO-TEX 100</span>
               <h3 className="font-semibold text-indigo-950 text-base">Eco-Friendly Inks</h3>
               <p className="text-xs text-gray-500 mt-2 leading-relaxed">
-                Tested free from harmful substances, ensuring safety for athletes and eco-friendly footprint.
+                Tested free from harmful toxins, hypoallergenic for athletes and environmentally safe.
               </p>
             </div>
             <div className="bg-white border border-indigo-50 p-6 rounded-2xl shadow-sm text-center">
-              <span className="text-xs font-bold text-indigo-600 block mb-1">USA COMPLIANT</span>
-              <h3 className="font-semibold text-indigo-950 text-base">Tournament Ready</h3>
+              <span className="text-xs font-bold text-indigo-600 block mb-1">NFHS & NCAA</span>
+              <h3 className="font-semibold text-indigo-950 text-base">US Compliant</h3>
               <p className="text-xs text-gray-500 mt-2 leading-relaxed">
-                Strict alignment with NFHS, NCAA, and US Soccer rules for uniform sizes, numbering, and markings.
+                Strict alignment with US High School (NFHS) & NCAA numbering, cut, and padding rules.
               </p>
+            </div>
+            <div className="bg-white border border-indigo-50 p-6 rounded-2xl shadow-sm text-center">
+              <span className="text-xs font-bold text-indigo-600 block mb-1">SCCI & PSGMEA</span>
+              <h3 className="font-semibold text-indigo-950 text-base">Registered Exporter</h3>
+              <p className="text-xs text-gray-500 mt-2 leading-relaxed">
+                Officially accredited member of the Sialkot Chamber of Commerce & Industry.
+              </p>
+            </div>
+          </div>
+
+          {/* B2B Buyer Peace of Mind Guarantees */}
+          <div className="mt-12 max-w-7xl mx-auto bg-gradient-to-r from-indigo-900 to-indigo-950 rounded-3xl p-8 md:p-10 text-white shadow-xl">
+            <div className="grid md:grid-cols-3 gap-8 text-left">
+              <div className="border-l-2 border-indigo-400/50 pl-5">
+                <span className="text-xs font-bold uppercase tracking-wider text-indigo-300">Defect-Free Guarantee</span>
+                <h4 className="text-lg font-bold text-white mt-1">100% Free Remake Policy</h4>
+                <p className="text-xs text-indigo-200/80 mt-2 leading-relaxed">
+                  If any piece arrives with a stitching flaw, printing error, or size chart mismatch, we reprint and express reship it immediately at zero charge to you.
+                </p>
+              </div>
+              <div className="border-l-2 border-indigo-400/50 pl-5">
+                <span className="text-xs font-bold uppercase tracking-wider text-indigo-300">Zero Surprise Duties</span>
+                <h4 className="text-lg font-bold text-white mt-1">Door-to-Door DDP Shipping</h4>
+                <p className="text-xs text-indigo-200/80 mt-2 leading-relaxed">
+                  All orders shipped to the USA and Canada are Delivered Duty Paid (DDP). Customs clearance and import tariffs are fully pre-handled—no surprise fees at delivery.
+                </p>
+              </div>
+              <div className="border-l-2 border-indigo-400/50 pl-5">
+                <span className="text-xs font-bold uppercase tracking-wider text-indigo-300">Transparent MOQ</span>
+                <h4 className="text-lg font-bold text-white mt-1">Low 15-Set Minimum Order</h4>
+                <p className="text-xs text-indigo-200/80 mt-2 leading-relaxed">
+                  Order as few as 15 custom sets per design with pre-production physical sampling available. Re-orders for new roster players have zero minimum penalties.
+                </p>
+              </div>
             </div>
           </div>
         </div>

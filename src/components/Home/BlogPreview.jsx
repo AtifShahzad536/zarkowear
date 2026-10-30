@@ -82,10 +82,10 @@ const BlogPreview = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="flex flex-col bg-white border border-slate-200 rounded-none overflow-hidden hover:shadow-md transition-shadow duration-300 group"
+                className="flex flex-col bg-white border border-slate-200 rounded-[5px] overflow-hidden hover:shadow-md transition-shadow duration-300 group"
               >
                 {/* Large Thumbnail */}
-                <Link to={`/blogs/${featuredBlog.slug}`} className="aspect-[1.8] relative overflow-hidden bg-slate-100 block rounded-none">
+                <Link to={`/blogs/${featuredBlog.slug}`} className="aspect-[1.8] relative overflow-hidden bg-slate-100 block rounded-t-[5px]">
                   {featuredBlog.coverImage ? (
                     <img
                       src={imageUrl(featuredBlog.coverImage, { width: 1200, quality: 'auto:best' })}
@@ -93,7 +93,7 @@ const BlogPreview = () => {
                       className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-slate-150 text-slate-400 font-black uppercase text-2xl rounded-none">
+                    <div className="w-full h-full flex items-center justify-center bg-slate-150 text-slate-400 font-black uppercase text-2xl">
                       ZARKO SPORTSWEAR
                     </div>
                   )}
@@ -143,19 +143,19 @@ const BlogPreview = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.05 + idx * 0.05, duration: 0.4 }}
-                  className="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-none overflow-hidden hover:shadow-md transition-shadow duration-300 group h-auto sm:h-32 shrink-0"
+                  className="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-[5px] overflow-hidden hover:shadow-md transition-shadow duration-300 group h-auto sm:h-32 shrink-0"
                 >
                   {/* Small Thumbnail */}
-                  <Link to={`/blogs/${blog.slug}`} className="w-full sm:w-32 aspect-[1.7] sm:aspect-square relative overflow-hidden bg-slate-100 block shrink-0 rounded-none">
+                  <Link to={`/blogs/${blog.slug}`} className="w-full sm:w-32 aspect-[1.7] sm:aspect-square relative overflow-hidden bg-slate-100 block shrink-0">
                     {blog.coverImage ? (
                       <img
                         src={imageUrl(blog.coverImage, { width: 600, quality: 'auto:best' })}
                         alt="Zarko Sportswear Blog Thumbnail"
                         loading="lazy"
-                        className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 rounded-none"
+                        className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-slate-150 text-slate-400 font-black uppercase text-[10px] rounded-none">
+                      <div className="w-full h-full flex items-center justify-center bg-slate-150 text-slate-400 font-black uppercase text-[10px]">
                         ZARKO
                       </div>
                     )}

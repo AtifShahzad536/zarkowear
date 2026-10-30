@@ -3,7 +3,7 @@ import SeoHead from '../components/SeoHead';
 import { motion, AnimatePresence } from 'framer-motion';
 import Hero from '../components/Hero';
 import { Link } from 'react-router-dom';
-import { FaAward, FaPalette, FaGlobeAmericas, FaRunning, FaArrowRight, FaPhoneAlt, FaStar, FaCheckCircle, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaAward, FaPalette, FaGlobeAmericas, FaRunning, FaArrowRight, FaPhoneAlt, FaStar, FaCheckCircle, FaChevronLeft, FaChevronRight, FaWhatsapp } from 'react-icons/fa';
 import { FiLayers, FiGlobe, FiSliders, FiShoppingBag } from 'react-icons/fi';
 import homeSeo from '../seo/homeSeo';
 import { clubs } from '../data/home/partners';
@@ -74,136 +74,200 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Quick Categories Redesign (Option 1) */}
-      <section className="bg-[#0A0C16] text-white border-b border-white/5 py-20 sm:py-28 relative overflow-hidden">
-        {/* Background Glow */}
-        <div className="absolute top-[20%] left-[50%] -translate-x-1/2 w-[600px] h-[300px] bg-indigo-900/10 rounded-full blur-[120px] pointer-events-none" />
+      {/* Explore Our Sportswear Collections Section - Dark Blue Theme with Compact Image Cards */}
+      <section className="bg-gradient-to-b from-[#070B16] via-[#0C1428] to-[#070B16] border-b border-blue-900/40 py-14 sm:py-20 relative overflow-hidden text-white">
+        {/* Subtle Ambient Glows */}
+        <div className="absolute top-0 left-1/4 w-[500px] h-[350px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[350px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
 
-        <div className="max-w-[94%] mx-auto px-4 relative z-10">
+        <div className="max-w-[94%] xl:max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 relative z-10">
           
-          {/* Header area */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
-            <div>
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-indigo-400">Shop by sport</p>
-              <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                Elite kits and accessories for every squad
-              </h2>
-              <p className="mt-2 text-xs sm:text-sm text-slate-400 max-w-xl leading-relaxed">
-                Browse export-grade uniforms and gear packages optimized for professional club play, or customize your designs.
-              </p>
+          {/* Header Area */}
+          <div className="text-center relative mb-10 sm:mb-12">
+            {/* Top Pill Badge */}
+            <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-blue-950/70 border border-blue-500/30 text-blue-400 text-[11px] font-extrabold uppercase tracking-widest shadow-inner mb-2">
+              PREMIUM SPORTS WEAR
             </div>
-            <Link 
-              to="/custom" 
-              className="inline-flex items-center gap-2 rounded-none border border-white/10 bg-white/5 hover:bg-white/10 px-6 py-3 text-xs font-bold text-white transition-all uppercase tracking-wider shrink-0"
-            >
-              Build your own collection →
-            </Link>
+
+            {/* Spaced Pre-header */}
+            <p className="text-slate-400 font-bold tracking-[0.35em] text-xs sm:text-sm uppercase">
+              E X P L O R E &nbsp; O U R
+            </p>
+
+            {/* Main Headline */}
+            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mt-1" style={{ fontFamily: "'Outfit', sans-serif" }}>
+              Sportswear <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300">Collections</span>
+            </h2>
+
+            {/* Subtitle */}
+            <p className="mt-3 text-xs sm:text-sm md:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              High-quality, custom sportswear designed for performance, comfort and style. Perfect for teams, clubs and organizations.
+            </p>
+
+            {/* Top Right Script Accent */}
+            <div className="hidden lg:block absolute right-4 xl:right-8 top-1 rotate-[-4deg] select-none pointer-events-none text-right">
+              <span className="text-[#38BDF8] font-black text-xl xl:text-2xl tracking-wide font-serif italic block drop-shadow-[0_2px_10px_rgba(56,189,248,0.3)]">
+                Custom Gear<br />for Champions
+              </span>
+              <div className="h-0.5 bg-gradient-to-r from-transparent via-[#38BDF8] to-[#38BDF8] rounded-full w-24 ml-auto mt-1" />
+            </div>
           </div>
 
-          {/* Option 1 Sports Grid - 4 Columns */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Cards Grid - Compact Image-Only Cards (5px rounded) */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-5">
             {[
               {
-                title: 'Football',
-                tagline: 'Professional match kits & gear',
+                category: 'FOOTBALL',
+                title: 'Football Kits & Apparel',
                 to: '/football',
                 slug: 'football',
-                image: '/images/sports/football.webp'
+                image: '/images/sports/football.webp',
+                badge: 'Play United'
               },
               {
-                title: 'Cricket',
-                tagline: 'Premium club uniforms & wear',
-                to: '/cricket',
-                slug: 'cricket',
-                image: '/images/sports/cricket.webp'
-              },
-              {
-                title: 'Basketball',
-                tagline: 'Elite sublimated jerseys',
-                to: '/basketball',
-                slug: 'basketball',
-                image: '/images/sports/basketball.webp'
-              },
-              {
-                title: 'Wrestling',
-                tagline: 'Heavy-duty performance singlets',
-                to: '/wrestling',
-                slug: 'wrestling',
-                image: '/images/sports/wrestling.webp'
-              },
-              {
-                title: 'Softball',
-                tagline: 'Custom jerseys & team apparel',
-                to: '/softball',
-                slug: 'softball',
-                image: '/images/sports/softball.webp'
-              },
-              {
-                title: 'Soccer',
-                tagline: 'Performance soccer kits',
-                to: '/soccer',
-                slug: 'soccer',
-                image: '/images/sports/soccer.webp'
-              },
-              {
-                title: 'Volleyball',
-                tagline: 'Elite volleyball uniforms',
-                to: '/volleyball',
-                slug: 'volleyball',
-                image: '/images/sports/volleyball.webp'
-              },
-              {
-                title: 'Ice Hockey',
-                tagline: 'Durable pro hockey jerseys',
+                category: 'HOCKEY',
+                title: 'Hockey Kits & Apparel',
                 to: '/ice-hockey',
                 slug: 'ice-hockey',
-                image: '/images/sports/ice-hockey.webp'
+                image: '/images/sports/ice-hockey.webp',
+                badge: 'Pro League'
+              },
+              {
+                category: 'RUGBY',
+                title: 'Rugby Kits & Apparel',
+                to: '/rugby',
+                slug: 'rugby',
+                image: '/images/sports/cricket.webp',
+                badge: 'Match Ready'
+              },
+              {
+                category: 'TENNIS',
+                title: 'Tennis Wear',
+                to: '/tennis',
+                slug: 'tennis',
+                image: '/images/sports/volleyball.webp',
+                badge: 'Tour Grade'
+              },
+              {
+                category: 'BASKETBALL',
+                title: 'Basketball Uniforms',
+                to: '/basketball',
+                slug: 'basketball',
+                image: '/images/sports/basketball.webp',
+                badge: 'Slam Dunk'
+              },
+              {
+                category: 'SOCCER',
+                title: 'Soccer Kits & Matchwear',
+                to: '/soccer',
+                slug: 'soccer',
+                image: '/images/sports/soccer.webp',
+                badge: 'Club Series'
+              },
+              {
+                category: 'BASEBALL',
+                title: 'Baseball Kits & Uniforms',
+                to: '/baseball',
+                slug: 'baseball',
+                image: '/images/sports/softball.webp',
+                badge: 'Diamond Series'
+              },
+              {
+                category: 'SOFTBALL',
+                title: 'Fastpitch Softball Uniforms',
+                to: '/softball',
+                slug: 'softball',
+                image: '/images/sports/softball.webp',
+                badge: 'Fastpitch Pro'
               }
             ].map(sport => {
               const custom = dbCategoryImages.find(c => c.slug === sport.slug);
               return {
                 ...sport,
-                image: custom && custom.image ? imageUrl(custom.image, { width: 1200, quality: 'auto:best' }) : sport.image
+                image: custom && custom.image ? imageUrl(custom.image, { width: 1000, quality: 'auto:best' }) : sport.image
               };
             }).map((sport, i) => (
               <motion.div
                 key={sport.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
-                
-                transition={{ duration: 0.45, delay: i * 0.05 }}
-                className="relative h-96 w-full overflow-hidden rounded-none border border-white/10 border-l-4 border-l-transparent hover:border-l-indigo-500 cursor-pointer group transition-all duration-300"
+                transition={{ duration: 0.4, delay: i * 0.04 }}
               >
-                <Link to={sport.to} className="block w-full h-full">
-                  {/* Full size action image */}
+                <Link
+                  to={sport.to}
+                  className="group relative block aspect-[4/5] sm:h-64 lg:h-72 w-full rounded-[5px] overflow-hidden border border-white/10 hover:border-blue-500/60 shadow-lg hover:shadow-[0_8px_30px_rgba(37,99,235,0.25)] transition-all duration-300 bg-slate-900"
+                >
+                  {/* Category Image */}
                   <img
                     src={sport.image}
-                    alt="Zarko Custom Sportswear Category"
-                    title="Zarko Custom Sportswear Category"
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                    loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholder.jpg"; }}
+                    alt={`Zarko ${sport.title}`}
+                    title={`Zarko ${sport.title}`}
+                    className="w-full h-full object-cover transform group-hover:scale-108 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholder.jpg"; }}
                   />
-                  
-                  {/* Dark overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-90 transition-all duration-500 z-10" />
 
-                  {/* White Typography inside bottom card */}
-                  <div className="absolute inset-0 z-20 flex flex-col justify-end p-6">
-                    <div>
-                      <h3 className="text-xl font-black text-white uppercase tracking-wider drop-shadow-md" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                  {/* Dark Vignette / Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-[#060913]/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity duration-300 pointer-events-none" />
+
+                  {/* Top Badge */}
+                  {sport.badge && (
+                    <span className="absolute top-2.5 left-2.5 text-[9px] font-bold text-white/90 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded-[5px] border border-white/10 uppercase tracking-wider">
+                      {sport.badge}
+                    </span>
+                  )}
+
+                  {/* Subtle Category Info on Image (Bottom) */}
+                  <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 text-left flex items-end justify-between z-10">
+                    <div className="min-w-0 pr-2">
+                      <span className="text-[10px] font-black text-blue-400 uppercase tracking-widest block mb-0.5">
+                        {sport.category}
+                      </span>
+                      <h3 className="text-xs sm:text-sm lg:text-base font-black text-white group-hover:text-blue-300 transition-colors uppercase leading-tight line-clamp-1" style={{ fontFamily: "'Outfit', sans-serif" }}>
                         {sport.title}
                       </h3>
-                      <p className="text-[11px] text-slate-300 font-semibold leading-relaxed mt-2 opacity-80 max-h-0 group-hover:max-h-16 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out">
-                        {sport.tagline}
-                      </p>
                     </div>
-                    <div className="pt-4 text-xs font-bold text-indigo-400 group-hover:text-indigo-300 flex items-center gap-1">
-                      Explore <span className="group-hover:translate-x-1 transition-transform">→</span>
+
+                    {/* Compact Explore Arrow Icon */}
+                    <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-blue-600/90 group-hover:bg-blue-500 text-white flex items-center justify-center text-xs shrink-0 transform group-hover:translate-x-0.5 transition-all shadow-md">
+                      <FaArrowRight className="text-[9px]" />
                     </div>
                   </div>
                 </Link>
               </motion.div>
             ))}
+          </div>
+
+          {/* Bottom Section Feature Bar (Dark Theme) */}
+          <div className="mt-12 pt-8 border-t border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-6">
+            {/* 3 Value Props */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-left w-full md:w-auto">
+              <div className="sm:border-r sm:border-slate-800/80 sm:pr-8">
+                <h4 className="text-xs sm:text-sm font-bold text-white">Custom Designs</h4>
+                <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5">Your style, your way</p>
+              </div>
+              <div className="sm:border-r sm:border-slate-800/80 sm:pr-8">
+                <h4 className="text-xs sm:text-sm font-bold text-white">Premium Quality</h4>
+                <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5">Export-grade fabrics</p>
+              </div>
+              <div>
+                <h4 className="text-xs sm:text-sm font-bold text-white">Global Shipping</h4>
+                <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5">Worldwide delivery</p>
+              </div>
+            </div>
+
+            {/* Right Contact Pill Banner */}
+            <div className="flex items-center gap-3 sm:gap-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-xs px-5 sm:px-6 py-2.5 rounded-full shadow-lg border border-blue-400/30 shrink-0 transition-all">
+              <a href="https://www.zarkosportswear.com" className="flex items-center gap-1.5 hover:text-blue-100 transition-colors">
+                <FiGlobe className="text-sm" />
+                <span>www.zarkosportswear.com</span>
+              </a>
+              <span className="text-blue-200">|</span>
+              <a href="https://wa.me/923039200750" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-green-300 transition-colors">
+                <FaWhatsapp className="text-sm text-green-300" />
+                <span>+92 303 9200750</span>
+              </a>
+            </div>
           </div>
 
         </div>

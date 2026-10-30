@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import { Outlet, useLocation } from 'react-router-dom';
 import ScrollTopButton from './components/ScrollTopButton';
+import { Toaster } from 'react-hot-toast';
 
 // Create a context to track content loading state
 export const ContentLoadedContext = React.createContext({
@@ -85,6 +86,21 @@ function App() {
           </main>
           <Footer />
           <ScrollTopButton />
+          <Toaster
+            position="bottom-right"
+            toastOptions={{
+              duration: 3500,
+              style: {
+                borderRadius: '5px',
+                background: '#0f172a',
+                color: '#ffffff',
+                fontSize: '12px',
+                fontWeight: '500',
+                border: '1px solid rgba(255,255,255,0.1)',
+                boxShadow: '0 10px 25px -5px rgba(0,0,0,0.3)',
+              },
+            }}
+          />
         </div>
       )}
     </ContentLoadedContext.Provider>

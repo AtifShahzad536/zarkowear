@@ -61,7 +61,7 @@ const Testimonials = () => {
         <div ref={containerRef}>
         {!loading && !error && list.length > 0 && (
           !isSwiperInView ? (
-            <div className="h-[400px] w-full bg-gray-50/50 animate-pulse rounded-2xl"></div>
+            <div className="h-[400px] w-full bg-gray-50/50 animate-pulse rounded-[5px]"></div>
           ) : (
           <Swiper
             modules={[Autoplay, Pagination]}
@@ -83,7 +83,7 @@ const Testimonials = () => {
                   
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   whileHover={{ y: -8, scale: 1.01 }}
-                  className="relative h-full rounded-none bg-white/95 backdrop-blur px-6 pt-12 pb-8 shadow-[0_16px_45px_-30px_rgba(10,12,22,0.8)] ring-1 ring-gray-150 hover:ring-gray-200 transition"
+                  className="relative h-full rounded-[5px] bg-white/95 backdrop-blur px-6 pt-12 pb-8 shadow-[0_16px_45px_-30px_rgba(10,12,22,0.8)] ring-1 ring-gray-150 hover:ring-gray-200 transition"
                 >
                   <span className="absolute top-4 left-6 text-5xl text-gray-200">“</span>
                   <div className="flex items-center gap-1 text-amber-400 mb-4 mt-4">
