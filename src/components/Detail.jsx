@@ -94,6 +94,17 @@ const ProductDetail = () => {
     setInquiryError('');
     setIsInquiryModalOpen(true);
   };
+
+  // Lock background body scroll whenever any modal popup is open
+  useEffect(() => {
+    if (isInquiryModalOpen || quickViewProduct || isSizeChartOpen || isShareModalOpen) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = prevOverflow;
+      };
+    }
+  }, [isInquiryModalOpen, quickViewProduct, isSizeChartOpen, isShareModalOpen]);
   const [product, setProduct] = useState(defaultProduct);
   const [categoriesList, setCategoriesList] = useState([]);
   const [relatedProductsState, setRelatedProductsState] = useState([]);
@@ -843,20 +854,22 @@ const ProductDetail = () => {
       {/* ── INQUIRY MODAL (DUAL MODE: CUSTOM ONLINE FORM OR WHATSAPP DIRECT) ── */}
       {isInquiryModalOpen && (
         <div 
-          className="fixed inset-0 z-50 bg-slate-900/75 backdrop-blur-xs flex items-center justify-center p-3 sm:p-5 overflow-y-auto animate-fade-in"
+          data-lenis-prevent="true"
+          className="fixed inset-0 z-50 bg-slate-900/75 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto animate-fade-in"
           onClick={() => setIsInquiryModalOpen(false)}
         >
           <div 
-            className="relative w-full max-w-lg bg-white border border-slate-200 shadow-2xl my-auto flex flex-col max-h-[90vh] overflow-hidden"
+            data-lenis-prevent="true"
+            className="relative w-full max-w-lg bg-white border border-slate-200 shadow-2xl my-auto flex flex-col max-h-[88vh] overflow-hidden"
             style={{ borderRadius: '5px' }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* 1. Modal Fixed Header (Always visible at top) */}
-            <div className="p-4 sm:p-5 pb-3 border-b border-slate-100 shrink-0 bg-white relative">
+            <div className="p-4 sm:p-4.5 pb-2.5 border-b border-slate-100 shrink-0 bg-white relative">
               {/* Close Button */}
               <button
                 onClick={() => setIsInquiryModalOpen(false)}
-                className="absolute top-3.5 right-3.5 w-7 h-7 bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition cursor-pointer"
+                className="absolute top-3 right-3 w-7 h-7 bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition cursor-pointer"
                 style={{ borderRadius: '5px' }}
                 title="Close"
               >
@@ -872,7 +885,7 @@ const ProductDetail = () => {
                 </span>
               </div>
               <h3 
-                className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight"
+                className="text-base sm:text-lg font-bold text-slate-900 tracking-tight"
                 style={{ fontFamily: "'Outfit', sans-serif" }}
               >
                 Inquiry & Custom Quote
@@ -882,11 +895,11 @@ const ProductDetail = () => {
               </p>
 
               {/* 2-Option Selector Tabs: Custom Online Form vs Direct WhatsApp */}
-              <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-100 rounded-[5px] mt-3">
+              <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-100 rounded-[5px] mt-2.5">
                 <button
                   type="button"
                   onClick={() => setInquiryMode('online')}
-                  className={`py-2 px-3 text-xs font-semibold uppercase tracking-wider transition rounded-[4px] flex items-center justify-center gap-1.5 cursor-pointer ${
+                  className={`py-1.5 px-3 text-xs font-semibold uppercase tracking-wider transition rounded-[4px] flex items-center justify-center gap-1.5 cursor-pointer ${
                     inquiryMode === 'online'
                       ? 'bg-slate-900 text-white shadow-2xs'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
@@ -898,7 +911,7 @@ const ProductDetail = () => {
                 <button
                   type="button"
                   onClick={() => setInquiryMode('whatsapp')}
-                  className={`py-2 px-3 text-xs font-semibold uppercase tracking-wider transition rounded-[4px] flex items-center justify-center gap-1.5 cursor-pointer ${
+                  className={`py-1.5 px-3 text-xs font-semibold uppercase tracking-wider transition rounded-[4px] flex items-center justify-center gap-1.5 cursor-pointer ${
                     inquiryMode === 'whatsapp'
                       ? 'bg-emerald-600 text-white shadow-2xs'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
@@ -910,16 +923,26 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            {/* 2. Scrollable Modal Content Body */}
-            <div className="p-4 sm:p-5 overflow-y-auto space-y-4 flex-1 overscroll-contain">
+            {/* 2. Scrollable Modal Content Body (data-lenis-prevent prevents Lenis from hijacking mouse scroll) */}
+            <div 
+              data-lenis-prevent="true"
+              onWheel={(e) => {
+                e.stopPropagation();
+              }}
+              onTouchMove={(e) => {
+                e.stopPropagation();
+              }}
+              className="p-4 sm:p-5 overflow-y-auto space-y-3.5 flex-1 overscroll-contain"
+              style={{ overscrollBehavior: 'contain', WebkitOverflowScrolling: 'touch' }}
+            >
               
               {/* ── OPTION 1: CUSTOM ONLINE INQUIRY FORM ── */}
               {inquiryMode === 'online' && (
                 <>
                   {inquirySuccess ? (
                     /* Success Confirmation View */
-                    <div className="py-3 space-y-3.5 text-center animate-fade-in">
-                      <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
+                    <div className="py-3 space-y-3 text-center animate-fade-in">
+                      <div className="w-11 h-11 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
                         <FiCheckCircle className="text-2xl" />
                       </div>
                       <div className="space-y-1">
@@ -977,7 +1000,7 @@ const ProductDetail = () => {
                     </div>
                   ) : (
                     /* Form Input View */
-                    <form onSubmit={handleSubmitInquiry} className="space-y-3 animate-fade-in">
+                    <form onSubmit={handleSubmitInquiry} className="space-y-2.5 animate-fade-in">
                       {inquiryError && (
                         <div className="p-2.5 bg-rose-50 border border-rose-200 text-rose-700 text-xs rounded-[5px]">
                           {inquiryError}
@@ -989,17 +1012,17 @@ const ProductDetail = () => {
                         name="name"
                         placeholder="Coach / Manager Full Name *"
                         required
-                        className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
+                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
                         style={{ borderRadius: '5px' }}
                       />
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         <input
                           type="email"
                           name="email"
                           placeholder="Team / School Email *"
                           required
-                          className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
+                          className="w-full px-3 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
                           style={{ borderRadius: '5px' }}
                         />
                         <input
@@ -1007,19 +1030,19 @@ const ProductDetail = () => {
                           name="phone"
                           placeholder="WhatsApp / Phone (03039200750) *"
                           required
-                          className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
+                          className="w-full px-3 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
                           style={{ borderRadius: '5px' }}
                         />
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         <input
                           type="text"
                           name="quantity"
                           defaultValue={selectedQty}
                           placeholder="Estimated Quantity (MOQ 15 Sets) *"
                           required
-                          className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
+                          className="w-full px-3 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
                           style={{ borderRadius: '5px' }}
                         />
                         <input
@@ -1027,7 +1050,7 @@ const ProductDetail = () => {
                           name="address"
                           placeholder="Shipping Destination (City & Country) *"
                           required
-                          className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
+                          className="w-full px-3 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
                           style={{ borderRadius: '5px' }}
                         />
                       </div>
@@ -1036,22 +1059,22 @@ const ProductDetail = () => {
                         type="text"
                         name="company"
                         placeholder="Club / Academy / Brand Name (Optional)"
-                        className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
+                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
                         style={{ borderRadius: '5px' }}
                       />
 
                       <textarea
                         name="message"
-                        rows="3"
+                        rows="2.5"
                         placeholder="Specify custom numbers, player names, Pantone color codes, logo placements, or required delivery deadline..."
-                        className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition resize-none"
+                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition resize-none"
                         style={{ borderRadius: '5px' }}
                       ></textarea>
 
                       <button
                         type="submit"
                         disabled={inquiryLoading}
-                        className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold uppercase tracking-wider transition-all duration-150 shadow-2xs flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                        className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold uppercase tracking-wider transition-all duration-150 shadow-2xs flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
                         style={{ borderRadius: '5px' }}
                       >
                         {inquiryLoading ? (
@@ -1090,42 +1113,35 @@ const ProductDetail = () => {
                 </>
               )}
 
-              {/* ── OPTION 2: DIRECT WHATSAPP INQUIRY ── */}
+              {/* ── OPTION 2: DIRECT WHATSAPP INQUIRY (COMPACT & IMMEDIATELY VISIBLE) ── */}
               {inquiryMode === 'whatsapp' && (
-                <div className="space-y-3.5 animate-fade-in">
-                  <div className="p-3 bg-emerald-50/90 border border-emerald-100 rounded-[5px] flex items-start gap-2.5">
-                    <div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-0.5">
-                      <FaWhatsapp className="text-base" />
+                <div className="space-y-3 animate-fade-in">
+                  <div className="px-3.5 py-2.5 bg-emerald-50 border border-emerald-100 rounded-[5px] flex items-center justify-between text-xs">
+                    <div className="flex items-center gap-2 text-emerald-900 font-bold">
+                      <FaWhatsapp className="text-emerald-600 text-lg shrink-0" />
+                      <span>Direct Factory WhatsApp: +92-303-9200750</span>
                     </div>
-                    <div className="text-xs">
-                      <span className="font-bold text-emerald-900 block">
-                        Direct Factory Line: +92-303-9200750
-                      </span>
-                      <p className="text-slate-600 mt-0.5 text-[11px] leading-relaxed font-normal">
-                        Connect instantly with our Sialkot factory for wholesale rates, 3D mockups, and fast express dispatch to USA.
-                      </p>
-                    </div>
+                    <span className="text-[10px] text-emerald-700 bg-emerald-100/70 font-semibold px-2 py-0.5 rounded-[4px]">
+                      Instant Reply
+                    </span>
                   </div>
 
-                  {/* Specs Summary Box */}
-                  <div className="p-3 bg-slate-50 border border-slate-200 rounded-[5px] text-xs space-y-1.5">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
-                      Inquiry Summary:
-                    </span>
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">Item:</span>
-                      <span className="font-semibold text-slate-900">{product.name}</span>
+                  {/* Specs Summary 2x2 Grid */}
+                  <div className="grid grid-cols-2 gap-2 p-2.5 bg-slate-50 border border-slate-200 rounded-[5px] text-[11px]">
+                    <div>
+                      <span className="text-slate-400 block text-[9.5px] uppercase font-medium">Selected Item</span>
+                      <span className="font-semibold text-slate-800 line-clamp-1">{product.name}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">Size:</span>
-                      <span className="font-semibold text-slate-900">{selectedSize}</span>
+                    <div>
+                      <span className="text-slate-400 block text-[9.5px] uppercase font-medium">Size Scale</span>
+                      <span className="font-semibold text-slate-800">{selectedSize}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">Colorway:</span>
-                      <span className="font-semibold text-slate-900">{selectedColorScheme}</span>
+                    <div>
+                      <span className="text-slate-400 block text-[9.5px] uppercase font-medium">Colorway</span>
+                      <span className="font-semibold text-slate-800 line-clamp-1">{selectedColorScheme}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">Minimum Order (MOQ):</span>
+                    <div>
+                      <span className="text-slate-400 block text-[9.5px] uppercase font-medium">Min Order (MOQ)</span>
                       <span className="font-semibold text-indigo-600">15 Sets / Design</span>
                     </div>
                   </div>
@@ -1140,7 +1156,7 @@ const ProductDetail = () => {
                       value={whatsappCustomNote}
                       onChange={(e) => setWhatsappCustomNote(e.target.value)}
                       placeholder="e.g. Need 25 sets for Varsity Team with custom numbers and crest logo..."
-                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-600 focus:border-emerald-600 transition resize-none"
+                      className="w-full px-3 py-1.5 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-600 focus:border-emerald-600 transition resize-none"
                       style={{ borderRadius: '5px' }}
                     ></textarea>
                   </div>
@@ -1152,7 +1168,7 @@ const ProductDetail = () => {
                       handleWhatsAppQuote(whatsappCustomNote);
                       setIsInquiryModalOpen(false);
                     }}
-                    className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider transition-all duration-150 shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3 bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider transition-all duration-150 shadow-md flex items-center justify-center gap-2 cursor-pointer"
                     style={{ borderRadius: '5px' }}
                   >
                     <FaWhatsapp className="text-lg" />
@@ -1187,10 +1203,12 @@ const ProductDetail = () => {
       {/* ── QUICK VIEW MODAL (ROUNDED 5PX WITH WHATSAPP 03039200750) ── */}
       {quickViewProduct && (
         <div 
+          data-lenis-prevent="true"
           className="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-5 animate-fade-in"
           onClick={() => setQuickViewProduct(null)}
         >
           <div 
+            data-lenis-prevent="true"
             className="relative w-full max-w-3xl bg-white shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[92vh] border border-slate-200"
             style={{ borderRadius: '5px' }}
             onClick={(e) => e.stopPropagation()}
