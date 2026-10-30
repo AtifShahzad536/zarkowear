@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { imageUrl, getCategories } from '../services/api';
+import { imageUrl, getCategories, submitContactInquiry } from '../services/api';
 import toast from 'react-hot-toast';
 import SizeChartModal from './SizeChartModal';
 import SeoHead from './SeoHead';
@@ -16,7 +16,10 @@ import {
   FaEye,
   FaFacebookF,
   FaTwitter,
-  FaEnvelope
+  FaEnvelope,
+  FaSpinner,
+  FaPaperPlane,
+  FaExternalLinkAlt
 } from 'react-icons/fa';
 import {
   FiCheckCircle,
@@ -74,11 +77,23 @@ const ProductDetail = () => {
 
   const [isSizeChartOpen, setIsSizeChartOpen] = useState(false);
   const [isInquiryModalOpen, setIsInquiryModalOpen] = useState(false);
+  const [inquiryMode, setInquiryMode] = useState('online'); // 'online' | 'whatsapp'
+  const [inquiryLoading, setInquiryLoading] = useState(false);
+  const [inquirySuccess, setInquirySuccess] = useState(null);
+  const [inquiryError, setInquiryError] = useState('');
+  const [whatsappCustomNote, setWhatsappCustomNote] = useState('');
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState(null);
   const [quickViewSize, setQuickViewSize] = useState('L');
   const [quickViewVolume, setQuickViewVolume] = useState('15 Sets (MOQ)');
+
+  const handleOpenInquiryModal = (mode = 'online') => {
+    setInquiryMode(mode);
+    setInquirySuccess(null);
+    setInquiryError('');
+    setIsInquiryModalOpen(true);
+  };
   const [product, setProduct] = useState(defaultProduct);
   const [categoriesList, setCategoriesList] = useState([]);
   const [relatedProductsState, setRelatedProductsState] = useState([]);
@@ -281,16 +296,57 @@ const ProductDetail = () => {
     });
   };
 
-  // Handle Form Submission
-  const handleSubmitInquiry = (e) => {
+  // Handle Online Form Submission to Backend
+  const handleSubmitInquiry = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    setInquiryLoading(true);
+    setInquiryError('');
+
+    const formEl = e.currentTarget;
+    const formData = new FormData(formEl);
     const data = Object.fromEntries(formData.entries());
 
-    const note = `Client: ${data.name} | Email: ${data.email} | Phone: ${data.phone} | Location: ${data.address} | Message: ${data.message}`;
-    handleWhatsAppQuote(note);
-    setIsInquiryModalOpen(false);
-    toast.success('Inquiry submitted! Opening WhatsApp...', { icon: '💬' });
+    const formattedSpecs = [
+      `🎯 PRODUCT: ${product.name}`,
+      `📏 SIZE: ${selectedSize}`,
+      `🎨 COLORWAY: ${selectedColorScheme}`,
+      `🔢 ESTIMATED QUANTITY: ${data.quantity || selectedQty}`,
+      `📍 SHIPPING DESTINATION: ${data.address || 'Not Specified'}`,
+      `🏢 CLUB / ORGANIZATION: ${data.company || 'Not Specified'}`,
+      `----------------------------------------`,
+      `📝 REQUIREMENTS & SPECIFICATIONS:`,
+      data.message || 'No additional specifications provided.'
+    ].join('\n');
+
+    const payload = {
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      company: data.company || data.address || '',
+      message: formattedSpecs,
+      type: 'product_inquiry',
+      sport: sportInfo.name,
+      quantity: data.quantity || selectedQty
+    };
+
+    try {
+      await submitContactInquiry(payload);
+      setInquirySuccess({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        product: product.name,
+        quantity: data.quantity || selectedQty,
+        summaryNote: formattedSpecs
+      });
+      toast.success('Inquiry submitted to factory successfully!', { icon: '✅' });
+    } catch (err) {
+      console.error('Inquiry submission error:', err);
+      setInquiryError(err.message || 'Failed to submit online. Please message us directly on WhatsApp.');
+      toast.error(err.message || 'Submission failed. Please try WhatsApp.', { icon: '⚠️' });
+    } finally {
+      setInquiryLoading(false);
+    }
   };
 
   const pageTitle = `Custom ${product.name} | Factory-Direct Wholesale | Zarko Sportswear`;
@@ -521,7 +577,7 @@ const ProductDetail = () => {
                 {/* Button 1: Request Inquiry (Theme Dark Slate) */}
                 <button
                   type="button"
-                  onClick={() => setIsInquiryModalOpen(true)}
+                  onClick={() => handleOpenInquiryModal('online')}
                   className="w-full py-3 px-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold uppercase tracking-wider transition-all duration-150 shadow-2xs flex items-center justify-center gap-1.5 active:scale-98 cursor-pointer"
                   style={{ borderRadius: '5px' }}
                 >
@@ -532,7 +588,7 @@ const ProductDetail = () => {
                 {/* Button 2: Request Quote (Theme Outline) */}
                 <button
                   type="button"
-                  onClick={() => setIsInquiryModalOpen(true)}
+                  onClick={() => handleOpenInquiryModal('online')}
                   className="w-full py-3 px-3 bg-white hover:bg-slate-50 border border-slate-900 text-slate-900 text-xs font-semibold uppercase tracking-wider transition-all duration-150 shadow-2xs flex items-center justify-center gap-1.5 active:scale-98 cursor-pointer"
                   style={{ borderRadius: '5px' }}
                 >
@@ -784,14 +840,14 @@ const ProductDetail = () => {
         </div>
       </main>
 
-      {/* ── INQUIRY MODAL (TRIGGERED BY 'REQUEST INQUIRY' & 'REQUEST QUOTE') ── */}
+      {/* ── INQUIRY MODAL (DUAL MODE: CUSTOM ONLINE FORM OR WHATSAPP DIRECT) ── */}
       {isInquiryModalOpen && (
         <div 
-          className="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 animate-fade-in"
+          className="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-5 overflow-y-auto animate-fade-in"
           onClick={() => setIsInquiryModalOpen(false)}
         >
           <div 
-            className="relative w-full max-w-lg bg-white p-6 sm:p-7 space-y-4 border border-slate-200 shadow-2xl"
+            className="relative w-full max-w-lg bg-white p-5 sm:p-7 space-y-4 border border-slate-200 shadow-2xl my-auto"
             style={{ borderRadius: '5px' }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -800,81 +856,322 @@ const ProductDetail = () => {
               onClick={() => setIsInquiryModalOpen(false)}
               className="absolute top-4 right-4 w-7 h-7 bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition cursor-pointer"
               style={{ borderRadius: '5px' }}
+              title="Close"
             >
               <FiX className="text-sm" />
             </button>
 
+            {/* Modal Header */}
             <div>
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-indigo-600 block mb-1">
-                Official Factory RFQ • WA: 03039200750
-              </span>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-[4px] border border-indigo-100/60">
+                  Direct Factory Inquiry • Sialkot, PK
+                </span>
+                <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-[4px] border border-emerald-100">
+                  WA: 03039200750
+                </span>
+              </div>
               <h3 
-                className="text-lg font-bold text-slate-900 tracking-tight"
+                className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight"
                 style={{ fontFamily: "'Outfit', sans-serif" }}
               >
-                Request Custom Quote
+                Inquiry & Custom Quote
               </h3>
               <p className="text-xs text-slate-500 mt-1">
-                Selected: <span className="font-semibold text-slate-800">{product.name}</span> ({selectedSize}, {selectedColorScheme})
+                Product: <span className="font-semibold text-slate-800">{product.name}</span> ({selectedSize}, {selectedColorScheme})
               </p>
             </div>
 
-            <form onSubmit={handleSubmitInquiry} className="space-y-3">
-              <input
-                type="text"
-                name="name"
-                placeholder="Coach / Manager Full Name"
-                required
-                className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
-                style={{ borderRadius: '5px' }}
-              />
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Team / School Email"
-                  required
-                  className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
-                  style={{ borderRadius: '5px' }}
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="WhatsApp / Phone (03039200750)"
-                  required
-                  className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
-                  style={{ borderRadius: '5px' }}
-                />
-              </div>
-
-              <input
-                type="text"
-                name="address"
-                placeholder="Shipping Destination (City & Country)"
-                required
-                className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
-                style={{ borderRadius: '5px' }}
-              />
-
-              <textarea
-                name="message"
-                rows="3"
-                placeholder="Roster count, logo placements, target delivery date..."
-                required
-                className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition resize-none"
-                style={{ borderRadius: '5px' }}
-              ></textarea>
-
+            {/* 2-Option Selector Tabs: Custom Online Form vs Direct WhatsApp */}
+            <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-100 rounded-[5px]">
               <button
-                type="submit"
-                className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold uppercase tracking-wider transition-all duration-150 shadow-2xs flex items-center justify-center gap-2 cursor-pointer"
-                style={{ borderRadius: '5px' }}
+                type="button"
+                onClick={() => setInquiryMode('online')}
+                className={`py-2 px-3 text-xs font-semibold uppercase tracking-wider transition rounded-[4px] flex items-center justify-center gap-1.5 cursor-pointer ${
+                  inquiryMode === 'online'
+                    ? 'bg-slate-900 text-white shadow-2xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
+                }`}
               >
-                <span>Submit RFQ & Open WhatsApp (03039200750)</span>
-                <FaArrowRight className="text-[9px]" />
+                <FaFileAlt className="text-xs" />
+                <span>Custom / Online Form</span>
               </button>
-            </form>
+              <button
+                type="button"
+                onClick={() => setInquiryMode('whatsapp')}
+                className={`py-2 px-3 text-xs font-semibold uppercase tracking-wider transition rounded-[4px] flex items-center justify-center gap-1.5 cursor-pointer ${
+                  inquiryMode === 'whatsapp'
+                    ? 'bg-emerald-600 text-white shadow-2xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
+                }`}
+              >
+                <FaWhatsapp className="text-sm" />
+                <span>Direct WhatsApp</span>
+              </button>
+            </div>
+
+            {/* ── OPTION 1: CUSTOM ONLINE INQUIRY FORM ── */}
+            {inquiryMode === 'online' && (
+              <>
+                {inquirySuccess ? (
+                  /* Success Confirmation View */
+                  <div className="py-4 space-y-4 text-center animate-fade-in">
+                    <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
+                      <FiCheckCircle className="text-2xl" />
+                    </div>
+                    <div className="space-y-1">
+                      <h4 
+                        className="text-base font-bold text-slate-900 tracking-tight"
+                        style={{ fontFamily: "'Outfit', sans-serif" }}
+                      >
+                        Inquiry Submitted Successfully!
+                      </h4>
+                      <p className="text-xs text-slate-600 max-w-sm mx-auto">
+                        Thank you, <strong className="text-slate-900">{inquirySuccess.name}</strong>. Your custom inquiry for <strong className="text-slate-900">{inquirySuccess.product}</strong> has been logged in our factory system.
+                      </p>
+                      <p className="text-[11px] text-slate-500">
+                        Our production team will contact you at <span className="font-semibold text-slate-700">{inquirySuccess.email}</span> with a custom 3D digital mockup & pricing breakdown within 24 hours.
+                      </p>
+                    </div>
+
+                    <div className="p-3 bg-slate-50 border border-slate-200 text-left text-xs space-y-1.5" style={{ borderRadius: '5px' }}>
+                      <div className="flex justify-between">
+                        <span className="text-slate-500 font-normal">Requested Quantity:</span>
+                        <span className="font-semibold text-slate-900">{inquirySuccess.quantity}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-slate-500 font-normal">Contact Phone:</span>
+                        <span className="font-semibold text-slate-900">{inquirySuccess.phone}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-slate-500 font-normal">Factory Direct WhatsApp:</span>
+                        <span className="font-semibold text-emerald-700">+92-303-9200750</span>
+                      </div>
+                    </div>
+
+                    <div className="pt-2 flex flex-col sm:flex-row gap-2">
+                      <button
+                        type="button"
+                        onClick={() => handleWhatsAppQuote(`Inquiry Ref: ${inquirySuccess.name} (${inquirySuccess.email}) - ${inquirySuccess.product}`)}
+                        className="flex-1 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition shadow-2xs cursor-pointer"
+                        style={{ borderRadius: '5px' }}
+                      >
+                        <FaWhatsapp className="text-base" />
+                        <span>Chat on WhatsApp (+92-303-9200750)</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsInquiryModalOpen(false);
+                          setInquirySuccess(null);
+                        }}
+                        className="py-2.5 px-5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold uppercase tracking-wider transition cursor-pointer"
+                        style={{ borderRadius: '5px' }}
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  /* Form Input View */
+                  <form onSubmit={handleSubmitInquiry} className="space-y-3 animate-fade-in">
+                    {inquiryError && (
+                      <div className="p-2.5 bg-rose-50 border border-rose-200 text-rose-700 text-xs rounded-[5px]">
+                        {inquiryError}
+                      </div>
+                    )}
+
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Coach / Manager Full Name *"
+                      required
+                      className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
+                      style={{ borderRadius: '5px' }}
+                    />
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Team / School Email *"
+                        required
+                        className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
+                        style={{ borderRadius: '5px' }}
+                      />
+                      <input
+                        type="tel"
+                        name="phone"
+                        placeholder="WhatsApp / Phone (03039200750) *"
+                        required
+                        className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
+                        style={{ borderRadius: '5px' }}
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      <input
+                        type="text"
+                        name="quantity"
+                        defaultValue={selectedQty}
+                        placeholder="Estimated Quantity (MOQ 15 Sets) *"
+                        required
+                        className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
+                        style={{ borderRadius: '5px' }}
+                      />
+                      <input
+                        type="text"
+                        name="address"
+                        placeholder="Shipping Destination (City & Country) *"
+                        required
+                        className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
+                        style={{ borderRadius: '5px' }}
+                      />
+                    </div>
+
+                    <input
+                      type="text"
+                      name="company"
+                      placeholder="Club / Academy / Brand Name (Optional)"
+                      className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition"
+                      style={{ borderRadius: '5px' }}
+                    />
+
+                    <textarea
+                      name="message"
+                      rows="3"
+                      placeholder="Specify custom numbers, player names, Pantone color codes, logo placements, or required delivery deadline..."
+                      className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 transition resize-none"
+                      style={{ borderRadius: '5px' }}
+                    ></textarea>
+
+                    <button
+                      type="submit"
+                      disabled={inquiryLoading}
+                      className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold uppercase tracking-wider transition-all duration-150 shadow-2xs flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                      style={{ borderRadius: '5px' }}
+                    >
+                      {inquiryLoading ? (
+                        <>
+                          <FaSpinner className="animate-spin text-sm" />
+                          <span>Submitting Inquiry to Factory...</span>
+                        </>
+                      ) : (
+                        <>
+                          <FaPaperPlane className="text-xs" />
+                          <span>Submit Online Factory Inquiry</span>
+                        </>
+                      )}
+                    </button>
+                  </form>
+                )}
+
+                {/* Helpful navigation to dedicated Custom Order & Contact pages */}
+                <div className="pt-2 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-500">
+                  <Link
+                    to="/custom"
+                    onClick={() => setIsInquiryModalOpen(false)}
+                    className="hover:text-indigo-600 transition flex items-center gap-1 font-medium text-slate-700"
+                  >
+                    <span>Full Custom Orders & Tech Pack Upload</span>
+                    <FaExternalLinkAlt className="text-[9px]" />
+                  </Link>
+                  <Link
+                    to="/contact"
+                    onClick={() => setIsInquiryModalOpen(false)}
+                    className="hover:text-indigo-600 transition font-medium text-indigo-600"
+                  >
+                    Contact Us Page →
+                  </Link>
+                </div>
+              </>
+            )}
+
+            {/* ── OPTION 2: DIRECT WHATSAPP INQUIRY ── */}
+            {inquiryMode === 'whatsapp' && (
+              <div className="space-y-4 animate-fade-in">
+                <div className="p-4 bg-emerald-50/70 border border-emerald-100 rounded-[5px] space-y-2">
+                  <div className="flex items-center gap-2 text-emerald-800 font-bold text-xs">
+                    <FaWhatsapp className="text-base text-emerald-600" />
+                    <span>Direct Factory WhatsApp Line: +92-303-9200750</span>
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                    Connect immediately with our export production team in Sialkot, Pakistan. Get instant quotes, fabric swatch videos, and 3D digital mockups on your phone.
+                  </p>
+                </div>
+
+                {/* Specs Summary Box */}
+                <div className="p-3 bg-slate-50 border border-slate-200 rounded-[5px] text-xs space-y-1.5">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                    Inquiry Summary:
+                  </span>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Item:</span>
+                    <span className="font-semibold text-slate-900">{product.name}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Size:</span>
+                    <span className="font-semibold text-slate-900">{selectedSize}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Colorway:</span>
+                    <span className="font-semibold text-slate-900">{selectedColorScheme}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Minimum Order (MOQ):</span>
+                    <span className="font-semibold text-indigo-600">15 Sets / Design</span>
+                  </div>
+                </div>
+
+                {/* Optional Note */}
+                <div className="space-y-1">
+                  <label className="text-[11px] font-medium text-slate-600">
+                    Add optional instructions / team count:
+                  </label>
+                  <textarea
+                    rows="2"
+                    value={whatsappCustomNote}
+                    onChange={(e) => setWhatsappCustomNote(e.target.value)}
+                    placeholder="e.g. Need 25 sets for Varsity Team with custom numbers and crest logo..."
+                    className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-normal text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-600 focus:border-emerald-600 transition resize-none"
+                    style={{ borderRadius: '5px' }}
+                  ></textarea>
+                </div>
+
+                {/* WhatsApp Action Button with 03039200750 */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    handleWhatsAppQuote(whatsappCustomNote);
+                    setIsInquiryModalOpen(false);
+                  }}
+                  className="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold uppercase tracking-wider transition-all duration-150 shadow-2xs flex items-center justify-center gap-2 cursor-pointer"
+                  style={{ borderRadius: '5px' }}
+                >
+                  <FaWhatsapp className="text-base" />
+                  <span>Start WhatsApp Chat (03039200750)</span>
+                </button>
+
+                {/* Navigation links */}
+                <div className="pt-2 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-500">
+                  <Link
+                    to="/custom"
+                    onClick={() => setIsInquiryModalOpen(false)}
+                    className="hover:text-indigo-600 transition flex items-center gap-1 font-medium text-slate-700"
+                  >
+                    <span>Upload Tech Pack on Custom Orders (/custom)</span>
+                    <FaExternalLinkAlt className="text-[9px]" />
+                  </Link>
+                  <Link
+                    to="/contact"
+                    onClick={() => setIsInquiryModalOpen(false)}
+                    className="hover:text-indigo-600 transition font-medium text-indigo-600"
+                  >
+                    Visit Contact Page →
+                  </Link>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}

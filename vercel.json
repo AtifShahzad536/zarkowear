@@ -123,6 +123,10 @@
   ],
   "rewrites": [
     {
+      "source": "/api/:match*",
+      "destination": "https://wear-backend-seven.vercel.app/api/:match*"
+    },
+    {
       "source": "/builder/models",
       "destination": "/builder/models/index.html"
     },

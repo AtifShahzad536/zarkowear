@@ -1,9 +1,44 @@
-const API_BASE = (import.meta.env.VITE_API_BASE || '').trim();
+const getApiBase = () => {
+  const envBase = (import.meta.env.VITE_API_BASE || '').trim();
+  if (envBase) return envBase;
+  if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+    return 'http://localhost:4001';
+  }
+  return 'https://wear-backend-seven.vercel.app';
+};
+export const API_BASE = getApiBase();
 
 // Auth token helpers
 const TOKEN_KEY = 'wc_admin_token';
 export function setAuthToken(token) { try { localStorage.setItem(TOKEN_KEY, token || ''); } catch { } }
 export function getAuthToken() { try { return localStorage.getItem(TOKEN_KEY) || ''; } catch { return ''; } }
+
+// Public: Submit online contact or product inquiry
+export async function submitContactInquiry(payload) {
+  const res = await fetch(`${API_BASE}/api/inquiry/contact`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.error || 'Failed to submit inquiry');
+  }
+  return res.json();
+}
+
+// Public: Submit custom order inquiry (with optional design file or tech pack)
+export async function submitCustomInquiry(formData) {
+  const res = await fetch(`${API_BASE}/api/inquiry/custom`, {
+    method: 'POST',
+    body: formData
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.error || 'Failed to submit custom inquiry');
+  }
+  return res.json();
+}
 
 export async function getCategory(slug) {
   const res = await fetch(`${API_BASE}/api/category/${encodeURIComponent(slug)}`);

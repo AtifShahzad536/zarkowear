@@ -8,6 +8,7 @@ import {
 } from 'react-icons/fa';
 import { useToast } from '../components/Toast.jsx';
 import { COMPANY_DETAILS } from '../data/constants';
+import { submitContactInquiry } from '../services/api';
 
 const SPORTS_CATEGORIES = [
   '⚽ Custom Football Uniforms & Jerseys',
@@ -82,8 +83,6 @@ const Contact = () => {
     setError('');
     setLoading(true);
 
-    const API = import.meta.env.VITE_API_BASE || 'http://localhost:4000';
-
     // Structured message containing all sportswear B2B specifics
     const structuredMessage = [
       `🏟️ SPORT CATEGORY: ${formData.sport}`,
@@ -108,14 +107,7 @@ const Contact = () => {
     };
 
     try {
-      const res = await fetch(`${API}/api/inquiry/contact`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Send failed');
-      
+      await submitContactInquiry(payload);
       setStatus('Your custom sportswear inquiry has been received! Our production team will contact you with mockups & pricing within 24 hours.');
       showToast({ message: 'Inquiry submitted successfully! We will get back to you shortly.', tone: 'success' });
       
