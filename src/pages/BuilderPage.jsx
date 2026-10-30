@@ -6,9 +6,11 @@ import toast from 'react-hot-toast';
 import SeoHead from '../components/SeoHead';
 import MaintenancePage from './MaintenancePage';
 
-// Lazy load builder engine
-const Builder = lazy(() => import('../features/builder/Builder'));
-const LandingPage = lazy(() => import('../features/builder/LandingPage'));
+import { lazyWithRetry } from '../utils/lazyRetry';
+
+// Lazy load builder engine with retry
+const Builder = lazyWithRetry(() => import('../features/builder/Builder'), 'BuilderEngine');
+const LandingPage = lazyWithRetry(() => import('../features/builder/LandingPage'), 'BuilderLanding');
 
 import { 
   setSelectedDesign, 

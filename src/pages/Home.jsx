@@ -9,14 +9,15 @@ import homeSeo from '../seo/homeSeo';
 import { clubs } from '../data/home/partners';
 import { categoryChips } from '../data/home/categoryChips';
 import { getHomeSettings, imageUrl } from '../services/api';
+import { lazyWithRetry } from '../utils/lazyRetry';
 
-// Lazy load below-the-fold sections for instant Mobile LCP
-const FeaturedCategories = lazy(() => import('../components/Home/Feature'));
-const TopSellingProducts = lazy(() => import('../components/Home/Top'));
-const Testimonials = lazy(() => import('../components/Home/Customer'));
-const Videos = lazy(() => import('../components/Home/Videos'));
-const FAQ = lazy(() => import('../components/Home/Faq'));
-const BlogPreview = lazy(() => import('../components/Home/BlogPreview'));
+// Lazy load below-the-fold sections for instant Mobile LCP with auto-reload protection on new deployments
+const FeaturedCategories = lazyWithRetry(() => import('../components/Home/Feature'), 'HomeFeature');
+const TopSellingProducts = lazyWithRetry(() => import('../components/Home/Top'), 'HomeTop');
+const Testimonials = lazyWithRetry(() => import('../components/Home/Customer'), 'HomeCustomer');
+const Videos = lazyWithRetry(() => import('../components/Home/Videos'), 'HomeVideos');
+const FAQ = lazyWithRetry(() => import('../components/Home/Faq'), 'HomeFaq');
+const BlogPreview = lazyWithRetry(() => import('../components/Home/BlogPreview'), 'HomeBlogPreview');
 
 const JERSEYS = [
   '/images/hero_football.webp',

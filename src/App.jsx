@@ -11,7 +11,9 @@ export const ContentLoadedContext = React.createContext({
   isContentLoaded: true
 });
 
-const ChatbotWidget = lazy(() => import('./components/ChatbotWidget'));
+import { lazyWithRetry } from './utils/lazyRetry';
+
+const ChatbotWidget = lazyWithRetry(() => import('./components/ChatbotWidget'), 'ChatbotWidget');
 
 function App() {
   const [contentLoaded, setContentLoaded] = useState(true);

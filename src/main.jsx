@@ -1,4 +1,4 @@
-import { StrictMode, StrictMode as ReactStrictMode, Suspense, lazy } from 'react'
+import { StrictMode, StrictMode as ReactStrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import './index.css'
@@ -7,31 +7,45 @@ import RequireAdmin from './components/admin/RequireAdmin.jsx'
 import { ToastProvider } from './components/Toast.jsx'
 import { Provider } from 'react-redux'
 import { store } from './store/index.js'
+import ErrorBoundary from './components/ErrorBoundary.jsx'
+import RouteErrorBoundary from './components/RouteErrorBoundary.jsx'
+import { lazyWithRetry } from './utils/lazyRetry.js'
+
+// Automatically reload stale pages if a new deployment changed asset hashes
+if (typeof window !== 'undefined') {
+  window.addEventListener('vite:preloadError', (event) => {
+    event.preventDefault();
+    console.warn('Vite asset preload failed (new deployment). Reloading page...');
+    window.location.reload();
+  });
+}
 
 import Home from './pages/Home.jsx'
-const ProductInquiry = lazy(() => import('./components/Detail.jsx'))
-const Custom = lazy(() => import('./pages/Custom.jsx'))
-const Contact = lazy(() => import('./pages/Contact.jsx'))
-const About = lazy(() => import('./pages/About.jsx'))
-const CategoryRoute = lazy(() => import('./pages/CategoryRoute.jsx'))
-const AdminHome = lazy(() => import('./pages/AdminHome.jsx'))
-const AdminLayout = lazy(() => import('./components/admin/AdminLayout.jsx'))
-const AdminLogin = lazy(() => import('./pages/AdminLogin.jsx'))
-const NotFound = lazy(() => import('./pages/NotFound.jsx'))
-const BuilderPage = lazy(() => import('./pages/BuilderPage.jsx'))
+const ProductInquiry = lazyWithRetry(() => import('./components/Detail.jsx'), 'Detail')
+const Custom = lazyWithRetry(() => import('./pages/Custom.jsx'), 'Custom')
+const Contact = lazyWithRetry(() => import('./pages/Contact.jsx'), 'Contact')
+const About = lazyWithRetry(() => import('./pages/About.jsx'), 'About')
+const CategoryRoute = lazyWithRetry(() => import('./pages/CategoryRoute.jsx'), 'CategoryRoute')
+const AdminHome = lazyWithRetry(() => import('./pages/AdminHome.jsx'), 'AdminHome')
+const AdminLayout = lazyWithRetry(() => import('./components/admin/AdminLayout.jsx'), 'AdminLayout')
+const AdminLogin = lazyWithRetry(() => import('./pages/AdminLogin.jsx'), 'AdminLogin')
+const NotFound = lazyWithRetry(() => import('./pages/NotFound.jsx'), 'NotFound')
+const BuilderPage = lazyWithRetry(() => import('./pages/BuilderPage.jsx'), 'BuilderPage')
 
-const ModelSelectionPage = lazy(() => import('./pages/ModelSelectionPage.jsx'))
-const Blogs = lazy(() => import('./pages/Blogs.jsx'))
-const BlogDetail = lazy(() => import('./pages/BlogDetail.jsx'))
-const AdminBlogs = lazy(() => import('./pages/AdminBlogs.jsx'))
-const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy.jsx'))
-const Terms = lazy(() => import('./pages/Terms.jsx'))
+const ModelSelectionPage = lazyWithRetry(() => import('./pages/ModelSelectionPage.jsx'), 'ModelSelection')
+const Blogs = lazyWithRetry(() => import('./pages/Blogs.jsx'), 'Blogs')
+const BlogDetail = lazyWithRetry(() => import('./pages/BlogDetail.jsx'), 'BlogDetail')
+const AdminBlogs = lazyWithRetry(() => import('./pages/AdminBlogs.jsx'), 'AdminBlogs')
+const PrivacyPolicy = lazyWithRetry(() => import('./pages/PrivacyPolicy.jsx'), 'PrivacyPolicy')
+const Terms = lazyWithRetry(() => import('./pages/Terms.jsx'), 'Terms')
+
 
 // Define routes
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <RouteErrorBoundary />,
     children: [
       { path: "admin/login", element: <AdminLogin /> },
       { index: true, element: <Home /> },
@@ -117,11 +131,13 @@ const SEOLoadingFallback = () => (
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-      <Suspense fallback={<SEOLoadingFallback />}>
-        <ToastProvider>
-          <RouterProvider router={router} />
-        </ToastProvider>
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<SEOLoadingFallback />}>
+          <ToastProvider>
+            <RouterProvider router={router} />
+          </ToastProvider>
+        </Suspense>
+      </ErrorBoundary>
     </Provider>
   </StrictMode>
 )

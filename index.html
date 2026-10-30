@@ -6,6 +6,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <script>
+    // Automatically catch stale chunk errors on new deployment and reload immediately
+    window.addEventListener('vite:preloadError', function(event) {
+      event.preventDefault();
+      var key = 'vite_chunk_preload_ts';
+      var last = sessionStorage.getItem(key);
+      var now = Date.now();
+      if (!last || now - Number(last) > 10000) {
+        sessionStorage.setItem(key, String(now));
+        window.location.reload();
+      }
+    });
+  </script>
 
   <!-- Google Fonts & API Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
