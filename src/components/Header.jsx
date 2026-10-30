@@ -568,6 +568,17 @@ const Header = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Lock body scroll when mobile drawer is open so mouse wheel & swipe scroll the drawer, not background
+  useEffect(() => {
+    if (mobileOpen) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = prevOverflow;
+      };
+    }
+  }, [mobileOpen]);
+
   return (
     <motion.header
       initial={{ y: -18, opacity: 0 }}
@@ -795,9 +806,39 @@ const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.22, ease: 'easeOut' }}
-            className="lg:hidden mx-auto w-full max-w-[96%] px-2 pb-6 max-h-[85vh] overflow-y-auto"
+            data-lenis-prevent="true"
+            onWheel={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
+            className="lg:hidden mx-auto w-full max-w-[98%] px-2 pb-6 max-h-[calc(100dvh-75px)] sm:max-h-[calc(100vh-80px)] overflow-y-auto overscroll-contain mobile-drawer-scroll"
+            style={{
+              scrollbarWidth: 'thin',
+              scrollbarColor: '#4f46e5 #e2e8f0',
+              WebkitOverflowScrolling: 'touch',
+              overscrollBehavior: 'contain'
+            }}
           >
-            <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xl space-y-3">
+            <style>{`
+              .mobile-drawer-scroll::-webkit-scrollbar {
+                width: 6px;
+                display: block;
+              }
+              .mobile-drawer-scroll::-webkit-scrollbar-track {
+                background: #f1f5f9;
+                border-radius: 4px;
+                margin: 4px 0;
+              }
+              .mobile-drawer-scroll::-webkit-scrollbar-thumb {
+                background: #6366f1;
+                border-radius: 4px;
+              }
+              .mobile-drawer-scroll::-webkit-scrollbar-thumb:hover {
+                background: #4f46e5;
+              }
+            `}</style>
+            <div 
+              data-lenis-prevent="true"
+              className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xl space-y-3 pb-8"
+            >
               {/* Top Banner */}
               <div className="flex items-center justify-between pb-2.5 border-b border-slate-100">
                 <p className="text-xs font-bold uppercase tracking-wider text-indigo-600">
@@ -825,13 +866,20 @@ const Header = () => {
 
                   return (
                     <div key={key} className="border-b border-slate-100 pb-1">
-                      <div className="flex items-center justify-between px-3 py-2">
+                      <div 
+                        onClick={() => setMobileExpanded(isExpanded ? null : key)}
+                        className="flex items-center justify-between px-3 py-2 cursor-pointer hover:bg-slate-50 rounded-lg transition-colors"
+                      >
                         <span className="text-xs font-medium uppercase tracking-wider text-slate-800">
                           {menu.label}
                         </span>
                         <button
-                          onClick={() => setMobileExpanded(isExpanded ? null : key)}
-                          className="p-1 text-slate-400 hover:text-indigo-600 text-xs"
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setMobileExpanded(isExpanded ? null : key);
+                          }}
+                          className="p-1 text-slate-400 hover:text-indigo-600 text-xs cursor-pointer"
                           aria-label={`Toggle ${menu.label}`}
                         >
                           <FaChevronDown
@@ -843,7 +891,10 @@ const Header = () => {
                       </div>
 
                       {isExpanded && (
-                        <div className="pl-4 pr-2 py-2 space-y-3 bg-slate-50/70 rounded-xl mb-1">
+                        <div 
+                          data-lenis-prevent="true"
+                          className="pl-4 pr-2 py-2 space-y-3 bg-slate-50/70 rounded-xl mb-1"
+                        >
                           {menu.parents.map((parent, pIdx) => (
                             <div key={pIdx} className="space-y-1">
                               <Link
