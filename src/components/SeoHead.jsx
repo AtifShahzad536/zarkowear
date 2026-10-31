@@ -82,7 +82,7 @@ const SeoHead = ({
     if (viewport) {
       metaRecords.push(ensureMeta('name', 'viewport', viewport));
     } else {
-      metaRecords.push(ensureMeta('name', 'viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no'));
+      metaRecords.push(ensureMeta('name', 'viewport', 'width=device-width, initial-scale=1.0'));
     }
 
     if (themeColor) {

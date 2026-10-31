@@ -203,7 +203,7 @@ const TopSellingProducts = () => {
                         <span>{sport.name}</span>
                       </span>
                     ) : (
-                      <span className="text-xs font-bold text-slate-400 group-hover:text-slate-800 uppercase tracking-wider transition-colors px-2 py-1">
+                      <span className="text-xs font-bold text-slate-600 group-hover:text-slate-900 uppercase tracking-wider transition-colors px-2 py-1">
                         {sport.name}
                       </span>
                     )}
@@ -234,8 +234,8 @@ const TopSellingProducts = () => {
           {/* Column 2: Story, Headline, and Description with Giant Ghost Watermark (Lg: 5 cols) */}
           <div className="lg:col-span-5 relative z-10 text-left">
             {/* Giant Ghost Watermark */}
-            <div className="absolute -left-6 lg:-left-12 top-1/2 -translate-y-1/2 select-none pointer-events-none -z-10 leading-none overflow-hidden">
-              <span className="text-slate-200/50 font-black text-[90px] sm:text-[140px] xl:text-[170px] uppercase tracking-tighter block whitespace-nowrap opacity-70">
+            <div className="absolute -left-6 lg:-left-12 top-1/2 -translate-y-1/2 select-none pointer-events-none -z-10 leading-none overflow-hidden" aria-hidden="true">
+              <span className="text-slate-200/50 font-black text-[90px] sm:text-[140px] xl:text-[170px] uppercase tracking-tighter block whitespace-nowrap opacity-70" aria-hidden="true">
                 {activeSport.watermark}
               </span>
             </div>
@@ -320,12 +320,12 @@ const TopSellingProducts = () => {
 
                 {/* Just Below Image: Product Name & View Button */}
                 <div className="mt-3 flex flex-col items-center text-center gap-2.5">
-                  <h4
+                  <h3
                     className="text-sm sm:text-base font-black text-slate-900 uppercase tracking-wide truncate max-w-xs"
                     style={{ fontFamily: "'Outfit', sans-serif" }}
                   >
                     {activeProductName}
-                  </h4>
+                  </h3>
                   <Link
                     to={productViewLink}
                     aria-label={`View ${activeProductName} details and pricing`}

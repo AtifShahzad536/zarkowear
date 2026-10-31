@@ -85,11 +85,15 @@ const BlogPreview = () => {
                 className="flex flex-col bg-white border border-slate-200 rounded-[5px] overflow-hidden hover:shadow-md transition-shadow duration-300 group"
               >
                 {/* Large Thumbnail */}
-                <Link to={`/blogs/${featuredBlog.slug}`} className="aspect-[1.8] relative overflow-hidden bg-slate-100 block rounded-t-[5px]">
+                <Link
+                  to={`/blogs/${featuredBlog.slug}`}
+                  aria-label={featuredBlog.title}
+                  className="aspect-[1.8] relative overflow-hidden bg-slate-100 block rounded-t-[5px]"
+                >
                   {featuredBlog.coverImage ? (
                     <img
                       src={imageUrl(featuredBlog.coverImage, { width: 1200, quality: 'auto:best' })}
-                      alt={featuredBlog.title ? featuredBlog.title + " cover image" : "Featured article cover"}
+                      alt={featuredBlog.title}
                       className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                   ) : (
@@ -109,7 +113,7 @@ const BlogPreview = () => {
                         day: 'numeric',
                       })}
                     </span>
-                    <Link to={`/blogs/${featuredBlog.slug}`}>
+                    <Link to={`/blogs/${featuredBlog.slug}`} aria-label={featuredBlog.title}>
                       <h3 className="text-xl sm:text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors uppercase leading-tight tracking-tight rounded-none" style={{ fontFamily: "'Outfit', sans-serif" }}>
                         {featuredBlog.title}
                       </h3>
@@ -124,7 +128,7 @@ const BlogPreview = () => {
                   <div className="pt-4 mt-6 border-t border-slate-100">
                     <Link
                       to={`/blogs/${featuredBlog.slug}`}
-                      aria-label={`Read full article: ${featuredBlog.title}`}
+                      aria-label={featuredBlog.title}
                       className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-900 hover:text-indigo-600 transition-colors uppercase"
                     >
                       Read Full Article <span>→</span>
@@ -147,11 +151,15 @@ const BlogPreview = () => {
                   className="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-[5px] overflow-hidden hover:shadow-md transition-shadow duration-300 group h-auto sm:h-32 shrink-0"
                 >
                   {/* Small Thumbnail */}
-                  <Link to={`/blogs/${blog.slug}`} className="w-full sm:w-32 aspect-[1.7] sm:aspect-square relative overflow-hidden bg-slate-100 block shrink-0">
+                  <Link
+                    to={`/blogs/${blog.slug}`}
+                    aria-label={blog.title}
+                    className="w-full sm:w-32 aspect-[1.7] sm:aspect-square relative overflow-hidden bg-slate-100 block shrink-0"
+                  >
                     {blog.coverImage ? (
                       <img
                         src={imageUrl(blog.coverImage, { width: 600, quality: 'auto:best' })}
-                        alt="Zarko Sportswear Blog Thumbnail"
+                        alt={blog.title}
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                       />
@@ -172,7 +180,7 @@ const BlogPreview = () => {
                           day: 'numeric',
                         })}
                       </span>
-                      <Link to={`/blogs/${blog.slug}`}>
+                      <Link to={`/blogs/${blog.slug}`} aria-label={blog.title}>
                         <h3 className="text-xs sm:text-sm font-black text-slate-900 group-hover:text-indigo-600 transition-colors uppercase leading-snug tracking-tight line-clamp-2 rounded-none" style={{ fontFamily: "'Outfit', sans-serif" }}>
                           {blog.title}
                         </h3>
@@ -182,7 +190,7 @@ const BlogPreview = () => {
                     <div className="pt-2 mt-2 border-t border-slate-100 flex justify-between items-center">
                       <Link
                         to={`/blogs/${blog.slug}`}
-                        aria-label={`Read article: ${blog.title}`}
+                        aria-label={blog.title}
                         className="inline-flex items-center gap-1.5 text-[9px] font-bold text-slate-900 hover:text-indigo-600 transition-colors uppercase"
                       >
                         Read Article <span>→</span>
