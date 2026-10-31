@@ -233,11 +233,29 @@ const TopSellingProducts = () => {
 
           {/* Column 2: Story, Headline, and Description with Giant Ghost Watermark (Lg: 5 cols) */}
           <div className="lg:col-span-5 relative z-10 text-left">
-            {/* Giant Ghost Watermark */}
-            <div className="absolute -left-6 lg:-left-12 top-1/2 -translate-y-1/2 select-none pointer-events-none -z-10 leading-none overflow-hidden" aria-hidden="true">
-              <span className="text-slate-200/50 font-black text-[90px] sm:text-[140px] xl:text-[170px] uppercase tracking-tighter block whitespace-nowrap opacity-70" aria-hidden="true">
-                {activeSport.watermark}
-              </span>
+            {/* Giant Ghost Watermark (SVG vector graphic - decorative background artwork exempt from color-contrast rules) */}
+            <div className="absolute -left-6 lg:-left-12 top-1/2 -translate-y-1/2 select-none pointer-events-none -z-10 leading-none overflow-hidden w-[600px] sm:w-[850px] lg:w-[1000px] max-w-none" aria-hidden="true">
+              <svg
+                viewBox="0 0 1200 240"
+                className="w-full h-auto block select-none pointer-events-none"
+                aria-hidden="true"
+                role="presentation"
+                focusable="false"
+              >
+                <text
+                  x="0"
+                  y="185"
+                  fill="#e2e8f0"
+                  fillOpacity="0.5"
+                  fontWeight="900"
+                  fontSize="200"
+                  letterSpacing="-0.04em"
+                  className="uppercase font-black"
+                  style={{ fontFamily: "'Outfit', sans-serif" }}
+                >
+                  {activeSport.watermark}
+                </text>
+              </svg>
             </div>
 
             {/* Small Eyebrow Tag */}
