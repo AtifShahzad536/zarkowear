@@ -124,6 +124,7 @@ const BlogPreview = () => {
                   <div className="pt-4 mt-6 border-t border-slate-100">
                     <Link
                       to={`/blogs/${featuredBlog.slug}`}
+                      aria-label={`Read full article: ${featuredBlog.title}`}
                       className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-900 hover:text-indigo-600 transition-colors uppercase"
                     >
                       Read Full Article <span>→</span>
@@ -181,6 +182,7 @@ const BlogPreview = () => {
                     <div className="pt-2 mt-2 border-t border-slate-100 flex justify-between items-center">
                       <Link
                         to={`/blogs/${blog.slug}`}
+                        aria-label={`Read article: ${blog.title}`}
                         className="inline-flex items-center gap-1.5 text-[9px] font-bold text-slate-900 hover:text-indigo-600 transition-colors uppercase"
                       >
                         Read Article <span>→</span>

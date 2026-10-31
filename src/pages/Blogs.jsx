@@ -257,6 +257,7 @@ export default function Blogs() {
                         <div>
                           <Link
                             to={`/blogs/${blog.slug}`}
+                            aria-label={`Read more about ${blog.title}`}
                             className="inline-block px-3 py-1.5 border border-slate-200 text-[10px] font-bold text-slate-700 rounded-none hover:bg-slate-50 transition-colors"
                           >
                             Read More

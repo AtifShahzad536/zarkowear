@@ -99,6 +99,7 @@ const ProductCard = ({
             <Link
               to={`/detail?product=${encodeURIComponent(productSlug)}`}
               state={{ product: productData }}
+              aria-label={`View ${name} specs and custom uniform details`}
               className="px-3.5 py-1.5 rounded-[5px] bg-slate-900 hover:bg-indigo-600 text-white text-xs font-bold uppercase tracking-wider transition flex items-center gap-1.5 shadow-2xs"
             >
               <span>Specs</span>
@@ -122,6 +123,7 @@ const ProductCard = ({
         <Link
           to={`/detail?product=${encodeURIComponent(productSlug)}`}
           state={{ product: productData }}
+          aria-label={`View ${name} product details`}
           className="h-full w-full flex items-center justify-center"
           style={{ backgroundColor: '#ffffff' }}
         >
@@ -166,6 +168,7 @@ const ProductCard = ({
           <Link
             to={`/detail?product=${encodeURIComponent(productSlug)}`}
             state={{ product: productData }}
+            aria-label={`View ${name} uniform details`}
           >
             <h3
               className="font-black text-slate-900 text-xs sm:text-sm leading-snug group-hover:text-indigo-600 transition-colors line-clamp-1 uppercase tracking-tight"
@@ -205,6 +208,7 @@ const ProductCard = ({
           <Link
             to={`/detail?product=${encodeURIComponent(productSlug)}`}
             state={{ product: productData }}
+            aria-label={`View ${name} product specs and quote options`}
             className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[5px] bg-slate-900 group-hover:bg-indigo-600 text-white text-[10px] font-bold uppercase tracking-wider transition-colors shadow-2xs"
           >
             <span>View</span>

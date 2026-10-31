@@ -272,14 +272,16 @@ const TopSellingProducts = () => {
             <div className="mt-8 flex items-center gap-5">
               <Link
                 to={activeSport.link}
+                aria-label={`See more custom ${activeSport.name.toLowerCase()} uniforms and gear`}
                 className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-slate-900 hover:text-indigo-600 uppercase tracking-wider group transition-colors"
               >
-                <span>SEE MORE</span>
+                <span>SEE MORE {activeSport.name}</span>
                 <FiChevronDown className="text-base group-hover:translate-y-0.5 transition-transform" />
               </Link>
 
               <Link
                 to={activeSport.link}
+                aria-label={`Explore custom ${activeSport.name.toLowerCase()} collection`}
                 className="px-4 py-2 bg-slate-900 hover:bg-indigo-600 text-white text-xs font-bold rounded-[5px] uppercase tracking-wider transition-colors shadow-sm inline-flex items-center gap-1.5"
               >
                 <span>Explore Collection</span>
@@ -302,6 +304,7 @@ const TopSellingProducts = () => {
                 {/* Product Image without Card Container */}
                 <Link
                   to={productViewLink}
+                  aria-label={`View ${activeProductName} specifications and custom quote`}
                   className="w-full flex items-center justify-center p-2 relative group cursor-pointer"
                   title={`View ${activeProductName}`}
                 >
@@ -325,6 +328,7 @@ const TopSellingProducts = () => {
                   </h4>
                   <Link
                     to={productViewLink}
+                    aria-label={`View ${activeProductName} details and pricing`}
                     className="px-6 py-2.5 bg-slate-900 hover:bg-indigo-600 text-white text-xs font-bold rounded-[5px] uppercase tracking-wider transition-all shadow-sm hover:shadow-md inline-flex items-center gap-2 group active:scale-95"
                   >
                     <span>View Product</span>
