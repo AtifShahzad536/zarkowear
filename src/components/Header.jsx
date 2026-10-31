@@ -95,9 +95,9 @@ const megaCategories = {
         subs: [
           { label: 'Full Button Jerseys', to: '/baseball?sub=Full Button Jerseys' },
           { label: 'Crew Neck Jerseys', to: '/baseball?sub=Crew Neck Jerseys' },
-          { label: 'Piped Game Pants', to: '/baseball?sub=Pants' },
-          { label: 'Cage Batting Jackets', to: '/baseball?sub=Cage Jackets' },
-          { label: 'Pro Team Socks', to: '/baseball?sub=Socks' }
+          { label: 'Piped Game Pants', to: '/baseball?sub=Piped Game Pants' },
+          { label: 'Cage Batting Jackets', to: '/baseball?sub=Cage Batting Jackets' },
+          { label: 'Pro Team Socks', to: '/baseball?sub=Pro Team Socks' }
         ]
       },
       {
@@ -107,72 +107,72 @@ const megaCategories = {
           { label: 'Two Button Jerseys', to: '/softball?sub=Two Button Jerseys' },
           { label: 'Crew Neck Jerseys', to: '/softball?sub=Crew Neck Jerseys' },
           { label: 'Knickers Pants', to: '/softball?sub=Knickers Pants' },
-          { label: 'Fastpitch Caps & Visors', to: '/softball?sub=Caps' },
-          { label: 'Padded Sliding Shorts', to: '/softball?sub=Shorts' }
+          { label: 'Fastpitch Caps & Visors', to: '/softball?sub=Fastpitch Caps & Visors' },
+          { label: 'Padded Sliding Shorts', to: '/softball?sub=Padded Sliding Shorts' }
         ]
       },
       {
         name: 'American Football',
         to: '/football',
         subs: [
-          { label: 'Elite Game Jerseys (Tackle Twill)', to: '/football?sub=Jerseys' },
-          { label: 'Porthole Mesh Practice Jerseys', to: '/football?sub=Jerseys' },
-          { label: 'Integrated 7-Pad Pants', to: '/football?sub=Pants' },
-          { label: 'Slotted Game Pants', to: '/football?sub=Pants' },
-          { label: 'Compression Padded Girdles', to: '/football?sub=Pants' },
-          { label: 'Youth Tackle Football Kits', to: '/football?sub=Jerseys' }
+          { label: 'Elite Game Jerseys (Tackle Twill)', to: '/football?sub=Elite Game Jerseys' },
+          { label: 'Porthole Mesh Practice Jerseys', to: '/football?sub=Porthole Mesh Practice Jerseys' },
+          { label: 'Integrated 7-Pad Pants', to: '/football?sub=Integrated 7-Pad Pants' },
+          { label: 'Slotted Game Pants', to: '/football?sub=Slotted Game Pants' },
+          { label: 'Compression Padded Girdles', to: '/football?sub=Compression Padded Girdles' },
+          { label: 'Youth Tackle Football Kits', to: '/football?sub=Youth Tackle Football Kits' }
         ]
       },
       {
         name: 'Basketball',
         to: '/basketball',
         subs: [
-          { label: 'Pro Wide-Armhole Tops', to: '/basketball?sub=Tops' },
-          { label: 'Team Game Shorts', to: '/basketball?sub=Shorts' },
-          { label: 'Shooting Warm-up Shirts', to: '/basketball?sub=Tops' },
-          { label: 'Snap-Down Warm-Up Suits', to: '/basketball?sub=Shorts' },
-          { label: 'Youth Basketball Kits', to: '/basketball?sub=Tops' }
+          { label: 'Pro Wide-Armhole Tops', to: '/basketball?sub=Pro Wide-Armhole Tops' },
+          { label: 'Team Game Shorts', to: '/basketball?sub=Team Game Shorts' },
+          { label: 'Shooting Warm-up Shirts', to: '/basketball?sub=Shooting Warm-up Shirts' },
+          { label: 'Snap-Down Warm-Up Suits', to: '/basketball?sub=Snap-Down Warm-Up Suits' },
+          { label: 'Youth Basketball Kits', to: '/basketball?sub=Youth Basketball Kits' }
         ]
       },
       {
         name: 'Soccer',
         to: '/soccer',
         subs: [
-          { label: 'Matchday Striker Jerseys', to: '/soccer?sub=Jerseys' },
-          { label: 'Performance Match Shorts', to: '/soccer?sub=Shorts' },
-          { label: 'Padded Goalkeeper Kits', to: '/soccer?sub=Jerseys' },
-          { label: 'Club Training Tops & Bibs', to: '/soccer?sub=Jerseys' },
-          { label: 'Soccer Travel Tracksuits', to: '/soccer?sub=Shorts' }
+          { label: 'Matchday Striker Jerseys', to: '/soccer?sub=Matchday Striker Jerseys' },
+          { label: 'Performance Match Shorts', to: '/soccer?sub=Performance Match Shorts' },
+          { label: 'Padded Goalkeeper Kits', to: '/soccer?sub=Padded Goalkeeper Kits' },
+          { label: 'Club Training Tops & Bibs', to: '/soccer?sub=Club Training Tops & Bibs' },
+          { label: 'Soccer Travel Tracksuits', to: '/soccer?sub=Soccer Travel Tracksuits' }
         ]
       },
       {
         name: 'Volleyball',
         to: '/volleyball',
         subs: [
-          { label: 'Elite Sleeveless Jerseys', to: '/volleyball?sub=Sleeveless Tops' },
-          { label: 'Active Long Sleeve Jerseys', to: '/volleyball?sub=Jerseys' },
-          { label: 'Lateral Agility Shorts', to: '/volleyball?sub=Shorts' },
-          { label: 'Training Compression Tops', to: '/volleyball?sub=Sleeveless Tops' },
-          { label: 'Libero Contrast Uniforms', to: '/volleyball?sub=Jerseys' }
+          { label: 'Elite Sleeveless Jerseys', to: '/volleyball?sub=Elite Sleeveless Jerseys' },
+          { label: 'Active Long Sleeve Jerseys', to: '/volleyball?sub=Active Long Sleeve Jerseys' },
+          { label: 'Lateral Agility Shorts', to: '/volleyball?sub=Lateral Agility Shorts' },
+          { label: 'Training Compression Tops', to: '/volleyball?sub=Training Compression Tops' },
+          { label: 'Libero Contrast Uniforms', to: '/volleyball?sub=Libero Contrast Uniforms' }
         ]
       },
       {
         name: 'Ice Hockey',
         to: '/ice-hockey',
         subs: [
-          { label: 'Heavy Pro-Knit Sweaters', to: '/ice-hockey?sub=Jerseys' },
-          { label: 'Practice Mesh Jerseys', to: '/ice-hockey?sub=Jerseys' },
-          { label: 'Pro Team Player Socks', to: '/ice-hockey?sub=Jerseys' }
+          { label: 'Heavy Pro-Knit Sweaters', to: '/ice-hockey?sub=Heavy Pro-Knit Sweaters' },
+          { label: 'Practice Mesh Jerseys', to: '/ice-hockey?sub=Practice Mesh Jerseys' },
+          { label: 'Pro Team Player Socks', to: '/ice-hockey?sub=Pro Team Player Socks' }
         ]
       },
       {
         name: 'Lacrosse',
         to: '/lacrosse',
         subs: [
-          { label: 'Lacrosse Game Jerseys', to: '/lacrosse?sub=Jerseys' },
-          { label: 'Lacrosse Team Shorts', to: '/lacrosse?sub=Shorts' },
-          { label: 'Athletic Tank Tops', to: '/lacrosse?sub=Tanktops' },
-          { label: 'Game Skorts', to: '/lacrosse?sub=Skorts' }
+          { label: 'Lacrosse Game Jerseys', to: '/lacrosse?sub=Lacrosse Game Jerseys' },
+          { label: 'Lacrosse Team Shorts', to: '/lacrosse?sub=Lacrosse Team Shorts' },
+          { label: 'Athletic Tank Tops', to: '/lacrosse?sub=Athletic Tank Tops' },
+          { label: 'Game Skorts', to: '/lacrosse?sub=Game Skorts' }
         ]
       },
       {
@@ -192,9 +192,9 @@ const megaCategories = {
         subs: [
           { label: 'NFHS Certified Singlets', to: '/wrestling?sub=Singlets' },
           { label: '2-Piece Compression Sets', to: '/wrestling?sub=2-Piece Sets' },
-          { label: 'Cheerleaders Uniform Sets', to: '/wrestling' },
-          { label: 'Swimming & Water Polo Suits', to: '/wrestling' },
-          { label: 'Netball Match Uniforms', to: '/wrestling' }
+          { label: 'Cheerleaders Uniform Sets', to: '/wrestling?sub=Cheerleaders Uniforms' },
+          { label: 'Swimming & Water Polo Suits', to: '/wrestling?sub=Swimming & Water Polo' },
+          { label: 'Netball Match Uniforms', to: '/wrestling?sub=Netball Uniforms' }
         ]
       }
     ]

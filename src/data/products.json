@@ -33,7 +33,10 @@
       ]
     },
     "subcategories": [
-      "Jerseys"
+      "Jerseys",
+      "Heavy Pro-Knit Sweaters",
+      "Practice Mesh Jerseys",
+      "Pro Team Player Socks"
     ],
     "products": [
       {
@@ -140,6 +143,132 @@
         "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793371555/wearconnect/products/ice-hockey/jerseys/ih-jrs-15.jpg",
         "description": "Heavy 260 GSM abrasion-resistant air-knit polyester hockey jersey with double-reinforced elbows and shoulders, fight strap option, and laser-sharp sublimation.",
         "subcategory": "Jerseys"
+      },
+      {
+        "id": "zarko-heavy-pro-knit-sweaters-black-04",
+        "name": "Heavyweight Pro-Knit Ice Hockey Sweater - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433522/wearconnect/products/ice-hockey/heavy-sweaters/zarko-heavy-pro-knit-sweaters-black-04.webp",
+        "description": "260 GSM heavy pro air-knit polyester hockey sweater with double-reinforced shoulders and elbows, fight strap option, and lace-up neck.",
+        "subcategory": "Heavy Pro-Knit Sweaters"
+      },
+      {
+        "id": "zarko-heavy-pro-knit-sweaters-blue-02",
+        "name": "Heavyweight Pro-Knit Ice Hockey Sweater - Royal Blue #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433522/wearconnect/products/ice-hockey/heavy-sweaters/zarko-heavy-pro-knit-sweaters-blue-02.webp",
+        "description": "260 GSM heavy pro air-knit polyester hockey sweater with double-reinforced shoulders and elbows, fight strap option, and lace-up neck.",
+        "subcategory": "Heavy Pro-Knit Sweaters"
+      },
+      {
+        "id": "zarko-heavy-pro-knit-sweaters-green-06",
+        "name": "Heavyweight Pro-Knit Ice Hockey Sweater - Forest Green #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433522/wearconnect/products/ice-hockey/heavy-sweaters/zarko-heavy-pro-knit-sweaters-green-06.webp",
+        "description": "260 GSM heavy pro air-knit polyester hockey sweater with double-reinforced shoulders and elbows, fight strap option, and lace-up neck.",
+        "subcategory": "Heavy Pro-Knit Sweaters"
+      },
+      {
+        "id": "zarko-heavy-pro-knit-sweaters-navy-05",
+        "name": "Heavyweight Pro-Knit Ice Hockey Sweater - Navy Blue #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433522/wearconnect/products/ice-hockey/heavy-sweaters/zarko-heavy-pro-knit-sweaters-navy-05.webp",
+        "description": "260 GSM heavy pro air-knit polyester hockey sweater with double-reinforced shoulders and elbows, fight strap option, and lace-up neck.",
+        "subcategory": "Heavy Pro-Knit Sweaters"
+      },
+      {
+        "id": "zarko-heavy-pro-knit-sweaters-red-01",
+        "name": "Heavyweight Pro-Knit Ice Hockey Sweater - Scarlet Red #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433523/wearconnect/products/ice-hockey/heavy-sweaters/zarko-heavy-pro-knit-sweaters-red-01.webp",
+        "description": "260 GSM heavy pro air-knit polyester hockey sweater with double-reinforced shoulders and elbows, fight strap option, and lace-up neck.",
+        "subcategory": "Heavy Pro-Knit Sweaters"
+      },
+      {
+        "id": "zarko-heavy-pro-knit-sweaters-white-03",
+        "name": "Heavyweight Pro-Knit Ice Hockey Sweater - Optical White #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433523/wearconnect/products/ice-hockey/heavy-sweaters/zarko-heavy-pro-knit-sweaters-white-03.webp",
+        "description": "260 GSM heavy pro air-knit polyester hockey sweater with double-reinforced shoulders and elbows, fight strap option, and lace-up neck.",
+        "subcategory": "Heavy Pro-Knit Sweaters"
+      },
+      {
+        "id": "zarko-practice-mesh-jersey-black-04",
+        "name": "Open-Mesh Ice Hockey Practice Jersey - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433523/wearconnect/products/ice-hockey/practice-jerseys/zarko-practice-mesh-jersey-black-04.webp",
+        "description": "Lightweight yet resilient open-hole poly mesh practice jersey with oversized goalie or player cut designed to fit over full pads.",
+        "subcategory": "Practice Mesh Jerseys"
+      },
+      {
+        "id": "zarko-practice-mesh-jersey-blue-01",
+        "name": "Open-Mesh Ice Hockey Practice Jersey - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433523/wearconnect/products/ice-hockey/practice-jerseys/zarko-practice-mesh-jersey-blue-01.webp",
+        "description": "Lightweight yet resilient open-hole poly mesh practice jersey with oversized goalie or player cut designed to fit over full pads.",
+        "subcategory": "Practice Mesh Jerseys"
+      },
+      {
+        "id": "zarko-practice-mesh-jersey-green-03",
+        "name": "Open-Mesh Ice Hockey Practice Jersey - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433523/wearconnect/products/ice-hockey/practice-jerseys/zarko-practice-mesh-jersey-green-03.webp",
+        "description": "Lightweight yet resilient open-hole poly mesh practice jersey with oversized goalie or player cut designed to fit over full pads.",
+        "subcategory": "Practice Mesh Jerseys"
+      },
+      {
+        "id": "zarko-practice-mesh-jersey-navy-06",
+        "name": "Open-Mesh Ice Hockey Practice Jersey - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433523/wearconnect/products/ice-hockey/practice-jerseys/zarko-practice-mesh-jersey-navy-06.webp",
+        "description": "Lightweight yet resilient open-hole poly mesh practice jersey with oversized goalie or player cut designed to fit over full pads.",
+        "subcategory": "Practice Mesh Jerseys"
+      },
+      {
+        "id": "zarko-practice-mesh-jersey-red-02",
+        "name": "Open-Mesh Ice Hockey Practice Jersey - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433523/wearconnect/products/ice-hockey/practice-jerseys/zarko-practice-mesh-jersey-red-02.webp",
+        "description": "Lightweight yet resilient open-hole poly mesh practice jersey with oversized goalie or player cut designed to fit over full pads.",
+        "subcategory": "Practice Mesh Jerseys"
+      },
+      {
+        "id": "zarko-practice-mesh-jersey-white-05",
+        "name": "Open-Mesh Ice Hockey Practice Jersey - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433523/wearconnect/products/ice-hockey/practice-jerseys/zarko-practice-mesh-jersey-white-05.webp",
+        "description": "Lightweight yet resilient open-hole poly mesh practice jersey with oversized goalie or player cut designed to fit over full pads.",
+        "subcategory": "Practice Mesh Jerseys"
+      },
+      {
+        "id": "zarko-pro-team-player-socks-black-01",
+        "name": "Wave-Knit Ice Hockey Player Socks - Black #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433523/wearconnect/products/ice-hockey/socks/zarko-pro-team-player-socks-black-01.webp",
+        "description": "Pro-style ribbed hockey socks with Velcro tabs to secure under hockey shorts, elasticized ankles, and heavy snag-resistant acrylic-knit blend.",
+        "subcategory": "Pro Team Player Socks"
+      },
+      {
+        "id": "zarko-pro-team-player-socks-blue-03",
+        "name": "Wave-Knit Ice Hockey Player Socks - Royal Blue #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433524/wearconnect/products/ice-hockey/socks/zarko-pro-team-player-socks-blue-03.webp",
+        "description": "Pro-style ribbed hockey socks with Velcro tabs to secure under hockey shorts, elasticized ankles, and heavy snag-resistant acrylic-knit blend.",
+        "subcategory": "Pro Team Player Socks"
+      },
+      {
+        "id": "zarko-pro-team-player-socks-green-06",
+        "name": "Wave-Knit Ice Hockey Player Socks - Forest Green #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433523/wearconnect/products/ice-hockey/socks/zarko-pro-team-player-socks-green-06.webp",
+        "description": "Pro-style ribbed hockey socks with Velcro tabs to secure under hockey shorts, elasticized ankles, and heavy snag-resistant acrylic-knit blend.",
+        "subcategory": "Pro Team Player Socks"
+      },
+      {
+        "id": "zarko-pro-team-player-socks-navy-05",
+        "name": "Wave-Knit Ice Hockey Player Socks - Navy Blue #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433523/wearconnect/products/ice-hockey/socks/zarko-pro-team-player-socks-navy-05.webp",
+        "description": "Pro-style ribbed hockey socks with Velcro tabs to secure under hockey shorts, elasticized ankles, and heavy snag-resistant acrylic-knit blend.",
+        "subcategory": "Pro Team Player Socks"
+      },
+      {
+        "id": "zarko-pro-team-player-socks-red-04",
+        "name": "Wave-Knit Ice Hockey Player Socks - Scarlet Red #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433524/wearconnect/products/ice-hockey/socks/zarko-pro-team-player-socks-red-04.webp",
+        "description": "Pro-style ribbed hockey socks with Velcro tabs to secure under hockey shorts, elasticized ankles, and heavy snag-resistant acrylic-knit blend.",
+        "subcategory": "Pro Team Player Socks"
+      },
+      {
+        "id": "zarko-pro-team-player-socks-white-02",
+        "name": "Wave-Knit Ice Hockey Player Socks - Optical White #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433524/wearconnect/products/ice-hockey/socks/zarko-pro-team-player-socks-white-02.webp",
+        "description": "Pro-style ribbed hockey socks with Velcro tabs to secure under hockey shorts, elasticized ankles, and heavy snag-resistant acrylic-knit blend.",
+        "subcategory": "Pro Team Player Socks"
       }
     ]
   },
@@ -180,7 +309,11 @@
       "Jerseys",
       "Shorts",
       "Skorts",
-      "Tanktops"
+      "Tanktops",
+      "Athletic Tank Tops",
+      "Game Skorts",
+      "Lacrosse Game Jerseys",
+      "Lacrosse Team Shorts"
     ],
     "products": [
       {
@@ -714,6 +847,174 @@
         "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793371699/wearconnect/products/lacrosse/tanktops/lx-tnk-15.jpg",
         "description": "Lightweight racerback cut athletic tank top engineered for high heat games and summer tournaments with 360-degree airflow mesh.",
         "subcategory": "Tanktops"
+      },
+      {
+        "id": "zarko-athletic-tank-tops-black-04",
+        "name": "Custom Sublimated Athletic Lacrosse Tank - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433524/wearconnect/products/lacrosse/tank-tops/zarko-athletic-tank-tops-black-04.webp",
+        "description": "Lightweight moisture-wicking racerback or standard athletic cut lacrosse tank top with wide armholes and pinhole mesh heat venting.",
+        "subcategory": "Athletic Tank Tops"
+      },
+      {
+        "id": "zarko-athletic-tank-tops-blue-01",
+        "name": "Custom Sublimated Athletic Lacrosse Tank - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433524/wearconnect/products/lacrosse/tank-tops/zarko-athletic-tank-tops-blue-01.webp",
+        "description": "Lightweight moisture-wicking racerback or standard athletic cut lacrosse tank top with wide armholes and pinhole mesh heat venting.",
+        "subcategory": "Athletic Tank Tops"
+      },
+      {
+        "id": "zarko-athletic-tank-tops-green-03",
+        "name": "Custom Sublimated Athletic Lacrosse Tank - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433524/wearconnect/products/lacrosse/tank-tops/zarko-athletic-tank-tops-green-03.webp",
+        "description": "Lightweight moisture-wicking racerback or standard athletic cut lacrosse tank top with wide armholes and pinhole mesh heat venting.",
+        "subcategory": "Athletic Tank Tops"
+      },
+      {
+        "id": "zarko-athletic-tank-tops-navy-06",
+        "name": "Custom Sublimated Athletic Lacrosse Tank - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433524/wearconnect/products/lacrosse/tank-tops/zarko-athletic-tank-tops-navy-06.webp",
+        "description": "Lightweight moisture-wicking racerback or standard athletic cut lacrosse tank top with wide armholes and pinhole mesh heat venting.",
+        "subcategory": "Athletic Tank Tops"
+      },
+      {
+        "id": "zarko-athletic-tank-tops-red-02",
+        "name": "Custom Sublimated Athletic Lacrosse Tank - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433524/wearconnect/products/lacrosse/tank-tops/zarko-athletic-tank-tops-red-02.webp",
+        "description": "Lightweight moisture-wicking racerback or standard athletic cut lacrosse tank top with wide armholes and pinhole mesh heat venting.",
+        "subcategory": "Athletic Tank Tops"
+      },
+      {
+        "id": "zarko-athletic-tank-tops-white-05",
+        "name": "Custom Sublimated Athletic Lacrosse Tank - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433524/wearconnect/products/lacrosse/tank-tops/zarko-athletic-tank-tops-white-05.webp",
+        "description": "Lightweight moisture-wicking racerback or standard athletic cut lacrosse tank top with wide armholes and pinhole mesh heat venting.",
+        "subcategory": "Athletic Tank Tops"
+      },
+      {
+        "id": "zarko-game-skorts-black-04",
+        "name": "Women's Fast-Motion Lacrosse Game Skort - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433524/wearconnect/products/lacrosse/game-skorts/zarko-game-skorts-black-04.webp",
+        "description": "Performance 2-in-1 skort featuring lightweight woven outer skirt with built-in 4-way compression undershorts and ball pocket.",
+        "subcategory": "Game Skorts"
+      },
+      {
+        "id": "zarko-game-skorts-blue-01",
+        "name": "Women's Fast-Motion Lacrosse Game Skort - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433524/wearconnect/products/lacrosse/game-skorts/zarko-game-skorts-blue-01.webp",
+        "description": "Performance 2-in-1 skort featuring lightweight woven outer skirt with built-in 4-way compression undershorts and ball pocket.",
+        "subcategory": "Game Skorts"
+      },
+      {
+        "id": "zarko-game-skorts-green-03",
+        "name": "Women's Fast-Motion Lacrosse Game Skort - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433524/wearconnect/products/lacrosse/game-skorts/zarko-game-skorts-green-03.webp",
+        "description": "Performance 2-in-1 skort featuring lightweight woven outer skirt with built-in 4-way compression undershorts and ball pocket.",
+        "subcategory": "Game Skorts"
+      },
+      {
+        "id": "zarko-game-skorts-navy-06",
+        "name": "Women's Fast-Motion Lacrosse Game Skort - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433524/wearconnect/products/lacrosse/game-skorts/zarko-game-skorts-navy-06.webp",
+        "description": "Performance 2-in-1 skort featuring lightweight woven outer skirt with built-in 4-way compression undershorts and ball pocket.",
+        "subcategory": "Game Skorts"
+      },
+      {
+        "id": "zarko-game-skorts-red-02",
+        "name": "Women's Fast-Motion Lacrosse Game Skort - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433525/wearconnect/products/lacrosse/game-skorts/zarko-game-skorts-red-02.webp",
+        "description": "Performance 2-in-1 skort featuring lightweight woven outer skirt with built-in 4-way compression undershorts and ball pocket.",
+        "subcategory": "Game Skorts"
+      },
+      {
+        "id": "zarko-game-skorts-white-05",
+        "name": "Women's Fast-Motion Lacrosse Game Skort - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433525/wearconnect/products/lacrosse/game-skorts/zarko-game-skorts-white-05.webp",
+        "description": "Performance 2-in-1 skort featuring lightweight woven outer skirt with built-in 4-way compression undershorts and ball pocket.",
+        "subcategory": "Game Skorts"
+      },
+      {
+        "id": "zarko-lacrosse-game-jerseys-black-03",
+        "name": "Pro Sublimated Lacrosse Game Jersey - Black #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433525/wearconnect/products/lacrosse/game-jerseys/zarko-lacrosse-game-jerseys-black-03.webp",
+        "description": "Field-tested lacrosse jersey featuring open-hole mesh panels for pad ventilation, durable poly interlock body, and ergonomic athletic silhouette.",
+        "subcategory": "Lacrosse Game Jerseys"
+      },
+      {
+        "id": "zarko-lacrosse-game-jerseys-green-06",
+        "name": "Pro Sublimated Lacrosse Game Jersey - Forest Green #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433525/wearconnect/products/lacrosse/game-jerseys/zarko-lacrosse-game-jerseys-green-06.webp",
+        "description": "Field-tested lacrosse jersey featuring open-hole mesh panels for pad ventilation, durable poly interlock body, and ergonomic athletic silhouette.",
+        "subcategory": "Lacrosse Game Jerseys"
+      },
+      {
+        "id": "zarko-lacrosse-game-jerseys-navy-05",
+        "name": "Pro Sublimated Lacrosse Game Jersey - Navy Blue #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433525/wearconnect/products/lacrosse/game-jerseys/zarko-lacrosse-game-jerseys-navy-05.webp",
+        "description": "Field-tested lacrosse jersey featuring open-hole mesh panels for pad ventilation, durable poly interlock body, and ergonomic athletic silhouette.",
+        "subcategory": "Lacrosse Game Jerseys"
+      },
+      {
+        "id": "zarko-lacrosse-game-jerseys-red-02",
+        "name": "Pro Sublimated Lacrosse Game Jersey - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433525/wearconnect/products/lacrosse/game-jerseys/zarko-lacrosse-game-jerseys-red-02.webp",
+        "description": "Field-tested lacrosse jersey featuring open-hole mesh panels for pad ventilation, durable poly interlock body, and ergonomic athletic silhouette.",
+        "subcategory": "Lacrosse Game Jerseys"
+      },
+      {
+        "id": "zarko-lacrosse-game-jerseys-royal-blue-01",
+        "name": "Pro Sublimated Lacrosse Game Jersey - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433525/wearconnect/products/lacrosse/game-jerseys/zarko-lacrosse-game-jerseys-royal-blue-01.webp",
+        "description": "Field-tested lacrosse jersey featuring open-hole mesh panels for pad ventilation, durable poly interlock body, and ergonomic athletic silhouette.",
+        "subcategory": "Lacrosse Game Jerseys"
+      },
+      {
+        "id": "zarko-lacrosse-game-jerseys-white-04",
+        "name": "Pro Sublimated Lacrosse Game Jersey - Optical White #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433525/wearconnect/products/lacrosse/game-jerseys/zarko-lacrosse-game-jerseys-white-04.webp",
+        "description": "Field-tested lacrosse jersey featuring open-hole mesh panels for pad ventilation, durable poly interlock body, and ergonomic athletic silhouette.",
+        "subcategory": "Lacrosse Game Jerseys"
+      },
+      {
+        "id": "zarko-lacrosse-team-shorts-black-04",
+        "name": "Athletic Team Lacrosse Game Shorts - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433525/wearconnect/products/lacrosse/team-shorts/zarko-lacrosse-team-shorts-black-04.webp",
+        "description": "Comfortable stretch polyester lacrosse shorts with deep pockets, elastic drawstring waist, and motion-notch side splits for sprint agility.",
+        "subcategory": "Lacrosse Team Shorts"
+      },
+      {
+        "id": "zarko-lacrosse-team-shorts-blue-01",
+        "name": "Athletic Team Lacrosse Game Shorts - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433525/wearconnect/products/lacrosse/team-shorts/zarko-lacrosse-team-shorts-blue-01.webp",
+        "description": "Comfortable stretch polyester lacrosse shorts with deep pockets, elastic drawstring waist, and motion-notch side splits for sprint agility.",
+        "subcategory": "Lacrosse Team Shorts"
+      },
+      {
+        "id": "zarko-lacrosse-team-shorts-green-03",
+        "name": "Athletic Team Lacrosse Game Shorts - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433525/wearconnect/products/lacrosse/team-shorts/zarko-lacrosse-team-shorts-green-03.webp",
+        "description": "Comfortable stretch polyester lacrosse shorts with deep pockets, elastic drawstring waist, and motion-notch side splits for sprint agility.",
+        "subcategory": "Lacrosse Team Shorts"
+      },
+      {
+        "id": "zarko-lacrosse-team-shorts-navy-06",
+        "name": "Athletic Team Lacrosse Game Shorts - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433525/wearconnect/products/lacrosse/team-shorts/zarko-lacrosse-team-shorts-navy-06.webp",
+        "description": "Comfortable stretch polyester lacrosse shorts with deep pockets, elastic drawstring waist, and motion-notch side splits for sprint agility.",
+        "subcategory": "Lacrosse Team Shorts"
+      },
+      {
+        "id": "zarko-lacrosse-team-shorts-red-02",
+        "name": "Athletic Team Lacrosse Game Shorts - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433525/wearconnect/products/lacrosse/team-shorts/zarko-lacrosse-team-shorts-red-02.webp",
+        "description": "Comfortable stretch polyester lacrosse shorts with deep pockets, elastic drawstring waist, and motion-notch side splits for sprint agility.",
+        "subcategory": "Lacrosse Team Shorts"
+      },
+      {
+        "id": "zarko-lacrosse-team-shorts-white-05",
+        "name": "Athletic Team Lacrosse Game Shorts - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433525/wearconnect/products/lacrosse/team-shorts/zarko-lacrosse-team-shorts-white-05.webp",
+        "description": "Comfortable stretch polyester lacrosse shorts with deep pockets, elastic drawstring waist, and motion-notch side splits for sprint agility.",
+        "subcategory": "Lacrosse Team Shorts"
       }
     ]
   },
@@ -752,7 +1053,12 @@
     },
     "subcategories": [
       "Jerseys",
-      "Shorts"
+      "Shorts",
+      "Club Training Tops & Bibs",
+      "Matchday Striker Jerseys",
+      "Padded Goalkeeper Kits",
+      "Performance Match Shorts",
+      "Soccer Travel Tracksuits"
     ],
     "products": [
       {
@@ -1034,6 +1340,216 @@
         "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793371723/wearconnect/products/soccer/shorts/sc-sht-20.jpg",
         "description": "Lightweight soccer match shorts with ergonomic side split hem, elasticated waistband with interior drawstring, and soft-touch chafe-free liner.",
         "subcategory": "Shorts"
+      },
+      {
+        "id": "zarko-club-training-tops-bibs-black-04",
+        "name": "Club Soccer Training Top & Scrimmage Bib - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433526/wearconnect/products/soccer/training-tops/zarko-club-training-tops-bibs-black-04.webp",
+        "description": "Lightweight breathable dry-fit soccer training top with high-visibility color accents, raglan sleeves, and anti-static poly fabric.",
+        "subcategory": "Club Training Tops & Bibs"
+      },
+      {
+        "id": "zarko-club-training-tops-bibs-blue-01",
+        "name": "Club Soccer Training Top & Scrimmage Bib - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433526/wearconnect/products/soccer/training-tops/zarko-club-training-tops-bibs-blue-01.webp",
+        "description": "Lightweight breathable dry-fit soccer training top with high-visibility color accents, raglan sleeves, and anti-static poly fabric.",
+        "subcategory": "Club Training Tops & Bibs"
+      },
+      {
+        "id": "zarko-club-training-tops-bibs-green-03",
+        "name": "Club Soccer Training Top & Scrimmage Bib - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433526/wearconnect/products/soccer/training-tops/zarko-club-training-tops-bibs-green-03.webp",
+        "description": "Lightweight breathable dry-fit soccer training top with high-visibility color accents, raglan sleeves, and anti-static poly fabric.",
+        "subcategory": "Club Training Tops & Bibs"
+      },
+      {
+        "id": "zarko-club-training-tops-bibs-navy-06",
+        "name": "Club Soccer Training Top & Scrimmage Bib - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433526/wearconnect/products/soccer/training-tops/zarko-club-training-tops-bibs-navy-06.webp",
+        "description": "Lightweight breathable dry-fit soccer training top with high-visibility color accents, raglan sleeves, and anti-static poly fabric.",
+        "subcategory": "Club Training Tops & Bibs"
+      },
+      {
+        "id": "zarko-club-training-tops-bibs-red-02",
+        "name": "Club Soccer Training Top & Scrimmage Bib - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433526/wearconnect/products/soccer/training-tops/zarko-club-training-tops-bibs-red-02.webp",
+        "description": "Lightweight breathable dry-fit soccer training top with high-visibility color accents, raglan sleeves, and anti-static poly fabric.",
+        "subcategory": "Club Training Tops & Bibs"
+      },
+      {
+        "id": "zarko-club-training-tops-bibs-white-05",
+        "name": "Club Soccer Training Top & Scrimmage Bib - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433526/wearconnect/products/soccer/training-tops/zarko-club-training-tops-bibs-white-05.webp",
+        "description": "Lightweight breathable dry-fit soccer training top with high-visibility color accents, raglan sleeves, and anti-static poly fabric.",
+        "subcategory": "Club Training Tops & Bibs"
+      },
+      {
+        "id": "zarko-matchday-striker-jerseys-black-04",
+        "name": "Pro Matchday Striker Soccer Jersey - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433526/wearconnect/products/soccer/matchday-jerseys/zarko-matchday-striker-jerseys-black-04.webp",
+        "description": "160 GSM aerated micro-interlock soccer jersey with ergonomic neck, underarm mesh ventilation, and sharp 4K sublimated club graphics.",
+        "subcategory": "Matchday Striker Jerseys"
+      },
+      {
+        "id": "zarko-matchday-striker-jerseys-blue-01",
+        "name": "Pro Matchday Striker Soccer Jersey - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433526/wearconnect/products/soccer/matchday-jerseys/zarko-matchday-striker-jerseys-blue-01.webp",
+        "description": "160 GSM aerated micro-interlock soccer jersey with ergonomic neck, underarm mesh ventilation, and sharp 4K sublimated club graphics.",
+        "subcategory": "Matchday Striker Jerseys"
+      },
+      {
+        "id": "zarko-matchday-striker-jerseys-green-03",
+        "name": "Pro Matchday Striker Soccer Jersey - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433526/wearconnect/products/soccer/matchday-jerseys/zarko-matchday-striker-jerseys-green-03.webp",
+        "description": "160 GSM aerated micro-interlock soccer jersey with ergonomic neck, underarm mesh ventilation, and sharp 4K sublimated club graphics.",
+        "subcategory": "Matchday Striker Jerseys"
+      },
+      {
+        "id": "zarko-matchday-striker-jerseys-navy-06",
+        "name": "Pro Matchday Striker Soccer Jersey - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433526/wearconnect/products/soccer/matchday-jerseys/zarko-matchday-striker-jerseys-navy-06.webp",
+        "description": "160 GSM aerated micro-interlock soccer jersey with ergonomic neck, underarm mesh ventilation, and sharp 4K sublimated club graphics.",
+        "subcategory": "Matchday Striker Jerseys"
+      },
+      {
+        "id": "zarko-matchday-striker-jerseys-red-02",
+        "name": "Pro Matchday Striker Soccer Jersey - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433526/wearconnect/products/soccer/matchday-jerseys/zarko-matchday-striker-jerseys-red-02.webp",
+        "description": "160 GSM aerated micro-interlock soccer jersey with ergonomic neck, underarm mesh ventilation, and sharp 4K sublimated club graphics.",
+        "subcategory": "Matchday Striker Jerseys"
+      },
+      {
+        "id": "zarko-matchday-striker-jerseys-white-05",
+        "name": "Pro Matchday Striker Soccer Jersey - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433526/wearconnect/products/soccer/matchday-jerseys/zarko-matchday-striker-jerseys-white-05.webp",
+        "description": "160 GSM aerated micro-interlock soccer jersey with ergonomic neck, underarm mesh ventilation, and sharp 4K sublimated club graphics.",
+        "subcategory": "Matchday Striker Jerseys"
+      },
+      {
+        "id": "zarko-padded-goalkeeper-kits-black-02",
+        "name": "Padded Pro Soccer Goalkeeper Uniform Set - Black #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433526/wearconnect/products/soccer/goalkeeper-kits/zarko-padded-goalkeeper-kits-black-02.webp",
+        "description": "Specialized goalkeeper jersey and pants set featuring high-density foam padding on forearms, elbows, hips, and knees for slide protection.",
+        "subcategory": "Padded Goalkeeper Kits"
+      },
+      {
+        "id": "zarko-padded-goalkeeper-kits-green-01",
+        "name": "Padded Pro Soccer Goalkeeper Uniform Set - Forest Green #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433526/wearconnect/products/soccer/goalkeeper-kits/zarko-padded-goalkeeper-kits-green-01.webp",
+        "description": "Specialized goalkeeper jersey and pants set featuring high-density foam padding on forearms, elbows, hips, and knees for slide protection.",
+        "subcategory": "Padded Goalkeeper Kits"
+      },
+      {
+        "id": "zarko-padded-goalkeeper-kits-navy-04",
+        "name": "Padded Pro Soccer Goalkeeper Uniform Set - Navy Blue #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433526/wearconnect/products/soccer/goalkeeper-kits/zarko-padded-goalkeeper-kits-navy-04.webp",
+        "description": "Specialized goalkeeper jersey and pants set featuring high-density foam padding on forearms, elbows, hips, and knees for slide protection.",
+        "subcategory": "Padded Goalkeeper Kits"
+      },
+      {
+        "id": "zarko-padded-goalkeeper-kits-red-05",
+        "name": "Padded Pro Soccer Goalkeeper Uniform Set - Scarlet Red #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433527/wearconnect/products/soccer/goalkeeper-kits/zarko-padded-goalkeeper-kits-red-05.webp",
+        "description": "Specialized goalkeeper jersey and pants set featuring high-density foam padding on forearms, elbows, hips, and knees for slide protection.",
+        "subcategory": "Padded Goalkeeper Kits"
+      },
+      {
+        "id": "zarko-padded-goalkeeper-kits-royal-blue-06",
+        "name": "Padded Pro Soccer Goalkeeper Uniform Set - Royal Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433527/wearconnect/products/soccer/goalkeeper-kits/zarko-padded-goalkeeper-kits-royal-blue-06.webp",
+        "description": "Specialized goalkeeper jersey and pants set featuring high-density foam padding on forearms, elbows, hips, and knees for slide protection.",
+        "subcategory": "Padded Goalkeeper Kits"
+      },
+      {
+        "id": "zarko-padded-goalkeeper-kits-white-03",
+        "name": "Padded Pro Soccer Goalkeeper Uniform Set - Optical White #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433527/wearconnect/products/soccer/goalkeeper-kits/zarko-padded-goalkeeper-kits-white-03.webp",
+        "description": "Specialized goalkeeper jersey and pants set featuring high-density foam padding on forearms, elbows, hips, and knees for slide protection.",
+        "subcategory": "Padded Goalkeeper Kits"
+      },
+      {
+        "id": "zarko-performance-match-shorts-black-04",
+        "name": "Performance Matchday Soccer Shorts - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433527/wearconnect/products/soccer/match-shorts/zarko-performance-match-shorts-black-04.webp",
+        "description": "Lightweight moisture-wicking match soccer shorts with elasticated waistband, interior drawcord, side slits, and no restrictive pockets.",
+        "subcategory": "Performance Match Shorts"
+      },
+      {
+        "id": "zarko-performance-match-shorts-blue-01",
+        "name": "Performance Matchday Soccer Shorts - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433527/wearconnect/products/soccer/match-shorts/zarko-performance-match-shorts-blue-01.webp",
+        "description": "Lightweight moisture-wicking match soccer shorts with elasticated waistband, interior drawcord, side slits, and no restrictive pockets.",
+        "subcategory": "Performance Match Shorts"
+      },
+      {
+        "id": "zarko-performance-match-shorts-green-03",
+        "name": "Performance Matchday Soccer Shorts - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433527/wearconnect/products/soccer/match-shorts/zarko-performance-match-shorts-green-03.webp",
+        "description": "Lightweight moisture-wicking match soccer shorts with elasticated waistband, interior drawcord, side slits, and no restrictive pockets.",
+        "subcategory": "Performance Match Shorts"
+      },
+      {
+        "id": "zarko-performance-match-shorts-navy-06",
+        "name": "Performance Matchday Soccer Shorts - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433527/wearconnect/products/soccer/match-shorts/zarko-performance-match-shorts-navy-06.webp",
+        "description": "Lightweight moisture-wicking match soccer shorts with elasticated waistband, interior drawcord, side slits, and no restrictive pockets.",
+        "subcategory": "Performance Match Shorts"
+      },
+      {
+        "id": "zarko-performance-match-shorts-red-02",
+        "name": "Performance Matchday Soccer Shorts - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433527/wearconnect/products/soccer/match-shorts/zarko-performance-match-shorts-red-02.webp",
+        "description": "Lightweight moisture-wicking match soccer shorts with elasticated waistband, interior drawcord, side slits, and no restrictive pockets.",
+        "subcategory": "Performance Match Shorts"
+      },
+      {
+        "id": "zarko-performance-match-shorts-white-05",
+        "name": "Performance Matchday Soccer Shorts - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433527/wearconnect/products/soccer/match-shorts/zarko-performance-match-shorts-white-05.webp",
+        "description": "Lightweight moisture-wicking match soccer shorts with elasticated waistband, interior drawcord, side slits, and no restrictive pockets.",
+        "subcategory": "Performance Match Shorts"
+      },
+      {
+        "id": "zarko-soccer-travel-tracksuits-black-04",
+        "name": "Custom Soccer Team Travel Tracksuit Set - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433527/wearconnect/products/soccer/travel-tracksuits/zarko-soccer-travel-tracksuits-black-04.webp",
+        "description": "Two-piece poly-tricot warm-up tracksuit with full-zip jacket, zippered hand pockets, and tapered training pants with ankle zippers.",
+        "subcategory": "Soccer Travel Tracksuits"
+      },
+      {
+        "id": "zarko-soccer-travel-tracksuits-green-03",
+        "name": "Custom Soccer Team Travel Tracksuit Set - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433527/wearconnect/products/soccer/travel-tracksuits/zarko-soccer-travel-tracksuits-green-03.webp",
+        "description": "Two-piece poly-tricot warm-up tracksuit with full-zip jacket, zippered hand pockets, and tapered training pants with ankle zippers.",
+        "subcategory": "Soccer Travel Tracksuits"
+      },
+      {
+        "id": "zarko-soccer-travel-tracksuits-navy-01",
+        "name": "Custom Soccer Team Travel Tracksuit Set - Navy Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433527/wearconnect/products/soccer/travel-tracksuits/zarko-soccer-travel-tracksuits-navy-01.webp",
+        "description": "Two-piece poly-tricot warm-up tracksuit with full-zip jacket, zippered hand pockets, and tapered training pants with ankle zippers.",
+        "subcategory": "Soccer Travel Tracksuits"
+      },
+      {
+        "id": "zarko-soccer-travel-tracksuits-red-02",
+        "name": "Custom Soccer Team Travel Tracksuit Set - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433527/wearconnect/products/soccer/travel-tracksuits/zarko-soccer-travel-tracksuits-red-02.webp",
+        "description": "Two-piece poly-tricot warm-up tracksuit with full-zip jacket, zippered hand pockets, and tapered training pants with ankle zippers.",
+        "subcategory": "Soccer Travel Tracksuits"
+      },
+      {
+        "id": "zarko-soccer-travel-tracksuits-royal-blue-06",
+        "name": "Custom Soccer Team Travel Tracksuit Set - Royal Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433527/wearconnect/products/soccer/travel-tracksuits/zarko-soccer-travel-tracksuits-royal-blue-06.webp",
+        "description": "Two-piece poly-tricot warm-up tracksuit with full-zip jacket, zippered hand pockets, and tapered training pants with ankle zippers.",
+        "subcategory": "Soccer Travel Tracksuits"
+      },
+      {
+        "id": "zarko-soccer-travel-tracksuits-white-05",
+        "name": "Custom Soccer Team Travel Tracksuit Set - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433527/wearconnect/products/soccer/travel-tracksuits/zarko-soccer-travel-tracksuits-white-05.webp",
+        "description": "Two-piece poly-tricot warm-up tracksuit with full-zip jacket, zippered hand pockets, and tapered training pants with ankle zippers.",
+        "subcategory": "Soccer Travel Tracksuits"
       }
     ]
   },
@@ -1073,7 +1589,12 @@
     "subcategories": [
       "Jerseys",
       "Shorts",
-      "Sleeveless Tops"
+      "Sleeveless Tops",
+      "Active Long Sleeve Jerseys",
+      "Elite Sleeveless Jerseys",
+      "Lateral Agility Shorts",
+      "Libero Contrast Uniforms",
+      "Training Compression Tops"
     ],
     "products": [
       {
@@ -1390,6 +1911,216 @@
         "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793371748/wearconnect/products/volleyball/sleeveless-tops/vb-slv-15.jpg",
         "description": "Sleeveless tournament volleyball top designed for unrestricted arm swing and spiking power, made with breathable featherweight stretch poly.",
         "subcategory": "Sleeveless Tops"
+      },
+      {
+        "id": "zarko-active-long-sleeve-jersey-black-04",
+        "name": "Elite Long Sleeve Volleyball Game Jersey - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433530/wearconnect/products/volleyball/long-sleeve-jerseys/zarko-active-long-sleeve-jersey-black-04.webp",
+        "description": "Flexible 4-way stretch spandex-poly long sleeve volleyball jersey with thumbhole cuffs, flatlock anti-chafing seams, and dive durability.",
+        "subcategory": "Active Long Sleeve Jerseys"
+      },
+      {
+        "id": "zarko-active-long-sleeve-jersey-blue-01",
+        "name": "Elite Long Sleeve Volleyball Game Jersey - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433530/wearconnect/products/volleyball/long-sleeve-jerseys/zarko-active-long-sleeve-jersey-blue-01.webp",
+        "description": "Flexible 4-way stretch spandex-poly long sleeve volleyball jersey with thumbhole cuffs, flatlock anti-chafing seams, and dive durability.",
+        "subcategory": "Active Long Sleeve Jerseys"
+      },
+      {
+        "id": "zarko-active-long-sleeve-jersey-green-03",
+        "name": "Elite Long Sleeve Volleyball Game Jersey - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433530/wearconnect/products/volleyball/long-sleeve-jerseys/zarko-active-long-sleeve-jersey-green-03.webp",
+        "description": "Flexible 4-way stretch spandex-poly long sleeve volleyball jersey with thumbhole cuffs, flatlock anti-chafing seams, and dive durability.",
+        "subcategory": "Active Long Sleeve Jerseys"
+      },
+      {
+        "id": "zarko-active-long-sleeve-jersey-navy-06",
+        "name": "Elite Long Sleeve Volleyball Game Jersey - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433530/wearconnect/products/volleyball/long-sleeve-jerseys/zarko-active-long-sleeve-jersey-navy-06.webp",
+        "description": "Flexible 4-way stretch spandex-poly long sleeve volleyball jersey with thumbhole cuffs, flatlock anti-chafing seams, and dive durability.",
+        "subcategory": "Active Long Sleeve Jerseys"
+      },
+      {
+        "id": "zarko-active-long-sleeve-jersey-red-02",
+        "name": "Elite Long Sleeve Volleyball Game Jersey - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433530/wearconnect/products/volleyball/long-sleeve-jerseys/zarko-active-long-sleeve-jersey-red-02.webp",
+        "description": "Flexible 4-way stretch spandex-poly long sleeve volleyball jersey with thumbhole cuffs, flatlock anti-chafing seams, and dive durability.",
+        "subcategory": "Active Long Sleeve Jerseys"
+      },
+      {
+        "id": "zarko-active-long-sleeve-jersey-white-05",
+        "name": "Elite Long Sleeve Volleyball Game Jersey - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433530/wearconnect/products/volleyball/long-sleeve-jerseys/zarko-active-long-sleeve-jersey-white-05.webp",
+        "description": "Flexible 4-way stretch spandex-poly long sleeve volleyball jersey with thumbhole cuffs, flatlock anti-chafing seams, and dive durability.",
+        "subcategory": "Active Long Sleeve Jerseys"
+      },
+      {
+        "id": "zarko-elite-sleeveless-jersey-black-03",
+        "name": "Championship Sleeveless Volleyball Jersey - Black #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433530/wearconnect/products/volleyball/sleeveless-jerseys/zarko-elite-sleeveless-jersey-black-03.webp",
+        "description": "Ultra-lightweight racerback or standard sleeveless volleyball jersey with athletic armholes for unrestricted spike and block movement.",
+        "subcategory": "Elite Sleeveless Jerseys"
+      },
+      {
+        "id": "zarko-elite-sleeveless-jersey-blue-01",
+        "name": "Championship Sleeveless Volleyball Jersey - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433530/wearconnect/products/volleyball/sleeveless-jerseys/zarko-elite-sleeveless-jersey-blue-01.webp",
+        "description": "Ultra-lightweight racerback or standard sleeveless volleyball jersey with athletic armholes for unrestricted spike and block movement.",
+        "subcategory": "Elite Sleeveless Jerseys"
+      },
+      {
+        "id": "zarko-elite-sleeveless-jersey-green-05",
+        "name": "Championship Sleeveless Volleyball Jersey - Forest Green #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433530/wearconnect/products/volleyball/sleeveless-jerseys/zarko-elite-sleeveless-jersey-green-05.webp",
+        "description": "Ultra-lightweight racerback or standard sleeveless volleyball jersey with athletic armholes for unrestricted spike and block movement.",
+        "subcategory": "Elite Sleeveless Jerseys"
+      },
+      {
+        "id": "zarko-elite-sleeveless-jersey-navy-06",
+        "name": "Championship Sleeveless Volleyball Jersey - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433531/wearconnect/products/volleyball/sleeveless-jerseys/zarko-elite-sleeveless-jersey-navy-06.webp",
+        "description": "Ultra-lightweight racerback or standard sleeveless volleyball jersey with athletic armholes for unrestricted spike and block movement.",
+        "subcategory": "Elite Sleeveless Jerseys"
+      },
+      {
+        "id": "zarko-elite-sleeveless-jersey-red-02",
+        "name": "Championship Sleeveless Volleyball Jersey - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433531/wearconnect/products/volleyball/sleeveless-jerseys/zarko-elite-sleeveless-jersey-red-02.webp",
+        "description": "Ultra-lightweight racerback or standard sleeveless volleyball jersey with athletic armholes for unrestricted spike and block movement.",
+        "subcategory": "Elite Sleeveless Jerseys"
+      },
+      {
+        "id": "zarko-elite-sleeveless-jersey-white-04",
+        "name": "Championship Sleeveless Volleyball Jersey - Optical White #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433531/wearconnect/products/volleyball/sleeveless-jerseys/zarko-elite-sleeveless-jersey-white-04.webp",
+        "description": "Ultra-lightweight racerback or standard sleeveless volleyball jersey with athletic armholes for unrestricted spike and block movement.",
+        "subcategory": "Elite Sleeveless Jerseys"
+      },
+      {
+        "id": "zarko-lateral-agility-shorts-black-04",
+        "name": "Lateral Agility Volleyball Spandex Shorts - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433531/wearconnect/products/volleyball/agility-shorts/zarko-lateral-agility-shorts-black-04.webp",
+        "description": "3.5-inch to 4-inch inseam high-stretch volleyball spandex shorts with wide waistband that stays put during digs and continuous jumps.",
+        "subcategory": "Lateral Agility Shorts"
+      },
+      {
+        "id": "zarko-lateral-agility-shorts-blue-01",
+        "name": "Lateral Agility Volleyball Spandex Shorts - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433531/wearconnect/products/volleyball/agility-shorts/zarko-lateral-agility-shorts-blue-01.webp",
+        "description": "3.5-inch to 4-inch inseam high-stretch volleyball spandex shorts with wide waistband that stays put during digs and continuous jumps.",
+        "subcategory": "Lateral Agility Shorts"
+      },
+      {
+        "id": "zarko-lateral-agility-shorts-green-03",
+        "name": "Lateral Agility Volleyball Spandex Shorts - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433531/wearconnect/products/volleyball/agility-shorts/zarko-lateral-agility-shorts-green-03.webp",
+        "description": "3.5-inch to 4-inch inseam high-stretch volleyball spandex shorts with wide waistband that stays put during digs and continuous jumps.",
+        "subcategory": "Lateral Agility Shorts"
+      },
+      {
+        "id": "zarko-lateral-agility-shorts-navy-06",
+        "name": "Lateral Agility Volleyball Spandex Shorts - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433531/wearconnect/products/volleyball/agility-shorts/zarko-lateral-agility-shorts-navy-06.webp",
+        "description": "3.5-inch to 4-inch inseam high-stretch volleyball spandex shorts with wide waistband that stays put during digs and continuous jumps.",
+        "subcategory": "Lateral Agility Shorts"
+      },
+      {
+        "id": "zarko-lateral-agility-shorts-red-02",
+        "name": "Lateral Agility Volleyball Spandex Shorts - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433531/wearconnect/products/volleyball/agility-shorts/zarko-lateral-agility-shorts-red-02.webp",
+        "description": "3.5-inch to 4-inch inseam high-stretch volleyball spandex shorts with wide waistband that stays put during digs and continuous jumps.",
+        "subcategory": "Lateral Agility Shorts"
+      },
+      {
+        "id": "zarko-lateral-agility-shorts-white-05",
+        "name": "Lateral Agility Volleyball Spandex Shorts - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433531/wearconnect/products/volleyball/agility-shorts/zarko-lateral-agility-shorts-white-05.webp",
+        "description": "3.5-inch to 4-inch inseam high-stretch volleyball spandex shorts with wide waistband that stays put during digs and continuous jumps.",
+        "subcategory": "Lateral Agility Shorts"
+      },
+      {
+        "id": "zarko-libero-contrast-uniforms-black-04",
+        "name": "Official Libero High-Contrast Volleyball Uniform - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433531/wearconnect/products/volleyball/libero-uniforms/zarko-libero-contrast-uniforms-black-04.webp",
+        "description": "USAV and NFHS compliant high-contrast sublimated Libero jersey engineered with premium stretch fabric for defensive diving agility.",
+        "subcategory": "Libero Contrast Uniforms"
+      },
+      {
+        "id": "zarko-libero-contrast-uniforms-blue-01",
+        "name": "Official Libero High-Contrast Volleyball Uniform - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433531/wearconnect/products/volleyball/libero-uniforms/zarko-libero-contrast-uniforms-blue-01.webp",
+        "description": "USAV and NFHS compliant high-contrast sublimated Libero jersey engineered with premium stretch fabric for defensive diving agility.",
+        "subcategory": "Libero Contrast Uniforms"
+      },
+      {
+        "id": "zarko-libero-contrast-uniforms-green-03",
+        "name": "Official Libero High-Contrast Volleyball Uniform - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433531/wearconnect/products/volleyball/libero-uniforms/zarko-libero-contrast-uniforms-green-03.webp",
+        "description": "USAV and NFHS compliant high-contrast sublimated Libero jersey engineered with premium stretch fabric for defensive diving agility.",
+        "subcategory": "Libero Contrast Uniforms"
+      },
+      {
+        "id": "zarko-libero-contrast-uniforms-navy-06",
+        "name": "Official Libero High-Contrast Volleyball Uniform - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433531/wearconnect/products/volleyball/libero-uniforms/zarko-libero-contrast-uniforms-navy-06.webp",
+        "description": "USAV and NFHS compliant high-contrast sublimated Libero jersey engineered with premium stretch fabric for defensive diving agility.",
+        "subcategory": "Libero Contrast Uniforms"
+      },
+      {
+        "id": "zarko-libero-contrast-uniforms-red-02",
+        "name": "Official Libero High-Contrast Volleyball Uniform - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433532/wearconnect/products/volleyball/libero-uniforms/zarko-libero-contrast-uniforms-red-02.webp",
+        "description": "USAV and NFHS compliant high-contrast sublimated Libero jersey engineered with premium stretch fabric for defensive diving agility.",
+        "subcategory": "Libero Contrast Uniforms"
+      },
+      {
+        "id": "zarko-libero-contrast-uniforms-white-05",
+        "name": "Official Libero High-Contrast Volleyball Uniform - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433531/wearconnect/products/volleyball/libero-uniforms/zarko-libero-contrast-uniforms-white-05.webp",
+        "description": "USAV and NFHS compliant high-contrast sublimated Libero jersey engineered with premium stretch fabric for defensive diving agility.",
+        "subcategory": "Libero Contrast Uniforms"
+      },
+      {
+        "id": "zarko-training-compression-tops-black-04",
+        "name": "Performance Training Volleyball Compression Top - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433532/wearconnect/products/volleyball/compression-tops/zarko-training-compression-tops-black-04.webp",
+        "description": "Targeted athletic compression top providing muscle support, superior sweat transfer, and quick recovery during rigorous training sessions.",
+        "subcategory": "Training Compression Tops"
+      },
+      {
+        "id": "zarko-training-compression-tops-blue-01",
+        "name": "Performance Training Volleyball Compression Top - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433532/wearconnect/products/volleyball/compression-tops/zarko-training-compression-tops-blue-01.webp",
+        "description": "Targeted athletic compression top providing muscle support, superior sweat transfer, and quick recovery during rigorous training sessions.",
+        "subcategory": "Training Compression Tops"
+      },
+      {
+        "id": "zarko-training-compression-tops-green-03",
+        "name": "Performance Training Volleyball Compression Top - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433532/wearconnect/products/volleyball/compression-tops/zarko-training-compression-tops-green-03.webp",
+        "description": "Targeted athletic compression top providing muscle support, superior sweat transfer, and quick recovery during rigorous training sessions.",
+        "subcategory": "Training Compression Tops"
+      },
+      {
+        "id": "zarko-training-compression-tops-navy-06",
+        "name": "Performance Training Volleyball Compression Top - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433532/wearconnect/products/volleyball/compression-tops/zarko-training-compression-tops-navy-06.webp",
+        "description": "Targeted athletic compression top providing muscle support, superior sweat transfer, and quick recovery during rigorous training sessions.",
+        "subcategory": "Training Compression Tops"
+      },
+      {
+        "id": "zarko-training-compression-tops-red-02",
+        "name": "Performance Training Volleyball Compression Top - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433532/wearconnect/products/volleyball/compression-tops/zarko-training-compression-tops-red-02.webp",
+        "description": "Targeted athletic compression top providing muscle support, superior sweat transfer, and quick recovery during rigorous training sessions.",
+        "subcategory": "Training Compression Tops"
+      },
+      {
+        "id": "zarko-training-compression-tops-white-05",
+        "name": "Performance Training Volleyball Compression Top - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433532/wearconnect/products/volleyball/compression-tops/zarko-training-compression-tops-white-05.webp",
+        "description": "Targeted athletic compression top providing muscle support, superior sweat transfer, and quick recovery during rigorous training sessions.",
+        "subcategory": "Training Compression Tops"
       }
     ]
   },
@@ -1428,7 +2159,13 @@
     },
     "subcategories": [
       "Jerseys",
-      "Pants"
+      "Pants",
+      "Compression Padded Girdles",
+      "Elite Game Jerseys",
+      "Integrated 7-Pad Pants",
+      "Porthole Mesh Practice Jerseys",
+      "Slotted Game Pants",
+      "Youth Tackle Football Kits"
     ],
     "products": [
       {
@@ -1710,6 +2447,258 @@
         "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793371771/wearconnect/products/football/pants/fb-pnt-20.jpg",
         "description": "Heavyweight 4-way stretch football game pants featuring integrated pad pocket construction, bar-tacked stress seams, tunnel belt waist, and non-slip silicone elastic leg openings.",
         "subcategory": "Pants"
+      },
+      {
+        "id": "zarko-compression-padded-girdles-black-04",
+        "name": "Pro Compression 5-Pad Football Girdle - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433513/wearconnect/products/football/padded-girdles/zarko-compression-padded-girdles-black-04.webp",
+        "description": "Export-grade 4-way stretch moisture-wicking compression football girdle with integrated EVA high-impact hip, tailbone, and thigh protection pads.",
+        "subcategory": "Compression Padded Girdles"
+      },
+      {
+        "id": "zarko-compression-padded-girdles-blue-01",
+        "name": "Pro Compression 5-Pad Football Girdle - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433513/wearconnect/products/football/padded-girdles/zarko-compression-padded-girdles-blue-01.webp",
+        "description": "Export-grade 4-way stretch moisture-wicking compression football girdle with integrated EVA high-impact hip, tailbone, and thigh protection pads.",
+        "subcategory": "Compression Padded Girdles"
+      },
+      {
+        "id": "zarko-compression-padded-girdles-green-03",
+        "name": "Pro Compression 5-Pad Football Girdle - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433513/wearconnect/products/football/padded-girdles/zarko-compression-padded-girdles-green-03.webp",
+        "description": "Export-grade 4-way stretch moisture-wicking compression football girdle with integrated EVA high-impact hip, tailbone, and thigh protection pads.",
+        "subcategory": "Compression Padded Girdles"
+      },
+      {
+        "id": "zarko-compression-padded-girdles-navy-06",
+        "name": "Pro Compression 5-Pad Football Girdle - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433513/wearconnect/products/football/padded-girdles/zarko-compression-padded-girdles-navy-06.webp",
+        "description": "Export-grade 4-way stretch moisture-wicking compression football girdle with integrated EVA high-impact hip, tailbone, and thigh protection pads.",
+        "subcategory": "Compression Padded Girdles"
+      },
+      {
+        "id": "zarko-compression-padded-girdles-red-02",
+        "name": "Pro Compression 5-Pad Football Girdle - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433513/wearconnect/products/football/padded-girdles/zarko-compression-padded-girdles-red-02.webp",
+        "description": "Export-grade 4-way stretch moisture-wicking compression football girdle with integrated EVA high-impact hip, tailbone, and thigh protection pads.",
+        "subcategory": "Compression Padded Girdles"
+      },
+      {
+        "id": "zarko-compression-padded-girdles-white-05",
+        "name": "Pro Compression 5-Pad Football Girdle - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433513/wearconnect/products/football/padded-girdles/zarko-compression-padded-girdles-white-05.webp",
+        "description": "Export-grade 4-way stretch moisture-wicking compression football girdle with integrated EVA high-impact hip, tailbone, and thigh protection pads.",
+        "subcategory": "Compression Padded Girdles"
+      },
+      {
+        "id": "zarko-elite-game-jerseys-black-04",
+        "name": "Elite Pro Sublimated Football Jersey - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433513/wearconnect/products/football/elite-jerseys/zarko-elite-game-jerseys-black-04.webp",
+        "description": "260 GSM heavy-duty dazzle and pro-interlock football game jersey with double-ply cowl shoulders, pad-compatible athletic cut, and NFHS regulation compliance.",
+        "subcategory": "Elite Game Jerseys"
+      },
+      {
+        "id": "zarko-elite-game-jerseys-blue-01",
+        "name": "Elite Pro Sublimated Football Jersey - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433512/wearconnect/products/football/elite-jerseys/zarko-elite-game-jerseys-blue-01.webp",
+        "description": "260 GSM heavy-duty dazzle and pro-interlock football game jersey with double-ply cowl shoulders, pad-compatible athletic cut, and NFHS regulation compliance.",
+        "subcategory": "Elite Game Jerseys"
+      },
+      {
+        "id": "zarko-elite-game-jerseys-green-03",
+        "name": "Elite Pro Sublimated Football Jersey - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433513/wearconnect/products/football/elite-jerseys/zarko-elite-game-jerseys-green-03.webp",
+        "description": "260 GSM heavy-duty dazzle and pro-interlock football game jersey with double-ply cowl shoulders, pad-compatible athletic cut, and NFHS regulation compliance.",
+        "subcategory": "Elite Game Jerseys"
+      },
+      {
+        "id": "zarko-elite-game-jerseys-navy-06",
+        "name": "Elite Pro Sublimated Football Jersey - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433512/wearconnect/products/football/elite-jerseys/zarko-elite-game-jerseys-navy-06.webp",
+        "description": "260 GSM heavy-duty dazzle and pro-interlock football game jersey with double-ply cowl shoulders, pad-compatible athletic cut, and NFHS regulation compliance.",
+        "subcategory": "Elite Game Jerseys"
+      },
+      {
+        "id": "zarko-elite-game-jerseys-red-02",
+        "name": "Elite Pro Sublimated Football Jersey - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433513/wearconnect/products/football/elite-jerseys/zarko-elite-game-jerseys-red-02.webp",
+        "description": "260 GSM heavy-duty dazzle and pro-interlock football game jersey with double-ply cowl shoulders, pad-compatible athletic cut, and NFHS regulation compliance.",
+        "subcategory": "Elite Game Jerseys"
+      },
+      {
+        "id": "zarko-elite-game-jerseys-white-05",
+        "name": "Elite Pro Sublimated Football Jersey - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433512/wearconnect/products/football/elite-jerseys/zarko-elite-game-jerseys-white-05.webp",
+        "description": "260 GSM heavy-duty dazzle and pro-interlock football game jersey with double-ply cowl shoulders, pad-compatible athletic cut, and NFHS regulation compliance.",
+        "subcategory": "Elite Game Jerseys"
+      },
+      {
+        "id": "zarko-integrated-7pad-pants-black-02",
+        "name": "Integrated 7-Pad Football Game Pants - Black #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433513/wearconnect/products/football/7-pad-pants/zarko-integrated-7pad-pants-black-02.webp",
+        "description": "Durable stretch-matte polyester football pants with factory sewn-in EVA pads (hips, spine, thighs, knees) and tunnel waistband with lace-up fly.",
+        "subcategory": "Integrated 7-Pad Pants"
+      },
+      {
+        "id": "zarko-integrated-7pad-pants-blue-01",
+        "name": "Integrated 7-Pad Football Game Pants - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433514/wearconnect/products/football/7-pad-pants/zarko-integrated-7pad-pants-blue-01.webp",
+        "description": "Durable stretch-matte polyester football pants with factory sewn-in EVA pads (hips, spine, thighs, knees) and tunnel waistband with lace-up fly.",
+        "subcategory": "Integrated 7-Pad Pants"
+      },
+      {
+        "id": "zarko-integrated-7pad-pants-green-06",
+        "name": "Integrated 7-Pad Football Game Pants - Forest Green #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433514/wearconnect/products/football/7-pad-pants/zarko-integrated-7pad-pants-green-06.webp",
+        "description": "Durable stretch-matte polyester football pants with factory sewn-in EVA pads (hips, spine, thighs, knees) and tunnel waistband with lace-up fly.",
+        "subcategory": "Integrated 7-Pad Pants"
+      },
+      {
+        "id": "zarko-integrated-7pad-pants-navy-05",
+        "name": "Integrated 7-Pad Football Game Pants - Navy Blue #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433514/wearconnect/products/football/7-pad-pants/zarko-integrated-7pad-pants-navy-05.webp",
+        "description": "Durable stretch-matte polyester football pants with factory sewn-in EVA pads (hips, spine, thighs, knees) and tunnel waistband with lace-up fly.",
+        "subcategory": "Integrated 7-Pad Pants"
+      },
+      {
+        "id": "zarko-integrated-7pad-pants-red-04",
+        "name": "Integrated 7-Pad Football Game Pants - Scarlet Red #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433514/wearconnect/products/football/7-pad-pants/zarko-integrated-7pad-pants-red-04.webp",
+        "description": "Durable stretch-matte polyester football pants with factory sewn-in EVA pads (hips, spine, thighs, knees) and tunnel waistband with lace-up fly.",
+        "subcategory": "Integrated 7-Pad Pants"
+      },
+      {
+        "id": "zarko-integrated-7pad-pants-white-03",
+        "name": "Integrated 7-Pad Football Game Pants - Optical White #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433514/wearconnect/products/football/7-pad-pants/zarko-integrated-7pad-pants-white-03.webp",
+        "description": "Durable stretch-matte polyester football pants with factory sewn-in EVA pads (hips, spine, thighs, knees) and tunnel waistband with lace-up fly.",
+        "subcategory": "Integrated 7-Pad Pants"
+      },
+      {
+        "id": "zarko-porthole-mesh-practice-jerseys-black-04",
+        "name": "Heavy Porthole Mesh Football Practice Jersey - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433514/wearconnect/products/football/practice-jerseys/zarko-porthole-mesh-practice-jerseys-black-04.webp",
+        "description": "Breathable heavyweight open-hole porthole mesh practice jersey with elasticized sleeves and ribbed V-neck collar for maximum pad ventilation.",
+        "subcategory": "Porthole Mesh Practice Jerseys"
+      },
+      {
+        "id": "zarko-porthole-mesh-practice-jerseys-blue-01",
+        "name": "Heavy Porthole Mesh Football Practice Jersey - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433514/wearconnect/products/football/practice-jerseys/zarko-porthole-mesh-practice-jerseys-blue-01.webp",
+        "description": "Breathable heavyweight open-hole porthole mesh practice jersey with elasticized sleeves and ribbed V-neck collar for maximum pad ventilation.",
+        "subcategory": "Porthole Mesh Practice Jerseys"
+      },
+      {
+        "id": "zarko-porthole-mesh-practice-jerseys-green-03",
+        "name": "Heavy Porthole Mesh Football Practice Jersey - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433514/wearconnect/products/football/practice-jerseys/zarko-porthole-mesh-practice-jerseys-green-03.webp",
+        "description": "Breathable heavyweight open-hole porthole mesh practice jersey with elasticized sleeves and ribbed V-neck collar for maximum pad ventilation.",
+        "subcategory": "Porthole Mesh Practice Jerseys"
+      },
+      {
+        "id": "zarko-porthole-mesh-practice-jerseys-navy-06",
+        "name": "Heavy Porthole Mesh Football Practice Jersey - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433514/wearconnect/products/football/practice-jerseys/zarko-porthole-mesh-practice-jerseys-navy-06.webp",
+        "description": "Breathable heavyweight open-hole porthole mesh practice jersey with elasticized sleeves and ribbed V-neck collar for maximum pad ventilation.",
+        "subcategory": "Porthole Mesh Practice Jerseys"
+      },
+      {
+        "id": "zarko-porthole-mesh-practice-jerseys-red-02",
+        "name": "Heavy Porthole Mesh Football Practice Jersey - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433514/wearconnect/products/football/practice-jerseys/zarko-porthole-mesh-practice-jerseys-red-02.webp",
+        "description": "Breathable heavyweight open-hole porthole mesh practice jersey with elasticized sleeves and ribbed V-neck collar for maximum pad ventilation.",
+        "subcategory": "Porthole Mesh Practice Jerseys"
+      },
+      {
+        "id": "zarko-porthole-mesh-practice-jerseys-white-05",
+        "name": "Heavy Porthole Mesh Football Practice Jersey - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433514/wearconnect/products/football/practice-jerseys/zarko-porthole-mesh-practice-jerseys-white-05.webp",
+        "description": "Breathable heavyweight open-hole porthole mesh practice jersey with elasticized sleeves and ribbed V-neck collar for maximum pad ventilation.",
+        "subcategory": "Porthole Mesh Practice Jerseys"
+      },
+      {
+        "id": "zarko-slotted-game-pants-black-02",
+        "name": "Heavyweight Slotted Football Game Pants - Black #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433514/wearconnect/products/football/slotted-pants/zarko-slotted-game-pants-black-02.webp",
+        "description": "Premium 280 GSM warp-knit heavyweight spandex football pants featuring slotted waistband for pad insert customization and bar-tacked stress seams.",
+        "subcategory": "Slotted Game Pants"
+      },
+      {
+        "id": "zarko-slotted-game-pants-blue-01",
+        "name": "Heavyweight Slotted Football Game Pants - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433514/wearconnect/products/football/slotted-pants/zarko-slotted-game-pants-blue-01.webp",
+        "description": "Premium 280 GSM warp-knit heavyweight spandex football pants featuring slotted waistband for pad insert customization and bar-tacked stress seams.",
+        "subcategory": "Slotted Game Pants"
+      },
+      {
+        "id": "zarko-slotted-game-pants-green-06",
+        "name": "Heavyweight Slotted Football Game Pants - Forest Green #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433514/wearconnect/products/football/slotted-pants/zarko-slotted-game-pants-green-06.webp",
+        "description": "Premium 280 GSM warp-knit heavyweight spandex football pants featuring slotted waistband for pad insert customization and bar-tacked stress seams.",
+        "subcategory": "Slotted Game Pants"
+      },
+      {
+        "id": "zarko-slotted-game-pants-navy-05",
+        "name": "Heavyweight Slotted Football Game Pants - Navy Blue #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433514/wearconnect/products/football/slotted-pants/zarko-slotted-game-pants-navy-05.webp",
+        "description": "Premium 280 GSM warp-knit heavyweight spandex football pants featuring slotted waistband for pad insert customization and bar-tacked stress seams.",
+        "subcategory": "Slotted Game Pants"
+      },
+      {
+        "id": "zarko-slotted-game-pants-red-04",
+        "name": "Heavyweight Slotted Football Game Pants - Scarlet Red #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433515/wearconnect/products/football/slotted-pants/zarko-slotted-game-pants-red-04.webp",
+        "description": "Premium 280 GSM warp-knit heavyweight spandex football pants featuring slotted waistband for pad insert customization and bar-tacked stress seams.",
+        "subcategory": "Slotted Game Pants"
+      },
+      {
+        "id": "zarko-slotted-game-pants-white-03",
+        "name": "Heavyweight Slotted Football Game Pants - Optical White #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433515/wearconnect/products/football/slotted-pants/zarko-slotted-game-pants-white-03.webp",
+        "description": "Premium 280 GSM warp-knit heavyweight spandex football pants featuring slotted waistband for pad insert customization and bar-tacked stress seams.",
+        "subcategory": "Slotted Game Pants"
+      },
+      {
+        "id": "zarko-youth-tackle-football-kits-black-04",
+        "name": "Custom Youth Tackle Football Uniform Set - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433515/wearconnect/products/football/youth-kits/zarko-youth-tackle-football-kits-black-04.webp",
+        "description": "Complete youth tackle football kit including sublimated game jersey and reinforced game pants with pad pockets. Engineered for young athletes.",
+        "subcategory": "Youth Tackle Football Kits"
+      },
+      {
+        "id": "zarko-youth-tackle-football-kits-green-03",
+        "name": "Custom Youth Tackle Football Uniform Set - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433515/wearconnect/products/football/youth-kits/zarko-youth-tackle-football-kits-green-03.webp",
+        "description": "Complete youth tackle football kit including sublimated game jersey and reinforced game pants with pad pockets. Engineered for young athletes.",
+        "subcategory": "Youth Tackle Football Kits"
+      },
+      {
+        "id": "zarko-youth-tackle-football-kits-navy-01",
+        "name": "Custom Youth Tackle Football Uniform Set - Navy Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433515/wearconnect/products/football/youth-kits/zarko-youth-tackle-football-kits-navy-01.webp",
+        "description": "Complete youth tackle football kit including sublimated game jersey and reinforced game pants with pad pockets. Engineered for young athletes.",
+        "subcategory": "Youth Tackle Football Kits"
+      },
+      {
+        "id": "zarko-youth-tackle-football-kits-red-02",
+        "name": "Custom Youth Tackle Football Uniform Set - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433515/wearconnect/products/football/youth-kits/zarko-youth-tackle-football-kits-red-02.webp",
+        "description": "Complete youth tackle football kit including sublimated game jersey and reinforced game pants with pad pockets. Engineered for young athletes.",
+        "subcategory": "Youth Tackle Football Kits"
+      },
+      {
+        "id": "zarko-youth-tackle-football-kits-royal-blue-06",
+        "name": "Custom Youth Tackle Football Uniform Set - Royal Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433515/wearconnect/products/football/youth-kits/zarko-youth-tackle-football-kits-royal-blue-06.webp",
+        "description": "Complete youth tackle football kit including sublimated game jersey and reinforced game pants with pad pockets. Engineered for young athletes.",
+        "subcategory": "Youth Tackle Football Kits"
+      },
+      {
+        "id": "zarko-youth-tackle-football-kits-white-05",
+        "name": "Custom Youth Tackle Football Uniform Set - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433515/wearconnect/products/football/youth-kits/zarko-youth-tackle-football-kits-white-05.webp",
+        "description": "Complete youth tackle football kit including sublimated game jersey and reinforced game pants with pad pockets. Engineered for young athletes.",
+        "subcategory": "Youth Tackle Football Kits"
       }
     ]
   },
@@ -1751,7 +2740,10 @@
       "Crew Neck Jerseys",
       "Full Button Jerseys",
       "Pants",
-      "Socks"
+      "Socks",
+      "Cage Batting Jackets",
+      "Piped Game Pants",
+      "Pro Team Socks"
     ],
     "products": [
       {
@@ -2425,6 +3417,216 @@
         "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793371818/wearconnect/products/baseball/socks/bb-sck-16.jpg",
         "description": "High-performance moisture-wicking compression baseball stirrups/socks with targeted arch support, padded heel-and-toe cushioning, and ribbed stay-up cuff.",
         "subcategory": "Socks"
+      },
+      {
+        "id": "zarko-cage-batting-jacket-black-03",
+        "name": "Pro Cage Batting Quarter-Zip Jacket - Black #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433515/wearconnect/products/baseball/cage-jackets/zarko-cage-batting-jacket-black-03.webp",
+        "description": "Wind and light-rain resistant micro-poly short-sleeve batting cage jacket with breathable stretch mesh side inserts and ergonomic quarter-zip front.",
+        "subcategory": "Cage Batting Jackets"
+      },
+      {
+        "id": "zarko-cage-batting-jacket-green-04",
+        "name": "Pro Cage Batting Quarter-Zip Jacket - Forest Green #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433515/wearconnect/products/baseball/cage-jackets/zarko-cage-batting-jacket-green-04.webp",
+        "description": "Wind and light-rain resistant micro-poly short-sleeve batting cage jacket with breathable stretch mesh side inserts and ergonomic quarter-zip front.",
+        "subcategory": "Cage Batting Jackets"
+      },
+      {
+        "id": "zarko-cage-batting-jacket-navy-01",
+        "name": "Pro Cage Batting Quarter-Zip Jacket - Navy Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433515/wearconnect/products/baseball/cage-jackets/zarko-cage-batting-jacket-navy-01.webp",
+        "description": "Wind and light-rain resistant micro-poly short-sleeve batting cage jacket with breathable stretch mesh side inserts and ergonomic quarter-zip front.",
+        "subcategory": "Cage Batting Jackets"
+      },
+      {
+        "id": "zarko-cage-batting-jacket-red-02",
+        "name": "Pro Cage Batting Quarter-Zip Jacket - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433515/wearconnect/products/baseball/cage-jackets/zarko-cage-batting-jacket-red-02.webp",
+        "description": "Wind and light-rain resistant micro-poly short-sleeve batting cage jacket with breathable stretch mesh side inserts and ergonomic quarter-zip front.",
+        "subcategory": "Cage Batting Jackets"
+      },
+      {
+        "id": "zarko-cage-batting-jacket-royal-blue-06",
+        "name": "Pro Cage Batting Quarter-Zip Jacket - Royal Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433515/wearconnect/products/baseball/cage-jackets/zarko-cage-batting-jacket-royal-blue-06.webp",
+        "description": "Wind and light-rain resistant micro-poly short-sleeve batting cage jacket with breathable stretch mesh side inserts and ergonomic quarter-zip front.",
+        "subcategory": "Cage Batting Jackets"
+      },
+      {
+        "id": "zarko-cage-batting-jacket-white-05",
+        "name": "Pro Cage Batting Quarter-Zip Jacket - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433516/wearconnect/products/baseball/cage-jackets/zarko-cage-batting-jacket-white-05.webp",
+        "description": "Wind and light-rain resistant micro-poly short-sleeve batting cage jacket with breathable stretch mesh side inserts and ergonomic quarter-zip front.",
+        "subcategory": "Cage Batting Jackets"
+      },
+      {
+        "id": "zarko-crew-neck-jersey-black-04",
+        "name": "Sublimated Crew Neck Baseball Jersey - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433516/wearconnect/products/baseball/crew-neck-jerseys/zarko-crew-neck-jersey-black-04.webp",
+        "description": "Dri-FIT performance 200 GSM poly-interlock crewneck baseball jersey with 4K all-over sublimation, athletic cut, and reinforced double-needle seams.",
+        "subcategory": "Crew Neck Jerseys"
+      },
+      {
+        "id": "zarko-crew-neck-jersey-blue-01",
+        "name": "Sublimated Crew Neck Baseball Jersey - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433516/wearconnect/products/baseball/crew-neck-jerseys/zarko-crew-neck-jersey-blue-01.webp",
+        "description": "Dri-FIT performance 200 GSM poly-interlock crewneck baseball jersey with 4K all-over sublimation, athletic cut, and reinforced double-needle seams.",
+        "subcategory": "Crew Neck Jerseys"
+      },
+      {
+        "id": "zarko-crew-neck-jersey-green-03",
+        "name": "Sublimated Crew Neck Baseball Jersey - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433516/wearconnect/products/baseball/crew-neck-jerseys/zarko-crew-neck-jersey-green-03.webp",
+        "description": "Dri-FIT performance 200 GSM poly-interlock crewneck baseball jersey with 4K all-over sublimation, athletic cut, and reinforced double-needle seams.",
+        "subcategory": "Crew Neck Jerseys"
+      },
+      {
+        "id": "zarko-crew-neck-jersey-navy-06",
+        "name": "Sublimated Crew Neck Baseball Jersey - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433516/wearconnect/products/baseball/crew-neck-jerseys/zarko-crew-neck-jersey-navy-06.webp",
+        "description": "Dri-FIT performance 200 GSM poly-interlock crewneck baseball jersey with 4K all-over sublimation, athletic cut, and reinforced double-needle seams.",
+        "subcategory": "Crew Neck Jerseys"
+      },
+      {
+        "id": "zarko-crew-neck-jersey-red-02",
+        "name": "Sublimated Crew Neck Baseball Jersey - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433516/wearconnect/products/baseball/crew-neck-jerseys/zarko-crew-neck-jersey-red-02.webp",
+        "description": "Dri-FIT performance 200 GSM poly-interlock crewneck baseball jersey with 4K all-over sublimation, athletic cut, and reinforced double-needle seams.",
+        "subcategory": "Crew Neck Jerseys"
+      },
+      {
+        "id": "zarko-crew-neck-jersey-white-05",
+        "name": "Sublimated Crew Neck Baseball Jersey - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433516/wearconnect/products/baseball/crew-neck-jerseys/zarko-crew-neck-jersey-white-05.webp",
+        "description": "Dri-FIT performance 200 GSM poly-interlock crewneck baseball jersey with 4K all-over sublimation, athletic cut, and reinforced double-needle seams.",
+        "subcategory": "Crew Neck Jerseys"
+      },
+      {
+        "id": "zarko-full-button-jerseys-black-04",
+        "name": "Classic Full-Button Pro Baseball Jersey - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433516/wearconnect/products/baseball/full-button-jerseys/zarko-full-button-jerseys-black-04.webp",
+        "description": "250 GSM heavy-duty double-knit polyester full-button baseball jersey with braided piping, tackle-twill numbering options, and drop-tail hem.",
+        "subcategory": "Full Button Jerseys"
+      },
+      {
+        "id": "zarko-full-button-jerseys-blue-01",
+        "name": "Classic Full-Button Pro Baseball Jersey - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433516/wearconnect/products/baseball/full-button-jerseys/zarko-full-button-jerseys-blue-01.webp",
+        "description": "250 GSM heavy-duty double-knit polyester full-button baseball jersey with braided piping, tackle-twill numbering options, and drop-tail hem.",
+        "subcategory": "Full Button Jerseys"
+      },
+      {
+        "id": "zarko-full-button-jerseys-green-03",
+        "name": "Classic Full-Button Pro Baseball Jersey - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433516/wearconnect/products/baseball/full-button-jerseys/zarko-full-button-jerseys-green-03.webp",
+        "description": "250 GSM heavy-duty double-knit polyester full-button baseball jersey with braided piping, tackle-twill numbering options, and drop-tail hem.",
+        "subcategory": "Full Button Jerseys"
+      },
+      {
+        "id": "zarko-full-button-jerseys-navy-06",
+        "name": "Classic Full-Button Pro Baseball Jersey - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433516/wearconnect/products/baseball/full-button-jerseys/zarko-full-button-jerseys-navy-06.webp",
+        "description": "250 GSM heavy-duty double-knit polyester full-button baseball jersey with braided piping, tackle-twill numbering options, and drop-tail hem.",
+        "subcategory": "Full Button Jerseys"
+      },
+      {
+        "id": "zarko-full-button-jerseys-red-02",
+        "name": "Classic Full-Button Pro Baseball Jersey - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433516/wearconnect/products/baseball/full-button-jerseys/zarko-full-button-jerseys-red-02.webp",
+        "description": "250 GSM heavy-duty double-knit polyester full-button baseball jersey with braided piping, tackle-twill numbering options, and drop-tail hem.",
+        "subcategory": "Full Button Jerseys"
+      },
+      {
+        "id": "zarko-full-button-jerseys-white-05",
+        "name": "Classic Full-Button Pro Baseball Jersey - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433516/wearconnect/products/baseball/full-button-jerseys/zarko-full-button-jerseys-white-05.webp",
+        "description": "250 GSM heavy-duty double-knit polyester full-button baseball jersey with braided piping, tackle-twill numbering options, and drop-tail hem.",
+        "subcategory": "Full Button Jerseys"
+      },
+      {
+        "id": "zarko-piped-game-pants-black-02",
+        "name": "Pro Piped Baseball Game Pants - Black #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433516/wearconnect/products/baseball/piped-pants/zarko-piped-game-pants-black-02.webp",
+        "description": "Heavyweight 14 oz double-knit polyester baseball game pants with contrast side seam piping, double-knee reinforcement, and brass zipper fly.",
+        "subcategory": "Piped Game Pants"
+      },
+      {
+        "id": "zarko-piped-game-pants-blue-01",
+        "name": "Pro Piped Baseball Game Pants - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433516/wearconnect/products/baseball/piped-pants/zarko-piped-game-pants-blue-01.webp",
+        "description": "Heavyweight 14 oz double-knit polyester baseball game pants with contrast side seam piping, double-knee reinforcement, and brass zipper fly.",
+        "subcategory": "Piped Game Pants"
+      },
+      {
+        "id": "zarko-piped-game-pants-grey-06",
+        "name": "Pro Piped Baseball Game Pants - Steel Grey #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433517/wearconnect/products/baseball/piped-pants/zarko-piped-game-pants-grey-06.webp",
+        "description": "Heavyweight 14 oz double-knit polyester baseball game pants with contrast side seam piping, double-knee reinforcement, and brass zipper fly.",
+        "subcategory": "Piped Game Pants"
+      },
+      {
+        "id": "zarko-piped-game-pants-navy-05",
+        "name": "Pro Piped Baseball Game Pants - Navy Blue #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433517/wearconnect/products/baseball/piped-pants/zarko-piped-game-pants-navy-05.webp",
+        "description": "Heavyweight 14 oz double-knit polyester baseball game pants with contrast side seam piping, double-knee reinforcement, and brass zipper fly.",
+        "subcategory": "Piped Game Pants"
+      },
+      {
+        "id": "zarko-piped-game-pants-red-04",
+        "name": "Pro Piped Baseball Game Pants - Scarlet Red #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433517/wearconnect/products/baseball/piped-pants/zarko-piped-game-pants-red-04.webp",
+        "description": "Heavyweight 14 oz double-knit polyester baseball game pants with contrast side seam piping, double-knee reinforcement, and brass zipper fly.",
+        "subcategory": "Piped Game Pants"
+      },
+      {
+        "id": "zarko-piped-game-pants-white-03",
+        "name": "Pro Piped Baseball Game Pants - Optical White #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433517/wearconnect/products/baseball/piped-pants/zarko-piped-game-pants-white-03.webp",
+        "description": "Heavyweight 14 oz double-knit polyester baseball game pants with contrast side seam piping, double-knee reinforcement, and brass zipper fly.",
+        "subcategory": "Piped Game Pants"
+      },
+      {
+        "id": "zarko-pro-team-socks-black-01",
+        "name": "Cushioned Pro Baseball Stirrup Socks - Black #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433517/wearconnect/products/baseball/socks/zarko-pro-team-socks-black-01.webp",
+        "description": "High-performance moisture-wicking ribbed athletic baseball socks with arch compression support and reinforced heel and toe cushioning.",
+        "subcategory": "Pro Team Socks"
+      },
+      {
+        "id": "zarko-pro-team-socks-blue-03",
+        "name": "Cushioned Pro Baseball Stirrup Socks - Royal Blue #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433517/wearconnect/products/baseball/socks/zarko-pro-team-socks-blue-03.webp",
+        "description": "High-performance moisture-wicking ribbed athletic baseball socks with arch compression support and reinforced heel and toe cushioning.",
+        "subcategory": "Pro Team Socks"
+      },
+      {
+        "id": "zarko-pro-team-socks-green-06",
+        "name": "Cushioned Pro Baseball Stirrup Socks - Forest Green #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433517/wearconnect/products/baseball/socks/zarko-pro-team-socks-green-06.webp",
+        "description": "High-performance moisture-wicking ribbed athletic baseball socks with arch compression support and reinforced heel and toe cushioning.",
+        "subcategory": "Pro Team Socks"
+      },
+      {
+        "id": "zarko-pro-team-socks-navy-05",
+        "name": "Cushioned Pro Baseball Stirrup Socks - Navy Blue #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433517/wearconnect/products/baseball/socks/zarko-pro-team-socks-navy-05.webp",
+        "description": "High-performance moisture-wicking ribbed athletic baseball socks with arch compression support and reinforced heel and toe cushioning.",
+        "subcategory": "Pro Team Socks"
+      },
+      {
+        "id": "zarko-pro-team-socks-red-04",
+        "name": "Cushioned Pro Baseball Stirrup Socks - Scarlet Red #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433517/wearconnect/products/baseball/socks/zarko-pro-team-socks-red-04.webp",
+        "description": "High-performance moisture-wicking ribbed athletic baseball socks with arch compression support and reinforced heel and toe cushioning.",
+        "subcategory": "Pro Team Socks"
+      },
+      {
+        "id": "zarko-pro-team-socks-white-02",
+        "name": "Cushioned Pro Baseball Stirrup Socks - Optical White #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433517/wearconnect/products/baseball/socks/zarko-pro-team-socks-white-02.webp",
+        "description": "High-performance moisture-wicking ribbed athletic baseball socks with arch compression support and reinforced heel and toe cushioning.",
+        "subcategory": "Pro Team Socks"
       }
     ]
   },
@@ -2463,7 +3665,12 @@
     },
     "subcategories": [
       "Tops",
-      "Shorts"
+      "Shorts",
+      "Pro Wide-Armhole Tops",
+      "Shooting Warm-up Shirts",
+      "Snap-Down Warm-Up Suits",
+      "Team Game Shorts",
+      "Youth Basketball Kits"
     ],
     "products": [
       {
@@ -2675,6 +3882,216 @@
         "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793371842/wearconnect/products/basketball/shorts/bk-sht-15.jpg",
         "description": "Breathable mesh court basketball shorts featuring an athletic knee-length cut, 2-inch non-roll elastic drawstring waistband, and double-needle hemmed bottom.",
         "subcategory": "Shorts"
+      },
+      {
+        "id": "zarko-wide-armhole-top-black-04",
+        "name": "Pro Wide-Armhole Basketball Jersey - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433517/wearconnect/products/basketball/wide-armhole-tops/zarko-wide-armhole-top-black-04.webp",
+        "description": "Lightweight 170 GSM micro-mesh basketball jersey with wide-cut armholes for full shooting freedom and laser-cut heat dispersal ventilation.",
+        "subcategory": "Pro Wide-Armhole Tops"
+      },
+      {
+        "id": "zarko-wide-armhole-top-blue-01",
+        "name": "Pro Wide-Armhole Basketball Jersey - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433517/wearconnect/products/basketball/wide-armhole-tops/zarko-wide-armhole-top-blue-01.webp",
+        "description": "Lightweight 170 GSM micro-mesh basketball jersey with wide-cut armholes for full shooting freedom and laser-cut heat dispersal ventilation.",
+        "subcategory": "Pro Wide-Armhole Tops"
+      },
+      {
+        "id": "zarko-wide-armhole-top-green-03",
+        "name": "Pro Wide-Armhole Basketball Jersey - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433518/wearconnect/products/basketball/wide-armhole-tops/zarko-wide-armhole-top-green-03.webp",
+        "description": "Lightweight 170 GSM micro-mesh basketball jersey with wide-cut armholes for full shooting freedom and laser-cut heat dispersal ventilation.",
+        "subcategory": "Pro Wide-Armhole Tops"
+      },
+      {
+        "id": "zarko-wide-armhole-top-navy-06",
+        "name": "Pro Wide-Armhole Basketball Jersey - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433517/wearconnect/products/basketball/wide-armhole-tops/zarko-wide-armhole-top-navy-06.webp",
+        "description": "Lightweight 170 GSM micro-mesh basketball jersey with wide-cut armholes for full shooting freedom and laser-cut heat dispersal ventilation.",
+        "subcategory": "Pro Wide-Armhole Tops"
+      },
+      {
+        "id": "zarko-wide-armhole-top-red-02",
+        "name": "Pro Wide-Armhole Basketball Jersey - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433518/wearconnect/products/basketball/wide-armhole-tops/zarko-wide-armhole-top-red-02.webp",
+        "description": "Lightweight 170 GSM micro-mesh basketball jersey with wide-cut armholes for full shooting freedom and laser-cut heat dispersal ventilation.",
+        "subcategory": "Pro Wide-Armhole Tops"
+      },
+      {
+        "id": "zarko-wide-armhole-top-white-05",
+        "name": "Pro Wide-Armhole Basketball Jersey - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433518/wearconnect/products/basketball/wide-armhole-tops/zarko-wide-armhole-top-white-05.webp",
+        "description": "Lightweight 170 GSM micro-mesh basketball jersey with wide-cut armholes for full shooting freedom and laser-cut heat dispersal ventilation.",
+        "subcategory": "Pro Wide-Armhole Tops"
+      },
+      {
+        "id": "zarko-shooting-warmup-shirts-black-04",
+        "name": "Pre-Game Basketball Shooting Warm-Up Shirt - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433518/wearconnect/products/basketball/shooting-shirts/zarko-shooting-warmup-shirts-black-04.webp",
+        "description": "Comfortable stretch dry-fit short-sleeve pre-game shooting shirt with moisture-wicking silky poly interlock and high-definition sublimation print.",
+        "subcategory": "Shooting Warm-up Shirts"
+      },
+      {
+        "id": "zarko-shooting-warmup-shirts-blue-01",
+        "name": "Pre-Game Basketball Shooting Warm-Up Shirt - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433518/wearconnect/products/basketball/shooting-shirts/zarko-shooting-warmup-shirts-blue-01.webp",
+        "description": "Comfortable stretch dry-fit short-sleeve pre-game shooting shirt with moisture-wicking silky poly interlock and high-definition sublimation print.",
+        "subcategory": "Shooting Warm-up Shirts"
+      },
+      {
+        "id": "zarko-shooting-warmup-shirts-green-03",
+        "name": "Pre-Game Basketball Shooting Warm-Up Shirt - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433518/wearconnect/products/basketball/shooting-shirts/zarko-shooting-warmup-shirts-green-03.webp",
+        "description": "Comfortable stretch dry-fit short-sleeve pre-game shooting shirt with moisture-wicking silky poly interlock and high-definition sublimation print.",
+        "subcategory": "Shooting Warm-up Shirts"
+      },
+      {
+        "id": "zarko-shooting-warmup-shirts-navy-06",
+        "name": "Pre-Game Basketball Shooting Warm-Up Shirt - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433518/wearconnect/products/basketball/shooting-shirts/zarko-shooting-warmup-shirts-navy-06.webp",
+        "description": "Comfortable stretch dry-fit short-sleeve pre-game shooting shirt with moisture-wicking silky poly interlock and high-definition sublimation print.",
+        "subcategory": "Shooting Warm-up Shirts"
+      },
+      {
+        "id": "zarko-shooting-warmup-shirts-red-02",
+        "name": "Pre-Game Basketball Shooting Warm-Up Shirt - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433518/wearconnect/products/basketball/shooting-shirts/zarko-shooting-warmup-shirts-red-02.webp",
+        "description": "Comfortable stretch dry-fit short-sleeve pre-game shooting shirt with moisture-wicking silky poly interlock and high-definition sublimation print.",
+        "subcategory": "Shooting Warm-up Shirts"
+      },
+      {
+        "id": "zarko-shooting-warmup-shirts-white-05",
+        "name": "Pre-Game Basketball Shooting Warm-Up Shirt - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433518/wearconnect/products/basketball/shooting-shirts/zarko-shooting-warmup-shirts-white-05.webp",
+        "description": "Comfortable stretch dry-fit short-sleeve pre-game shooting shirt with moisture-wicking silky poly interlock and high-definition sublimation print.",
+        "subcategory": "Shooting Warm-up Shirts"
+      },
+      {
+        "id": "zarko-snap-down-warm-up-suits-black-04",
+        "name": "Tearaway Snap-Down Basketball Warm-Up Suit - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433518/wearconnect/products/basketball/warm-up-suits/zarko-snap-down-warm-up-suits-black-04.webp",
+        "description": "Full-breakaway snap-button basketball warm-up pants and jacket set with heavy brass snaps, elastic waistband, and brushed tricot interior.",
+        "subcategory": "Snap-Down Warm-Up Suits"
+      },
+      {
+        "id": "zarko-snap-down-warm-up-suits-green-06",
+        "name": "Tearaway Snap-Down Basketball Warm-Up Suit - Forest Green #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433518/wearconnect/products/basketball/warm-up-suits/zarko-snap-down-warm-up-suits-green-06.webp",
+        "description": "Full-breakaway snap-button basketball warm-up pants and jacket set with heavy brass snaps, elastic waistband, and brushed tricot interior.",
+        "subcategory": "Snap-Down Warm-Up Suits"
+      },
+      {
+        "id": "zarko-snap-down-warm-up-suits-navy-01",
+        "name": "Tearaway Snap-Down Basketball Warm-Up Suit - Navy Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433518/wearconnect/products/basketball/warm-up-suits/zarko-snap-down-warm-up-suits-navy-01.webp",
+        "description": "Full-breakaway snap-button basketball warm-up pants and jacket set with heavy brass snaps, elastic waistband, and brushed tricot interior.",
+        "subcategory": "Snap-Down Warm-Up Suits"
+      },
+      {
+        "id": "zarko-snap-down-warm-up-suits-red-02",
+        "name": "Tearaway Snap-Down Basketball Warm-Up Suit - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433518/wearconnect/products/basketball/warm-up-suits/zarko-snap-down-warm-up-suits-red-02.webp",
+        "description": "Full-breakaway snap-button basketball warm-up pants and jacket set with heavy brass snaps, elastic waistband, and brushed tricot interior.",
+        "subcategory": "Snap-Down Warm-Up Suits"
+      },
+      {
+        "id": "zarko-snap-down-warm-up-suits-royal-blue-03",
+        "name": "Tearaway Snap-Down Basketball Warm-Up Suit - Royal Blue #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433518/wearconnect/products/basketball/warm-up-suits/zarko-snap-down-warm-up-suits-royal-blue-03.webp",
+        "description": "Full-breakaway snap-button basketball warm-up pants and jacket set with heavy brass snaps, elastic waistband, and brushed tricot interior.",
+        "subcategory": "Snap-Down Warm-Up Suits"
+      },
+      {
+        "id": "zarko-snap-down-warm-up-suits-white-05",
+        "name": "Tearaway Snap-Down Basketball Warm-Up Suit - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433519/wearconnect/products/basketball/warm-up-suits/zarko-snap-down-warm-up-suits-white-05.webp",
+        "description": "Full-breakaway snap-button basketball warm-up pants and jacket set with heavy brass snaps, elastic waistband, and brushed tricot interior.",
+        "subcategory": "Snap-Down Warm-Up Suits"
+      },
+      {
+        "id": "zarko-team-game-shorts-black-04",
+        "name": "Championship Team Basketball Game Shorts - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433519/wearconnect/products/basketball/game-shorts/zarko-team-game-shorts-black-04.webp",
+        "description": "9-inch inseam basketball shorts engineered with breathable dazzle side panels, elasticized waistband with interior drawstring, and deep pockets.",
+        "subcategory": "Team Game Shorts"
+      },
+      {
+        "id": "zarko-team-game-shorts-blue-01",
+        "name": "Championship Team Basketball Game Shorts - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433519/wearconnect/products/basketball/game-shorts/zarko-team-game-shorts-blue-01.webp",
+        "description": "9-inch inseam basketball shorts engineered with breathable dazzle side panels, elasticized waistband with interior drawstring, and deep pockets.",
+        "subcategory": "Team Game Shorts"
+      },
+      {
+        "id": "zarko-team-game-shorts-green-03",
+        "name": "Championship Team Basketball Game Shorts - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433519/wearconnect/products/basketball/game-shorts/zarko-team-game-shorts-green-03.webp",
+        "description": "9-inch inseam basketball shorts engineered with breathable dazzle side panels, elasticized waistband with interior drawstring, and deep pockets.",
+        "subcategory": "Team Game Shorts"
+      },
+      {
+        "id": "zarko-team-game-shorts-navy-06",
+        "name": "Championship Team Basketball Game Shorts - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433519/wearconnect/products/basketball/game-shorts/zarko-team-game-shorts-navy-06.webp",
+        "description": "9-inch inseam basketball shorts engineered with breathable dazzle side panels, elasticized waistband with interior drawstring, and deep pockets.",
+        "subcategory": "Team Game Shorts"
+      },
+      {
+        "id": "zarko-team-game-shorts-red-02",
+        "name": "Championship Team Basketball Game Shorts - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433519/wearconnect/products/basketball/game-shorts/zarko-team-game-shorts-red-02.webp",
+        "description": "9-inch inseam basketball shorts engineered with breathable dazzle side panels, elasticized waistband with interior drawstring, and deep pockets.",
+        "subcategory": "Team Game Shorts"
+      },
+      {
+        "id": "zarko-team-game-shorts-white-05",
+        "name": "Championship Team Basketball Game Shorts - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433519/wearconnect/products/basketball/game-shorts/zarko-team-game-shorts-white-05.webp",
+        "description": "9-inch inseam basketball shorts engineered with breathable dazzle side panels, elasticized waistband with interior drawstring, and deep pockets.",
+        "subcategory": "Team Game Shorts"
+      },
+      {
+        "id": "zarko-basketball-kit-black-04",
+        "name": "Youth Championship Basketball Uniform Set - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433519/wearconnect/products/basketball/youth-kits/zarko-basketball-kit-black-04.webp",
+        "description": "Matching sublimated basketball jersey and shorts set sized for youth leagues, with ultra-soft non-chafing poly mesh and elastic drawstring waist.",
+        "subcategory": "Youth Basketball Kits"
+      },
+      {
+        "id": "zarko-basketball-kit-blue-01",
+        "name": "Youth Championship Basketball Uniform Set - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433519/wearconnect/products/basketball/youth-kits/zarko-basketball-kit-blue-01.webp",
+        "description": "Matching sublimated basketball jersey and shorts set sized for youth leagues, with ultra-soft non-chafing poly mesh and elastic drawstring waist.",
+        "subcategory": "Youth Basketball Kits"
+      },
+      {
+        "id": "zarko-basketball-kit-green-03",
+        "name": "Youth Championship Basketball Uniform Set - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433519/wearconnect/products/basketball/youth-kits/zarko-basketball-kit-green-03.webp",
+        "description": "Matching sublimated basketball jersey and shorts set sized for youth leagues, with ultra-soft non-chafing poly mesh and elastic drawstring waist.",
+        "subcategory": "Youth Basketball Kits"
+      },
+      {
+        "id": "zarko-basketball-kit-navy-06",
+        "name": "Youth Championship Basketball Uniform Set - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433519/wearconnect/products/basketball/youth-kits/zarko-basketball-kit-navy-06.webp",
+        "description": "Matching sublimated basketball jersey and shorts set sized for youth leagues, with ultra-soft non-chafing poly mesh and elastic drawstring waist.",
+        "subcategory": "Youth Basketball Kits"
+      },
+      {
+        "id": "zarko-basketball-kit-red-02",
+        "name": "Youth Championship Basketball Uniform Set - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433519/wearconnect/products/basketball/youth-kits/zarko-basketball-kit-red-02.webp",
+        "description": "Matching sublimated basketball jersey and shorts set sized for youth leagues, with ultra-soft non-chafing poly mesh and elastic drawstring waist.",
+        "subcategory": "Youth Basketball Kits"
+      },
+      {
+        "id": "zarko-basketball-kit-white-05",
+        "name": "Youth Championship Basketball Uniform Set - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433519/wearconnect/products/basketball/youth-kits/zarko-basketball-kit-white-05.webp",
+        "description": "Matching sublimated basketball jersey and shorts set sized for youth leagues, with ultra-soft non-chafing poly mesh and elastic drawstring waist.",
+        "subcategory": "Youth Basketball Kits"
       }
     ]
   },
@@ -2716,7 +4133,9 @@
       "Crew Neck Jerseys",
       "Knickers Pants",
       "Shorts",
-      "Two Button Jerseys"
+      "Two Button Jerseys",
+      "Fastpitch Caps & Visors",
+      "Padded Sliding Shorts"
     ],
     "products": [
       {
@@ -3417,6 +4836,216 @@
         "name": "Fastpitch Two-Button Henley Softball Jersey #20",
         "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793371901/wearconnect/products/softball/two-button-jerseys/sb-tbj-20.jpg",
         "description": "Women's fastpitch cut two-button henley jersey crafted from 180 GSM micro-interlock poly with anti-microbial finish and custom full-color sublimation.",
+        "subcategory": "Two Button Jerseys"
+      },
+      {
+        "id": "zarko-crew-neck-jerseys-black-04",
+        "name": "Fastpitch Sublimated Crew Neck Jersey - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433528/wearconnect/products/softball/crew-neck-jerseys/zarko-crew-neck-jerseys-black-04.webp",
+        "description": "Lightweight 180 GSM moisture-wicking polyester crewneck fastpitch jersey with feminine athletic cut and vibrant full-bleed sublimation.",
+        "subcategory": "Crew Neck Jerseys"
+      },
+      {
+        "id": "zarko-crew-neck-jerseys-blue-01",
+        "name": "Fastpitch Sublimated Crew Neck Jersey - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433528/wearconnect/products/softball/crew-neck-jerseys/zarko-crew-neck-jerseys-blue-01.webp",
+        "description": "Lightweight 180 GSM moisture-wicking polyester crewneck fastpitch jersey with feminine athletic cut and vibrant full-bleed sublimation.",
+        "subcategory": "Crew Neck Jerseys"
+      },
+      {
+        "id": "zarko-crew-neck-jerseys-green-03",
+        "name": "Fastpitch Sublimated Crew Neck Jersey - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433528/wearconnect/products/softball/crew-neck-jerseys/zarko-crew-neck-jerseys-green-03.webp",
+        "description": "Lightweight 180 GSM moisture-wicking polyester crewneck fastpitch jersey with feminine athletic cut and vibrant full-bleed sublimation.",
+        "subcategory": "Crew Neck Jerseys"
+      },
+      {
+        "id": "zarko-crew-neck-jerseys-navy-06",
+        "name": "Fastpitch Sublimated Crew Neck Jersey - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433528/wearconnect/products/softball/crew-neck-jerseys/zarko-crew-neck-jerseys-navy-06.webp",
+        "description": "Lightweight 180 GSM moisture-wicking polyester crewneck fastpitch jersey with feminine athletic cut and vibrant full-bleed sublimation.",
+        "subcategory": "Crew Neck Jerseys"
+      },
+      {
+        "id": "zarko-crew-neck-jerseys-red-02",
+        "name": "Fastpitch Sublimated Crew Neck Jersey - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433528/wearconnect/products/softball/crew-neck-jerseys/zarko-crew-neck-jerseys-red-02.webp",
+        "description": "Lightweight 180 GSM moisture-wicking polyester crewneck fastpitch jersey with feminine athletic cut and vibrant full-bleed sublimation.",
+        "subcategory": "Crew Neck Jerseys"
+      },
+      {
+        "id": "zarko-crew-neck-jerseys-white-05",
+        "name": "Fastpitch Sublimated Crew Neck Jersey - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433528/wearconnect/products/softball/crew-neck-jerseys/zarko-crew-neck-jerseys-white-05.webp",
+        "description": "Lightweight 180 GSM moisture-wicking polyester crewneck fastpitch jersey with feminine athletic cut and vibrant full-bleed sublimation.",
+        "subcategory": "Crew Neck Jerseys"
+      },
+      {
+        "id": "zarko-fastpitch-caps-visors-black-04",
+        "name": "Pro Fastpitch Softball Visor & Cap - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433528/wearconnect/products/softball/caps-visors/zarko-fastpitch-caps-visors-black-04.webp",
+        "description": "Performance moisture-wicking structured visor with dark underbill for glare reduction and adjustable hook-and-loop closure.",
+        "subcategory": "Fastpitch Caps & Visors"
+      },
+      {
+        "id": "zarko-fastpitch-caps-visors-green-03",
+        "name": "Pro Fastpitch Softball Visor & Cap - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433529/wearconnect/products/softball/caps-visors/zarko-fastpitch-caps-visors-green-03.webp",
+        "description": "Performance moisture-wicking structured visor with dark underbill for glare reduction and adjustable hook-and-loop closure.",
+        "subcategory": "Fastpitch Caps & Visors"
+      },
+      {
+        "id": "zarko-fastpitch-caps-visors-navy-01",
+        "name": "Pro Fastpitch Softball Visor & Cap - Navy Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433528/wearconnect/products/softball/caps-visors/zarko-fastpitch-caps-visors-navy-01.webp",
+        "description": "Performance moisture-wicking structured visor with dark underbill for glare reduction and adjustable hook-and-loop closure.",
+        "subcategory": "Fastpitch Caps & Visors"
+      },
+      {
+        "id": "zarko-fastpitch-caps-visors-red-02",
+        "name": "Pro Fastpitch Softball Visor & Cap - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433528/wearconnect/products/softball/caps-visors/zarko-fastpitch-caps-visors-red-02.webp",
+        "description": "Performance moisture-wicking structured visor with dark underbill for glare reduction and adjustable hook-and-loop closure.",
+        "subcategory": "Fastpitch Caps & Visors"
+      },
+      {
+        "id": "zarko-fastpitch-caps-visors-royal-blue-06",
+        "name": "Pro Fastpitch Softball Visor & Cap - Royal Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433529/wearconnect/products/softball/caps-visors/zarko-fastpitch-caps-visors-royal-blue-06.webp",
+        "description": "Performance moisture-wicking structured visor with dark underbill for glare reduction and adjustable hook-and-loop closure.",
+        "subcategory": "Fastpitch Caps & Visors"
+      },
+      {
+        "id": "zarko-fastpitch-caps-visors-white-05",
+        "name": "Pro Fastpitch Softball Visor & Cap - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433528/wearconnect/products/softball/caps-visors/zarko-fastpitch-caps-visors-white-05.webp",
+        "description": "Performance moisture-wicking structured visor with dark underbill for glare reduction and adjustable hook-and-loop closure.",
+        "subcategory": "Fastpitch Caps & Visors"
+      },
+      {
+        "id": "zarko-knickers-pants-black-02",
+        "name": "Low-Rise Knickers Fastpitch Softball Pants - Black #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433529/wearconnect/products/softball/knickers-pants/zarko-knickers-pants-black-02.webp",
+        "description": "Durable 12 oz stretch polyester knicker-style softball pants with elastic cuffs below the knee, reinforced double knees, and belt loops.",
+        "subcategory": "Knickers Pants"
+      },
+      {
+        "id": "zarko-knickers-pants-blue-01",
+        "name": "Low-Rise Knickers Fastpitch Softball Pants - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433529/wearconnect/products/softball/knickers-pants/zarko-knickers-pants-blue-01.webp",
+        "description": "Durable 12 oz stretch polyester knicker-style softball pants with elastic cuffs below the knee, reinforced double knees, and belt loops.",
+        "subcategory": "Knickers Pants"
+      },
+      {
+        "id": "zarko-knickers-pants-green-06",
+        "name": "Low-Rise Knickers Fastpitch Softball Pants - Forest Green #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433529/wearconnect/products/softball/knickers-pants/zarko-knickers-pants-green-06.webp",
+        "description": "Durable 12 oz stretch polyester knicker-style softball pants with elastic cuffs below the knee, reinforced double knees, and belt loops.",
+        "subcategory": "Knickers Pants"
+      },
+      {
+        "id": "zarko-knickers-pants-navy-05",
+        "name": "Low-Rise Knickers Fastpitch Softball Pants - Navy Blue #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433529/wearconnect/products/softball/knickers-pants/zarko-knickers-pants-navy-05.webp",
+        "description": "Durable 12 oz stretch polyester knicker-style softball pants with elastic cuffs below the knee, reinforced double knees, and belt loops.",
+        "subcategory": "Knickers Pants"
+      },
+      {
+        "id": "zarko-knickers-pants-red-04",
+        "name": "Low-Rise Knickers Fastpitch Softball Pants - Scarlet Red #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433529/wearconnect/products/softball/knickers-pants/zarko-knickers-pants-red-04.webp",
+        "description": "Durable 12 oz stretch polyester knicker-style softball pants with elastic cuffs below the knee, reinforced double knees, and belt loops.",
+        "subcategory": "Knickers Pants"
+      },
+      {
+        "id": "zarko-knickers-pants-white-03",
+        "name": "Low-Rise Knickers Fastpitch Softball Pants - Optical White #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433529/wearconnect/products/softball/knickers-pants/zarko-knickers-pants-white-03.webp",
+        "description": "Durable 12 oz stretch polyester knicker-style softball pants with elastic cuffs below the knee, reinforced double knees, and belt loops.",
+        "subcategory": "Knickers Pants"
+      },
+      {
+        "id": "zarko-padded-sliding-shorts-black-01",
+        "name": "Compression Padded Softball Sliding Shorts - Black #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433529/wearconnect/products/softball/sliding-shorts/zarko-padded-sliding-shorts-black-01.webp",
+        "description": "High-flex 4-way compression sliding shorts with low-profile quilted foam side thigh pads to prevent base-sliding abrasions.",
+        "subcategory": "Padded Sliding Shorts"
+      },
+      {
+        "id": "zarko-padded-sliding-shorts-green-05",
+        "name": "Compression Padded Softball Sliding Shorts - Forest Green #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433529/wearconnect/products/softball/sliding-shorts/zarko-padded-sliding-shorts-green-05.webp",
+        "description": "High-flex 4-way compression sliding shorts with low-profile quilted foam side thigh pads to prevent base-sliding abrasions.",
+        "subcategory": "Padded Sliding Shorts"
+      },
+      {
+        "id": "zarko-padded-sliding-shorts-navy-06",
+        "name": "Compression Padded Softball Sliding Shorts - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433529/wearconnect/products/softball/sliding-shorts/zarko-padded-sliding-shorts-navy-06.webp",
+        "description": "High-flex 4-way compression sliding shorts with low-profile quilted foam side thigh pads to prevent base-sliding abrasions.",
+        "subcategory": "Padded Sliding Shorts"
+      },
+      {
+        "id": "zarko-padded-sliding-shorts-red-04",
+        "name": "Compression Padded Softball Sliding Shorts - Scarlet Red #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433529/wearconnect/products/softball/sliding-shorts/zarko-padded-sliding-shorts-red-04.webp",
+        "description": "High-flex 4-way compression sliding shorts with low-profile quilted foam side thigh pads to prevent base-sliding abrasions.",
+        "subcategory": "Padded Sliding Shorts"
+      },
+      {
+        "id": "zarko-padded-sliding-shorts-royal-blue-02",
+        "name": "Compression Padded Softball Sliding Shorts - Royal Blue #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433529/wearconnect/products/softball/sliding-shorts/zarko-padded-sliding-shorts-royal-blue-02.webp",
+        "description": "High-flex 4-way compression sliding shorts with low-profile quilted foam side thigh pads to prevent base-sliding abrasions.",
+        "subcategory": "Padded Sliding Shorts"
+      },
+      {
+        "id": "zarko-padded-sliding-shorts-white-03",
+        "name": "Compression Padded Softball Sliding Shorts - Optical White #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433529/wearconnect/products/softball/sliding-shorts/zarko-padded-sliding-shorts-white-03.webp",
+        "description": "High-flex 4-way compression sliding shorts with low-profile quilted foam side thigh pads to prevent base-sliding abrasions.",
+        "subcategory": "Padded Sliding Shorts"
+      },
+      {
+        "id": "zarko-two-button-jerseys-black-04",
+        "name": "Classic Two-Button Fastpitch Game Jersey - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433529/wearconnect/products/softball/two-button-jerseys/zarko-two-button-jerseys-black-04.webp",
+        "description": "Traditional two-button Henley placket softball jersey crafted from durable breathable interlock with contrast raglan sleeves.",
+        "subcategory": "Two Button Jerseys"
+      },
+      {
+        "id": "zarko-two-button-jerseys-green-06",
+        "name": "Classic Two-Button Fastpitch Game Jersey - Forest Green #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433530/wearconnect/products/softball/two-button-jerseys/zarko-two-button-jerseys-green-06.webp",
+        "description": "Traditional two-button Henley placket softball jersey crafted from durable breathable interlock with contrast raglan sleeves.",
+        "subcategory": "Two Button Jerseys"
+      },
+      {
+        "id": "zarko-two-button-jerseys-navy-01",
+        "name": "Classic Two-Button Fastpitch Game Jersey - Navy Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433530/wearconnect/products/softball/two-button-jerseys/zarko-two-button-jerseys-navy-01.webp",
+        "description": "Traditional two-button Henley placket softball jersey crafted from durable breathable interlock with contrast raglan sleeves.",
+        "subcategory": "Two Button Jerseys"
+      },
+      {
+        "id": "zarko-two-button-jerseys-red-02",
+        "name": "Classic Two-Button Fastpitch Game Jersey - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433530/wearconnect/products/softball/two-button-jerseys/zarko-two-button-jerseys-red-02.webp",
+        "description": "Traditional two-button Henley placket softball jersey crafted from durable breathable interlock with contrast raglan sleeves.",
+        "subcategory": "Two Button Jerseys"
+      },
+      {
+        "id": "zarko-two-button-jerseys-royal-blue-05",
+        "name": "Classic Two-Button Fastpitch Game Jersey - Royal Blue #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433530/wearconnect/products/softball/two-button-jerseys/zarko-two-button-jerseys-royal-blue-05.webp",
+        "description": "Traditional two-button Henley placket softball jersey crafted from durable breathable interlock with contrast raglan sleeves.",
+        "subcategory": "Two Button Jerseys"
+      },
+      {
+        "id": "zarko-two-button-jerseys-white-03",
+        "name": "Classic Two-Button Fastpitch Game Jersey - Optical White #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433530/wearconnect/products/softball/two-button-jerseys/zarko-two-button-jerseys-white-03.webp",
+        "description": "Traditional two-button Henley placket softball jersey crafted from durable breathable interlock with contrast raglan sleeves.",
         "subcategory": "Two Button Jerseys"
       }
     ]
@@ -4584,6 +6213,550 @@
         "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793371980/wearconnect/products/streetwear/v-necks/sw-vnk-20.jpg",
         "description": "Comfortable sporty V-neck training shirt made with ultra-breathable silky polyester interlock, taped neckband, and vibrant all-over print.",
         "subcategory": "V Necks"
+      }
+    ]
+  },
+  {
+    "slug": "cricket",
+    "name": "Cricket Kits & Apparel",
+    "gradientFrom": "from-indigo-600",
+    "gradientTo": "to-indigo-400",
+    "heroBadge": "FACTORY DIRECT SIALKOT",
+    "heroVideo": "https://res.cloudinary.com/dwo0pt9cq/video/upload/v1789985416/wearconnect/admin/lcq2on69ffvsz98ss2dk.mp4",
+    "featured": {
+      "name": "Pro Cricket Kits & Apparel Championship Uniform",
+      "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433519/wearconnect/products/cricket/match-pants/zarko-cricket-match-white-pants-white-black-04.webp",
+      "description": "Export-grade custom cricket kits & apparel manufactured with durable moisture-wicking interlock, reinforced seams, and vibrant 4K digital sublimation. Custom logos, team names, and numbers included.",
+      "details": [
+        "High GSM moisture-wicking pro athletic fabric",
+        "Reinforced flatlock & bar-tacked stress seams",
+        "4K Full dye-sublimation or premium tackle-twill embroidery",
+        "Custom logos, individual player names, and numbers",
+        "NFHS and NCAA regulation sizing and compliance",
+        "Low 15-set factory direct MOQ with fast air shipping"
+      ],
+      "sizes": [
+        "YS",
+        "YM",
+        "YL",
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL",
+        "3XL",
+        "4XL"
+      ]
+    },
+    "subcategories": [
+      "Match Pants",
+      "Test Shirts",
+      "T20 Jerseys"
+    ],
+    "products": [
+      {
+        "id": "zarko-cricket-match-white-pants-white-black-04",
+        "name": "Test Match Pro Cricket White Pants - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433519/wearconnect/products/cricket/match-pants/zarko-cricket-match-white-pants-white-black-04.webp",
+        "description": "Traditional off-white cricket pants made with 220 GSM stretch micro-poly, reinforced knees, deep pockets, and elastic waist with drawcord.",
+        "subcategory": "Match Pants"
+      },
+      {
+        "id": "zarko-cricket-match-white-pants-white-green-02",
+        "name": "Test Match Pro Cricket White Pants - Forest Green #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433520/wearconnect/products/cricket/match-pants/zarko-cricket-match-white-pants-white-green-02.webp",
+        "description": "Traditional off-white cricket pants made with 220 GSM stretch micro-poly, reinforced knees, deep pockets, and elastic waist with drawcord.",
+        "subcategory": "Match Pants"
+      },
+      {
+        "id": "zarko-cricket-match-white-pants-white-grey-06",
+        "name": "Test Match Pro Cricket White Pants - Steel Grey #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433520/wearconnect/products/cricket/match-pants/zarko-cricket-match-white-pants-white-grey-06.webp",
+        "description": "Traditional off-white cricket pants made with 220 GSM stretch micro-poly, reinforced knees, deep pockets, and elastic waist with drawcord.",
+        "subcategory": "Match Pants"
+      },
+      {
+        "id": "zarko-cricket-match-white-pants-white-navy-01",
+        "name": "Test Match Pro Cricket White Pants - Navy Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433520/wearconnect/products/cricket/match-pants/zarko-cricket-match-white-pants-white-navy-01.webp",
+        "description": "Traditional off-white cricket pants made with 220 GSM stretch micro-poly, reinforced knees, deep pockets, and elastic waist with drawcord.",
+        "subcategory": "Match Pants"
+      },
+      {
+        "id": "zarko-cricket-match-white-pants-white-red-03",
+        "name": "Test Match Pro Cricket White Pants - Scarlet Red #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433520/wearconnect/products/cricket/match-pants/zarko-cricket-match-white-pants-white-red-03.webp",
+        "description": "Traditional off-white cricket pants made with 220 GSM stretch micro-poly, reinforced knees, deep pockets, and elastic waist with drawcord.",
+        "subcategory": "Match Pants"
+      },
+      {
+        "id": "zarko-cricket-match-white-pants-white-royal-blue-05",
+        "name": "Test Match Pro Cricket White Pants - Royal Blue #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433520/wearconnect/products/cricket/match-pants/zarko-cricket-match-white-pants-white-royal-blue-05.webp",
+        "description": "Traditional off-white cricket pants made with 220 GSM stretch micro-poly, reinforced knees, deep pockets, and elastic waist with drawcord.",
+        "subcategory": "Match Pants"
+      },
+      {
+        "id": "zarko-test-match-dry-fit-shirts-white-black-04",
+        "name": "Test Match Classic Polo Cricket Shirt - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433520/wearconnect/products/cricket/test-shirts/zarko-test-match-dry-fit-shirts-white-black-04.webp",
+        "description": "UV-shielded dry-fit cricket polo shirt with knit collar, concealed placket, mesh underarm gussets, and moisture-transfer interlock.",
+        "subcategory": "Test Shirts"
+      },
+      {
+        "id": "zarko-test-match-dry-fit-shirts-white-green-02",
+        "name": "Test Match Classic Polo Cricket Shirt - Forest Green #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433520/wearconnect/products/cricket/test-shirts/zarko-test-match-dry-fit-shirts-white-green-02.webp",
+        "description": "UV-shielded dry-fit cricket polo shirt with knit collar, concealed placket, mesh underarm gussets, and moisture-transfer interlock.",
+        "subcategory": "Test Shirts"
+      },
+      {
+        "id": "zarko-test-match-dry-fit-shirts-white-grey-06",
+        "name": "Test Match Classic Polo Cricket Shirt - Steel Grey #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433520/wearconnect/products/cricket/test-shirts/zarko-test-match-dry-fit-shirts-white-grey-06.webp",
+        "description": "UV-shielded dry-fit cricket polo shirt with knit collar, concealed placket, mesh underarm gussets, and moisture-transfer interlock.",
+        "subcategory": "Test Shirts"
+      },
+      {
+        "id": "zarko-test-match-dry-fit-shirts-white-navy-01",
+        "name": "Test Match Classic Polo Cricket Shirt - Navy Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433520/wearconnect/products/cricket/test-shirts/zarko-test-match-dry-fit-shirts-white-navy-01.webp",
+        "description": "UV-shielded dry-fit cricket polo shirt with knit collar, concealed placket, mesh underarm gussets, and moisture-transfer interlock.",
+        "subcategory": "Test Shirts"
+      },
+      {
+        "id": "zarko-test-match-dry-fit-shirts-white-red-03",
+        "name": "Test Match Classic Polo Cricket Shirt - Scarlet Red #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433520/wearconnect/products/cricket/test-shirts/zarko-test-match-dry-fit-shirts-white-red-03.webp",
+        "description": "UV-shielded dry-fit cricket polo shirt with knit collar, concealed placket, mesh underarm gussets, and moisture-transfer interlock.",
+        "subcategory": "Test Shirts"
+      },
+      {
+        "id": "zarko-test-match-dry-fit-shirts-white-royal-blue-05",
+        "name": "Test Match Classic Polo Cricket Shirt - Royal Blue #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433520/wearconnect/products/cricket/test-shirts/zarko-test-match-dry-fit-shirts-white-royal-blue-05.webp",
+        "description": "UV-shielded dry-fit cricket polo shirt with knit collar, concealed placket, mesh underarm gussets, and moisture-transfer interlock.",
+        "subcategory": "Test Shirts"
+      },
+      {
+        "id": "zarko-t20-sublimated-color-jerseys-black-04",
+        "name": "Custom T20 Sublimated Cricket Jersey - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433520/wearconnect/products/cricket/t20-jerseys/zarko-t20-sublimated-color-jerseys-black-04.webp",
+        "description": "Vibrant full-bleed 4K sublimated T20 cricket jersey with mandarin or polo collar, breathable pinhole side panels, and anti-snag tech fabric.",
+        "subcategory": "T20 Jerseys"
+      },
+      {
+        "id": "zarko-t20-sublimated-color-jerseys-blue-01",
+        "name": "Custom T20 Sublimated Cricket Jersey - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433520/wearconnect/products/cricket/t20-jerseys/zarko-t20-sublimated-color-jerseys-blue-01.webp",
+        "description": "Vibrant full-bleed 4K sublimated T20 cricket jersey with mandarin or polo collar, breathable pinhole side panels, and anti-snag tech fabric.",
+        "subcategory": "T20 Jerseys"
+      },
+      {
+        "id": "zarko-t20-sublimated-color-jerseys-green-03",
+        "name": "Custom T20 Sublimated Cricket Jersey - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433521/wearconnect/products/cricket/t20-jerseys/zarko-t20-sublimated-color-jerseys-green-03.webp",
+        "description": "Vibrant full-bleed 4K sublimated T20 cricket jersey with mandarin or polo collar, breathable pinhole side panels, and anti-snag tech fabric.",
+        "subcategory": "T20 Jerseys"
+      },
+      {
+        "id": "zarko-t20-sublimated-color-jerseys-navy-06",
+        "name": "Custom T20 Sublimated Cricket Jersey - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433521/wearconnect/products/cricket/t20-jerseys/zarko-t20-sublimated-color-jerseys-navy-06.webp",
+        "description": "Vibrant full-bleed 4K sublimated T20 cricket jersey with mandarin or polo collar, breathable pinhole side panels, and anti-snag tech fabric.",
+        "subcategory": "T20 Jerseys"
+      },
+      {
+        "id": "zarko-t20-sublimated-color-jerseys-red-02",
+        "name": "Custom T20 Sublimated Cricket Jersey - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433521/wearconnect/products/cricket/t20-jerseys/zarko-t20-sublimated-color-jerseys-red-02.webp",
+        "description": "Vibrant full-bleed 4K sublimated T20 cricket jersey with mandarin or polo collar, breathable pinhole side panels, and anti-snag tech fabric.",
+        "subcategory": "T20 Jerseys"
+      },
+      {
+        "id": "zarko-t20-sublimated-color-jerseys-white-05",
+        "name": "Custom T20 Sublimated Cricket Jersey - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433521/wearconnect/products/cricket/t20-jerseys/zarko-t20-sublimated-color-jerseys-white-05.webp",
+        "description": "Vibrant full-bleed 4K sublimated T20 cricket jersey with mandarin or polo collar, breathable pinhole side panels, and anti-snag tech fabric.",
+        "subcategory": "T20 Jerseys"
+      }
+    ]
+  },
+  {
+    "slug": "rugby",
+    "name": "Rugby Uniforms & Gear",
+    "gradientFrom": "from-indigo-600",
+    "gradientTo": "to-indigo-400",
+    "heroBadge": "FACTORY DIRECT SIALKOT",
+    "heroVideo": "https://res.cloudinary.com/dwo0pt9cq/video/upload/v1789985416/wearconnect/admin/lcq2on69ffvsz98ss2dk.mp4",
+    "featured": {
+      "name": "Pro Rugby Uniforms & Gear Championship Uniform",
+      "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433521/wearconnect/products/rugby/rugby-shorts/zarko-rugby-heavy-duty-shorts-black-04.webp",
+      "description": "Export-grade custom rugby uniforms & gear manufactured with durable moisture-wicking interlock, reinforced seams, and vibrant 4K digital sublimation. Custom logos, team names, and numbers included.",
+      "details": [
+        "High GSM moisture-wicking pro athletic fabric",
+        "Reinforced flatlock & bar-tacked stress seams",
+        "4K Full dye-sublimation or premium tackle-twill embroidery",
+        "Custom logos, individual player names, and numbers",
+        "NFHS and NCAA regulation sizing and compliance",
+        "Low 15-set factory direct MOQ with fast air shipping"
+      ],
+      "sizes": [
+        "YS",
+        "YM",
+        "YL",
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL",
+        "3XL",
+        "4XL"
+      ]
+    },
+    "subcategories": [
+      "Rugby Shorts",
+      "Heavy Jerseys"
+    ],
+    "products": [
+      {
+        "id": "zarko-rugby-heavy-duty-shorts-black-04",
+        "name": "Heavy-Duty Ripstop Rugby Match Shorts - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433521/wearconnect/products/rugby/rugby-shorts/zarko-rugby-heavy-duty-shorts-black-04.webp",
+        "description": "Rugged 240 GSM twill rugby shorts with spandex crotch gusset for scrums and tackles, rubberized gripper waistband, and reinforced pocketless design.",
+        "subcategory": "Rugby Shorts"
+      },
+      {
+        "id": "zarko-rugby-heavy-duty-shorts-blue-01",
+        "name": "Heavy-Duty Ripstop Rugby Match Shorts - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433521/wearconnect/products/rugby/rugby-shorts/zarko-rugby-heavy-duty-shorts-blue-01.webp",
+        "description": "Rugged 240 GSM twill rugby shorts with spandex crotch gusset for scrums and tackles, rubberized gripper waistband, and reinforced pocketless design.",
+        "subcategory": "Rugby Shorts"
+      },
+      {
+        "id": "zarko-rugby-heavy-duty-shorts-green-03",
+        "name": "Heavy-Duty Ripstop Rugby Match Shorts - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433521/wearconnect/products/rugby/rugby-shorts/zarko-rugby-heavy-duty-shorts-green-03.webp",
+        "description": "Rugged 240 GSM twill rugby shorts with spandex crotch gusset for scrums and tackles, rubberized gripper waistband, and reinforced pocketless design.",
+        "subcategory": "Rugby Shorts"
+      },
+      {
+        "id": "zarko-rugby-heavy-duty-shorts-navy-06",
+        "name": "Heavy-Duty Ripstop Rugby Match Shorts - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433521/wearconnect/products/rugby/rugby-shorts/zarko-rugby-heavy-duty-shorts-navy-06.webp",
+        "description": "Rugged 240 GSM twill rugby shorts with spandex crotch gusset for scrums and tackles, rubberized gripper waistband, and reinforced pocketless design.",
+        "subcategory": "Rugby Shorts"
+      },
+      {
+        "id": "zarko-rugby-heavy-duty-shorts-red-02",
+        "name": "Heavy-Duty Ripstop Rugby Match Shorts - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433521/wearconnect/products/rugby/rugby-shorts/zarko-rugby-heavy-duty-shorts-red-02.webp",
+        "description": "Rugged 240 GSM twill rugby shorts with spandex crotch gusset for scrums and tackles, rubberized gripper waistband, and reinforced pocketless design.",
+        "subcategory": "Rugby Shorts"
+      },
+      {
+        "id": "zarko-rugby-heavy-duty-shorts-white-05",
+        "name": "Heavy-Duty Ripstop Rugby Match Shorts - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433521/wearconnect/products/rugby/rugby-shorts/zarko-rugby-heavy-duty-shorts-white-05.webp",
+        "description": "Rugged 240 GSM twill rugby shorts with spandex crotch gusset for scrums and tackles, rubberized gripper waistband, and reinforced pocketless design.",
+        "subcategory": "Rugby Shorts"
+      },
+      {
+        "id": "zarko-rugby-sublimated-heavy-shirts-black-04",
+        "name": "Elite Sublimated Heavyweight Rugby Jersey - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433521/wearconnect/products/rugby/heavy-jerseys/zarko-rugby-sublimated-heavy-shirts-black-04.webp",
+        "description": "Tear-resistant 280 GSM heavy elastane-polyester rugby jersey with reinforced collar loop, bar-tacked seams, and 4-way stretch body-mapping.",
+        "subcategory": "Heavy Jerseys"
+      },
+      {
+        "id": "zarko-rugby-sublimated-heavy-shirts-blue-01",
+        "name": "Elite Sublimated Heavyweight Rugby Jersey - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433521/wearconnect/products/rugby/heavy-jerseys/zarko-rugby-sublimated-heavy-shirts-blue-01.webp",
+        "description": "Tear-resistant 280 GSM heavy elastane-polyester rugby jersey with reinforced collar loop, bar-tacked seams, and 4-way stretch body-mapping.",
+        "subcategory": "Heavy Jerseys"
+      },
+      {
+        "id": "zarko-rugby-sublimated-heavy-shirts-green-03",
+        "name": "Elite Sublimated Heavyweight Rugby Jersey - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433521/wearconnect/products/rugby/heavy-jerseys/zarko-rugby-sublimated-heavy-shirts-green-03.webp",
+        "description": "Tear-resistant 280 GSM heavy elastane-polyester rugby jersey with reinforced collar loop, bar-tacked seams, and 4-way stretch body-mapping.",
+        "subcategory": "Heavy Jerseys"
+      },
+      {
+        "id": "zarko-rugby-sublimated-heavy-shirts-navy-06",
+        "name": "Elite Sublimated Heavyweight Rugby Jersey - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433522/wearconnect/products/rugby/heavy-jerseys/zarko-rugby-sublimated-heavy-shirts-navy-06.webp",
+        "description": "Tear-resistant 280 GSM heavy elastane-polyester rugby jersey with reinforced collar loop, bar-tacked seams, and 4-way stretch body-mapping.",
+        "subcategory": "Heavy Jerseys"
+      },
+      {
+        "id": "zarko-rugby-sublimated-heavy-shirts-red-02",
+        "name": "Elite Sublimated Heavyweight Rugby Jersey - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433522/wearconnect/products/rugby/heavy-jerseys/zarko-rugby-sublimated-heavy-shirts-red-02.webp",
+        "description": "Tear-resistant 280 GSM heavy elastane-polyester rugby jersey with reinforced collar loop, bar-tacked seams, and 4-way stretch body-mapping.",
+        "subcategory": "Heavy Jerseys"
+      },
+      {
+        "id": "zarko-rugby-sublimated-heavy-shirts-white-05",
+        "name": "Elite Sublimated Heavyweight Rugby Jersey - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433522/wearconnect/products/rugby/heavy-jerseys/zarko-rugby-sublimated-heavy-shirts-white-05.webp",
+        "description": "Tear-resistant 280 GSM heavy elastane-polyester rugby jersey with reinforced collar loop, bar-tacked seams, and 4-way stretch body-mapping.",
+        "subcategory": "Heavy Jerseys"
+      }
+    ]
+  },
+  {
+    "slug": "wrestling",
+    "name": "Wrestling & Combat Gear",
+    "gradientFrom": "from-indigo-600",
+    "gradientTo": "to-indigo-400",
+    "heroBadge": "FACTORY DIRECT SIALKOT",
+    "heroVideo": "https://res.cloudinary.com/dwo0pt9cq/video/upload/v1789985416/wearconnect/admin/lcq2on69ffvsz98ss2dk.mp4",
+    "featured": {
+      "name": "Pro Wrestling & Combat Gear Championship Uniform",
+      "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433532/wearconnect/products/wrestling/2-piece-sets/zarko-2-piece-compression-sets-black-04.webp",
+      "description": "Export-grade custom wrestling & combat gear manufactured with durable moisture-wicking interlock, reinforced seams, and vibrant 4K digital sublimation. Custom logos, team names, and numbers included.",
+      "details": [
+        "High GSM moisture-wicking pro athletic fabric",
+        "Reinforced flatlock & bar-tacked stress seams",
+        "4K Full dye-sublimation or premium tackle-twill embroidery",
+        "Custom logos, individual player names, and numbers",
+        "NFHS and NCAA regulation sizing and compliance",
+        "Low 15-set factory direct MOQ with fast air shipping"
+      ],
+      "sizes": [
+        "YS",
+        "YM",
+        "YL",
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL",
+        "3XL",
+        "4XL"
+      ]
+    },
+    "subcategories": [
+      "2-Piece Sets",
+      "Cheerleaders Uniforms",
+      "Netball Uniforms",
+      "Singlets",
+      "Swimming & Water Polo"
+    ],
+    "products": [
+      {
+        "id": "zarko-2-piece-compression-sets-black-04",
+        "name": "2-Piece Compression Wrestling & Grappling Set - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433532/wearconnect/products/wrestling/2-piece-sets/zarko-2-piece-compression-sets-black-04.webp",
+        "description": "NFHS approved 2-piece wrestling uniform comprising a form-fitting compression shirt and fight shorts with internal drawcord.",
+        "subcategory": "2-Piece Sets"
+      },
+      {
+        "id": "zarko-2-piece-compression-sets-blue-01",
+        "name": "2-Piece Compression Wrestling & Grappling Set - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433532/wearconnect/products/wrestling/2-piece-sets/zarko-2-piece-compression-sets-blue-01.webp",
+        "description": "NFHS approved 2-piece wrestling uniform comprising a form-fitting compression shirt and fight shorts with internal drawcord.",
+        "subcategory": "2-Piece Sets"
+      },
+      {
+        "id": "zarko-2-piece-compression-sets-green-03",
+        "name": "2-Piece Compression Wrestling & Grappling Set - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433532/wearconnect/products/wrestling/2-piece-sets/zarko-2-piece-compression-sets-green-03.webp",
+        "description": "NFHS approved 2-piece wrestling uniform comprising a form-fitting compression shirt and fight shorts with internal drawcord.",
+        "subcategory": "2-Piece Sets"
+      },
+      {
+        "id": "zarko-2-piece-compression-sets-navy-06",
+        "name": "2-Piece Compression Wrestling & Grappling Set - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433532/wearconnect/products/wrestling/2-piece-sets/zarko-2-piece-compression-sets-navy-06.webp",
+        "description": "NFHS approved 2-piece wrestling uniform comprising a form-fitting compression shirt and fight shorts with internal drawcord.",
+        "subcategory": "2-Piece Sets"
+      },
+      {
+        "id": "zarko-2-piece-compression-sets-red-02",
+        "name": "2-Piece Compression Wrestling & Grappling Set - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433532/wearconnect/products/wrestling/2-piece-sets/zarko-2-piece-compression-sets-red-02.webp",
+        "description": "NFHS approved 2-piece wrestling uniform comprising a form-fitting compression shirt and fight shorts with internal drawcord.",
+        "subcategory": "2-Piece Sets"
+      },
+      {
+        "id": "zarko-2-piece-compression-sets-white-05",
+        "name": "2-Piece Compression Wrestling & Grappling Set - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433532/wearconnect/products/wrestling/2-piece-sets/zarko-2-piece-compression-sets-white-05.webp",
+        "description": "NFHS approved 2-piece wrestling uniform comprising a form-fitting compression shirt and fight shorts with internal drawcord.",
+        "subcategory": "2-Piece Sets"
+      },
+      {
+        "id": "zarko-cheerleaders-uniform-sets-black-04",
+        "name": "Championship Athletic Cheerleader Uniform Set - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433532/wearconnect/products/wrestling/cheerleaders-uniforms/zarko-cheerleaders-uniform-sets-black-04.webp",
+        "description": "Stunning 4-way stretch poly-spandex cheer uniform set with V-neck crop/shell top and pleated motion skirt with built-in boy-cut briefs.",
+        "subcategory": "Cheerleaders Uniforms"
+      },
+      {
+        "id": "zarko-cheerleaders-uniform-sets-green-03",
+        "name": "Championship Athletic Cheerleader Uniform Set - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433532/wearconnect/products/wrestling/cheerleaders-uniforms/zarko-cheerleaders-uniform-sets-green-03.webp",
+        "description": "Stunning 4-way stretch poly-spandex cheer uniform set with V-neck crop/shell top and pleated motion skirt with built-in boy-cut briefs.",
+        "subcategory": "Cheerleaders Uniforms"
+      },
+      {
+        "id": "zarko-cheerleaders-uniform-sets-navy-01",
+        "name": "Championship Athletic Cheerleader Uniform Set - Navy Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433533/wearconnect/products/wrestling/cheerleaders-uniforms/zarko-cheerleaders-uniform-sets-navy-01.webp",
+        "description": "Stunning 4-way stretch poly-spandex cheer uniform set with V-neck crop/shell top and pleated motion skirt with built-in boy-cut briefs.",
+        "subcategory": "Cheerleaders Uniforms"
+      },
+      {
+        "id": "zarko-cheerleaders-uniform-sets-red-02",
+        "name": "Championship Athletic Cheerleader Uniform Set - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433533/wearconnect/products/wrestling/cheerleaders-uniforms/zarko-cheerleaders-uniform-sets-red-02.webp",
+        "description": "Stunning 4-way stretch poly-spandex cheer uniform set with V-neck crop/shell top and pleated motion skirt with built-in boy-cut briefs.",
+        "subcategory": "Cheerleaders Uniforms"
+      },
+      {
+        "id": "zarko-cheerleaders-uniform-sets-royal-blue-06",
+        "name": "Championship Athletic Cheerleader Uniform Set - Royal Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433533/wearconnect/products/wrestling/cheerleaders-uniforms/zarko-cheerleaders-uniform-sets-royal-blue-06.webp",
+        "description": "Stunning 4-way stretch poly-spandex cheer uniform set with V-neck crop/shell top and pleated motion skirt with built-in boy-cut briefs.",
+        "subcategory": "Cheerleaders Uniforms"
+      },
+      {
+        "id": "zarko-cheerleaders-uniform-sets-white-05",
+        "name": "Championship Athletic Cheerleader Uniform Set - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433533/wearconnect/products/wrestling/cheerleaders-uniforms/zarko-cheerleaders-uniform-sets-white-05.webp",
+        "description": "Stunning 4-way stretch poly-spandex cheer uniform set with V-neck crop/shell top and pleated motion skirt with built-in boy-cut briefs.",
+        "subcategory": "Cheerleaders Uniforms"
+      },
+      {
+        "id": "zarko-netball-match-uniforms-black-04",
+        "name": "Custom Sublimated Netball Match Dress & Bib Set - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433533/wearconnect/products/wrestling/netball-uniforms/zarko-netball-match-uniforms-black-04.webp",
+        "description": "Comfortable A-line netball match dress with breathable mesh back panel and matching Velcro position bib set (GS, GA, WA, C, WD, GD, GK).",
+        "subcategory": "Netball Uniforms"
+      },
+      {
+        "id": "zarko-netball-match-uniforms-blue-01",
+        "name": "Custom Sublimated Netball Match Dress & Bib Set - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433533/wearconnect/products/wrestling/netball-uniforms/zarko-netball-match-uniforms-blue-01.webp",
+        "description": "Comfortable A-line netball match dress with breathable mesh back panel and matching Velcro position bib set (GS, GA, WA, C, WD, GD, GK).",
+        "subcategory": "Netball Uniforms"
+      },
+      {
+        "id": "zarko-netball-match-uniforms-green-03",
+        "name": "Custom Sublimated Netball Match Dress & Bib Set - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433533/wearconnect/products/wrestling/netball-uniforms/zarko-netball-match-uniforms-green-03.webp",
+        "description": "Comfortable A-line netball match dress with breathable mesh back panel and matching Velcro position bib set (GS, GA, WA, C, WD, GD, GK).",
+        "subcategory": "Netball Uniforms"
+      },
+      {
+        "id": "zarko-netball-match-uniforms-navy-06",
+        "name": "Custom Sublimated Netball Match Dress & Bib Set - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433533/wearconnect/products/wrestling/netball-uniforms/zarko-netball-match-uniforms-navy-06.webp",
+        "description": "Comfortable A-line netball match dress with breathable mesh back panel and matching Velcro position bib set (GS, GA, WA, C, WD, GD, GK).",
+        "subcategory": "Netball Uniforms"
+      },
+      {
+        "id": "zarko-netball-match-uniforms-red-02",
+        "name": "Custom Sublimated Netball Match Dress & Bib Set - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433533/wearconnect/products/wrestling/netball-uniforms/zarko-netball-match-uniforms-red-02.webp",
+        "description": "Comfortable A-line netball match dress with breathable mesh back panel and matching Velcro position bib set (GS, GA, WA, C, WD, GD, GK).",
+        "subcategory": "Netball Uniforms"
+      },
+      {
+        "id": "zarko-netball-match-uniforms-white-05",
+        "name": "Custom Sublimated Netball Match Dress & Bib Set - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433533/wearconnect/products/wrestling/netball-uniforms/zarko-netball-match-uniforms-white-05.webp",
+        "description": "Comfortable A-line netball match dress with breathable mesh back panel and matching Velcro position bib set (GS, GA, WA, C, WD, GD, GK).",
+        "subcategory": "Netball Uniforms"
+      },
+      {
+        "id": "zarko-nfhs-certified-singlets-black-04",
+        "name": "NFHS Certified Pro Wrestling Singlet - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433533/wearconnect/products/wrestling/singlets/zarko-nfhs-certified-singlets-black-04.webp",
+        "description": "Export-grade 4-way stretch heavyweight nylon-spandex wrestling singlet with silicone leg grippers, reinforced flatlock stitching, and rib-knit trim.",
+        "subcategory": "Singlets"
+      },
+      {
+        "id": "zarko-nfhs-certified-singlets-blue-01",
+        "name": "NFHS Certified Pro Wrestling Singlet - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433533/wearconnect/products/wrestling/singlets/zarko-nfhs-certified-singlets-blue-01.webp",
+        "description": "Export-grade 4-way stretch heavyweight nylon-spandex wrestling singlet with silicone leg grippers, reinforced flatlock stitching, and rib-knit trim.",
+        "subcategory": "Singlets"
+      },
+      {
+        "id": "zarko-nfhs-certified-singlets-green-03",
+        "name": "NFHS Certified Pro Wrestling Singlet - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433533/wearconnect/products/wrestling/singlets/zarko-nfhs-certified-singlets-green-03.webp",
+        "description": "Export-grade 4-way stretch heavyweight nylon-spandex wrestling singlet with silicone leg grippers, reinforced flatlock stitching, and rib-knit trim.",
+        "subcategory": "Singlets"
+      },
+      {
+        "id": "zarko-nfhs-certified-singlets-navy-06",
+        "name": "NFHS Certified Pro Wrestling Singlet - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433533/wearconnect/products/wrestling/singlets/zarko-nfhs-certified-singlets-navy-06.webp",
+        "description": "Export-grade 4-way stretch heavyweight nylon-spandex wrestling singlet with silicone leg grippers, reinforced flatlock stitching, and rib-knit trim.",
+        "subcategory": "Singlets"
+      },
+      {
+        "id": "zarko-nfhs-certified-singlets-red-02",
+        "name": "NFHS Certified Pro Wrestling Singlet - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433533/wearconnect/products/wrestling/singlets/zarko-nfhs-certified-singlets-red-02.webp",
+        "description": "Export-grade 4-way stretch heavyweight nylon-spandex wrestling singlet with silicone leg grippers, reinforced flatlock stitching, and rib-knit trim.",
+        "subcategory": "Singlets"
+      },
+      {
+        "id": "zarko-nfhs-certified-singlets-white-05",
+        "name": "NFHS Certified Pro Wrestling Singlet - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433533/wearconnect/products/wrestling/singlets/zarko-nfhs-certified-singlets-white-05.webp",
+        "description": "Export-grade 4-way stretch heavyweight nylon-spandex wrestling singlet with silicone leg grippers, reinforced flatlock stitching, and rib-knit trim.",
+        "subcategory": "Singlets"
+      },
+      {
+        "id": "zarko-swimming-water-polo-suits-black-04",
+        "name": "Chlorine-Resistant Water Polo & Swim Trunks - Black #04",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433533/wearconnect/products/wrestling/swimming-water-polo/zarko-swimming-water-polo-suits-black-04.webp",
+        "description": "Dual-layer chlorine and salt-resistant PBT polyester water polo trunks and competitive swim briefs with reinforced flat seams and inner tie-cord.",
+        "subcategory": "Swimming & Water Polo"
+      },
+      {
+        "id": "zarko-swimming-water-polo-suits-blue-01",
+        "name": "Chlorine-Resistant Water Polo & Swim Trunks - Royal Blue #01",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433534/wearconnect/products/wrestling/swimming-water-polo/zarko-swimming-water-polo-suits-blue-01.webp",
+        "description": "Dual-layer chlorine and salt-resistant PBT polyester water polo trunks and competitive swim briefs with reinforced flat seams and inner tie-cord.",
+        "subcategory": "Swimming & Water Polo"
+      },
+      {
+        "id": "zarko-swimming-water-polo-suits-green-03",
+        "name": "Chlorine-Resistant Water Polo & Swim Trunks - Forest Green #03",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433534/wearconnect/products/wrestling/swimming-water-polo/zarko-swimming-water-polo-suits-green-03.webp",
+        "description": "Dual-layer chlorine and salt-resistant PBT polyester water polo trunks and competitive swim briefs with reinforced flat seams and inner tie-cord.",
+        "subcategory": "Swimming & Water Polo"
+      },
+      {
+        "id": "zarko-swimming-water-polo-suits-navy-06",
+        "name": "Chlorine-Resistant Water Polo & Swim Trunks - Navy Blue #06",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433534/wearconnect/products/wrestling/swimming-water-polo/zarko-swimming-water-polo-suits-navy-06.webp",
+        "description": "Dual-layer chlorine and salt-resistant PBT polyester water polo trunks and competitive swim briefs with reinforced flat seams and inner tie-cord.",
+        "subcategory": "Swimming & Water Polo"
+      },
+      {
+        "id": "zarko-swimming-water-polo-suits-red-02",
+        "name": "Chlorine-Resistant Water Polo & Swim Trunks - Scarlet Red #02",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433534/wearconnect/products/wrestling/swimming-water-polo/zarko-swimming-water-polo-suits-red-02.webp",
+        "description": "Dual-layer chlorine and salt-resistant PBT polyester water polo trunks and competitive swim briefs with reinforced flat seams and inner tie-cord.",
+        "subcategory": "Swimming & Water Polo"
+      },
+      {
+        "id": "zarko-swimming-water-polo-suits-white-05",
+        "name": "Chlorine-Resistant Water Polo & Swim Trunks - Optical White #05",
+        "image": "https://res.cloudinary.com/dwo0pt9cq/image/upload/v1793433534/wearconnect/products/wrestling/swimming-water-polo/zarko-swimming-water-polo-suits-white-05.webp",
+        "description": "Dual-layer chlorine and salt-resistant PBT polyester water polo trunks and competitive swim briefs with reinforced flat seams and inner tie-cord.",
+        "subcategory": "Swimming & Water Polo"
       }
     ]
   }
