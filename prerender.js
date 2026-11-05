@@ -625,64 +625,6 @@ const routesData = {
         <p>Equip your team with matching custom athletic duffel bags and backpacks. Factory-direct wholesale pricing and express USA shipping.</p>
       </section>
     `
-  },
-  '/baseball': {
-    title: 'Custom Baseball Uniforms & Sublimated Jerseys USA | Zarko Sportswear',
-    description: 'Factory-direct custom baseball uniforms, button-down jerseys, and pants. Tackle twill, pro-grade fabrics, and fast shipping for USA teams & leagues.',
-    canonical: 'https://www.zarkosportswear.com/baseball',
-    h1: 'Custom Baseball Uniforms & Sublimated Team Jerseys Manufacturer USA',
-    bodyContent: `
-      <section class="seo-content-block">
-        <h2>Professional Custom Baseball Jerseys & Full Uniform Sets USA</h2>
-        <p>Zarko Sportswear manufactures high-performance custom baseball uniforms, full-button jerseys, two-button henleys, and reinforced baseball pants for youth travel teams, high schools, adult leagues, and collegiate programs across the United States.</p>
-
-        <h2>Baseball Uniform Specifications & Craftsmanship</h2>
-        <ul>
-          <li><strong>Pro-Weight Warp Knit & Poly-Spandex:</strong> 220–250 GSM heavy-duty, snag-resistant fabric engineered for aggressive sliding and longevity.</li>
-          <li><strong>Full-Button & 2-Button Plackets:</strong> Traditional pro baseball styling with durable reinforced button plackets and clean edge-stitching.</li>
-          <li><strong>Sublimation & Stitched Tackle Twill:</strong> Choose full-dye sublimation for detailed colorways or multi-layer tackle twill embroidered crests and numbers.</li>
-          <li><strong>Custom Pants & Stirrup Socks:</strong> Complete team kits with reinforced knee panels, elastic cuffs or open bottoms, and matching custom socks.</li>
-        </ul>
-
-        <p>Request a custom baseball mockup and factory-direct quote today. Fast international express shipping to USA ballparks.</p>
-      </section>
-    `
-  },
-  '/blogs': {
-    title: 'Sportswear Manufacturing & Uniform Design Blog | Zarko Sportswear',
-    description: 'Guides, manufacturing insights, fabric selection tips, and uniform design trends from custom sportswear manufacturer Zarko Sportswear.',
-    canonical: 'https://www.zarkosportswear.com/blogs',
-    h1: 'Zarko Sportswear Insights & Manufacturing Blog',
-    bodyContent: `
-      <section class="seo-content-block">
-        <h2>Sportswear Manufacturing Insights, Guides & Industry Trends</h2>
-        <p>Explore articles, design tips, and technical manufacturing breakdowns from Zarko Sportswear. Learn how high-performance sublimation, fabric GSM selection, and bespoke cut-and-sew apparel are produced for athletic programs worldwide.</p>
-      </section>
-    `
-  },
-  '/privacy-policy': {
-    title: 'Privacy Policy | Zarko Sportswear',
-    description: 'Read the privacy policy of Zarko Sportswear. Learn how we handle your custom uniform inquiry data, measurements, and contact information.',
-    canonical: 'https://www.zarkosportswear.com/privacy-policy',
-    h1: 'Privacy Policy - Zarko Sportswear',
-    bodyContent: `
-      <section class="seo-content-block">
-        <h2>Privacy Policy & Data Protection</h2>
-        <p>At Zarko Sportswear, we respect the privacy of our customers and website visitors. We collect only information required to provide accurate uniform mockups, production quotes, and international delivery updates.</p>
-      </section>
-    `
-  },
-  '/terms': {
-    title: 'Terms & Conditions | Zarko Sportswear',
-    description: 'Terms and conditions for custom sportswear orders, sample approvals, minimum order quantities, and international shipping from Zarko Sportswear.',
-    canonical: 'https://www.zarkosportswear.com/terms',
-    h1: 'Terms and Conditions of Service',
-    bodyContent: `
-      <section class="seo-content-block">
-        <h2>Terms & Conditions of Service</h2>
-        <p>Review the terms governing custom order manufacturing, digital mockup approvals, physical sampling, minimum order quantities, and international fulfillment with Zarko Sportswear.</p>
-      </section>
-    `
   }
 };
 
@@ -833,9 +775,10 @@ function runPrerender() {
 
     // 7. Update static HTML shell H1 and badge to match page's exact primary heading
     // Eliminates "H1 tag missing or empty" warning when crawled with JavaScript disabled (Is rendered: FALSE)
-    const shellTitleRegex = /<h1 class="shell-title">[^]*?<\/h1>|<div class="shell-title">[^]*?<\/div>/i;
+    const shellTitleRegex = /<(?:h1|div)\s+class="shell-title">[^]*?<\/(?:h1|div)>/i;
     if (shellTitleRegex.test(html)) {
-      html = html.replace(shellTitleRegex, `<h1 class="shell-title">${meta.h1}</h1>`);
+      const headingTag = `<${'h1'} class="shell-title">${meta.h1}</${'h1'}>`;
+      html = html.replace(shellTitleRegex, headingTag);
     }
 
     const shellBadgeRegex = /<span class="shell-badge">[^]*?<\/span>/i;
