@@ -312,16 +312,16 @@ const routesData = {
     `
   },
   '/basketball': {
-    title: 'Custom Basketball Jerseys & Uniforms USA | Zarko Sportswear',
-    description: 'Shop high-performance custom basketball jerseys and reversible uniforms. Premium moisture-wicking mesh fabrics, vibrant sublimation, and fast USA delivery.',
+    title: 'Custom Basketball Jersey Manufacturer Wholesale | Zarko USA',
+    description: 'Leading basketball clothing manufacturer specializing in wholesale sublimated team jerseys, reversible tops & mesh shorts for AAU & schools. Fast USA shipping!',
     canonical: 'https://www.zarkosportswear.com/basketball',
-    h1: 'Custom Basketball Jerseys & Team Uniforms Manufacturer USA',
+    h1: 'Custom Basketball Jersey Manufacturer & Wholesale Team Uniforms',
     bodyContent: `
       <section class="seo-content-block">
-        <h2>Custom Sublimation & Pro-Mesh Basketball Uniforms for USA Teams</h2>
-        <p>Dominate the hardwood with high-performance custom basketball jerseys and shorts crafted by Zarko Sportswear. We supply AAU basketball circuits, high school varsity squads, recreation leagues, and 3x3 tournament teams across the United States with lightweight, breathable, and fully customized basketball uniforms.</p>
+        <h2>Which Companies Specialize in Basketball Jerseys for Teams?</h2>
+        <p>Zarko Sportswear is an established basketball clothing manufacturer specializing in custom team basketball jerseys, dual-layer reversible scrimmage tops, and moisture-wicking pro-mesh game shorts. We supply AAU circuit programs, high school varsity squads, and recreational leagues across the USA with factory-direct wholesale pricing, 15-set low MOQs, and rapid international delivery.</p>
 
-        <h2>Basketball Uniform Construction & Specifications</h2>
+        <h2>Wholesale Basketball Uniform Construction & Specifications</h2>
         <ul>
           <li><strong>Pro-Air Mesh & Interlock Fabrics:</strong> 170–190 GSM open-hole or smooth micro-mesh fabric ensures rapid sweat evaporation and lightweight agility.</li>
           <li><strong>Reversible Dual-Layer Options:</strong> Dual-layer sublimated reversible jerseys perfect for practice scrimmages and tournament pool play.</li>
@@ -329,7 +329,7 @@ const routesData = {
           <li><strong>Pro-Length Basketball Shorts:</strong> 2-inch heavy-duty elastic waistband with durable inner drawstring and modern mid-thigh or classic on-knee lengths.</li>
         </ul>
 
-        <h2>Factory-Direct Pricing & Fast USA Delivery</h2>
+        <h2>Buy Wholesale Basketball Uniforms Direct from Factory</h2>
         <p>Order custom basketball kits with customized team logos, front/back numbers, and player names. Quick production turnaround and reliable express shipping to all 50 US states.</p>
       </section>
     `
@@ -357,19 +357,22 @@ const routesData = {
     `
   },
   '/rugby': {
-    title: 'Custom Rugby Jerseys & Team Kits USA | Zarko Sportswear',
-    description: 'Heavy-duty custom rugby jerseys, shorts, and team kits. Tear-resistant stretch fabrics engineered for high-impact match play with fast USA shipping.',
+    title: 'Rugby Clothing & Jersey Manufacturer | OEM Teamwear | Zarko',
+    description: 'OEM rugby clothing manufacturer. Heavy-duty custom rugby jerseys with reinforced shoulders, scrum shorts & team kits. Low 15-kit MOQ & fast USA shipping.',
     canonical: 'https://www.zarkosportswear.com/rugby',
-    h1: 'Custom Rugby Jerseys & Heavy-Duty Teamwear Manufacturer USA',
+    h1: 'Custom Rugby Clothing & Jersey Manufacturer - OEM Teamwear USA',
     bodyContent: `
       <section class="seo-content-block">
-        <h2>Tear-Resistant Custom Sublimated Rugby Jerseys & Shorts for USA Clubs</h2>
-        <p>Rugby demands the toughest apparel on the planet. Zarko Sportswear manufactures battle-tested custom rugby jerseys, scrum shorts, and warmup gear for USA Rugby affiliated clubs, collegiate rugby conferences, and youth sevens academies across North America.</p>
+        <h2>Who Makes Rugby Jerseys with Reinforced Shoulders?</h2>
+        <p>Zarko Sportswear is a dedicated rugby clothing manufacturer engineering pro-tier custom rugby jerseys with reinforced double-layer shoulder yokes and triple-needle bar-tacked stress zones. Built specifically to withstand intense scrums, rucks, and high-impact tackle gripping without ripping or tearing.</p>
+
+        <h2>OEM Rugby Clothing Manufacturer & Private Label Team Kits</h2>
+        <p>Rugby demands the toughest apparel on the planet. As an experienced OEM rugby jersey manufacturer, we supply USA Rugby affiliated clubs, collegiate conferences, and youth sevens academies across North America with battle-tested team kits, sublimated match shirts, and rugged shorts.</p>
 
         <h2>Rugby Uniform Specifications & Toughness</h2>
         <ul>
           <li><strong>280–320 GSM Heavy-Duty Poly-Elastane:</strong> Super-tough high-tensile fabric built to withstand scrums, tackles, rucks, and aggressive gripping without tearing.</li>
-          <li><strong>Multi-Stitch Reinforced Bar-Tacking:</strong> All critical stress points, collar junctions, and armholes feature triple-needle reinforced stitching.</li>
+          <li><strong>Reinforced Shoulder Yoke & Multi-Stitch Bar-Tacking:</strong> All critical stress points, collar junctions, and shoulder seams feature reinforced multi-needle stitching.</li>
           <li><strong>Mandarin & Loop Neck Collar Styles:</strong> Ergonomic low-profile collars designed to minimize tackle grab opportunities on the field.</li>
           <li><strong>Heavy Cotton-Twill Rugby Shorts:</strong> Rugged shorts with elasticated waistbands, internal drawstrings, and stretch crotch panels for explosive scrums.</li>
         </ul>
@@ -445,14 +448,17 @@ const routesData = {
     `
   },
   '/softball': {
-    title: 'Custom Softball Jerseys & Uniforms USA | Zarko Sportswear',
-    description: 'Custom softball jerseys, pants, and team uniforms. Sublimation printing, moisture-wicking stretch fabrics, team rosters, and fast factory USA delivery.',
+    title: 'Custom Softball Uniforms & Jerseys Wholesale | Zarko USA',
+    description: 'Wholesale custom fastpitch softball jerseys & uniform sets for high school, travel ball & youth 8U-14U teams. Sublimated pants & jerseys. Fast USA shipping!',
     canonical: 'https://www.zarkosportswear.com/softball',
-    h1: 'Custom Softball Jerseys & Fastpitch Uniforms Manufacturer USA',
+    h1: 'Custom Fastpitch Softball Uniforms & Wholesale Jerseys Manufacturer',
     bodyContent: `
       <section class="seo-content-block">
-        <h2>Custom Fastpitch Softball Uniforms & Sublimated Jerseys for USA Teams</h2>
-        <p>Equip your fastpitch softball squad with high-quality custom softball jerseys, matching pants, and team outerwear manufactured by Zarko Sportswear. We supply travel ball organizations, high school softball teams, and adult slowpitch leagues across the United States with durable, vibrant, and perfectly tailored women's and girls' athletic uniforms.</p>
+        <h2>Wholesale Custom Fastpitch Softball Uniform Sets & Team Gear</h2>
+        <p>Looking for custom softball jerseys wholesale? Zarko Sportswear manufactures complete fastpitch softball uniform sets, two-button jerseys, full-button tops, and matching sliding pants for high school programs, adult travel leagues, and youth clubs. Order 25 softball uniforms or complete club packages direct from our factory with fast international shipping to the USA.</p>
+
+        <h2>High School & Youth 8U / 10U / 12U Fastpitch Team Uniforms</h2>
+        <p>From youth 8U fastpitch squads to varsity high school championships, our female-specific athletic cuts deliver maximum mobility for pitching windups, batting swings, and aggressive base sliding with 200 GSM tear-resistant double-knit polyester.</p>
 
         <h2>Softball Uniform Features & Options</h2>
         <ul>
