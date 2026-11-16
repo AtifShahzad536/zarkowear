@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaArrowRight } from 'react-icons/fa';
 import { getHome, imageUrl } from '../../services/api';
 
 const MotionLink = motion(Link);
@@ -22,20 +21,13 @@ const FeaturedCategories = () => {
     return () => { alive = false; };
   }, []);
 
-  // Premium Skeleton Loader Component
+  // Clean Minimal Skeleton Loader Component
   const SkeletonCard = () => (
-    <div className="border border-slate-200/90 rounded-[5px] overflow-hidden bg-white flex flex-col shadow-2xs">
-      <div className="w-full h-40 sm:h-48 bg-slate-100 animate-pulse" />
-      <div className="p-3.5 sm:p-4 space-y-2 flex-1 flex flex-col justify-between">
-        <div className="space-y-1.5">
-          <div className="h-3.5 bg-slate-200 rounded-[5px] w-1/3 animate-pulse"></div>
-          <div className="h-4 bg-slate-200 rounded-[5px] w-3/4 animate-pulse"></div>
-          <div className="h-3 bg-slate-100 rounded-[5px] w-full animate-pulse"></div>
-        </div>
-        <div className="pt-2 border-t border-slate-100 flex justify-between items-center">
-          <div className="h-3 bg-slate-200 rounded-[5px] w-1/4 animate-pulse"></div>
-          <div className="w-6 h-6 rounded-full bg-slate-100 animate-pulse"></div>
-        </div>
+    <div className="border border-slate-200/90 rounded-[6px] overflow-hidden bg-white flex flex-col shadow-xs">
+      <div className="w-full aspect-[4/5] bg-slate-100 animate-pulse" />
+      <div className="p-3 sm:p-4 space-y-2 bg-white">
+        <div className="h-4 bg-slate-200 rounded w-3/4 animate-pulse"></div>
+        <div className="h-3 bg-slate-100 rounded w-1/2 animate-pulse"></div>
       </div>
     </div>
   );
@@ -78,62 +70,48 @@ const FeaturedCategories = () => {
         ) : error ? (
           <div className="col-span-full text-center text-rose-600">{error}</div>
         ) : (
-          items.map((cat, index) => (
-            <MotionLink
-              key={index}
-              to={`/${cat.slug}`}
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: index * 0.05 }}
-              className="relative bg-white border border-slate-200/90 hover:border-indigo-500/60 rounded-[5px] overflow-hidden flex flex-col justify-between shadow-2xs hover:shadow-xl transition-all duration-300 group"
-            >
-              {/* Subtle Animated Top Gradient Line on Hover */}
-              <div className="absolute top-0 inset-x-0 h-[2.5px] bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-20" />
+          items.map((cat, index) => {
+            const formattedName = cat.name || cat.slug || 'Sportswear';
+            const categorySubtitle = cat.categoryGroup || `Sportswear, ${formattedName}`;
 
-              {/* Image Area - Pure white background */}
-              <div className="relative w-full h-40 sm:h-48 bg-white flex items-center justify-center p-3 sm:p-4 overflow-hidden border-b border-slate-100">
-                <span className="absolute top-2.5 left-2.5 text-[9px] font-extrabold uppercase tracking-wider text-indigo-700 bg-slate-50 px-2 py-0.5 rounded-[5px] border border-indigo-100 shadow-2xs z-10">
-                  Custom Kit
-                </span>
+            return (
+              <MotionLink
+                key={index}
+                to={`/${cat.slug}`}
+                initial={{ opacity: 0, y: 25 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: index * 0.05 }}
+                className="group relative bg-white border border-slate-200/80 hover:border-slate-300 rounded-[6px] overflow-hidden flex flex-col shadow-xs hover:shadow-md transition-all duration-300"
+              >
+                {/* Large Product / Category Image Area */}
+                <div className="relative w-full aspect-[4/5] sm:aspect-square bg-white flex items-center justify-center p-4 sm:p-6 overflow-hidden">
+                  <img
+                    src={imageUrl(cat.image || '/uploads/placeholder.jpg', { width: 800, quality: 'auto:best' })}
+                    alt={formattedName}
+                    title={formattedName}
+                    width={400}
+                    height={400}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-300 ease-out"
+                  />
+                </div>
 
-                <img
-                  src={imageUrl(cat.image || '/uploads/placeholder.jpg', { width: 800, quality: 'auto:best' })}
-                  alt={cat.name || cat.slug}
-                  title={cat.name || cat.slug}
-                  width={350}
-                  height={350}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-contain transform group-hover:scale-108 transition-transform duration-500 ease-out"
-                />
-              </div>
-
-              {/* Title & Info Area - Clean typography & 1-line truncated description */}
-              <div className="p-3.5 sm:p-4 flex-1 flex flex-col justify-between space-y-1.5 bg-white">
-                <div>
-                  <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest block mb-0.5">
-                    Pro Athletic Wear
-                  </span>
-                  <h3 className="text-xs sm:text-sm font-black tracking-tight text-slate-900 group-hover:text-indigo-600 transition-colors uppercase truncate" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                    {cat.name || cat.slug}
+                {/* Minimal Clean Details - Image + Less Text */}
+                <div className="p-4 sm:p-5 pt-1 sm:pt-2 text-left bg-white">
+                  <h3
+                    className="text-sm sm:text-base font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors truncate"
+                    style={{ fontFamily: "'Outfit', sans-serif" }}
+                  >
+                    {formattedName}
                   </h3>
-                  <p className="text-[11px] sm:text-xs text-slate-500 font-medium leading-normal mt-1 truncate" title={cat.description || `Discover premium ${cat.name || cat.slug} with export-grade fabrics and custom options.`}>
-                    {cat.description || `Discover premium ${cat.name || cat.slug} with export-grade fabrics and custom options.`}
+                  <p className="text-xs text-slate-400 font-normal mt-1 truncate">
+                    {categorySubtitle}
                   </p>
                 </div>
-
-                {/* Bottom Row with Sleek Micro-Interaction */}
-                <div className="pt-2.5 mt-2 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-[10.5px] sm:text-xs font-bold text-slate-800 group-hover:text-indigo-600 uppercase tracking-wider transition-colors">
-                    Explore Kits
-                  </span>
-                  <span className="w-6 h-6 rounded-full bg-slate-100 group-hover:bg-indigo-600 text-slate-600 group-hover:text-white flex items-center justify-center text-[9px] transition-all duration-300 shadow-2xs group-hover:translate-x-0.5">
-                    <FaArrowRight />
-                  </span>
-                </div>
-              </div>
-            </MotionLink>
-          ))
+              </MotionLink>
+            );
+          })
         )}
       </div>
     </section>

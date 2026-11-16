@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaPinterestP } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 import { COMPANY_DETAILS } from '../data/constants';
+import TrustBadges from './TrustBadges';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -16,7 +17,10 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#0A0C16] text-white text-sm border-t border-white/5 relative overflow-hidden">
+    <footer className="bg-[#0A0C16] text-white text-sm relative overflow-hidden">
+      {/* ── International Trust & Logistics Badges (Certificates & Shipping Methods) ── */}
+      <TrustBadges />
+
       {/* Background Gradient Spotlight */}
       <div className="absolute bottom-0 right-0 w-[450px] h-[250px] bg-indigo-900/10 rounded-full blur-[100px] pointer-events-none" />
 
