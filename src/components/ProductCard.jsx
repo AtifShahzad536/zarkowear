@@ -111,13 +111,12 @@ const ProductCard = ({
     );
   }
 
-  // ── GRID VIEW MODE (Clean, Modern, Rounded 5px) ──
+  // ── GRID VIEW MODE (Competitor Hamco Style: Crisp White, Clean Border, Centered) ──
   return (
-    <div className="group relative bg-white rounded-[5px] border border-slate-200/90 hover:border-slate-900/40 overflow-hidden shadow-2xs hover:shadow-md transition-all duration-200 flex flex-col justify-between w-full h-full">
+    <div className="group relative bg-white rounded-[4px] border border-slate-200 hover:border-slate-300 overflow-hidden shadow-2xs hover:shadow-md transition-all duration-200 flex flex-col justify-between w-full h-full">
       {/* Top Image Container - Pure White (#ffffff) without cluttering badges */}
       <div 
-        className="relative aspect-[4/5] sm:aspect-[1/1] w-full p-3.5 sm:p-4 flex items-center justify-center overflow-hidden border-b border-slate-100 select-none"
-        style={{ backgroundColor: '#ffffff' }}
+        className="relative aspect-square w-full p-4 flex items-center justify-center overflow-hidden border-b border-slate-100 select-none bg-white"
       >
         {/* Product Image with smooth hover zoom */}
         <Link
@@ -125,97 +124,54 @@ const ProductCard = ({
           state={{ product: productData }}
           aria-label={`View ${name} product details`}
           className="h-full w-full flex items-center justify-center"
-          style={{ backgroundColor: '#ffffff' }}
         >
           <img
             alt={`${name || 'Custom Sportswear'} - Custom Uniform | Zarko`}
             src={displayImage}
             title={`${name || 'Custom Sportswear'} - Custom Uniform | Zarko`}
             loading="lazy"
-            className="h-full w-full object-contain transform group-hover:scale-106 transition-transform duration-300 ease-out filter drop-shadow-[0_6px_12px_rgba(0,0,0,0.06)]"
+            className="h-full w-full object-contain transform group-hover:scale-105 transition-transform duration-300 ease-out"
             onError={(e) => {
               e.currentTarget.onerror = null;
               e.currentTarget.src = '/images/placeholder.jpg';
             }}
           />
         </Link>
-
-        {/* Quick View Button Hover Action (Rounded 5px) */}
-        <div className="absolute bottom-2.5 inset-x-0 flex justify-center z-10">
-          <button
-            onClick={handleQuickViewClick}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[5px] bg-white/95 hover:bg-slate-900 text-slate-900 hover:text-white text-[11px] font-bold uppercase tracking-wider shadow-sm border border-slate-200/60 backdrop-blur-xs transition-all duration-150 cursor-pointer"
-          >
-            <FaEye className="text-[10px]" />
-            <span>Quick View</span>
-          </button>
-        </div>
       </div>
 
-      {/* Card Details Body */}
-      <div className="p-3.5 sm:p-4 flex-1 flex flex-col justify-between space-y-2.5">
-        <div className="space-y-1">
-          <div className="flex items-center justify-between gap-1.5">
-            <span className="text-[9.5px] font-black uppercase tracking-wider text-slate-400">
-              {sportName.toUpperCase()} • OEM BESPOKE
-            </span>
-            <span className="text-[9.5px] font-bold text-indigo-600 flex items-center gap-1">
-              <FiCheckCircle className="text-[10px]" />
-              <span>Direct Factory</span>
-            </span>
-          </div>
-
-          <Link
-            to={`/detail?product=${encodeURIComponent(productSlug)}`}
-            state={{ product: productData }}
-            aria-label={`View ${name} uniform details`}
-          >
-            <h3
-              className="font-black text-slate-900 text-xs sm:text-sm leading-snug group-hover:text-indigo-600 transition-colors line-clamp-1 uppercase tracking-tight"
-              style={{ fontFamily: "'Outfit', sans-serif" }}
+        {/* Card Details Body (Competitor Hamco Style: Centered Title, Clean Subtitle, Solid Red Action Button) */}
+        <div className="p-3 sm:p-3.5 flex-1 flex flex-col justify-between items-center text-center space-y-2">
+          <div className="space-y-1 w-full">
+            <Link
+              to={`/detail?product=${encodeURIComponent(productSlug)}`}
+              state={{ product: productData }}
+              aria-label={`View ${name} uniform details`}
+              className="block"
             >
-              {name}
-            </h3>
-          </Link>
+              <h3
+                className="font-bold text-slate-900 text-xs sm:text-sm hover:text-red-600 transition-colors line-clamp-2 uppercase tracking-tight"
+                style={{ fontFamily: "'Outfit', sans-serif" }}
+              >
+                {name}
+              </h3>
+            </Link>
 
-          <p className="text-slate-500 text-[11px] font-normal line-clamp-2 leading-relaxed">
-            {description || 'Export-grade moisture-wicking team jersey engineered with reinforced stitching and vibrant Italian 4K dye-sublimation.'}
-          </p>
-        </div>
-
-        {/* Specs Chips */}
-        <div className="flex flex-wrap gap-1 pt-0.5">
-          <span className="text-[8.5px] font-bold text-slate-600 bg-slate-50 border border-slate-200/80 px-1.5 py-0.5 rounded-[4px]">
-            Dri-FIT
-          </span>
-          <span className="text-[8.5px] font-bold text-slate-600 bg-slate-50 border border-slate-200/80 px-1.5 py-0.5 rounded-[4px]">
-            4K Sublimation
-          </span>
-          <span className="text-[8.5px] font-bold text-slate-600 bg-slate-50 border border-slate-200/80 px-1.5 py-0.5 rounded-[4px]">
-            NFHS Ready
-          </span>
-        </div>
-
-        {/* Card Footer: Wholesale indicator & View Button */}
-        <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between gap-2">
-          <div>
-            <span className="block text-[8.5px] font-bold uppercase tracking-wider text-slate-400">Order MOQ</span>
-            <span className="text-[10.5px] font-black text-slate-900 uppercase">
-              15 Sets / Design
-            </span>
+            <p className="text-slate-400 text-[10px] sm:text-[11px] font-medium tracking-wide uppercase">
+              Custom {sportName} Uniform
+            </p>
           </div>
 
+          {/* Solid Red Full-Width Action Button (Matching Competitor Layout) */}
           <Link
             to={`/detail?product=${encodeURIComponent(productSlug)}`}
             state={{ product: productData }}
-            aria-label={`View ${name} product specs and quote options`}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[5px] bg-slate-900 group-hover:bg-indigo-600 text-white text-[10px] font-bold uppercase tracking-wider transition-colors shadow-2xs"
+            aria-label={`Get quote for ${name}`}
+            className="w-full mt-2 py-2 px-3 rounded-[3px] bg-red-600 hover:bg-red-700 text-white text-[11px] font-bold uppercase tracking-wider transition-all duration-150 flex items-center justify-center gap-1.5 shadow-xs"
           >
-            <span>View</span>
-            <FaArrowRight className="text-[7px] group-hover:translate-x-0.5 transition-transform" />
+            <span>View Design</span>
+            <FaArrowRight className="text-[9px]" />
           </Link>
         </div>
-      </div>
     </div>
   );
 };
