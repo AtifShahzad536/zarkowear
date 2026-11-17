@@ -636,8 +636,8 @@ const CategoryPage = ({ slug }) => {
           </p>
         </div>
 
-        {/* ── ULTRA-CLEAN STREAMLINED FILTER & SEARCH TOOLBAR (COMPACT 1-LINE / FULLY RESPONSIVE) ── */}
-        <div className="bg-white rounded-[8px] border border-slate-200/90 p-2 sm:p-2.5 mb-6 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+        {/* ── ULTRA-CLEAN STREAMLINED FILTER & SEARCH TOOLBAR (STICKY BELOW HEADER) ── */}
+        <div className="sticky top-[86px] sm:top-[88px] z-30 bg-white/95 backdrop-blur-md rounded-[8px] border border-slate-200/90 p-2 sm:p-2.5 mb-8 shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 transition-all">
           {/* Left Controls: Subcategory Dropdown & Quick Reset */}
           <div className="flex items-center gap-2 flex-1 min-w-0">
             {/* Category / Cut Dropdown Selector */}
@@ -734,75 +734,106 @@ const CategoryPage = ({ slug }) => {
           </div>
         </div>
 
-        {/* ── FULL-WIDTH PRODUCT CATALOG (SEGMENTED CATEGORY SECTIONS LIKE COMPETITOR) ── */}
+        {/* ── FULL-WIDTH PRODUCT CATALOG (SEGMENTED CATEGORY SECTIONS WITH INTERLEAVED CONTENT LIKE COMPETITOR) ── */}
         <div>
           {groupedProducts ? (
-            /* Multi-section categorized showcase (Shirts, Pants, Jackets/Hoodies, Gear) */
-            <div className="space-y-12">
+            /* Multi-section categorized showcase with rich B2B content interleaved in-between */
+            <div className="space-y-16">
               {groupedProducts.map((section, sIdx) => (
-                <div key={section.id} className="space-y-4">
-                  {/* Category Section Header */}
-                  <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 pb-3 border-b border-slate-200">
-                    <div>
-                      <div className="flex items-center gap-2 text-indigo-600 text-[10px] font-bold uppercase tracking-[0.2em]">
-                        <span>✦</span>
-                        <span>{section.badge}</span>
+                <React.Fragment key={section.id}>
+                  {/* Category Section Group */}
+                  <div className="space-y-4">
+                    {/* Category Section Header */}
+                    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 pb-3 border-b border-slate-200">
+                      <div>
+                        <div className="flex items-center gap-2 text-indigo-600 text-[10px] font-bold uppercase tracking-[0.2em]">
+                          <span>✦</span>
+                          <span>{section.badge}</span>
+                        </div>
+                        <h3
+                          className="text-lg sm:text-xl font-bold text-slate-900 uppercase tracking-tight mt-0.5"
+                          style={{ fontFamily: "'Outfit', sans-serif" }}
+                        >
+                          {section.title}
+                        </h3>
+                        <p className="text-xs text-slate-500 font-normal mt-0.5">
+                          {section.subtitle}
+                        </p>
                       </div>
-                      <h3
-                        className="text-lg sm:text-xl font-bold text-slate-900 uppercase tracking-tight mt-0.5"
-                        style={{ fontFamily: "'Outfit', sans-serif" }}
-                      >
-                        {section.title}
-                      </h3>
-                      <p className="text-xs text-slate-500 font-normal mt-0.5">
-                        {section.subtitle}
-                      </p>
+
+                      <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider shrink-0">
+                        {section.items.length} {section.items.length === 1 ? 'Design' : 'Designs'}
+                      </span>
                     </div>
 
-                    <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider shrink-0">
-                      {section.items.length} {section.items.length === 1 ? 'Design' : 'Designs'}
-                    </span>
+                    {/* 4 Cards Grid */}
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-5">
+                      {section.items.map((product, index) => (
+                        <ProductCard
+                          key={product.id || `${section.id}-${product.name}-${index}`}
+                          id={product.id}
+                          image={product.image}
+                          name={product.name}
+                          description={product.description}
+                          price={product.price}
+                          discount={product.discount}
+                          categorySlug={slug}
+                          sportName={cleanSport}
+                          onQuickView={setQuickViewProduct}
+                          viewMode="grid"
+                        />
+                      ))}
+                    </div>
                   </div>
 
-                  {/* 4 Cards Grid */}
-                  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-5">
-                    {section.items.map((product, index) => (
-                      <ProductCard
-                        key={product.id || `${section.id}-${product.name}-${index}`}
-                        id={product.id}
-                        image={product.image}
-                        name={product.name}
-                        description={product.description}
-                        price={product.price}
-                        discount={product.discount}
-                        categorySlug={slug}
-                        sportName={cleanSport}
-                        onQuickView={setQuickViewProduct}
-                        viewMode="grid"
-                      />
-                    ))}
-                  </div>
-                </div>
+                  {/* ── INTERLEAVED CONTENT BLOCK 1: TIERED PRICING MATRIX & LIVE CALCULATOR (After Section 1: Jerseys) ── */}
+                  {sIdx === 0 && (
+                    <div className="py-2">
+                      <CategoryPricingCalculator slug={slug} cleanSport={cleanSport} />
+                    </div>
+                  )}
+
+                  {/* ── INTERLEAVED CONTENT BLOCK 2: BUYER-TYPE SEGMENTS (After Section 2: Bottoms/Pants) ── */}
+                  {sIdx === 1 && (
+                    <div className="py-2">
+                      <CategoryBuyerSections slug={slug} cleanSport={cleanSport} />
+                    </div>
+                  )}
+
+                  {/* ── INTERLEAVED CONTENT BLOCK 3: SIZE CHARTS & HOW TO MEASURE (After Section 3: Jackets/Warmups) ── */}
+                  {sIdx === 2 && (
+                    <div className="py-2">
+                      <CategorySizeChart cleanSport={cleanSport} />
+                    </div>
+                  )}
+                </React.Fragment>
               ))}
             </div>
           ) : filteredProducts.length > 0 ? (
             /* Single filtered grid when user selects a specific dropdown subcategory or searches */
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-5">
-              {filteredProducts.map((product, index) => (
-                <ProductCard
-                  key={product.id || `${product.name}-${index}`}
-                  id={product.id}
-                  image={product.image}
-                  name={product.name}
-                  description={product.description}
-                  price={product.price}
-                  discount={product.discount}
-                  categorySlug={slug}
-                  sportName={cleanSport}
-                  onQuickView={setQuickViewProduct}
-                  viewMode="grid"
-                />
-              ))}
+            <div className="space-y-12">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-5">
+                {filteredProducts.map((product, index) => (
+                  <ProductCard
+                    key={product.id || `${product.name}-${index}`}
+                    id={product.id}
+                    image={product.image}
+                    name={product.name}
+                    description={product.description}
+                    price={product.price}
+                    discount={product.discount}
+                    categorySlug={slug}
+                    sportName={cleanSport}
+                    onQuickView={setQuickViewProduct}
+                    viewMode="grid"
+                  />
+                ))}
+              </div>
+
+              {/* Standard conversion blocks when single filter is active */}
+              <CategoryPricingCalculator slug={slug} cleanSport={cleanSport} />
+              <CategoryBuyerSections slug={slug} cleanSport={cleanSport} />
+              <CategorySizeChart cleanSport={cleanSport} />
             </div>
           ) : (
             /* Empty State */
@@ -826,15 +857,6 @@ const CategoryPage = ({ slug }) => {
             </div>
           )}
         </div>
-
-        {/* ── 10-BLOCK BLUEPRINT: TIERED PRICING & INTERACTIVE CALCULATORS ── */}
-        <CategoryPricingCalculator slug={slug} cleanSport={cleanSport} />
-
-        {/* ── 10-BLOCK BLUEPRINT: BUYER-TYPE SECTIONS & SUB-PRODUCTS ── */}
-        <CategoryBuyerSections slug={slug} cleanSport={cleanSport} />
-
-        {/* ── 10-BLOCK BLUEPRINT: SIZE CHARTS & HOW TO MEASURE ── */}
-        <CategorySizeChart cleanSport={cleanSport} />
 
         {/* ── 10-BLOCK BLUEPRINT: SEASON APPROVE-BY DEADLINES TABLE ── */}
         <CategorySeasonDeadlines cleanSport={cleanSport} />
