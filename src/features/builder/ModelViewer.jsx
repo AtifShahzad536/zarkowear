@@ -443,7 +443,7 @@ const CameraController = memo(function CameraController({ mouseFollow, isDraggin
 })
 
 // ─── DECAL TRANSFORM HANDLES ─────────────────────────────────────────────────
-const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes = [], layersMetadata = {} }) => {
+const DecalTransformHandles = ({ decal, updateDecal, removeDecal, setIsDraggingHandle, meshes = [], layersMetadata = {} }) => {
   const { camera } = useThree();
   const [activeCorner, setActiveCorner] = React.useState(null);
   const [isDraggingMove, setIsDraggingMove] = React.useState(false);
@@ -1938,6 +1938,7 @@ const Model = memo(function Model({ url, layersMetadata = {}, meshStates, onMesh
         <DecalTransformHandles
           decal={selectedDecal}
           updateDecal={updateDecal}
+          removeDecal={removeDecal}
           setIsDraggingHandle={setIsDraggingHandle}
           meshes={meshes}
           layersMetadata={layersMetadata}

@@ -4,6 +4,11 @@ import { useRouteError } from 'react-router-dom';
 export default function RouteErrorBoundary() {
   const error = useRouteError();
   const errorMsg = String(error?.message || error?.stack || error || '');
+
+  // Log error immediately to console so it's visible in DevTools
+  if (typeof window !== 'undefined' && error) {
+    console.error('🚨 RouteErrorBoundary intercepted error:', error);
+  }
   
   const isChunkLoadError =
     errorMsg.includes('dynamically imported module') ||
@@ -40,6 +45,11 @@ export default function RouteErrorBoundary() {
             ? 'A new version of Zarko Sportswear has just been published. Please refresh to load the latest catalog.'
             : 'We encountered an error loading this section. Please refresh the page.'}
         </p>
+        {!isChunkLoadError && errorMsg && (
+          <div className="p-3 bg-rose-950/40 border border-rose-500/30 rounded text-left text-xs text-rose-300 font-mono overflow-auto max-h-32">
+            {errorMsg}
+          </div>
+        )}
         <button
           onClick={() => {
             if (typeof window !== 'undefined') {
