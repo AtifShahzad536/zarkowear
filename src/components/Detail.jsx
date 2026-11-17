@@ -651,6 +651,19 @@ const ProductDetail = () => {
           {/* ── MIDDLE SECTION: SIZES, PMS COLORS & PRIVATE LABEL (MATCHING SCREENSHOT 2) ── */}
           <div className="mt-12 space-y-6">
             
+            {/* Section Heading: Proper H2 hierarchy following H1 */}
+            <div className="border-b border-slate-200 pb-2">
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-indigo-600 block mb-0.5">
+                Technical Specifications & Options
+              </span>
+              <h2
+                className="text-lg sm:text-xl font-bold text-slate-900 uppercase tracking-tight"
+                style={{ fontFamily: "'Outfit', sans-serif" }}
+              >
+                Custom Sizing, Color Matching & Private Label Options
+              </h2>
+            </div>
+            
             {/* 2-Columns: Sizes & Colors */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               
