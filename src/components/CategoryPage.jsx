@@ -22,7 +22,8 @@ import {
   FiShield,
   FiPackage,
   FiTruck,
-  FiAward
+  FiAward,
+  FiClock
 } from 'react-icons/fi';
 import { FaWhatsapp, FaEye, FaRulerHorizontal } from 'react-icons/fa';
 import { categoryConfigs } from '../data/categories';
