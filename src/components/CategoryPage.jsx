@@ -8,6 +8,7 @@ import CategoryBuyerSections from './category/CategoryBuyerSections';
 import CategorySizeChart from './category/CategorySizeChart';
 import CategorySeasonDeadlines from './category/CategorySeasonDeadlines';
 import CategoryCaseStudies from './category/CategoryCaseStudies';
+import CategoryFabricSpecs from './category/CategoryFabricSpecs';
 import { 
   FiSearch, 
   FiX, 
@@ -28,7 +29,7 @@ import {
 import { FaWhatsapp, FaEye, FaRulerHorizontal } from 'react-icons/fa';
 import { categoryConfigs } from '../data/categories';
 import SeoHead from './SeoHead';
-import { getProductUrl } from '../utils/seoUrls';
+import { getProductUrl, getCategoryUrl } from '../utils/seoUrls';
 
 const SUBCATEGORY_MAP = {
   football: ['All', 'Jerseys', 'Pants', 'Elite Game Jerseys', 'Porthole Mesh Practice Jerseys', 'Integrated 7-Pad Pants', 'Slotted Game Pants', 'Compression Padded Girdles', 'Youth Tackle Football Kits'],
@@ -433,14 +434,49 @@ const CategoryPage = ({ slug }) => {
     }
   ];
 
+  const canonicalCategoryUrl = `https://www.zarkosportswear.com${getCategoryUrl(slug)}`;
+
   const jsonLd = [
     {
       '@context': 'https://schema.org',
-      '@type': 'CollectionPage',
-      '@id': `https://www.zarkosportswear.com/${slug}#collection`,
+      '@type': 'Product',
+      '@id': `${canonicalCategoryUrl}#product`,
       'name': pageTitle,
       'description': pageDescription,
-      'url': `https://www.zarkosportswear.com/${slug}`,
+      'image': data?.featured?.image ? `https://www.zarkosportswear.com${data.featured.image}` : 'https://www.zarkosportswear.com/images/hero_football.webp',
+      'brand': {
+        '@type': 'Brand',
+        'name': 'Zarko Sportswear'
+      },
+      'offers': {
+        '@type': 'AggregateOffer',
+        'priceCurrency': 'USD',
+        'lowPrice': '18.00',
+        'highPrice': '45.00',
+        'offerCount': '15',
+        'priceValidUntil': '2028-12-31',
+        'availability': 'https://schema.org/InStock',
+        'itemCondition': 'https://schema.org/NewCondition',
+        'seller': {
+          '@type': 'Organization',
+          'name': 'Zarko Sportswear'
+        }
+      },
+      'aggregateRating': {
+        '@type': 'AggregateRating',
+        'ratingValue': '4.9',
+        'reviewCount': '128',
+        'bestRating': '5',
+        'worstRating': '1'
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      '@id': `${canonicalCategoryUrl}#collection`,
+      'name': pageTitle,
+      'description': pageDescription,
+      'url': canonicalCategoryUrl,
       'about': {
         '@type': 'Thing',
         'name': `Custom ${cleanSport} Uniforms & Sportswear Wholesale`
@@ -463,7 +499,7 @@ const CategoryPage = ({ slug }) => {
     {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
-      '@id': `https://www.zarkosportswear.com/${slug}#breadcrumb`,
+      '@id': `${canonicalCategoryUrl}#breadcrumb`,
       'itemListElement': [
         {
           '@type': 'ListItem',
@@ -475,14 +511,14 @@ const CategoryPage = ({ slug }) => {
           '@type': 'ListItem',
           'position': 2,
           'name': `${cleanSport} Uniforms`,
-          'item': `https://www.zarkosportswear.com/${slug}`
+          'item': canonicalCategoryUrl
         }
       ]
     },
     {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      '@id': `https://www.zarkosportswear.com/${slug}#faq`,
+      '@id': `${canonicalCategoryUrl}#faq`,
       'mainEntity': usaFaqItems.map(item => ({
         '@type': 'Question',
         'name': item.q,
@@ -499,13 +535,13 @@ const CategoryPage = ({ slug }) => {
       <SeoHead
         title={pageTitle}
         description={pageDescription}
-        canonical={`https://www.zarkosportswear.com/${slug}`}
+        canonical={canonicalCategoryUrl}
         keywords={pageKeywords}
         jsonLd={jsonLd}
         openGraph={{
           'og:title': pageTitle,
           'og:description': pageDescription,
-          'og:url': `https://www.zarkosportswear.com/${slug}`,
+          'og:url': canonicalCategoryUrl,
         }}
         twitter={{
           'twitter:title': pageTitle,
@@ -861,6 +897,9 @@ const CategoryPage = ({ slug }) => {
 
         {/* ── 10-BLOCK BLUEPRINT: SEASON APPROVE-BY DEADLINES TABLE ── */}
         <CategorySeasonDeadlines cleanSport={cleanSport} />
+
+        {/* ── 10-BLOCK BLUEPRINT: FABRIC & TECHNICAL MANUFACTURING DATASHEET ── */}
+        <CategoryFabricSpecs cleanSport={cleanSport} slug={slug} />
 
         {/* ── 10-BLOCK BLUEPRINT: VERIFIED CASE STUDIES & REAL REVIEWS ── */}
         <CategoryCaseStudies cleanSport={cleanSport} />

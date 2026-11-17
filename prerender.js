@@ -217,11 +217,35 @@ const routesData = {
     `
   },
   // Sports category pages
+  '/custom-football-uniforms': {
+    title: 'Custom Football Uniforms & Jerseys — Tackle Twill & Sublimation | Zarko',
+    description: 'Custom football uniforms and jerseys for youth, high school & semi-pro teams. 240-260 GSM pro-interlock, tackle twill, free 12h mockup, DDP USA shipping.',
+    canonical: 'https://www.zarkosportswear.com/custom-football-uniforms',
+    h1: 'Custom Football Uniforms & Jerseys Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Professional Custom American Football Uniforms & Jerseys for USA Programs</h2>
+        <p>Zarko Sportswear manufactures championship-grade custom American football uniforms and game jerseys engineered for maximum gridiron durability, tear resistance, and high-velocity mobility. Supplying high school athletic programs, JV teams, youth tackle leagues, semi-pro squads, and 7v7 programs across the USA, our factory-direct football gear delivers pro-tier specs at wholesale pricing.</p>
+
+        <h2>Gridiron Engineered Fabric Technology & Specs</h2>
+        <ul>
+          <li><strong>240–260 GSM Pro-Interlock & Dazzle Cowl:</strong> Heavy-duty tear-resistant polyester constructed to withstand high-impact tackles and field friction without seam failure.</li>
+          <li><strong>Reinforced Double-Ply Shoulder Yoke:</strong> Double-layered shoulders and upper chest tailored for seamless pad clearance and zero helmet restriction.</li>
+          <li><strong>4K Full Sublimation & Tackle Twill Numbers:</strong> Crisp NFHS/NCAA regulation numbers, team wordmarks, and player names that will never peel or crack.</li>
+          <li><strong>Spandex Underarm & Side Inserts:</strong> High-stretch elastic compression panels providing full arm extension for throwing, catching, and blocking.</li>
+          <li><strong>Integrated 7-Pad Pants & Girdles:</strong> Slotted and integrated pad football pants engineered with bar-tacked stress points.</li>
+        </ul>
+
+        <h2>Low 15-Set MOQ & Express USA Fulfillment</h2>
+        <p>Outfit your varsity, JV, or youth football roster with a low minimum order of just 15 sets. Production takes 8–12 business days with fast DDP express air shipping directly to your facility door in Texas, Florida, California, Ohio, or nationwide.</p>
+      </section>
+    `
+  },
   '/football': {
-    title: 'Custom Football Jerseys & Uniforms — Youth, High School & Adult | Zarko',
-    description: 'Custom American football jerseys & uniform sets for youth, high school & adult teams. Sublimated names & numbers, free mockup, DDP delivery to the USA.',
-    canonical: 'https://www.zarkosportswear.com/football',
-    h1: 'Custom American Football Jerseys & Uniforms Manufacturer USA',
+    title: 'Custom Football Uniforms & Jerseys — Tackle Twill & Sublimation | Zarko',
+    description: 'Custom football uniforms and jerseys for youth, high school & semi-pro teams. 240-260 GSM pro-interlock, tackle twill, free 12h mockup, DDP USA shipping.',
+    canonical: 'https://www.zarkosportswear.com/custom-football-uniforms',
+    h1: 'Custom Football Uniforms & Jerseys Manufacturer USA',
     bodyContent: `
       <section class="seo-content-block">
         <h2>Professional Custom American Football Uniforms & Jerseys for USA Programs</h2>
@@ -287,20 +311,20 @@ const routesData = {
       </section>
     `
   },
-  '/wrestling': {
-    title: 'Custom Wrestling Singlets & Gear USA | Zarko Sportswear',
-    description: 'High-durability custom wrestling singlets, fight shorts, and gear. Pro 4-way stretch compression spandex engineered for top performance in the USA.',
-    canonical: 'https://www.zarkosportswear.com/wrestling',
+  '/custom-wrestling-singlets': {
+    title: 'Custom Wrestling Singlets & Gear — High Durability 4-Way Stretch | Zarko',
+    description: 'Custom wrestling singlets, 2-piece fight gear & compression wear for youth, high school & college teams. 280 GSM Lycra, flatlock stitching, DDP USA shipping.',
+    canonical: 'https://www.zarkosportswear.com/custom-wrestling-singlets',
     h1: 'Custom Wrestling Singlets & Team Gear Manufacturer USA',
     bodyContent: `
       <section class="seo-content-block">
         <h2>Elite Custom Sublimated Wrestling Singlets & Compression Gear</h2>
         <p>Zarko Sportswear is a premier manufacturer of custom wrestling singlets, two-piece fight gear, wrestling fight shorts, and compression shirts for middle schools, high schools, collegiate wrestling programs, and Olympic-style clubs throughout the United States. Engineered for maximum range of motion, muscle support, and brutal mat durability.</p>
 
-        <h2>Superior Wrestling Singlet Engineering</h2>
+        <h2>Superior Wrestling Singlet Engineering & Technical Specs</h2>
         <ul>
-          <li><strong>Heavyweight 4-Way Stretch Lycra Spandex:</strong> Premium 250–280 GSM compression fabric provides unmatched elasticity, shape retention, and snug ergonomic body contouring.</li>
-          <li><strong>Flatlock Reinforced Seam Construction:</strong> Anti-chafe multi-thread flatlock stitching prevents mat burn, skin irritation, and seam blowouts during high-intensity grappling and takedowns.</li>
+          <li><strong>Heavyweight 280 GSM 4-Way Stretch Lycra Spandex:</strong> Premium compression fabric provides unmatched elasticity, shape retention, and snug ergonomic body contouring.</li>
+          <li><strong>6-Needle Flatlock Reinforced Seams:</strong> Anti-chafe multi-thread flatlock stitching prevents mat burn, skin irritation, and seam blowouts during high-intensity grappling and takedowns.</li>
           <li><strong>Silicone Non-Slip Leg Grippers:</strong> Soft elastic leg bands with integrated silicone micro-dots keep the singlet legs firmly in place during competition.</li>
           <li><strong>Full-Dye Mat-Safe Sublimation:</strong> 100% smooth, weightless graphic infusion with no rough embroidered patches to ensure full compliance with USA Wrestling and NFHS standards.</li>
           <li><strong>Two-Piece Wrestling Uniforms:</strong> Modern compression wrestling tops and matched fight shorts with internal drawstrings for high school dual meets.</li>
@@ -311,10 +335,34 @@ const routesData = {
       </section>
     `
   },
-  '/cricket': {
-    title: 'Custom Cricket Uniforms & Team Kits USA | Zarko Sportswear',
-    description: 'Custom sublimation cricket uniforms, test whites, and T20 team kits. Ultra-breathable lightweight mesh fabrics with fast factory shipping to the USA.',
-    canonical: 'https://www.zarkosportswear.com/cricket',
+  '/wrestling': {
+    title: 'Custom Wrestling Singlets & Gear — High Durability 4-Way Stretch | Zarko',
+    description: 'Custom wrestling singlets, 2-piece fight gear & compression wear for youth, high school & college teams. 280 GSM Lycra, flatlock stitching, DDP USA shipping.',
+    canonical: 'https://www.zarkosportswear.com/custom-wrestling-singlets',
+    h1: 'Custom Wrestling Singlets & Team Gear Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Elite Custom Sublimated Wrestling Singlets & Compression Gear</h2>
+        <p>Zarko Sportswear is a premier manufacturer of custom wrestling singlets, two-piece fight gear, wrestling fight shorts, and compression shirts for middle schools, high schools, collegiate wrestling programs, and Olympic-style clubs throughout the United States. Engineered for maximum range of motion, muscle support, and brutal mat durability.</p>
+
+        <h2>Superior Wrestling Singlet Engineering & Technical Specs</h2>
+        <ul>
+          <li><strong>Heavyweight 280 GSM 4-Way Stretch Lycra Spandex:</strong> Premium compression fabric provides unmatched elasticity, shape retention, and snug ergonomic body contouring.</li>
+          <li><strong>6-Needle Flatlock Reinforced Seams:</strong> Anti-chafe multi-thread flatlock stitching prevents mat burn, skin irritation, and seam blowouts during high-intensity grappling and takedowns.</li>
+          <li><strong>Silicone Non-Slip Leg Grippers:</strong> Soft elastic leg bands with integrated silicone micro-dots keep the singlet legs firmly in place during competition.</li>
+          <li><strong>Full-Dye Mat-Safe Sublimation:</strong> 100% smooth, weightless graphic infusion with no rough embroidered patches to ensure full compliance with USA Wrestling and NFHS standards.</li>
+          <li><strong>Two-Piece Wrestling Uniforms:</strong> Modern compression wrestling tops and matched fight shorts with internal drawstrings for high school dual meets.</li>
+        </ul>
+
+        <h2>Low 15-Piece MOQ & Express USA Fulfillment</h2>
+        <p>Equip your wrestling roster with customized team singlets starting at just 15 units. Enjoy fast turnaround and direct express air shipping to any wrestling club in the United States.</p>
+      </section>
+    `
+  },
+  '/custom-cricket-uniforms': {
+    title: 'Custom Cricket Uniforms & Team Kits — Sublimated T20 & Whites | Zarko',
+    description: 'Custom sublimation cricket uniforms, test whites, and T20 team kits. 150-160 GSM honeycomb mesh, UV 50+ sun protection, fast DDP USA delivery.',
+    canonical: 'https://www.zarkosportswear.com/custom-cricket-uniforms',
     h1: 'Custom Cricket Uniforms & Team Kits Manufacturer USA',
     bodyContent: `
       <section class="seo-content-block">
@@ -330,15 +378,38 @@ const routesData = {
         </ul>
 
         <h2>Custom Team Names, Numbers & Sponsor Logos</h2>
-        <p>Personalize your cricket team kits with vibrant 4K sublimation graphics that will never fade in the wash. Quick 25-kit minimum orders and fast factory-direct shipping to the USA.</p>
+        <p>Personalize your cricket team kits with vibrant 4K sublimation graphics that will never fade in the wash. Quick 15-kit minimum orders and fast factory-direct shipping to the USA.</p>
       </section>
     `
   },
-  '/basketball': {
-    title: 'Custom Basketball Jerseys & Uniforms — AAU, High School & Youth | Zarko',
-    description: 'Wholesale custom basketball jerseys, reversible tops & mesh shorts for AAU, high school & youth teams. Free 12-hour mockup, fast DDP shipping to the USA.',
-    canonical: 'https://www.zarkosportswear.com/basketball',
-    h1: 'Custom Basketball Jerseys & Wholesale Team Uniforms Manufacturer',
+  '/cricket': {
+    title: 'Custom Cricket Uniforms & Team Kits — Sublimated T20 & Whites | Zarko',
+    description: 'Custom sublimation cricket uniforms, test whites, and T20 team kits. 150-160 GSM honeycomb mesh, UV 50+ sun protection, fast DDP USA delivery.',
+    canonical: 'https://www.zarkosportswear.com/custom-cricket-uniforms',
+    h1: 'Custom Cricket Uniforms & Team Kits Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Custom Sublimated Cricket Jerseys, T20 Kits & Test Whites for USA Leagues</h2>
+        <p>With cricket growing rapidly across the USA (including Major League Cricket, Minor League Cricket, and regional weekend leagues in Texas, California, New York, and Florida), Zarko Sportswear delivers premier custom cricket uniforms, colored T20 kits, and traditional white test match apparel engineered for all-day comfort under the sun.</p>
+
+        <h2>Cricket Apparel Features & Fabric Technology</h2>
+        <ul>
+          <li><strong>Micro-Honeycomb Dry-Fit Mesh:</strong> Ultra-lightweight 150 GSM polyester with micro-mesh jacquard texture delivers exceptional heat evaporation for long hours in the field.</li>
+          <li><strong>UV 50+ Sun Protection:</strong> Built-in ultraviolet shielding protects players from harmful sun rays during daytime cricket tournaments.</li>
+          <li><strong>Polo Collar & Raglan Sleeve Styling:</strong> Classic polo collar with button placket or modern athletic round neck with aerodynamic raglan sleeves.</li>
+          <li><strong>Durable Sublimated Cricket Pants:</strong> Elastic waistband trousers with deep ball pockets, reinforced knee panels, and adjustable drawstrings.</li>
+        </ul>
+
+        <h2>Custom Team Names, Numbers & Sponsor Logos</h2>
+        <p>Personalize your cricket team kits with vibrant 4K sublimation graphics that will never fade in the wash. Quick 15-kit minimum orders and fast factory-direct shipping to the USA.</p>
+      </section>
+    `
+  },
+  '/custom-basketball-uniforms': {
+    title: 'Custom Basketball Uniforms & Jerseys — AAU, High School & Reversibles | Zarko',
+    description: 'Custom basketball jerseys, reversible tops & pro-mesh shorts for AAU, high school & youth teams. 180-220 GSM pro-mesh, NFHS compliant, DDP shipping to USA.',
+    canonical: 'https://www.zarkosportswear.com/custom-basketball-uniforms',
+    h1: 'Custom Basketball Uniforms & Wholesale Team Jerseys Manufacturer USA',
     bodyContent: `
       <section class="seo-content-block">
         <h2>Which Companies Specialize in Basketball Jerseys for Teams?</h2>
@@ -346,7 +417,7 @@ const routesData = {
 
         <h2>Wholesale Basketball Uniform Construction & Specifications</h2>
         <ul>
-          <li><strong>Pro-Air Mesh & Interlock Fabrics:</strong> 170–190 GSM open-hole or smooth micro-mesh fabric ensures rapid sweat evaporation and lightweight agility.</li>
+          <li><strong>Pro-Air Mesh & Interlock Fabrics:</strong> 180–220 GSM open-hole or smooth micro-mesh fabric ensures rapid sweat evaporation and lightweight agility.</li>
           <li><strong>Reversible Dual-Layer Options:</strong> Dual-layer sublimated reversible jerseys perfect for practice scrimmages and tournament pool play.</li>
           <li><strong>Wide-Armhole Athletic Cut:</strong> Deep armhole cutouts and ribbed trim deliver unrestricted shooting, rebounding, and defensive mobility.</li>
           <li><strong>Pro-Length Basketball Shorts:</strong> 2-inch heavy-duty elastic waistband with durable inner drawstring and modern mid-thigh or classic on-knee lengths.</li>
@@ -357,33 +428,34 @@ const routesData = {
       </section>
     `
   },
-  '/hockey': {
-    title: 'Custom Field Hockey Uniforms & Jerseys USA | Zarko Sportswear',
-    description: 'Custom field hockey uniforms and team jerseys. Pro reinforced stitching, breathable athletic fabrics, and fast factory shipping to USA sports clubs.',
-    canonical: 'https://www.zarkosportswear.com/hockey',
-    h1: 'Custom Field Hockey Uniforms & Apparel Manufacturer USA',
+  '/basketball': {
+    title: 'Custom Basketball Uniforms & Jerseys — AAU, High School & Reversibles | Zarko',
+    description: 'Custom basketball jerseys, reversible tops & pro-mesh shorts for AAU, high school & youth teams. 180-220 GSM pro-mesh, NFHS compliant, DDP shipping to USA.',
+    canonical: 'https://www.zarkosportswear.com/custom-basketball-uniforms',
+    h1: 'Custom Basketball Uniforms & Wholesale Team Jerseys Manufacturer USA',
     bodyContent: `
       <section class="seo-content-block">
-        <h2>High-Performance Custom Field Hockey Uniforms & Team Kits</h2>
-        <p>Zarko Sportswear manufactures durable, lightweight custom field hockey jerseys, player skirts, compression shorts, and team apparel for high school programs, NCAA collegiate teams, and club leagues throughout the United States. Designed for explosive lateral agility, stick-handling flexibility, and superior ventilation.</p>
+        <h2>Which Companies Specialize in Basketball Jerseys for Teams?</h2>
+        <p>Zarko Sportswear is an established basketball clothing manufacturer specializing in custom team basketball jerseys, dual-layer reversible scrimmage tops, and moisture-wicking pro-mesh game shorts. We supply AAU circuit programs, high school varsity squads, and recreational leagues across the USA with factory-direct wholesale pricing, 15-set low MOQs, and rapid international delivery.</p>
 
-        <h2>Field Hockey Apparel Features</h2>
+        <h2>Wholesale Basketball Uniform Construction & Specifications</h2>
         <ul>
-          <li><strong>Durable Poly-Interlock Fabric:</strong> 180 GSM tear-resistant athletic polyester designed to withstand high-impact turf play.</li>
-          <li><strong>Ergonomic Athletic Tops & Racerback Tanks:</strong> Available in short-sleeve, cap-sleeve, and sleeveless racerback cuts for unrestricted stick rotation.</li>
-          <li><strong>Sublimated Match Skirts & Skorts:</strong> Lightweight performance skirts featuring built-in 4-way stretch spandex compression undershorts.</li>
-          <li><strong>All-Over Sublimation:</strong> Vivid team colors, sponsor emblems, and individual player numbers infused into the fabric for everlasting vibrancy.</li>
+          <li><strong>Pro-Air Mesh & Interlock Fabrics:</strong> 180–220 GSM open-hole or smooth micro-mesh fabric ensures rapid sweat evaporation and lightweight agility.</li>
+          <li><strong>Reversible Dual-Layer Options:</strong> Dual-layer sublimated reversible jerseys perfect for practice scrimmages and tournament pool play.</li>
+          <li><strong>Wide-Armhole Athletic Cut:</strong> Deep armhole cutouts and ribbed trim deliver unrestricted shooting, rebounding, and defensive mobility.</li>
+          <li><strong>Pro-Length Basketball Shorts:</strong> 2-inch heavy-duty elastic waistband with durable inner drawstring and modern mid-thigh or classic on-knee lengths.</li>
         </ul>
 
-        <p>Request a free digital mockup for your field hockey squad today with low MOQs and fast USA shipping.</p>
+        <h2>Buy Wholesale Basketball Uniforms Direct from Factory</h2>
+        <p>Order custom basketball kits with customized team logos, front/back numbers, and player names. Quick production turnaround and reliable express shipping to all 50 US states.</p>
       </section>
     `
   },
-  '/rugby': {
-    title: 'Rugby Clothing & Jersey Manufacturer | OEM Teamwear | Zarko',
-    description: 'OEM rugby clothing manufacturer. Heavy-duty custom rugby jerseys with reinforced shoulders, scrum shorts & team kits. Low 15-kit MOQ & fast USA shipping.',
-    canonical: 'https://www.zarkosportswear.com/rugby',
-    h1: 'Custom Rugby Clothing & Jersey Manufacturer - OEM Teamwear USA',
+  '/custom-rugby-uniforms': {
+    title: 'Custom Rugby Uniforms & Heavy-Duty Jerseys — 320 GSM Reinforced | Zarko',
+    description: 'Custom rugby uniforms and heavy-duty jerseys with reinforced shoulders, scrum shorts & team kits. 280-320 GSM poly-elastane, low 15-kit MOQ, fast USA delivery.',
+    canonical: 'https://www.zarkosportswear.com/custom-rugby-uniforms',
+    h1: 'Custom Rugby Uniforms & Jersey Manufacturer — OEM Teamwear USA',
     bodyContent: `
       <section class="seo-content-block">
         <h2>Who Makes Rugby Jerseys with Reinforced Shoulders?</h2>
@@ -404,10 +476,35 @@ const routesData = {
       </section>
     `
   },
-  '/tennis': {
-    title: 'Custom Tennis Apparel & Team Uniforms USA | Zarko Sportswear',
-    description: 'Premium custom tennis shirts, polos, skirts, and athletic apparel for clubs and schools. Lightweight, UV-protective fabrics with fast USA turnaround.',
-    canonical: 'https://www.zarkosportswear.com/tennis',
+  '/rugby': {
+    title: 'Custom Rugby Uniforms & Heavy-Duty Jerseys — 320 GSM Reinforced | Zarko',
+    description: 'Custom rugby uniforms and heavy-duty jerseys with reinforced shoulders, scrum shorts & team kits. 280-320 GSM poly-elastane, low 15-kit MOQ, fast USA delivery.',
+    canonical: 'https://www.zarkosportswear.com/custom-rugby-uniforms',
+    h1: 'Custom Rugby Uniforms & Jersey Manufacturer — OEM Teamwear USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Who Makes Rugby Jerseys with Reinforced Shoulders?</h2>
+        <p>Zarko Sportswear is a dedicated rugby clothing manufacturer engineering pro-tier custom rugby jerseys with reinforced double-layer shoulder yokes and triple-needle bar-tacked stress zones. Built specifically to withstand intense scrums, rucks, and high-impact tackle gripping without ripping or tearing.</p>
+
+        <h2>OEM Rugby Clothing Manufacturer & Private Label Team Kits</h2>
+        <p>Rugby demands the toughest apparel on the planet. As an experienced OEM rugby jersey manufacturer, we supply USA Rugby affiliated clubs, collegiate conferences, and youth sevens academies across North America with battle-tested team kits, sublimated match shirts, and rugged shorts.</p>
+
+        <h2>Rugby Uniform Specifications & Toughness</h2>
+        <ul>
+          <li><strong>280–320 GSM Heavy-Duty Poly-Elastane:</strong> Super-tough high-tensile fabric built to withstand scrums, tackles, rucks, and aggressive gripping without tearing.</li>
+          <li><strong>Reinforced Shoulder Yoke & Multi-Stitch Bar-Tacking:</strong> All critical stress points, collar junctions, and shoulder seams feature reinforced multi-needle stitching.</li>
+          <li><strong>Mandarin & Loop Neck Collar Styles:</strong> Ergonomic low-profile collars designed to minimize tackle grab opportunities on the field.</li>
+          <li><strong>Heavy Cotton-Twill Rugby Shorts:</strong> Rugged shorts with elasticated waistbands, internal drawstrings, and stretch crotch panels for explosive scrums.</li>
+        </ul>
+
+        <p>Order custom 15s and 7s rugby team kits directly from the manufacturer with custom team colors, logos, and fast USA delivery.</p>
+      </section>
+    `
+  },
+  '/custom-tennis-apparel': {
+    title: 'Custom Tennis Apparel & Team Uniforms — Performance Courtwear | Zarko',
+    description: 'Premium custom tennis shirts, polos, skirts, and athletic apparel for clubs and schools. 140 GSM UV-protective fabrics with fast USA turnaround.',
+    canonical: 'https://www.zarkosportswear.com/custom-tennis-apparel',
     h1: 'Custom Tennis Apparel & Teamwear Manufacturer USA',
     bodyContent: `
       <section class="seo-content-block">
@@ -426,10 +523,32 @@ const routesData = {
       </section>
     `
   },
-  '/running': {
-    title: 'Custom Running Gear & Track Uniforms USA | Zarko Sportswear',
-    description: 'Custom running singlets, track uniforms, and athletic shorts. Ultra-lightweight moisture-management fabrics with fast express shipping across the USA.',
-    canonical: 'https://www.zarkosportswear.com/running',
+  '/tennis': {
+    title: 'Custom Tennis Apparel & Team Uniforms — Performance Courtwear | Zarko',
+    description: 'Premium custom tennis shirts, polos, skirts, and athletic apparel for clubs and schools. 140 GSM UV-protective fabrics with fast USA turnaround.',
+    canonical: 'https://www.zarkosportswear.com/custom-tennis-apparel',
+    h1: 'Custom Tennis Apparel & Teamwear Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Sophisticated Custom Tennis Shirts, Polos, Skirts & Club Wear</h2>
+        <p>Elevate your club or school tennis program with bespoke tennis apparel manufactured by Zarko Sportswear. We supply high school tennis teams, country clubs, collegiate tennis programs, and private academies across the USA with lightweight, UV-protected, and elegantly tailored court apparel.</p>
+
+        <h2>Tennis Uniform Highlights</h2>
+        <ul>
+          <li><strong>Ultra-Light 140 GSM Microfiber:</strong> Featherlight moisture-management fabric prevents cling and optimizes swing biomechanics.</li>
+          <li><strong>Built-in UPF 50+ Sun Defense:</strong> Essential UV protection for sunny outdoor matches and coaching sessions.</li>
+          <li><strong>Custom Tennis Polos & Tops:</strong> Tailored button collars, zip plackets, and sleeveless options with crisp sublimation graphics.</li>
+          <li><strong>Pleated & Flat-Front Skorts:</strong> Athletic skorts with integrated compression undershorts and dedicated ball-holding pockets.</li>
+        </ul>
+
+        <p>Enjoy low minimum order quantities and direct-to-club express shipping across the USA.</p>
+      </section>
+    `
+  },
+  '/custom-running-apparel': {
+    title: 'Custom Running Apparel & Track Uniforms — Cross-Country Singlets | Zarko',
+    description: 'Custom running singlets, track uniforms, and athletic shorts. 120-130 GSM micro-mesh, anti-chafe flatlock seams, fast express shipping across USA.',
+    canonical: 'https://www.zarkosportswear.com/custom-running-apparel',
     h1: 'Custom Track & Field Running Uniforms Manufacturer USA',
     bodyContent: `
       <section class="seo-content-block">
@@ -448,10 +567,32 @@ const routesData = {
       </section>
     `
   },
-  '/gym': {
-    title: 'Custom Gym Wear & Fitness Activewear USA | Zarko Sportswear',
-    description: 'Custom gym wear, workout hoodies, compression gear, and joggers. Premium stretch fabrics tailored for fitness brands and training facilities in USA.',
-    canonical: 'https://www.zarkosportswear.com/gym',
+  '/running': {
+    title: 'Custom Running Apparel & Track Uniforms — Cross-Country Singlets | Zarko',
+    description: 'Custom running singlets, track uniforms, and athletic shorts. 120-130 GSM micro-mesh, anti-chafe flatlock seams, fast express shipping across USA.',
+    canonical: 'https://www.zarkosportswear.com/custom-running-apparel',
+    h1: 'Custom Track & Field Running Uniforms Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Ultra-Lightweight Custom Track & Field Singlets and Cross Country Kits</h2>
+        <p>Zarko Sportswear manufactures elite custom running singlets, track and field team kits, marathon apparel, and cross-country teamwear for high schools, universities, and running clubs throughout the United States. Designed to minimize weight and eliminate friction over long distances.</p>
+
+        <h2>Running Apparel Engineering</h2>
+        <ul>
+          <li><strong>Featherlight 120–130 GSM Micro-Mesh:</strong> High-filament hydrophobic polyester ensures rapid moisture dispersion and zero drag.</li>
+          <li><strong>Anti-Chafe Bonded Seams:</strong> Smooth seam construction engineered specifically to prevent chafing on long-distance runs and sprints.</li>
+          <li><strong>Reflective Safety Accents:</strong> Optional 3M reflective trims and logos for low-light morning and evening road running.</li>
+          <li><strong>Split-Leg Running Shorts:</strong> 3-inch and 5-inch inseam track shorts with breathable inner briefs and moisture-wicking waistbands.</li>
+        </ul>
+
+        <p>Get custom sublimation track uniforms customized with school mascots, team names, and numbers with fast factory shipping to the USA.</p>
+      </section>
+    `
+  },
+  '/custom-gym-fitness-wear': {
+    title: 'Custom Gym Wear & Fitness Activewear — OEM Private Label | Zarko',
+    description: 'Custom gym wear, workout hoodies, compression tights, and joggers. Premium stretch fabrics tailored for fitness brands and training facilities in USA.',
+    canonical: 'https://www.zarkosportswear.com/custom-gym-fitness-wear',
     h1: 'Custom Gym Wear & Fitness Activewear Manufacturer USA',
     bodyContent: `
       <section class="seo-content-block">
@@ -470,15 +611,15 @@ const routesData = {
       </section>
     `
   },
-  '/softball': {
-    title: 'Custom Softball Uniforms & Jerseys Wholesale | Zarko USA',
-    description: 'Wholesale custom fastpitch softball jerseys & uniform sets for high school, travel ball & youth 8U-14U teams. Sublimated pants & jerseys. Fast USA shipping!',
-    canonical: 'https://www.zarkosportswear.com/softball',
+  '/custom-softball-uniforms': {
+    title: 'Custom Softball Uniforms & Fastpitch Jerseys Wholesale | Zarko USA',
+    description: 'Wholesale custom fastpitch softball jerseys & uniform sets for high school, travel ball & youth teams. 200 GSM slide mesh, low 15 MOQ, fast DDP USA delivery.',
+    canonical: 'https://www.zarkosportswear.com/custom-softball-uniforms',
     h1: 'Custom Fastpitch Softball Uniforms & Wholesale Jerseys Manufacturer',
     bodyContent: `
       <section class="seo-content-block">
         <h2>Wholesale Custom Fastpitch Softball Uniform Sets & Team Gear</h2>
-        <p>Looking for custom softball jerseys wholesale? Zarko Sportswear manufactures complete fastpitch softball uniform sets, two-button jerseys, full-button tops, and matching sliding pants for high school programs, adult travel leagues, and youth clubs. Order 25 softball uniforms or complete club packages direct from our factory with fast international shipping to the USA.</p>
+        <p>Looking for custom softball jerseys wholesale? Zarko Sportswear manufactures complete fastpitch softball uniform sets, two-button jerseys, full-button tops, and matching sliding pants for high school programs, adult travel leagues, and youth clubs. Order 15 softball uniforms or complete club packages direct from our factory with fast international shipping to the USA.</p>
 
         <h2>High School & Youth 8U / 10U / 12U Fastpitch Team Uniforms</h2>
         <p>From youth 8U fastpitch squads to varsity high school championships, our female-specific athletic cuts deliver maximum mobility for pitching windups, batting swings, and aggressive base sliding with 200 GSM tear-resistant double-knit polyester.</p>
@@ -495,10 +636,35 @@ const routesData = {
       </section>
     `
   },
-  '/soccer': {
-    title: 'Custom Soccer Jerseys & Uniforms — Free Mockup in 12 Hours | Zarko',
-    description: 'Custom sublimated soccer jerseys & full kits for youth, high school, club & travel teams. Free 12-hour mockup, NFHS/NCAA compliant, DDP delivery to the USA.',
-    canonical: 'https://www.zarkosportswear.com/soccer',
+  '/softball': {
+    title: 'Custom Softball Uniforms & Fastpitch Jerseys Wholesale | Zarko USA',
+    description: 'Wholesale custom fastpitch softball jerseys & uniform sets for high school, travel ball & youth teams. 200 GSM slide mesh, low 15 MOQ, fast DDP USA delivery.',
+    canonical: 'https://www.zarkosportswear.com/custom-softball-uniforms',
+    h1: 'Custom Fastpitch Softball Uniforms & Wholesale Jerseys Manufacturer',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Wholesale Custom Fastpitch Softball Uniform Sets & Team Gear</h2>
+        <p>Looking for custom softball jerseys wholesale? Zarko Sportswear manufactures complete fastpitch softball uniform sets, two-button jerseys, full-button tops, and matching sliding pants for high school programs, adult travel leagues, and youth clubs. Order 15 softball uniforms or complete club packages direct from our factory with fast international shipping to the USA.</p>
+
+        <h2>High School & Youth 8U / 10U / 12U Fastpitch Team Uniforms</h2>
+        <p>From youth 8U fastpitch squads to varsity high school championships, our female-specific athletic cuts deliver maximum mobility for pitching windups, batting swings, and aggressive base sliding with 200 GSM tear-resistant double-knit polyester.</p>
+
+        <h2>Softball Uniform Features & Options</h2>
+        <ul>
+          <li><strong>Female-Specific Athletic Cut:</strong> Contoured athletic tailoring designed for full arm extension, pitching windups, and sliding mobility.</li>
+          <li><strong>Two-Button, Full Button & Sleeveless Options:</strong> Choose classic full button-down, modern two-button plackets, or lightweight sleeveless jerseys.</li>
+          <li><strong>Durable 200 GSM Sliding Mesh:</strong> Moisture-wicking, stain-resistant polyester built to withstand dirt slides and intense tournament play.</li>
+          <li><strong>Matching Fastpitch Softball Pants:</strong> Low-rise and mid-rise softball pants with double-layer reinforced knees and elasticized cuffs.</li>
+        </ul>
+
+        <p>Order custom sublimated softball jerseys with custom player names and numbers with quick USA delivery.</p>
+      </section>
+    `
+  },
+  '/custom-soccer-uniforms': {
+    title: 'Custom Soccer Jerseys & Uniforms — 160 GSM Dri-FIT Kits | Zarko',
+    description: 'Custom sublimated soccer jerseys & full kits for youth, high school, club & travel teams. 160 GSM Dri-FIT, free 12-hour mockup, NFHS compliant, DDP USA shipping.',
+    canonical: 'https://www.zarkosportswear.com/custom-soccer-uniforms',
     h1: 'Custom Soccer Jerseys & Team Kits Manufacturer USA',
     bodyContent: `
       <section class="seo-content-block">
@@ -507,7 +673,30 @@ const routesData = {
 
         <h2>Soccer Uniform Technology & Customization</h2>
         <ul>
-          <li><strong>Aerodynamic Micro-Poly Fabric:</strong> 160 GSM lightweight performance polyester for zero-drag sprinting and all-match comfort.</li>
+          <li><strong>Aerodynamic 160 GSM Micro-Poly Fabric:</strong> Lightweight performance polyester for zero-drag sprinting and all-match comfort.</li>
+          <li><strong>Sublimated Club Crests & Sponsors:</strong> Crisp, photorealistic printing that will never peel off, crack, or fade in the wash.</li>
+          <li><strong>Custom Goalkeeper Uniforms:</strong> Long-sleeve keeper jerseys with optional ergonomic elbow padding and matching padded goalie pants/shorts.</li>
+          <li><strong>Complete Youth & Adult Sizing:</strong> Sizing from Youth Extra Small (YXS) through Adult 4XL with tailored cuts for men, women, and youth.</li>
+        </ul>
+
+        <h2>Low 15-Set MOQ & Fast Door-to-Door USA Delivery</h2>
+        <p>Order custom soccer jerseys with factory-direct pricing, 15-set low minimums, and fast USA delivery.</p>
+      </section>
+    `
+  },
+  '/soccer': {
+    title: 'Custom Soccer Jerseys & Uniforms — 160 GSM Dri-FIT Kits | Zarko',
+    description: 'Custom sublimated soccer jerseys & full kits for youth, high school, club & travel teams. 160 GSM Dri-FIT, free 12-hour mockup, NFHS compliant, DDP USA shipping.',
+    canonical: 'https://www.zarkosportswear.com/custom-soccer-uniforms',
+    h1: 'Custom Soccer Jerseys & Team Kits Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Custom Sublimated Soccer Jerseys & Complete Kits for USA Clubs</h2>
+        <p>Zarko Sportswear is a trusted manufacturer of custom soccer jerseys, goalkeeper kits, and training tracksuits for youth soccer academies, adult recreation leagues, and competitive travel clubs across the United States. Our soccer uniforms combine modern European club styling with advanced moisture-wicking performance fabrics.</p>
+
+        <h2>Soccer Uniform Technology & Customization</h2>
+        <ul>
+          <li><strong>Aerodynamic 160 GSM Micro-Poly Fabric:</strong> Lightweight performance polyester for zero-drag sprinting and all-match comfort.</li>
           <li><strong>Sublimated Club Crests & Sponsors:</strong> Crisp, photorealistic printing that will never peel off, crack, or fade in the wash.</li>
           <li><strong>Custom Goalkeeper Uniforms:</strong> Long-sleeve keeper jerseys with optional ergonomic elbow padding and matching padded goalie pants/shorts.</li>
           <li><strong>Complete Youth & Adult Sizing:</strong> Sizing from Youth Extra Small (YXS) through Adult 4XL with tailored cuts for men, women, and youth.</li>
@@ -541,20 +730,20 @@ const routesData = {
       </section>
     `
   },
-  '/volleyball': {
-    title: 'Custom Volleyball Jerseys & Uniforms — Club, High School & Libero | Zarko',
-    description: 'Custom volleyball jerseys, spandex shorts & libero jerseys for club, high school & youth teams. Vibrant sublimation, free 12-hour mockup, DDP USA delivery.',
-    canonical: 'https://www.zarkosportswear.com/volleyball',
+  '/custom-volleyball-uniforms': {
+    title: 'Custom Volleyball Jerseys & Uniforms — Spandex Shorts & Libero | Zarko',
+    description: 'Custom volleyball jerseys, spandex shorts & libero jerseys for club, high school & youth teams. 200 GSM stretch, free 12-hour mockup, DDP USA delivery.',
+    canonical: 'https://www.zarkosportswear.com/custom-volleyball-uniforms',
     h1: 'Custom Volleyball Jerseys & Uniforms Manufacturer USA',
     bodyContent: `
       <section class="seo-content-block">
         <h2>Custom Sublimated Indoor & Beach Volleyball Uniforms for USA Teams</h2>
         <p>Elevate your volleyball team's court presence with custom volleyball jerseys, long-sleeve athletic tops, and performance spandex shorts from Zarko Sportswear. We supply high school programs, club volleyball academies, and collegiate teams across the USA with high-stretch, breathable, and beautifully sublimated volleyball apparel.</p>
 
-        <h2>Volleyball Apparel Features</h2>
+        <h2>Volleyball Apparel Features & Performance Standards</h2>
         <ul>
           <li><strong>Sleeveless, Short-Sleeve & Long-Sleeve Cuts:</strong> Available in modern athletic crew neck or V-neck styling engineered for overhead spiking and diving.</li>
-          <li><strong>4-Way Stretch Poly-Spandex:</strong> 180–200 GSM stretch fabric provides complete freedom of movement and ergonomic compression.</li>
+          <li><strong>4-Way Stretch 200 GSM Poly-Spandex:</strong> Stretch fabric provides complete freedom of movement and ergonomic compression.</li>
           <li><strong>4-Inch Inseam Spandex Shorts:</strong> High-compression non-see-through volleyball shorts with wide stay-put comfort waistbands.</li>
           <li><strong>Libero Contrasting Jerseys:</strong> Easily order matching or contrasting Libero jerseys within the same team production run.</li>
         </ul>
@@ -563,19 +752,63 @@ const routesData = {
       </section>
     `
   },
-  '/ice-hockey': {
-    title: 'Custom Ice Hockey Jerseys & Uniforms USA | Zarko Sportswear',
-    description: 'Heavyweight custom ice hockey jerseys and team uniforms. Pro-grade air knit mesh fabrics, fight straps, reinforced elbows, and fast delivery to USA teams.',
-    canonical: 'https://www.zarkosportswear.com/ice-hockey',
+  '/volleyball': {
+    title: 'Custom Volleyball Jerseys & Uniforms — Spandex Shorts & Libero | Zarko',
+    description: 'Custom volleyball jerseys, spandex shorts & libero jerseys for club, high school & youth teams. 200 GSM stretch, free 12-hour mockup, DDP USA delivery.',
+    canonical: 'https://www.zarkosportswear.com/custom-volleyball-uniforms',
+    h1: 'Custom Volleyball Jerseys & Uniforms Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Custom Sublimated Indoor & Beach Volleyball Uniforms for USA Teams</h2>
+        <p>Elevate your volleyball team's court presence with custom volleyball jerseys, long-sleeve athletic tops, and performance spandex shorts from Zarko Sportswear. We supply high school programs, club volleyball academies, and collegiate teams across the USA with high-stretch, breathable, and beautifully sublimated volleyball apparel.</p>
+
+        <h2>Volleyball Apparel Features & Performance Standards</h2>
+        <ul>
+          <li><strong>Sleeveless, Short-Sleeve & Long-Sleeve Cuts:</strong> Available in modern athletic crew neck or V-neck styling engineered for overhead spiking and diving.</li>
+          <li><strong>4-Way Stretch 200 GSM Poly-Spandex:</strong> Stretch fabric provides complete freedom of movement and ergonomic compression.</li>
+          <li><strong>4-Inch Inseam Spandex Shorts:</strong> High-compression non-see-through volleyball shorts with wide stay-put comfort waistbands.</li>
+          <li><strong>Libero Contrasting Jerseys:</strong> Easily order matching or contrasting Libero jerseys within the same team production run.</li>
+        </ul>
+
+        <p>Design your custom volleyball team uniforms with full sublimation graphics, custom rosters, and fast USA shipping.</p>
+      </section>
+    `
+  },
+  '/custom-ice-hockey-uniforms': {
+    title: 'Custom Ice Hockey Jerseys & Uniforms — Heavy Pro-Air Knit 260 GSM | Zarko',
+    description: 'Heavyweight custom ice hockey jerseys and team uniforms. 260 GSM pro-air knit mesh, fight straps, reinforced elbows, and fast DDP delivery to USA teams.',
+    canonical: 'https://www.zarkosportswear.com/custom-ice-hockey-uniforms',
     h1: 'Custom Ice Hockey Jerseys & Team Uniforms Manufacturer USA',
     bodyContent: `
       <section class="seo-content-block">
         <h2>Heavyweight Pro-Grade Custom Ice Hockey Sweaters & Jerseys USA</h2>
         <p>Zarko Sportswear manufactures authentic pro-grade custom ice hockey jerseys, practice pinnies, and hockey socks for youth hockey leagues, high school varsity teams, collegiate club programs, and adult beer league squads across the United States and Canada.</p>
 
-        <h2>Ice Hockey Jersey Specifications</h2>
+        <h2>Ice Hockey Jersey Specifications & Durability</h2>
         <ul>
-          <li><strong>220–250 GSM Heavyweight Pro-Air Knit Mesh:</strong> Heavy-duty, snag-resistant polyester designed to slide over hockey shoulder and elbow pads without binding.</li>
+          <li><strong>240–260 GSM Heavyweight Pro-Air Knit Mesh:</strong> Heavy-duty, snag-resistant polyester designed to slide over hockey shoulder and elbow pads without binding.</li>
+          <li><strong>Reinforced Double Shoulders & Elbows:</strong> Multi-layer fabric reinforcement on high-friction areas for exceptional on-ice durability.</li>
+          <li><strong>Authentic Fight Straps & Lace-Up Collars:</strong> Optional sewn-in fight straps and classic lace-up neckline detailing for an authentic NHL-inspired look.</li>
+          <li><strong>Sublimation or Stitched Tackle Twill:</strong> Choose full-dye sublimation for complex gradient artwork or traditional tackle twill embroidered crests and numbers.</li>
+        </ul>
+
+        <p>Order custom ice hockey jerseys with player names, back numbers, and captain C/A patches. Fast factory shipping to USA rinks.</p>
+      </section>
+    `
+  },
+  '/ice-hockey': {
+    title: 'Custom Ice Hockey Jerseys & Uniforms — Heavy Pro-Air Knit 260 GSM | Zarko',
+    description: 'Heavyweight custom ice hockey jerseys and team uniforms. 260 GSM pro-air knit mesh, fight straps, reinforced elbows, and fast DDP delivery to USA teams.',
+    canonical: 'https://www.zarkosportswear.com/custom-ice-hockey-uniforms',
+    h1: 'Custom Ice Hockey Jerseys & Team Uniforms Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Heavyweight Pro-Grade Custom Ice Hockey Sweaters & Jerseys USA</h2>
+        <p>Zarko Sportswear manufactures authentic pro-grade custom ice hockey jerseys, practice pinnies, and hockey socks for youth hockey leagues, high school varsity teams, collegiate club programs, and adult beer league squads across the United States and Canada.</p>
+
+        <h2>Ice Hockey Jersey Specifications & Durability</h2>
+        <ul>
+          <li><strong>240–260 GSM Heavyweight Pro-Air Knit Mesh:</strong> Heavy-duty, snag-resistant polyester designed to slide over hockey shoulder and elbow pads without binding.</li>
           <li><strong>Reinforced Double Shoulders & Elbows:</strong> Multi-layer fabric reinforcement on high-friction areas for exceptional on-ice durability.</li>
           <li><strong>Authentic Fight Straps & Lace-Up Collars:</strong> Optional sewn-in fight straps and classic lace-up neckline detailing for an authentic NHL-inspired look.</li>
           <li><strong>Sublimation or Stitched Tackle Twill:</strong> Choose full-dye sublimation for complex gradient artwork or traditional tackle twill embroidered crests and numbers.</li>
@@ -607,10 +840,10 @@ const routesData = {
       </section>
     `
   },
-  '/gloves': {
+  '/custom-sports-gloves': {
     title: 'Custom Sports Gloves & Goalkeeper Gear USA | Zarko Sportswear',
     description: 'Custom sports gloves, soccer goalkeeper gloves, and batting handwear. All-weather grip German latex, custom logo printing, and fast shipping to USA.',
-    canonical: 'https://www.zarkosportswear.com/gloves',
+    canonical: 'https://www.zarkosportswear.com/custom-sports-gloves',
     h1: 'Custom Sports Gloves & Goalkeeper Hand Protection Manufacturer USA',
     bodyContent: `
       <section class="seo-content-block">
@@ -629,10 +862,32 @@ const routesData = {
       </section>
     `
   },
-  '/caps': {
+  '/gloves': {
+    title: 'Custom Sports Gloves & Goalkeeper Gear USA | Zarko Sportswear',
+    description: 'Custom sports gloves, soccer goalkeeper gloves, and batting handwear. All-weather grip German latex, custom logo printing, and fast shipping to USA.',
+    canonical: 'https://www.zarkosportswear.com/custom-sports-gloves',
+    h1: 'Custom Sports Gloves & Goalkeeper Hand Protection Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Professional Custom Goalkeeper Gloves, Batting Gloves & Sports Handwear</h2>
+        <p>Protect your hands and maximize ball grip with high-performance custom sports gloves manufactured by Zarko Sportswear. We supply custom soccer goalkeeper gloves, baseball batting gloves, weightlifting handwear, and football receiver gloves to teams and sports brands across the USA.</p>
+
+        <h2>Sports Glove Engineering & Materials</h2>
+        <ul>
+          <li><strong>German Contact Latex Palms:</strong> 4mm ultra-grip professional latex foam provides exceptional shot-stopping grip in both wet and dry match conditions.</li>
+          <li><strong>Removable Finger-Save Spines:</strong> Optional rigid finger protection inserts prevent hyperextension during high-velocity ball saves.</li>
+          <li><strong>Breathable Neoprene & Mesh Backhands:</strong> Ergonomic 3D embossed backhands with integrated silicone punch zones and flexible airflow panels.</li>
+          <li><strong>Custom Wrist Straps & Branding:</strong> Full latex or elastic wrist wraps customized with your club name, personal signature, or team crest.</li>
+        </ul>
+
+        <p>Order professional custom sports gloves directly from our specialized manufacturing facility with fast USA shipping.</p>
+      </section>
+    `
+  },
+  '/custom-sports-caps-headwear': {
     title: 'Custom Team Caps & Sports Headwear USA | Zarko Sportswear',
     description: 'Order custom embroidered team caps, snapbacks, performance beanies, and athletic visors. Premium fabrics, 3D embroidery, and fast shipping across the USA.',
-    canonical: 'https://www.zarkosportswear.com/caps',
+    canonical: 'https://www.zarkosportswear.com/custom-sports-caps-headwear',
     h1: 'Custom Team Caps & Sports Headwear Manufacturer USA',
     bodyContent: `
       <section class="seo-content-block">
@@ -651,10 +906,54 @@ const routesData = {
       </section>
     `
   },
+  '/caps': {
+    title: 'Custom Team Caps & Sports Headwear USA | Zarko Sportswear',
+    description: 'Order custom embroidered team caps, snapbacks, performance beanies, and athletic visors. Premium fabrics, 3D embroidery, and fast shipping across the USA.',
+    canonical: 'https://www.zarkosportswear.com/custom-sports-caps-headwear',
+    h1: 'Custom Team Caps & Sports Headwear Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Custom Embroidered Team Caps, Snapbacks, Visors & Athletic Headwear</h2>
+        <p>Complete your team's on-field and sideline look with premium custom headwear manufactured by Zarko Sportswear. Supplying baseball programs, golf clubs, tennis academies, and streetwear apparel brands throughout the United States with high-precision embroidered hats and performance caps.</p>
+
+        <h2>Headwear Styles & Customization Features</h2>
+        <ul>
+          <li><strong>Classic 6-Panel & 5-Panel Caps:</strong> Structured and unstructured crowns available in high-grade acrylic-wool blends, cotton twill, and moisture-wicking poly.</li>
+          <li><strong>High-Density 3D Puff Embroidery:</strong> Bold, raised embroidery delivers premium depth and crisp detail for team logos and initials.</li>
+          <li><strong>Closure Options:</strong> Premium plastic snapbacks, adjustable brass buckle strapbacks, flexible stretch-fit bands, or hook-and-loop velcro.</li>
+          <li><strong>Performance Laser-Perforated Visors & Beanies:</strong> Breathable perforated athletic caps for hot summer matches and knit acrylic beanies for cold weather training.</li>
+        </ul>
+
+        <p>Elevate your club merchandise with custom headwear. Low minimum order quantities and fast factory-direct shipping to the USA.</p>
+      </section>
+    `
+  },
+  '/custom-sports-gear-bags': {
+    title: 'Custom Sports Bags & Team Duffels USA | Zarko Sportswear',
+    description: 'Durable custom team sports bags, equipment duffels, and gear backpacks. Heavy-duty water-resistant fabrics, custom embroidery, and fast USA fulfillment.',
+    canonical: 'https://www.zarkosportswear.com/custom-sports-gear-bags',
+    h1: 'Custom Sports Bags & Team Equipment Duffels Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Heavy-Duty Custom Sublimated Team Bags, Equipment Duffels & Backpacks</h2>
+        <p>Keep your team organized on road trips and tournament weekends with custom sports bags and athletic duffels manufactured by Zarko Sportswear. Built from heavy-duty water-resistant materials, our bags are engineered to haul bulky pads, cleats, uniforms, and sports gear across the United States.</p>
+
+        <h2>Sports Bag Construction & Durability Features</h2>
+        <ul>
+          <li><strong>600D to 1200D Ballistic Polyester:</strong> Ultra-tough water-resistant canvas fabric reinforced to resist tearing, scuffing, and heavy equipment loads.</li>
+          <li><strong>Dedicated Ventilated Shoe & Cleat Compartments:</strong> Separate zippered shoe compartments keep muddy footwear and damp gear isolated from clean uniforms.</li>
+          <li><strong>Heavy-Duty SBS Zippers & Reinforced Handles:</strong> Commercial-grade metal zippers with reinforced padded carry handles and adjustable padded shoulder straps.</li>
+          <li><strong>Full Team Customization:</strong> Sublimated side panels, embroidered crests, individual player numbers, and dedicated personalized nametags.</li>
+        </ul>
+
+        <p>Equip your team with matching custom athletic duffel bags and backpacks. Factory-direct wholesale pricing and express USA shipping.</p>
+      </section>
+    `
+  },
   '/bags': {
     title: 'Custom Sports Bags & Team Duffels USA | Zarko Sportswear',
     description: 'Durable custom team sports bags, equipment duffels, and gear backpacks. Heavy-duty water-resistant fabrics, custom embroidery, and fast USA fulfillment.',
-    canonical: 'https://www.zarkosportswear.com/bags',
+    canonical: 'https://www.zarkosportswear.com/custom-sports-gear-bags',
     h1: 'Custom Sports Bags & Team Equipment Duffels Manufacturer USA',
     bodyContent: `
       <section class="seo-content-block">
