@@ -239,3 +239,4 @@ export default function CategoryBuyerSections({ slug = 'soccer', cleanSport = 'S
     </section>
   );
 }
+

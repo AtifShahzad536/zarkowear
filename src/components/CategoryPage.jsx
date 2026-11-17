@@ -442,63 +442,116 @@ const CategoryPage = ({ slug }) => {
         }}
       />
 
-      {/* ── TOP CATALOG HEADER (MATCHING REFERENCE IMAGE 2) ── */}
-      <div className="mx-auto max-w-[96%] xl:max-w-[98%] 2xl:max-w-[1560px] px-3 sm:px-5 pt-6 pb-4">
-        {/* Breadcrumb Navigation */}
-        <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
-          <Link to="/" className="hover:text-slate-900 transition flex items-center gap-1.5">
-            <span>← HOME</span>
-          </Link>
-          <span className="text-slate-300">/</span>
-          <span className="text-slate-900">{cleanSport.toUpperCase()} APPAREL</span>
-        </div>
+      {/* ── ATHLETIC DARK HERO BANNER (MATCHING COMPETITOR HAMCO STYLE) ── */}
+      <section className="relative bg-gradient-to-b from-[#070913] via-[#0E1324] to-[#0A0D1A] text-white pt-8 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800 overflow-hidden">
+        {/* Subtle grid pattern & atmospheric glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(#1E293B_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none" />
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-red-600/10 blur-[120px] rounded-full pointer-events-none" />
 
-        {/* Eyebrow Kicker - Theme Matched Indigo/Navy (NO ORANGE!) */}
-        <div className="flex items-center gap-2 text-indigo-600 text-xs font-black uppercase tracking-[0.25em] mb-2">
-          <span>✦</span>
-          <span>ZARKO BESPOKE & OEM ATELIER</span>
-        </div>
+        <div className="relative mx-auto max-w-6xl text-center space-y-4 sm:space-y-5">
+          {/* Breadcrumb Navigation */}
+          <div className="flex items-center justify-center gap-2 text-[11px] sm:text-xs font-bold text-slate-400 uppercase tracking-widest">
+            <Link to="/" className="hover:text-white transition">HOME</Link>
+            <span className="text-slate-600">/</span>
+            <span className="text-slate-400">SPORTS WEAR</span>
+            <span className="text-slate-600">/</span>
+            <span className="text-red-400 font-extrabold">{cleanSport.toUpperCase()}</span>
+          </div>
 
-        {/* Hero Title & Inline Search Bar Row */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-5 border-b border-slate-200">
-          <div className="max-w-3xl">
-            <h1 
-              className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight uppercase"
-              style={{ fontFamily: "'Outfit', sans-serif" }}
+          {/* Social Proof / Rating Eyebrow */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900/80 border border-slate-700/80 text-[11px] sm:text-xs font-bold text-slate-200 shadow-inner">
+            <span className="text-amber-400 tracking-wider">★★★★★</span>
+            <span className="text-white font-extrabold">4.9 / 5</span>
+            <span className="text-slate-400">•</span>
+            <span className="text-slate-300">500+ US High Schools, Clubs &amp; Teams</span>
+          </div>
+
+          {/* Bold Athletic Headline */}
+          <h1 
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-[1.08]"
+            style={{ fontFamily: "'Outfit', sans-serif" }}
+          >
+            CUSTOM <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-400 to-amber-300">{cleanSport.toUpperCase()}</span> JERSEYS &amp; UNIFORMS
+          </h1>
+
+          {/* Value Prop Description */}
+          <p className="max-w-3xl mx-auto text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed font-normal">
+            {description || `Premium custom sublimated and tackle twill ${cleanSport.toLowerCase()} uniforms engineered for extreme durability, moisture management, and NFHS regulation compliance. Direct from our Sialkot manufacturing plant with full factory pricing.`}
+          </p>
+
+          {/* Trust Value Badges Pill Row */}
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-[11px] sm:text-xs font-bold text-slate-200">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-[5px] bg-white/5 border border-white/10 backdrop-blur-xs">
+              <FiCheck className="text-red-400" />
+              <span>15-Set Low MOQ</span>
+            </div>
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-[5px] bg-white/5 border border-white/10 backdrop-blur-xs">
+              <FiClock className="text-amber-400" />
+              <span>Free 12h Digital Mockup</span>
+            </div>
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-[5px] bg-white/5 border border-white/10 backdrop-blur-xs">
+              <FiShield className="text-emerald-400" />
+              <span>NFHS &amp; NCAA Compliant</span>
+            </div>
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-[5px] bg-white/5 border border-white/10 backdrop-blur-xs">
+              <FiTruck className="text-blue-400" />
+              <span>DDP Air Express to USA</span>
+            </div>
+          </div>
+
+          {/* High-Impact Hero CTAs */}
+          <div className="pt-3 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+            <a
+              href="#quote-form-section"
+              className="px-6 py-3 rounded-[5px] bg-red-600 hover:bg-red-500 text-white text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-200 shadow-lg shadow-red-900/30 flex items-center gap-2 cursor-pointer hover:scale-[1.02]"
             >
-              CUSTOM {cleanSport.toUpperCase()} JERSEYS &amp; UNIFORMS
-            </h1>
-            <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-              {description || `Engineered for high-impact performance. NFHS & NCAA compliant custom ${cleanSport.toLowerCase()} uniforms featuring heavy double-knit dazzle, reinforced yoke, and integrated pad pants. Available for bespoke wholesale OEM production.`}
-            </p>
-          </div>
+              <span>Request Free Team Quote</span>
+              <FiArrowRight />
+            </a>
 
-          {/* Sleek Search Bar (Rounded 5px) */}
-          <div className="relative w-full lg:w-80 shrink-0">
-            <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm" />
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder={`Search by uniform name, fabric, or spec...`}
-              className="w-full pl-10 pr-9 py-2.5 bg-white border border-slate-200 rounded-[5px] text-xs font-semibold text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 shadow-2xs transition"
-            />
-            {searchTerm && (
-              <button
-                onClick={() => setSearchTerm('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 cursor-pointer"
-                title="Clear search"
-              >
-                <FiX className="text-sm" />
-              </button>
-            )}
+            <Link
+              to="/custom"
+              className="px-5 py-3 rounded-[5px] bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-bold uppercase tracking-wider border border-white/20 transition-all flex items-center gap-2"
+            >
+              <span>Launch 3D Customizer</span>
+            </Link>
+
+            <a
+              href={`https://wa.me/923039200750?text=${encodeURIComponent(`Hi Zarko Sportswear, I'd like a wholesale team quote for custom ${cleanSport} uniforms with 12h mockups.`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-3 rounded-[5px] bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-bold uppercase tracking-wider transition-all flex items-center gap-2 shadow-md"
+            >
+              <FaWhatsapp className="text-base" />
+              <span>WhatsApp Us</span>
+            </a>
           </div>
         </div>
+      </section>
 
-        {/* ── HORIZONTAL SUBCATEGORY PILL BAR & META CONTROLS (ROUNDED 5PX) ── */}
-        <div className="mt-5 flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2">
+      {/* ── MAIN CATALOG CONTAINER (FULL WIDTH, CLEAN 4-COLUMN CARDS) ── */}
+      <div className="mx-auto max-w-[96%] xl:max-w-[98%] 2xl:max-w-[1560px] px-3 sm:px-5 py-8 sm:py-10">
+        
+        {/* Section Heading & Subtitle */}
+        <div className="text-center max-w-2xl mx-auto mb-6">
+          <div className="text-red-600 text-xs font-black uppercase tracking-[0.2em] mb-1">
+            FACTORY-DIRECT DESIGNS &amp; STYLES
+          </div>
+          <h2 
+            className="text-2xl sm:text-3xl font-black text-slate-900 uppercase tracking-tight"
+            style={{ fontFamily: "'Outfit', sans-serif" }}
+          >
+            Popular {cleanSport} Cuts &amp; Sublimation Templates
+          </h2>
+          <p className="mt-1 text-xs sm:text-sm text-slate-500">
+            Pick any design below as a starting point. We customize colors, team logos, player numbers, and cut specs at zero extra artwork cost.
+          </p>
+        </div>
+
+        {/* ── FULL-WIDTH FILTER & SEARCH BAR ── */}
+        <div className="bg-white rounded-[6px] border border-slate-200/90 p-3 sm:p-4 mb-6 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-3.5">
           {/* Subcategories Horizontal Scrollable Pills */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
             {subcategories.map((sub) => {
               const isActive = selectedSub === sub;
               return (
@@ -516,8 +569,8 @@ const CategoryPage = ({ slug }) => {
                   }}
                   className={`px-3.5 py-2 rounded-[5px] text-xs font-bold uppercase tracking-wider shrink-0 transition-all cursor-pointer flex items-center gap-1.5 ${
                     isActive
-                      ? 'bg-slate-900 text-white shadow-2xs'
-                      : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200'
+                      ? 'bg-slate-900 text-white shadow-xs'
+                      : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200'
                   }`}
                 >
                   <span>{sub === 'All' ? `ALL ${cleanSport.toUpperCase()}` : sub}</span>
@@ -526,278 +579,90 @@ const CategoryPage = ({ slug }) => {
             })}
           </div>
 
-          {/* Right Controls: Count, Sort Dropdown & Grid/List Toggle */}
-          <div className="flex items-center gap-2.5 shrink-0 self-end md:self-auto">
-            {/* Designs Count */}
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">
-              {filteredProducts.length} DESIGNS
-            </span>
+          {/* Search Input & Controls */}
+          <div className="flex items-center gap-2.5 shrink-0 w-full md:w-auto">
+            {/* Search Input */}
+            <div className="relative flex-1 md:w-64">
+              <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs" />
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search templates & cuts..."
+                className="w-full pl-8 pr-7 py-2 bg-slate-50 border border-slate-200 rounded-[5px] text-xs font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-900 focus:bg-white transition"
+              />
+              {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm('')}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700"
+                >
+                  <FiX className="text-xs" />
+                </button>
+              )}
+            </div>
 
             {/* Sort Dropdown */}
-            <div className="relative">
+            <div className="relative shrink-0">
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="appearance-none pl-3 pr-7 py-1.5 bg-white hover:bg-slate-50 border border-slate-200 rounded-[5px] text-xs font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer shadow-2xs transition"
+                className="appearance-none pl-3 pr-7 py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-[5px] text-xs font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer transition"
               >
-                <option value="featured">Featured / Curated</option>
-                <option value="name-asc">Design (A → Z)</option>
-                <option value="name-desc">Design (Z → A)</option>
+                <option value="featured">Featured</option>
+                <option value="name-asc">A → Z</option>
+                <option value="name-desc">Z → A</option>
               </select>
               <FiChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs" />
             </div>
 
-            {/* Grid / List View Toggle */}
-            <div className="hidden sm:flex items-center gap-1 bg-white border border-slate-200 p-0.5 rounded-[5px] shadow-2xs">
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`p-1.5 rounded-[4px] transition ${viewMode === 'grid' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-400 hover:text-slate-700'}`}
-                title="Grid View"
-              >
-                <FiGrid className="text-xs" />
-              </button>
-              <button
-                onClick={() => setViewMode('list')}
-                className={`p-1.5 rounded-[4px] transition ${viewMode === 'list' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-400 hover:text-slate-700'}`}
-                title="List View"
-              >
-                <FiList className="text-xs" />
-              </button>
-            </div>
+            {/* Designs Count */}
+            <span className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider shrink-0 hidden sm:inline">
+              {filteredProducts.length} DESIGNS
+            </span>
           </div>
         </div>
 
-        {/* ── TWO-COLUMN MAIN LAYOUT (STICKY SIDEBAR + PRODUCT GRID) ── */}
-        <div className="mt-5 flex flex-col lg:flex-row items-start gap-6">
-          
-          {/* ── LEFT STICKY FILTER SIDEBAR (ROUNDED 5PX, W-60 / W-64) ── */}
-          <aside className="w-full lg:w-60 xl:w-64 shrink-0 lg:sticky lg:top-24 space-y-4">
-            <div className="bg-white rounded-[5px] border border-slate-200/90 p-4 sm:p-5 shadow-2xs space-y-5">
-              
-              {/* Sidebar Title & Clear Button */}
-              <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-                <div className="flex items-center gap-2">
-                  <FiSliders className="text-indigo-600 text-sm" />
-                  <span className="text-xs font-black uppercase tracking-[0.15em] text-slate-900">
-                    Filter Catalog
-                  </span>
-                </div>
-                {(searchTerm || selectedSub !== 'All' || selectedFabrics.length > 0 || selectedTechs.length > 0 || selectedCompliances.length > 0) && (
-                  <button
-                    onClick={handleClearFilters}
-                    className="text-[11px] font-bold text-indigo-600 hover:text-indigo-800 underline flex items-center gap-1 cursor-pointer"
-                  >
-                    <FiRefreshCw className="text-[10px]" />
-                    <span>Reset</span>
-                  </button>
-                )}
+        {/* ── FULL-WIDTH PRODUCT CATALOG (4 CARDS PER ROW ON LARGE SCREENS) ── */}
+        <div>
+          {filteredProducts.length > 0 ? (
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-5">
+              {filteredProducts.map((product, index) => (
+                <ProductCard
+                  key={product.id || `${product.name}-${index}`}
+                  id={product.id}
+                  image={product.image}
+                  name={product.name}
+                  description={product.description}
+                  price={product.price}
+                  discount={product.discount}
+                  categorySlug={slug}
+                  sportName={cleanSport}
+                  onQuickView={setQuickViewProduct}
+                  viewMode="grid"
+                />
+              ))}
+            </div>
+          ) : (
+            /* Empty State */
+            <div className="bg-white rounded-[5px] border border-slate-200/90 p-10 text-center max-w-lg mx-auto shadow-2xs">
+              <div className="w-12 h-12 rounded-[5px] bg-slate-100 text-slate-800 flex items-center justify-center mx-auto mb-3 text-lg">
+                <FiSearch />
               </div>
-
-              {/* USA Regulation & Standards Filter (Replaces price slider as requested) */}
-              <div className="space-y-3">
-                <span className="text-[11px] font-black uppercase tracking-wider text-slate-900 block">
-                  USA Regulation Standards
-                </span>
-                <div className="space-y-2">
-                  {[
-                    'NFHS Compliant (High School)',
-                    'NCAA Ready (College)',
-                    'Reinforced Pad Clearance',
-                    'Low 15-Set Factory MOQ'
-                  ].map((compliance) => {
-                    const isChecked = selectedCompliances.includes(compliance);
-                    return (
-                      <label
-                        key={compliance}
-                        onClick={() => toggleCompliance(compliance)}
-                        className="flex items-center gap-2.5 text-xs font-semibold text-slate-700 hover:text-slate-900 cursor-pointer select-none"
-                      >
-                        <div className={`w-4 h-4 rounded border flex items-center justify-center transition ${
-                          isChecked ? 'bg-slate-900 border-slate-900 text-white' : 'border-slate-300 bg-white'
-                        }`}>
-                          {isChecked && <FiCheck className="text-[10px]" />}
-                        </div>
-                        <span className="text-[11px]">{compliance}</span>
-                      </label>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Fabric Weight & Construction Filter */}
-              <div className="space-y-3 pt-4 border-t border-slate-100">
-                <span className="text-[11px] font-black uppercase tracking-wider text-slate-900 block">
-                  Fabric & Construction
-                </span>
-                <div className="space-y-2">
-                  {[
-                    'Heavy Interlock (240 GSM)',
-                    'Pro Dazzle & Spandex Cowl',
-                    'Porthole Mesh',
-                    '4-Way Stretch Lycra'
-                  ].map((fabric) => {
-                    const isChecked = selectedFabrics.includes(fabric);
-                    return (
-                      <label
-                        key={fabric}
-                        onClick={() => toggleFabric(fabric)}
-                        className="flex items-center gap-2.5 text-xs font-semibold text-slate-700 hover:text-slate-900 cursor-pointer select-none"
-                      >
-                        <div className={`w-4 h-4 rounded border flex items-center justify-center transition ${
-                          isChecked ? 'bg-slate-900 border-slate-900 text-white' : 'border-slate-300 bg-white'
-                        }`}>
-                          {isChecked && <FiCheck className="text-[10px]" />}
-                        </div>
-                        <span>{fabric}</span>
-                      </label>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Customization Technique Filter */}
-              <div className="space-y-3 pt-4 border-t border-slate-100">
-                <span className="text-[11px] font-black uppercase tracking-wider text-slate-900 block">
-                  Customization Method
-                </span>
-                <div className="space-y-2">
-                  {[
-                    '4K Full Dye-Sublimation',
-                    'Stitched Tackle Twill',
-                    '3D Embroidered Emblems'
-                  ].map((tech) => {
-                    const isChecked = selectedTechs.includes(tech);
-                    return (
-                      <label
-                        key={tech}
-                        onClick={() => toggleTech(tech)}
-                        className="flex items-center gap-2.5 text-xs font-semibold text-slate-700 hover:text-slate-900 cursor-pointer select-none"
-                      >
-                        <div className={`w-4 h-4 rounded border flex items-center justify-center transition ${
-                          isChecked ? 'bg-slate-900 border-slate-900 text-white' : 'border-slate-300 bg-white'
-                        }`}>
-                          {isChecked && <FiCheck className="text-[10px]" />}
-                        </div>
-                        <span>{tech}</span>
-                      </label>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Collapsible B2B Specs Drawer (Moves clutter out of the main page!) */}
-              {technicalSpecs && (
-                <div className="pt-4 border-t border-slate-100 space-y-2">
-                  <button
-                    onClick={() => setShowSpecsAccordion(!showSpecsAccordion)}
-                    className="w-full flex items-center justify-between text-left text-[11px] font-black uppercase tracking-wider text-slate-900 hover:text-indigo-600 transition cursor-pointer"
-                  >
-                    <span>B2B Factory Specs</span>
-                    {showSpecsAccordion ? <FiChevronUp className="text-xs" /> : <FiChevronDown className="text-xs" />}
-                  </button>
-
-                  {showSpecsAccordion && (
-                    <div className="pt-2 space-y-2 text-[11px] text-slate-600 bg-slate-50 p-2.5 rounded-[5px] border border-slate-100">
-                      <div>
-                        <span className="font-bold text-slate-900 block">Fabric Tech:</span>
-                        <span>{technicalSpecs.fabric}</span>
-                      </div>
-                      <div>
-                        <span className="font-bold text-slate-900 block">Printing:</span>
-                        <span>{technicalSpecs.printing}</span>
-                      </div>
-                      <div>
-                        <span className="font-bold text-slate-900 block">Compliance:</span>
-                        <span className="text-indigo-600 font-semibold">{technicalSpecs.compliance}</span>
-                      </div>
-                      <div>
-                        <span className="font-bold text-slate-900 block">Dispatch:</span>
-                        <span className="text-emerald-700 font-semibold">{technicalSpecs.shipping}</span>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* Clear All Filters Button */}
+              <h3 className="text-base font-black text-slate-900 uppercase tracking-tight">
+                No Matching Products Found
+              </h3>
+              <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                We couldn&apos;t find any items matching your selected criteria. Try adjusting your keyword or reset filters.
+              </p>
               <button
                 onClick={handleClearFilters}
-                className="w-full py-2 rounded-[5px] border border-slate-200 hover:border-slate-900 bg-slate-50 hover:bg-slate-900 hover:text-white text-xs font-bold uppercase tracking-wider text-slate-700 transition cursor-pointer"
+                className="mt-4 px-4 py-2 bg-slate-900 hover:bg-red-600 text-white rounded-[5px] text-xs font-bold uppercase tracking-wider transition-colors inline-flex items-center gap-2 cursor-pointer shadow-2xs"
               >
-                Clear All Filters
+                <FiRefreshCw className="text-xs" />
+                <span>Reset All Filters</span>
               </button>
             </div>
-
-            {/* Fast B2B Factory Quote Card (5px Corners) */}
-            <div className="rounded-[5px] bg-slate-900 text-white p-4 space-y-2.5 shadow-xs">
-              <div className="flex items-center gap-1.5 text-indigo-400 text-xs font-bold uppercase tracking-wider">
-                <FiAward className="text-sm" />
-                <span>Sialkot Factory Direct</span>
-              </div>
-              <h4 className="text-xs font-black uppercase tracking-tight">
-                Need Custom OEM Samples?
-              </h4>
-              <p className="text-[11px] text-slate-300 leading-relaxed">
-                Send your tech pack or vector logo. Free 3D mockups in 12h.
-              </p>
-              <a
-                href={`https://wa.me/923039200750?text=${encodeURIComponent(`Hi Zarko Sportswear, I'm reviewing the ${cleanSport} catalog and would like a custom quote and 3D mockups.`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-2 rounded-[5px] bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition shadow-2xs"
-              >
-                <FaWhatsapp className="text-sm" />
-                <span>WhatsApp: 03039200750</span>
-              </a>
-            </div>
-          </aside>
-
-          {/* ── RIGHT PRODUCTS GRID / LIST AREA (STRICT 3 PRODUCTS PER ROW) ── */}
-          <div className="flex-1 w-full min-w-0">
-            {filteredProducts.length > 0 ? (
-              <div className={
-                viewMode === 'grid'
-                  ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4"
-                  : "flex flex-col gap-3.5"
-              }>
-                {filteredProducts.map((product, index) => (
-                  <ProductCard
-                    key={product.id || `${product.name}-${index}`}
-                    id={product.id}
-                    image={product.image}
-                    name={product.name}
-                    description={product.description}
-                    price={product.price}
-                    discount={product.discount}
-                    categorySlug={slug}
-                    sportName={cleanSport}
-                    onQuickView={setQuickViewProduct}
-                    viewMode={viewMode}
-                  />
-                ))}
-              </div>
-            ) : (
-              /* Empty State when zero items match */
-              <div className="bg-white rounded-[5px] border border-slate-200/90 p-10 text-center max-w-lg mx-auto shadow-2xs">
-                <div className="w-12 h-12 rounded-[5px] bg-slate-100 text-slate-800 flex items-center justify-center mx-auto mb-3 text-lg">
-                  <FiSearch />
-                </div>
-                <h3 className="text-base font-black text-slate-900 uppercase tracking-tight">
-                  No Matching Products Found
-                </h3>
-                <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
-                  We couldn&apos;t find any items matching your selected criteria. Try adjusting your keyword or reset filters.
-                </p>
-                <button
-                  onClick={handleClearFilters}
-                  className="mt-4 px-4 py-2 bg-slate-900 hover:bg-indigo-600 text-white rounded-[5px] text-xs font-bold uppercase tracking-wider transition-colors inline-flex items-center gap-2 cursor-pointer shadow-2xs"
-                >
-                  <FiRefreshCw className="text-xs" />
-                  <span>Reset All Filters</span>
-                </button>
-              </div>
-            )}
-          </div>
+          )}
         </div>
 
         {/* ── 10-BLOCK BLUEPRINT: TIERED PRICING & INTERACTIVE CALCULATORS ── */}
