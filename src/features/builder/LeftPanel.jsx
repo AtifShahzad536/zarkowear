@@ -697,7 +697,7 @@ const LeftPanel = ({
                         backgroundImage: `radial-gradient(circle at 35% 35%, ${f.color}, #090c15)`
                       }}
                     >
-                      <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-repeat" style={{ backgroundImage: `url('/fabric-tile.png')`, backgroundSize: '6px' }} />
+                      <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-repeat" style={{ backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.2) 1px, transparent 0)`, backgroundSize: '6px 6px' }} />
                     </div>
                     <div className={`flex flex-col ${assetViewMode === 'grid' ? 'items-center' : 'items-start flex-1 overflow-hidden'}`}>
                       <span className={`text-[7.5px] font-bold uppercase tracking-wider text-slate-400 group-hover:text-white leading-none ${assetViewMode === 'grid' ? 'text-center max-w-[50px]' : 'text-left w-full'} truncate`}>{f.name}</span>

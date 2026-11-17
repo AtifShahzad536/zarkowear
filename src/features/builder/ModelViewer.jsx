@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useMemo, useRef, useCallback, memo, useS } from 'react';
+import React, { Suspense, useEffect, useMemo, useRef, useCallback, memo } from 'react';
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF, Environment, ContactShadows, Center, useProgress, Html } from '@react-three/drei';
 import * as THREE from 'three';
@@ -444,6 +444,7 @@ const CameraController = memo(function CameraController({ mouseFollow, isDraggin
 
 // ─── DECAL TRANSFORM HANDLES ─────────────────────────────────────────────────
 const DecalTransformHandles = ({ decal, updateDecal, setIsDraggingHandle, meshes = [], layersMetadata = {} }) => {
+  const { camera } = useThree();
   const [activeCorner, setActiveCorner] = React.useState(null);
   const [isDraggingMove, setIsDraggingMove] = React.useState(false);
   const [isDraggingRot, setIsDraggingRot] = React.useState(false);

@@ -5,7 +5,7 @@ import { HiOutlineSparkles, HiOutlinePhotograph, HiOutlineCube, HiOutlineLightni
 import { VscSymbolColor } from 'react-icons/vsc';
 import { FaPaw, FaCat, FaCrow, FaHippo, FaHorse } from 'react-icons/fa';
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4000';
+import { API_BASE } from '../../services/api';
 
 const isMeshInSameGroup = (idA, idB, layersMetadata) => {
   if (!idA || !idB) return false;
@@ -328,6 +328,23 @@ const MeshProperties = ({
                     const formData = new FormData();
                     formData.append('file', file);
 
+                    const fallbackPatternRead = () => {
+                      const reader = new FileReader();
+                      reader.onload = (event) => {
+                        const localDataUrl = event.target?.result;
+                        if (localDataUrl) {
+                          toast.success('Pattern applied directly!', { id: toastId });
+                          addDecal('pattern', 'Pattern Layer', localDataUrl, activeMesh);
+                        } else {
+                          toast.error('Failed to read pattern file.', { id: toastId });
+                        }
+                      };
+                      reader.onerror = () => {
+                        toast.error('Failed to read local file.', { id: toastId });
+                      };
+                      reader.readAsDataURL(file);
+                    };
+
                     fetch(`${API_BASE}/api/decal/upload`, {
                       method: 'POST',
                       headers: {
@@ -335,18 +352,21 @@ const MeshProperties = ({
                       },
                       body: formData
                     })
-                      .then(res => res.json())
+                      .then(res => {
+                        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                        return res.json();
+                      })
                       .then(data => {
-                        if (data.success && data.url) {
+                        if (data && data.success && data.url) {
                           toast.success('Pattern uploaded!', { id: toastId });
                           addDecal('pattern', 'Pattern Layer', data.url, activeMesh);
                         } else {
-                          toast.error('Failed to upload pattern.', { id: toastId });
+                          fallbackPatternRead();
                         }
                       })
                       .catch(err => {
-                        console.error('Pattern upload error:', err);
-                        toast.error('Upload error occurred.', { id: toastId });
+                        console.warn('Backend decal upload unavailable, using direct local upload:', err);
+                        fallbackPatternRead();
                       });
                     e.target.value = '';
                   }
@@ -1035,6 +1055,23 @@ const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, 
     const formData = new FormData();
     formData.append('file', file);
 
+    const fallbackLocalRead = () => {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const localDataUrl = event.target?.result;
+        if (localDataUrl) {
+          toast.success('Logo applied directly!', { id: toastId });
+          addDecal('image', file.name.replace(/\.[^.]+$/, ''), localDataUrl, activeMesh);
+        } else {
+          toast.error('Failed to read image file.', { id: toastId });
+        }
+      };
+      reader.onerror = () => {
+        toast.error('Failed to read local file.', { id: toastId });
+      };
+      reader.readAsDataURL(file);
+    };
+
     fetch(`${API_BASE}/api/decal/upload`, {
       method: 'POST',
       headers: {
@@ -1042,18 +1079,21 @@ const LogosFlagsTab = ({ decals, selectedDecalId, setSelectedDecalId, addDecal, 
       },
       body: formData
     })
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
       .then(data => {
-        if (data.success && data.url) {
+        if (data && data.success && data.url) {
           toast.success('Logo uploaded!', { id: toastId });
           addDecal('image', file.name.replace(/\.[^.]+$/, ''), data.url, activeMesh);
         } else {
-          toast.error('Failed to upload logo.', { id: toastId });
+          fallbackLocalRead();
         }
       })
       .catch(err => {
-        console.error('Logo upload error:', err);
-        toast.error('Upload error occurred.', { id: toastId });
+        console.warn('Backend decal upload unavailable, using direct local upload:', err);
+        fallbackLocalRead();
       });
 
     e.target.value = '';
