@@ -10,7 +10,7 @@ import DetailPricingCalculator from './detail/DetailPricingCalculator';
 import DetailComparisonTable from './detail/DetailComparisonTable';
 import DetailCareGuide from './detail/DetailCareGuide';
 import DetailFaq from './detail/DetailFaq';
-import { PARENT_TO_SPORT_MAP, slugify, buildProductSlug } from '../utils/seoUrls';
+import { PARENT_TO_SPORT_MAP, slugify, buildProductSlug, getCategoryUrl, getProductUrl } from '../utils/seoUrls';
 import {
   FaWhatsapp,
   FaArrowRight,
@@ -320,16 +320,6 @@ const ProductDetail = () => {
     setIsShareModalOpen(true);
   };
 
-  const handleOpenProductFromQuickView = (p) => {
-    setProduct(p);
-    setQuickViewProduct(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    navigate(`/detail?product=${encodeURIComponent(p.id || cleanSlug(p.name))}`, {
-      state: { product: p },
-      replace: false
-    });
-  };
-
   // Handle Online Form Submission to Backend
   const handleSubmitInquiry = async (e) => {
     e.preventDefault();
@@ -413,7 +403,7 @@ const ProductDetail = () => {
                 <span>← HOME</span>
               </Link>
               <span className="text-slate-300">/</span>
-              <Link to={`/${sportInfo.slug}`} className="hover:text-slate-800 transition">
+              <Link to={getCategoryUrl(sportInfo.slug)} className="hover:text-slate-800 transition">
                 {sportInfo.name.toUpperCase()}
               </Link>
               <span className="text-slate-300">/</span>
@@ -421,7 +411,7 @@ const ProductDetail = () => {
             </nav>
 
             <Link
-              to={`/${sportInfo.slug}`}
+              to={getCategoryUrl(sportInfo.slug)}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 transition uppercase tracking-wider"
             >
               <FiArrowLeft className="text-xs" />
@@ -872,7 +862,7 @@ const ProductDetail = () => {
                 </div>
 
                 <Link
-                  to={`/${sportInfo.slug}`}
+                  to={getCategoryUrl(sportInfo.slug)}
                   className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium text-slate-600 hover:text-indigo-600 uppercase tracking-wider transition"
                 >
                   <span>View All {sportInfo.name}</span>
@@ -1391,14 +1381,14 @@ const ProductDetail = () => {
                   <span>Inquire on WhatsApp (03039200750)</span>
                 </a>
 
-                <button
-                  type="button"
-                  onClick={() => handleOpenProductFromQuickView(quickViewProduct)}
+                <Link
+                  to={getProductUrl(quickViewProduct, sportInfo.slug)}
+                  onClick={() => setQuickViewProduct(null)}
                   className="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-900 text-xs font-semibold uppercase tracking-wider text-center transition cursor-pointer"
                   style={{ borderRadius: '5px' }}
                 >
                   Open Full Specification Page →
-                </button>
+                </Link>
               </div>
             </div>
           </div>
