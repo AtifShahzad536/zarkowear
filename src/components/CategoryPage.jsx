@@ -567,53 +567,75 @@ const CategoryPage = ({ slug }) => {
           </p>
         </div>
 
-        {/* ── FULL-WIDTH FILTER & SEARCH BAR ── */}
-        <div className="bg-white rounded-[6px] border border-slate-200/90 p-3 sm:p-4 mb-6 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-3.5">
-          {/* Subcategories Horizontal Scrollable Pills */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
-            {subcategories.map((sub) => {
-              const isActive = selectedSub === sub;
-              return (
-                <button
-                  key={sub}
-                  onClick={() => {
-                    setSelectedSub(sub);
-                    const next = new URLSearchParams(searchParams);
-                    if (sub === 'All') {
-                      next.delete('sub');
-                    } else {
-                      next.set('sub', sub);
-                    }
-                    setSearchParams(next);
-                  }}
-                  className={`px-3.5 py-2 rounded-[5px] text-xs font-bold uppercase tracking-wider shrink-0 transition-all cursor-pointer flex items-center gap-1.5 ${
-                    isActive
-                      ? 'bg-slate-900 text-white shadow-xs'
-                      : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200'
-                  }`}
-                >
-                  <span>{sub === 'All' ? `ALL ${cleanSport.toUpperCase()}` : sub}</span>
-                </button>
-              );
-            })}
+        {/* ── ULTRA-CLEAN STREAMLINED FILTER & SEARCH TOOLBAR (COMPACT 1-LINE / FULLY RESPONSIVE) ── */}
+        <div className="bg-white rounded-[8px] border border-slate-200/90 p-2 sm:p-2.5 mb-6 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+          {/* Left Controls: Subcategory Dropdown & Quick Reset */}
+          <div className="flex items-center gap-2 flex-1 min-w-0">
+            {/* Category / Cut Dropdown Selector */}
+            <div className="relative flex-1 sm:flex-initial sm:min-w-[210px] md:min-w-[240px]">
+              <label htmlFor="category-cut-select" className="sr-only">Select Category Cut</label>
+              <select
+                id="category-cut-select"
+                value={selectedSub}
+                onChange={(e) => {
+                  const sub = e.target.value;
+                  setSelectedSub(sub);
+                  const next = new URLSearchParams(searchParams);
+                  if (sub === 'All') {
+                    next.delete('sub');
+                  } else {
+                    next.set('sub', sub);
+                  }
+                  setSearchParams(next);
+                }}
+                className="w-full appearance-none pl-3 pr-8 py-2 bg-slate-50 hover:bg-slate-100/80 focus:bg-white border border-slate-200 rounded-[6px] text-xs font-semibold text-slate-800 focus:outline-none focus:ring-1.5 focus:ring-indigo-600 transition cursor-pointer shadow-2xs truncate"
+              >
+                {subcategories.map((sub) => (
+                  <option key={sub} value={sub} className="py-1">
+                    {sub === 'All' ? `All ${cleanSport} Apparel` : sub}
+                  </option>
+                ))}
+              </select>
+              <FiChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs" />
+            </div>
+
+            {/* Quick Reset if filtered */}
+            {(selectedSub !== 'All' || searchTerm) && (
+              <button
+                onClick={() => {
+                  setSelectedSub('All');
+                  setSearchTerm('');
+                  const next = new URLSearchParams(searchParams);
+                  next.delete('sub');
+                  next.delete('q');
+                  setSearchParams(next);
+                }}
+                className="shrink-0 px-2.5 py-2 rounded-[6px] border border-slate-200 hover:border-slate-300 bg-slate-50 hover:bg-slate-100 text-[11px] font-semibold text-slate-600 hover:text-slate-900 transition flex items-center gap-1 cursor-pointer"
+                title="Reset filters"
+              >
+                <FiRefreshCw className="text-[10px]" />
+                <span className="hidden md:inline">Reset</span>
+              </button>
+            )}
           </div>
 
-          {/* Search Input & Controls */}
-          <div className="flex items-center gap-2.5 shrink-0 w-full md:w-auto">
-            {/* Search Input */}
-            <div className="relative flex-1 md:w-64">
-              <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs" />
+          {/* Right Controls: Search Input + Sort Dropdown + Product Count */}
+          <div className="flex items-center gap-2 shrink-0">
+            {/* Search Input with inline clear */}
+            <div className="relative flex-1 sm:w-48 md:w-56">
+              <FiSearch className="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none" />
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search templates & cuts..."
-                className="w-full pl-8 pr-7 py-2 bg-slate-50 border border-slate-200 rounded-[5px] text-xs font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-900 focus:bg-white transition"
+                placeholder={`Search ${cleanSport.toLowerCase()}...`}
+                className="w-full pl-7 pr-6 py-2 bg-slate-50 hover:bg-slate-100/60 focus:bg-white border border-slate-200 rounded-[6px] text-xs font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1.5 focus:ring-indigo-600 transition"
               />
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm('')}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700"
+                  title="Clear search"
                 >
                   <FiX className="text-xs" />
                 </button>
@@ -622,22 +644,24 @@ const CategoryPage = ({ slug }) => {
 
             {/* Sort Dropdown */}
             <div className="relative shrink-0">
+              <label htmlFor="sort-products-select" className="sr-only">Sort Products</label>
               <select
+                id="sort-products-select"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="appearance-none pl-3 pr-7 py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-[5px] text-xs font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer transition"
+                className="appearance-none pl-2.5 pr-6 py-2 bg-slate-50 hover:bg-slate-100/80 border border-slate-200 rounded-[6px] text-xs font-semibold text-slate-700 focus:outline-none focus:ring-1.5 focus:ring-indigo-600 cursor-pointer transition shadow-2xs"
               >
                 <option value="featured">Featured</option>
                 <option value="name-asc">A → Z</option>
                 <option value="name-desc">Z → A</option>
               </select>
-              <FiChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs" />
+              <FiChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-[11px]" />
             </div>
 
-            {/* Designs Count */}
-            <span className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider shrink-0 hidden sm:inline">
-              {filteredProducts.length} DESIGNS
-            </span>
+            {/* Designs Count Pill */}
+            <div className="hidden lg:flex items-center px-2.5 py-1.5 bg-slate-100 rounded-[6px] text-[11px] font-bold text-slate-500 uppercase tracking-wider shrink-0 whitespace-nowrap">
+              <span>{filteredProducts.length} Items</span>
+            </div>
           </div>
         </div>
 
