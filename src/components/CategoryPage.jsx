@@ -443,76 +443,94 @@ const CategoryPage = ({ slug }) => {
         }}
       />
 
-      {/* ── ATHLETIC DARK HERO BANNER (MATCHING COMPETITOR HAMCO STYLE) ── */}
-      <section className="relative bg-gradient-to-b from-[#070913] via-[#0E1324] to-[#0A0D1A] text-white pt-8 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800 overflow-hidden">
-        {/* Subtle grid pattern & atmospheric glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(#1E293B_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none" />
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-red-600/10 blur-[120px] rounded-full pointer-events-none" />
+      {/* ── CINEMATIC BRANDED HERO SECTION (MATCHING ZARKO INDIGO & CLEAN LUXURY PALETTE) ── */}
+      <section className="relative bg-[#090C1A] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-800/80 overflow-hidden">
+        {/* Subtle Background Sport Photography with Luxury Indigo/Navy Tinted Overlay */}
+        <div className="absolute inset-0 pointer-events-none">
+          <img
+            src={
+              featured?.image ||
+              (slug === 'baseball' ? '/images/sports/baseball.webp' :
+               slug === 'basketball' ? '/images/hero_basketball.webp' :
+               slug === 'football' ? '/images/hero_football.webp' :
+               slug === 'cricket' ? '/images/hero_cricket.webp' :
+               slug === 'wrestling' ? '/images/hero_wrestling.webp' :
+               slug === 'gym' ? '/images/hero_gym.webp' :
+               slug === 'soccer' ? '/images/sports/soccer.webp' :
+               '/images/sports/baseball.webp')
+            }
+            alt={cleanSport}
+            className="w-full h-full object-cover object-center opacity-18 scale-105 filter blur-[1px]"
+          />
+          {/* Deep Navy/Indigo Gradient Vignette for high readability & elegance */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#090C1A] via-[#090C1A]/85 to-[#090C1A]/95" />
+          <div className="absolute inset-0 bg-[radial-gradient(#312E81_1px,transparent_1px)] [background-size:28px_28px] opacity-20" />
+        </div>
 
-        <div className="relative mx-auto max-w-6xl text-center space-y-4 sm:space-y-5">
-          {/* Breadcrumb Navigation */}
-          <div className="flex items-center justify-center gap-2 text-[11px] sm:text-xs font-bold text-slate-400 uppercase tracking-widest">
-            <Link to="/" className="hover:text-white transition">HOME</Link>
+        <div className="relative mx-auto max-w-4xl text-center space-y-4">
+          {/* Clean Minimalist Breadcrumb Navigation */}
+          <div className="flex items-center justify-center gap-2 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+            <Link to="/" className="hover:text-indigo-300 transition">Home</Link>
             <span className="text-slate-600">/</span>
-            <span className="text-slate-400">SPORTS WEAR</span>
+            <span className="text-slate-400">Sports Wear</span>
             <span className="text-slate-600">/</span>
-            <span className="text-red-400 font-extrabold">{cleanSport.toUpperCase()}</span>
+            <span className="text-indigo-400 font-bold">{cleanSport}</span>
           </div>
 
-          {/* Social Proof / Rating Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900/80 border border-slate-700/80 text-[11px] sm:text-xs font-bold text-slate-200 shadow-inner">
-            <span className="text-amber-400 tracking-wider">★★★★★</span>
-            <span className="text-white font-extrabold">4.9 / 5</span>
-            <span className="text-slate-400">•</span>
-            <span className="text-slate-300">500+ US High Schools, Clubs &amp; Teams</span>
+          {/* Social Proof Trust Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900/90 border border-slate-700/70 text-[11px] text-slate-300 backdrop-blur-xs">
+            <span className="text-amber-400">★★★★★</span>
+            <span className="font-semibold text-white">4.9/5</span>
+            <span className="text-slate-500">•</span>
+            <span>Trusted by 500+ US Teams &amp; Clubs</span>
           </div>
 
-          {/* Bold Athletic Headline */}
+          {/* Premium Headline (Balanced Size, Not Over-Sized) */}
           <h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-[1.08]"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-wide text-white leading-tight"
             style={{ fontFamily: "'Outfit', sans-serif" }}
           >
-            CUSTOM <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-400 to-amber-300">{cleanSport.toUpperCase()}</span> JERSEYS &amp; UNIFORMS
+            Custom {cleanSport} Jerseys &amp; Uniforms
           </h1>
 
           {/* Value Prop Description */}
-          <p className="max-w-3xl mx-auto text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed font-normal">
-            {description || `Premium custom sublimated and tackle twill ${cleanSport.toLowerCase()} uniforms engineered for extreme durability, moisture management, and NFHS regulation compliance. Direct from our Sialkot manufacturing plant with full factory pricing.`}
+          <p className="max-w-2xl mx-auto text-xs sm:text-sm text-slate-300/90 leading-relaxed font-normal">
+            {description || `Engineered for high-impact performance. NFHS & NCAA compliant custom ${cleanSport.toLowerCase()} uniforms featuring heavy double-knit dazzle, reinforced yoke, and integrated pad pants. Direct factory wholesale from Sialkot.`}
           </p>
 
-          {/* Trust Value Badges Pill Row */}
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-[11px] sm:text-xs font-bold text-slate-200">
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-[5px] bg-white/5 border border-white/10 backdrop-blur-xs">
-              <FiCheck className="text-red-400" />
+          {/* Minimalist Trust Badges Pill Row (Unified Slate / Indigo Theme) */}
+          <div className="pt-1 flex flex-wrap items-center justify-center gap-2 text-[11px] font-medium text-slate-300">
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+              <FiCheck className="text-indigo-400 text-xs" />
               <span>15-Set Low MOQ</span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-[5px] bg-white/5 border border-white/10 backdrop-blur-xs">
-              <FiClock className="text-amber-400" />
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+              <FiClock className="text-indigo-400 text-xs" />
               <span>Free 12h Digital Mockup</span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-[5px] bg-white/5 border border-white/10 backdrop-blur-xs">
-              <FiShield className="text-emerald-400" />
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+              <FiShield className="text-indigo-400 text-xs" />
               <span>NFHS &amp; NCAA Compliant</span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-[5px] bg-white/5 border border-white/10 backdrop-blur-xs">
-              <FiTruck className="text-blue-400" />
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+              <FiTruck className="text-indigo-400 text-xs" />
               <span>DDP Air Express to USA</span>
             </div>
           </div>
 
-          {/* High-Impact Hero CTAs */}
-          <div className="pt-3 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+          {/* Refined Brand CTA Buttons (Matching Zarko Navy/Indigo + Emerald WhatsApp) */}
+          <div className="pt-3 flex flex-wrap items-center justify-center gap-3">
             <a
               href="#quote-form-section"
-              className="px-6 py-3 rounded-[5px] bg-red-600 hover:bg-red-500 text-white text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-200 shadow-lg shadow-red-900/30 flex items-center gap-2 cursor-pointer hover:scale-[1.02]"
+              className="px-5 py-2.5 rounded-[5px] bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold uppercase tracking-wider transition-all duration-200 shadow-sm flex items-center gap-2 cursor-pointer"
             >
               <span>Request Free Team Quote</span>
-              <FiArrowRight />
+              <FiArrowRight className="text-xs" />
             </a>
 
             <Link
               to="/custom"
-              className="px-5 py-3 rounded-[5px] bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-bold uppercase tracking-wider border border-white/20 transition-all flex items-center gap-2"
+              className="px-5 py-2.5 rounded-[5px] bg-white/10 hover:bg-white/15 text-white text-xs font-semibold uppercase tracking-wider border border-white/20 transition-all flex items-center gap-2"
             >
               <span>Launch 3D Customizer</span>
             </Link>
@@ -521,9 +539,9 @@ const CategoryPage = ({ slug }) => {
               href={`https://wa.me/923039200750?text=${encodeURIComponent(`Hi Zarko Sportswear, I'd like a wholesale team quote for custom ${cleanSport} uniforms with 12h mockups.`)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-3 rounded-[5px] bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-bold uppercase tracking-wider transition-all flex items-center gap-2 shadow-md"
+              className="px-4 py-2.5 rounded-[5px] bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-sm"
             >
-              <FaWhatsapp className="text-base" />
+              <FaWhatsapp className="text-sm" />
               <span>WhatsApp Us</span>
             </a>
           </div>
@@ -535,7 +553,7 @@ const CategoryPage = ({ slug }) => {
         
         {/* Section Heading & Subtitle */}
         <div className="text-center max-w-2xl mx-auto mb-6">
-          <div className="text-red-600 text-xs font-black uppercase tracking-[0.2em] mb-1">
+          <div className="text-indigo-600 text-xs font-bold uppercase tracking-[0.2em] mb-1">
             FACTORY-DIRECT DESIGNS &amp; STYLES
           </div>
           <h2 
