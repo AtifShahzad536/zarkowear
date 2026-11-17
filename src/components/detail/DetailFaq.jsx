@@ -70,3 +70,4 @@ export default function DetailFaq({ productName = 'Custom Team Uniform', cleanSp
     </section>
   );
 }
+

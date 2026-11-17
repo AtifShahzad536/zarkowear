@@ -103,3 +103,4 @@ export default function DetailComparisonTable({ cleanSport = 'Soccer' }) {
     </section>
   );
 }
+

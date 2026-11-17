@@ -103,6 +103,25 @@ const router = createBrowserRouter([
       { path: "varsity-jackets", element: <Navigate to="/custom" replace /> },
       { path: "workwear", element: <Navigate to="/custom" replace /> },
 
+      // ✅ Additional Competitor/SEO Parent Category Slugs
+      { path: "custom-cricket-uniforms", element: <CategoryRoute slug="cricket" /> },
+      { path: "custom-ice-hockey-uniforms", element: <CategoryRoute slug="ice-hockey" /> },
+      { path: "custom-lacrosse-uniforms", element: <CategoryRoute slug="lacrosse" /> },
+      { path: "custom-rugby-uniforms", element: <CategoryRoute slug="rugby" /> },
+      { path: "custom-tennis-apparel", element: <CategoryRoute slug="tennis" /> },
+      { path: "custom-running-apparel", element: <CategoryRoute slug="running" /> },
+      { path: "custom-gym-fitness-wear", element: <CategoryRoute slug="gym" /> },
+      { path: "custom-streetwear-apparel", element: <CategoryRoute slug="streetwear" /> },
+      { path: "custom-wrestling-singlets", element: <CategoryRoute slug="wrestling" /> },
+      { path: "custom-sports-caps-headwear", element: <CategoryRoute slug="caps" /> },
+      { path: "custom-sports-gear-bags", element: <CategoryRoute slug="bags" /> },
+      { path: "custom-sports-gloves", element: <CategoryRoute slug="gloves" /> },
+
+      // ✅ Hierarchical Product Detail Routes (Matching Competitor Hamco SEO Architecture)
+      // e.g. /custom-baseball-uniforms/custom-baseball-cage-batting-jackets-01
+      // e.g. /baseball/custom-baseball-cage-batting-jackets-01
+      { path: ":categorySlug/:productSlug", element: <ProductInquiry /> },
+
       // ✅ 3D Jersey Builder
       { path: "builder", element: <BuilderPage /> },
       { path: "builder/models", element: <ModelSelectionPage /> },

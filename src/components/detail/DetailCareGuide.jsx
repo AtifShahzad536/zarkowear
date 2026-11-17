@@ -101,3 +101,4 @@ export default function DetailCareGuide({ cleanSport = 'Sports' }) {
     </section>
   );
 }
+

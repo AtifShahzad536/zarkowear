@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { useLocation, useNavigate, Link, useParams } from 'react-router-dom';
 import { imageUrl, getCategories, submitContactInquiry } from '../services/api';
 import toast from 'react-hot-toast';
 import SizeChartModal from './SizeChartModal';
@@ -10,6 +10,7 @@ import DetailPricingCalculator from './detail/DetailPricingCalculator';
 import DetailComparisonTable from './detail/DetailComparisonTable';
 import DetailCareGuide from './detail/DetailCareGuide';
 import DetailFaq from './detail/DetailFaq';
+import { PARENT_TO_SPORT_MAP, slugify, buildProductSlug } from '../utils/seoUrls';
 import {
   FaWhatsapp,
   FaArrowRight,
@@ -77,6 +78,7 @@ const CUSTOMIZATION_OPTIONS = [
 
 const ProductDetail = () => {
   const { pathname, search, state } = useLocation();
+  const params = useParams();
   const navigate = useNavigate();
 
   const [isSizeChartOpen, setIsSizeChartOpen] = useState(false);
@@ -129,7 +131,7 @@ const ProductDetail = () => {
       .catch((err) => console.error('Failed to load categories in Detail page:', err));
   }, []);
 
-  // Resolve Product from state, query parameter, or DB
+  // Resolve Product from state, query parameter, or dynamic path params
   useEffect(() => {
     // 1. Resolve from router state if available
     if (state?.product) {
@@ -143,11 +145,18 @@ const ProductDetail = () => {
       return;
     }
 
-    // 2. Resolve from search query parameter (?product=...)
+    // 2. Resolve from search query parameter (?product=...) or path params (/:categorySlug/:productSlug)
     const query = new URLSearchParams(search);
-    const productQuery = (query.get('product') || '').toLowerCase().trim();
+    const querySlug = (query.get('product') || '').toLowerCase().trim();
+    const pathProductSlug = (params?.productSlug || '').toLowerCase().trim();
+    const pathCategorySlug = (params?.categorySlug || '').toLowerCase().trim();
+    
+    // Convert parent category slug (e.g. "custom-baseball-uniforms") to short sport ("baseball")
+    const targetSportSlug = PARENT_TO_SPORT_MAP[pathCategorySlug] || pathCategorySlug.replace(/^custom-|-uniforms$|-apparel$|-singlets$/g, '');
 
-    if (!productQuery) {
+    const targetSlug = pathProductSlug || querySlug;
+
+    if (!targetSlug) {
       setProduct(defaultProduct);
       window.scrollTo(0, 0);
       return;
@@ -155,15 +164,27 @@ const ProductDetail = () => {
 
     let foundProduct = null;
 
+    // Helper matcher function
+    const matchesProduct = (item, catSlug = '') => {
+      if (!item) return false;
+      const itemId = (item.id || '').toLowerCase();
+      const itemNameSlug = cleanSlug(item.name);
+      const generatedSlug = buildProductSlug(item.name, item.id, catSlug).toLowerCase();
+      
+      return (
+        itemId === targetSlug ||
+        itemNameSlug === targetSlug ||
+        generatedSlug === targetSlug ||
+        targetSlug.endsWith(itemId) ||
+        targetSlug.includes(itemId) ||
+        targetSlug.endsWith(itemNameSlug)
+      );
+    };
+
     // Check backend categories first
     for (const cat of categoriesList) {
       if (Array.isArray(cat.products)) {
-        const p = cat.products.find(
-          item =>
-            (item.id && item.id.toLowerCase() === productQuery) ||
-            cleanSlug(item.name) === productQuery ||
-            item.name?.toLowerCase() === productQuery
-        );
+        const p = cat.products.find(item => matchesProduct(item, cat.slug));
         if (p) {
           foundProduct = { ...p, categorySlug: cat.slug, sport: cat.name };
           break;
@@ -175,13 +196,11 @@ const ProductDetail = () => {
     if (!foundProduct) {
       for (const catKey in categoryConfigs) {
         const cat = categoryConfigs[catKey];
-        if (cat.featured && (cleanSlug(cat.featured.name) === productQuery || cat.featured.name?.toLowerCase() === productQuery)) {
+        if (cat.featured && matchesProduct(cat.featured, catKey)) {
           foundProduct = { ...cat.featured, categorySlug: catKey };
           break;
         }
-        const p = cat.products?.find(
-          item => cleanSlug(item.name) === productQuery || item.name?.toLowerCase() === productQuery
-        );
+        const p = cat.products?.find(item => matchesProduct(item, catKey));
         if (p) {
           foundProduct = { ...p, categorySlug: catKey };
           break;
@@ -191,7 +210,7 @@ const ProductDetail = () => {
 
     setProduct(foundProduct || defaultProduct);
     window.scrollTo(0, 0);
-  }, [pathname, search, state, categoriesList]);
+  }, [pathname, search, state, categoriesList, params]);
 
   // Derive sport name and category link
   const sportInfo = useMemo(() => {

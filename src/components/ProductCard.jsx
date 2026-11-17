@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { imageUrl } from '../services/api';
 import { FaArrowRight, FaEye } from 'react-icons/fa';
 import { FiCheckCircle } from 'react-icons/fi';
+import { getProductUrl } from '../utils/seoUrls';
 
 const ProductCard = ({
   id,
@@ -19,6 +20,7 @@ const ProductCard = ({
 }) => {
   const displayImage = imageUrl(image || '/images/placeholder.jpg', { width: 800, quality: 'auto:best' });
   const productSlug = id || (name ? name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') : 'sportswear-item');
+  const targetUrl = getProductUrl({ id, name, categorySlug, sport: sportName }, categorySlug);
 
   const productData = { id, name, image, description, price, discount, categorySlug, sportName };
 
@@ -97,7 +99,7 @@ const ProductCard = ({
               Quick View
             </button>
             <Link
-              to={`/detail?product=${encodeURIComponent(productSlug)}`}
+              to={targetUrl}
               state={{ product: productData }}
               aria-label={`View ${name} specs and custom uniform details`}
               className="px-3.5 py-1.5 rounded-[5px] bg-slate-900 hover:bg-indigo-600 text-white text-xs font-bold uppercase tracking-wider transition flex items-center gap-1.5 shadow-2xs"
@@ -120,7 +122,7 @@ const ProductCard = ({
       >
         {/* Product Image with smooth hover zoom */}
         <Link
-          to={`/detail?product=${encodeURIComponent(productSlug)}`}
+          to={targetUrl}
           state={{ product: productData }}
           aria-label={`View ${name} product details`}
           className="h-full w-full flex items-center justify-center"
@@ -143,7 +145,7 @@ const ProductCard = ({
         <div className="p-3 sm:p-3.5 flex-1 flex flex-col justify-between items-center text-center space-y-2">
           <div className="space-y-1 w-full">
             <Link
-              to={`/detail?product=${encodeURIComponent(productSlug)}`}
+              to={targetUrl}
               state={{ product: productData }}
               aria-label={`View ${name} uniform details`}
               className="block"
@@ -163,7 +165,7 @@ const ProductCard = ({
 
           {/* Zarko Brand Indigo-Navy Action Button (NO RED) */}
           <Link
-            to={`/detail?product=${encodeURIComponent(productSlug)}`}
+            to={targetUrl}
             state={{ product: productData }}
             aria-label={`Get quote for ${name}`}
             className="w-full mt-2 py-2 px-3 rounded-[4px] bg-slate-900 hover:bg-indigo-600 text-white text-[11px] font-bold uppercase tracking-wider transition-all duration-150 flex items-center justify-center gap-1.5 shadow-xs"

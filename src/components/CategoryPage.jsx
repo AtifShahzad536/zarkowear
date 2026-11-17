@@ -28,6 +28,7 @@ import {
 import { FaWhatsapp, FaEye, FaRulerHorizontal } from 'react-icons/fa';
 import { categoryConfigs } from '../data/categories';
 import SeoHead from './SeoHead';
+import { getProductUrl } from '../utils/seoUrls';
 
 const SUBCATEGORY_MAP = {
   football: ['All', 'Jerseys', 'Pants', 'Elite Game Jerseys', 'Porthole Mesh Practice Jerseys', 'Integrated 7-Pad Pants', 'Slotted Game Pants', 'Compression Padded Girdles', 'Youth Tackle Football Kits'],
@@ -1109,7 +1110,7 @@ const CategoryPage = ({ slug }) => {
                   </a>
 
                   <Link
-                    to={`/detail?product=${encodeURIComponent(quickViewProduct.id || quickViewProduct.name?.toLowerCase().replace(/[^a-z0-9]+/g, '-'))}`}
+                    to={getProductUrl(quickViewProduct, slug)}
                     state={{ product: quickViewProduct }}
                     className="w-full py-2 rounded-[5px] bg-slate-100 hover:bg-slate-200 text-slate-900 text-xs font-bold uppercase tracking-wider text-center transition"
                   >
