@@ -110,19 +110,19 @@ const About = () => {
   return (
     <main className="min-h-screen bg-white">
       <SeoHead
-        title="About Zarko Sportswear | Custom Sportswear Manufacturer in Sialkot"
-        description="Discover Zarko Sportswear: established sportswear manufacturer in Sialkot, Pakistan, crafting export-grade team uniforms, jerseys & athletic apparel for USA & global teams."
+        title="About Zarko Sportswear — Custom Team Uniforms Manufacturer"
+        description="Zarko Sportswear is a Sialkot factory making custom team uniforms for 500+ US teams since 2012. Meet the founders, see the factory, and get a free mockup."
         canonical="https://www.zarkosportswear.com/about"
-        keywords="sportswear manufacturer sialkot, custom sports uniforms USA, custom team jerseys, sportswear exporter pakistan"
+        keywords="about zarko sportswear, custom sportswear manufacturer sialkot, custom team uniforms manufacturer, factory direct team uniforms USA"
         jsonLd={jsonLd}
         openGraph={{
-          'og:title': 'About Zarko Sportswear | Custom Sportswear Manufacturer in Sialkot',
-          'og:description': 'Discover Zarko Sportswear: established sportswear manufacturer in Sialkot, Pakistan, crafting export-grade team uniforms, jerseys & athletic apparel for USA & global teams.',
+          'og:title': 'About Zarko Sportswear — Custom Team Uniforms Manufacturer',
+          'og:description': 'Zarko Sportswear is a Sialkot factory making custom team uniforms for 500+ US teams since 2012. Meet the founders, see the factory, and get a free mockup.',
           'og:url': 'https://www.zarkosportswear.com/about',
         }}
         twitter={{
-          'twitter:title': 'About Zarko Sportswear | Custom Sportswear Manufacturer in Sialkot',
-          'twitter:description': 'Discover Zarko Sportswear: established sportswear manufacturer in Sialkot, Pakistan, crafting export-grade team uniforms, jerseys & athletic apparel for USA & global teams.',
+          'twitter:title': 'About Zarko Sportswear — Custom Team Uniforms Manufacturer',
+          'twitter:description': 'Zarko Sportswear is a Sialkot factory making custom team uniforms for 500+ US teams since 2012. Meet the founders, see the factory, and get a free mockup.',
         }}
       />
       <section>
@@ -132,7 +132,7 @@ const About = () => {
               Direct Sportswear Manufacturer
             </span>
             <h1 className="mt-5 text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-indigo-900 leading-tight">
-              Bespoke Athletic Apparel & Custom Teamwear Solutions
+              About Zarko Sportswear — Custom Team Uniforms Manufacturer
             </h1>
             <p className="mt-4 text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
               Zarko Sportswear is a premier private label sportswear factory. We partner directly with athletic clubs, collegiate programs, high schools, and wholesale apparel brands across the United States, UK, and Australia to manufacture high-performance team uniforms, custom soccer kits, sublimated wrestling singlets, and premium activewear.

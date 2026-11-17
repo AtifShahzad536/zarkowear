@@ -136,13 +136,23 @@ const megaCategories = {
       },
       {
         name: 'Soccer',
-        to: '/soccer',
+        to: '/custom-soccer-uniforms',
         subs: [
           { label: 'Matchday Striker Jerseys', to: '/soccer?sub=Matchday Striker Jerseys' },
           { label: 'Performance Match Shorts', to: '/soccer?sub=Performance Match Shorts' },
-          { label: 'Padded Goalkeeper Kits', to: '/soccer?sub=Padded Goalkeeper Kits' },
+          { label: 'Padded Goalkeeper Kits', to: '/custom-goalkeeper-uniforms' },
           { label: 'Club Training Tops & Bibs', to: '/soccer?sub=Club Training Tops & Bibs' },
           { label: 'Soccer Travel Tracksuits', to: '/soccer?sub=Soccer Travel Tracksuits' }
+        ]
+      },
+      {
+        name: 'Goalkeeper Gear',
+        to: '/custom-goalkeeper-uniforms',
+        subs: [
+          { label: 'Padded Goalkeeper Kits', to: '/custom-goalkeeper-uniforms' },
+          { label: 'German Latex Goalie Gloves', to: '/custom-goalkeeper-uniforms?sub=Goalkeeper Gloves' },
+          { label: 'Padded Goalie Pants', to: '/custom-goalkeeper-uniforms?sub=Padded Pants' },
+          { label: 'Padded Goalie Shorts', to: '/custom-goalkeeper-uniforms?sub=Padded Shorts' }
         ]
       },
       {

@@ -147,7 +147,7 @@ const Custom = ({ isEmbedded = false }) => {
             <div>
               <h2 className="font-semibold text-slate-800 text-sm">Free Design & Mockups</h2>
               <p className="text-[11px] text-slate-500 mt-2 leading-relaxed">
-                Send us your logos, sketches, or design ideas. Our professional design squad will draft digital mockups for your team within 24 hours — completely free.
+                Send us your logos, sketches, or design ideas. Our professional design squad will draft digital mockups for your team within 12 hours — completely free.
               </p>
             </div>
           </motion.div>
@@ -162,9 +162,9 @@ const Custom = ({ isEmbedded = false }) => {
               <FaTags />
             </div>
             <div>
-              <h2 className="font-semibold text-slate-800 text-sm">No Minimum Quantities</h2>
+              <h2 className="font-semibold text-slate-800 text-sm">Low 15-Set Minimum — Free Mockup Included</h2>
               <p className="text-[11px] text-slate-500 mt-2 leading-relaxed">
-                Whether you need to outfit a roster of 100 players or simply want a single replacement jersey, we support low and no MOQ orders to keep sizing flexible.
+                Standard team orders start at a low 15 sets per design, with single replacement jersey reorders supported for returning teams.
               </p>
             </div>
           </motion.div>

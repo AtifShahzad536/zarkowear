@@ -1,10 +1,10 @@
 const homeSeo = {
-  title: "Sports Wear Manufacturer Sialkot | Custom Uniforms | Zarko",
+  title: "Custom Team Sports Uniforms — Factory Direct, No Middleman | Zarko",
   description:
-    "Custom sports wear manufacturer in Sialkot, Pakistan. Factory direct team uniforms, sublimated jerseys & wrestling singlets with fast USA delivery. Low MOQ!",
+    "Factory-direct custom team uniforms from Sialkot to the USA. Free 12-hour mockups, DDP door-to-door delivery with duties paid, low 15-set MOQ. Get your free quote today.",
   canonical: "https://www.zarkosportswear.com/",
   keywords:
-    "sports wear sialkot, sports wear in sialkot, sports manufacturer in sialkot, custom sportswear manufacturer, factory direct team uniforms USA, sublimation sportswear",
+    "custom team sports uniforms, custom team uniforms USA, factory direct team uniforms, sublimated sports uniforms, custom sports jerseys, low moq custom teamwear, high school team uniforms wholesale",
   author: "Zarko Sportswear",
   robots: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   themeColor: "#0A0C16",
@@ -12,9 +12,9 @@ const homeSeo = {
   siteName: "Zarko Sportswear",
   locale: "en_US",
   openGraph: {
-    'og:title': 'Sports Wear Manufacturer Sialkot | Custom Uniforms | Zarko',
+    'og:title': 'Custom Team Sports Uniforms — Factory Direct, No Middleman | Zarko',
     'og:description':
-      'Custom sports wear manufacturer in Sialkot, Pakistan. Factory direct team uniforms, sublimated jerseys & wrestling singlets with fast USA delivery. Low MOQ!',
+      'Factory-direct custom team uniforms from Sialkot to the USA. Free 12-hour mockups, DDP door-to-door delivery with duties paid, low 15-set MOQ. Get your free quote today.',
     'og:url': 'https://www.zarkosportswear.com/',
     'og:image': 'https://www.zarkosportswear.com/new-logo.png',
     'og:image:width': '512',
@@ -24,9 +24,9 @@ const homeSeo = {
     'og:locale': 'en_US',
   },
   twitter: {
-    'twitter:title': 'Sports Wear Manufacturer Sialkot | Custom Uniforms | Zarko',
+    'twitter:title': 'Custom Team Sports Uniforms — Factory Direct, No Middleman | Zarko',
     'twitter:description':
-      'Custom sports wear manufacturer in Sialkot, Pakistan. Factory direct team uniforms, sublimated jerseys & wrestling singlets with fast USA delivery. Low MOQ!',
+      'Factory-direct custom team uniforms from Sialkot to the USA. Free 12-hour mockups, DDP door-to-door delivery with duties paid, low 15-set MOQ. Get your free quote today.',
     'twitter:card': 'summary_large_image',
     'twitter:image': 'https://www.zarkosportswear.com/new-logo.png',
     'twitter:site': '@zarkosportswear',

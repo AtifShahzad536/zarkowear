@@ -16,10 +16,10 @@ function escapeAttr(str) {
 // Comprehensive route metadata and rich static SEO body content (300-500+ words per page)
 const routesData = {
   '/about': {
-    title: 'About Zarko Sportswear | USA Custom Sports Uniform Manufacturer',
-    description: 'Learn how Zarko Sportswear manufactures high-performance custom team jerseys, wrestling singlets, and athletic uniforms with direct factory USA shipping.',
+    title: 'About Zarko Sportswear — Custom Team Uniforms Manufacturer',
+    description: 'Zarko Sportswear is a Sialkot factory making custom team uniforms for 500+ US teams since 2012. Meet the founders, see the factory, and get a free mockup.',
     canonical: 'https://www.zarkosportswear.com/about',
-    h1: 'About Zarko Sportswear - Premier USA Custom Sportswear Manufacturer',
+    h1: 'About Zarko Sportswear — Custom Team Uniforms, Made in Sialkot',
     bodyContent: `
       <section class="seo-content-block">
         <h2>Factory-Direct Custom Teamwear & Sports Uniform Manufacturing</h2>
@@ -43,10 +43,10 @@ const routesData = {
     `
   },
   '/contact': {
-    title: 'Contact Zarko Sportswear | Request Free Uniform Quote USA',
-    description: 'Contact Zarko Sportswear for factory-direct sports uniform quotes, fabric swatches, and team sizing assistance. Fast response & USA express delivery.',
+    title: 'Contact Zarko Sportswear — Free Custom Uniform Quote in 2–4 Hours',
+    description: 'Contact Zarko Sportswear for a free custom uniform quote. WhatsApp +92-303-9200750 or email zarkosportswear@gmail.com — replies within 2–4 business hours.',
     canonical: 'https://www.zarkosportswear.com/contact',
-    h1: 'Contact Zarko Sportswear - USA Customer & Order Support Desk',
+    h1: 'Contact Zarko Sportswear — Free Custom Uniform Quote in 2–4 Hours',
     bodyContent: `
       <section class="seo-content-block">
         <h2>Get in Touch for Custom Sports Uniform Quotes & Bulk Inquiries</h2>
@@ -150,10 +150,10 @@ const routesData = {
     `
   },
   '/blogs': {
-    title: 'Custom Sportswear Blog & Uniform Guides | Zarko Sportswear',
-    description: 'Read expert sportswear manufacturing guides, sublimation jersey design tips, fabric comparisons, and team uniform care tutorials from Zarko Sportswear USA.',
+    title: 'Custom Sportswear Blog — Uniform Guides, Costs & Design Tips | Zarko',
+    description: 'Guides on custom team uniforms: costs, fabrics, sizing, NFHS rules & design ideas for coaches, clubs & schools. New guides from the Zarko factory team.',
     canonical: 'https://www.zarkosportswear.com/blogs',
-    h1: 'Zarko Sportswear Blog - Sports Uniform Design Guides & Industry Insights',
+    h1: 'Custom Sportswear Blog & Uniform Guides',
     bodyContent: `
       <section class="seo-content-block">
         <h2>Expert Sportswear Manufacturing Guides & Athletic Apparel Trends</h2>
@@ -218,32 +218,32 @@ const routesData = {
   },
   // Sports category pages
   '/football': {
-    title: 'Custom Football Uniforms & Jerseys USA | Zarko Sportswear',
-    description: 'Design premium custom sublimation football uniforms and team jerseys. Factory-direct durable fabrics, custom numbers, team logos, and fast USA delivery.',
+    title: 'Custom Football Jerseys & Uniforms — Youth, High School & Adult | Zarko',
+    description: 'Custom American football jerseys & uniform sets for youth, high school & adult teams. Sublimated names & numbers, free mockup, DDP delivery to the USA.',
     canonical: 'https://www.zarkosportswear.com/football',
-    h1: 'Custom Football & Soccer Uniforms Manufacturer USA',
+    h1: 'Custom American Football Jerseys & Uniforms Manufacturer USA',
     bodyContent: `
       <section class="seo-content-block">
-        <h2>Professional Custom Sublimation Football & Soccer Kits for USA Teams</h2>
-        <p>Zarko Sportswear manufactures championship-quality custom football kits and soccer uniforms engineered for maximum athletic performance, breathability, and durability on the pitch. Supplying youth academies, high schools, competitive clubs, and adult leagues across the USA, our factory-direct football apparel delivers pro-tier craftsmanship at wholesale prices.</p>
+        <h2>Professional Custom American Football Uniforms & Jerseys for USA Programs</h2>
+        <p>Zarko Sportswear manufactures championship-grade custom American football uniforms and game jerseys engineered for maximum gridiron durability, tear resistance, and high-velocity mobility. Supplying high school athletic programs, JV teams, youth tackle leagues, semi-pro squads, and 7v7 programs across the USA, our factory-direct football gear delivers pro-tier specs at wholesale pricing.</p>
 
-        <h2>Engineered Fabric Technology & Features</h2>
+        <h2>Gridiron Engineered Fabric Technology & Specs</h2>
         <ul>
-          <li><strong>Dri-FIT Moisture Management:</strong> Lightweight 160–180 GSM micro-interlock polyester fabric pulls sweat away from the body to keep players dry and cool during 90+ minutes of high-intensity play.</li>
-          <li><strong>Laser-Cut Mesh Ventilation:</strong> Strategic underarm and side-torso mesh inserts optimize airflow and heat dissipation.</li>
-          <li><strong>4K Full-Dye Sublimation:</strong> Vivid, high-definition club crests, sponsor graphics, player names, and numbers infused directly into the fabric — guaranteed never to crack, peel, or fade.</li>
-          <li><strong>Ergonomic Athletic Cut:</strong> Raglan sleeves and 4-way stretch collar construction allow complete freedom of motion for sprinting, passing, and shooting.</li>
-          <li><strong>Complete Kit Packages:</strong> Matching matchday jerseys, training shorts, custom goalkeeper sets with padded elbows, and sublimated socks.</li>
+          <li><strong>240–260 GSM Pro-Interlock & Dazzle Cowl:</strong> Heavy-duty tear-resistant polyester constructed to withstand high-impact tackles and field friction without seam failure.</li>
+          <li><strong>Reinforced Double-Ply Shoulder Yoke:</strong> Double-layered shoulders and upper chest tailored for seamless pad clearance and zero helmet restriction.</li>
+          <li><strong>4K Full Sublimation & Tackle Twill Numbers:</strong> Crisp NFHS/NCAA regulation numbers, team wordmarks, and player names that will never peel or crack.</li>
+          <li><strong>Spandex Underarm & Side Inserts:</strong> High-stretch elastic compression panels providing full arm extension for throwing, catching, and blocking.</li>
+          <li><strong>Integrated 7-Pad Pants & Girdles:</strong> Slotted and integrated pad football pants engineered with bar-tacked stress points.</li>
         </ul>
 
-        <h2>Low MOQ & Fast Door-to-Door USA Delivery</h2>
-        <p>Order custom soccer kits with a low minimum order of just 25 sets. Our automated manufacturing pipeline ensures rapid production in 10–14 days with express door-to-door air freight to all 50 US states. Contact us today for a free design mockup and team quote.</p>
+        <h2>Low 15-Set MOQ & Express USA Fulfillment</h2>
+        <p>Outfit your varsity, JV, or youth football roster with a low minimum order of just 15 sets. Production takes 8–12 business days with fast DDP express air shipping directly to your facility door in Texas, Florida, California, Ohio, or nationwide.</p>
       </section>
     `
   },
   '/baseball': {
-    title: 'Custom Baseball Jerseys & Uniforms USA | Zarko Sportswear',
-    description: 'Order premium custom sublimation baseball jerseys and team uniforms. Breathable moisture-wicking fabrics, custom tackle twill, and fast USA delivery.',
+    title: 'Custom Baseball Jerseys & Uniforms — Sublimated & Tackle Twill | Zarko',
+    description: 'Custom baseball jerseys & full-button uniform sets for youth, travel ball & high school teams. Sublimation or tackle twill, free mockup, DDP USA delivery.',
     canonical: 'https://www.zarkosportswear.com/baseball',
     h1: 'Custom Baseball Jerseys & Uniforms Manufacturer USA',
     bodyContent: `
@@ -312,10 +312,10 @@ const routesData = {
     `
   },
   '/basketball': {
-    title: 'Custom Basketball Jersey Manufacturer Wholesale | Zarko USA',
-    description: 'Leading basketball clothing manufacturer specializing in wholesale sublimated team jerseys, reversible tops & mesh shorts for AAU & schools. Fast USA shipping!',
+    title: 'Custom Basketball Jerseys & Uniforms — AAU, High School & Youth | Zarko',
+    description: 'Wholesale custom basketball jerseys, reversible tops & mesh shorts for AAU, high school & youth teams. Free 12-hour mockup, fast DDP shipping to the USA.',
     canonical: 'https://www.zarkosportswear.com/basketball',
-    h1: 'Custom Basketball Jersey Manufacturer & Wholesale Team Uniforms',
+    h1: 'Custom Basketball Jerseys & Wholesale Team Uniforms Manufacturer',
     bodyContent: `
       <section class="seo-content-block">
         <h2>Which Companies Specialize in Basketball Jerseys for Teams?</h2>
@@ -473,8 +473,8 @@ const routesData = {
     `
   },
   '/soccer': {
-    title: 'Custom Soccer Jerseys & Uniforms USA | Zarko Sportswear',
-    description: 'Design premium custom soccer jerseys, goalie kits, and team uniforms. Full sublimation printing, breathable mesh, and fast shipping to USA soccer clubs.',
+    title: 'Custom Soccer Jerseys & Uniforms — Free Mockup in 12 Hours | Zarko',
+    description: 'Custom sublimated soccer jerseys & full kits for youth, high school, club & travel teams. Free 12-hour mockup, NFHS/NCAA compliant, DDP delivery to the USA.',
     canonical: 'https://www.zarkosportswear.com/soccer',
     h1: 'Custom Soccer Jerseys & Team Kits Manufacturer USA',
     bodyContent: `
@@ -490,13 +490,37 @@ const routesData = {
           <li><strong>Complete Youth & Adult Sizing:</strong> Sizing from Youth Extra Small (YXS) through Adult 4XL with tailored cuts for men, women, and youth.</li>
         </ul>
 
-        <p>Order custom soccer jerseys with factory-direct pricing, 25-kit low minimums, and fast USA delivery.</p>
+        <h2>Low 15-Set MOQ & Fast Door-to-Door USA Delivery</h2>
+        <p>Order custom soccer jerseys with factory-direct pricing, 15-set low minimums, and fast USA delivery.</p>
+      </section>
+    `
+  },
+  '/custom-goalkeeper-uniforms': {
+    title: 'Custom Goalkeeper Jerseys & Gloves — Padded Kits | Zarko',
+    description: 'Custom goalkeeper jerseys, padded shorts and German-latex gloves for youth, high school and club keepers. Free 12-hour mockup, DDP delivery to the USA.',
+    canonical: 'https://www.zarkosportswear.com/custom-goalkeeper-uniforms',
+    h1: 'Custom Goalkeeper Jerseys, Kits & Gloves Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Professional Custom Padded Goalkeeper Kits & German Latex Gloves</h2>
+        <p>Goalkeepers require specialized protection and high-visibility contrast that adheres strictly to IFAB Law 4 and NFHS regulations. Zarko Sportswear manufactures championship-grade custom goalkeeper uniforms with integrated anatomical EVA foam padding at the elbows and hips, plus matchday goalie gloves engineered with German contact latex for all-weather grip.</p>
+
+        <h2>Goalkeeper Kit Specifications</h2>
+        <ul>
+          <li><strong>Impact-Absorbing EVA Foam Padding:</strong> Ergonomically positioned elbow and hip zones protect keepers during hard turf dives.</li>
+          <li><strong>IFAB Law 4 Compliant Colorways:</strong> High-visibility neon lime, hyper-violet, electric cyan, and solar orange palettes that distinctly separate keepers from outfield players and officials.</li>
+          <li><strong>German Contact Latex Gloves:</strong> 4mm German Giga Grip or Contact Latex palms with optional removable finger spines and negative-cut stitching.</li>
+          <li><strong>Heavy-Duty Interlock Pants:</strong> Padded goalkeeper pants with elastic stirrups or tapered rib cuffs.</li>
+        </ul>
+
+        <h2>Low 15-Set MOQ & DDP USA Express Delivery</h2>
+        <p>Order custom goalkeeper kits direct from our manufacturing facility with free 12-hour mockups and express delivery to the USA.</p>
       </section>
     `
   },
   '/volleyball': {
-    title: 'Custom Volleyball Jerseys & Uniforms USA | Zarko Sportswear',
-    description: 'Custom volleyball jerseys, spandex shorts, and warmups. Ergonomic form-fitting cuts, vibrant sublimation graphics, and fast turnaround across the USA.',
+    title: 'Custom Volleyball Jerseys & Uniforms — Club, High School & Libero | Zarko',
+    description: 'Custom volleyball jerseys, spandex shorts & libero jerseys for club, high school & youth teams. Vibrant sublimation, free 12-hour mockup, DDP USA delivery.',
     canonical: 'https://www.zarkosportswear.com/volleyball',
     h1: 'Custom Volleyball Jerseys & Uniforms Manufacturer USA',
     bodyContent: `

@@ -73,10 +73,10 @@ export default function Blogs() {
   return (
     <>
       <SeoHead
-        title="Custom Sportswear Blog & Uniform Guides | Zarko Sportswear"
-        description="Read expert sportswear manufacturing guides, sublimation jersey design tips, fabric comparisons, and team uniform care tutorials from Zarko Sportswear USA."
+        title="Custom Sportswear Blog — Uniform Guides, Costs & Design Tips | Zarko"
+        description="Guides on custom team uniforms: costs, fabrics, sizing, NFHS rules & design ideas for coaches, clubs & schools. New guides from the Zarko factory team."
         canonical="https://www.zarkosportswear.com/blogs"
-        keywords="sportswear blog, custom uniforms guide, jersey customization tips, sialkot sports factory, zarko wear blogs"
+        keywords="custom sportswear blog, uniform guides, how much do custom uniforms cost, team uniform sizing guide, sublimated jerseys guide"
       />
 
       {/* Main Wrapper with sports stadium background overlay */}
@@ -121,18 +121,21 @@ export default function Blogs() {
               </svg>
             </div>
 
-            {/* Title: BLOG */}
-            <div className="z-10 pl-[80px] sm:pl-[160px] rounded-none">
+            {/* Title: Custom Sportswear Blog & Uniform Guides */}
+            <div className="z-10 pl-[80px] sm:pl-[160px] rounded-none py-2">
               <h1
-                className="text-4xl sm:text-6xl font-black italic tracking-wider text-slate-800 rounded-none"
+                className="text-2xl sm:text-3xl md:text-4xl font-black italic tracking-wide text-slate-800 rounded-none uppercase"
                 style={{
                   fontFamily: "'Poppins', sans-serif",
                   color: '#1e293b',
                   textShadow: '2px 2px 0px #fff, -2px -2px 0px #fff, 2px -2px 0px #fff, -2px 2px 0px #fff'
                 }}
               >
-                BLOG
+                Custom Sportswear Blog &amp; Guides
               </h1>
+              <p className="hidden sm:block text-[11px] md:text-xs text-slate-600 font-medium max-w-xl mt-1 leading-snug">
+                Practical guides on custom team uniforms, production costs, fabric specs, sizing charts, and NFHS regulation rules for USA coaches, athletic directors, and club programs.
+              </p>
             </div>
 
             {/* Search Input Box - Flat corners */}

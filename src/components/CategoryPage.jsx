@@ -3,6 +3,11 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { getCategory, imageUrl } from '../services/api';
 import ProductCard from './ProductCard';
 import Custom from '../pages/Custom';
+import CategoryPricingCalculator from './category/CategoryPricingCalculator';
+import CategoryBuyerSections from './category/CategoryBuyerSections';
+import CategorySizeChart from './category/CategorySizeChart';
+import CategorySeasonDeadlines from './category/CategorySeasonDeadlines';
+import CategoryCaseStudies from './category/CategoryCaseStudies';
 import { 
   FiSearch, 
   FiX, 
@@ -42,6 +47,7 @@ const SUBCATEGORY_MAP = {
   caps: ['All', 'Snapback Caps', 'Baseball Caps', 'Visors', 'Beanies'],
   bags: ['All', 'Duffel Bags', 'Backpacks', 'Team Gear Bags'],
   gloves: ['All', 'Batting Gloves', 'Goalkeeper Gloves', 'Training Gloves'],
+  goalkeeper: ['All', 'Padded Jerseys', 'Padded Pants', 'Padded Shorts', 'Goalkeeper Gloves'],
   shoes: ['All', 'Pro Socks', 'Athletic Footwear'],
 };
 
@@ -155,9 +161,35 @@ const CategoryPage = ({ slug }) => {
   }, [slug, fallbackConfig]);
 
   const cleanSport = useMemo(() => {
+    const slugMap = {
+      soccer: 'Soccer',
+      football: 'American Football',
+      basketball: 'Basketball',
+      baseball: 'Baseball',
+      volleyball: 'Volleyball',
+      softball: 'Softball',
+      'ice-hockey': 'Ice Hockey',
+      hockey: 'Field Hockey',
+      cricket: 'Cricket',
+      wrestling: 'Wrestling',
+      rugby: 'Rugby',
+      tennis: 'Tennis',
+      running: 'Running',
+      gym: 'Gym & Activewear',
+      lacrosse: 'Lacrosse',
+      streetwear: 'Streetwear',
+      shoes: 'Athletic Shoes',
+      gloves: 'Sports Gloves',
+      goalkeeper: 'Goalkeeper',
+      caps: 'Caps & Headwear',
+      bags: 'Sports Bags',
+    };
+    if (slug && slugMap[slug]) return slugMap[slug];
     if (!data?.name) return 'Sportswear';
-    return data.name.replace(/( Kits & Apparel| Singlets & Gear| Apparel & Accessories| & Training Gear| & Footwear| & Hand Protection| & Headwear| & Gear Packs| Uniforms & Gear)/gi, '');
-  }, [data?.name]);
+    return data.name
+      .replace(/( Kits & Uniforms| Uniforms & Kits| Kits & Apparel| Singlets & Gear| Apparel & Accessories| & Training Gear| & Footwear| & Hand Protection| & Headwear| & Gear Packs| Uniforms & Gear| Uniforms| Kits)/gi, '')
+      .trim();
+  }, [slug, data?.name]);
 
   const subcategories = useMemo(() => {
     const fromProducts = Array.isArray(data?.products)
@@ -434,7 +466,7 @@ const CategoryPage = ({ slug }) => {
               className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight uppercase"
               style={{ fontFamily: "'Outfit', sans-serif" }}
             >
-              {cleanSport.toUpperCase()} KITS & APPAREL
+              CUSTOM {cleanSport.toUpperCase()} JERSEYS &amp; UNIFORMS
             </h1>
             <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
               {description || `Engineered for high-impact performance. NFHS & NCAA compliant custom ${cleanSport.toLowerCase()} uniforms featuring heavy double-knit dazzle, reinforced yoke, and integrated pad pants. Available for bespoke wholesale OEM production.`}
@@ -768,6 +800,21 @@ const CategoryPage = ({ slug }) => {
           </div>
         </div>
 
+        {/* ── 10-BLOCK BLUEPRINT: TIERED PRICING & INTERACTIVE CALCULATORS ── */}
+        <CategoryPricingCalculator slug={slug} cleanSport={cleanSport} />
+
+        {/* ── 10-BLOCK BLUEPRINT: BUYER-TYPE SECTIONS & SUB-PRODUCTS ── */}
+        <CategoryBuyerSections slug={slug} cleanSport={cleanSport} />
+
+        {/* ── 10-BLOCK BLUEPRINT: SIZE CHARTS & HOW TO MEASURE ── */}
+        <CategorySizeChart cleanSport={cleanSport} />
+
+        {/* ── 10-BLOCK BLUEPRINT: SEASON APPROVE-BY DEADLINES TABLE ── */}
+        <CategorySeasonDeadlines cleanSport={cleanSport} />
+
+        {/* ── 10-BLOCK BLUEPRINT: VERIFIED CASE STUDIES & REAL REVIEWS ── */}
+        <CategoryCaseStudies cleanSport={cleanSport} />
+
         {/* ── USA B2B SOURCING AUTHORITY & SEO SECTION (FOR GOOGLE USA RANKINGS) ── */}
         <section className="mt-16 pt-10 border-t border-slate-200/90 space-y-8">
           
@@ -1026,7 +1073,7 @@ const CategoryPage = ({ slug }) => {
         )}
 
         {/* ── BESPOKE CUSTOM LAB SECTION ── */}
-        <section className="mt-24 border-t border-slate-200/60 pt-16">
+        <section id="quote-form-section" className="mt-24 border-t border-slate-200/60 pt-16 scroll-mt-20">
           <SectionTitle
             eyebrow="Custom OEM Atelier"
             title="Need something fully custom made?"
@@ -1050,7 +1097,7 @@ const CategoryPage = ({ slug }) => {
               At Zarko Sportswear, we engineer factory-direct custom {cleanSport.toLowerCase()} uniforms and team kits for American high schools, collegiate programs, semi-pro clubs, and sports brands across the USA and worldwide. Our manufacturing facility in Sialkot, Pakistan integrates high-definition Italian dye-sublimation machines, computerized tackle-twill embroidery, and heavy-duty interlock fabrics to produce uniforms that resist tearing, fading, and peeling.
             </p>
             <p className="text-sm sm:text-base leading-relaxed">
-              Whether you require NFHS pad-integrated football game pants, 240 GSM compression singlets, or sublimated moisture-wicking jerseys, our factory guarantees 12-hour turnaround on digital design mockups and fast Door-to-Door DDP air express shipping directly to your team headquarters.
+              Whether you require custom {cleanSport.toLowerCase()} game jerseys, moisture-wicking team sets, or complete sideline apparel, our factory guarantees 12-hour turnaround on digital design mockups, low 15-set MOQ, and fast Door-to-Door DDP air express shipping directly to your team headquarters.
             </p>
           </div>
         </section>

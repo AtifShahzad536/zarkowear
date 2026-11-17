@@ -11,11 +11,11 @@ import { COMPANY_DETAILS } from '../data/constants';
 import { submitContactInquiry } from '../services/api';
 
 const SPORTS_CATEGORIES = [
-  '⚽ Custom Football Uniforms & Jerseys',
+  '🏈 American Football Uniforms & Jerseys',
   '🏀 Basketball Jerseys & Team Shorts',
   '🤼 Wrestling Singlets & Compression Gear',
   '🏏 Cricket Uniforms & Whites',
-  '⚽ Soccer Sublimated Uniforms & Strips',
+  '⚽ Soccer Uniforms & Matchday Kits',
   '🏑 Field / Ice Hockey Uniforms',
   '🏉 Rugby Jerseys & Team Uniforms',
   '🏃 Tracksuits & Athletic Training Wear',
@@ -28,13 +28,13 @@ const SPORTS_CATEGORIES = [
 const ORDER_TYPES = [
   'Full Custom Sublimation & Teamwear',
   'OEM / Private Label Brand Manufacturing',
-  'Bulk Wholesale Order (MOQ 10+ Pcs)',
+  'Bulk Wholesale Order (Low 15-Set MOQ)',
   'Custom 3D Mockup & Sample Prototype',
   'Contract Embroidery & Screen Printing'
 ];
 
 const QUANTITY_RANGES = [
-  '10 – 25 Pcs (Small Club / Squad)',
+  '15 – 25 Pcs (Small Club / Squad)',
   '25 – 100 Pcs (School / Academy)',
   '100 – 300 Pcs (League / Tournament)',
   '300 – 1,000+ Pcs (Wholesale / Brand)',
@@ -183,19 +183,19 @@ const Contact = () => {
   return (
     <main className="min-h-screen bg-slate-50/50">
       <SeoHead
-        title="Contact Zarko Sportswear | Request Free Custom Uniform Quote"
-        description="Get in touch with Zarko Sportswear for factory-direct custom uniform quotes, digital mockups, and fabric swatches. Fast response via WhatsApp or email."
+        title="Contact Zarko Sportswear — Free Custom Uniform Quote in 2–4 Hours"
+        description="Contact Zarko Sportswear for a free custom uniform quote. WhatsApp +92-303-9200750 or email zarkosportswear@gmail.com — replies within 2–4 business hours."
         canonical="https://www.zarkosportswear.com/contact"
-        keywords="order sports uniforms USA, custom teamwear factory, sportswear manufacturer Sialkot, custom uniform quote, wrestling singlets wholesale"
+        keywords="contact zarko sportswear, custom uniform quote, custom team uniforms quote USA, factory direct teamwear quote, custom sports jerseys wholesale"
         jsonLd={jsonLd}
         openGraph={{
-          'og:title': 'Contact Zarko Sportswear | Request Free Custom Uniform Quote',
-          'og:description': 'Factory-direct custom team jerseys, wrestling singlets, football uniforms, and private label sportswear with fast USA express shipping.',
+          'og:title': 'Contact Zarko Sportswear — Free Custom Uniform Quote in 2–4 Hours',
+          'og:description': 'Contact Zarko Sportswear for a free custom uniform quote. WhatsApp +92-303-9200750 or email zarkosportswear@gmail.com — replies within 2–4 business hours.',
           'og:url': 'https://www.zarkosportswear.com/contact',
         }}
         twitter={{
-          'twitter:title': 'Contact Zarko Sportswear | Request Free Custom Uniform Quote',
-          'twitter:description': 'Factory-direct custom team jerseys, wrestling singlets, football uniforms, and private label sportswear with fast USA express shipping.',
+          'twitter:title': 'Contact Zarko Sportswear — Free Custom Uniform Quote in 2–4 Hours',
+          'twitter:description': 'Contact Zarko Sportswear for a free custom uniform quote. WhatsApp +92-303-9200750 or email zarkosportswear@gmail.com — replies within 2–4 business hours.',
         }}
       />
 
@@ -219,7 +219,7 @@ const Contact = () => {
             {/* Quick Trust Highlights */}
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs font-semibold text-slate-300">
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                <FaCheckCircle className="text-emerald-400" /> Low MOQ (10 Pcs)
+                <FaCheckCircle className="text-emerald-400" /> Low 15-Set MOQ
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
                 <FaTshirt className="text-indigo-400" /> Free 3D Digital Mockup
