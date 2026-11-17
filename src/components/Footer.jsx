@@ -66,13 +66,13 @@ const Footer = () => {
               Team Sports
             </h3>
             <ul className="space-y-1 text-xs font-semibold text-slate-400">
-              <li><Link to="/football" className="inline-block py-1 hover:text-white transition">Football Uniforms</Link></li>
-              <li><Link to="/soccer" className="inline-block py-1 hover:text-white transition">Soccer Kits</Link></li>
-              <li><Link to="/wrestling" className="inline-block py-1 hover:text-white transition">Wrestling Singlets</Link></li>
-              <li><Link to="/baseball" className="inline-block py-1 hover:text-white transition">Baseball Uniforms</Link></li>
-              <li><Link to="/basketball" className="inline-block py-1 hover:text-white transition">Basketball Uniforms</Link></li>
-              <li><Link to="/cricket" className="inline-block py-1 hover:text-white transition">Cricket Kits</Link></li>
-              <li><Link to="/softball" className="inline-block py-1 hover:text-white transition">Softball Uniforms</Link></li>
+              <li><Link to="/custom-football-uniforms" className="inline-block py-1 hover:text-white transition">Football Uniforms</Link></li>
+              <li><Link to="/custom-soccer-uniforms" className="inline-block py-1 hover:text-white transition">Soccer Kits</Link></li>
+              <li><Link to="/custom-wrestling-singlets" className="inline-block py-1 hover:text-white transition">Wrestling Singlets</Link></li>
+              <li><Link to="/custom-baseball-uniforms" className="inline-block py-1 hover:text-white transition">Baseball Uniforms</Link></li>
+              <li><Link to="/custom-basketball-uniforms" className="inline-block py-1 hover:text-white transition">Basketball Uniforms</Link></li>
+              <li><Link to="/custom-cricket-uniforms" className="inline-block py-1 hover:text-white transition">Cricket Kits</Link></li>
+              <li><Link to="/custom-softball-uniforms" className="inline-block py-1 hover:text-white transition">Softball Uniforms</Link></li>
             </ul>
           </div>
 
@@ -82,13 +82,13 @@ const Footer = () => {
               More Sports
             </h3>
             <ul className="space-y-1 text-xs font-semibold text-slate-400">
-              <li><Link to="/volleyball" className="inline-block py-1 hover:text-white transition">Volleyball Jerseys</Link></li>
-              <li><Link to="/ice-hockey" className="inline-block py-1 hover:text-white transition">Ice Hockey Jerseys</Link></li>
-              <li><Link to="/hockey" className="inline-block py-1 hover:text-white transition">Field Hockey Kits</Link></li>
-              <li><Link to="/rugby" className="inline-block py-1 hover:text-white transition">Rugby Jerseys</Link></li>
-              <li><Link to="/tennis" className="inline-block py-1 hover:text-white transition">Tennis Apparel</Link></li>
-              <li><Link to="/running" className="inline-block py-1 hover:text-white transition">Running & Track Wear</Link></li>
-              <li><Link to="/gym" className="inline-block py-1 hover:text-white transition">Gym & Activewear</Link></li>
+              <li><Link to="/custom-volleyball-uniforms" className="inline-block py-1 hover:text-white transition">Volleyball Jerseys</Link></li>
+              <li><Link to="/custom-ice-hockey-uniforms" className="inline-block py-1 hover:text-white transition">Ice Hockey Jerseys</Link></li>
+              <li><Link to="/custom-lacrosse-uniforms" className="inline-block py-1 hover:text-white transition">Lacrosse Kits</Link></li>
+              <li><Link to="/custom-rugby-uniforms" className="inline-block py-1 hover:text-white transition">Rugby Uniforms</Link></li>
+              <li><Link to="/custom-tennis-apparel" className="inline-block py-1 hover:text-white transition">Tennis Apparel</Link></li>
+              <li><Link to="/custom-running-apparel" className="inline-block py-1 hover:text-white transition">Running Gear</Link></li>
+              <li><Link to="/custom-gym-fitness-wear" className="inline-block py-1 hover:text-white transition">Gym & Activewear</Link></li>
             </ul>
           </div>
 
@@ -162,20 +162,20 @@ const Footer = () => {
         <div className="border-t border-white/5 mt-12 pt-6">
           <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-3">All Product & Sportswear Categories:</p>
           <div className="flex flex-wrap gap-2 text-xs text-slate-300">
-            <Link to="/football" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Football</Link>
-            <Link to="/soccer" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Soccer</Link>
-            <Link to="/wrestling" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Wrestling</Link>
-            <Link to="/baseball" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Baseball</Link>
-            <Link to="/softball" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Softball</Link>
-            <Link to="/basketball" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Basketball</Link>
-            <Link to="/cricket" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Cricket</Link>
-            <Link to="/volleyball" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Volleyball</Link>
-            <Link to="/ice-hockey" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Ice Hockey</Link>
+            <Link to="/custom-football-uniforms" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Football</Link>
+            <Link to="/custom-soccer-uniforms" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Soccer</Link>
+            <Link to="/custom-wrestling-singlets" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Wrestling</Link>
+            <Link to="/custom-baseball-uniforms" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Baseball</Link>
+            <Link to="/custom-softball-uniforms" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Softball</Link>
+            <Link to="/custom-basketball-uniforms" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Basketball</Link>
+            <Link to="/custom-cricket-uniforms" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Cricket</Link>
+            <Link to="/custom-volleyball-uniforms" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Volleyball</Link>
+            <Link to="/custom-ice-hockey-uniforms" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Ice Hockey</Link>
             <Link to="/hockey" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Field Hockey</Link>
-            <Link to="/rugby" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Rugby</Link>
-            <Link to="/tennis" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Tennis</Link>
-            <Link to="/running" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Running</Link>
-            <Link to="/gym" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Gym & Activewear</Link>
+            <Link to="/custom-rugby-uniforms" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Rugby</Link>
+            <Link to="/custom-tennis-apparel" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Tennis</Link>
+            <Link to="/custom-running-apparel" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Running</Link>
+            <Link to="/custom-gym-fitness-wear" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Gym & Activewear</Link>
             <Link to="/shoes" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Shoes</Link>
             <Link to="/gloves" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Gloves</Link>
             <Link to="/caps" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Caps</Link>

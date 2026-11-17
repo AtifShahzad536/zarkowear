@@ -241,10 +241,33 @@ const routesData = {
       </section>
     `
   },
+  '/custom-baseball-uniforms': {
+    title: 'Custom Baseball Jerseys & Uniforms — Sublimated & Tackle Twill | Zarko',
+    description: 'Custom baseball jerseys & full-button uniform sets for youth, travel ball & high school teams. Sublimation or tackle twill, free mockup, DDP USA delivery.',
+    canonical: 'https://www.zarkosportswear.com/custom-baseball-uniforms',
+    h1: 'Custom Baseball Jerseys & Uniforms Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Pro-Grade Custom Sublimation & Tackle Twill Baseball Uniforms</h2>
+        <p>Upgrade your baseball club's diamond look with custom baseball jerseys and uniforms manufactured by Zarko Sportswear. Designed for high school varsity programs, Little League teams, travel ball tournaments, and college squads across the USA, our jerseys combine classic baseball heritage with modern moisture-wicking performance fabrics.</p>
+
+        <h2>Available Styles & Performance Construction</h2>
+        <ul>
+          <li><strong>Full Button-Down & Two-Button Jerseys:</strong> Classic pro-style full button fronts with reinforced button plackets and faux-front options.</li>
+          <li><strong>Durable Flatback Mesh & Interlock:</strong> High-density 200–220 GSM breathable mesh that withstands sliding, diving, and intensive season play while maximizing air circulation.</li>
+          <li><strong>Custom Stitched Tackle Twill & Sublimation:</strong> Choose authentic multi-layer tackle twill embroidery or vibrant all-over dye sublimation for lightweight tournament jerseys.</li>
+          <li><strong>Complete Baseball Team Gear:</strong> Match your jerseys with sublimated baseball pants, compression sliding shorts, batting cage jackets, and customized team caps.</li>
+        </ul>
+
+        <h2>Factory-Direct USA Wholesale Pricing</h2>
+        <p>Eliminate retailer markups by ordering directly from our manufacturing facility. We accommodate custom rosters with player names and front/back numbers at no additional hidden charge. Fast delivery across the United States.</p>
+      </section>
+    `
+  },
   '/baseball': {
     title: 'Custom Baseball Jerseys & Uniforms — Sublimated & Tackle Twill | Zarko',
     description: 'Custom baseball jerseys & full-button uniform sets for youth, travel ball & high school teams. Sublimation or tackle twill, free mockup, DDP USA delivery.',
-    canonical: 'https://www.zarkosportswear.com/baseball',
+    canonical: 'https://www.zarkosportswear.com/custom-baseball-uniforms',
     h1: 'Custom Baseball Jerseys & Uniforms Manufacturer USA',
     bodyContent: `
       <section class="seo-content-block">
