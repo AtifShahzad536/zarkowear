@@ -6,6 +6,10 @@ import SizeChartModal from './SizeChartModal';
 import SeoHead from './SeoHead';
 import ProductCard from './ProductCard';
 import { categoryConfigs } from '../data/categories';
+import DetailPricingCalculator from './detail/DetailPricingCalculator';
+import DetailComparisonTable from './detail/DetailComparisonTable';
+import DetailCareGuide from './detail/DetailCareGuide';
+import DetailFaq from './detail/DetailFaq';
 import {
   FaWhatsapp,
   FaArrowRight,
@@ -749,6 +753,33 @@ const ProductDetail = () => {
               </div>
             </div>
 
+          </div>
+
+          {/* ── SEO IMPROVED VERSION: LIVE PRICE & DEADLINE CALCULATOR (OUTRANKING HAMCO) ── */}
+          <div className="mt-14">
+            <DetailPricingCalculator
+              productName={product.name}
+              sportSlug={sportInfo.slug}
+              cleanSport={sportInfo.name}
+            />
+          </div>
+
+          {/* ── SEO IMPROVED VERSION: CUT & SPECIFICATION COMPARISON TABLE ── */}
+          <div className="mt-12">
+            <DetailComparisonTable cleanSport={sportInfo.name} />
+          </div>
+
+          {/* ── SEO IMPROVED VERSION: 5-CHECK BUYING GUIDE & DURABILITY CARE SECTION ── */}
+          <div className="mt-12">
+            <DetailCareGuide cleanSport={sportInfo.name} />
+          </div>
+
+          {/* ── SEO IMPROVED VERSION: PRODUCT SPECIFIC FAQ ACCORDION ── */}
+          <div className="mt-12">
+            <DetailFaq
+              productName={product.name}
+              cleanSport={sportInfo.name}
+            />
           </div>
 
           {/* ── DETAILED MANUFACTURING OVERVIEW (MATCHING SCREENSHOT 3) ── */}
