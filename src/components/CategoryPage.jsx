@@ -449,7 +449,7 @@ const CategoryPage = ({ slug }) => {
         <div className="absolute inset-0 pointer-events-none">
           <img
             src={
-              featured?.image ||
+              data?.featured?.image ||
               (slug === 'baseball' ? '/images/sports/baseball.webp' :
                slug === 'basketball' ? '/images/hero_basketball.webp' :
                slug === 'football' ? '/images/hero_football.webp' :
