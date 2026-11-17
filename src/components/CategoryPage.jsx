@@ -263,6 +263,75 @@ const CategoryPage = ({ slug }) => {
     return result;
   }, [data?.products, searchTerm, selectedSub, sortBy, selectedFabrics, selectedTechs, selectedCompliances]);
 
+  // Group products into distinct apparel categories (Jackets/Hoodies, Jerseys/Shirts, Pants/Shorts, Accessories)
+  const groupedProducts = useMemo(() => {
+    if (!filteredProducts || filteredProducts.length === 0) return null;
+
+    // If user filtered by a specific subcategory or search, show single filtered grid
+    if (selectedSub !== 'All' || searchTerm.trim()) {
+      return null;
+    }
+
+    const jackets = [];
+    const shirts = [];
+    const pants = [];
+    const gear = [];
+
+    filteredProducts.forEach((p) => {
+      const text = `${p.name || ''} ${p.subcategory || ''} ${p.description || ''}`.toLowerCase();
+      if (text.includes('jacket') || text.includes('hoodie') || text.includes('pullover') || text.includes('sweat') || text.includes('outerwear') || text.includes('warm-up') || text.includes('suit') || text.includes('wind')) {
+        jackets.push(p);
+      } else if (text.includes('pant') || text.includes('short') || text.includes('knicker') || text.includes('girdle') || text.includes('skort') || text.includes('tights') || text.includes('bottom')) {
+        pants.push(p);
+      } else if (text.includes('glove') || text.includes('sock') || text.includes('bag') || text.includes('cap') || text.includes('visor') || text.includes('accessory') || text.includes('shoe') || text.includes('belt')) {
+        gear.push(p);
+      } else {
+        shirts.push(p);
+      }
+    });
+
+    const sections = [];
+    if (shirts.length > 0) {
+      sections.push({
+        id: 'shirts-jerseys',
+        title: `Game Jerseys & Performance Tops`,
+        subtitle: `NFHS regulation cuts, moisture-wicking interlock, and 4K Italian dye-sublimation`,
+        badge: `Matchday Tops`,
+        items: shirts,
+      });
+    }
+    if (pants.length > 0) {
+      sections.push({
+        id: 'pants-shorts',
+        title: `Game Pants, Knickers & Performance Shorts`,
+        subtitle: `Reinforced slide zones, 4-way stretch flex panels, and non-roll elastic waistbands`,
+        badge: `Team Bottoms`,
+        items: pants,
+      });
+    }
+    if (jackets.length > 0) {
+      sections.push({
+        id: 'jackets-outerwear',
+        title: `Warm-Up Jackets, Cage Pullovers & Sideline Hoodies`,
+        subtitle: `Weather-resistant ripstop shell, fleece lining, and custom embroidered varsity lettering`,
+        badge: `Sideline & Warm-Up`,
+        items: jackets,
+      });
+    }
+    if (gear.length > 0) {
+      sections.push({
+        id: 'team-gear',
+        title: `Equipment, Pro Socks & Accessories`,
+        subtitle: `Bespoke team luggage, compression gear, and regulation accessories`,
+        badge: `Player Accessories`,
+        items: gear,
+      });
+    }
+
+    // Only use grouped display if we successfully split into multiple distinct sections
+    return sections.length > 1 ? sections : null;
+  }, [filteredProducts, selectedSub, searchTerm, cleanSport]);
+
   const handleClearFilters = () => {
     setSearchTerm('');
     setSelectedSub('All');
@@ -665,9 +734,59 @@ const CategoryPage = ({ slug }) => {
           </div>
         </div>
 
-        {/* ── FULL-WIDTH PRODUCT CATALOG (4 CARDS PER ROW ON LARGE SCREENS) ── */}
+        {/* ── FULL-WIDTH PRODUCT CATALOG (SEGMENTED CATEGORY SECTIONS LIKE COMPETITOR) ── */}
         <div>
-          {filteredProducts.length > 0 ? (
+          {groupedProducts ? (
+            /* Multi-section categorized showcase (Shirts, Pants, Jackets/Hoodies, Gear) */
+            <div className="space-y-12">
+              {groupedProducts.map((section, sIdx) => (
+                <div key={section.id} className="space-y-4">
+                  {/* Category Section Header */}
+                  <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 pb-3 border-b border-slate-200">
+                    <div>
+                      <div className="flex items-center gap-2 text-indigo-600 text-[10px] font-bold uppercase tracking-[0.2em]">
+                        <span>✦</span>
+                        <span>{section.badge}</span>
+                      </div>
+                      <h3
+                        className="text-lg sm:text-xl font-bold text-slate-900 uppercase tracking-tight mt-0.5"
+                        style={{ fontFamily: "'Outfit', sans-serif" }}
+                      >
+                        {section.title}
+                      </h3>
+                      <p className="text-xs text-slate-500 font-normal mt-0.5">
+                        {section.subtitle}
+                      </p>
+                    </div>
+
+                    <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider shrink-0">
+                      {section.items.length} {section.items.length === 1 ? 'Design' : 'Designs'}
+                    </span>
+                  </div>
+
+                  {/* 4 Cards Grid */}
+                  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-5">
+                    {section.items.map((product, index) => (
+                      <ProductCard
+                        key={product.id || `${section.id}-${product.name}-${index}`}
+                        id={product.id}
+                        image={product.image}
+                        name={product.name}
+                        description={product.description}
+                        price={product.price}
+                        discount={product.discount}
+                        categorySlug={slug}
+                        sportName={cleanSport}
+                        onQuickView={setQuickViewProduct}
+                        viewMode="grid"
+                      />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : filteredProducts.length > 0 ? (
+            /* Single filtered grid when user selects a specific dropdown subcategory or searches */
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-5">
               {filteredProducts.map((product, index) => (
                 <ProductCard
@@ -699,7 +818,7 @@ const CategoryPage = ({ slug }) => {
               </p>
               <button
                 onClick={handleClearFilters}
-                className="mt-4 px-4 py-2 bg-slate-900 hover:bg-red-600 text-white rounded-[5px] text-xs font-bold uppercase tracking-wider transition-colors inline-flex items-center gap-2 cursor-pointer shadow-2xs"
+                className="mt-4 px-4 py-2 bg-slate-900 hover:bg-indigo-600 text-white rounded-[5px] text-xs font-bold uppercase tracking-wider transition-colors inline-flex items-center gap-2 cursor-pointer shadow-2xs"
               >
                 <FiRefreshCw className="text-xs" />
                 <span>Reset All Filters</span>

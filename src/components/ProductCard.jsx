@@ -139,7 +139,7 @@ const ProductCard = ({
         </Link>
       </div>
 
-        {/* Card Details Body (Competitor Hamco Style: Centered Title, Clean Subtitle, Solid Red Action Button) */}
+        {/* Card Details Body (Clean Centered Title, Subtitle, and Zarko Theme Indigo/Navy Action Button) */}
         <div className="p-3 sm:p-3.5 flex-1 flex flex-col justify-between items-center text-center space-y-2">
           <div className="space-y-1 w-full">
             <Link
@@ -149,7 +149,7 @@ const ProductCard = ({
               className="block"
             >
               <h3
-                className="font-bold text-slate-900 text-xs sm:text-sm hover:text-red-600 transition-colors line-clamp-2 uppercase tracking-tight"
+                className="font-bold text-slate-900 text-xs sm:text-sm hover:text-indigo-600 transition-colors line-clamp-2 uppercase tracking-tight"
                 style={{ fontFamily: "'Outfit', sans-serif" }}
               >
                 {name}
@@ -161,12 +161,12 @@ const ProductCard = ({
             </p>
           </div>
 
-          {/* Solid Red Full-Width Action Button (Matching Competitor Layout) */}
+          {/* Zarko Brand Indigo-Navy Action Button (NO RED) */}
           <Link
             to={`/detail?product=${encodeURIComponent(productSlug)}`}
             state={{ product: productData }}
             aria-label={`Get quote for ${name}`}
-            className="w-full mt-2 py-2 px-3 rounded-[3px] bg-red-600 hover:bg-red-700 text-white text-[11px] font-bold uppercase tracking-wider transition-all duration-150 flex items-center justify-center gap-1.5 shadow-xs"
+            className="w-full mt-2 py-2 px-3 rounded-[4px] bg-slate-900 hover:bg-indigo-600 text-white text-[11px] font-bold uppercase tracking-wider transition-all duration-150 flex items-center justify-center gap-1.5 shadow-xs"
           >
             <span>View Design</span>
             <FaArrowRight className="text-[9px]" />
