@@ -612,7 +612,7 @@ const Hero = () => {
               Factory-Direct Sportswear Manufacturer
             </span>
             <h1 className="text-lg sm:text-xl lg:text-[22px] font-black text-[#111827] leading-snug tracking-tight uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              Custom Sportswear Manufacturer & Team Uniforms
+              Custom Sportswear Manufacturer & Team Uniforms — Factory-Direct from Sialkot
             </h1>
           </motion.div>
 
@@ -622,7 +622,7 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-gray-600 text-[clamp(12px,1vw,14px)] leading-relaxed font-semibold"
           >
-            Factory-direct custom sportswear manufactured in Sialkot, Pakistan. Supplying sublimation team jerseys, wrestling singlets, and athletic teamwear directly to USA and international clubs with zero middleman markups.
+            Factory-direct custom sportswear manufactured in Sialkot, Pakistan. Supplying sublimation team jerseys, wrestling singlets, and athletic teamwear directly to USA and international clubs with zero middleman markups. Low 15-set minimum per design. Shipping charges apply and are paid by customer — quoted directly with your free mockup.
           </motion.p>
         </div>
 

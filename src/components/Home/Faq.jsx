@@ -7,8 +7,8 @@ const FAQ_ITEMS = [
     answer: "A standard customized tailoring order runs about 8 to 12 working days from the moment you approve the final digital design mockup. Global shipping to the USA takes an additional 3 to 5 business days via DHL or FedEx Express."
   },
   {
-    question: "Is there really no minimum order, even for a single jersey?",
-    answer: "Our standard customized runs require a minimum order quantity (MOQ) of 15 pieces per customized design layout. However, we do offer physical custom sampling/mockups for team evaluations before full production starts."
+    question: "What is the minimum order quantity (MOQ) for custom team uniforms?",
+    answer: "Our standard production requires a low minimum order quantity (MOQ) of 15 sets per custom design layout. We also provide free 12-hour digital mockups and custom physical sampling for team evaluation before full production begins."
   },
   {
     question: "Are Zarko uniforms NFHS-, USA-Wrestling-, and US-Soccer-compliant?",

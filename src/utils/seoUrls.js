@@ -89,3 +89,4 @@ export function getCategoryUrl(sportSlug) {
   const key = sportSlug.toLowerCase();
   return `/${SPORT_CATEGORY_MAP[key]?.parentSlug || `custom-${key}-uniforms`}`;
 }
+

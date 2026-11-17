@@ -8,21 +8,21 @@
   <!-- Main Pages -->
   <url>
     <loc>https://www.zarkosportswear.com/</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
 
   <url>
     <loc>https://www.zarkosportswear.com/about</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
     <loc>https://www.zarkosportswear.com/contact</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
@@ -30,174 +30,187 @@
   <!-- 3D Jersey Builder Tool -->
   <url>
     <loc>https://www.zarkosportswear.com/builder</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>daily</changefreq>
-    <priority>1.00</priority>
+    <priority>0.95</priority>
   </url>
 
   <url>
     <loc>https://www.zarkosportswear.com/builder/models</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
 
-  <!-- Product Categories -->
   <url>
     <loc>https://www.zarkosportswear.com/custom</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
   </url>
 
-  <!-- Sport Category Pages -->
+  <!-- Canonical Competitor / Keyword-Rich Teamwear Categories (Top Priority) -->
   <url>
-    <loc>https://www.zarkosportswear.com/football</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <loc>https://www.zarkosportswear.com/custom-baseball-uniforms</loc>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://www.zarkosportswear.com/custom-football-uniforms</loc>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://www.zarkosportswear.com/custom-basketball-uniforms</loc>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://www.zarkosportswear.com/custom-soccer-uniforms</loc>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://www.zarkosportswear.com/custom-goalkeeper-uniforms</loc>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://www.zarkosportswear.com/custom-softball-uniforms</loc>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://www.zarkosportswear.com/custom-volleyball-uniforms</loc>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://www.zarkosportswear.com/custom-wrestling-singlets</loc>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://www.zarkosportswear.com/custom-ice-hockey-uniforms</loc>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://www.zarkosportswear.com/custom-cricket-uniforms</loc>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/baseball</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <loc>https://www.zarkosportswear.com/custom-rugby-uniforms</loc>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/softball</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <loc>https://www.zarkosportswear.com/custom-lacrosse-uniforms</loc>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/soccer</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <loc>https://www.zarkosportswear.com/custom-tennis-apparel</loc>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/volleyball</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <loc>https://www.zarkosportswear.com/custom-running-apparel</loc>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/ice-hockey</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <loc>https://www.zarkosportswear.com/custom-gym-fitness-wear</loc>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://www.zarkosportswear.com/cricket</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <loc>https://www.zarkosportswear.com/custom-streetwear-apparel</loc>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.80</priority>
   </url>
 
-  <url>
-    <loc>https://www.zarkosportswear.com/basketball</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://www.zarkosportswear.com/wrestling</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
-  <url>
-    <loc>https://www.zarkosportswear.com/hockey</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
-  <url>
-    <loc>https://www.zarkosportswear.com/rugby</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
-  <url>
-    <loc>https://www.zarkosportswear.com/tennis</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
-  <url>
-    <loc>https://www.zarkosportswear.com/running</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
-  <url>
-    <loc>https://www.zarkosportswear.com/gym</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
+  <!-- Footwear & Accessories -->
   <url>
     <loc>https://www.zarkosportswear.com/shoes</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.80</priority>
   </url>
 
   <url>
     <loc>https://www.zarkosportswear.com/gloves</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.80</priority>
   </url>
 
   <url>
     <loc>https://www.zarkosportswear.com/caps</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.80</priority>
   </url>
 
   <url>
     <loc>https://www.zarkosportswear.com/bags</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.80</priority>
   </url>
 
-  <!-- Blogs Section -->
+  <!-- Content & Legal -->
   <url>
     <loc>https://www.zarkosportswear.com/blogs</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
   </url>
 
-  <!-- Legal & Info Pages -->
   <url>
     <loc>https://www.zarkosportswear.com/privacy-policy</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
+    <priority>0.40</priority>
   </url>
 
   <url>
     <loc>https://www.zarkosportswear.com/terms</loc>
-    <lastmod>2026-10-10T00:00:00+05:00</lastmod>
+    <lastmod>2026-11-17T00:00:00+05:00</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
+    <priority>0.40</priority>
   </url>
 
 </urlset>

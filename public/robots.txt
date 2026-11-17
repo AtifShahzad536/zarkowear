@@ -3,5 +3,5 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 
+# Sitemaps
 Sitemap: https://www.zarkosportswear.com/sitemap.xml
-
