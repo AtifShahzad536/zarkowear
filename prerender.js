@@ -122,7 +122,7 @@ const routesData = {
         </ul>
 
         <h2>Custom Sports Uniform Categories We Manufacture</h2>
-        <p>Explore our complete sports range: <a href="/wrestling">Custom Wrestling Singlets</a>, <a href="/soccer">Custom Soccer Uniforms</a>, <a href="/football">Football Jerseys</a>, <a href="/basketball">Basketball Kits</a>, <a href="/baseball">Baseball Jerseys</a>, <a href="/cricket">Cricket Teamwear</a>, <a href="/ice-hockey">Ice Hockey Uniforms</a>, <a href="/gym">Gym Activewear</a>, and <a href="/custom">Custom Team Roster Orders</a>.</p>
+        <p>Explore our complete sports range: <a href="/custom-wrestling-singlets">Custom Wrestling Singlets</a>, <a href="/custom-soccer-uniforms">Custom Soccer Uniforms</a>, <a href="/custom-football-uniforms">Football Jerseys</a>, <a href="/custom-basketball-uniforms">Basketball Kits</a>, <a href="/custom-baseball-uniforms">Baseball Jerseys</a>, <a href="/custom-cricket-uniforms">Cricket Teamwear</a>, <a href="/custom-ice-hockey-uniforms">Ice Hockey Uniforms</a>, <a href="/custom-gym-fitness-wear">Gym Activewear</a>, and <a href="/custom">Custom Team Roster Orders</a>.</p>
       </section>
     `
   },
@@ -1079,20 +1079,20 @@ function runPrerender() {
         <strong>Zarko Sportswear</strong> — Factory-direct custom sports uniforms, team jerseys, wrestling singlets, and athletic apparel manufactured in Sialkot, Pakistan. Supplying teams, schools, and brands across the USA and worldwide.
       </p>
       <div style="margin: 20px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 12px; font-size: 13px;">
-        <a href="/football">Custom Football Uniforms</a> |
-        <a href="/soccer">Custom Soccer Kits</a> |
-        <a href="/wrestling">Custom Wrestling Singlets</a> |
-        <a href="/baseball">Custom Baseball Uniforms</a> |
-        <a href="/softball">Custom Softball Uniforms</a> |
-        <a href="/basketball">Custom Basketball Uniforms</a> |
-        <a href="/cricket">Custom Cricket Kits</a> |
-        <a href="/volleyball">Custom Volleyball Jerseys</a> |
-        <a href="/ice-hockey">Custom Ice Hockey Jerseys</a> |
-        <a href="/hockey">Custom Field Hockey Kits</a> |
-        <a href="/rugby">Custom Rugby Jerseys</a> |
-        <a href="/tennis">Custom Tennis Apparel</a> |
-        <a href="/running">Custom Running Wear</a> |
-        <a href="/gym">Custom Gym & Activewear</a> |
+        <a href="/custom-football-uniforms">Custom Football Uniforms</a> |
+        <a href="/custom-soccer-uniforms">Custom Soccer Kits</a> |
+        <a href="/custom-wrestling-singlets">Custom Wrestling Singlets</a> |
+        <a href="/custom-baseball-uniforms">Custom Baseball Uniforms</a> |
+        <a href="/custom-softball-uniforms">Custom Softball Uniforms</a> |
+        <a href="/custom-basketball-uniforms">Custom Basketball Uniforms</a> |
+        <a href="/custom-cricket-uniforms">Custom Cricket Kits</a> |
+        <a href="/custom-volleyball-uniforms">Custom Volleyball Jerseys</a> |
+        <a href="/custom-ice-hockey-uniforms">Custom Ice Hockey Jerseys</a> |
+        <a href="/custom-ice-hockey-uniforms">Custom Field Hockey Kits</a> |
+        <a href="/custom-rugby-uniforms">Custom Rugby Jerseys</a> |
+        <a href="/custom-tennis-apparel">Custom Tennis Apparel</a> |
+        <a href="/custom-running-apparel">Custom Running Wear</a> |
+        <a href="/custom-gym-fitness-wear">Custom Gym & Activewear</a> |
         <a href="/shoes">Athletic Shoes</a> |
         <a href="/gloves">Sports Gloves</a> |
         <a href="/caps">Team Caps</a> |

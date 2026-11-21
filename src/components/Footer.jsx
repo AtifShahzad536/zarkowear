@@ -171,7 +171,7 @@ const Footer = () => {
             <Link to="/custom-cricket-uniforms" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Cricket</Link>
             <Link to="/custom-volleyball-uniforms" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Volleyball</Link>
             <Link to="/custom-ice-hockey-uniforms" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Ice Hockey</Link>
-            <Link to="/hockey" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Field Hockey</Link>
+            <Link to="/custom-ice-hockey-uniforms" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Field Hockey</Link>
             <Link to="/custom-rugby-uniforms" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Rugby</Link>
             <Link to="/custom-tennis-apparel" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Tennis</Link>
             <Link to="/custom-running-apparel" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Running</Link>

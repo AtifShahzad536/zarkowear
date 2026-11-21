@@ -120,7 +120,7 @@ const Home = () => {
               {
                 category: 'FOOTBALL',
                 title: 'Football Kits & Apparel',
-                to: '/football',
+                to: '/custom-football-uniforms',
                 slug: 'football',
                 image: '/images/sports/football.webp',
                 badge: 'Play United'
@@ -128,7 +128,7 @@ const Home = () => {
               {
                 category: 'HOCKEY',
                 title: 'Hockey Kits & Apparel',
-                to: '/ice-hockey',
+                to: '/custom-ice-hockey-uniforms',
                 slug: 'ice-hockey',
                 image: '/images/sports/ice-hockey.webp',
                 badge: 'Pro League'
@@ -136,7 +136,7 @@ const Home = () => {
               {
                 category: 'RUGBY',
                 title: 'Rugby Kits & Apparel',
-                to: '/rugby',
+                to: '/custom-rugby-uniforms',
                 slug: 'rugby',
                 image: '/images/sports/cricket.webp',
                 badge: 'Match Ready'
@@ -144,7 +144,7 @@ const Home = () => {
               {
                 category: 'TENNIS',
                 title: 'Tennis Wear',
-                to: '/tennis',
+                to: '/custom-tennis-apparel',
                 slug: 'tennis',
                 image: '/images/sports/volleyball.webp',
                 badge: 'Tour Grade'
@@ -152,7 +152,7 @@ const Home = () => {
               {
                 category: 'BASKETBALL',
                 title: 'Basketball Uniforms',
-                to: '/basketball',
+                to: '/custom-basketball-uniforms',
                 slug: 'basketball',
                 image: '/images/sports/basketball.webp',
                 badge: 'Slam Dunk'
@@ -160,7 +160,7 @@ const Home = () => {
               {
                 category: 'SOCCER',
                 title: 'Soccer Kits & Matchwear',
-                to: '/soccer',
+                to: '/custom-soccer-uniforms',
                 slug: 'soccer',
                 image: '/images/sports/soccer.webp',
                 badge: 'Club Series'
@@ -168,7 +168,7 @@ const Home = () => {
               {
                 category: 'BASEBALL',
                 title: 'Baseball Kits & Uniforms',
-                to: '/baseball',
+                to: '/custom-baseball-uniforms',
                 slug: 'baseball',
                 image: '/images/sports/softball.webp',
                 badge: 'Diamond Series'
@@ -176,7 +176,7 @@ const Home = () => {
               {
                 category: 'SOFTBALL',
                 title: 'Fastpitch Softball Uniforms',
-                to: '/softball',
+                to: '/custom-softball-uniforms',
                 slug: 'softball',
                 image: '/images/sports/softball.webp',
                 badge: 'Fastpitch Pro'

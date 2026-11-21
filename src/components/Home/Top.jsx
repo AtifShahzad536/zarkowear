@@ -19,7 +19,7 @@ const TOP_CATEGORIES = [
     defaultImage: '/images/hero_football.webp',
     description:
       'Engineered for maximum tackle tear-resistance and speed. Features reinforced double-ply shoulder yoke for pad clearance, spandex flex side inserts, and integrated pad pants for high school, college, and semi-pro football programs.',
-    link: '/football',
+    link: '/custom-football-uniforms',
     specs: ['240-260 GSM Dazzle Interlock', 'Double-Ply Shoulder Yoke', 'Spandex Flex Panels', 'DDP USA Express']
   },
   {
@@ -35,7 +35,7 @@ const TOP_CATEGORIES = [
     defaultImage: '/images/sports/baseball.webp',
     description:
       'Zarko Sportswear manufactures pro-spec baseball jerseys and uniform sets for high schools, travel leagues, and clubs. Engineered with heavy 250 GSM double-knit polyester, reinforced button plackets, moisture-transport weave, and authentic tackle-twill embroidery.',
-    link: '/baseball',
+    link: '/custom-baseball-uniforms',
     specs: ['250 GSM Double Knit', 'NFHS Compliant', 'Tackle Twill & Sublimation', '15-Set MOQ']
   },
   {
@@ -51,7 +51,7 @@ const TOP_CATEGORIES = [
     defaultImage: '/images/sports/soccer.webp',
     description:
       'Ultra-breathable Dri-FIT sublimated matchday sets engineered for competitive club play. Features dynamic anti-chafing flatlock seams, micro-mesh heat exhaust zones, and vibrant 4K Italian dye-sublimation.',
-    link: '/soccer',
+    link: '/custom-soccer-uniforms',
     specs: ['160 GSM Dri-FIT Interlock', '4K Italian Sublimation', 'Ergonomic Athletic Fit', '10-12 Days Production']
   },
   {
@@ -67,7 +67,7 @@ const TOP_CATEGORIES = [
     defaultImage: '/images/sports/softball.webp',
     description:
       'Tailored fastpitch softball cut designed specifically for high mobility and sliding protection. Crafted with reinforced knee and hip zones, fade-proof full digital sublimation, and ultra-durable stretch stitching.',
-    link: '/softball',
+    link: '/custom-softball-uniforms',
     specs: ['Tailored Fastpitch Cut', 'Reinforced Sliding Zones', 'Full Sublimation Inks', '15 Sets MOQ']
   },
   {
@@ -83,7 +83,7 @@ const TOP_CATEGORIES = [
     defaultImage: '/images/sports/volleyball.webp',
     description:
       'Featherweight, moisture-evaporating volleyball jerseys and spandex shorts engineered for explosive vertical jumps, court dives, and swift lateral movement. Treated with anti-microbial fabric finish.',
-    link: '/volleyball',
+    link: '/custom-volleyball-uniforms',
     specs: ['4-Way Stretch Spandex Blend', 'Featherweight Heat-Release', 'Anti-Chafe Flatlock Seams', 'Custom Team Logos']
   },
   {
@@ -99,7 +99,7 @@ const TOP_CATEGORIES = [
     defaultImage: '/images/sports/ice-hockey.webp',
     description:
       'Built to withstand aggressive boards, ice abrasion, and extreme play. Features heavy pro-mesh weave, underarm ventilation inserts, pad-clearance elbows, and optional authentic sewn fight-straps.',
-    link: '/ice-hockey',
+    link: '/custom-ice-hockey-uniforms',
     specs: ['Heavy Pro-Mesh Fabric', 'Fight-Strap Construction', 'Reinforced Elbow Yoke', 'Worldwide Express']
   }
 ];

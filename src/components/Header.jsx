@@ -275,57 +275,57 @@ const megaCategories = {
     id: 'gymActive',
     label: 'GYM & ACTIVE',
     tagline: 'High-Performance Activewear, Compression Base Layers & Fitness Apparel',
-    viewAllTo: '/gym',
+    viewAllTo: '/custom-gym-fitness-wear',
     viewAllLabel: 'View All Gym & Active',
     parents: [
       {
         name: "Men's Tops & Tees",
-        to: '/gym?sub=Tops & Tees',
+        to: '/custom-gym-fitness-wear?sub=Tops & Tees',
         subs: [
-          { label: 'Performance Training Tees', to: '/gym?sub=Tops & Tees' },
-          { label: 'Gym Stringers & Tank Tops', to: '/gym?sub=Tops & Tees' },
-          { label: 'Drop-Arm Workout Muscle Tees', to: '/gym?sub=Tops & Tees' },
-          { label: 'Seamless Raglan Gym Tops', to: '/gym?sub=Tops & Tees' }
+          { label: 'Performance Training Tees', to: '/custom-gym-fitness-wear?sub=Tops & Tees' },
+          { label: 'Gym Stringers & Tank Tops', to: '/custom-gym-fitness-wear?sub=Tops & Tees' },
+          { label: 'Drop-Arm Workout Muscle Tees', to: '/custom-gym-fitness-wear?sub=Tops & Tees' },
+          { label: 'Seamless Raglan Gym Tops', to: '/custom-gym-fitness-wear?sub=Tops & Tees' }
         ]
       },
       {
         name: "Men's Bottoms & Shorts",
-        to: '/gym?sub=Shorts',
+        to: '/custom-gym-fitness-wear?sub=Shorts',
         subs: [
-          { label: 'Workout Training Shorts', to: '/gym?sub=Shorts' },
-          { label: 'Athletic Tapered Joggers', to: '/gym?sub=Shorts' },
-          { label: '2-in-1 Compression Liner Shorts', to: '/gym?sub=Shorts' },
-          { label: 'Gym Fleece Track Pants', to: '/gym?sub=Shorts' }
+          { label: 'Workout Training Shorts', to: '/custom-gym-fitness-wear?sub=Shorts' },
+          { label: 'Athletic Tapered Joggers', to: '/custom-gym-fitness-wear?sub=Shorts' },
+          { label: '2-in-1 Compression Liner Shorts', to: '/custom-gym-fitness-wear?sub=Shorts' },
+          { label: 'Gym Fleece Track Pants', to: '/custom-gym-fitness-wear?sub=Shorts' }
         ]
       },
       {
         name: 'Compression Gear',
-        to: '/gym?sub=Compression Tights',
+        to: '/custom-gym-fitness-wear?sub=Compression Tights',
         subs: [
-          { label: 'Long Sleeve Compression Tops', to: '/gym?sub=Compression Tights' },
-          { label: 'Short Sleeve Muscle Shield Tops', to: '/gym?sub=Compression Tights' },
-          { label: 'Full Length Compression Tights', to: '/gym?sub=Compression Tights' },
-          { label: 'Padded Base Layer Girdles', to: '/gym?sub=Compression Tights' }
+          { label: 'Long Sleeve Compression Tops', to: '/custom-gym-fitness-wear?sub=Compression Tights' },
+          { label: 'Short Sleeve Muscle Shield Tops', to: '/custom-gym-fitness-wear?sub=Compression Tights' },
+          { label: 'Full Length Compression Tights', to: '/custom-gym-fitness-wear?sub=Compression Tights' },
+          { label: 'Padded Base Layer Girdles', to: '/custom-gym-fitness-wear?sub=Compression Tights' }
         ]
       },
       {
         name: "Women's Active Tops",
-        to: '/gym?sub=Tops & Tees',
+        to: '/custom-gym-fitness-wear?sub=Tops & Tees',
         subs: [
-          { label: 'High-Support Sports Bras', to: '/gym?sub=Tops & Tees' },
-          { label: 'Racerback Athletic Tank Tops', to: '/gym?sub=Tops & Tees' },
-          { label: 'Breathable Dry-Fit Active Tees', to: '/gym?sub=Tops & Tees' },
-          { label: 'Long Sleeve Seamless Crop Tops', to: '/gym?sub=Tops & Tees' }
+          { label: 'High-Support Sports Bras', to: '/custom-gym-fitness-wear?sub=Tops & Tees' },
+          { label: 'Racerback Athletic Tank Tops', to: '/custom-gym-fitness-wear?sub=Tops & Tees' },
+          { label: 'Breathable Dry-Fit Active Tees', to: '/custom-gym-fitness-wear?sub=Tops & Tees' },
+          { label: 'Long Sleeve Seamless Crop Tops', to: '/custom-gym-fitness-wear?sub=Tops & Tees' }
         ]
       },
       {
         name: "Women's Bottoms & Tights",
-        to: '/gym?sub=Shorts',
+        to: '/custom-gym-fitness-wear?sub=Shorts',
         subs: [
-          { label: 'High-Waist Squat-Proof Leggings', to: '/gym?sub=Compression Tights' },
-          { label: 'Biker & Running Workout Shorts', to: '/gym?sub=Shorts' },
-          { label: 'Athletic Fitted Track Trousers', to: '/gym?sub=Shorts' },
-          { label: 'Seamless Booty Contour Shorts', to: '/gym?sub=Shorts' }
+          { label: 'High-Waist Squat-Proof Leggings', to: '/custom-gym-fitness-wear?sub=Compression Tights' },
+          { label: 'Biker & Running Workout Shorts', to: '/custom-gym-fitness-wear?sub=Shorts' },
+          { label: 'Athletic Fitted Track Trousers', to: '/custom-gym-fitness-wear?sub=Shorts' },
+          { label: 'Seamless Booty Contour Shorts', to: '/custom-gym-fitness-wear?sub=Shorts' }
         ]
       }
     ]

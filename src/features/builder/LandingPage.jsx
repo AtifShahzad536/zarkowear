@@ -512,18 +512,18 @@ const LandingPage = ({
 
             <div className="flex flex-wrap gap-2 pt-2">
               {[
-                { name: 'Wrestling Singlets USA', url: '/wrestling' },
-                { name: 'Custom Soccer Jerseys', url: '/soccer' },
-                { name: 'Football Uniforms', url: '/football' },
-                { name: 'Basketball Uniforms', url: '/basketball' },
-                { name: 'Baseball Jerseys', url: '/baseball' },
-                { name: 'Softball Kits', url: '/softball' },
-                { name: 'Cricket Uniforms', url: '/cricket' },
-                { name: 'Ice Hockey Jerseys', url: '/ice-hockey' },
-                { name: 'Gym Activewear', url: '/gym' },
-                { name: 'Running Gear', url: '/running' },
-                { name: 'Volleyball Uniforms', url: '/volleyball' },
-                { name: 'Rugby Teamwear', url: '/rugby' },
+                { name: 'Wrestling Singlets USA', url: '/custom-wrestling-singlets' },
+                { name: 'Custom Soccer Jerseys', url: '/custom-soccer-uniforms' },
+                { name: 'Football Uniforms', url: '/custom-football-uniforms' },
+                { name: 'Basketball Uniforms', url: '/custom-basketball-uniforms' },
+                { name: 'Baseball Jerseys', url: '/custom-baseball-uniforms' },
+                { name: 'Softball Kits', url: '/custom-softball-uniforms' },
+                { name: 'Cricket Uniforms', url: '/custom-cricket-uniforms' },
+                { name: 'Ice Hockey Jerseys', url: '/custom-ice-hockey-uniforms' },
+                { name: 'Gym Activewear', url: '/custom-gym-fitness-wear' },
+                { name: 'Running Gear', url: '/custom-running-apparel' },
+                { name: 'Volleyball Uniforms', url: '/custom-volleyball-uniforms' },
+                { name: 'Rugby Teamwear', url: '/custom-rugby-uniforms' },
                 { name: 'Custom Teamwear Orders', url: '/custom' }
               ].map(sport => (
                 <a

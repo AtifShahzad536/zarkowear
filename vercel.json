@@ -5,32 +5,107 @@
   "redirects": [
     {
       "source": "/custom-wrestling-gear",
-      "destination": "/wrestling",
+      "destination": "/custom-wrestling-singlets",
       "permanent": true
     },
     {
       "source": "/custom-wrestling-singlets-manufacturer",
-      "destination": "/wrestling",
+      "destination": "/custom-wrestling-singlets",
       "permanent": true
     },
     {
-      "source": "/custom-soccer-uniforms",
-      "destination": "/soccer",
+      "source": "/wrestling",
+      "destination": "/custom-wrestling-singlets",
+      "permanent": true
+    },
+    {
+      "source": "/football",
+      "destination": "/custom-football-uniforms",
+      "permanent": true
+    },
+    {
+      "source": "/baseball",
+      "destination": "/custom-baseball-uniforms",
+      "permanent": true
+    },
+    {
+      "source": "/basketball",
+      "destination": "/custom-basketball-uniforms",
+      "permanent": true
+    },
+    {
+      "source": "/soccer",
+      "destination": "/custom-soccer-uniforms",
       "permanent": true
     },
     {
       "source": "/sublimated-soccer-jerseys-wholesale",
-      "destination": "/soccer",
+      "destination": "/custom-soccer-uniforms",
+      "permanent": true
+    },
+    {
+      "source": "/softball",
+      "destination": "/custom-softball-uniforms",
+      "permanent": true
+    },
+    {
+      "source": "/volleyball",
+      "destination": "/custom-volleyball-uniforms",
+      "permanent": true
+    },
+    {
+      "source": "/ice-hockey",
+      "destination": "/custom-ice-hockey-uniforms",
+      "permanent": true
+    },
+    {
+      "source": "/hockey",
+      "destination": "/custom-ice-hockey-uniforms",
+      "permanent": true
+    },
+    {
+      "source": "/cricket",
+      "destination": "/custom-cricket-uniforms",
+      "permanent": true
+    },
+    {
+      "source": "/rugby",
+      "destination": "/custom-rugby-uniforms",
+      "permanent": true
+    },
+    {
+      "source": "/tennis",
+      "destination": "/custom-tennis-apparel",
+      "permanent": true
+    },
+    {
+      "source": "/running",
+      "destination": "/custom-running-apparel",
+      "permanent": true
+    },
+    {
+      "source": "/gym",
+      "destination": "/custom-gym-fitness-wear",
+      "permanent": true
+    },
+    {
+      "source": "/streetwear",
+      "destination": "/custom-streetwear-apparel",
+      "permanent": true
+    },
+    {
+      "source": "/sports-wears",
+      "destination": "/custom-streetwear-apparel",
       "permanent": true
     },
     {
       "source": "/oem-private-label-sportswear",
-      "destination": "/gym",
+      "destination": "/custom-gym-fitness-wear",
       "permanent": true
     },
     {
       "source": "/private-label-activewear-low-moq",
-      "destination": "/gym",
+      "destination": "/custom-gym-fitness-wear",
       "permanent": true
     },
     {

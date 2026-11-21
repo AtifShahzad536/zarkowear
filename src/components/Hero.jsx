@@ -54,7 +54,7 @@ const PRODUCTS = [
     tagline: 'Cricket Gear',
     description: 'Designed for long matches in the heat, featuring strategically placed mesh ventilation panels and UV-shielding fabric. The ultra-lightweight fabric allows free body rotation for batsmen and bowlers alike while keeping you cool.',
     image: '/images/hero_cricket.webp',
-    link: '/cricket',
+    link: '/custom-cricket-uniforms',
     icon: GiCricketBat,
   },
   {
@@ -64,7 +64,7 @@ const PRODUCTS = [
     tagline: 'Gym Gear',
     description: 'The ultimate workout layering piece made of an ultra-soft fleeced flex fabric. Features moisture-wicking technology, a structured adjustable hood, utility zip pockets, and ergonomic stitching built to support stretching, lifting, and outdoor running.',
     image: '/images/hero_gym.webp',
-    link: '/gym',
+    link: '/custom-gym-fitness-wear',
     icon: GiWeightLiftingUp,
   }
 ];
