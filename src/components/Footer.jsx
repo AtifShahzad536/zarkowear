@@ -89,6 +89,8 @@ const Footer = () => {
               <li><Link to="/custom-tennis-apparel" className="inline-block py-1 hover:text-white transition">Tennis Apparel</Link></li>
               <li><Link to="/custom-running-apparel" className="inline-block py-1 hover:text-white transition">Running Gear</Link></li>
               <li><Link to="/custom-gym-fitness-wear" className="inline-block py-1 hover:text-white transition">Gym & Activewear</Link></li>
+              <li><Link to="/custom-goalkeeper-uniforms" className="inline-block py-1 hover:text-white transition">Goalkeeper Kits</Link></li>
+              <li><Link to="/custom-streetwear-apparel" className="inline-block py-1 hover:text-white transition">Streetwear & Hoodies</Link></li>
             </ul>
           </div>
 
@@ -176,6 +178,9 @@ const Footer = () => {
             <Link to="/custom-tennis-apparel" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Tennis</Link>
             <Link to="/custom-running-apparel" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Running</Link>
             <Link to="/custom-gym-fitness-wear" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Gym & Activewear</Link>
+            <Link to="/custom-goalkeeper-uniforms" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Goalkeeper</Link>
+            <Link to="/custom-lacrosse-uniforms" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Lacrosse</Link>
+            <Link to="/custom-streetwear-apparel" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Streetwear</Link>
             <Link to="/shoes" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Shoes</Link>
             <Link to="/gloves" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Gloves</Link>
             <Link to="/caps" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Caps</Link>

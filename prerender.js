@@ -1137,6 +1137,9 @@ function runPrerender() {
         <a href="/custom-tennis-apparel">Custom Tennis Apparel</a> |
         <a href="/custom-running-apparel">Custom Running Wear</a> |
         <a href="/custom-gym-fitness-wear">Custom Gym & Activewear</a> |
+        <a href="/custom-goalkeeper-uniforms">Custom Goalkeeper Kits</a> |
+        <a href="/custom-lacrosse-uniforms">Custom Lacrosse Uniforms</a> |
+        <a href="/custom-streetwear-apparel">Custom Streetwear & Hoodies</a> |
         <a href="/shoes">Athletic Shoes</a> |
         <a href="/gloves">Sports Gloves</a> |
         <a href="/caps">Team Caps</a> |
