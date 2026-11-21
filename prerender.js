@@ -971,6 +971,50 @@ const routesData = {
         <p>Equip your team with matching custom athletic duffel bags and backpacks. Factory-direct wholesale pricing and express USA shipping.</p>
       </section>
     `
+  },
+  '/custom-lacrosse-uniforms': {
+    title: 'Custom Lacrosse Uniforms & Sublimated Jerseys Wholesale | Zarko Sportswear',
+    description: 'Direct factory manufacturer of custom lacrosse jerseys, shorts, skorts, and reversible pinnies for USA high schools, colleges, and clubs. Low 15-set MOQ.',
+    canonical: 'https://www.zarkosportswear.com/custom-lacrosse-uniforms',
+    h1: 'Custom Lacrosse Uniforms & Sublimated Team Jerseys Manufacturer USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Custom Lacrosse Uniforms, Reversible Pinnies & Team Apparel USA</h2>
+        <p>Zarko Sportswear manufactures high-performance custom lacrosse jerseys, shooter shirts, lacrosse shorts, women's skorts, and reversible practice pinnies for youth leagues, varsity high school programs, collegiate clubs, and tournament travel teams across the USA.</p>
+
+        <h2>Lacrosse Uniform Fabric Specifications & Durability</h2>
+        <ul>
+          <li><strong>160–220 GSM Breathable Pinhole Mesh & Interlock:</strong> High-velocity airflow fabrics engineered to keep players cool under shoulder pads and rib protectors.</li>
+          <li><strong>Full Digital Dye-Sublimation:</strong> Sharp 4K digital Japanese inks that never crack, peel, or fade despite stick checks and aggressive gameplay.</li>
+          <li><strong>NFHS & USA Lacrosse Compliant:</strong> Precision cut-and-sew specifications ensuring legal body length, numbering visibility, and collar clearance over pads.</li>
+          <li><strong>Reversible Pinnies & Shooter Shirts:</strong> Single-layer or double-layer reversible mesh jerseys with matching lightweight compression shooter shirts.</li>
+        </ul>
+
+        <p>Order custom lacrosse team packages with custom player names, numbers, and sponsor logos. Low 15-set MOQ and express USA air shipping.</p>
+      </section>
+    `
+  },
+  '/custom-streetwear-apparel': {
+    title: 'Custom Sportswear & Streetwear Manufacturer Wholesale | Zarko Sportswear',
+    description: 'OEM private label manufacturer of heavyweight French terry hoodies, sweatshirts, polo shirts, tracksuits, and activewear for USA brands and sports clubs.',
+    canonical: 'https://www.zarkosportswear.com/custom-streetwear-apparel',
+    h1: 'Custom Sportswear & Athleisure Streetwear Manufacturer Wholesale USA',
+    bodyContent: `
+      <section class="seo-content-block">
+        <h2>Premium Cut & Sew Custom Streetwear, Hoodies & Lifestyle Activewear</h2>
+        <p>Zarko Sportswear is a dedicated OEM private label manufacturer specializing in premium heavyweight streetwear, casual athleisure, custom hoodies, fleece tracksuits, embroidered crewneck sweatshirts, and athletic polo shirts for fashion brands, sports clubs, and gym lifestyle communities across the United States.</p>
+
+        <h2>Fabric Quality, Weight & Finishing Options</h2>
+        <ul>
+          <li><strong>300–380 GSM Heavy French Terry & Combed Cotton Fleece:</strong> Ultra-soft pre-shrunk cotton fleece with reinforced double-layered hoods and heavy 2x2 Lycra ribbing.</li>
+          <li><strong>High-End Custom Branding:</strong> 3D puff embroidery, high-density silicone heat seals, screen printing, chenille patches, and custom woven neck labels.</li>
+          <li><strong>Tailored Modern Fits:</strong> Drop-shoulder oversized cuts, boxy athletic streetwear fits, and streamlined tapered jogger tracksuits.</li>
+          <li><strong>Eco-Friendly OEKO-TEX Standard Dyes:</strong> Colorfast reactive dyes that maintain deep blacks, vintage washes, and vibrant hues through repeated wash cycles.</li>
+        </ul>
+
+        <p>Launch your private label streetwear brand with direct factory manufacturing in Sialkot. Low 15-piece MOQ, custom tech pack development, and door-to-door USA air freight.</p>
+      </section>
+    `
   }
 };
 
