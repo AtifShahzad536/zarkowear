@@ -14,6 +14,10 @@
 /running     /custom-running-apparel      301
 /gym         /custom-gym-fitness-wear     301
 /streetwear  /custom-streetwear-apparel   301
+/gloves      /custom-sports-gloves        301
+/caps        /custom-sports-caps-headwear 301
+/bags        /custom-sports-gear-bags     301
+/headwear    /custom-sports-caps-headwear 301
 /blog        /blogs       301
 /blog/*      /blogs       301
 /*           /index.html  200

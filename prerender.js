@@ -1141,9 +1141,9 @@ function runPrerender() {
         <a href="/custom-lacrosse-uniforms">Custom Lacrosse Uniforms</a> |
         <a href="/custom-streetwear-apparel">Custom Streetwear & Hoodies</a> |
         <a href="/shoes">Athletic Shoes</a> |
-        <a href="/gloves">Sports Gloves</a> |
-        <a href="/caps">Team Caps</a> |
-        <a href="/bags">Sports Bags</a> |
+        <a href="/custom-sports-gloves">Sports Gloves</a> |
+        <a href="/custom-sports-caps-headwear">Team Caps</a> |
+        <a href="/custom-sports-gear-bags">Sports Bags</a> |
         <a href="/builder">3D Uniform Builder</a> |
         <a href="/builder/models">3D Uniform Catalog</a> |
         <a href="/custom">Start Custom Order</a> |

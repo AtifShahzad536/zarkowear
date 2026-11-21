@@ -17,9 +17,9 @@ const cannedFaq = [
   { q: 'running', a: <>Browse kits at <Link to="/custom-running-apparel" className="text-indigo-600 underline">Running</Link>.</> },
   { q: 'gym', a: <>Browse kits at <Link to="/custom-gym-fitness-wear" className="text-indigo-600 underline">Gym</Link>.</> },
   { q: 'shoes', a: <>Shop accessories at <Link to="/shoes" className="text-indigo-600 underline">Shoes</Link>.</> },
-  { q: 'gloves', a: <>Shop accessories at <Link to="/gloves" className="text-indigo-600 underline">Gloves</Link>.</> },
-  { q: 'caps', a: <>Shop accessories at <Link to="/caps" className="text-indigo-600 underline">Caps</Link>.</> },
-  { q: 'bags', a: <>Shop accessories at <Link to="/bags" className="text-indigo-600 underline">Bags</Link>.</> },
+  { q: 'gloves', a: <>Shop accessories at <Link to="/custom-sports-gloves" className="text-indigo-600 underline">Gloves</Link>.</> },
+  { q: 'caps', a: <>Shop accessories at <Link to="/custom-sports-caps-headwear" className="text-indigo-600 underline">Caps</Link>.</> },
+  { q: 'bags', a: <>Shop accessories at <Link to="/custom-sports-gear-bags" className="text-indigo-600 underline">Bags</Link>.</> },
   { q: 'who are you', a: <>I am the WearConnect Assistant. I can navigate you around the site, explain our products, sizes, shipping, and custom orders. Try: "go to cricket", "open contact", or ask "what sizes do you have?"</> },
   { q: 'help', a: <>You can say: "go to [page]", "open [wear]", "contact", "custom", or ask about shipping, sizing, or products.</> },
   { q: 'shipping', a: <>We ship globally. Delivery times depend on your region and order size. For quotes and timelines, use the Request Quote buttons or visit <Link to="/contact" className="text-indigo-600 underline">Contact</Link>.</> },
@@ -46,9 +46,9 @@ function answerFor(text) {
     { k: ['running'], to: '/custom-running-apparel' },
     { k: ['gym'], to: '/custom-gym-fitness-wear' },
     { k: ['shoes'], to: '/shoes' },
-    { k: ['gloves'], to: '/gloves' },
-    { k: ['caps'], to: '/caps' },
-    { k: ['bags'], to: '/bags' },
+    { k: ['gloves'], to: '/custom-sports-gloves' },
+    { k: ['caps'], to: '/custom-sports-caps-headwear' },
+    { k: ['bags'], to: '/custom-sports-gear-bags' },
   ];
 
   const navVerb = ['go to', 'open', 'take me to', 'navigate', 'show'];

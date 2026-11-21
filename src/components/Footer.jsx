@@ -101,9 +101,9 @@ const Footer = () => {
             </h3>
             <ul className="space-y-1 text-xs font-semibold text-slate-400">
               <li><Link to="/shoes" className="inline-block py-1 hover:text-white transition">Athletic Shoes & Turf</Link></li>
-              <li><Link to="/gloves" className="inline-block py-1 hover:text-white transition">Sports & Goalie Gloves</Link></li>
-              <li><Link to="/caps" className="inline-block py-1 hover:text-white transition">Team Caps & Headwear</Link></li>
-              <li><Link to="/bags" className="inline-block py-1 hover:text-white transition">Equipment Duffels & Bags</Link></li>
+              <li><Link to="/custom-sports-gloves" className="inline-block py-1 hover:text-white transition">Sports & Goalie Gloves</Link></li>
+              <li><Link to="/custom-sports-caps-headwear" className="inline-block py-1 hover:text-white transition">Team Caps & Headwear</Link></li>
+              <li><Link to="/custom-sports-gear-bags" className="inline-block py-1 hover:text-white transition">Equipment Duffels & Bags</Link></li>
               <li><Link to="/builder" className="inline-block py-1 hover:text-white transition">3D Uniform Builder</Link></li>
               <li><Link to="/builder/models" className="inline-block py-1 hover:text-white transition">3D Uniform Templates</Link></li>
               <li><Link to="/blogs" className="inline-block py-1 hover:text-white transition">Manufacturing Blog</Link></li>
@@ -182,9 +182,9 @@ const Footer = () => {
             <Link to="/custom-lacrosse-uniforms" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Lacrosse</Link>
             <Link to="/custom-streetwear-apparel" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Streetwear</Link>
             <Link to="/shoes" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Shoes</Link>
-            <Link to="/gloves" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Gloves</Link>
-            <Link to="/caps" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Caps</Link>
-            <Link to="/bags" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Bags</Link>
+            <Link to="/custom-sports-gloves" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Gloves</Link>
+            <Link to="/custom-sports-caps-headwear" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Caps</Link>
+            <Link to="/custom-sports-gear-bags" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Bags</Link>
             <Link to="/builder" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">3D Builder</Link>
             <Link to="/builder/models" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">3D Kit Catalog</Link>
             <Link to="/custom" className="inline-flex items-center py-1.5 px-3 rounded-[5px] bg-white/5 hover:bg-white/10 hover:text-white transition">Custom Orders</Link>

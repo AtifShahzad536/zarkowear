@@ -13,7 +13,7 @@ export const categoryChips = [
   { to: '/custom-running-apparel', label: 'Running', Icon: FaRunning, tagline: 'Lightweight layers' },
   { to: '/custom-gym-fitness-wear', label: 'Gym', Icon: GiWeightLiftingUp, tagline: 'Training essentials' },
   { to: '/shoes', label: 'Shoes', Icon: GiRunningShoe, tagline: 'Traction & support' },
-  { to: '/gloves', label: 'Gloves', Icon: GiGloves, tagline: 'Grip & protection' },
-  { to: '/caps', label: 'Caps', Icon: FaHatCowboy, tagline: 'Team headwear' },
-  { to: '/bags', label: 'Bags', Icon: FaShoppingBag, tagline: 'Travel-ready packs' },
+  { to: '/custom-sports-gloves', label: 'Gloves', Icon: GiGloves, tagline: 'Grip & protection' },
+  { to: '/custom-sports-caps-headwear', label: 'Caps', Icon: FaHatCowboy, tagline: 'Team headwear' },
+  { to: '/custom-sports-gear-bags', label: 'Bags', Icon: FaShoppingBag, tagline: 'Travel-ready packs' },
 ];

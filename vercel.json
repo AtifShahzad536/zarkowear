@@ -99,6 +99,26 @@
       "permanent": true
     },
     {
+      "source": "/gloves",
+      "destination": "/custom-sports-gloves",
+      "permanent": true
+    },
+    {
+      "source": "/caps",
+      "destination": "/custom-sports-caps-headwear",
+      "permanent": true
+    },
+    {
+      "source": "/bags",
+      "destination": "/custom-sports-gear-bags",
+      "permanent": true
+    },
+    {
+      "source": "/headwear",
+      "destination": "/custom-sports-caps-headwear",
+      "permanent": true
+    },
+    {
       "source": "/oem-private-label-sportswear",
       "destination": "/custom-gym-fitness-wear",
       "permanent": true
